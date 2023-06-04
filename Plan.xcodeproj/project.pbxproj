@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4CEB8C4C2A2B77390097B161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C4B2A2B77390097B161 /* AppDelegate.swift */; };
-		4CEB8C4E2A2B77390097B161 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C4D2A2B77390097B161 /* ViewController.swift */; };
 		4CEB8C512A2B77390097B161 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C4F2A2B77390097B161 /* Plan.xcdatamodeld */; };
 		4CEB8C532A2B773A0097B161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CEB8C522A2B773A0097B161 /* Assets.xcassets */; };
-		4CEB8C562A2B773A0097B161 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEB8C542A2B773A0097B161 /* Main.storyboard */; };
 		4CEB8C612A2B773A0097B161 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C602A2B773A0097B161 /* PlanTests.swift */; };
 		4CEB8C6B2A2B773A0097B161 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C6A2A2B773A0097B161 /* PlanUITests.swift */; };
 		4CEB8C6D2A2B773A0097B161 /* PlanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C6C2A2B773A0097B161 /* PlanUITestsLaunchTests.swift */; };
+		4CEB8C7A2A2B90F20097B161 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C792A2B90F20097B161 /* main.swift */; };
+		4CEB8C7F2A2B92670097B161 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C7E2A2B92670097B161 /* Router.swift */; };
+		4CEB8C812A2B93F90097B161 /* NSWindow + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C802A2B93F90097B161 /* NSWindow + Extensions.swift */; };
+		4CEB8C882A2B98540097B161 /* Supplementary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C872A2B98540097B161 /* Supplementary.swift */; };
+		4CEB8C8A2A2B98680097B161 /* Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C892A2B98680097B161 /* Primary.swift */; };
+		4CEB8C8C2A2B98790097B161 /* Secondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C8B2A2B98790097B161 /* Secondary.swift */; };
+		4CEB8C8E2A2BDB560097B161 /* Supplementary.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C8D2A2BDB560097B161 /* Supplementary.ViewController.swift */; };
+		4CEB8C942A2BDD8B0097B161 /* Secondary.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C932A2BDD8B0097B161 /* Secondary.ViewController.swift */; };
+		4CEB8C9E2A2D08F30097B161 /* Primary.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB8C9D2A2D08F30097B161 /* Primary.ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,16 +44,23 @@
 /* Begin PBXFileReference section */
 		4CEB8C482A2B77390097B161 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CEB8C4B2A2B77390097B161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CEB8C4D2A2B77390097B161 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CEB8C502A2B77390097B161 /* Plan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plan.xcdatamodel; sourceTree = "<group>"; };
 		4CEB8C522A2B773A0097B161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4CEB8C552A2B773A0097B161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CEB8C572A2B773A0097B161 /* Plan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Plan.entitlements; sourceTree = "<group>"; };
 		4CEB8C5C2A2B773A0097B161 /* PlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CEB8C602A2B773A0097B161 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
 		4CEB8C662A2B773A0097B161 /* PlanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CEB8C6A2A2B773A0097B161 /* PlanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanUITests.swift; sourceTree = "<group>"; };
 		4CEB8C6C2A2B773A0097B161 /* PlanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4CEB8C792A2B90F20097B161 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4CEB8C7E2A2B92670097B161 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		4CEB8C802A2B93F90097B161 /* NSWindow + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow + Extensions.swift"; sourceTree = "<group>"; };
+		4CEB8C872A2B98540097B161 /* Supplementary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplementary.swift; sourceTree = "<group>"; };
+		4CEB8C892A2B98680097B161 /* Primary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primary.swift; sourceTree = "<group>"; };
+		4CEB8C8B2A2B98790097B161 /* Secondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secondary.swift; sourceTree = "<group>"; };
+		4CEB8C8D2A2BDB560097B161 /* Supplementary.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplementary.ViewController.swift; sourceTree = "<group>"; };
+		4CEB8C932A2BDD8B0097B161 /* Secondary.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secondary.ViewController.swift; sourceTree = "<group>"; };
+		4CEB8C9D2A2D08F30097B161 /* Primary.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primary.ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +111,14 @@
 		4CEB8C4A2A2B77390097B161 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				4CEB8C792A2B90F20097B161 /* main.swift */,
 				4CEB8C4B2A2B77390097B161 /* AppDelegate.swift */,
-				4CEB8C4D2A2B77390097B161 /* ViewController.swift */,
-				4CEB8C522A2B773A0097B161 /* Assets.xcassets */,
-				4CEB8C542A2B773A0097B161 /* Main.storyboard */,
 				4CEB8C572A2B773A0097B161 /* Plan.entitlements */,
 				4CEB8C4F2A2B77390097B161 /* Plan.xcdatamodeld */,
+				4CEB8C952A2C6B5D0097B161 /* Common */,
+				4CEB8C832A2B98050097B161 /* Units */,
+				4CEB8C9F2A2D1CB70097B161 /* Resource */,
+				4CEB8C822A2B94550097B161 /* UserInterface */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -122,6 +138,75 @@
 				4CEB8C6C2A2B773A0097B161 /* PlanUITestsLaunchTests.swift */,
 			);
 			path = PlanUITests;
+			sourceTree = "<group>";
+		};
+		4CEB8C822A2B94550097B161 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C802A2B93F90097B161 /* NSWindow + Extensions.swift */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		4CEB8C832A2B98050097B161 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C842A2B98150097B161 /* Primary */,
+				4CEB8C852A2B98260097B161 /* Supplementary */,
+				4CEB8C862A2B982E0097B161 /* Secondary */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
+		4CEB8C842A2B98150097B161 /* Primary */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C892A2B98680097B161 /* Primary.swift */,
+				4CEB8C9D2A2D08F30097B161 /* Primary.ViewController.swift */,
+			);
+			path = Primary;
+			sourceTree = "<group>";
+		};
+		4CEB8C852A2B98260097B161 /* Supplementary */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C872A2B98540097B161 /* Supplementary.swift */,
+				4CEB8C8D2A2BDB560097B161 /* Supplementary.ViewController.swift */,
+			);
+			path = Supplementary;
+			sourceTree = "<group>";
+		};
+		4CEB8C862A2B982E0097B161 /* Secondary */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C8B2A2B98790097B161 /* Secondary.swift */,
+				4CEB8C932A2BDD8B0097B161 /* Secondary.ViewController.swift */,
+			);
+			path = Secondary;
+			sourceTree = "<group>";
+		};
+		4CEB8C952A2C6B5D0097B161 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C9A2A2CF85E0097B161 /* Router */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4CEB8C9A2A2CF85E0097B161 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C7E2A2B92670097B161 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4CEB8C9F2A2D1CB70097B161 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4CEB8C522A2B773A0097B161 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CEB8C532A2B773A0097B161 /* Assets.xcassets in Resources */,
-				4CEB8C562A2B773A0097B161 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +338,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CEB8C4E2A2B77390097B161 /* ViewController.swift in Sources */,
+				4CEB8C8A2A2B98680097B161 /* Primary.swift in Sources */,
+				4CEB8C8E2A2BDB560097B161 /* Supplementary.ViewController.swift in Sources */,
 				4CEB8C512A2B77390097B161 /* Plan.xcdatamodeld in Sources */,
+				4CEB8C812A2B93F90097B161 /* NSWindow + Extensions.swift in Sources */,
+				4CEB8C942A2BDD8B0097B161 /* Secondary.ViewController.swift in Sources */,
+				4CEB8C7A2A2B90F20097B161 /* main.swift in Sources */,
+				4CEB8C7F2A2B92670097B161 /* Router.swift in Sources */,
 				4CEB8C4C2A2B77390097B161 /* AppDelegate.swift in Sources */,
+				4CEB8C8C2A2B98790097B161 /* Secondary.swift in Sources */,
+				4CEB8C9E2A2D08F30097B161 /* Primary.ViewController.swift in Sources */,
+				4CEB8C882A2B98540097B161 /* Supplementary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,17 +383,6 @@
 			targetProxy = 4CEB8C672A2B773A0097B161 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4CEB8C542A2B773A0097B161 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CEB8C552A2B773A0097B161 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4CEB8C6E2A2B773A0097B161 /* Debug */ = {
@@ -430,13 +511,12 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.paperwave.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,13 +538,12 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.paperwave.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
