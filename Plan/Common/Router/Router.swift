@@ -69,7 +69,7 @@ private extension Router {
 private extension Router {
 
 	func makePrimaryItem() -> NSSplitViewItem {
-		let item = NSSplitViewItem(sidebarWithViewController: Primary.ViewController { _ in })
+		let item = NSSplitViewItem(sidebarWithViewController: Primary.Assembly().build())
 		item.collapseBehavior = .preferResizingSiblingsWithFixedSplitView
 		item.allowsFullHeightLayout = true
 		item.titlebarSeparatorStyle = .automatic

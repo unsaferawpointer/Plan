@@ -9,3 +9,6 @@ enum ProjectSorting {
 	case creationDate(ascending: Bool = true)
 	case name(ascending: Bool = true)
 }
+
+// MARK: - Hashable
+extension ProjectSorting: Hashable { }

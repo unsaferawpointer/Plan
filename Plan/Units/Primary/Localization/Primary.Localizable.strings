@@ -1,0 +1,12 @@
+/* 
+  Primary.LocalizationStrings.strings
+  Plan
+
+  Created by Anton Cherkasov on 24.06.2023.
+  
+*/
+
+// Navigation items
+
+"all_lists" = "All Lists";
+"favorite" = "Favorite";
