@@ -12,4 +12,27 @@ struct HeaderConfiguration: FieldConfiguration {
 
 	/// Field title
 	var title: String
+
+	/// View-model of the button
+	var button: Button?
+}
+
+// MARK: - Nested data structs
+extension HeaderConfiguration {
+
+	/// View-model of the button
+	struct Button {
+		var title: String
+		var action: () -> Void
+	}
+}
+
+// MARK: - Equatable
+extension HeaderConfiguration.Button: Equatable {
+
+	typealias Button = HeaderConfiguration.Button
+
+	static func == (lhs: Button, rhs: Button) -> Bool {
+		return lhs.title == rhs.title
+	}
 }

@@ -70,6 +70,7 @@ private extension LabelField {
 			view.action = #selector(textfieldDidChange(_:))
 			return view
 		}()
+
 		self.textField = textfield
 		self.addSubview(textfield)
 

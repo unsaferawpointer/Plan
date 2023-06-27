@@ -17,6 +17,13 @@ final class PrimaryInteractorMock {
 // MARK: - PrimaryInteractor
 extension PrimaryInteractorMock: PrimaryInteractor {
 
+	func addProject(_ project: ProjectItem) throws {
+		if let error = errorStubs.addProject {
+			throw error
+		}
+		invocations.append(.addProject(project))
+	}
+
 	func fetchProjects(sortBy sorting: [ProjectSorting]) throws {
 		if let error = errorStubs.fetchProjects {
 			throw error
@@ -30,9 +37,11 @@ extension PrimaryInteractorMock {
 
 	enum Action {
 		case fetchProjects(sorting: [ProjectSorting])
+		case addProject(_ project: ProjectItem)
 	}
 
 	struct ErrorStubs {
 		var fetchProjects: Error?
+		var addProject: Error?
 	}
 }

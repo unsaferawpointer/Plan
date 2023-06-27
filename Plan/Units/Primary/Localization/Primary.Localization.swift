@@ -15,6 +15,12 @@ protocol PrimaryLocalization {
 
 	/// Title of the `favorite` item
 	var favoriteItem: String { get }
+
+	/// Default name of a project
+	var defaultProjectName: String { get }
+
+	/// Button title
+	var addProjectButtonTitle: String { get }
 }
 
 extension Primary {
@@ -32,6 +38,14 @@ extension Primary.Localization: PrimaryLocalization {
 
 	var favoriteItem: String {
 		return "favorite".localized()
+	}
+
+	var defaultProjectName: String {
+		return "default_project_name".localized()
+	}
+
+	var addProjectButtonTitle: String {
+		return "add_project_button_title".localized()
 	}
 }
 

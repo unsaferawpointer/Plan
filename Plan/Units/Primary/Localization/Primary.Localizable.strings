@@ -10,3 +10,5 @@
 
 "all_lists" = "All Lists";
 "favorite" = "Favorite";
+"default_project_name" = "New Project";
+"add_project_button_title" = "Add";

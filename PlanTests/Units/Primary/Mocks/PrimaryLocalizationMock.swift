@@ -12,10 +12,22 @@ final class PrimaryLocalizationMock {
 	var allItemStub: String = .random
 
 	var favoriteItemStub: String = .random
+
+	var defaultProjectNameStub: String = .random
+
+	var addProjectButtonTitleStub: String = .random
 }
 
 // MARK: - PrimaryLocalization
 extension PrimaryLocalizationMock: PrimaryLocalization {
+
+	var defaultProjectName: String {
+		defaultProjectNameStub
+	}
+
+	var addProjectButtonTitle: String {
+		addProjectButtonTitleStub
+	}
 
 	var allItem: String {
 		allItemStub

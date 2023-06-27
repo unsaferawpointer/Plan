@@ -13,10 +13,17 @@ protocol PrimaryInteractor {
 	/// - Parameters:
 	///    - sorting: Sorting of projects
 	func fetchProjects(sortBy sorting: [ProjectSorting]) throws
+
+	/// Add new project
+	///
+	/// - Parameters:
+	///    - project: New project
+	func addProject(_ project: ProjectItem) throws
 }
 
 extension Primary {
 
+	/// Primary unit interactor
 	final class Interactor {
 
 		private var dataProvider: DataProvider
@@ -41,5 +48,10 @@ extension Primary.Interactor: PrimaryInteractor {
 	func fetchProjects(sortBy sorting: [ProjectSorting]) throws {
 		let projects = try dataProvider.fetchProjects(sortBy: sorting)
 		presenter?.present(projects)
+	}
+
+	func addProject(_ project: ProjectItem) throws {
+		try dataProvider.addProject(project)
+		try dataProvider.save()
 	}
 }

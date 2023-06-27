@@ -66,11 +66,22 @@ extension Primary.Presenter: PrimaryPresenter {
 }
 
 // MARK: - Items creation
-extension Primary.Presenter {
+private extension Primary.Presenter {
 
 	func makeProjectsSection(_ projects: [ProjectItem], textDidChange: @escaping (UUID, String) -> Void) -> Primary.SectionModel {
 		let projectItems = makeProjectsItems(projects, textDidChange: textDidChange)
-		return Primary.SectionModel(id: .projects, content: .init(title: "Projects"), items: projectItems)
+		let button = HeaderConfiguration.Button(title: localization.addProjectButtonTitle) { [weak self] in
+			guard let self else {
+				return
+			}
+			let project = ProjectItem(name: self.localization.defaultProjectName)
+			do {
+				try self.interactor?.addProject(project)
+			} catch {
+				// TODO: - Handle error
+			}
+		}
+		return Primary.SectionModel(id: .projects, content: .init(title: "Projects", button: button), items: projectItems)
 	}
 
 	func makeProjectsItems(_ projects: [ProjectItem], textDidChange: @escaping (UUID, String) -> Void) -> [Primary.ItemModel] {
@@ -78,7 +89,7 @@ extension Primary.Presenter {
 			let content = LabelConfiguration.project(title: project.name) { text in
 				textDidChange(project.uuid, text)
 			}
-			return Primary.ItemModel(id: project.uuid, tintColor: .gray, content: content)
+			return Primary.ItemModel(id: Navigation.project(project.uuid), tintColor: .gray, content: content)
 		}
 	}
 

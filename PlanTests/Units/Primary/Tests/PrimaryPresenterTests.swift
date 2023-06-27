@@ -74,14 +74,14 @@ extension PrimaryPresenterTests {
 
 		XCTAssertEqual(model[0].items.count, 2)
 
-		XCTAssertEqual(model[0].items[0].id, Primary.NavigationModel.all)
+		XCTAssertEqual(model[0].items[0].id, Navigation.all)
 		XCTAssertEqual(model[0].items[0].tintColor, .gray)
 		XCTAssertEqual(model[0].items[0].content, .init(title: localization.allItemStub,
 														iconName: "app",
 														isEditable: false,
 														titleDidChange: nil))
 
-		XCTAssertEqual(model[0].items[1].id, Primary.NavigationModel.favorite)
+		XCTAssertEqual(model[0].items[1].id, Navigation.favorite)
 		XCTAssertEqual(model[0].items[1].tintColor, .yellow)
 		XCTAssertEqual(model[0].items[1].content, .init(title: localization.favoriteItemStub,
 														iconName: "star.fill",
@@ -93,18 +93,43 @@ extension PrimaryPresenterTests {
 
 		XCTAssertEqual(model[1].items.count, 2)
 
-		XCTAssertEqual(model[1].items[0].id, projects[0].id)
+		XCTAssertEqual(model[1].items[0].id, Navigation.project(projects[0].uuid))
 		XCTAssertEqual(model[1].items[0].tintColor, .gray)
 		XCTAssertEqual(model[1].items[0].content, .init(title: projects[0].name,
 														iconName: "doc.plaintext.fill",
 														isEditable: true,
 														titleDidChange: nil))
 
-		XCTAssertEqual(model[1].items[1].id, projects[1].id)
+		XCTAssertEqual(model[1].items[1].id, Navigation.project(projects[1].uuid))
 		XCTAssertEqual(model[1].items[1].tintColor, .gray)
 		XCTAssertEqual(model[1].items[1].content, .init(title: projects[1].name,
 														iconName: "doc.plaintext.fill",
 														isEditable: true,
 														titleDidChange: nil))
+	}
+}
+
+extension PrimaryPresenterTests {
+
+	func testAddingNewProject() {
+		// Arrange
+		let projects: [ProjectItem] = [.init(name: .random), .init(name: .random)]
+
+		// Act
+		sut.present(projects)
+
+		// Assert
+		guard case let .display(model) = view.invocations.first else {
+			return XCTFail("`display` should be invocked")
+		}
+
+		/// Click button
+		model[1].content.button?.action()
+
+		guard case let .addProject(project) = interactor.invocations.first else {
+			return XCTFail("`addProject` should be invocked")
+		}
+
+		XCTAssertEqual(project.name, localization.defaultProjectNameStub)
 	}
 }

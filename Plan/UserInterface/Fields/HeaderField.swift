@@ -33,10 +33,56 @@ class HeaderField: NSTableCellView, ConfigurableField {
 		self.configuration = configuration
 		super.init(frame: .zero)
 		configureUserInterface()
+		configureConstraints()
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	private var trackingArea: NSTrackingArea?
+
+	var isHovering: Bool = false {
+		didSet {
+			button.isHidden = !isHovering || configuration.button == nil
+		}
+	}
+
+	var button: NSButton!
+
+	override func updateTrackingAreas() {
+		super.updateTrackingAreas()
+
+		if let trackingArea = trackingArea {
+			removeTrackingArea(trackingArea)
+		}
+		trackingArea = nil
+		if let _ = window {
+			let options:NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways]
+			self.trackingArea = NSTrackingArea.init(
+				rect: bounds,
+				options: options,
+				owner: self,
+				userInfo: nil
+			)
+			self.addTrackingArea(self.trackingArea!)
+		}
+	}
+
+	override func mouseEntered(with event: NSEvent) {
+		super.mouseEntered(with: event)
+		isHovering = true
+	}
+
+	override func mouseExited(with event: NSEvent) {
+		super.mouseExited(with: event)
+		isHovering = false
+	}
+
+	deinit {
+		if let trackingArea {
+			self.removeTrackingArea(trackingArea)
+		}
 	}
 }
 
@@ -44,10 +90,13 @@ class HeaderField: NSTableCellView, ConfigurableField {
 private extension HeaderField {
 
 	func updateInterface() {
-		guard textField?.stringValue != configuration.title else {
+		textField?.stringValue = configuration.title
+		guard let buttonModel = configuration.button else {
+			button.isHidden = true
 			return
 		}
-		textField?.stringValue = configuration.title
+		button.isHidden = false
+		button.title = buttonModel.title
 	}
 
 	func configureUserInterface() {
@@ -60,7 +109,54 @@ private extension HeaderField {
 		textfield.usesSingleLineMode = true
 		textfield.lineBreakMode = .byTruncatingMiddle
 
+		let button = NSButton(
+			title: "",
+			target: self,
+			action: #selector(buttonHasBeenPressed(_:))
+		)
+		button.isHidden = !isHovering || configuration.button == nil
+		button.font = NSFont.preferredFont(forTextStyle: .footnote)
+		button.isBordered = false
+		button.bezelStyle = .texturedRounded
+		button.setButtonType(.momentaryPushIn)
+		self.button = button
+		addSubview(button)
+
 		self.textField = textfield
 		addSubview(textfield)
+	}
+}
+
+// MARK: - Helpers
+private extension HeaderField {
+
+	func configureConstraints() {
+		guard let textField, let button else {
+			return
+		}
+		[button, textField].forEach {
+			$0.translatesAutoresizingMaskIntoConstraints = false
+			addSubview($0)
+		}
+
+		NSLayoutConstraint.activate(
+			[
+				textField.leadingAnchor.constraint(equalTo: leadingAnchor),
+				textField.trailingAnchor.constraint(lessThanOrEqualTo: button.leadingAnchor, constant: -8),
+				textField.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+				button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+				button.firstBaselineAnchor.constraint(equalTo: textField.firstBaselineAnchor)
+			]
+		)
+	}
+}
+
+// MARK: - Actions
+extension HeaderField {
+
+	@objc
+	func buttonHasBeenPressed(_ sender: NSButton) {
+		configuration.button?.action()
 	}
 }

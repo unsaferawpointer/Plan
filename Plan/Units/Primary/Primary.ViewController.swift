@@ -39,13 +39,12 @@ extension Primary {
 		lazy var table: NSOutlineView = {
 			let view = NSOutlineView()
 			view.style = .sourceList
-			view.focusRingType = .default
-			view.rowSizeStyle = .medium
-			view.floatsGroupRows = true
+			view.rowSizeStyle = .default
+			view.floatsGroupRows = false
 			view.allowsMultipleSelection = false
-			view.usesAutomaticRowHeights = false
 			view.allowsColumnResizing = false
 			view.usesAlternatingRowBackgroundColors = false
+			view.usesAutomaticRowHeights = false
 			return view
 		}()
 
