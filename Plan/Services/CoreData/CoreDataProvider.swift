@@ -16,6 +16,8 @@ final class CoreDataProvider {
 		return persistentContainer.viewContext
 	}
 
+	private var converter: Converter = .init()
+
 	// MARK: - Initialization
 
 	/// Basic initialization
@@ -51,11 +53,18 @@ final class CoreDataProvider {
 extension CoreDataProvider: DataProvider {
 
 	func addProject(_ project: ProjectItem) throws {
-
 		let newEntity = ProjectEntity(context: context)
-		newEntity.uuid = project.uuid
-		newEntity.name = project.name
-		newEntity.creationDate = project.creationDate
+		converter.modificate(newEntity, item: project)
+	}
+
+	func updateProject(_ id: UUID, modification: (inout ProjectItem) -> Void) throws {
+		guard let entity = try fetchEntity(type: ProjectEntity.self, id: id) else {
+			return
+		}
+		var projectItem = converter.convert(entity)
+		modification(&projectItem)
+
+		converter.modificate(entity, item: projectItem)
 	}
 
 	func addList(_ list: ListItem, toProject projectId: UUID?) throws {
@@ -220,5 +229,32 @@ private extension CoreDataProvider {
 		fetchRequest.sortDescriptors = sortDescriptors
 		let entities = try context.fetch(fetchRequest) as? [T]
 		return entities?.first
+	}
+
+	func fetchEntity<T: NSManagedObject>(type: T.Type, id: UUID) throws -> T? {
+		let predicate = NSPredicate(format: "uuid = %@", argumentArray: [id as Any])
+		return try fetchEntity(type: type, predicate: predicate, sortDescriptors: [])
+	}
+
+}
+
+// MARK: - Nested data structs
+extension CoreDataProvider {
+
+	final class Converter {
+
+		func modificate(_ entity: ProjectEntity, item: ProjectItem) {
+			entity.uuid = item.uuid
+			entity.name = item.name
+			entity.creationDate = item.creationDate
+		}
+
+		func convert(_ entity: ProjectEntity) -> ProjectItem {
+			return .init(
+				uuid: entity.uuid,
+				name: entity.name,
+				creationDate: entity.creationDate
+			)
+		}
 	}
 }

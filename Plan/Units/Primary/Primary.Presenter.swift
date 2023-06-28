@@ -58,8 +58,15 @@ extension Primary.Presenter: PrimaryPresenter {
 
 	func present(_ projects: [ProjectItem]) {
 		let basicSection = makeBasicSection()
-		let projectsSection = makeProjectsSection(projects) { id, name in
-			// TODO: - Handle the name changing
+		let projectsSection = makeProjectsSection(projects) { [weak self] id, name in
+			guard let self else {
+				return
+			}
+			do {
+				try self.interactor?.renameProject(id: id, newName: name)
+			} catch {
+				// TODO: - Handle errors
+			}
 		}
 		view?.display([basicSection, projectsSection])
 	}

@@ -22,6 +22,13 @@ protocol DataProvider {
 	/// Fetch project with specific identifier
 	func fetchProject(id: UUID) throws -> ProjectItem?
 
+	/// Update project
+	///
+	/// - Parameters:
+	///    - id: Project identifier
+	///    - modification: Modification block
+	func updateProject(_ id: UUID, modification: (inout ProjectItem) -> Void) throws
+
 	/// Fetch list with specific identifier
 	func fetchList(id: UUID) throws -> ListItem?
 

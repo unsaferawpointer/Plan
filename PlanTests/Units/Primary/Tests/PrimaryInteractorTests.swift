@@ -54,4 +54,48 @@ extension InteractorPresenterTests {
 
 		XCTAssertEqual(projects, dataProvider.stubs.fetchProjects)
 	}
+
+	func testAddProject() throws {
+		// Arrange
+		let newItem = ProjectItem(name: .random)
+
+		// Act
+		try sut.addProject(newItem)
+
+		// Assert
+		XCTAssertEqual(dataProvider.invocations.count, 2)
+
+		guard case let .addProject(project) = dataProvider.invocations.first else {
+			return XCTFail("`addProject` should be invocked")
+		}
+
+		XCTAssertEqual(project, newItem)
+
+		guard case .save = dataProvider.invocations[1] else {
+			return XCTFail("`save` should be invocked")
+		}
+	}
+
+	func testRenameProject() throws {
+		// Arrange
+		let id = UUID()
+		let newName = String.random
+
+		// Act
+		try sut.renameProject(id: id, newName: newName)
+
+		// Assert
+		XCTAssertEqual(dataProvider.invocations.count, 2)
+
+		guard case let .updateProject(updatedId) = dataProvider.invocations.first else {
+			return XCTFail("`updateProject` should be invocked")
+		}
+
+		guard case .save = dataProvider.invocations[1] else {
+			return XCTFail("`save` should be invocked")
+		}
+
+		XCTAssertEqual(updatedId, id)
+		XCTAssertEqual(dataProvider.stubs.updatedProject.name, newName)
+	}
 }

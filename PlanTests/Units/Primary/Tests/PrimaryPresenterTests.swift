@@ -132,4 +132,31 @@ extension PrimaryPresenterTests {
 
 		XCTAssertEqual(project.name, localization.defaultProjectNameStub)
 	}
+
+	func testRenameProject() {
+		// Arrange
+		let projectItem0 = ProjectItem(name: .random)
+		let projectItem1 = ProjectItem(name: .random)
+		let projects: [ProjectItem] = [projectItem0, projectItem1]
+		let newName = String.random
+
+		// Act
+		sut.present(projects)
+
+		// Assert
+		guard case let .display(model) = view.invocations.first else {
+			return XCTFail("`display` should be invocked")
+		}
+
+		/// Click button
+		model[1].items[0].content.titleDidChange?(newName)
+
+		guard case let .renameProject(id, name) = interactor.invocations.first else {
+			return XCTFail("`renameProject` should be invocked")
+		}
+
+		XCTAssertEqual(id, projectItem0.uuid)
+		XCTAssertEqual(name, newName)
+
+	}
 }

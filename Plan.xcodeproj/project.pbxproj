@@ -40,6 +40,7 @@
 		4C7E07AF2A3608470086F8A0 /* ListSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E07AE2A3608470086F8A0 /* ListSorting.swift */; };
 		4C7E07B12A3608610086F8A0 /* ProjectSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E07B02A3608610086F8A0 /* ProjectSorting.swift */; };
 		4C7E07B32A3608770086F8A0 /* TaskSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E07B22A3608770086F8A0 /* TaskSorting.swift */; };
+		4C811CC92A4CC574005D8214 /* CoreDataProviderTests + Updating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C811CC82A4CC574005D8214 /* CoreDataProviderTests + Updating.swift */; };
 		4CE825332A44D7D700DB84AF /* Primary.Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE825322A44D7D700DB84AF /* Primary.Presenter.swift */; };
 		4CE825352A44D7FF00DB84AF /* ViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE825342A44D7FF00DB84AF /* ViewControllerOutput.swift */; };
 		4CE825382A44DA4200DB84AF /* Primary.SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE825372A44DA4200DB84AF /* Primary.SectionModel.swift */; };
@@ -112,6 +113,7 @@
 		4C7E07AE2A3608470086F8A0 /* ListSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSorting.swift; sourceTree = "<group>"; };
 		4C7E07B02A3608610086F8A0 /* ProjectSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSorting.swift; sourceTree = "<group>"; };
 		4C7E07B22A3608770086F8A0 /* TaskSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSorting.swift; sourceTree = "<group>"; };
+		4C811CC82A4CC574005D8214 /* CoreDataProviderTests + Updating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataProviderTests + Updating.swift"; sourceTree = "<group>"; };
 		4CE825322A44D7D700DB84AF /* Primary.Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primary.Presenter.swift; sourceTree = "<group>"; };
 		4CE825342A44D7FF00DB84AF /* ViewControllerOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOutput.swift; sourceTree = "<group>"; };
 		4CE825372A44DA4200DB84AF /* Primary.SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primary.SectionModel.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				4C34CE922A350287007BBA46 /* CoreDataProviderTests.swift */,
 				4C39093C2A36377000FA06F8 /* CoreDataProviderTests + Fetching.swift */,
 				4C3909432A36386600FA06F8 /* CoreDataProviderTests + Adding.swift */,
+				4C811CC82A4CC574005D8214 /* CoreDataProviderTests + Updating.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				4C6392CE2A4645B900C04649 /* PrimaryViewMock.swift in Sources */,
 				4C3909402A3637E000FA06F8 /* String + Extension.swift in Sources */,
 				4C6392E02A477FD300C04649 /* DataProviderMock.swift in Sources */,
+				4C811CC92A4CC574005D8214 /* CoreDataProviderTests + Updating.swift in Sources */,
 				4C6392DB2A47770000C04649 /* PrimaryLocalizationMock.swift in Sources */,
 				4C6392E22A48822B00C04649 /* PrimaryPresenterMock.swift in Sources */,
 			);

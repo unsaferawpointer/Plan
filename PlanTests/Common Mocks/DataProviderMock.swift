@@ -18,6 +18,11 @@ final class DataProviderMock {
 // MARK: - DataProvider
 extension DataProviderMock: DataProvider {
 
+	func updateProject(_ id: UUID, modification: (inout ProjectItem) -> Void) throws {
+		invocations.append(.updateProject(id))
+		modification(&stubs.updatedProject)
+	}
+
 	func addList(_ list: ListItem, toProject projectId: UUID?) throws {
 		invocations.append(.addList(list, projectId: projectId))
 	}
@@ -67,6 +72,7 @@ extension DataProviderMock {
 	enum Action {
 		case addList(_ list: ListItem, projectId: UUID?)
 		case addProject(_ project: ProjectItem)
+		case updateProject(_ id: UUID)
 		case addTask(_ task: TaskItem, listId: UUID?)
 		case fetchProject(id: UUID)
 		case fetchList(id: UUID)
@@ -82,5 +88,6 @@ extension DataProviderMock {
 		var fetchLists: [ListItem] = []
 		var fetchProjects: [ProjectItem] = []
 		var fetchTasks: [TaskItem] = []
+		var updatedProject: ProjectItem = .init(name: .random)
 	}
 }

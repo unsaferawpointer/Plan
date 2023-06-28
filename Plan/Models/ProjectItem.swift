@@ -9,7 +9,7 @@ import Foundation
 
 struct ProjectItem {
 
-	var uuid: UUID
+	let uuid: UUID
 
 	var name: String
 
