@@ -28,6 +28,12 @@ protocol PrimaryInteractor {
 	///    - id: Project identifier
 	///    - newName: New name of the project
 	func renameProject(id: UUID, newName: String) throws
+
+	/// Delete project by id
+	///
+	/// - Parameters:
+	///    - id: Project identifier
+	func deleteProject(_ id: UUID) throws
 }
 
 extension Primary {
@@ -68,6 +74,11 @@ extension Primary.Interactor: PrimaryInteractor {
 
 	func addProject(_ project: ProjectItem) throws {
 		try dataProvider.addProject(project)
+		try dataProvider.save()
+	}
+
+	func deleteProject(_ id: UUID) throws {
+		try dataProvider.deleteProject(id)
 		try dataProvider.save()
 	}
 }

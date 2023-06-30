@@ -67,6 +67,13 @@ extension CoreDataProvider: DataProvider {
 		converter.modificate(entity, item: projectItem)
 	}
 
+	func deleteProject(_ id: UUID) throws {
+		guard let entity = try fetchEntity(type: ProjectEntity.self, id: id) else {
+			return
+		}
+		context.delete(entity)
+	}
+
 	func addList(_ list: ListItem, toProject projectId: UUID?) throws {
 
 		let newEntity = ListEntity(context: context)

@@ -23,6 +23,10 @@ extension DataProviderMock: DataProvider {
 		modification(&stubs.updatedProject)
 	}
 
+	func deleteProject(_ id: UUID) throws {
+		invocations.append(.deleteProject(id: id))
+	}
+
 	func addList(_ list: ListItem, toProject projectId: UUID?) throws {
 		invocations.append(.addList(list, projectId: projectId))
 	}
@@ -79,6 +83,7 @@ extension DataProviderMock {
 		case fetchLists(projectId: UUID?, sorting: [ListSorting])
 		case fetchProjects(sorting: [ProjectSorting])
 		case fetchTasks(listId: UUID, sorting: [TaskSorting])
+		case deleteProject(id: UUID)
 		case save
 	}
 

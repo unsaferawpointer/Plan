@@ -20,6 +20,8 @@ extension Primary {
 
 		var content: LabelConfiguration
 
+		var menu: [MenuItem]
+
 		// MARK: - Initialization
 
 		/// Basic initialization
@@ -28,10 +30,17 @@ extension Primary {
 		///    - id: View-model identifier
 		///    - tintColor: Tint color of the icon
 		///    - content: Label configuration of the content
-		init(id: AnyHashable, tintColor: NSColor? = nil, content: LabelConfiguration) {
+		///    - menu: Context menu for item
+		init(
+			id: AnyHashable,
+			tintColor: NSColor? = nil,
+			content: LabelConfiguration,
+			menu: [MenuItem] = []
+		) {
 			self.id = id
 			self.tintColor = tintColor
 			self.content = content
+			self.menu = menu
 		}
 
 	}

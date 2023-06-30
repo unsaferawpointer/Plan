@@ -99,6 +99,9 @@ extension PrimaryPresenterTests {
 														iconName: "doc.plaintext.fill",
 														isEditable: true,
 														titleDidChange: nil))
+		XCTAssertEqual(model[1].items[0].menu.count, 1)
+		XCTAssertEqual(model[1].items[0].menu.first?.iconName, "trash")
+		XCTAssertEqual(model[1].items[0].menu.first?.title, localization.deleteContextMenuItemTitleStub)
 
 		XCTAssertEqual(model[1].items[1].id, Navigation.project(projects[1].uuid))
 		XCTAssertEqual(model[1].items[1].tintColor, .gray)
@@ -158,5 +161,30 @@ extension PrimaryPresenterTests {
 		XCTAssertEqual(id, projectItem0.uuid)
 		XCTAssertEqual(name, newName)
 
+	}
+
+	func testDeleteProject() {
+		// Arrange
+		let projectItem0 = ProjectItem(name: .random)
+		let projectItem1 = ProjectItem(name: .random)
+		let projects: [ProjectItem] = [projectItem0, projectItem1]
+		let newName = String.random
+
+		// Act
+		sut.present(projects)
+
+		// Assert
+		guard case let .display(model) = view.invocations.first else {
+			return XCTFail("`display` should be invocked")
+		}
+
+		/// Click button
+		model[1].items[0].menu[0].action()
+
+		guard case let .deleteProject(id) = interactor.invocations.first else {
+			return XCTFail("`deleteProject` should be invocked")
+		}
+
+		XCTAssertEqual(id, projectItem0.uuid)
 	}
 }

@@ -48,6 +48,12 @@ extension Primary {
 			return view
 		}()
 
+		lazy var contextMenu: NSMenu = {
+			let menu = NSMenu()
+			menu.delegate = self
+			return menu
+		}()
+
 		// MARK: - Initialization
 
 		/// Basic initialization
@@ -99,6 +105,8 @@ private extension Primary.ViewController {
 		column.resizingMask = [.autoresizingMask, .userResizingMask]
 		table.addTableColumn(column)
 		table.headerView = nil
+
+		table.menu = contextMenu
 
 		table.dataSource = self
 		table.delegate = self
@@ -181,5 +189,23 @@ extension Primary.ViewController {
 		}
 		field?.configure(configuration)
 		return field
+	}
+}
+
+extension Primary.ViewController: NSMenuDelegate {
+
+	func menuNeedsUpdate(_ menu: NSMenu) {
+
+		menu.removeAllItems()
+
+		let clickedRow = table.clickedRow
+		let itemModel = table.item(atRow: clickedRow) as? Primary.ItemModel
+		guard clickedRow != -1, let itemModel else {
+			return
+		}
+
+		itemModel.menu.forEach {
+			menu.addItem(MenuItemWrapper(model: $0))
+		}
 	}
 }

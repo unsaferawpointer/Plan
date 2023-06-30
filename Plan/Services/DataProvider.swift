@@ -29,6 +29,12 @@ protocol DataProvider {
 	///    - modification: Modification block
 	func updateProject(_ id: UUID, modification: (inout ProjectItem) -> Void) throws
 
+	/// Delete project by id
+	///
+	/// - Parameters:
+	///    - id: Project identifier
+	func deleteProject(_ id: UUID) throws
+
 	/// Fetch list with specific identifier
 	func fetchList(id: UUID) throws -> ListItem?
 

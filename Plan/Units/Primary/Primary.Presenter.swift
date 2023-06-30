@@ -96,7 +96,22 @@ private extension Primary.Presenter {
 			let content = LabelConfiguration.project(title: project.name) { text in
 				textDidChange(project.uuid, text)
 			}
-			return Primary.ItemModel(id: Navigation.project(project.uuid), tintColor: .gray, content: content)
+			let deleteMenuItem = MenuItem(
+				title: localization.deleteContextMenuItemTitle,
+				iconName: "trash", keyEquivalent: ""
+			) { [weak self] in
+				do {
+					try self?.interactor?.deleteProject(project.uuid)
+				} catch {
+					// TODO: - Handle errors
+				}
+			}
+			return Primary.ItemModel(
+				id: Navigation.project(project.uuid),
+				tintColor: .gray,
+				content: content,
+				menu: [deleteMenuItem]
+			)
 		}
 	}
 

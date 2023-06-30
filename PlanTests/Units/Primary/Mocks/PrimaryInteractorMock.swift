@@ -25,6 +25,13 @@ extension PrimaryInteractorMock: PrimaryInteractor {
 		invocations.append(.addProject(project))
 	}
 
+	func deleteProject(_ id: UUID) throws {
+		if let error = errorStubs.deleteProject {
+			throw error
+		}
+		invocations.append(.deleteProject(id: id))
+	}
+
 	func renameProject(id: UUID, newName: String) throws {
 		if let error = errorStubs.addProject {
 			throw error
@@ -47,11 +54,13 @@ extension PrimaryInteractorMock {
 		case fetchProjects(sorting: [ProjectSorting])
 		case addProject(_ project: ProjectItem)
 		case renameProject(id: UUID, newName: String)
+		case deleteProject(id: UUID)
 	}
 
 	struct ErrorStubs {
 		var fetchProjects: Error?
 		var addProject: Error?
 		var renameProject: Error?
+		var deleteProject: Error?
 	}
 }

@@ -12,3 +12,4 @@
 "favorite" = "Favorite";
 "default_project_name" = "New Project";
 "add_project_button_title" = "Add";
+"delete_context_menu_item_title" = "Delete";

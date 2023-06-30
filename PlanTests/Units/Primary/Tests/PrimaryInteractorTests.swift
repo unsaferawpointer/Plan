@@ -98,4 +98,25 @@ extension InteractorPresenterTests {
 		XCTAssertEqual(updatedId, id)
 		XCTAssertEqual(dataProvider.stubs.updatedProject.name, newName)
 	}
+
+	func testDeleteProject() throws {
+		// Arrange
+		let id = UUID()
+
+		// Act
+		try sut.deleteProject(id)
+
+		// Assert
+		XCTAssertEqual(dataProvider.invocations.count, 2)
+
+		guard case let .deleteProject(deletedId) = dataProvider.invocations.first else {
+			return XCTFail("`deleteProject` should be invocked")
+		}
+
+		guard case .save = dataProvider.invocations[1] else {
+			return XCTFail("`save` should be invocked")
+		}
+
+		XCTAssertEqual(deletedId, id)
+	}
 }

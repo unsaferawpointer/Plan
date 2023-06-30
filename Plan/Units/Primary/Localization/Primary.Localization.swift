@@ -21,6 +21,9 @@ protocol PrimaryLocalization {
 
 	/// Button title
 	var addProjectButtonTitle: String { get }
+
+	/// Title of the `Delete` context menu item
+	var deleteContextMenuItemTitle: String { get }
 }
 
 extension Primary {
@@ -46,6 +49,10 @@ extension Primary.Localization: PrimaryLocalization {
 
 	var addProjectButtonTitle: String {
 		return "add_project_button_title".localized()
+	}
+
+	var deleteContextMenuItemTitle: String {
+		return "delete_context_menu_item_title".localized()
 	}
 }
 
