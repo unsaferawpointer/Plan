@@ -10,7 +10,37 @@ import Foundation
 import CoreData
 
 @objc(TaskEntity)
-public class TaskEntity: NSManagedObject { }
+public class TaskEntity: NSManagedObject, ItemRepresentation {
+
+	typealias Item = TaskItem
+
+	var item: TaskItem {
+		return .init(
+			uuid: uuid,
+			status: .init(rawValue: status) ?? .incomplete,
+			text: text,
+			creationDate: creationDate
+		)
+	}
+
+	func update(by item: TaskItem) {
+		guard uuid == item.uuid else {
+			assertionFailure()
+			return
+		}
+		self.status = item.status.rawValue
+		self.text = item.text
+		self.creationDate = item.creationDate
+	}
+
+	required convenience init(from item: TaskItem, context: NSManagedObjectContext) {
+		self.init(context: context)
+		self.uuid = item.uuid
+		self.status = item.status.rawValue
+		self.text = item.text
+		self.creationDate = item.creationDate
+	}
+}
 
 extension TaskEntity {
 	

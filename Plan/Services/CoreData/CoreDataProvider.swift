@@ -16,8 +16,6 @@ final class CoreDataProvider {
 		return persistentContainer.viewContext
 	}
 
-	private var converter: Converter = .init()
-
 	// MARK: - Initialization
 
 	/// Basic initialization
@@ -53,18 +51,17 @@ final class CoreDataProvider {
 extension CoreDataProvider: DataProvider {
 
 	func addProject(_ project: ProjectItem) throws {
-		let newEntity = ProjectEntity(context: context)
-		converter.modificate(newEntity, item: project)
+		_ = ProjectEntity(from: project, context: context)
 	}
 
 	func updateProject(_ id: UUID, modification: (inout ProjectItem) -> Void) throws {
 		guard let entity = try fetchEntity(type: ProjectEntity.self, id: id) else {
 			return
 		}
-		var projectItem = converter.convert(entity)
+		var projectItem = entity.item
 		modification(&projectItem)
 
-		converter.modificate(entity, item: projectItem)
+		entity.update(by: projectItem)
 	}
 
 	func deleteProject(_ id: UUID) throws {
@@ -75,133 +72,55 @@ extension CoreDataProvider: DataProvider {
 	}
 
 	func addList(_ list: ListItem, toProject projectId: UUID?) throws {
-
-		let newEntity = ListEntity(context: context)
-		newEntity.uuid = list.uuid
-		newEntity.creationDate = list.creationDate
-		newEntity.isFavorite = list.isFavorite
-		newEntity.name = list.name
-
-		let predicate = NSPredicate(format: "uuid = %@", argumentArray: [projectId as Any])
-		let sortDescriptor = NSSortDescriptor(keyPath: \ProjectEntity.creationDate, ascending: true)
-		let projectEntity = try fetchEntity(type: ProjectEntity.self, predicate: predicate, sortDescriptors: [sortDescriptor])
-
+		let newEntity = ListEntity(from: list, context: context)
+		let projectEntity = try fetchEntity(type: ProjectEntity.self, id: projectId)
 		newEntity.project = projectEntity
 	}
 
 	func addTask(_ task: TaskItem, toList listId: UUID?) throws {
-
-		let newEntity = TaskEntity(context: context)
-		newEntity.uuid = task.uuid
-		newEntity.creationDate = task.creationDate
-		newEntity.status = task.status.rawValue
-		newEntity.text = task.text
-
-		let predicate = NSPredicate(format: "uuid = %@", argumentArray: [listId as Any])
-		let sortDescriptor = NSSortDescriptor(keyPath: \ListEntity.creationDate, ascending: true)
-		let listEntity = try fetchEntity(type: ListEntity.self, predicate: predicate, sortDescriptors: [sortDescriptor])
-
+		let newEntity = TaskEntity(from: task, context: context)
+		let listEntity = try fetchEntity(type: ListEntity.self, id: listId)
 		newEntity.list = listEntity
 	}
 
 	func fetchProject(id: UUID) throws -> ProjectItem? {
-		let predicate = NSPredicate(format: "uuid = %@", argumentArray: [id as Any])
-		guard let entity = try fetchEntity(type: ProjectEntity.self, predicate: predicate, sortDescriptors: []) else {
-			return nil
-		}
-		return .init(
-			uuid: entity.uuid,
-			name: entity.name,
-			creationDate: entity.creationDate
-		)
+		return try fetchEntity(type: ProjectEntity.self, id: id)?.item
 	}
 
 	func fetchList(id: UUID) throws -> ListItem? {
-		let predicate = NSPredicate(format: "uuid = %@", argumentArray: [id as Any])
-		guard let entity = try fetchEntity(type: ListEntity.self, predicate: predicate, sortDescriptors: []) else {
-			return nil
-		}
-		return .init(
-			uuid: entity.uuid,
-			name: entity.name,
-			isFavorite: entity.isFavorite,
-			creationDate: entity.creationDate
-		)
+		return try fetchEntity(type: ListEntity.self, id: id)?.item
 	}
 
 	func fetchLists(for projectId: UUID?, sortBy sorting: [ListSorting]) throws -> [ListItem] {
 		let predicate = NSPredicate(format: "project.uuid = %@", argumentArray: [projectId as Any])
-		let sortDescriptors = sorting.map { listSorting in
-			switch listSorting {
-			case .creationDate(let ascending):
-				return NSSortDescriptor(keyPath: \ListEntity.creationDate, ascending: ascending)
-			case .isFavorite(let ascending):
-				return NSSortDescriptor(keyPath: \ListEntity.isFavorite, ascending: ascending)
-			case .name(let ascending):
-				return NSSortDescriptor(keyPath: \ListEntity.name, ascending: ascending)
-			case .tasksCount(let ascending):
-				return NSSortDescriptor(keyPath: \ListEntity.tasks?.count, ascending: ascending)
-			}
-		}
+		let sortDescriptors = sorting.map(\.sortDescriptor)
 		let entities = try fetchEntities(
 			type: ListEntity.self,
 			predicate: predicate,
 			sortDescriptors: sortDescriptors
 		)
-		return entities.map { entity in
-			ListItem(
-				uuid: entity.uuid,
-				name: entity.name,
-				isFavorite: entity.isFavorite,
-				creationDate: entity.creationDate
-			)
-		}
+		return entities.map(\.item)
 	}
 
 	func fetchProjects(sortBy sorting: [ProjectSorting]) throws -> [ProjectItem] {
-		let sortDescriptors = sorting.map { listSorting in
-			switch listSorting {
-			case .creationDate(let ascending):
-				return NSSortDescriptor(keyPath: \ProjectEntity.creationDate, ascending: ascending)
-			case .name(let ascending):
-				return NSSortDescriptor(keyPath: \ProjectEntity.name, ascending: ascending)
-			}
-		}
+		let sortDescriptors = sorting.map(\.sortDescriptor)
 		let entities = try fetchEntities(
 			type: ProjectEntity.self,
 			predicate: nil,
 			sortDescriptors: sortDescriptors
 		)
-		return entities.map { entity in
-			ProjectItem(uuid: entity.uuid, name: entity.name, creationDate: entity.creationDate)
-		}
+		return entities.map(\.item)
 	}
 
 	func fetchTasks(for listId: UUID, sortBy sorting: [TaskSorting]) throws -> [TaskItem] {
 		let predicate = NSPredicate(format: "list.uuid = %@", argumentArray: [listId])
-		let sortDescriptors = sorting.map {
-			switch $0 {
-			case .creationDate(let ascending):
-				return NSSortDescriptor(keyPath: \TaskEntity.creationDate, ascending: ascending)
-			case .text(let ascending):
-				return NSSortDescriptor(keyPath: \TaskEntity.text, ascending: ascending)
-			case .status(ascending: let ascending):
-				return NSSortDescriptor(keyPath: \TaskEntity.status, ascending: ascending)
-			}
-		}
+		let sortDescriptors = sorting.map(\.sortDescriptor)
 		let entities = try fetchEntities(
 			type: TaskEntity.self,
 			predicate: predicate,
 			sortDescriptors: sortDescriptors
 		)
-		return entities.map { entity in
-			TaskItem(
-				uuid: entity.uuid,
-				status: .init(rawValue: entity.status) ?? .incomplete,
-				text: entity.text,
-				creationDate: entity.creationDate
-			)
-		}
+		return entities.map (\.item)
 	}
 
 	func save() throws {
@@ -238,30 +157,12 @@ private extension CoreDataProvider {
 		return entities?.first
 	}
 
-	func fetchEntity<T: NSManagedObject>(type: T.Type, id: UUID) throws -> T? {
+	func fetchEntity<T: NSManagedObject>(type: T.Type, id: UUID?) throws -> T? {
+		guard let id else {
+			return nil
+		}
 		let predicate = NSPredicate(format: "uuid = %@", argumentArray: [id as Any])
 		return try fetchEntity(type: type, predicate: predicate, sortDescriptors: [])
 	}
 
-}
-
-// MARK: - Nested data structs
-extension CoreDataProvider {
-
-	final class Converter {
-
-		func modificate(_ entity: ProjectEntity, item: ProjectItem) {
-			entity.uuid = item.uuid
-			entity.name = item.name
-			entity.creationDate = item.creationDate
-		}
-
-		func convert(_ entity: ProjectEntity) -> ProjectItem {
-			return .init(
-				uuid: entity.uuid,
-				name: entity.name,
-				creationDate: entity.creationDate
-			)
-		}
-	}
 }

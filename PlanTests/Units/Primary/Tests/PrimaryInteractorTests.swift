@@ -8,7 +8,7 @@
 import XCTest
 @testable import Plan
 
-final class InteractorPresenterTests: XCTestCase {
+final class PrimaryInteractorTests: XCTestCase {
 
 	var sut: Primary.Interactor!
 
@@ -31,7 +31,7 @@ final class InteractorPresenterTests: XCTestCase {
 }
 
 // MARK: - PrimaryInteractor
-extension InteractorPresenterTests {
+extension PrimaryInteractorTests {
 
 	func testFetchProjects() throws {
 		// Arrange

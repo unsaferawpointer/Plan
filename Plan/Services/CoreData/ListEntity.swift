@@ -10,7 +10,37 @@ import Foundation
 import CoreData
 
 @objc(ListEntity)
-public class ListEntity: NSManagedObject { }
+public class ListEntity: NSManagedObject, ItemRepresentation {
+
+	typealias Item = ListItem
+
+	var item: ListItem {
+		return .init(
+			uuid: uuid,
+			name: name,
+			isFavorite: isFavorite,
+			creationDate: creationDate
+		)
+	}
+
+	func update(by item: ListItem) {
+		guard uuid == item.uuid else {
+			assertionFailure()
+			return
+		}
+		self.name = item.name
+		self.isFavorite = item.isFavorite
+		self.creationDate = item.creationDate
+	}
+
+	required convenience init(from item: ListItem, context: NSManagedObjectContext) {
+		self.init(context: context)
+		self.uuid = item.uuid
+		self.name = item.name
+		self.isFavorite = item.isFavorite
+		self.creationDate = item.creationDate
+	}
+}
 
 extension ListEntity {
 

@@ -10,7 +10,35 @@ import Foundation
 import CoreData
 
 @objc(ProjectEntity)
-public class ProjectEntity: NSManagedObject { }
+public class ProjectEntity: NSManagedObject, ItemRepresentation {
+
+	typealias Item = ProjectItem
+
+	var item: ProjectItem {
+		return .init(
+			uuid: uuid,
+			name: name,
+			creationDate: creationDate
+		)
+	}
+
+	func update(by item: ProjectItem) {
+		guard uuid == item.uuid else {
+			assertionFailure()
+			return
+		}
+		self.name = item.name
+		self.creationDate = item.creationDate
+	}
+
+	required convenience init(from item: ProjectItem, context: NSManagedObjectContext) {
+		self.init(context: context)
+		self.uuid = item.uuid
+		self.name = item.name
+		self.creationDate = item.creationDate
+	}
+
+}
 
 extension ProjectEntity {
 
