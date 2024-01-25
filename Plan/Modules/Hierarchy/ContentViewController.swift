@@ -1,5 +1,5 @@
 //
-//  ContentViewController.swift
+//  HierarchyViewController.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 14.01.2024.
@@ -7,7 +7,11 @@
 
 import Cocoa
 
-class ContentViewController: NSViewController {
+protocol HierarchyViewInput {
+	func display(_ snapshot: HierarchySnapshot)
+}
+
+class HierarchyViewController: NSViewController {
 
 	// MARK: - UI-Properties
 
@@ -32,30 +36,49 @@ class ContentViewController: NSViewController {
 		return view
 	}()
 
+	// MARK: - DI
+
+	var adapter: HierarchyTableAdapter?
+
 	// MARK: - View life-cycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		self.adapter = HierarchyTableAdapter(table: table)
+
 		configureUserInterface()
 		configureConstraints()
 	}
 }
 
+// MARK: - HierarchyViewInput
+extension HierarchyViewController: HierarchyViewInput {
+
+	func display(_ snapshot: HierarchySnapshot) {
+		adapter?.apply(snapshot)
+	}
+}
+
 // MARK: - Helpers
-private extension ContentViewController {
+private extension HierarchyViewController {
 
 	func configureUserInterface() {
 
 		table.headerView = nil
 		table.autoresizesOutlineColumn = false
+		table.columnAutoresizingStyle = .reverseSequentialColumnAutoresizingStyle
+		table.allowsColumnResizing = true
 		table.allowsMultipleSelection = true
 
 		scrollview.documentView = table
 		scrollview.hasVerticalScroller = false
 
-		let identifier = NSUserInterfaceItemIdentifier("main")
-		let column = NSTableColumn(identifier: identifier)
-		table.addTableColumn(column)
+		table.frame = scrollview.bounds
+
+		let column1 = NSTableColumn(identifier: .init(rawValue: "text"))
+		column1.title = "Text"
+		table.addTableColumn(column1)
 	}
 
 	func configureConstraints() {

@@ -8,13 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FA2B5447440086B3D1 /* AppDelegate.swift */; };
-		4C3717FD2B5447440086B3D1 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FC2B5447440086B3D1 /* ContentViewController.swift */; };
+		4C3717FD2B5447440086B3D1 /* HierarchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FC2B5447440086B3D1 /* HierarchyViewController.swift */; };
 		4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */; };
 		4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718012B5447450086B3D1 /* Assets.xcassets */; };
 		4C3718052B5447450086B3D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718032B5447450086B3D1 /* Main.storyboard */; };
 		4C3718102B5447450086B3D1 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37180F2B5447450086B3D1 /* PlanTests.swift */; };
 		4C37181A2B5447450086B3D1 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3718192B5447450086B3D1 /* PlanUITests.swift */; };
 		4C37181C2B5447450086B3D1 /* PlanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37181B2B5447450086B3D1 /* PlanUITestsLaunchTests.swift */; };
+		4C68259A2B5C3005000DDD07 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825992B5C3005000DDD07 /* Node.swift */; };
+		4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68259B2B5C300F000DDD07 /* Todo.swift */; };
+		4C6825A02B5C3379000DDD07 /* HierarchyTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68259F2B5C3379000DDD07 /* HierarchyTableAdapter.swift */; };
+		4C6825A32B5C3393000DDD07 /* HierarchyListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825A22B5C3393000DDD07 /* HierarchyListItem.swift */; };
+		4C6825A52B5C3418000DDD07 /* HierarchySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825A42B5C3418000DDD07 /* HierarchySnapshot.swift */; };
+		4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825A72B5C3817000DDD07 /* Dictionary+Extension.swift */; };
+		4C6825AA2B5C3B0D000DDD07 /* HierarchyTableAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825A92B5C3B0D000DDD07 /* HierarchyTableAnimator.swift */; };
+		4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */; };
+		4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825AE2B5D379D000DDD07 /* ConfigurableView.swift */; };
+		4C6825B32B60311F000DDD07 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825B22B60311F000DDD07 /* LabelView.swift */; };
+		4C6825B52B60315C000DDD07 /* LabelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825B42B60315C000DDD07 /* LabelConfiguration.swift */; };
+		4C6825B92B62DEBF000DDD07 /* HierarchyTodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825B82B62DEBF000DDD07 /* HierarchyTodoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +49,7 @@
 /* Begin PBXFileReference section */
 		4C3717F72B5447440086B3D1 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3717FA2B5447440086B3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C3717FC2B5447440086B3D1 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		4C3717FC2B5447440086B3D1 /* HierarchyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyViewController.swift; sourceTree = "<group>"; };
 		4C3717FF2B5447440086B3D1 /* Plan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plan.xcdatamodel; sourceTree = "<group>"; };
 		4C3718012B5447450086B3D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C3718042B5447450086B3D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +59,18 @@
 		4C3718152B5447450086B3D1 /* PlanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3718192B5447450086B3D1 /* PlanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanUITests.swift; sourceTree = "<group>"; };
 		4C37181B2B5447450086B3D1 /* PlanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4C6825992B5C3005000DDD07 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		4C68259B2B5C300F000DDD07 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		4C68259F2B5C3379000DDD07 /* HierarchyTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableAdapter.swift; sourceTree = "<group>"; };
+		4C6825A22B5C3393000DDD07 /* HierarchyListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyListItem.swift; sourceTree = "<group>"; };
+		4C6825A42B5C3418000DDD07 /* HierarchySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchySnapshot.swift; sourceTree = "<group>"; };
+		4C6825A72B5C3817000DDD07 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		4C6825A92B5C3B0D000DDD07 /* HierarchyTableAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableAnimator.swift; sourceTree = "<group>"; };
+		4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
+		4C6825AE2B5D379D000DDD07 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
+		4C6825B22B60311F000DDD07 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		4C6825B42B60315C000DDD07 /* LabelConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelConfiguration.swift; sourceTree = "<group>"; };
+		4C6825B82B62DEBF000DDD07 /* HierarchyTodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTodoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
+				4C6825982B5C2FF2000DDD07 /* Common */,
+				4C6825AB2B5D36CA000DDD07 /* Design System */,
 				4C3718282B5447740086B3D1 /* Modules */,
 				4C3718012B5447450086B3D1 /* Assets.xcassets */,
 				4C3718032B5447450086B3D1 /* Main.storyboard */,
@@ -127,17 +153,75 @@
 		4C3718282B5447740086B3D1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4C3718292B5447860086B3D1 /* Content */,
+				4C3718292B5447860086B3D1 /* Hierarchy */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		4C3718292B5447860086B3D1 /* Content */ = {
+		4C3718292B5447860086B3D1 /* Hierarchy */ = {
 			isa = PBXGroup;
 			children = (
-				4C3717FC2B5447440086B3D1 /* ContentViewController.swift */,
+				4C3717FC2B5447440086B3D1 /* HierarchyViewController.swift */,
+				4C6825B82B62DEBF000DDD07 /* HierarchyTodoModel.swift */,
+				4C6825A12B5C3386000DDD07 /* TableAdapter */,
 			);
-			path = Content;
+			path = Hierarchy;
+			sourceTree = "<group>";
+		};
+		4C6825982B5C2FF2000DDD07 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4C6825A62B5C3802000DDD07 /* Extensions */,
+				4C6825992B5C3005000DDD07 /* Node.swift */,
+				4C68259B2B5C300F000DDD07 /* Todo.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4C6825A12B5C3386000DDD07 /* TableAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				4C6825A22B5C3393000DDD07 /* HierarchyListItem.swift */,
+				4C68259F2B5C3379000DDD07 /* HierarchyTableAdapter.swift */,
+				4C6825A42B5C3418000DDD07 /* HierarchySnapshot.swift */,
+				4C6825A92B5C3B0D000DDD07 /* HierarchyTableAnimator.swift */,
+			);
+			path = TableAdapter;
+			sourceTree = "<group>";
+		};
+		4C6825A62B5C3802000DDD07 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C6825A72B5C3817000DDD07 /* Dictionary+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C6825AB2B5D36CA000DDD07 /* Design System */ = {
+			isa = PBXGroup;
+			children = (
+				4C6825B12B5EB047000DDD07 /* Views */,
+				4C6825B02B5EB033000DDD07 /* Common */,
+			);
+			path = "Design System";
+			sourceTree = "<group>";
+		};
+		4C6825B02B5EB033000DDD07 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4C6825AE2B5D379D000DDD07 /* ConfigurableView.swift */,
+				4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4C6825B12B5EB047000DDD07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C6825B22B60311F000DDD07 /* LabelView.swift */,
+				4C6825B42B60315C000DDD07 /* LabelConfiguration.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +354,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3717FD2B5447440086B3D1 /* ContentViewController.swift in Sources */,
+				4C3717FD2B5447440086B3D1 /* HierarchyViewController.swift in Sources */,
 				4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */,
+				4C6825A52B5C3418000DDD07 /* HierarchySnapshot.swift in Sources */,
+				4C6825B92B62DEBF000DDD07 /* HierarchyTodoModel.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
+				4C6825A32B5C3393000DDD07 /* HierarchyListItem.swift in Sources */,
+				4C68259A2B5C3005000DDD07 /* Node.swift in Sources */,
+				4C6825AA2B5C3B0D000DDD07 /* HierarchyTableAnimator.swift in Sources */,
+				4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */,
+				4C6825B32B60311F000DDD07 /* LabelView.swift in Sources */,
+				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
+				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
+				4C6825A02B5C3379000DDD07 /* HierarchyTableAdapter.swift in Sources */,
+				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
+				4C6825B52B60315C000DDD07 /* LabelConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
