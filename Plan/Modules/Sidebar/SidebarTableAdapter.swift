@@ -70,9 +70,9 @@ extension SidebarTableAdapter: NSOutlineViewDelegate {
 		}
 
 		let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
-		var view = table?.makeView(withIdentifier: id, owner: self) as? LabelView2
+		var view = table?.makeView(withIdentifier: id, owner: self) as? LabelView
 		if view == nil {
-			view = LabelView2()
+			view = LabelView()
 			view?.identifier = id
 		}
 

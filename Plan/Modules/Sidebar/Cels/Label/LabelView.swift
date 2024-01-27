@@ -7,7 +7,7 @@
 
 import Cocoa
 
-final class LabelView2: NSTableCellView, ConfigurableView {
+final class LabelView: NSTableCellView, ConfigurableView {
 
 	static var userIdentifier: String = "label"
 
@@ -45,7 +45,7 @@ final class LabelView2: NSTableCellView, ConfigurableView {
 }
 
 // MARK: - Helpers
-private extension LabelView2 {
+private extension LabelView {
 
 	func updateUserInterface() {
 		textField?.stringValue = configuration.title

@@ -35,7 +35,7 @@ extension Coordinator: Coordinatable {
 
 	func start() {
 		let sidebar = SidebarAssembly.assemble(self)
-		let detail = HierarchyViewController()
+		let detail = NSViewController(nibName: nil, bundle: nil)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
 }

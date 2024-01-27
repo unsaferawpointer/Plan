@@ -10,7 +10,7 @@ import Cocoa
 /// Configuration of the label
 struct LabelConfig: ViewConfiguration {
 
-	typealias View = LabelView2
+	typealias View = LabelView
 
 	static var reuseIdentifier: String = "label"
 
