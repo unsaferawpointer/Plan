@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C28412A2B6543E500BC4A9F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841292B6543E500BC4A9F /* main.swift */; };
+		4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28412C2B6544BE00BC4A9F /* Router.swift */; };
+		4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28412F2B6544F200BC4A9F /* NSWindow+Extension.swift */; };
+		4C2841332B65459F00BC4A9F /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841322B65459F00BC4A9F /* SidebarViewController.swift */; };
+		4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841342B65483700BC4A9F /* SidebarItem.swift */; };
+		4C2841372B654B9700BC4A9F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841362B654B9700BC4A9F /* Route.swift */; };
+		4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841382B654C1400BC4A9F /* SidebarTableAdapter.swift */; };
+		4C28413D2B654D3A00BC4A9F /* LabelView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28413C2B654D3A00BC4A9F /* LabelView2.swift */; };
+		4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28413E2B654D7500BC4A9F /* LabelConfig.swift */; };
+		4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */; };
+		4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841422B65657300BC4A9F /* SidebarAssembly.swift */; };
+		4C2841452B6568D500BC4A9F /* SidebarOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841442B6568D500BC4A9F /* SidebarOutput.swift */; };
+		4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841462B65699500BC4A9F /* Coordinator.swift */; };
 		4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FA2B5447440086B3D1 /* AppDelegate.swift */; };
 		4C3717FD2B5447440086B3D1 /* HierarchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FC2B5447440086B3D1 /* HierarchyViewController.swift */; };
 		4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */; };
@@ -47,6 +60,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C2841292B6543E500BC4A9F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4C28412C2B6544BE00BC4A9F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		4C28412F2B6544F200BC4A9F /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
+		4C2841322B65459F00BC4A9F /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
+		4C2841342B65483700BC4A9F /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		4C2841362B654B9700BC4A9F /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		4C2841382B654C1400BC4A9F /* SidebarTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableAdapter.swift; sourceTree = "<group>"; };
+		4C28413C2B654D3A00BC4A9F /* LabelView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView2.swift; sourceTree = "<group>"; };
+		4C28413E2B654D7500BC4A9F /* LabelConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelConfig.swift; sourceTree = "<group>"; };
+		4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPresenter.swift; sourceTree = "<group>"; };
+		4C2841422B65657300BC4A9F /* SidebarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAssembly.swift; sourceTree = "<group>"; };
+		4C2841442B6568D500BC4A9F /* SidebarOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutput.swift; sourceTree = "<group>"; };
+		4C2841462B65699500BC4A9F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4C3717F72B5447440086B3D1 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3717FA2B5447440086B3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3717FC2B5447440086B3D1 /* HierarchyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +124,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C28412B2B6544A400BC4A9F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4C28412C2B6544BE00BC4A9F /* Router.swift */,
+				4C2841462B65699500BC4A9F /* Coordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4C28412E2B6544DA00BC4A9F /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				4C28412F2B6544F200BC4A9F /* NSWindow+Extension.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		4C2841312B65457E00BC4A9F /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841422B65657300BC4A9F /* SidebarAssembly.swift */,
+				4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */,
+				4C2841322B65459F00BC4A9F /* SidebarViewController.swift */,
+				4C2841442B6568D500BC4A9F /* SidebarOutput.swift */,
+				4C28413A2B654D1A00BC4A9F /* Cels */,
+				4C2841382B654C1400BC4A9F /* SidebarTableAdapter.swift */,
+				4C2841342B65483700BC4A9F /* SidebarItem.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		4C28413A2B654D1A00BC4A9F /* Cels */ = {
+			isa = PBXGroup;
+			children = (
+				4C28413B2B654D2100BC4A9F /* Label */,
+			);
+			path = Cels;
+			sourceTree = "<group>";
+		};
+		4C28413B2B654D2100BC4A9F /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				4C28413C2B654D3A00BC4A9F /* LabelView2.swift */,
+				4C28413E2B654D7500BC4A9F /* LabelConfig.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		4C3717EE2B5447440086B3D1 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +195,7 @@
 		4C3717F92B5447440086B3D1 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				4C2841292B6543E500BC4A9F /* main.swift */,
 				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
 				4C6825982B5C2FF2000DDD07 /* Common */,
 				4C6825AB2B5D36CA000DDD07 /* Design System */,
@@ -153,6 +228,8 @@
 		4C3718282B5447740086B3D1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4C28412B2B6544A400BC4A9F /* App */,
+				4C2841312B65457E00BC4A9F /* Sidebar */,
 				4C3718292B5447860086B3D1 /* Hierarchy */,
 			);
 			path = Modules;
@@ -174,6 +251,7 @@
 				4C6825A62B5C3802000DDD07 /* Extensions */,
 				4C6825992B5C3005000DDD07 /* Node.swift */,
 				4C68259B2B5C300F000DDD07 /* Todo.swift */,
+				4C2841362B654B9700BC4A9F /* Route.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -200,6 +278,7 @@
 		4C6825AB2B5D36CA000DDD07 /* Design System */ = {
 			isa = PBXGroup;
 			children = (
+				4C28412E2B6544DA00BC4A9F /* Extenstions */,
 				4C6825B12B5EB047000DDD07 /* Views */,
 				4C6825B02B5EB033000DDD07 /* Common */,
 			);
@@ -354,21 +433,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2841452B6568D500BC4A9F /* SidebarOutput.swift in Sources */,
+				4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */,
 				4C3717FD2B5447440086B3D1 /* HierarchyViewController.swift in Sources */,
 				4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */,
+				4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */,
 				4C6825A52B5C3418000DDD07 /* HierarchySnapshot.swift in Sources */,
 				4C6825B92B62DEBF000DDD07 /* HierarchyTodoModel.swift in Sources */,
+				4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
 				4C6825A32B5C3393000DDD07 /* HierarchyListItem.swift in Sources */,
 				4C68259A2B5C3005000DDD07 /* Node.swift in Sources */,
 				4C6825AA2B5C3B0D000DDD07 /* HierarchyTableAnimator.swift in Sources */,
+				4C2841332B65459F00BC4A9F /* SidebarViewController.swift in Sources */,
 				4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */,
 				4C6825B32B60311F000DDD07 /* LabelView.swift in Sources */,
+				4C2841372B654B9700BC4A9F /* Route.swift in Sources */,
+				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
+				4C28413D2B654D3A00BC4A9F /* LabelView2.swift in Sources */,
+				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
+				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
+				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
+				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
 				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C6825A02B5C3379000DDD07 /* HierarchyTableAdapter.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
 				4C6825B52B60315C000DDD07 /* LabelConfiguration.swift in Sources */,
+				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +639,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -574,7 +665,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

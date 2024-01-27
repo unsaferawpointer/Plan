@@ -7,14 +7,12 @@
 
 import Cocoa
 
-@main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-	
-
+	var coordinator = Coordinator()
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
-		// Insert code here to initialize your application
+		coordinator.start()
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
