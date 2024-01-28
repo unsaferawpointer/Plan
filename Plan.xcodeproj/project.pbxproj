@@ -32,6 +32,18 @@
 		4C28415E2B658CB300BC4A9F /* ProjectConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28415D2B658CB300BC4A9F /* ProjectConfiguration.swift */; };
 		4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841612B65A0EF00BC4A9F /* ViewState.swift */; };
 		4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841632B65A11600BC4A9F /* ViewOutput.swift */; };
+		4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28416A2B6643C000BC4A9F /* TodoEntity.swift */; };
+		4C2841702B6643C000BC4A9F /* ProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28416C2B6643C000BC4A9F /* ProjectEntity.swift */; };
+		4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841712B667AFD00BC4A9F /* PersistentContainer.swift */; };
+		4C2841742B667BB200BC4A9F /* ProjectsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841732B667BB200BC4A9F /* ProjectsDataProvider.swift */; };
+		4C2841782B66D11900BC4A9F /* ProjectsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841772B66D11900BC4A9F /* ProjectsInteractorTests.swift */; };
+		4C28417C2B66D20D00BC4A9F /* ProjectsPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28417B2B66D20D00BC4A9F /* ProjectsPresenterMock.swift */; };
+		4C28417E2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28417D2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift */; };
+		4C2841802B66D75D00BC4A9F /* PersistentContainerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28417F2B66D75D00BC4A9F /* PersistentContainerMock.swift */; };
+		4C2841832B66DB0500BC4A9F /* Project+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841822B66DB0500BC4A9F /* Project+Extension.swift */; };
+		4C2841852B66DC8200BC4A9F /* ProjectsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841842B66DC8200BC4A9F /* ProjectsPresenterTests.swift */; };
+		4C2841872B66DD3300BC4A9F /* ProjectsViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841862B66DD3300BC4A9F /* ProjectsViewMock.swift */; };
+		4C2841892B66DDB300BC4A9F /* ProjectsInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841882B66DDB300BC4A9F /* ProjectsInteractorMock.swift */; };
 		4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FA2B5447440086B3D1 /* AppDelegate.swift */; };
 		4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */; };
 		4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718012B5447450086B3D1 /* Assets.xcassets */; };
@@ -89,6 +101,18 @@
 		4C28415D2B658CB300BC4A9F /* ProjectConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfiguration.swift; sourceTree = "<group>"; };
 		4C2841612B65A0EF00BC4A9F /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		4C2841632B65A11600BC4A9F /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		4C28416A2B6643C000BC4A9F /* TodoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEntity.swift; sourceTree = "<group>"; };
+		4C28416C2B6643C000BC4A9F /* ProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEntity.swift; sourceTree = "<group>"; };
+		4C2841712B667AFD00BC4A9F /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		4C2841732B667BB200BC4A9F /* ProjectsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsDataProvider.swift; sourceTree = "<group>"; };
+		4C2841772B66D11900BC4A9F /* ProjectsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsInteractorTests.swift; sourceTree = "<group>"; };
+		4C28417B2B66D20D00BC4A9F /* ProjectsPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenterMock.swift; sourceTree = "<group>"; };
+		4C28417D2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsDataProviderMock.swift; sourceTree = "<group>"; };
+		4C28417F2B66D75D00BC4A9F /* PersistentContainerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerMock.swift; sourceTree = "<group>"; };
+		4C2841822B66DB0500BC4A9F /* Project+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+Extension.swift"; sourceTree = "<group>"; };
+		4C2841842B66DC8200BC4A9F /* ProjectsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenterTests.swift; sourceTree = "<group>"; };
+		4C2841862B66DD3300BC4A9F /* ProjectsViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewMock.swift; sourceTree = "<group>"; };
+		4C2841882B66DDB300BC4A9F /* ProjectsInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsInteractorMock.swift; sourceTree = "<group>"; };
 		4C3717F72B5447440086B3D1 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3717FA2B5447440086B3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3717FF2B5447440086B3D1 /* Plan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plan.xcdatamodel; sourceTree = "<group>"; };
@@ -198,6 +222,7 @@
 				4C2841502B65715300BC4A9F /* ProjectsAssembly.swift */,
 				4C2841522B65787D00BC4A9F /* ProjectsPresenter.swift */,
 				4C2841542B6578A100BC4A9F /* ProjectsInteractor.swift */,
+				4C2841732B667BB200BC4A9F /* ProjectsDataProvider.swift */,
 			);
 			path = ProjectsModule;
 			sourceTree = "<group>";
@@ -209,6 +234,87 @@
 				4C28415D2B658CB300BC4A9F /* ProjectConfiguration.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4C2841652B66438F00BC4A9F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841662B66439A00BC4A9F /* Storage */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4C2841662B66439A00BC4A9F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841712B667AFD00BC4A9F /* PersistentContainer.swift */,
+				4C2841672B6643A200BC4A9F /* CoreData */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4C2841672B6643A200BC4A9F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */,
+				4C2841682B6643AB00BC4A9F /* Entities */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4C2841682B6643AB00BC4A9F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4C28416A2B6643C000BC4A9F /* TodoEntity.swift */,
+				4C28416C2B6643C000BC4A9F /* ProjectEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4C2841752B66D0F200BC4A9F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841762B66D0FA00BC4A9F /* Projects */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4C2841762B66D0FA00BC4A9F /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				4C28417A2B66D12C00BC4A9F /* Tests */,
+				4C2841792B66D12400BC4A9F /* Mocks */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		4C2841792B66D12400BC4A9F /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				4C28417B2B66D20D00BC4A9F /* ProjectsPresenterMock.swift */,
+				4C28417D2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift */,
+				4C28417F2B66D75D00BC4A9F /* PersistentContainerMock.swift */,
+				4C2841862B66DD3300BC4A9F /* ProjectsViewMock.swift */,
+				4C2841882B66DDB300BC4A9F /* ProjectsInteractorMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		4C28417A2B66D12C00BC4A9F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841772B66D11900BC4A9F /* ProjectsInteractorTests.swift */,
+				4C2841842B66DC8200BC4A9F /* ProjectsPresenterTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		4C2841812B66DAEB00BC4A9F /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841822B66DB0500BC4A9F /* Project+Extension.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 		4C3717EE2B5447440086B3D1 = {
@@ -237,12 +343,12 @@
 				4C2841292B6543E500BC4A9F /* main.swift */,
 				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
 				4C6825982B5C2FF2000DDD07 /* Common */,
+				4C2841652B66438F00BC4A9F /* Services */,
 				4C6825AB2B5D36CA000DDD07 /* Design System */,
 				4C3718282B5447740086B3D1 /* Modules */,
 				4C3718012B5447450086B3D1 /* Assets.xcassets */,
 				4C3718032B5447450086B3D1 /* Main.storyboard */,
 				4C3718062B5447450086B3D1 /* Plan.entitlements */,
-				4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -250,6 +356,8 @@
 		4C37180E2B5447450086B3D1 /* PlanTests */ = {
 			isa = PBXGroup;
 			children = (
+				4C2841812B66DAEB00BC4A9F /* Extentions */,
+				4C2841752B66D0F200BC4A9F /* Modules */,
 				4C37180F2B5447450086B3D1 /* PlanTests.swift */,
 			);
 			path = PlanTests;
@@ -465,16 +573,20 @@
 				4C2841592B65855200BC4A9F /* ProjectsTableAdapter.swift in Sources */,
 				4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */,
 				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
+				4C2841742B667BB200BC4A9F /* ProjectsDataProvider.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
 				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
+				4C2841702B6643C000BC4A9F /* ProjectEntity.swift in Sources */,
 				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
+				4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */,
 				4C2841512B65715300BC4A9F /* ProjectsAssembly.swift in Sources */,
 				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
 				4C28415C2B65872600BC4A9F /* ProjectCell.swift in Sources */,
+				4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */,
 				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
 				4C2841572B65829B00BC4A9F /* Project.swift in Sources */,
 			);
@@ -484,7 +596,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2841872B66DD3300BC4A9F /* ProjectsViewMock.swift in Sources */,
+				4C28417C2B66D20D00BC4A9F /* ProjectsPresenterMock.swift in Sources */,
+				4C2841832B66DB0500BC4A9F /* Project+Extension.swift in Sources */,
+				4C2841782B66D11900BC4A9F /* ProjectsInteractorTests.swift in Sources */,
+				4C2841892B66DDB300BC4A9F /* ProjectsInteractorMock.swift in Sources */,
+				4C2841852B66DC8200BC4A9F /* ProjectsPresenterTests.swift in Sources */,
+				4C28417E2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift in Sources */,
 				4C3718102B5447450086B3D1 /* PlanTests.swift in Sources */,
+				4C2841802B66D75D00BC4A9F /* PersistentContainerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

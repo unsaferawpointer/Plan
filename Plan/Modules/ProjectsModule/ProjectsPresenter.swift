@@ -22,7 +22,11 @@ final class ProjectsPresenter {
 extension ProjectsPresenter: ProjectsPresenterProtocol {
 
 	func present(_ projects: [Project]) {
-		// TODO: - Handle action
+		let models = projects.map {
+			makeConfiguration(from: $0)
+		}
+
+		view?.display(models)
 	}
 }
 
@@ -39,13 +43,7 @@ extension ProjectsPresenter: ProjectsViewOutput {
 		}
 
 		do {
-			let projects = try interactor.fetchProjects()
-
-			let models = projects.map {
-				makeConfiguration(from: $0)
-			}
-
-			view?.display(models)
+			try interactor.fetchProjects()
 		} catch {
 			// TODO: - Handle errors
 		}
@@ -62,7 +60,7 @@ private extension ProjectsPresenter {
 	func makeConfiguration(from project: Project) -> ProjectConfiguration {
 		return ProjectConfiguration(
 			uuid: project.uuid,
-			title: project.name,
+			title: project.title,
 			subtitle: "\(project.count) items",
 			countLabel: nil
 		)

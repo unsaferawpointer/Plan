@@ -17,3 +17,6 @@ struct ProjectConfiguration {
 
 	var countLabel: String?
 }
+
+// MARK: - Hashable
+extension ProjectConfiguration: Hashable { }

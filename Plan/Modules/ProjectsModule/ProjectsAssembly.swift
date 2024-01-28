@@ -11,11 +11,17 @@ final class ProjectsAssembly {
 
 	static func assemble() -> NSViewController {
 		let presenter = ProjectsPresenter()
-		let interactor = ProjectsInteractor()
+		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+		let storage = PersistentContainer(context: context!)
+		let interactor = ProjectsInteractor(
+			presenter: presenter,
+			provider: ProjectsDataProvider(context: context!),
+			storage: storage
+		)
+
 		return ProjectsViewController { viewController in
 			viewController.output = presenter
 			presenter.interactor = interactor
-			interactor.presenter = presenter
 			presenter.view = viewController
 		}
 	}

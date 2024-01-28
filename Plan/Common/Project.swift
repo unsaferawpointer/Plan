@@ -11,7 +11,10 @@ struct Project {
 
 	var uuid: UUID
 
-	var name: String
+	var title: String
 
 	var count: Int
 }
+
+// MARK: - Hashable
+extension Project: Hashable { }
