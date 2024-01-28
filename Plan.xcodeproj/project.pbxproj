@@ -20,6 +20,18 @@
 		4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841422B65657300BC4A9F /* SidebarAssembly.swift */; };
 		4C2841452B6568D500BC4A9F /* SidebarOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841442B6568D500BC4A9F /* SidebarOutput.swift */; };
 		4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841462B65699500BC4A9F /* Coordinator.swift */; };
+		4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841492B656FF600BC4A9F /* TodosViewController.swift */; };
+		4C28414C2B65706C00BC4A9F /* TodosAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28414B2B65706C00BC4A9F /* TodosAssembly.swift */; };
+		4C28414F2B65714000BC4A9F /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28414E2B65714000BC4A9F /* ProjectsViewController.swift */; };
+		4C2841512B65715300BC4A9F /* ProjectsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841502B65715300BC4A9F /* ProjectsAssembly.swift */; };
+		4C2841532B65787D00BC4A9F /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841522B65787D00BC4A9F /* ProjectsPresenter.swift */; };
+		4C2841552B6578A100BC4A9F /* ProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841542B6578A100BC4A9F /* ProjectsInteractor.swift */; };
+		4C2841572B65829B00BC4A9F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841562B65829B00BC4A9F /* Project.swift */; };
+		4C2841592B65855200BC4A9F /* ProjectsTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841582B65855200BC4A9F /* ProjectsTableAdapter.swift */; };
+		4C28415C2B65872600BC4A9F /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28415B2B65872600BC4A9F /* ProjectCell.swift */; };
+		4C28415E2B658CB300BC4A9F /* ProjectConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28415D2B658CB300BC4A9F /* ProjectConfiguration.swift */; };
+		4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841612B65A0EF00BC4A9F /* ViewState.swift */; };
+		4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841632B65A11600BC4A9F /* ViewOutput.swift */; };
 		4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FA2B5447440086B3D1 /* AppDelegate.swift */; };
 		4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */; };
 		4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718012B5447450086B3D1 /* Assets.xcassets */; };
@@ -65,6 +77,18 @@
 		4C2841422B65657300BC4A9F /* SidebarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAssembly.swift; sourceTree = "<group>"; };
 		4C2841442B6568D500BC4A9F /* SidebarOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutput.swift; sourceTree = "<group>"; };
 		4C2841462B65699500BC4A9F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4C2841492B656FF600BC4A9F /* TodosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
+		4C28414B2B65706C00BC4A9F /* TodosAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosAssembly.swift; sourceTree = "<group>"; };
+		4C28414E2B65714000BC4A9F /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
+		4C2841502B65715300BC4A9F /* ProjectsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsAssembly.swift; sourceTree = "<group>"; };
+		4C2841522B65787D00BC4A9F /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
+		4C2841542B6578A100BC4A9F /* ProjectsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsInteractor.swift; sourceTree = "<group>"; };
+		4C2841562B65829B00BC4A9F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		4C2841582B65855200BC4A9F /* ProjectsTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableAdapter.swift; sourceTree = "<group>"; };
+		4C28415B2B65872600BC4A9F /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		4C28415D2B658CB300BC4A9F /* ProjectConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfiguration.swift; sourceTree = "<group>"; };
+		4C2841612B65A0EF00BC4A9F /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		4C2841632B65A11600BC4A9F /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
 		4C3717F72B5447440086B3D1 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3717FA2B5447440086B3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3717FF2B5447440086B3D1 /* Plan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plan.xcdatamodel; sourceTree = "<group>"; };
@@ -156,6 +180,37 @@
 			path = Label;
 			sourceTree = "<group>";
 		};
+		4C2841482B656FD800BC4A9F /* TodosModule */ = {
+			isa = PBXGroup;
+			children = (
+				4C2841492B656FF600BC4A9F /* TodosViewController.swift */,
+				4C28414B2B65706C00BC4A9F /* TodosAssembly.swift */,
+			);
+			path = TodosModule;
+			sourceTree = "<group>";
+		};
+		4C28414D2B65711D00BC4A9F /* ProjectsModule */ = {
+			isa = PBXGroup;
+			children = (
+				4C28415A2B65870A00BC4A9F /* Cells */,
+				4C2841582B65855200BC4A9F /* ProjectsTableAdapter.swift */,
+				4C28414E2B65714000BC4A9F /* ProjectsViewController.swift */,
+				4C2841502B65715300BC4A9F /* ProjectsAssembly.swift */,
+				4C2841522B65787D00BC4A9F /* ProjectsPresenter.swift */,
+				4C2841542B6578A100BC4A9F /* ProjectsInteractor.swift */,
+			);
+			path = ProjectsModule;
+			sourceTree = "<group>";
+		};
+		4C28415A2B65870A00BC4A9F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4C28415B2B65872600BC4A9F /* ProjectCell.swift */,
+				4C28415D2B658CB300BC4A9F /* ProjectConfiguration.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4C3717EE2B5447440086B3D1 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				4C28412B2B6544A400BC4A9F /* App */,
+				4C28414D2B65711D00BC4A9F /* ProjectsModule */,
+				4C2841482B656FD800BC4A9F /* TodosModule */,
 				4C2841312B65457E00BC4A9F /* Sidebar */,
 			);
 			path = Modules;
@@ -225,6 +282,9 @@
 				4C6825992B5C3005000DDD07 /* Node.swift */,
 				4C68259B2B5C300F000DDD07 /* Todo.swift */,
 				4C2841362B654B9700BC4A9F /* Route.swift */,
+				4C2841562B65829B00BC4A9F /* Project.swift */,
+				4C2841612B65A0EF00BC4A9F /* ViewState.swift */,
+				4C2841632B65A11600BC4A9F /* ViewOutput.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -389,22 +449,34 @@
 				4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */,
 				4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */,
 				4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */,
+				4C2841532B65787D00BC4A9F /* ProjectsPresenter.swift in Sources */,
 				4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */,
+				4C2841552B6578A100BC4A9F /* ProjectsInteractor.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
 				4C68259A2B5C3005000DDD07 /* Node.swift in Sources */,
 				4C2841332B65459F00BC4A9F /* SidebarViewController.swift in Sources */,
+				4C28414F2B65714000BC4A9F /* ProjectsViewController.swift in Sources */,
 				4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */,
+				4C28414C2B65706C00BC4A9F /* TodosAssembly.swift in Sources */,
 				4C2841372B654B9700BC4A9F /* Route.swift in Sources */,
 				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
 				4C28413D2B654D3A00BC4A9F /* LabelView.swift in Sources */,
+				4C28415E2B658CB300BC4A9F /* ProjectConfiguration.swift in Sources */,
+				4C2841592B65855200BC4A9F /* ProjectsTableAdapter.swift in Sources */,
+				4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */,
 				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
 				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
+				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
+				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
+				4C2841512B65715300BC4A9F /* ProjectsAssembly.swift in Sources */,
 				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
+				4C28415C2B65872600BC4A9F /* ProjectCell.swift in Sources */,
 				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
+				4C2841572B65829B00BC4A9F /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

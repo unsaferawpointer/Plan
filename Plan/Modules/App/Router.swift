@@ -17,7 +17,7 @@ protocol Routable {
 	///    - detail: Detail view-controller
 	func showWindowAndOrderFront(sidebar: NSViewController, detail: NSViewController)
 
-	func presentDetail(_ viewController: NSViewController)
+	func present(content: NSViewController?, detail: NSViewController)
 }
 
 /// AppRouter of the App
@@ -27,8 +27,11 @@ final class AppRouter: NSObject {
 
 	private var mainWindow: NSWindow
 
-	private var splitViewController: NSSplitViewController? {
-		mainWindow.contentViewController as? NSSplitViewController
+	private var splitViewController: NSSplitViewController {
+		guard let controller = mainWindow.contentViewController as? NSSplitViewController else {
+			fatalError()
+		}
+		return controller
 	}
 
 	// MARK: - Initialization
@@ -48,18 +51,25 @@ extension AppRouter: Routable {
 		mainWindow.makeKeyAndOrderFront(nil)
 	}
 
-	func presentDetail(_ viewController: NSViewController) {
-		guard let splitViewController else {
-			return
-		}
+	func present(content: NSViewController?, detail: NSViewController) {
+		let count = splitViewController.splitViewItems.count
 
-		if splitViewController.splitViewItems.count == 2 {
-			let splitItem = splitViewController.splitViewItems[1]
-			splitViewController.removeSplitViewItem(splitItem)
+		switch (count, content) {
+		case (2, .some(let content)):
+			let item = NSSplitViewItem(viewController: content)
+			item.minimumThickness = 180
+			item.maximumThickness = 200
+			splitViewController.insertSplitViewItem(item, at: 1)
+		case (3, .some(let content)):
+			break
+		case (2, .none):
+			break
+		case (3, .none):
+			let item = splitViewController.splitViewItems[1]
+			splitViewController.removeSplitViewItem(item)
+		default:
+			break
 		}
-
-		let new = NSSplitViewItem(viewController: viewController)
-		splitViewController.addSplitViewItem(new)
 	}
 }
 
@@ -83,8 +93,8 @@ private extension AppRouter {
 		let item = NSSplitViewItem(sidebarWithViewController: viewController)
 		item.allowsFullHeightLayout = true
 		item.titlebarSeparatorStyle = .automatic
-		item.minimumThickness = 180
-		item.maximumThickness = 240
+		item.minimumThickness = 140
+		item.maximumThickness = 180
 		return item
 	}
 

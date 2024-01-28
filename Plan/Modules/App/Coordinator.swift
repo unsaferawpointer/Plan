@@ -35,7 +35,7 @@ extension Coordinator: Coordinatable {
 
 	func start() {
 		let sidebar = SidebarAssembly.assemble(self)
-		let detail = NSViewController(nibName: nil, bundle: nil)
+		let detail = TodosAssembly.assemble()
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
 }
@@ -45,5 +45,15 @@ extension Coordinator: SidebarOutput {
 
 	func navigationDidChange(_ item: Route) {
 		// TODO: - Hadle action
+		switch item {
+		case .focus:
+			router.present(content: nil, detail: TodosAssembly.assemble())
+		case .backlog:
+			router.present(content: nil, detail: TodosAssembly.assemble())
+		case .favorites:
+			router.present(content: nil, detail: TodosAssembly.assemble())
+		case .projects:
+			router.present(content: ProjectsAssembly.assemble(), detail: TodosAssembly.assemble())
+		}
 	}
 }
