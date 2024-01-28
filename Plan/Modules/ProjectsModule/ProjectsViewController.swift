@@ -31,7 +31,7 @@ final class ProjectsViewController: NSViewController {
 		view.autohidesScrollers = true
 		view.hasVerticalScroller = false
 		view.automaticallyAdjustsContentInsets = true
-		view.drawsBackground = false
+		view.drawsBackground = true
 		return view
 	}()
 
@@ -45,6 +45,7 @@ final class ProjectsViewController: NSViewController {
 		view.allowsColumnResizing = false
 		view.usesAlternatingRowBackgroundColors = false
 		view.usesAutomaticRowHeights = false
+		view.gridStyleMask = .solidHorizontalGridLineMask
 		return view
 	}()
 

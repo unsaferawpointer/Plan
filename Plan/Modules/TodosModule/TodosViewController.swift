@@ -17,9 +17,8 @@ final class TodosViewController: NSViewController {
 		view.hasHorizontalScroller = false
 		view.autohidesScrollers = true
 		view.hasVerticalScroller = true
-		view.automaticallyAdjustsContentInsets = false
 		view.automaticallyAdjustsContentInsets = true
-		view.drawsBackground = false
+		view.drawsBackground = true
 		return view
 	}()
 
