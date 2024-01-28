@@ -61,6 +61,29 @@ extension ProjectsInteractorTests {
 		}
 		XCTAssertIdentical(sut, object)
 	}
+
+	func testSetTitle() {
+		// Arrange
+		let expectedTitle = UUID().uuidString
+		let expectedId = UUID()
+		var expectedError: Error?
+		provider.errorStub = nil
+
+		// Act
+		do {
+			try sut.setTitle(expectedTitle, with: expectedId)
+		} catch {
+			expectedError = error
+		}
+
+		// Assert
+		XCTAssertNil(expectedError)
+		guard case let .setProject(title, id) = storage.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(title, expectedTitle)
+		XCTAssertEqual(id, expectedId)
+	}
 }
 
 // MARK: - ProjectsDataProviderDelegate

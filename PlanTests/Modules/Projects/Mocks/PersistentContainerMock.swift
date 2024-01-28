@@ -29,7 +29,12 @@ extension PersistentContainerMock: PersistentContainerProtocol {
 		let action: Action = .insertProject(project: project)
 		invocations.append(action)
 	}
-	
+
+	func setProject(title: String, with id: UUID) throws {
+		let action: Action = .setProject(title: title, withId: id)
+		invocations.append(action)
+	}
+
 	func deleteProjects(with ids: [UUID]) throws {
 		let action: Action = .deleteProjects(ids: ids)
 		invocations.append(action)
@@ -48,6 +53,7 @@ extension PersistentContainerMock {
 		case insertTodo(todo: Todo, toProject: UUID?)
 		case deleteTodos(ids: [UUID])
 		case insertProject(project: Project)
+		case setProject(title: String, withId: UUID)
 		case deleteProjects(ids: [UUID])
 		case save
 	}

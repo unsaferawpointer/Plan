@@ -34,7 +34,11 @@ extension ProjectsPresenter: ProjectsPresenterProtocol {
 extension ProjectsPresenter: ProjectsViewOutput {
 
 	func labelDidChange(text newValue: String, for id: UUID) {
-		// TODO: - Handle action
+		do {
+			try interactor?.setTitle(newValue, with: id)
+		} catch {
+			// TODO: - Handle errors
+		}
 	}
 
 	func viewDidChange(state newState: ViewState) {

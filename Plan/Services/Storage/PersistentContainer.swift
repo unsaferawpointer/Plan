@@ -16,6 +16,8 @@ protocol PersistentContainerProtocol {
 
 	func insertProject(_ project: Project) throws
 
+	func setProject(title: String, with id: UUID) throws
+
 	func deleteProjects(with ids: [UUID]) throws
 
 	func save() throws
@@ -55,6 +57,13 @@ extension PersistentContainer: PersistentContainerProtocol {
 
 	func insertProject(_ project: Project) throws {
 		let new = ProjectEntity(context, project: project)
+	}
+
+	func setProject(title: String, with id: UUID) throws {
+		guard let entity = try fetchEntities(ProjectEntity.self, with: [id]).first else {
+			return
+		}
+		entity.title = title
 	}
 
 	func deleteProjects(with ids: [UUID]) throws {

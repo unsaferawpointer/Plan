@@ -20,12 +20,18 @@ extension ProjectsInteractorMock: ProjectsInteractorProtocol {
 		let action: Action = .fetchProjects
 		invocations.append(action)
 	}
+
+	func setTitle(_ title: String, with id: UUID) throws {
+		let action: Action = .setTitle(title: title, withId: id)
+		invocations.append(action)
+	}
 }
 
 // MARK: - Nested data structs
 extension ProjectsInteractorMock {
 
 	enum Action {
+		case setTitle(title: String, withId: UUID)
 		case fetchProjects
 	}
 }

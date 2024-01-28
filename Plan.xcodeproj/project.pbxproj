@@ -48,7 +48,6 @@
 		4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */; };
 		4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718012B5447450086B3D1 /* Assets.xcassets */; };
 		4C3718052B5447450086B3D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718032B5447450086B3D1 /* Main.storyboard */; };
-		4C3718102B5447450086B3D1 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37180F2B5447450086B3D1 /* PlanTests.swift */; };
 		4C37181A2B5447450086B3D1 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3718192B5447450086B3D1 /* PlanUITests.swift */; };
 		4C37181C2B5447450086B3D1 /* PlanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37181B2B5447450086B3D1 /* PlanUITestsLaunchTests.swift */; };
 		4C68259A2B5C3005000DDD07 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825992B5C3005000DDD07 /* Node.swift */; };
@@ -120,7 +119,6 @@
 		4C3718042B5447450086B3D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C3718062B5447450086B3D1 /* Plan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Plan.entitlements; sourceTree = "<group>"; };
 		4C37180B2B5447450086B3D1 /* PlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C37180F2B5447450086B3D1 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
 		4C3718152B5447450086B3D1 /* PlanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3718192B5447450086B3D1 /* PlanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanUITests.swift; sourceTree = "<group>"; };
 		4C37181B2B5447450086B3D1 /* PlanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 			children = (
 				4C2841812B66DAEB00BC4A9F /* Extentions */,
 				4C2841752B66D0F200BC4A9F /* Modules */,
-				4C37180F2B5447450086B3D1 /* PlanTests.swift */,
 			);
 			path = PlanTests;
 			sourceTree = "<group>";
@@ -603,7 +600,6 @@
 				4C2841892B66DDB300BC4A9F /* ProjectsInteractorMock.swift in Sources */,
 				4C2841852B66DC8200BC4A9F /* ProjectsPresenterTests.swift in Sources */,
 				4C28417E2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift in Sources */,
-				4C3718102B5447450086B3D1 /* PlanTests.swift in Sources */,
 				4C2841802B66D75D00BC4A9F /* PersistentContainerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

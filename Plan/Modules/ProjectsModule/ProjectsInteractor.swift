@@ -9,6 +9,7 @@ import Foundation
 
 protocol ProjectsInteractorProtocol { 
 	func fetchProjects() throws
+	func setTitle(_ title: String, with id: UUID) throws
 }
 
 final class ProjectsInteractor {
@@ -37,6 +38,11 @@ extension ProjectsInteractor: ProjectsInteractorProtocol {
 
 	func fetchProjects() throws {
 		try provider.subscribe(self)
+	}
+
+	func setTitle(_ title: String, with id: UUID) throws {
+		try storage.setProject(title: title, with: id)
+		try storage.save()
 	}
 }
 
