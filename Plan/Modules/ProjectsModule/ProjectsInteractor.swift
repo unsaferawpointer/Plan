@@ -10,6 +10,7 @@ import Foundation
 protocol ProjectsInteractorProtocol { 
 	func fetchProjects() throws
 	func setTitle(_ title: String, with id: UUID) throws
+	func createProject(withTitle title: String) throws
 }
 
 final class ProjectsInteractor {
@@ -42,6 +43,12 @@ extension ProjectsInteractor: ProjectsInteractorProtocol {
 
 	func setTitle(_ title: String, with id: UUID) throws {
 		try storage.setProject(title: title, with: id)
+		try storage.save()
+	}
+
+	func createProject(withTitle title: String) throws {
+		let project = Project(uuid: .init(), title: title, count: 0)
+		try storage.insertProject(project)
 		try storage.save()
 	}
 }

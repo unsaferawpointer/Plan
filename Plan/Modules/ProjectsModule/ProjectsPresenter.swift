@@ -56,6 +56,14 @@ extension ProjectsPresenter: ProjectsViewOutput {
 	func selectionDidChange(_ newValue: [UUID]) {
 		// TODO: - Handle action
 	}
+
+	func toolbarNewProjectButtonHasBeenClicked() {
+		do {
+			try interactor?.createProject(withTitle: "New project")
+		} catch {
+			// TODO: - Handle errors
+		}
+	}
 }
 
 // MARK: - Helpers

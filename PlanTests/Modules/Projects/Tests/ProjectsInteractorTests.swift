@@ -83,6 +83,32 @@ extension ProjectsInteractorTests {
 		}
 		XCTAssertEqual(title, expectedTitle)
 		XCTAssertEqual(id, expectedId)
+		guard case .save = storage.invocations[1] else {
+			return XCTFail()
+		}
+	}
+
+	func testCreateProject() {
+		// Arrange
+		let expectedTitle = UUID().uuidString
+		var expectedError: Error?
+
+		// Act
+		do {
+			try sut.createProject(withTitle: expectedTitle)
+		} catch {
+			expectedError = error
+		}
+
+		// Assert
+		XCTAssertNil(expectedError)
+		guard case let .insertProject(project) = storage.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(project.title, expectedTitle)
+		guard case .save = storage.invocations[1] else {
+			return XCTFail()
+		}
 	}
 }
 

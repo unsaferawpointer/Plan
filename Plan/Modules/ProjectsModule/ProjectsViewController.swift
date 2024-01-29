@@ -10,6 +10,7 @@ import Cocoa
 protocol ProjectsViewOutput: ViewOutput {
 	func selectionDidChange(_ newValue: [UUID])
 	func labelDidChange(text newValue: String, for id: UUID)
+	func toolbarNewProjectButtonHasBeenClicked()
 }
 
 protocol ProjectsView: AnyObject {
@@ -68,6 +69,7 @@ final class ProjectsViewController: NSViewController {
 
 		configureUserInterface()
 		configureConstraints()
+		configureSubscriptions()
 
 		output?.viewDidChange(state: .didLoad)
 	}
@@ -83,6 +85,15 @@ extension ProjectsViewController: ProjectsView {
 
 // MARK: - Helpers
 private extension ProjectsViewController {
+
+	func configureSubscriptions() {
+		NotificationCenter.default.addObserver(
+			forName: .toolbarNewProjectButtonHasBeenClicked,
+			object: nil,
+			queue: .main) { [weak self] _ in
+				self?.output?.toolbarNewProjectButtonHasBeenClicked()
+			}
+	}
 
 	func configureAdapter() {
 

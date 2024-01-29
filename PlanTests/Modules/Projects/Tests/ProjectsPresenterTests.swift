@@ -82,5 +82,16 @@ extension ProjectsPresenterTests {
 			return XCTFail()
 		}
 	}
+
+	func testToolbarNewProjectButtonHasBeenClicked() {
+		// Act
+		sut.toolbarNewProjectButtonHasBeenClicked()
+
+		// Assert
+		guard case let .createProject(title) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(title, "New project")
+	}
 }
 

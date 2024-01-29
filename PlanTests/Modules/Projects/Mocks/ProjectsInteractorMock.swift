@@ -16,6 +16,11 @@ final class ProjectsInteractorMock {
 // MARK: - ProjectsInteractorProtocol
 extension ProjectsInteractorMock: ProjectsInteractorProtocol {
 
+	func createProject(withTitle title: String) throws {
+		let action: Action = .createProject(withTitle: title)
+		invocations.append(action)
+	}
+
 	func fetchProjects() throws {
 		let action: Action = .fetchProjects
 		invocations.append(action)
@@ -33,5 +38,6 @@ extension ProjectsInteractorMock {
 	enum Action {
 		case setTitle(title: String, withId: UUID)
 		case fetchProjects
+		case createProject(withTitle: String)
 	}
 }
