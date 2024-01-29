@@ -11,6 +11,7 @@ protocol ProjectsViewOutput: ViewOutput {
 	func selectionDidChange(_ newValue: [UUID])
 	func labelDidChange(text newValue: String, for id: UUID)
 	func toolbarNewProjectButtonHasBeenClicked()
+	func deleteProjects(ids: [UUID])
 }
 
 protocol ProjectsView: AnyObject {
@@ -105,6 +106,10 @@ private extension ProjectsViewController {
 
 		adapter?.selection = { [weak self] ids in
 			self?.output?.selectionDidChange(ids)
+		}
+
+		adapter?.deletion = { [weak self] id in
+			self?.output?.deleteProjects(ids: [id])
 		}
 	}
 

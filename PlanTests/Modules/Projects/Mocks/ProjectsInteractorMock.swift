@@ -21,6 +21,11 @@ extension ProjectsInteractorMock: ProjectsInteractorProtocol {
 		invocations.append(action)
 	}
 
+	func deleteProjects(with ids: [UUID]) throws {
+		let action: Action = .deleteProjects(ids: ids)
+		invocations.append(action)
+	}
+
 	func fetchProjects() throws {
 		let action: Action = .fetchProjects
 		invocations.append(action)
@@ -39,5 +44,6 @@ extension ProjectsInteractorMock {
 		case setTitle(title: String, withId: UUID)
 		case fetchProjects
 		case createProject(withTitle: String)
+		case deleteProjects(ids: [UUID])
 	}
 }

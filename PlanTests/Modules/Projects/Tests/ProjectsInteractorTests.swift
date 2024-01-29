@@ -86,6 +86,7 @@ extension ProjectsInteractorTests {
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()
 		}
+		XCTAssertEqual(storage.invocations.count, 2)
 	}
 
 	func testCreateProject() {
@@ -109,6 +110,31 @@ extension ProjectsInteractorTests {
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()
 		}
+		XCTAssertEqual(storage.invocations.count, 2)
+	}
+
+	func testDeleteProjects() {
+		// Arrange
+		let expectedIds: [UUID] = [.init(), .init()]
+		var expectedError: Error?
+
+		// Act
+		do {
+			try sut.deleteProjects(with: expectedIds)
+		} catch {
+			expectedError = error
+		}
+
+		// Assert
+		XCTAssertNil(expectedError)
+		guard case let .deleteProjects(ids) = storage.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, expectedIds)
+		guard case .save = storage.invocations[1] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(storage.invocations.count, 2)
 	}
 }
 

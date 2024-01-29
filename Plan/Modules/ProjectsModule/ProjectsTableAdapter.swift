@@ -18,6 +18,8 @@ final class ProjectsTableAdapter: NSObject {
 
 	var selection: (([UUID]) -> Void)?
 
+	var deletion: ((UUID) -> Void)?
+
 	init(table: NSTableView? = nil) {
 		self.table = table
 
@@ -64,6 +66,25 @@ extension ProjectsTableAdapter: NSTableViewDelegate {
 		}
 
 		return view
+	}
+
+	func tableView(
+		_ tableView: NSTableView,
+		rowActionsForRow row: Int,
+		edge: NSTableView.RowActionEdge
+	) -> [NSTableViewRowAction] {
+		guard case .trailing = edge else {
+			return []
+		}
+		return [
+			.init(style: .destructive, title: "Delete", handler: { [weak self] action, row in
+				guard let self else {
+					return
+				}
+				let item = items[row]
+				deletion?(item.uuid)
+			})
+			   ]
 	}
 }
 

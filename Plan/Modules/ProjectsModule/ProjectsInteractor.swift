@@ -11,6 +11,7 @@ protocol ProjectsInteractorProtocol {
 	func fetchProjects() throws
 	func setTitle(_ title: String, with id: UUID) throws
 	func createProject(withTitle title: String) throws
+	func deleteProjects(with ids: [UUID]) throws
 }
 
 final class ProjectsInteractor {
@@ -49,6 +50,11 @@ extension ProjectsInteractor: ProjectsInteractorProtocol {
 	func createProject(withTitle title: String) throws {
 		let project = Project(uuid: .init(), title: title, count: 0)
 		try storage.insertProject(project)
+		try storage.save()
+	}
+
+	func deleteProjects(with ids: [UUID]) throws {
+		try storage.deleteProjects(with: ids)
 		try storage.save()
 	}
 }

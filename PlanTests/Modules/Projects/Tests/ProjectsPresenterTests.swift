@@ -93,5 +93,17 @@ extension ProjectsPresenterTests {
 		}
 		XCTAssertEqual(title, "New project")
 	}
+
+	func testDeleteProjects() {
+		// Act
+		let expectedIds: [UUID] = [.init(), .init()]
+		sut.deleteProjects(ids: expectedIds)
+
+		// Assert
+		guard case let .deleteProjects(ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, expectedIds)
+	}
 }
 

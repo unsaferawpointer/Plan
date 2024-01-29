@@ -64,6 +64,14 @@ extension ProjectsPresenter: ProjectsViewOutput {
 			// TODO: - Handle errors
 		}
 	}
+
+	func deleteProjects(ids: [UUID]) {
+		do {
+			try interactor?.deleteProjects(with: ids)
+		} catch {
+			// TODO: - Handle errors
+		}
+	}
 }
 
 // MARK: - Helpers
