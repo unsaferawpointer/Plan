@@ -51,6 +51,14 @@ extension TodosPresenter: TodosViewOutput {
 			// TODO: - Handle action
 		}
 	}
+
+	func textfieldDidChange(_ newValue: String, for id: UUID) {
+		do {
+			try interactor?.setText(newValue, forTodo: id)
+		} catch {
+			// TODO: - Handle action
+		}
+	}
 }
 
 // MARK: - Helpers

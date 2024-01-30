@@ -52,22 +52,6 @@ extension ProjectsPresenterTests {
 		}
 		XCTAssertEqual(expectedItems, items)
 	}
-
-	func testLabelDidChange() {
-		// Arrange
-		let expectedTitle = UUID().uuidString
-		let expectedId = UUID()
-
-		// Act
-		sut.labelDidChange(text: expectedTitle, for: expectedId)
-
-		// Assert
-		guard case let .setTitle(title, id) = interactor.invocations[0] else {
-			return XCTFail()
-		}
-		XCTAssertEqual(title, expectedTitle)
-		XCTAssertEqual(id, expectedId)
-	}
 }
 
 // MARK: - ProjectsViewOutput
@@ -92,6 +76,22 @@ extension ProjectsPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(title, "New project")
+	}
+
+	func testLabelDidChange() {
+		// Arrange
+		let expectedTitle = UUID().uuidString
+		let expectedId = UUID()
+
+		// Act
+		sut.labelDidChange(text: expectedTitle, for: expectedId)
+
+		// Assert
+		guard case let .setTitle(title, id) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(title, expectedTitle)
+		XCTAssertEqual(id, expectedId)
 	}
 
 	func testDeleteProjects() {

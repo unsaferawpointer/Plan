@@ -67,7 +67,7 @@ extension TodosPresenterTests {
 		}
 	}
 
-	func test() {
+	func testToolbarNewTodoButtonHasBeenClicked() {
 		// Act
 		sut.toolbarNewTodoButtonHasBeenClicked()
 
@@ -76,5 +76,21 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(text, "New todo")
+	}
+
+	func testTextfieldDidChange() {
+		// Arrange
+		let expectedText = UUID().uuidString
+		let expectedId = UUID()
+
+		// Act
+		sut.textfieldDidChange(expectedText, for: expectedId)
+
+		// Assert
+		guard case let .setText(text, id) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(text, expectedText)
+		XCTAssertEqual(id, expectedId)
 	}
 }

@@ -17,6 +17,8 @@ final class TodosTableAdapter: NSObject {
 
 	var selection: (([UUID]) -> Void)?
 
+	var textfieldDidChange: ((String, UUID) -> Void)?
+
 	// MARK: - Initialization
 
 	init(table: NSTableView? = nil) {
@@ -60,6 +62,10 @@ extension TodosTableAdapter: NSTableViewDelegate {
 		}
 
 		view?.configure(model)
+
+		view?.textAction = { [weak self] newValue in
+			self?.textfieldDidChange?(newValue, model.uuid)
+		}
 
 		return view
 	}

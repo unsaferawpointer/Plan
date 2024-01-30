@@ -10,6 +10,7 @@ import Foundation
 protocol TodosInteractorProtocol: AnyObject {
 	func fetchTodos() throws
 	func createTodo(withText text: String) throws
+	func setText(_ text: String, forTodo id: UUID) throws
 }
 
 final class TodosInteractor {
@@ -49,6 +50,11 @@ extension TodosInteractor: TodosInteractorProtocol {
 			isDone: false
 		)
 		try storage.insertTodo(todo, to: nil)
+		try storage.save()
+	}
+
+	func setText(_ text: String, forTodo id: UUID) throws {
+		try storage.setTodo(text: text, with: id)
 		try storage.save()
 	}
 }

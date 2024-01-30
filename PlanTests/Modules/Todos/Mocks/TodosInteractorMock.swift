@@ -16,6 +16,11 @@ final class TodosInteractorMock {
 // MARK: - TodosInteractorProtocol
 extension TodosInteractorMock: TodosInteractorProtocol {
 
+	func setText(_ text: String, forTodo id: UUID) throws {
+		let action: Action = .setText(text: text, forTodo: id)
+		invocations.append(action)
+	}
+
 	func fetchTodos() throws {
 		let action: Action = .fetchTodos
 		invocations.append(action)
@@ -33,6 +38,7 @@ extension TodosInteractorMock {
 	enum Action {
 		case fetchTodos
 		case createTodo(withText: String)
+		case setText(text: String, forTodo: UUID)
 	}
 }
 

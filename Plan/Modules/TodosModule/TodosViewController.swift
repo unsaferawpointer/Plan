@@ -9,6 +9,7 @@ import Cocoa
 
 protocol TodosViewOutput: ViewOutput { 
 	func toolbarNewTodoButtonHasBeenClicked()
+	func textfieldDidChange(_ newValue: String, for id: UUID)
 }
 
 protocol TodosView {
@@ -93,6 +94,9 @@ private extension TodosViewController {
 
 	func configureAdapter() {
 		self.adapter = TodosTableAdapter(table: table)
+		adapter?.textfieldDidChange = { [weak self] newValue, id in
+			self?.output?.textfieldDidChange(newValue, for: id)
+		}
 	}
 
 	func configureUserInterface() {

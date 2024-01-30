@@ -85,6 +85,33 @@ extension TodosInteractorTests {
 		}
 		XCTAssertEqual(storage.invocations.count, 2)
 	}
+
+	func testSetTitle() {
+		// Arrange
+		let expectedText = UUID().uuidString
+		let expectedId = UUID()
+		var expectedError: Error?
+		provider.errorStub = nil
+
+		// Act
+		do {
+			try sut.setText(expectedText, forTodo: expectedId)
+		} catch {
+			expectedError = error
+		}
+
+		// Assert
+		XCTAssertNil(expectedError)
+		guard case let .setTodo(text, id) = storage.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(text, expectedText)
+		XCTAssertEqual(id, expectedId)
+		guard case .save = storage.invocations[1] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(storage.invocations.count, 2)
+	}
 }
 
 // MARK: - TodosDataProviderDelegate

@@ -7,11 +7,6 @@
 
 import Cocoa
 
-protocol TodoCellDelegate: AnyObject {
-	func checkboxDidChangeValue(_ newValue: Bool)
-	func textfieldDidChangeValue(_ newValue: String)
-}
-
 final class TodoCell: NSView {
 
 	private var configuration: Configuration? {
@@ -20,7 +15,7 @@ final class TodoCell: NSView {
 		}
 	}
 
-	weak var delegate: TodoCellDelegate?
+	var textAction: ((String) -> Void)?
 
 	// MARK: - UI-Properties
 
@@ -150,12 +145,11 @@ extension TodoCell {
 	@objc
 	func textfieldDidChangeText(_ sender: NSTextField) {
 		let newValue = sender.stringValue
-		delegate?.textfieldDidChangeValue(newValue)
+		textAction?(newValue)
 	}
 
 	@objc
 	func checkboxDidChangeState(_ sender: NSButton) {
 		let newValue = sender.state == .on
-		delegate?.checkboxDidChangeValue(newValue)
 	}
 }
