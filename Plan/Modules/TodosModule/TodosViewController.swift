@@ -7,7 +7,17 @@
 
 import Cocoa
 
+protocol TodosViewOutput: ViewOutput { }
+
+protocol TodosView {
+	func display(_ items: [TodoModel])
+}
+
 final class TodosViewController: NSViewController {
+
+	var output: TodosViewOutput?
+
+	var adapter: TodosTableAdapter?
 
 	// MARK: - UI-Properties
 
@@ -24,12 +34,12 @@ final class TodosViewController: NSViewController {
 
 	lazy var table: NSTableView = {
 		let view = NSTableView()
-		view.style = .fullWidth
-		view.rowSizeStyle = .default
+		view.style = .inset
+		view.rowSizeStyle = .large
 		view.floatsGroupRows = false
-		view.allowsMultipleSelection = false
+		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
-		view.usesAlternatingRowBackgroundColors = true
+		view.usesAlternatingRowBackgroundColors = false
 		view.usesAutomaticRowHeights = false
 		return view
 	}()
@@ -52,11 +62,26 @@ final class TodosViewController: NSViewController {
 
 		configureUserInterface()
 		configureConstraints()
+		configureAdapter()
+
+		output?.viewDidChange(state: .didLoad)
+	}
+}
+
+// MARK: - TodosView
+extension TodosViewController: TodosView {
+
+	func display(_ items: [TodoModel]) {
+		adapter?.apply(items)
 	}
 }
 
 // MARK: - Helpers
 private extension TodosViewController {
+
+	func configureAdapter() {
+		self.adapter = TodosTableAdapter(table: table)
+	}
 
 	func configureUserInterface() {
 

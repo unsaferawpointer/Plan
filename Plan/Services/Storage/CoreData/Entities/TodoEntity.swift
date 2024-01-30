@@ -39,3 +39,27 @@ extension TodoEntity {
 
 // MARK: - Identifiable
 extension TodoEntity : Identifiable { }
+
+// MARK: - Support Todo
+extension TodoEntity {
+
+	convenience init(_ context: NSManagedObjectContext, todo: Todo) {
+		self.init(context: context)
+
+		self.uuid = todo.uuid
+		self.creationDate = todo.creationDate
+		self.isDone = todo.isDone
+		self.text = todo.text
+		self.options = todo.options
+	}
+
+	var todo: Todo {
+		return .init(
+			uuid: uuid,
+			creationDate: creationDate,
+			text: text,
+			options: options,
+			isDone: isDone
+		)
+	}
+}

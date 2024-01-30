@@ -1,0 +1,69 @@
+//
+//  TodosPresenterTests.swift
+//  PlanTests
+//
+//  Created by Anton Cherkasov on 30.01.2024.
+//
+
+import XCTest
+@testable import Plan
+
+final class TodosPresenterTests: XCTestCase {
+
+	private var sut: TodosPresenter!
+
+	// MARK: - DI
+
+	private var view: TodosViewMock!
+
+	private var interactor: TodosInteractorMock!
+
+	override func setUpWithError() throws {
+		view = TodosViewMock()
+		interactor = TodosInteractorMock()
+		sut = TodosPresenter()
+		sut.view = view
+		sut.interactor = interactor
+	}
+
+	override func tearDownWithError() throws {
+		sut = nil
+		view = nil
+		interactor = nil
+	}
+}
+
+// MARK: - test TodosPresenterProtocol
+extension TodosPresenterTests {
+
+	func testPresent() {
+		// Arrange
+		let todos: [Todo] = [.random, .random, .random]
+		let expectedItems = todos.map { todo in
+			TodoModel(uuid: todo.uuid, isDone: todo.isDone, isFavorite: false, text: todo.text)
+		}
+
+		// Act
+		sut.present(todos)
+
+		// Assert
+		guard case let .display(items) = view.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(expectedItems, items)
+	}
+}
+
+// MARK: - TodosViewOutput
+extension TodosPresenterTests {
+
+	func testProviderDidChangeContent() {
+		// Act
+		sut.viewDidChange(state: .didLoad)
+
+		// Assert
+		guard case .fetchTodos = interactor.invocations[0] else {
+			return XCTFail()
+		}
+	}
+}

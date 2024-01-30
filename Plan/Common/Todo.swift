@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Todo {
+struct Todo {
 
 	var uuid: UUID
 	var creationDate: Date
@@ -32,6 +32,9 @@ final class Todo {
 		self.isDone = isDone
 	}
 }
+
+// MARK: - Hashable
+extension Todo: Hashable { }
 
 // MARK: - Identifiable
 extension Todo: Identifiable {

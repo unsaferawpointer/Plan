@@ -101,16 +101,3 @@ private extension PersistentContainer {
 		return try context.fetch(request)
 	}
 }
-
-extension TodoEntity {
-
-	convenience init(_ context: NSManagedObjectContext, todo: Todo) {
-		self.init(context: context)
-
-		self.uuid = todo.uuid
-		self.creationDate = todo.creationDate
-		self.isDone = todo.isDone
-		self.text = todo.text
-		self.options = todo.options
-	}
-}
