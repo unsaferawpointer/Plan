@@ -7,7 +7,9 @@
 
 import Cocoa
 
-protocol TodosViewOutput: ViewOutput { }
+protocol TodosViewOutput: ViewOutput { 
+	func toolbarNewTodoButtonHasBeenClicked()
+}
 
 protocol TodosView {
 	func display(_ items: [TodoModel])
@@ -63,6 +65,7 @@ final class TodosViewController: NSViewController {
 		configureUserInterface()
 		configureConstraints()
 		configureAdapter()
+		configureSubscriptions()
 
 		output?.viewDidChange(state: .didLoad)
 	}
@@ -78,6 +81,15 @@ extension TodosViewController: TodosView {
 
 // MARK: - Helpers
 private extension TodosViewController {
+
+	func configureSubscriptions() {
+		NotificationCenter.default.addObserver(
+			forName: .toolbarNewTodoButtonHasBeenClicked,
+			object: nil,
+			queue: .main) { [weak self] _ in
+				self?.output?.toolbarNewTodoButtonHasBeenClicked()
+			}
+	}
 
 	func configureAdapter() {
 		self.adapter = TodosTableAdapter(table: table)

@@ -61,6 +61,30 @@ extension TodosInteractorTests {
 		}
 		XCTAssertIdentical(sut, object)
 	}
+
+	func testCreateTodo() {
+		let expectedText = UUID().uuidString
+		var expectedError: Error?
+
+		// Act
+		do {
+			try sut.createTodo(withText: expectedText)
+		} catch {
+			expectedError = error
+		}
+
+		// Assert
+		XCTAssertNil(expectedError)
+		guard case let .insertTodo(todo, project) = storage.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(todo.text, expectedText)
+		XCTAssertNil(project)
+		guard case .save = storage.invocations[1] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(storage.invocations.count, 2)
+	}
 }
 
 // MARK: - TodosDataProviderDelegate

@@ -25,7 +25,7 @@ final class TodosDataProvider: NSObject {
 	lazy var controller: NSFetchedResultsController<TodoEntity> = {
 
 		let request = TodoEntity.fetchRequest()
-		request.sortDescriptors = [NSSortDescriptor(keyPath: \ProjectEntity.title, ascending: true)]
+		request.sortDescriptors = [NSSortDescriptor(keyPath: \TodoEntity.creationDate, ascending: true)]
 
 		let controller = NSFetchedResultsController(
 			fetchRequest: request,

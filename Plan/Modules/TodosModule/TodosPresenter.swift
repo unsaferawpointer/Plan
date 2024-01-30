@@ -13,7 +13,7 @@ protocol TodosPresenterProtocol: AnyObject {
 
 final class TodosPresenter {
 
-	weak var interactor: TodosInteractorProtocol?
+	var interactor: TodosInteractorProtocol?
 
 	var view: TodosView?
 
@@ -39,6 +39,14 @@ extension TodosPresenter: TodosViewOutput {
 		}
 		do {
 			try interactor?.fetchTodos()
+		} catch {
+			// TODO: - Handle action
+		}
+	}
+
+	func toolbarNewTodoButtonHasBeenClicked() {
+		do {
+			try interactor?.createTodo(withText: "New todo")
 		} catch {
 			// TODO: - Handle action
 		}

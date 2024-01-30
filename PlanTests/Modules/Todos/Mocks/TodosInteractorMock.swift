@@ -20,6 +20,11 @@ extension TodosInteractorMock: TodosInteractorProtocol {
 		let action: Action = .fetchTodos
 		invocations.append(action)
 	}
+
+	func createTodo(withText text: String) throws {
+		let action: Action = .createTodo(withText: text)
+		invocations.append(action)
+	}
 }
 
 // MARK: - Nested data structs
@@ -27,6 +32,7 @@ extension TodosInteractorMock {
 
 	enum Action {
 		case fetchTodos
+		case createTodo(withText: String)
 	}
 }
 

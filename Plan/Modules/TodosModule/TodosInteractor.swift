@@ -9,6 +9,7 @@ import Foundation
 
 protocol TodosInteractorProtocol: AnyObject {
 	func fetchTodos() throws
+	func createTodo(withText text: String) throws
 }
 
 final class TodosInteractor {
@@ -22,7 +23,7 @@ final class TodosInteractor {
 	// MARK: - Initialization
 
 	init(
-		presenter: TodosPresenterProtocol? = nil,
+		presenter: TodosPresenterProtocol,
 		provider: TodosDataProviderProtocol,
 		storage: PersistentContainerProtocol
 	) {
@@ -37,6 +38,18 @@ extension TodosInteractor: TodosInteractorProtocol {
 
 	func fetchTodos() throws {
 		try provider.subscribe(self)
+	}
+
+	func createTodo(withText text: String) throws {
+		let todo = Todo(
+			uuid: .init(),
+			creationDate: Date(),
+			text: text,
+			options: 0,
+			isDone: false
+		)
+		try storage.insertTodo(todo, to: nil)
+		try storage.save()
 	}
 }
 

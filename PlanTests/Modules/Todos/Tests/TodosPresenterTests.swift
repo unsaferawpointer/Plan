@@ -66,4 +66,15 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 	}
+
+	func test() {
+		// Act
+		sut.toolbarNewTodoButtonHasBeenClicked()
+
+		// Assert
+		guard case let .createTodo(text) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(text, "New todo")
+	}
 }
