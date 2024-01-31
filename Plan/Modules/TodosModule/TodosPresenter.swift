@@ -15,7 +15,7 @@ final class TodosPresenter {
 
 	var interactor: TodosInteractorProtocol?
 
-	var view: TodosView?
+	weak var view: TodosView?
 
 }
 

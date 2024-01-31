@@ -12,7 +12,7 @@ protocol TodosViewOutput: ViewOutput {
 	func textfieldDidChange(_ newValue: String, for id: UUID)
 }
 
-protocol TodosView {
+protocol TodosView: AnyObject {
 	func display(_ items: [TodoModel])
 }
 
