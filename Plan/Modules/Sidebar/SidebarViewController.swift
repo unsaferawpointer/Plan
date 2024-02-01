@@ -66,7 +66,7 @@ class SidebarViewController: NSViewController {
 	// MARK: - View life-cycle
 
 	override func loadView() {
-		super.loadView()
+		self.view = NSView()
 	}
 
 	override func viewDidLoad() {

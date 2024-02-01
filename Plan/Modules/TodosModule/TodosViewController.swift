@@ -61,7 +61,7 @@ final class TodosViewController: NSViewController {
 	// MARK: - View life-cycle
 
 	override func loadView() {
-		super.loadView()
+		self.view = NSView()
 	}
 
 	override func viewDidLoad() {
