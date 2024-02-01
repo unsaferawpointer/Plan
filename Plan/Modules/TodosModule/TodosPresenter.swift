@@ -59,6 +59,14 @@ extension TodosPresenter: TodosViewOutput {
 			// TODO: - Handle action
 		}
 	}
+
+	func delete(_ id: UUID) {
+		do {
+			try interactor?.deleteTodo(withId: id)
+		} catch {
+			// TODO: - Handle action
+		}
+	}
 }
 
 // MARK: - Helpers

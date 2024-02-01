@@ -10,6 +10,7 @@ import Cocoa
 protocol TodosViewOutput: ViewOutput { 
 	func toolbarNewTodoButtonHasBeenClicked()
 	func textfieldDidChange(_ newValue: String, for id: UUID)
+	func delete(_ id: UUID)
 }
 
 protocol TodosView: AnyObject {
@@ -100,6 +101,9 @@ private extension TodosViewController {
 		self.adapter = TodosTableAdapter(table: table)
 		adapter?.textfieldDidChange = { [weak self] newValue, id in
 			self?.output?.textfieldDidChange(newValue, for: id)
+		}
+		adapter?.deletion = { [weak self] id in
+			self?.output?.delete(id)
 		}
 	}
 

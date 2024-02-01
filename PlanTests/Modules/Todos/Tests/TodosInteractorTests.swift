@@ -112,6 +112,31 @@ extension TodosInteractorTests {
 		}
 		XCTAssertEqual(storage.invocations.count, 2)
 	}
+
+	func testDeleteTodo() {
+		// Arrange
+		let expectedId = UUID()
+		var expectedError: Error?
+		provider.errorStub = nil
+
+		// Act
+		do {
+			try sut.deleteTodo(withId: expectedId)
+		} catch {
+			expectedError = error
+		}
+
+		// Assert
+		XCTAssertNil(expectedError)
+		guard case let .deleteTodos(ids) = storage.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, [expectedId])
+		guard case .save = storage.invocations[1] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(storage.invocations.count, 2)
+	}
 }
 
 // MARK: - TodosDataProviderDelegate

@@ -93,4 +93,18 @@ extension TodosPresenterTests {
 		XCTAssertEqual(text, expectedText)
 		XCTAssertEqual(id, expectedId)
 	}
+
+	func testDelete() {
+		// Arrange
+		let expectedId = UUID()
+
+		// Act
+		sut.delete(expectedId)
+
+		// Assert
+		guard case let .deleteTodo(id) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(id, expectedId)
+	}
 }
