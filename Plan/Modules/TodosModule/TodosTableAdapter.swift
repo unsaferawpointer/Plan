@@ -21,6 +21,8 @@ final class TodosTableAdapter: NSObject {
 
 	var textfieldDidChange: ((String, UUID) -> Void)?
 
+	var checkboxDidChange: ((Bool, [UUID]) -> Void)?
+
 	// MARK: - Initialization
 
 	init(table: NSTableView? = nil) {
@@ -67,6 +69,9 @@ extension TodosTableAdapter: NSTableViewDelegate {
 
 		view?.textAction = { [weak self] newValue in
 			self?.textfieldDidChange?(newValue, model.uuid)
+		}
+		view?.checkboxAction = { [weak self] newValue in
+			self?.checkboxDidChange?(newValue, [model.uuid])
 		}
 
 		return view

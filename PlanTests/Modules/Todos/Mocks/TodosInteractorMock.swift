@@ -26,6 +26,11 @@ extension TodosInteractorMock: TodosInteractorProtocol {
 		invocations.append(action)
 	}
 
+	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws {
+		let action: Action = .setStatus(newValue: newValue, forTodos: ids)
+		invocations.append(action)
+	}
+
 	func fetchTodos() throws {
 		let action: Action = .fetchTodos
 		invocations.append(action)
@@ -44,6 +49,7 @@ extension TodosInteractorMock {
 		case fetchTodos
 		case createTodo(withText: String)
 		case setText(text: String, forTodo: UUID)
+		case setStatus(newValue: Bool, forTodos: [UUID])
 		case deleteTodo(withId: UUID)
 	}
 }

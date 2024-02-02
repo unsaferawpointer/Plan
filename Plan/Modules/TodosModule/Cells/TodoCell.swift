@@ -17,6 +17,8 @@ final class TodoCell: NSView {
 
 	var textAction: ((String) -> Void)?
 
+	var checkboxAction: ((Bool) -> Void)?
+
 	// MARK: - UI-Properties
 
 	lazy var stack: NSStackView = {
@@ -151,5 +153,6 @@ extension TodoCell {
 	@objc
 	func checkboxDidChangeState(_ sender: NSButton) {
 		let newValue = sender.state == .on
+		checkboxAction?(newValue)
 	}
 }

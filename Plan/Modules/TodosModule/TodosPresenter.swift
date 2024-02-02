@@ -68,6 +68,14 @@ extension TodosPresenter: TodosViewOutput {
 		}
 	}
 
+	func checkboxDidChange(_ newValue: Bool, for ids: [UUID]) {
+		do {
+			try interactor?.setStatus(newValue, forTodos: ids)
+		} catch {
+			// TODO: - Handle action
+		}
+	}
+
 	func delete(_ id: UUID) {
 		do {
 			try interactor?.deleteTodo(withId: id)

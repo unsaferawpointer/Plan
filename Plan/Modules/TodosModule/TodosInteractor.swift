@@ -11,6 +11,7 @@ protocol TodosInteractorProtocol: AnyObject {
 	func fetchTodos() throws
 	func createTodo(withText text: String) throws
 	func setText(_ text: String, forTodo id: UUID) throws
+	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws
 	func deleteTodo(withId id: UUID) throws
 }
 
@@ -57,6 +58,11 @@ extension TodosInteractor: TodosInteractorProtocol {
 
 	func setText(_ text: String, forTodo id: UUID) throws {
 		try storage.setTodo(text: text, with: id)
+		try storage.save()
+	}
+
+	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws {
+		try storage.setStatus(newValue, forTodos: ids)
 		try storage.save()
 	}
 
