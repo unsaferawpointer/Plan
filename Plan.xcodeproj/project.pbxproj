@@ -18,7 +18,6 @@
 		4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28413E2B654D7500BC4A9F /* LabelConfig.swift */; };
 		4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */; };
 		4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841422B65657300BC4A9F /* SidebarAssembly.swift */; };
-		4C2841452B6568D500BC4A9F /* SidebarOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841442B6568D500BC4A9F /* SidebarOutput.swift */; };
 		4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841462B65699500BC4A9F /* Coordinator.swift */; };
 		4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841492B656FF600BC4A9F /* TodosViewController.swift */; };
 		4C28414C2B65706C00BC4A9F /* TodosAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28414B2B65706C00BC4A9F /* TodosAssembly.swift */; };
@@ -68,6 +67,13 @@
 		4C7708A82B69680300847955 /* TodosDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708A72B69680300847955 /* TodosDataProviderMock.swift */; };
 		4C7708AA2B6968B600847955 /* TodosDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708A92B6968B600847955 /* TodosDataProvider.swift */; };
 		4C7708AC2B69723300847955 /* Todo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708AB2B69723300847955 /* Todo+Extension.swift */; };
+		4C9103672B6D3A0400E7F03D /* StateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103662B6D3A0400E7F03D /* StateProvider.swift */; };
+		4C91036C2B6D508700E7F03D /* TodosStateProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91036B2B6D508700E7F03D /* TodosStateProviderProtocol.swift */; };
+		4C91036F2B6D549500E7F03D /* ProjectsStateProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91036E2B6D549500E7F03D /* ProjectsStateProviderProtocol.swift */; };
+		4C9103722B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103712B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift */; };
+		4C9103742B6D764D00E7F03D /* TodosConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103732B6D764D00E7F03D /* TodosConfiguration.swift */; };
+		4C9103762B6D7D7800E7F03D /* ProjectsStateProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103752B6D7D7800E7F03D /* ProjectsStateProviderMock.swift */; };
+		4C9103782B6D7F1700E7F03D /* TodosStateProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +105,6 @@
 		4C28413E2B654D7500BC4A9F /* LabelConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelConfig.swift; sourceTree = "<group>"; };
 		4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPresenter.swift; sourceTree = "<group>"; };
 		4C2841422B65657300BC4A9F /* SidebarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAssembly.swift; sourceTree = "<group>"; };
-		4C2841442B6568D500BC4A9F /* SidebarOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutput.swift; sourceTree = "<group>"; };
 		4C2841462B65699500BC4A9F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4C2841492B656FF600BC4A9F /* TodosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 		4C28414B2B65706C00BC4A9F /* TodosAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosAssembly.swift; sourceTree = "<group>"; };
@@ -153,6 +158,13 @@
 		4C7708A72B69680300847955 /* TodosDataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosDataProviderMock.swift; sourceTree = "<group>"; };
 		4C7708A92B6968B600847955 /* TodosDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosDataProvider.swift; sourceTree = "<group>"; };
 		4C7708AB2B69723300847955 /* Todo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Extension.swift"; sourceTree = "<group>"; };
+		4C9103662B6D3A0400E7F03D /* StateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateProvider.swift; sourceTree = "<group>"; };
+		4C91036B2B6D508700E7F03D /* TodosStateProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosStateProviderProtocol.swift; sourceTree = "<group>"; };
+		4C91036E2B6D549500E7F03D /* ProjectsStateProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsStateProviderProtocol.swift; sourceTree = "<group>"; };
+		4C9103712B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarStateProviderProtocol.swift; sourceTree = "<group>"; };
+		4C9103732B6D764D00E7F03D /* TodosConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosConfiguration.swift; sourceTree = "<group>"; };
+		4C9103752B6D7D7800E7F03D /* ProjectsStateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsStateProviderMock.swift; sourceTree = "<group>"; };
+		4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosStateProviderMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +197,7 @@
 			children = (
 				4C28412C2B6544BE00BC4A9F /* Router.swift */,
 				4C2841462B65699500BC4A9F /* Coordinator.swift */,
+				4C9103662B6D3A0400E7F03D /* StateProvider.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -200,10 +213,10 @@
 		4C2841312B65457E00BC4A9F /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				4C9103702B6D54C100E7F03D /* State */,
 				4C2841422B65657300BC4A9F /* SidebarAssembly.swift */,
 				4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */,
 				4C2841322B65459F00BC4A9F /* SidebarViewController.swift */,
-				4C2841442B6568D500BC4A9F /* SidebarOutput.swift */,
 				4C28413A2B654D1A00BC4A9F /* Cels */,
 				4C2841382B654C1400BC4A9F /* SidebarTableAdapter.swift */,
 				4C2841342B65483700BC4A9F /* SidebarItem.swift */,
@@ -231,6 +244,7 @@
 		4C2841482B656FD800BC4A9F /* TodosModule */ = {
 			isa = PBXGroup;
 			children = (
+				4C9103682B6D506400E7F03D /* State */,
 				4C7708952B681CE800847955 /* Cells */,
 				4C2841492B656FF600BC4A9F /* TodosViewController.swift */,
 				4C7708962B681EAA00847955 /* TodosTableAdapter.swift */,
@@ -244,6 +258,7 @@
 		4C28414D2B65711D00BC4A9F /* ProjectsModule */ = {
 			isa = PBXGroup;
 			children = (
+				4C91036D2B6D548500E7F03D /* State */,
 				4C28415A2B65870A00BC4A9F /* Cells */,
 				4C2841582B65855200BC4A9F /* ProjectsTableAdapter.swift */,
 				4C28414E2B65714000BC4A9F /* ProjectsViewController.swift */,
@@ -277,6 +292,7 @@
 				4C2841712B667AFD00BC4A9F /* PersistentContainer.swift */,
 				4C2841732B667BB200BC4A9F /* ProjectsDataProvider.swift */,
 				4C7708A92B6968B600847955 /* TodosDataProvider.swift */,
+				4C9103732B6D764D00E7F03D /* TodosConfiguration.swift */,
 				4C2841672B6643A200BC4A9F /* CoreData */,
 			);
 			path = Storage;
@@ -324,6 +340,7 @@
 				4C28417B2B66D20D00BC4A9F /* ProjectsPresenterMock.swift */,
 				4C2841862B66DD3300BC4A9F /* ProjectsViewMock.swift */,
 				4C2841882B66DDB300BC4A9F /* ProjectsInteractorMock.swift */,
+				4C9103752B6D7D7800E7F03D /* ProjectsStateProviderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -405,9 +422,9 @@
 			isa = PBXGroup;
 			children = (
 				4C28412B2B6544A400BC4A9F /* App */,
+				4C2841312B65457E00BC4A9F /* Sidebar */,
 				4C28414D2B65711D00BC4A9F /* ProjectsModule */,
 				4C2841482B656FD800BC4A9F /* TodosModule */,
-				4C2841312B65457E00BC4A9F /* Sidebar */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -494,6 +511,7 @@
 				4C7708A52B69678800847955 /* TodosPresenterMock.swift */,
 				4C517AEA2B697684000E4DC1 /* TodosViewMock.swift */,
 				4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */,
+				4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -505,6 +523,30 @@
 				4C7708A32B69670C00847955 /* TodosPresenterTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		4C9103682B6D506400E7F03D /* State */ = {
+			isa = PBXGroup;
+			children = (
+				4C91036B2B6D508700E7F03D /* TodosStateProviderProtocol.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		4C91036D2B6D548500E7F03D /* State */ = {
+			isa = PBXGroup;
+			children = (
+				4C91036E2B6D549500E7F03D /* ProjectsStateProviderProtocol.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		4C9103702B6D54C100E7F03D /* State */ = {
+			isa = PBXGroup;
+			children = (
+				4C9103712B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -637,7 +679,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C2841452B6568D500BC4A9F /* SidebarOutput.swift in Sources */,
 				4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */,
 				4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */,
 				4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */,
@@ -654,14 +695,18 @@
 				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
 				4C28413D2B654D3A00BC4A9F /* LabelView.swift in Sources */,
 				4C28415E2B658CB300BC4A9F /* ProjectConfiguration.swift in Sources */,
+				4C9103672B6D3A0400E7F03D /* StateProvider.swift in Sources */,
 				4C2841592B65855200BC4A9F /* ProjectsTableAdapter.swift in Sources */,
 				4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */,
+				4C91036C2B6D508700E7F03D /* TodosStateProviderProtocol.swift in Sources */,
 				4C7708AA2B6968B600847955 /* TodosDataProvider.swift in Sources */,
 				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
+				4C9103742B6D764D00E7F03D /* TodosConfiguration.swift in Sources */,
 				4C2841742B667BB200BC4A9F /* ProjectsDataProvider.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
 				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
+				4C91036F2B6D549500E7F03D /* ProjectsStateProviderProtocol.swift in Sources */,
 				4C7708992B681EF800847955 /* TodoCell.swift in Sources */,
 				4C2841702B6643C000BC4A9F /* ProjectEntity.swift in Sources */,
 				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
@@ -673,6 +718,7 @@
 				4C7708922B6819AF00847955 /* TodosPresenter.swift in Sources */,
 				4C77089D2B68223200847955 /* TodoModel.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
+				4C9103722B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
 				4C28415C2B65872600BC4A9F /* ProjectCell.swift in Sources */,
 				4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */,
@@ -694,8 +740,10 @@
 				4C2841782B66D11900BC4A9F /* ProjectsInteractorTests.swift in Sources */,
 				4C7708A42B69670C00847955 /* TodosPresenterTests.swift in Sources */,
 				4C2841892B66DDB300BC4A9F /* ProjectsInteractorMock.swift in Sources */,
+				4C9103782B6D7F1700E7F03D /* TodosStateProviderMock.swift in Sources */,
 				4C7708AC2B69723300847955 /* Todo+Extension.swift in Sources */,
 				4C517AEB2B697684000E4DC1 /* TodosViewMock.swift in Sources */,
+				4C9103762B6D7D7800E7F03D /* ProjectsStateProviderMock.swift in Sources */,
 				4C2841852B66DC8200BC4A9F /* ProjectsPresenterTests.swift in Sources */,
 				4C28417E2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift in Sources */,
 				4C2841802B66D75D00BC4A9F /* PersistentContainerMock.swift in Sources */,

@@ -16,6 +16,14 @@ final class ProjectsPresenter {
 	weak var view: ProjectsView?
 
 	var interactor: ProjectsInteractorProtocol?
+
+	var stateProvider: ProjectsStateProviderProtocol?
+
+	// MARK: - Initialization
+
+	init(stateProvider: ProjectsStateProviderProtocol) {
+		self.stateProvider = stateProvider
+	}
 }
 
 // MARK: - ProjectsPresenterProtocol
@@ -54,7 +62,7 @@ extension ProjectsPresenter: ProjectsViewOutput {
 	}
 
 	func selectionDidChange(_ newValue: [UUID]) {
-		// TODO: - Handle action
+		stateProvider?.selectProjects(newValue)
 	}
 
 	func toolbarNewProjectButtonHasBeenClicked() {

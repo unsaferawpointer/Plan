@@ -18,10 +18,13 @@ final class ProjectsPresenterTests: XCTestCase {
 
 	private var interactor: ProjectsInteractorMock!
 
+	private var stateProvider: ProjectsStateProviderMock!
+
 	override func setUpWithError() throws {
 		view = ProjectsViewMock()
 		interactor = ProjectsInteractorMock()
-		sut = ProjectsPresenter()
+		stateProvider = ProjectsStateProviderMock()
+		sut = ProjectsPresenter(stateProvider: stateProvider)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -104,6 +107,19 @@ extension ProjectsPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(ids, expectedIds)
+	}
+
+	func testSelectionDidChange() {
+		// Act
+		let expectedIds: [UUID] = [.init(), .init()]
+		sut.selectionDidChange(expectedIds)
+
+		// Assert
+		guard case let .selectProjects(ids) = stateProvider.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(stateProvider.invocations.count, 1)
 	}
 }
 

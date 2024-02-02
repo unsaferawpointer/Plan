@@ -9,8 +9,8 @@ import Cocoa
 
 final class ProjectsAssembly {
 
-	static func assemble() -> NSViewController {
-		let presenter = ProjectsPresenter()
+	static func assemble(stateProvider: ProjectsStateProviderProtocol) -> NSViewController {
+		let presenter = ProjectsPresenter(stateProvider: stateProvider)
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
 		let interactor = ProjectsInteractor(

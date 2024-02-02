@@ -18,14 +18,28 @@ protocol TodosDataProviderProtocol {
 
 final class TodosDataProvider: NSObject {
 
-	var context: NSManagedObjectContext
+	private var context: NSManagedObjectContext
+
+	private var controller: NSFetchedResultsController<TodoEntity>?
 
 	weak var delegate: TodosDataProviderDelegate?
 
-	lazy var controller: NSFetchedResultsController<TodoEntity> = {
+	// MARK: - Initialization
 
+	init(context: NSManagedObjectContext, configuration: TodosConfiguration) {
+		self.context = context
+		super.init()
+		self.controller = configure(with: configuration)
+	}
+}
+
+// MARK: - Helpers
+private extension TodosDataProvider {
+
+	func configure(with configuration: TodosConfiguration) -> NSFetchedResultsController<TodoEntity> {
 		let request = TodoEntity.fetchRequest()
 		request.sortDescriptors = [NSSortDescriptor(keyPath: \TodoEntity.creationDate, ascending: true)]
+		request.predicate = configuration.predicate
 
 		let controller = NSFetchedResultsController(
 			fetchRequest: request,
@@ -35,14 +49,7 @@ final class TodosDataProvider: NSObject {
 		)
 
 		controller.delegate = self
-
 		return controller
-	}()
-
-	// MARK: - Initialization
-
-	init(context: NSManagedObjectContext) {
-		self.context = context
 	}
 }
 
@@ -52,9 +59,9 @@ extension TodosDataProvider: TodosDataProviderProtocol {
 	func subscribe(_ object: TodosDataProviderDelegate) throws {
 		self.delegate = object
 
-		try controller.performFetch()
+		try controller?.performFetch()
 
-		let entities = controller.fetchedObjects ?? []
+		let entities = controller?.fetchedObjects ?? []
 		let todos = entities.map(\.todo)
 
 		delegate?.providerDidChangeContent(todos)
@@ -73,5 +80,13 @@ extension TodosDataProvider: NSFetchedResultsControllerDelegate {
 		let todos = entities.map(\.todo)
 
 		delegate?.providerDidChangeContent(todos)
+	}
+}
+
+extension TodosConfiguration {
+
+	var predicate: NSPredicate? {
+		// TODO: - Handle property
+		return nil
 	}
 }

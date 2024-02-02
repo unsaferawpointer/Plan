@@ -9,8 +9,8 @@ import Cocoa
 
 final class SidebarAssembly {
 
-	static func assemble(_ output: SidebarOutput) -> NSViewController {
-		let presenter = SidebarPresenter(output: output)
+	static func assemble(stateProvider: SidebarStateProviderProtocol) -> NSViewController {
+		let presenter = SidebarPresenter(stateProvider: stateProvider)
 		return SidebarViewController { viewController in
 			viewController.output = presenter
 		}

@@ -9,13 +9,13 @@ import Cocoa
 
 final class TodosAssembly {
 
-	static func assemble() -> NSViewController {
-		let presenter = TodosPresenter()
+	static func assemble(stateProvider: TodosStateProviderProtocol, configuration: TodosConfiguration) -> NSViewController {
+		let presenter = TodosPresenter(stateProvider: stateProvider)
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
 		let interactor = TodosInteractor(
 			presenter: presenter,
-			provider: TodosDataProvider(context: context!),
+			provider: TodosDataProvider(context: context!, configuration: configuration),
 			storage: storage
 		)
 

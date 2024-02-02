@@ -63,6 +63,13 @@ extension AppRouter: Routable {
 	func present(content: NSViewController?, detail: NSViewController) {
 		let count = splitViewController.splitViewItems.count
 
+		if let last = splitViewController.splitViewItems.last {
+			splitViewController.removeSplitViewItem(last)
+
+			let item = NSSplitViewItem(viewController: detail)
+			splitViewController.addSplitViewItem(item)
+		}
+
 		switch (count, content) {
 		case (2, .some(let content)):
 			let item = NSSplitViewItem(viewController: content)

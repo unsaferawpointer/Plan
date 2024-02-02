@@ -18,10 +18,13 @@ final class TodosPresenterTests: XCTestCase {
 
 	private var interactor: TodosInteractorMock!
 
+	private var stateProvider: TodosStateProviderMock!
+
 	override func setUpWithError() throws {
 		view = TodosViewMock()
 		interactor = TodosInteractorMock()
-		sut = TodosPresenter()
+		stateProvider = TodosStateProviderMock()
+		sut = TodosPresenter(stateProvider: stateProvider)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -106,5 +109,19 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(id, expectedId)
+	}
+
+	func testSelectionDidChange() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+
+		// Act
+		sut.selectionDidChange(expectedIds)
+
+		// Assert
+		guard case let .selectTodos(ids) = stateProvider.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, expectedIds)
 	}
 }

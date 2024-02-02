@@ -7,6 +7,8 @@
 
 import Cocoa
 
+typealias StateProviderProtocol = SidebarStateProviderProtocol & ProjectsStateProviderProtocol & TodosStateProviderProtocol
+
 /// Interface of the coordinator
 protocol Coordinatable {
 
@@ -19,6 +21,8 @@ final class Coordinator {
 
 	private (set) var router: Routable
 
+	private (set) var stateProvider: StateProviderProtocol
+
 	// MARK: - Initialization
 
 	/// Basic initialization
@@ -27,6 +31,10 @@ final class Coordinator {
 	///    - router: App router
 	init(router: Routable = AppRouter()) {
 		self.router = router
+		let stateProvider = StateProvider()
+		self.stateProvider = stateProvider
+
+		stateProvider.delegate = self
 	}
 }
 
@@ -34,26 +42,31 @@ final class Coordinator {
 extension Coordinator: Coordinatable {
 
 	func start() {
-		let sidebar = SidebarAssembly.assemble(self)
-		let detail = TodosAssembly.assemble()
+		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider)
+		let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .inFocus)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
 }
 
-// MARK: - SidebarOutput
-extension Coordinator: SidebarOutput {
+// MARK: - StateProviderDelegate
+extension Coordinator: StateProviderDelegate {
 
-	func navigationDidChange(_ item: Route) {
-		// TODO: - Hadle action
-		switch item {
+	func providerDidChangeState(_ state: State) {
+
+		switch state.selection.route {
 		case .focus:
-			router.present(content: nil, detail: TodosAssembly.assemble())
+			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .inFocus)
+			router.present(content: nil, detail: detail)
 		case .backlog:
-			router.present(content: nil, detail: TodosAssembly.assemble())
+			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .backlog)
+			router.present(content: nil, detail: detail)
 		case .favorites:
-			router.present(content: nil, detail: TodosAssembly.assemble())
+			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .favorites)
+			router.present(content: nil, detail: detail)
 		case .projects:
-			router.present(content: ProjectsAssembly.assemble(), detail: TodosAssembly.assemble())
+			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .backlog)
+			let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
+			router.present(content: content, detail: detail)
 		}
 	}
 }

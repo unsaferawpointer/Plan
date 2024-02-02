@@ -17,6 +17,14 @@ final class TodosPresenter {
 
 	weak var view: TodosView?
 
+	var stateProvider: TodosStateProviderProtocol
+
+	// MARK: - Initialization
+
+	init(stateProvider: TodosStateProviderProtocol) {
+		self.stateProvider = stateProvider
+	}
+
 }
 
 // MARK: - TodosPresenterProtocol
@@ -66,6 +74,10 @@ extension TodosPresenter: TodosViewOutput {
 		} catch {
 			// TODO: - Handle action
 		}
+	}
+
+	func selectionDidChange(_ newValue: [UUID]) {
+		stateProvider.selectTodos(newValue)
 	}
 }
 

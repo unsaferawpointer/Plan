@@ -9,12 +9,12 @@ import Foundation
 
 final class SidebarPresenter {
 
-	weak var output: SidebarOutput?
+	var stateProvider: SidebarStateProviderProtocol
 
 	// MARK: - Initialization
 
-	init(output: SidebarOutput? = nil) {
-		self.output = output
+	init(stateProvider: SidebarStateProviderProtocol) {
+		self.stateProvider = stateProvider
 	}
 }
 
@@ -23,10 +23,10 @@ extension SidebarPresenter: SidebarViewOutput {
 
 	func selectionDidChange(_ newValue: SidebarItem) {
 		switch newValue {
-		case .focus:		output?.navigationDidChange(.focus)
-		case .backlog:		output?.navigationDidChange(.backlog)
-		case .favorites:	output?.navigationDidChange(.favorites)
-		case .projects:		output?.navigationDidChange(.projects)
+		case .focus:		stateProvider.navigate(to: .focus)
+		case .backlog:		stateProvider.navigate(to: .backlog)
+		case .favorites:	stateProvider.navigate(to: .favorites)
+		case .projects:		stateProvider.navigate(to: .projects)
 		}
 	}
 }
