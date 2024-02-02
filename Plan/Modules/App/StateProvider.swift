@@ -8,14 +8,14 @@
 import Foundation
 
 protocol StateProviderDelegate: AnyObject {
-	func providerDidChangeState(_ state: State)
+	func selectionDidChange(new: Selection, old: Selection)
 }
 
 final class StateProvider {
 
-	var state: State = .init() {
+	var selection: Selection = .init(route: .focus) {
 		didSet {
-			delegate?.providerDidChangeState(state)
+			delegate?.selectionDidChange(new: selection, old: oldValue)
 		}
 	}
 
@@ -27,7 +27,7 @@ final class StateProvider {
 extension StateProvider: SidebarStateProviderProtocol {
 
 	func navigate(to route: Route) {
-		state.selection.route = route
+		selection.route = route
 	}
 }
 
@@ -35,7 +35,7 @@ extension StateProvider: SidebarStateProviderProtocol {
 extension StateProvider: ProjectsStateProviderProtocol {
 
 	func selectProjects(_ ids: [UUID]) {
-		state.selection.projects = ids
+		selection.projects = ids
 	}
 }
 
@@ -43,13 +43,8 @@ extension StateProvider: ProjectsStateProviderProtocol {
 extension StateProvider: TodosStateProviderProtocol {
 
 	func selectTodos(_ ids: [UUID]) {
-		state.selection.todos = ids
+		selection.todos = ids
 	}
-}
-
-struct State {
-
-	var selection: Selection = .init(route: .backlog)
 }
 
 struct Selection {

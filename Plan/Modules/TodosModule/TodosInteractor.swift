@@ -47,7 +47,8 @@ extension TodosInteractor: TodosInteractorProtocol {
 			uuid: .init(),
 			creationDate: Date(),
 			text: text,
-			options: 0,
+			inFocus: false,
+			isFavorite: false,
 			isDone: false
 		)
 		try storage.insertTodo(todo, to: nil)

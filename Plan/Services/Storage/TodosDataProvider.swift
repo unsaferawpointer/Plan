@@ -86,7 +86,15 @@ extension TodosDataProvider: NSFetchedResultsControllerDelegate {
 extension TodosConfiguration {
 
 	var predicate: NSPredicate? {
-		// TODO: - Handle property
-		return nil
+		switch self {
+		case .inFocus:
+			return NSPredicate(format: "inFocus == %@ AND isDone == %@", argumentArray: [true, false])
+		case .backlog:
+			return NSPredicate(format: "inFocus == %@ AND isDone == %@", argumentArray: [false, false])
+		case .favorites:
+			return NSPredicate(format: "inFocus == %@ AND isDone == %@ AND isFavorite == %@", argumentArray: [false, false, true])
+		case .archieve:
+			return NSPredicate(format: "isDone == %@", argumentArray: [true])
+		}
 	}
 }

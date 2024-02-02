@@ -51,9 +51,12 @@ extension Coordinator: Coordinatable {
 // MARK: - StateProviderDelegate
 extension Coordinator: StateProviderDelegate {
 
-	func providerDidChangeState(_ state: State) {
+	func selectionDidChange(new: Selection, old: Selection) {
+		guard new.route != old.route || new.projects != old.projects else {
+			return
+		}
 
-		switch state.selection.route {
+		switch new.route {
 		case .focus:
 			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .inFocus)
 			router.present(content: nil, detail: detail)

@@ -12,7 +12,8 @@ struct Todo {
 	var uuid: UUID
 	var creationDate: Date
 	var text: String
-	var options: Int64
+	var inFocus: Bool
+	var isFavorite: Bool
 
 	var isDone: Bool
 
@@ -22,13 +23,15 @@ struct Todo {
 		uuid: UUID,
 		creationDate: Date,
 		text: String,
-		options: Int64,
+		inFocus: Bool,
+		isFavorite: Bool,
 		isDone: Bool
 	) {
 		self.uuid = uuid
 		self.creationDate = creationDate
 		self.text = text
-		self.options = options
+		self.inFocus = inFocus
+		self.isFavorite = isFavorite
 		self.isDone = isDone
 	}
 }

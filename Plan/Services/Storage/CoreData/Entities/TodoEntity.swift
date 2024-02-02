@@ -20,7 +20,8 @@ extension TodoEntity {
 
 	@NSManaged public var uuid: UUID
 	@NSManaged public var text: String
-	@NSManaged public var options: Int64
+	@NSManaged public var inFocus: Bool
+	@NSManaged public var isFavorite: Bool
 	@NSManaged public var creationDate: Date
 	@NSManaged public var isDone: Bool
 	@NSManaged public var project: ProjectEntity?
@@ -30,7 +31,8 @@ extension TodoEntity {
 
 		self.uuid = UUID()
 		self.text = ""
-		self.options = 0
+		self.inFocus = false
+		self.isFavorite = isFavorite
 		self.creationDate = Date()
 		self.isDone = false
 	}
@@ -50,7 +52,8 @@ extension TodoEntity {
 		self.creationDate = todo.creationDate
 		self.isDone = todo.isDone
 		self.text = todo.text
-		self.options = todo.options
+		self.inFocus = todo.inFocus
+		self.isFavorite = todo.isFavorite
 	}
 
 	var todo: Todo {
@@ -58,7 +61,8 @@ extension TodoEntity {
 			uuid: uuid,
 			creationDate: creationDate,
 			text: text,
-			options: options,
+			inFocus: inFocus,
+			isFavorite: isFavorite,
 			isDone: isDone
 		)
 	}
