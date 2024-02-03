@@ -12,7 +12,7 @@ protocol TodosInteractorProtocol: AnyObject {
 	func createTodo(withText text: String) throws
 	func setText(_ text: String, forTodo id: UUID) throws
 	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws
-	func deleteTodo(withId id: UUID) throws
+	func deleteTodos(withIds ids: [UUID]) throws
 }
 
 final class TodosInteractor {
@@ -65,8 +65,8 @@ extension TodosInteractor: TodosInteractorProtocol {
 		try storage.save()
 	}
 
-	func deleteTodo(withId id: UUID) throws {
-		try storage.deleteTodos(with: [id])
+	func deleteTodos(withIds ids: [UUID]) throws {
+		try storage.deleteTodos(with: ids)
 		try storage.save()
 	}
 }

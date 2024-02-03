@@ -76,9 +76,9 @@ extension TodosPresenter: TodosViewOutput {
 		}
 	}
 
-	func delete(_ id: UUID) {
+	func delete(_ ids: [UUID]) {
 		do {
-			try interactor?.deleteTodo(withId: id)
+			try interactor?.deleteTodos(withIds: ids)
 		} catch {
 			// TODO: - Handle action
 		}

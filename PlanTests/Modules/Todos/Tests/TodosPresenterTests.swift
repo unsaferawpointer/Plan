@@ -99,16 +99,16 @@ extension TodosPresenterTests {
 
 	func testDelete() {
 		// Arrange
-		let expectedId = UUID()
+		let expectedIds = [UUID(), UUID()]
 
 		// Act
-		sut.delete(expectedId)
+		sut.delete(expectedIds)
 
 		// Assert
-		guard case let .deleteTodo(id) = interactor.invocations[0] else {
+		guard case let .deleteTodos(ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(id, expectedId)
+		XCTAssertEqual(ids, expectedIds)
 	}
 
 	func testSelectionDidChange() {

@@ -7,12 +7,12 @@
 
 import Cocoa
 
-protocol TodosViewOutput: ViewOutput { 
+protocol TodosViewOutput: AnyObject, ViewOutput { 
 	func toolbarNewTodoButtonHasBeenClicked()
 	func textfieldDidChange(_ newValue: String, for id: UUID)
 	func checkboxDidChange(_ newValue: Bool, for ids: [UUID])
 	func selectionDidChange(_ newValue: [UUID])
-	func delete(_ id: UUID)
+	func delete(_ ids: [UUID])
 }
 
 protocol TodosView: AnyObject {
@@ -101,18 +101,7 @@ private extension TodosViewController {
 
 	func configureAdapter() {
 		self.adapter = TodosTableAdapter(table: table)
-		adapter?.textfieldDidChange = { [weak self] newValue, id in
-			self?.output?.textfieldDidChange(newValue, for: id)
-		}
-		adapter?.deletion = { [weak self] id in
-			self?.output?.delete(id)
-		}
-		adapter?.selection = { [weak self] ids in
-			self?.output?.selectionDidChange(ids)
-		}
-		adapter?.checkboxDidChange = { [weak self] newValue, ids in
-			self?.output?.checkboxDidChange(newValue, for: ids)
-		}
+		self.adapter?.output = output
 	}
 
 	func configureUserInterface() {

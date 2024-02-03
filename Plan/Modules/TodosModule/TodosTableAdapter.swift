@@ -11,17 +11,13 @@ final class TodosTableAdapter: NSObject {
 
 	weak var table: NSTableView?
 
+	weak var output: TodosViewOutput?
+
 	// MARK: - Data
 
 	private (set) var items: [TodoModel] = []
 
 	var selection: (([UUID]) -> Void)?
-
-	var deletion: ((UUID) -> Void)?
-
-	var textfieldDidChange: ((String, UUID) -> Void)?
-
-	var checkboxDidChange: ((Bool, [UUID]) -> Void)?
 
 	// MARK: - Initialization
 
@@ -68,10 +64,10 @@ extension TodosTableAdapter: NSTableViewDelegate {
 		view?.configure(model)
 
 		view?.textAction = { [weak self] newValue in
-			self?.textfieldDidChange?(newValue, model.uuid)
+			self?.output?.textfieldDidChange(newValue, for: model.uuid)
 		}
 		view?.checkboxAction = { [weak self] newValue in
-			self?.checkboxDidChange?(newValue, [model.uuid])
+			self?.output?.checkboxDidChange(newValue, for: [model.uuid])
 		}
 
 		return view
@@ -91,7 +87,7 @@ extension TodosTableAdapter: NSTableViewDelegate {
 					return
 				}
 				let item = items[row]
-				deletion?(item.uuid)
+				self.output?.delete([item.uuid])
 			})
 		]
 	}
@@ -107,6 +103,6 @@ extension TodosTableAdapter {
 		let ids = rows.compactMap { row in
 			items[row].uuid
 		}
-		selection?(ids)
+		output?.selectionDidChange(ids)
 	}
 }

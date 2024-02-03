@@ -123,13 +123,13 @@ extension TodosInteractorTests {
 
 	func testDeleteTodo() {
 		// Arrange
-		let expectedId = UUID()
+		let expectedIds = [UUID(), UUID()]
 		var expectedError: Error?
 		provider.errorStub = nil
 
 		// Act
 		do {
-			try sut.deleteTodo(withId: expectedId)
+			try sut.deleteTodos(withIds: expectedIds)
 		} catch {
 			expectedError = error
 		}
@@ -139,7 +139,7 @@ extension TodosInteractorTests {
 		guard case let .deleteTodos(ids) = storage.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(ids, [expectedId])
+		XCTAssertEqual(ids, expectedIds)
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()
 		}
