@@ -8,11 +8,12 @@
 import Foundation
 import AppKit
 
-enum SidebarItem {
+enum SidebarItem: CaseIterable {
 	case focus
 	case backlog
 	case favorites
 	case projects
+	case archieve
 }
 
 extension SidebarItem {
@@ -27,6 +28,8 @@ extension SidebarItem {
 			return "Favorites"
 		case .projects:
 			return "Projects"
+		case .archieve:
+			return "Archieve"
 		}
 	}
 
@@ -40,6 +43,8 @@ extension SidebarItem {
 			return "star.fill"
 		case .projects:
 			return "doc.text.fill"
+		case .archieve:
+			return "shippingbox.fill"
 		}
 	}
 
@@ -52,6 +57,8 @@ extension SidebarItem {
 		case .favorites:
 			return nil
 		case .projects:
+			return nil
+		case .archieve:
 			return nil
 		}
 	}

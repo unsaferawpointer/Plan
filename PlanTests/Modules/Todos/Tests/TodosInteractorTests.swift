@@ -20,14 +20,18 @@ final class TodosInteractorTests: XCTestCase {
 
 	private var storage: PersistentContainerMock!
 
+	private var factory: TodosFactoryMock!
+
 	override func setUpWithError() throws {
 		presenter = TodosPresenterMock()
 		provider = TodosDataProviderMock()
 		storage = PersistentContainerMock()
+		factory = TodosFactoryMock()
 		sut = TodosInteractor(
 			presenter: presenter,
 			provider: provider,
-			storage: storage
+			storage: storage, 
+			factory: factory
 		)
 	}
 
@@ -36,6 +40,7 @@ final class TodosInteractorTests: XCTestCase {
 		presenter = nil
 		provider = nil
 		storage = nil
+		factory = nil
 	}
 }
 
@@ -66,6 +71,9 @@ extension TodosInteractorTests {
 		let expectedText = UUID().uuidString
 		var expectedError: Error?
 
+		let expectedTodo: Todo = .random
+		factory.todoStub = expectedTodo
+
 		// Act
 		do {
 			try sut.createTodo(withText: expectedText)
@@ -78,7 +86,7 @@ extension TodosInteractorTests {
 		guard case let .insertTodo(todo, project) = storage.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(todo.text, expectedText)
+		XCTAssertEqual(todo, expectedTodo)
 		XCTAssertNil(project)
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()

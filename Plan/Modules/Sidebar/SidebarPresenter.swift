@@ -27,6 +27,7 @@ extension SidebarPresenter: SidebarViewOutput {
 		case .backlog:		stateProvider.navigate(to: .backlog)
 		case .favorites:	stateProvider.navigate(to: .favorites)
 		case .projects:		stateProvider.navigate(to: .projects)
+		case .archieve:		stateProvider.navigate(to: .archieve)
 		}
 	}
 }

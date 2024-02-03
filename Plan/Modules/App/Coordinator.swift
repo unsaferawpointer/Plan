@@ -66,8 +66,18 @@ extension Coordinator: StateProviderDelegate {
 		case .favorites:
 			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .favorites)
 			router.present(content: nil, detail: detail)
+		case .archieve:
+			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .archieve)
+			router.present(content: nil, detail: detail)
 		case .projects:
-			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .backlog)
+			guard let id = new.projects.first else {
+				// TODO: - Configure empty view-controller
+				let detail = NSViewController(nibName: nil, bundle: nil)
+				let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
+				router.present(content: content, detail: detail)
+				return
+			}
+			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .project(id))
 			let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
 			router.present(content: content, detail: detail)
 		}

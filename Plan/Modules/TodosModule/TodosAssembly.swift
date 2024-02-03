@@ -13,10 +13,12 @@ final class TodosAssembly {
 		let presenter = TodosPresenter(stateProvider: stateProvider)
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
+		let factory = TodosFactory(configuration: configuration)
 		let interactor = TodosInteractor(
 			presenter: presenter,
 			provider: TodosDataProvider(context: context!, configuration: configuration),
-			storage: storage
+			storage: storage, 
+			factory: factory
 		)
 
 		return TodosViewController { viewController in

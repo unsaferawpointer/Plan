@@ -17,15 +17,18 @@ struct Todo {
 
 	var isDone: Bool
 
+	var project: UUID?
+
 	// MARK: - Initialization
 
 	init(
-		uuid: UUID,
-		creationDate: Date,
+		uuid: UUID = UUID(),
+		creationDate: Date = Date(),
 		text: String,
-		inFocus: Bool,
-		isFavorite: Bool,
-		isDone: Bool
+		inFocus: Bool = false,
+		isFavorite: Bool = false,
+		isDone: Bool = false,
+		project: UUID? = nil
 	) {
 		self.uuid = uuid
 		self.creationDate = creationDate

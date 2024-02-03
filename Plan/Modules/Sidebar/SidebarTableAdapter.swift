@@ -20,7 +20,8 @@ final class SidebarTableAdapter: NSObject {
 		.focus,
 		.backlog,
 		.favorites,
-		.projects
+		.projects,
+		.archieve
 	]
 
 	// MARK: - Initialization

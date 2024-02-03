@@ -73,6 +73,9 @@
 		4C9103742B6D764D00E7F03D /* TodosConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103732B6D764D00E7F03D /* TodosConfiguration.swift */; };
 		4C9103762B6D7D7800E7F03D /* ProjectsStateProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103752B6D7D7800E7F03D /* ProjectsStateProviderMock.swift */; };
 		4C9103782B6D7F1700E7F03D /* TodosStateProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */; };
+		4C91037D2B6E44BF00E7F03D /* TodosFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91037C2B6E44BF00E7F03D /* TodosFactory.swift */; };
+		4C91037F2B6E48D400E7F03D /* TodosFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91037E2B6E48D400E7F03D /* TodosFactoryMock.swift */; };
+		4C9103832B6E4B1B00E7F03D /* TodosFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103822B6E4B1B00E7F03D /* TodosFactoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +166,9 @@
 		4C9103732B6D764D00E7F03D /* TodosConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosConfiguration.swift; sourceTree = "<group>"; };
 		4C9103752B6D7D7800E7F03D /* ProjectsStateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsStateProviderMock.swift; sourceTree = "<group>"; };
 		4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosStateProviderMock.swift; sourceTree = "<group>"; };
+		4C91037C2B6E44BF00E7F03D /* TodosFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosFactory.swift; sourceTree = "<group>"; };
+		4C91037E2B6E48D400E7F03D /* TodosFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosFactoryMock.swift; sourceTree = "<group>"; };
+		4C9103822B6E4B1B00E7F03D /* TodosFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosFactoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +255,7 @@
 				4C28414B2B65706C00BC4A9F /* TodosAssembly.swift */,
 				4C7708912B6819AF00847955 /* TodosPresenter.swift */,
 				4C7708932B681A2B00847955 /* TodosInteractor.swift */,
+				4C91037C2B6E44BF00E7F03D /* TodosFactory.swift */,
 			);
 			path = TodosModule;
 			sourceTree = "<group>";
@@ -430,6 +437,7 @@
 		4C517AEC2B697890000E4DC1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4C9103812B6E4B0D00E7F03D /* Tests */,
 				4C517AED2B69789B000E4DC1 /* Mocks */,
 			);
 			path = Common;
@@ -441,6 +449,7 @@
 				4C28417F2B66D75D00BC4A9F /* PersistentContainerMock.swift */,
 				4C28417D2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift */,
 				4C7708A72B69680300847955 /* TodosDataProviderMock.swift */,
+				4C91037E2B6E48D400E7F03D /* TodosFactoryMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -552,6 +561,14 @@
 				4C2841562B65829B00BC4A9F /* Project.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4C9103812B6E4B0D00E7F03D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4C9103822B6E4B1B00E7F03D /* TodosFactoryTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -716,6 +733,7 @@
 				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
 				4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */,
+				4C91037D2B6E44BF00E7F03D /* TodosFactory.swift in Sources */,
 				4C7708972B681EAA00847955 /* TodosTableAdapter.swift in Sources */,
 				4C2841512B65715300BC4A9F /* ProjectsAssembly.swift in Sources */,
 				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
@@ -741,6 +759,7 @@
 				4C7708A82B69680300847955 /* TodosDataProviderMock.swift in Sources */,
 				4C2841832B66DB0500BC4A9F /* Project+Extension.swift in Sources */,
 				4C517AEF2B6978C6000E4DC1 /* TodosInteractorMock.swift in Sources */,
+				4C9103832B6E4B1B00E7F03D /* TodosFactoryTests.swift in Sources */,
 				4C2841782B66D11900BC4A9F /* ProjectsInteractorTests.swift in Sources */,
 				4C7708A42B69670C00847955 /* TodosPresenterTests.swift in Sources */,
 				4C2841892B66DDB300BC4A9F /* ProjectsInteractorMock.swift in Sources */,
@@ -748,6 +767,7 @@
 				4C7708AC2B69723300847955 /* Todo+Extension.swift in Sources */,
 				4C517AEB2B697684000E4DC1 /* TodosViewMock.swift in Sources */,
 				4C9103762B6D7D7800E7F03D /* ProjectsStateProviderMock.swift in Sources */,
+				4C91037F2B6E48D400E7F03D /* TodosFactoryMock.swift in Sources */,
 				4C2841852B66DC8200BC4A9F /* ProjectsPresenterTests.swift in Sources */,
 				4C28417E2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift in Sources */,
 				4C2841802B66D75D00BC4A9F /* PersistentContainerMock.swift in Sources */,

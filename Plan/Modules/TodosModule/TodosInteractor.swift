@@ -23,16 +23,20 @@ final class TodosInteractor {
 
 	private var storage: PersistentContainerProtocol
 
+	private var factory: TodosFactoryProtocol
+
 	// MARK: - Initialization
 
 	init(
 		presenter: TodosPresenterProtocol,
 		provider: TodosDataProviderProtocol,
-		storage: PersistentContainerProtocol
+		storage: PersistentContainerProtocol,
+		factory: TodosFactoryProtocol
 	) {
 		self.presenter = presenter
 		self.provider = provider
 		self.storage = storage
+		self.factory = factory
 	}
 }
 
@@ -44,15 +48,10 @@ extension TodosInteractor: TodosInteractorProtocol {
 	}
 
 	func createTodo(withText text: String) throws {
-		let todo = Todo(
-			uuid: .init(),
-			creationDate: Date(),
-			text: text,
-			inFocus: false,
-			isFavorite: false,
-			isDone: false
-		)
-		try storage.insertTodo(todo, to: nil)
+
+		let todo = factory.createTodo(with: text)
+
+		try storage.insertTodo(todo, to: todo.project)
 		try storage.save()
 	}
 

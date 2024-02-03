@@ -12,4 +12,5 @@ enum Route {
 	case backlog
 	case favorites
 	case projects
+	case archieve
 }

@@ -63,7 +63,8 @@ extension TodoEntity {
 			text: text,
 			inFocus: inFocus,
 			isFavorite: isFavorite,
-			isDone: isDone
+			isDone: isDone,
+			project: project?.uuid
 		)
 	}
 }
