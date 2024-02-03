@@ -120,7 +120,10 @@ extension TodosTableAdapter {
 		switch itemIdentifier {
 		case .newMenuItem:
 			return true
-		case .bookmarkMenuItem, .setStatusMenuItem, .deleteMenuItem:
+		case .bookmarkMenuItem,
+			 .setStatusMenuItem,
+			 .deleteMenuItem,
+			 .inFocusMenuItem:
 			return !rows.isEmpty
 		default:
 			return false
@@ -144,6 +147,8 @@ extension TodosTableAdapter {
 				state = items[row].isFavorite
 			case .setStatusMenuItem:
 				state = items[row].isDone
+			case .inFocusMenuItem:
+				state = items[row].inFocus
 			default:
 				state = false
 			}
@@ -164,6 +169,65 @@ extension TodosTableAdapter {
 	}
 }
 
+extension TodosTableAdapter {
+
+	func delete() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.delete(ids)
+	}
+
+	func bookmark() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.performModification(.bookmark, forTodos: ids)
+	}
+
+	func unbookmark() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.performModification(.unbookmark, forTodos: ids)
+	}
+
+	func markIncomplete() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.performModification(.setStatus(false), forTodos: ids)
+	}
+
+	func complete() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.performModification(.setStatus(true), forTodos: ids)
+	}
+
+	func focusOn() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.performModification(.focus, forTodos: ids)
+	}
+
+	func unfocusOn() {
+		guard let rows = table?.effectiveSelection() else {
+			return
+		}
+		let ids = rows.map { items[$0].uuid }
+		output?.performModification(.unfocus, forTodos: ids)
+	}
+}
+
 private extension TodosTableAdapter {
 
 	func makeContextMenu() -> NSMenu {
@@ -173,7 +237,8 @@ private extension TodosTableAdapter {
 				[
 					.new,
 					.separator,
-					.favorite,
+					.inFocus,
+					.bookmarked,
 					.completed,
 					.separator,
 					.delete

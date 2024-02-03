@@ -22,4 +22,7 @@ protocol MenuSupportable {
 	@objc
 	optional func toggleBookmark(_ sender: NSMenuItem)
 
+	@objc
+	optional func toggleInFocus(_ sender: NSMenuItem)
+
 }

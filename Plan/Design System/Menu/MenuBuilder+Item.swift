@@ -14,8 +14,9 @@ extension MenuBuilder {
 		case new
 		case delete
 
-		case favorite
+		case bookmarked
 		case completed
+		case inFocus
 
 		case separator
 	}
@@ -43,9 +44,9 @@ extension MenuBuilder.Item {
 			return item
 		case .separator:
 			return .separator()
-		case .favorite:
+		case .bookmarked:
 			let item = NSMenuItem(
-				title: "Bookmark",
+				title: "Bookmarked",
 				action: #selector(MenuSupportable.toggleBookmark(_:)),
 				keyEquivalent: "b"
 			)
@@ -58,6 +59,14 @@ extension MenuBuilder.Item {
 				keyEquivalent: "\r"
 			)
 			item.identifier = .setStatusMenuItem
+			return item
+		case .inFocus:
+			let item = NSMenuItem(
+				title: "In Focus",
+				action: #selector(MenuSupportable.toggleInFocus(_:)),
+				keyEquivalent: ""
+			)
+			item.identifier = .inFocusMenuItem
 			return item
 		}
 	}

@@ -60,7 +60,7 @@ extension TodosPresenter: TodosViewOutput {
 		}
 	}
 
-	func toolbarNewTodoButtonHasBeenClicked() {
+	func createTodo() {
 		do {
 			try interactor?.perform(.insert(["New todo"]))
 		} catch {
@@ -88,7 +88,8 @@ private extension TodosPresenter {
 		return TodoModel(
 			uuid: todo.uuid,
 			isDone: todo.isDone,
-			isFavorite: false,
+			isFavorite: todo.isFavorite, 
+			inFocus: todo.inFocus,
 			text: todo.text
 		)
 	}

@@ -8,7 +8,7 @@
 import Cocoa
 
 protocol TodosViewOutput: AnyObject, ViewOutput { 
-	func toolbarNewTodoButtonHasBeenClicked()
+	func createTodo()
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID])
 	func selectionDidChange(_ newValue: [UUID])
 	func delete(_ ids: [UUID])
@@ -90,19 +90,35 @@ extension TodosViewController: TodosView {
 extension TodosViewController: MenuSupportable {
 
 	func createNew(_ sender: NSMenuItem) {
-		// TODO: - Handle action
+		output?.createTodo()
 	}
 
 	func toggleBookmark(_ sender: NSMenuItem) {
-		// TODO: - Handle action
+		guard sender.state == .on else {
+			adapter?.bookmark()
+			return
+		}
+		adapter?.unbookmark()
 	}
 
 	func toggleCompleted(_ sender: NSMenuItem) {
-		// TODO: - Handle action
+		guard sender.state == .on else {
+			adapter?.complete()
+			return
+		}
+		adapter?.markIncomplete()
+	}
+
+	func toggleInFocus(_ sender: NSMenuItem) {
+		guard sender.state == .on else {
+			adapter?.focusOn()
+			return
+		}
+		adapter?.unfocusOn()
 	}
 
 	func delete(_ sender: NSMenuItem) {
-		// TODO: - Handle action
+		adapter?.delete()
 	}
 }
 
@@ -129,7 +145,7 @@ private extension TodosViewController {
 			forName: .toolbarNewTodoButtonHasBeenClicked,
 			object: nil,
 			queue: .main) { [weak self] _ in
-				self?.output?.toolbarNewTodoButtonHasBeenClicked()
+				self?.output?.createTodo()
 			}
 	}
 

@@ -92,7 +92,7 @@ extension TodosConfiguration {
 		case .backlog:
 			return NSPredicate(format: "inFocus == %@ AND isDone == %@", argumentArray: [false, false])
 		case .favorites:
-			return NSPredicate(format: "inFocus == %@ AND isDone == %@ AND isFavorite == %@", argumentArray: [false, false, true])
+			return NSPredicate(format: "isDone == %@ AND isFavorite == %@", argumentArray: [false, true])
 		case .archieve:
 			return NSPredicate(format: "isDone == %@", argumentArray: [true])
 		case .project(let id):

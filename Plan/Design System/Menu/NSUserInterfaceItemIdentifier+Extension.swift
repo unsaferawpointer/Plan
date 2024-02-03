@@ -9,6 +9,8 @@ import Cocoa
 
 extension NSUserInterfaceItemIdentifier {
 
+	static let inFocusMenuItem = NSUserInterfaceItemIdentifier("in_focus_menu_item")
+
 	static let newMenuItem = NSUserInterfaceItemIdentifier("new_menu_item")
 
 	static let bookmarkMenuItem = NSUserInterfaceItemIdentifier("bookmark_menu_item")

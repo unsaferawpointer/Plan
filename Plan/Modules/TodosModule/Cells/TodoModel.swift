@@ -14,6 +14,7 @@ struct TodoModel: ViewConfiguration {
 	var uuid: UUID
 	var isDone: Bool
 	var isFavorite: Bool
+	var inFocus: Bool
 	var text: String
 
 }

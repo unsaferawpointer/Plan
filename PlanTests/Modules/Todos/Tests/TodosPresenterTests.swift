@@ -43,7 +43,7 @@ extension TodosPresenterTests {
 		// Arrange
 		let todos: [Todo] = [.random, .random, .random]
 		let expectedItems = todos.map { todo in
-			TodoModel(uuid: todo.uuid, isDone: todo.isDone, isFavorite: false, text: todo.text)
+			TodoModel(uuid: todo.uuid, isDone: todo.isDone, isFavorite: todo.isFavorite, text: todo.text)
 		}
 
 		// Act
@@ -72,7 +72,7 @@ extension TodosPresenterTests {
 
 	func testToolbarNewTodoButtonHasBeenClicked() {
 		// Act
-		sut.toolbarNewTodoButtonHasBeenClicked()
+		sut.createTodo()
 
 		// Assert
 		guard case let .performAction(action) = interactor.invocations[0] else {

@@ -93,19 +93,23 @@ extension PersistentContainer: PersistentContainerProtocol {
 
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) throws {
 
-		guard let entity = try fetchEntities(TodoEntity.self, with: ids).first else {
-			return
-		}
+		let entities = try fetchEntities(TodoEntity.self, with: ids)
 
-		switch modification {
-		case .setText(let newValue):
-			entity.text = newValue
-		case .setStatus(let newValue):
-			entity.isDone = newValue
-		case .bookmark:
-			entity.isFavorite = true
-		case .unbookmark:
-			entity.isFavorite = false
+		for entity in entities {
+			switch modification {
+			case .setText(let newValue):
+				entity.text = newValue
+			case .setStatus(let newValue):
+				entity.isDone = newValue
+			case .bookmark:
+				entity.isFavorite = true
+			case .unbookmark:
+				entity.isFavorite = false
+			case .focus:
+				entity.inFocus = true
+			case .unfocus:
+				entity.inFocus = false
+			}
 		}
 	}
 
