@@ -9,10 +9,8 @@ import Foundation
 
 protocol TodosInteractorProtocol: AnyObject {
 	func fetchTodos() throws
-	func createTodo(withText text: String) throws
-	func setText(_ text: String, forTodo id: UUID) throws
-	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws
-	func deleteTodos(withIds ids: [UUID]) throws
+	func perform(_ action: TodosAction) throws
+	func perform(_ modification: TodoModification, forTodos ids: [UUID]) throws
 }
 
 final class TodosInteractor {
@@ -47,26 +45,21 @@ extension TodosInteractor: TodosInteractorProtocol {
 		try provider.subscribe(self)
 	}
 
-	func createTodo(withText text: String) throws {
-
-		let todo = factory.createTodo(with: text)
-
-		try storage.insertTodo(todo, to: todo.project)
+	func perform(_ action: TodosAction) throws {
+		switch action {
+		case .insert(let texts):
+			for text in texts {
+				let todo = factory.createTodo(with: text)
+				try storage.insertTodo(todo, to: todo.project)
+			}
+		case .delete(let ids):
+			try storage.deleteTodos(with: ids)
+		}
 		try storage.save()
 	}
 
-	func setText(_ text: String, forTodo id: UUID) throws {
-		try storage.setTodo(text: text, with: id)
-		try storage.save()
-	}
-
-	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws {
-		try storage.setStatus(newValue, forTodos: ids)
-		try storage.save()
-	}
-
-	func deleteTodos(withIds ids: [UUID]) throws {
-		try storage.deleteTodos(with: ids)
+	func perform(_ modification: TodoModification, forTodos ids: [UUID]) throws {
+		try storage.performModification(modification, forTodos: ids)
 		try storage.save()
 	}
 }

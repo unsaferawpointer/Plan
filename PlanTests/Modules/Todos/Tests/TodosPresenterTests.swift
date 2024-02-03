@@ -75,26 +75,26 @@ extension TodosPresenterTests {
 		sut.toolbarNewTodoButtonHasBeenClicked()
 
 		// Assert
-		guard case let .createTodo(text) = interactor.invocations[0] else {
+		guard case let .performAction(action) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(text, "New todo")
+		XCTAssertEqual(action, .insert(["New todo"]))
 	}
 
 	func testTextfieldDidChange() {
 		// Arrange
 		let expectedText = UUID().uuidString
-		let expectedId = UUID()
+		let expectedIds = [UUID(), UUID()]
 
 		// Act
-		sut.textfieldDidChange(expectedText, for: expectedId)
+		sut.performModification(.setText(expectedText), forTodos: expectedIds)
 
 		// Assert
-		guard case let .setText(text, id) = interactor.invocations[0] else {
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(text, expectedText)
-		XCTAssertEqual(id, expectedId)
+		XCTAssertEqual(modification, .setText(expectedText))
+		XCTAssertEqual(ids, expectedIds)
 	}
 
 	func testDelete() {
@@ -105,10 +105,10 @@ extension TodosPresenterTests {
 		sut.delete(expectedIds)
 
 		// Assert
-		guard case let .deleteTodos(ids) = interactor.invocations[0] else {
+		guard case let .performAction(action) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(action, .delete(expectedIds))
 	}
 
 	func testSelectionDidChange() {

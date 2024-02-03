@@ -9,8 +9,7 @@ import Cocoa
 
 protocol TodosViewOutput: AnyObject, ViewOutput { 
 	func toolbarNewTodoButtonHasBeenClicked()
-	func textfieldDidChange(_ newValue: String, for id: UUID)
-	func checkboxDidChange(_ newValue: Bool, for ids: [UUID])
+	func performModification(_ modification: TodoModification, forTodos ids: [UUID])
 	func selectionDidChange(_ newValue: [UUID])
 	func delete(_ ids: [UUID])
 }

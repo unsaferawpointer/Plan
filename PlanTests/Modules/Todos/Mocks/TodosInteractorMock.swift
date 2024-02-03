@@ -16,28 +16,18 @@ final class TodosInteractorMock {
 // MARK: - TodosInteractorProtocol
 extension TodosInteractorMock: TodosInteractorProtocol {
 
-	func deleteTodos(withIds ids: [UUID]) throws {
-		let action: Action = .deleteTodos(withIds: ids)
+	func perform(_ action: TodosAction) throws {
+		let action: Action = .performAction(action)
 		invocations.append(action)
 	}
-
-	func setText(_ text: String, forTodo id: UUID) throws {
-		let action: Action = .setText(text: text, forTodo: id)
-		invocations.append(action)
-	}
-
-	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws {
-		let action: Action = .setStatus(newValue: newValue, forTodos: ids)
+	
+	func perform(_ modification: TodoModification, forTodos ids: [UUID]) throws {
+		let action: Action = .performModification(modification, forTodos: ids)
 		invocations.append(action)
 	}
 
 	func fetchTodos() throws {
 		let action: Action = .fetchTodos
-		invocations.append(action)
-	}
-
-	func createTodo(withText text: String) throws {
-		let action: Action = .createTodo(withText: text)
 		invocations.append(action)
 	}
 }
@@ -47,10 +37,8 @@ extension TodosInteractorMock {
 
 	enum Action {
 		case fetchTodos
-		case createTodo(withText: String)
-		case setText(text: String, forTodo: UUID)
-		case setStatus(newValue: Bool, forTodos: [UUID])
-		case deleteTodos(withIds: [UUID])
+		case performAction(_ action: TodosAction)
+		case performModification(_ modification: TodoModification, forTodos: [UUID])
 	}
 }
 

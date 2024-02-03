@@ -18,11 +18,9 @@ protocol PersistentContainerProtocol {
 
 	func setProject(title: String, with id: UUID) throws
 
-	func setTodo(text: String, with id: UUID) throws
-
-	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws
-
 	func deleteProjects(with ids: [UUID]) throws
+
+	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) throws
 
 	func save() throws
 }
@@ -90,6 +88,24 @@ extension PersistentContainer: PersistentContainerProtocol {
 
 		deleted.forEach {
 			context.delete($0)
+		}
+	}
+
+	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) throws {
+
+		guard let entity = try fetchEntities(TodoEntity.self, with: ids).first else {
+			return
+		}
+
+		switch modification {
+		case .setText(let newValue):
+			entity.text = newValue
+		case .setStatus(let newValue):
+			entity.isDone = newValue
+		case .bookmark:
+			entity.isFavorite = true
+		case .unbookmark:
+			entity.isFavorite = false
 		}
 	}
 

@@ -76,7 +76,7 @@ extension TodosInteractorTests {
 
 		// Act
 		do {
-			try sut.createTodo(withText: expectedText)
+			try sut.perform(.insert([expectedText]))
 		} catch {
 			expectedError = error
 		}
@@ -97,24 +97,24 @@ extension TodosInteractorTests {
 	func testSetTitle() {
 		// Arrange
 		let expectedText = UUID().uuidString
-		let expectedId = UUID()
+		let expectedIds = [UUID(), UUID()]
 		var expectedError: Error?
 		provider.errorStub = nil
 
 		// Act
 		do {
-			try sut.setText(expectedText, forTodo: expectedId)
+			try sut.perform(.setText(expectedText), forTodos: expectedIds)
 		} catch {
 			expectedError = error
 		}
 
 		// Assert
 		XCTAssertNil(expectedError)
-		guard case let .setTodo(text, id) = storage.invocations[0] else {
+		guard case let .performModification(modification, ids) = storage.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(text, expectedText)
-		XCTAssertEqual(id, expectedId)
+		XCTAssertEqual(modification, .setText(expectedText))
+		XCTAssertEqual(ids, expectedIds)
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()
 		}
@@ -129,7 +129,7 @@ extension TodosInteractorTests {
 
 		// Act
 		do {
-			try sut.deleteTodos(withIds: expectedIds)
+			try sut.perform(.delete(expectedIds))
 		} catch {
 			expectedError = error
 		}

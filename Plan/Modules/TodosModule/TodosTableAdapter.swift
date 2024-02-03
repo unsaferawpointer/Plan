@@ -66,10 +66,10 @@ extension TodosTableAdapter: NSTableViewDelegate {
 		view?.configure(model)
 
 		view?.textAction = { [weak self] newValue in
-			self?.output?.textfieldDidChange(newValue, for: model.uuid)
+			self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
 		}
 		view?.checkboxAction = { [weak self] newValue in
-			self?.output?.checkboxDidChange(newValue, for: [model.uuid])
+			self?.output?.performModification(.setStatus(newValue), forTodos: [model.uuid])
 		}
 
 		return view

@@ -41,6 +41,14 @@ extension TodosPresenter: TodosPresenterProtocol {
 // MARK: - TodosView
 extension TodosPresenter: TodosViewOutput {
 
+	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) {
+		do {
+			try interactor?.perform(modification, forTodos: ids)
+		} catch {
+			// TODO: - Handle action
+		}
+	}
+
 	func viewDidChange(state newState: ViewState) {
 		guard case .didLoad = newState else {
 			return
@@ -54,23 +62,7 @@ extension TodosPresenter: TodosViewOutput {
 
 	func toolbarNewTodoButtonHasBeenClicked() {
 		do {
-			try interactor?.createTodo(withText: "New todo")
-		} catch {
-			// TODO: - Handle action
-		}
-	}
-
-	func textfieldDidChange(_ newValue: String, for id: UUID) {
-		do {
-			try interactor?.setText(newValue, forTodo: id)
-		} catch {
-			// TODO: - Handle action
-		}
-	}
-
-	func checkboxDidChange(_ newValue: Bool, for ids: [UUID]) {
-		do {
-			try interactor?.setStatus(newValue, forTodos: ids)
+			try interactor?.perform(.insert(["New todo"]))
 		} catch {
 			// TODO: - Handle action
 		}
@@ -78,7 +70,7 @@ extension TodosPresenter: TodosViewOutput {
 
 	func delete(_ ids: [UUID]) {
 		do {
-			try interactor?.deleteTodos(withIds: ids)
+			try interactor?.perform(.delete(ids))
 		} catch {
 			// TODO: - Handle action
 		}

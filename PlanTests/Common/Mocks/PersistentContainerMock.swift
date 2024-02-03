@@ -15,18 +15,13 @@ final class PersistentContainerMock {
 // MARK: - PersistentContainerProtocol
 extension PersistentContainerMock: PersistentContainerProtocol {
 
-	func setStatus(_ newValue: Bool, forTodos ids: [UUID]) throws {
-		let action: Action = .setStatus(newValue: newValue, forTodos: ids)
-		invocations.append(action)
-	}
-
 	func insertTodo(_ todo: Todo, to project: UUID?) throws {
 		let action: Action = .insertTodo(todo: todo, toProject: project)
 		invocations.append(action)
 	}
 
-	func setTodo(text: String, with id: UUID) throws {
-		let action: Action = .setTodo(text: text, withId: id)
+	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) throws {
+		let action: Action = .performModification(modification, forTodos: ids)
 		invocations.append(action)
 	}
 
@@ -61,12 +56,11 @@ extension PersistentContainerMock {
 
 	enum Action {
 		case insertTodo(todo: Todo, toProject: UUID?)
-		case setTodo(text: String, withId: UUID)
 		case deleteTodos(ids: [UUID])
 		case insertProject(project: Project)
-		case setProject(title: String, withId: UUID)
-		case setStatus(newValue: Bool, forTodos: [UUID])
 		case deleteProjects(ids: [UUID])
+		case setProject(title: String, withId: UUID)
+		case performModification(_ modification: TodoModification, forTodos: [UUID])
 		case save
 	}
 }
