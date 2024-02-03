@@ -28,6 +28,8 @@ final class TodosTableAdapter: NSObject {
 
 		table?.delegate = self
 		table?.dataSource = self
+
+		table?.menu = makeContextMenu()
 	}
 }
 
@@ -104,5 +106,78 @@ extension TodosTableAdapter {
 			items[row].uuid
 		}
 		output?.selectionDidChange(ids)
+	}
+}
+
+// MARK: - Menu support
+extension TodosTableAdapter {
+
+	func validateMenuItem(_ itemIdentifier: NSUserInterfaceItemIdentifier) -> Bool {
+		guard let rows = table?.effectiveSelection() else {
+			return false
+		}
+
+		switch itemIdentifier {
+		case .newMenuItem:
+			return true
+		case .bookmarkMenuItem, .setStatusMenuItem, .deleteMenuItem:
+			return !rows.isEmpty
+		default:
+			return false
+		}
+	}
+
+	func menuItemState(for itemIdentifier: NSUserInterfaceItemIdentifier) -> NSControl.StateValue {
+		guard let rows = table?.effectiveSelection() else {
+			return .off
+		}
+
+		var hasEnabled = false
+		var hasDisabled = false
+
+		for row in rows {
+
+			var state = false
+
+			switch itemIdentifier {
+			case .bookmarkMenuItem:
+				state = items[row].isFavorite
+			case .setStatusMenuItem:
+				state = items[row].isDone
+			default:
+				state = false
+			}
+
+			switch state {
+			case false:	hasDisabled = true
+			case true:	hasEnabled = true
+			}
+		}
+
+		if hasEnabled && hasDisabled {
+			return .mixed
+		} else if hasEnabled {
+			return .on
+		} else {
+			return .off
+		}
+	}
+}
+
+private extension TodosTableAdapter {
+
+	func makeContextMenu() -> NSMenu {
+		return MenuBuilder.makeMenu(
+			withTitle: "",
+			for:
+				[
+					.new,
+					.separator,
+					.favorite,
+					.completed,
+					.separator,
+					.delete
+				]
+		)
 	}
 }

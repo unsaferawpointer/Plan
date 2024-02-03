@@ -87,6 +87,41 @@ extension TodosViewController: TodosView {
 	}
 }
 
+// MARK: - MenuSupportable
+extension TodosViewController: MenuSupportable {
+
+	func createNew(_ sender: NSMenuItem) {
+		// TODO: - Handle action
+	}
+
+	func toggleBookmark(_ sender: NSMenuItem) {
+		// TODO: - Handle action
+	}
+
+	func toggleCompleted(_ sender: NSMenuItem) {
+		// TODO: - Handle action
+	}
+
+	func delete(_ sender: NSMenuItem) {
+		// TODO: - Handle action
+	}
+}
+
+// MARK: - NSMenuItemValidation
+extension TodosViewController: NSMenuItemValidation {
+
+	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+		guard let identifier = menuItem.identifier, let adapter else {
+			return false
+		}
+
+		let state = adapter.menuItemState(for: identifier)
+		menuItem.state = state
+
+		return adapter.validateMenuItem(identifier)
+	}
+}
+
 // MARK: - Helpers
 private extension TodosViewController {
 
