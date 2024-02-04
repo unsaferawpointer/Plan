@@ -55,11 +55,10 @@ private extension LabelView {
 	func configureUserInterface() {
 		let textfield: NSTextField = {
 			let view = NSTextField()
-			view.focusRingType = .default
-			view.cell?.sendsActionOnEndEditing = true
 			view.isBordered = false
 			view.drawsBackground = false
 			view.usesSingleLineMode = true
+			view.isEditable = false
 			view.lineBreakMode = .byTruncatingMiddle
 			return view
 		}()
