@@ -32,6 +32,7 @@ extension StateProvider: SidebarStateProviderProtocol {
 
 	func navigate(to route: Route) {
 		selection.route = route
+		selection.projects = []
 	}
 }
 
