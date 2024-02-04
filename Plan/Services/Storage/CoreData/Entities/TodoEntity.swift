@@ -23,7 +23,10 @@ extension TodoEntity {
 	@NSManaged public var inFocus: Bool
 	@NSManaged public var isFavorite: Bool
 	@NSManaged public var creationDate: Date
-	@NSManaged public var isDone: Bool
+	@NSManaged public var completionDate: Date?
+
+	// MARK: - Relationships
+
 	@NSManaged public var project: ProjectEntity?
 
 	public override func awakeFromInsert() {
@@ -34,9 +37,30 @@ extension TodoEntity {
 		self.inFocus = false
 		self.isFavorite = isFavorite
 		self.creationDate = Date()
-		self.isDone = false
 	}
 
+	public override func willSave() {
+		if !isDeleted, let date = completionDate {
+			let max = max(creationDate, date)
+			let keyPath = NSExpression(forKeyPath: \TodoEntity.creationDate).keyPath
+			setPrimitiveValue(max, forKey: keyPath)
+		}
+		super.willSave()
+	}
+
+}
+
+// MARK: - Calculated properties
+extension TodoEntity {
+
+	var isDone: Bool {
+		get {
+			return completionDate != nil
+		}
+		set {
+			completionDate = newValue ? Date() : nil
+		}
+	}
 }
 
 // MARK: - Identifiable
