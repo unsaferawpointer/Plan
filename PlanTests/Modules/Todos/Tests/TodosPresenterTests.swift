@@ -43,17 +43,44 @@ extension TodosPresenterTests {
 		// Arrange
 		let todos: [Todo] = [.random, .random, .random]
 		let expectedItems = todos.map { todo in
-			TodoModel(uuid: todo.uuid, isDone: todo.isDone, isFavorite: todo.isFavorite, text: todo.text)
+			TodoModel(
+				uuid: todo.uuid,
+				isDone: todo.isDone,
+				isFavorite: todo.isFavorite,
+				inFocus: todo.inFocus,
+				text: todo.text
+			)
 		}
 
 		// Act
 		sut.present(todos)
 
 		// Assert
-		guard case let .display(items) = view.invocations[0] else {
+		guard case let .display(state) = view.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(expectedItems, items)
+		XCTAssertEqual(state, .content(models: expectedItems))
+	}
+
+	func testPresentWhenDataIsEmpty() {
+		// Arrange
+		let todos: [Todo] = []
+
+		// Act
+		sut.present(todos)
+
+		// Assert
+		guard case let .display(state) = view.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(
+			state,
+				.placeholder(
+					title: "No todos, yet",
+					subtitle: "Add new todo using the plus button",
+					image: "ghost"
+				)
+		)
 	}
 }
 

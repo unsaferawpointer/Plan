@@ -16,8 +16,8 @@ final class TodosViewMock {
 // MARK: - TodosView
 extension TodosViewMock: TodosView {
 
-	func display(_ items: [TodoModel]) {
-		let action: Action = .display(items)
+	func display(_ state: TodosViewState) {
+		let action: Action = .display(state)
 		invocations.append(action)
 	}
 }
@@ -26,6 +26,6 @@ extension TodosViewMock: TodosView {
 extension TodosViewMock {
 
 	enum Action {
-		case display(_ items: [TodoModel])
+		case display(_ state: TodosViewState)
 	}
 }

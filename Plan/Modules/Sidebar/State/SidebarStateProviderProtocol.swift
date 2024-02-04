@@ -7,4 +7,5 @@
 
 protocol SidebarStateProviderProtocol {
 	func navigate(to route: Route)
+	func getRoute() -> Route
 }

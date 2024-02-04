@@ -1,23 +1,21 @@
 //
-//  SidebarViewController.swift
+//  EmptyContentViewController.swift
 //  Plan
 //
-//  Created by Anton Cherkasov on 27.01.2024.
+//  Created by Anton Cherkasov on 04.02.2024.
 //
 
 import Cocoa
 
-protocol SidebarViewOutput: ViewOutput {
-	func selectionDidChange(_ newValue: SidebarItem)
+protocol EmptyContentView: AnyObject {
+	func display(_ state: EmptyContentViewState)
 }
 
-protocol SidebarView: AnyObject {
-	func selectItem(_ item: SidebarItem)
-}
+protocol EmptyContentViewOutput: ViewOutput { }
 
-class SidebarViewController: NSViewController {
+final class EmptyContentViewController: NSViewController {
 
-	var output: SidebarViewOutput?
+	var output: EmptyContentViewOutput?
 
 	// MARK: - UI-Properties
 
@@ -27,46 +25,36 @@ class SidebarViewController: NSViewController {
 		view.hasHorizontalScroller = false
 		view.autohidesScrollers = true
 		view.hasVerticalScroller = true
-		view.automaticallyAdjustsContentInsets = false
 		view.automaticallyAdjustsContentInsets = true
-		view.drawsBackground = false
+		view.drawsBackground = true
 		return view
 	}()
 
-	lazy var table: NSOutlineView = {
-		let view = NSOutlineView()
-		view.style = .sourceList
-		view.rowSizeStyle = .default
+	lazy var table: NSTableView = {
+		let view = NSTableView()
+		view.style = .inset
+		view.rowSizeStyle = .large
 		view.floatsGroupRows = false
-		view.allowsMultipleSelection = false
+		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
 		view.usesAlternatingRowBackgroundColors = false
 		view.usesAutomaticRowHeights = false
 		return view
 	}()
 
-	// MARK: - DI
-
-	var adapter: SidebarTableAdapter?
+	lazy var placeholderView = PlaceholderView(frame: .zero)
 
 	// MARK: - Initialization
 
-	init(configure: (SidebarViewController) -> Void) {
+	init(configure: (EmptyContentViewController) -> Void) {
 		super.init(nibName: nil, bundle: nil)
 		configure(self)
-		self.adapter = SidebarTableAdapter(table: table)
-		adapter?.selection = { [weak self] newValue in
-			guard let self else {
-				return
-			}
-			self.output?.selectionDidChange(newValue)
-		}
 	}
-	
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	// MARK: - View life-cycle
 
 	override func loadView() {
@@ -83,16 +71,18 @@ class SidebarViewController: NSViewController {
 	}
 }
 
-// MARK: - SidebarView
-extension SidebarViewController: SidebarView {
+// MARK: - PlaceholderView
+extension EmptyContentViewController: EmptyContentView {
 
-	func selectItem(_ item: SidebarItem) {
-		adapter?.selectItem(item)
+	func display(_ state: EmptyContentViewState) {
+		placeholderView.title = state.title
+		placeholderView.subtitle = state.subtitle
+		placeholderView.iconView.image = NSImage(named: state.image)
 	}
 }
 
 // MARK: - Helpers
-private extension SidebarViewController {
+private extension EmptyContentViewController {
 
 	func configureUserInterface() {
 
@@ -106,7 +96,7 @@ private extension SidebarViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview].forEach {
+		[scrollview, placeholderView].forEach {
 			view.addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
@@ -116,8 +106,14 @@ private extension SidebarViewController {
 				scrollview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
-				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+				placeholderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+				placeholderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+				placeholderView.topAnchor.constraint(equalTo: view.topAnchor),
+				placeholderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 			]
 		)
 	}
 }
+

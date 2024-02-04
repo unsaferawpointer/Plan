@@ -26,6 +26,10 @@ final class StateProvider {
 // MARK: - SidebarStateProviderProtocol
 extension StateProvider: SidebarStateProviderProtocol {
 
+	func getRoute() -> Route {
+		return selection.route
+	}
+
 	func navigate(to route: Route) {
 		selection.route = route
 	}

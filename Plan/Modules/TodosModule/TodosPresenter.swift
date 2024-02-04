@@ -34,7 +34,18 @@ extension TodosPresenter: TodosPresenterProtocol {
 		let models = todos.map { todo in
 			makeModel(from: todo)
 		}
-		view?.display(models)
+
+		guard !models.isEmpty else {
+			let state: TodosViewState = .placeholder(
+				title: "No todos, yet",
+				subtitle: "Add new todo using the plus button",
+				image: "ghost"
+			)
+			view?.display(state)
+			return
+		}
+
+		view?.display(.content(models: models))
 	}
 }
 

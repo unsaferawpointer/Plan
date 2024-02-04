@@ -11,6 +11,8 @@ final class SidebarPresenter {
 
 	var stateProvider: SidebarStateProviderProtocol
 
+	weak var view: SidebarView?
+
 	// MARK: - Initialization
 
 	init(stateProvider: SidebarStateProviderProtocol) {
@@ -20,6 +22,25 @@ final class SidebarPresenter {
 
 // MARK: - SidebarViewOutput
 extension SidebarPresenter: SidebarViewOutput {
+
+	func viewDidChange(state newState: ViewState) {
+		guard case .didLoad = newState else {
+			return
+		}
+
+		switch stateProvider.getRoute() {
+		case .focus:
+			view?.selectItem(.focus)
+		case .backlog:
+			view?.selectItem(.backlog)
+		case .favorites:
+			view?.selectItem(.favorites)
+		case .projects:
+			view?.selectItem(.projects)
+		case .archieve:
+			view?.selectItem(.archieve)
+		}
+	}
 
 	func selectionDidChange(_ newValue: SidebarItem) {
 		switch newValue {

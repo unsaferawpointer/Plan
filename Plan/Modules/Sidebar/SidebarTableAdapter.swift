@@ -36,6 +36,17 @@ final class SidebarTableAdapter: NSObject {
 	}
 }
 
+// MARK: - Public interface
+extension SidebarTableAdapter {
+
+	func selectItem(_ item: SidebarItem) {
+		guard let index = items.firstIndex(of: item) else {
+			return
+		}
+		table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
+	}
+}
+
 // MARK: - NSOutlineViewDataSource
 extension SidebarTableAdapter: NSOutlineViewDataSource {
 

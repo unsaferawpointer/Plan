@@ -84,6 +84,12 @@
 		4C9103932B6E9D3400E7F03D /* NSTableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103922B6E9D3400E7F03D /* NSTableView+Extension.swift */; };
 		4C9103952B6EBAC600E7F03D /* TodosAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103942B6EBAC600E7F03D /* TodosAction.swift */; };
 		4C9103972B6EBAEA00E7F03D /* TodoModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103962B6EBAEA00E7F03D /* TodoModification.swift */; };
+		4C91039A2B6FB1C800E7F03D /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103992B6FB1C800E7F03D /* PlaceholderView.swift */; };
+		4C91039C2B6FB2BD00E7F03D /* TodosViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91039B2B6FB2BD00E7F03D /* TodosViewState.swift */; };
+		4C91039F2B6FB5D800E7F03D /* EmptyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91039E2B6FB5D800E7F03D /* EmptyContentViewController.swift */; };
+		4C9103A12B6FB63800E7F03D /* EmptyContentViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A02B6FB63800E7F03D /* EmptyContentViewState.swift */; };
+		4C9103A32B6FBAED00E7F03D /* EmptyContentAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */; };
+		4C9103A52B6FBBE700E7F03D /* EmptyContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +191,12 @@
 		4C9103922B6E9D3400E7F03D /* NSTableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extension.swift"; sourceTree = "<group>"; };
 		4C9103942B6EBAC600E7F03D /* TodosAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosAction.swift; sourceTree = "<group>"; };
 		4C9103962B6EBAEA00E7F03D /* TodoModification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModification.swift; sourceTree = "<group>"; };
+		4C9103992B6FB1C800E7F03D /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		4C91039B2B6FB2BD00E7F03D /* TodosViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewState.swift; sourceTree = "<group>"; };
+		4C91039E2B6FB5D800E7F03D /* EmptyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewController.swift; sourceTree = "<group>"; };
+		4C9103A02B6FB63800E7F03D /* EmptyContentViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewState.swift; sourceTree = "<group>"; };
+		4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentAssembly.swift; sourceTree = "<group>"; };
+		4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +461,7 @@
 				4C2841312B65457E00BC4A9F /* Sidebar */,
 				4C28414D2B65711D00BC4A9F /* ProjectsModule */,
 				4C2841482B656FD800BC4A9F /* TodosModule */,
+				4C91039D2B6FB5B300E7F03D /* EmptyContent */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -496,6 +509,7 @@
 		4C6825AB2B5D36CA000DDD07 /* Design System */ = {
 			isa = PBXGroup;
 			children = (
+				4C9103982B6FB1BF00E7F03D /* Views */,
 				4C9103892B6E886200E7F03D /* Menu */,
 				4C28412E2B6544DA00BC4A9F /* Extenstions */,
 				4C6825B02B5EB033000DDD07 /* Common */,
@@ -554,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				4C91036B2B6D508700E7F03D /* TodosStateProviderProtocol.swift */,
+				4C91039B2B6FB2BD00E7F03D /* TodosViewState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -601,6 +616,25 @@
 				4C9103902B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		4C9103982B6FB1BF00E7F03D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C9103992B6FB1C800E7F03D /* PlaceholderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C91039D2B6FB5B300E7F03D /* EmptyContent */ = {
+			isa = PBXGroup;
+			children = (
+				4C91039E2B6FB5D800E7F03D /* EmptyContentViewController.swift */,
+				4C9103A02B6FB63800E7F03D /* EmptyContentViewState.swift */,
+				4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */,
+				4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */,
+			);
+			path = EmptyContent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,6 +779,7 @@
 				4C2841332B65459F00BC4A9F /* SidebarViewController.swift in Sources */,
 				4C28414F2B65714000BC4A9F /* ProjectsViewController.swift in Sources */,
 				4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */,
+				4C9103A12B6FB63800E7F03D /* EmptyContentViewState.swift in Sources */,
 				4C28414C2B65706C00BC4A9F /* TodosAssembly.swift in Sources */,
 				4C2841372B654B9700BC4A9F /* Route.swift in Sources */,
 				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
@@ -756,6 +791,7 @@
 				4C91036C2B6D508700E7F03D /* TodosStateProviderProtocol.swift in Sources */,
 				4C7708AA2B6968B600847955 /* TodosDataProvider.swift in Sources */,
 				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
+				4C9103A32B6FBAED00E7F03D /* EmptyContentAssembly.swift in Sources */,
 				4C9103742B6D764D00E7F03D /* TodosConfiguration.swift in Sources */,
 				4C2841742B667BB200BC4A9F /* ProjectsDataProvider.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
@@ -769,7 +805,9 @@
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
 				4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */,
 				4C9103972B6EBAEA00E7F03D /* TodoModification.swift in Sources */,
+				4C91039C2B6FB2BD00E7F03D /* TodosViewState.swift in Sources */,
 				4C91037D2B6E44BF00E7F03D /* TodosFactory.swift in Sources */,
+				4C9103A52B6FBBE700E7F03D /* EmptyContentPresenter.swift in Sources */,
 				4C7708972B681EAA00847955 /* TodosTableAdapter.swift in Sources */,
 				4C2841512B65715300BC4A9F /* ProjectsAssembly.swift in Sources */,
 				4C9103882B6E885D00E7F03D /* MenuSupportable.swift in Sources */,
@@ -781,11 +819,13 @@
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
 				4C91038F2B6E9A1500E7F03D /* MenuBuilder+Item.swift in Sources */,
 				4C28415C2B65872600BC4A9F /* ProjectCell.swift in Sources */,
+				4C91039F2B6FB5D800E7F03D /* EmptyContentViewController.swift in Sources */,
 				4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */,
 				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
 				4C91038B2B6E99D900E7F03D /* MenuItem.swift in Sources */,
 				4C9103952B6EBAC600E7F03D /* TodosAction.swift in Sources */,
 				4C7708942B681A2B00847955 /* TodosInteractor.swift in Sources */,
+				4C91039A2B6FB1C800E7F03D /* PlaceholderView.swift in Sources */,
 				4C2841572B65829B00BC4A9F /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

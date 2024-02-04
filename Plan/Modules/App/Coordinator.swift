@@ -72,7 +72,11 @@ extension Coordinator: StateProviderDelegate {
 		case .projects:
 			guard let id = new.projects.first else {
 				// TODO: - Configure empty view-controller
-				let detail = NSViewController(nibName: nil, bundle: nil)
+				let detail = EmptyContentAssembly.assemble(.init(
+					title: "No selection",
+					subtitle: "Select a project.",
+					image: "ghost")
+				)
 				let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
 				router.present(content: content, detail: detail)
 				return

@@ -13,6 +13,7 @@ final class SidebarAssembly {
 		let presenter = SidebarPresenter(stateProvider: stateProvider)
 		return SidebarViewController { viewController in
 			viewController.output = presenter
+			presenter.view = viewController
 		}
 	}
 }

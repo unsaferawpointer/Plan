@@ -15,7 +15,7 @@ protocol TodosViewOutput: AnyObject, ViewOutput {
 }
 
 protocol TodosView: AnyObject {
-	func display(_ items: [TodoModel])
+	func display(_ state: TodosViewState)
 }
 
 final class TodosViewController: NSViewController {
@@ -49,6 +49,8 @@ final class TodosViewController: NSViewController {
 		return view
 	}()
 
+	lazy var placeholderView = PlaceholderView(frame: .zero)
+
 	// MARK: - Initialization
 
 	init(configure: (TodosViewController) -> Void) {
@@ -81,8 +83,19 @@ final class TodosViewController: NSViewController {
 // MARK: - TodosView
 extension TodosViewController: TodosView {
 
-	func display(_ items: [TodoModel]) {
-		adapter?.apply(items)
+	func display(_ state: TodosViewState) {
+		switch state {
+		case .placeholder(let title, let subtitle, let image):
+			placeholderView.isHidden = false
+			placeholderView.title = title
+			placeholderView.subtitle = subtitle
+			placeholderView.iconView.image = NSImage(named: image)
+
+			adapter?.apply([])
+		case .content(let models):
+			placeholderView.isHidden = true
+			adapter?.apply(models)
+		}
 	}
 }
 
@@ -166,7 +179,7 @@ private extension TodosViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview].forEach {
+		[scrollview, placeholderView].forEach {
 			view.addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
@@ -176,7 +189,12 @@ private extension TodosViewController {
 				scrollview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
-				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+				placeholderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+				placeholderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+				placeholderView.topAnchor.constraint(equalTo: view.topAnchor),
+				placeholderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 			]
 		)
 	}
