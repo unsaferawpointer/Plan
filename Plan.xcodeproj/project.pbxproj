@@ -43,6 +43,8 @@
 		4C2841852B66DC8200BC4A9F /* ProjectsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841842B66DC8200BC4A9F /* ProjectsPresenterTests.swift */; };
 		4C2841872B66DD3300BC4A9F /* ProjectsViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841862B66DD3300BC4A9F /* ProjectsViewMock.swift */; };
 		4C2841892B66DDB300BC4A9F /* ProjectsInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841882B66DDB300BC4A9F /* ProjectsInteractorMock.swift */; };
+		4C2D5D9F2B71113B0078B6FF /* TitleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D5D9E2B71113B0078B6FF /* TitleDelegate.swift */; };
+		4C2D5DA12B7170360078B6FF /* InfoDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D5DA02B7170360078B6FF /* InfoDelegateMock.swift */; };
 		4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FA2B5447440086B3D1 /* AppDelegate.swift */; };
 		4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3717FE2B5447440086B3D1 /* Plan.xcdatamodeld */; };
 		4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3718012B5447450086B3D1 /* Assets.xcassets */; };
@@ -90,6 +92,7 @@
 		4C9103A12B6FB63800E7F03D /* EmptyContentViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A02B6FB63800E7F03D /* EmptyContentViewState.swift */; };
 		4C9103A32B6FBAED00E7F03D /* EmptyContentAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */; };
 		4C9103A52B6FBBE700E7F03D /* EmptyContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */; };
+		4CAD55942B703469006BD687 /* InfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD55932B703469006BD687 /* InfoDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +149,8 @@
 		4C2841842B66DC8200BC4A9F /* ProjectsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenterTests.swift; sourceTree = "<group>"; };
 		4C2841862B66DD3300BC4A9F /* ProjectsViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewMock.swift; sourceTree = "<group>"; };
 		4C2841882B66DDB300BC4A9F /* ProjectsInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsInteractorMock.swift; sourceTree = "<group>"; };
+		4C2D5D9E2B71113B0078B6FF /* TitleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDelegate.swift; sourceTree = "<group>"; };
+		4C2D5DA02B7170360078B6FF /* InfoDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDelegateMock.swift; sourceTree = "<group>"; };
 		4C3717F72B5447440086B3D1 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3717FA2B5447440086B3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3717FF2B5447440086B3D1 /* Plan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plan.xcdatamodel; sourceTree = "<group>"; };
@@ -197,6 +202,7 @@
 		4C9103A02B6FB63800E7F03D /* EmptyContentViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewState.swift; sourceTree = "<group>"; };
 		4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentAssembly.swift; sourceTree = "<group>"; };
 		4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentPresenter.swift; sourceTree = "<group>"; };
+		4CAD55932B703469006BD687 /* InfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +236,8 @@
 				4C28412C2B6544BE00BC4A9F /* Router.swift */,
 				4C2841462B65699500BC4A9F /* Coordinator.swift */,
 				4C9103662B6D3A0400E7F03D /* StateProvider.swift */,
+				4CAD55932B703469006BD687 /* InfoDelegate.swift */,
+				4C2D5D9E2B71113B0078B6FF /* TitleDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -482,6 +490,7 @@
 				4C28417D2B66D4D700BC4A9F /* ProjectsDataProviderMock.swift */,
 				4C7708A72B69680300847955 /* TodosDataProviderMock.swift */,
 				4C91037E2B6E48D400E7F03D /* TodosFactoryMock.swift */,
+				4C2D5DA02B7170360078B6FF /* InfoDelegateMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -780,6 +789,7 @@
 				4C28414F2B65714000BC4A9F /* ProjectsViewController.swift in Sources */,
 				4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */,
 				4C9103A12B6FB63800E7F03D /* EmptyContentViewState.swift in Sources */,
+				4C2D5D9F2B71113B0078B6FF /* TitleDelegate.swift in Sources */,
 				4C28414C2B65706C00BC4A9F /* TodosAssembly.swift in Sources */,
 				4C2841372B654B9700BC4A9F /* Route.swift in Sources */,
 				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
@@ -827,6 +837,7 @@
 				4C7708942B681A2B00847955 /* TodosInteractor.swift in Sources */,
 				4C91039A2B6FB1C800E7F03D /* PlaceholderView.swift in Sources */,
 				4C2841572B65829B00BC4A9F /* Project.swift in Sources */,
+				4CAD55942B703469006BD687 /* InfoDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +847,7 @@
 			files = (
 				4C2841872B66DD3300BC4A9F /* ProjectsViewMock.swift in Sources */,
 				4C28417C2B66D20D00BC4A9F /* ProjectsPresenterMock.swift in Sources */,
+				4C2D5DA12B7170360078B6FF /* InfoDelegateMock.swift in Sources */,
 				4C7708A82B69680300847955 /* TodosDataProviderMock.swift in Sources */,
 				4C2841832B66DB0500BC4A9F /* Project+Extension.swift in Sources */,
 				4C517AEF2B6978C6000E4DC1 /* TodosInteractorMock.swift in Sources */,

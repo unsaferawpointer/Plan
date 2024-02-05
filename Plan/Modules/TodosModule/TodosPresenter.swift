@@ -19,10 +19,13 @@ final class TodosPresenter {
 
 	var stateProvider: TodosStateProviderProtocol
 
+	weak var infoDelegate: InfoDelegate?
+
 	// MARK: - Initialization
 
-	init(stateProvider: TodosStateProviderProtocol) {
+	init(stateProvider: TodosStateProviderProtocol, infoDelegate: InfoDelegate) {
 		self.stateProvider = stateProvider
+		self.infoDelegate = infoDelegate
 	}
 
 }
@@ -42,10 +45,12 @@ extension TodosPresenter: TodosPresenterProtocol {
 				image: "ghost"
 			)
 			view?.display(state)
+			infoDelegate?.infoDidChange("No incomplete todos")
 			return
 		}
 
 		view?.display(.content(models: models))
+		infoDelegate?.infoDidChange("\(models.count) incomplete todos")
 	}
 }
 

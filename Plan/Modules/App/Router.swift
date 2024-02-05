@@ -18,6 +18,8 @@ protocol Routable {
 	func showWindowAndOrderFront(sidebar: NSViewController, detail: NSViewController)
 
 	func present(content: NSViewController?, detail: NSViewController)
+
+	func setWindow(title: String?, subtitle: String?)
 }
 
 /// AppRouter of the App
@@ -94,6 +96,15 @@ extension AppRouter: Routable {
 		}
 
 		toolbar.validateVisibleItems()
+	}
+
+	func setWindow(title: String?, subtitle: String?) {
+		if let title {
+			mainWindow.title = title
+		}
+		if let subtitle {
+			mainWindow.subtitle = subtitle
+		}
 	}
 }
 

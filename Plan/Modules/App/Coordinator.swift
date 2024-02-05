@@ -42,8 +42,12 @@ final class Coordinator {
 extension Coordinator: Coordinatable {
 
 	func start() {
-		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider)
-		let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .inFocus)
+		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider, titleDelegate: self)
+		let detail = TodosAssembly.assemble(
+			stateProvider: stateProvider,
+			configuration: .inFocus,
+			infoDelegate: self
+		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
 }
@@ -56,22 +60,19 @@ extension Coordinator: StateProviderDelegate {
 			return
 		}
 
+		infoDidChange("")
+
 		switch new.route {
 		case .focus:
-			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .inFocus)
-			router.present(content: nil, detail: detail)
+			presentDetail(with: .inFocus)
 		case .backlog:
-			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .backlog)
-			router.present(content: nil, detail: detail)
+			presentDetail(with: .backlog)
 		case .favorites:
-			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .favorites)
-			router.present(content: nil, detail: detail)
+			presentDetail(with: .favorites)
 		case .archieve:
-			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .archieve)
-			router.present(content: nil, detail: detail)
+			presentDetail(with: .archieve)
 		case .projects:
 			guard let id = new.projects.first else {
-				// TODO: - Configure empty view-controller
 				let detail = EmptyContentAssembly.assemble(.init(
 					title: "No selection",
 					subtitle: "Select a project.",
@@ -81,9 +82,42 @@ extension Coordinator: StateProviderDelegate {
 				router.present(content: content, detail: detail)
 				return
 			}
-			let detail = TodosAssembly.assemble(stateProvider: stateProvider, configuration: .project(id))
+			let detail = TodosAssembly.assemble(
+				stateProvider: stateProvider,
+				configuration: .project(id),
+				infoDelegate: self
+			)
 			let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
 			router.present(content: content, detail: detail)
 		}
+	}
+}
+
+// MARK: - Helpers
+private extension Coordinator {
+
+	func presentDetail(with configuration: TodosConfiguration) {
+		let detail = TodosAssembly.assemble(
+			stateProvider: stateProvider,
+			configuration: configuration,
+			infoDelegate: self
+		)
+		router.present(content: nil, detail: detail)
+	}
+}
+
+// MARK: - SubtitleInfoProvider
+extension Coordinator: InfoDelegate {
+
+	func infoDidChange(_ info: String) {
+		router.setWindow(title: nil, subtitle: info)
+	}
+}
+
+// MARK: - TitleDelegate
+extension Coordinator: TitleDelegate {
+
+	func titleDidChange(_ title: String) {
+		router.setWindow(title: title, subtitle: nil)
 	}
 }

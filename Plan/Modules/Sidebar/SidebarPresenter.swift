@@ -11,12 +11,18 @@ final class SidebarPresenter {
 
 	var stateProvider: SidebarStateProviderProtocol
 
+	weak var titleDelegate: TitleDelegate?
+
 	weak var view: SidebarView?
 
 	// MARK: - Initialization
 
-	init(stateProvider: SidebarStateProviderProtocol) {
+	init(
+		stateProvider: SidebarStateProviderProtocol,
+		titleDelegate: TitleDelegate
+	) {
 		self.stateProvider = stateProvider
+		self.titleDelegate = titleDelegate
 	}
 }
 
@@ -50,5 +56,6 @@ extension SidebarPresenter: SidebarViewOutput {
 		case .projects:		stateProvider.navigate(to: .projects)
 		case .archieve:		stateProvider.navigate(to: .archieve)
 		}
+		titleDelegate?.titleDidChange(newValue.title)
 	}
 }

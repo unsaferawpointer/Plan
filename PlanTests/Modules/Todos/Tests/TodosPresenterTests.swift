@@ -20,11 +20,14 @@ final class TodosPresenterTests: XCTestCase {
 
 	private var stateProvider: TodosStateProviderMock!
 
+	private var infoDelegate: InfoDelegateMock!
+
 	override func setUpWithError() throws {
 		view = TodosViewMock()
 		interactor = TodosInteractorMock()
 		stateProvider = TodosStateProviderMock()
-		sut = TodosPresenter(stateProvider: stateProvider)
+		infoDelegate = InfoDelegateMock()
+		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -33,6 +36,8 @@ final class TodosPresenterTests: XCTestCase {
 		sut = nil
 		view = nil
 		interactor = nil
+		stateProvider = nil
+		infoDelegate = nil
 	}
 }
 
@@ -60,6 +65,11 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(state, .content(models: expectedItems))
+		XCTAssertEqual(view.invocations.count, 1)
+		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(info, "3 incomplete todos")
 	}
 
 	func testPresentWhenDataIsEmpty() {
@@ -81,6 +91,11 @@ extension TodosPresenterTests {
 					image: "ghost"
 				)
 		)
+		XCTAssertEqual(view.invocations.count, 1)
+		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(info, "No incomplete todos")
 	}
 }
 
