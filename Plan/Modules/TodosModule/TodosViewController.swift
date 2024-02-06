@@ -53,8 +53,9 @@ final class TodosViewController: NSViewController {
 
 	// MARK: - Initialization
 
-	init(configure: (TodosViewController) -> Void) {
+	init(_ menu: NSMenu, configure: (TodosViewController) -> Void) {
 		super.init(nibName: nil, bundle: nil)
+		table.menu = menu
 		configure(self)
 	}
 

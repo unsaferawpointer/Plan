@@ -28,8 +28,6 @@ final class TodosTableAdapter: NSObject {
 
 		table?.delegate = self
 		table?.dataSource = self
-
-		table?.menu = makeContextMenu()
 	}
 }
 
@@ -225,24 +223,5 @@ extension TodosTableAdapter {
 		}
 		let ids = rows.map { items[$0].uuid }
 		output?.performModification(.unfocus, forTodos: ids)
-	}
-}
-
-private extension TodosTableAdapter {
-
-	func makeContextMenu() -> NSMenu {
-		return MenuBuilder.makeMenu(
-			withTitle: "",
-			for:
-				[
-					.new,
-					.separator,
-					.inFocus,
-					.bookmarked,
-					.completed,
-					.separator,
-					.delete
-				]
-		)
 	}
 }

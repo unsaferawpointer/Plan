@@ -93,6 +93,11 @@
 		4C9103A32B6FBAED00E7F03D /* EmptyContentAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */; };
 		4C9103A52B6FBBE700E7F03D /* EmptyContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */; };
 		4CAD55942B703469006BD687 /* InfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD55932B703469006BD687 /* InfoDelegate.swift */; };
+		4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */; };
+		4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */; };
+		4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */; };
+		4CCEBB722B72C10400B57EF1 /* TodosMenuItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB712B72C10400B57EF1 /* TodosMenuItemIdentifier.swift */; };
+		4CCEBB742B72C3D200B57EF1 /* TodosMenuOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB732B72C3D200B57EF1 /* TodosMenuOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +208,11 @@
 		4C9103A22B6FBAED00E7F03D /* EmptyContentAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentAssembly.swift; sourceTree = "<group>"; };
 		4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentPresenter.swift; sourceTree = "<group>"; };
 		4CAD55932B703469006BD687 /* InfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDelegate.swift; sourceTree = "<group>"; };
+		4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuAssembly.swift; sourceTree = "<group>"; };
+		4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuPresenter.swift; sourceTree = "<group>"; };
+		4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosContextMenu.swift; sourceTree = "<group>"; };
+		4CCEBB712B72C10400B57EF1 /* TodosMenuItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuItemIdentifier.swift; sourceTree = "<group>"; };
+		4CCEBB732B72C3D200B57EF1 /* TodosMenuOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +295,7 @@
 		4C2841482B656FD800BC4A9F /* TodosModule */ = {
 			isa = PBXGroup;
 			children = (
+				4CCEBB682B72B61F00B57EF1 /* Menu */,
 				4C9103682B6D506400E7F03D /* State */,
 				4C7708952B681CE800847955 /* Cells */,
 				4C2841492B656FF600BC4A9F /* TodosViewController.swift */,
@@ -646,6 +657,18 @@
 			path = EmptyContent;
 			sourceTree = "<group>";
 		};
+		4CCEBB682B72B61F00B57EF1 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4CCEBB732B72C3D200B57EF1 /* TodosMenuOutput.swift */,
+				4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */,
+				4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */,
+				4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */,
+				4CCEBB712B72C10400B57EF1 /* TodosMenuItemIdentifier.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -781,10 +804,12 @@
 				4C9103932B6E9D3400E7F03D /* NSTableView+Extension.swift in Sources */,
 				4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */,
 				4C2841532B65787D00BC4A9F /* ProjectsPresenter.swift in Sources */,
+				4CCEBB722B72C10400B57EF1 /* TodosMenuItemIdentifier.swift in Sources */,
 				4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */,
 				4C9103912B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C2841552B6578A100BC4A9F /* ProjectsInteractor.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
+				4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */,
 				4C2841332B65459F00BC4A9F /* SidebarViewController.swift in Sources */,
 				4C28414F2B65714000BC4A9F /* ProjectsViewController.swift in Sources */,
 				4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */,
@@ -824,6 +849,7 @@
 				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
 				4C7708922B6819AF00847955 /* TodosPresenter.swift in Sources */,
 				4C77089D2B68223200847955 /* TodoModel.swift in Sources */,
+				4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C9103722B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
@@ -831,9 +857,11 @@
 				4C28415C2B65872600BC4A9F /* ProjectCell.swift in Sources */,
 				4C91039F2B6FB5D800E7F03D /* EmptyContentViewController.swift in Sources */,
 				4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */,
+				4CCEBB742B72C3D200B57EF1 /* TodosMenuOutput.swift in Sources */,
 				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
 				4C91038B2B6E99D900E7F03D /* MenuItem.swift in Sources */,
 				4C9103952B6EBAC600E7F03D /* TodosAction.swift in Sources */,
+				4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */,
 				4C7708942B681A2B00847955 /* TodosInteractor.swift in Sources */,
 				4C91039A2B6FB1C800E7F03D /* PlaceholderView.swift in Sources */,
 				4C2841572B65829B00BC4A9F /* Project.swift in Sources */,

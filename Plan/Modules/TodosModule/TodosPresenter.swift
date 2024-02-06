@@ -97,6 +97,14 @@ extension TodosPresenter: TodosViewOutput {
 	}
 }
 
+// MARK: - TodosMenuOutput
+extension TodosPresenter: TodosMenuOutput {
+
+	func menuItemHasBeenClicked(_ item: TodosMenuItemIdentifier) {
+		// TODO: - Handle action
+	}
+}
+
 // MARK: - Helpers
 private extension TodosPresenter {
 

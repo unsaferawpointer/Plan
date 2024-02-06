@@ -25,7 +25,9 @@ final class TodosAssembly {
 			factory: factory
 		)
 
-		return TodosViewController { viewController in
+		let menu = TodosMenuAssembly.assemble(output: presenter)
+
+		return TodosViewController(menu) { viewController in
 			viewController.output = presenter
 			presenter.interactor = interactor
 			presenter.view = viewController
