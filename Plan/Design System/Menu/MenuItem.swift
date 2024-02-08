@@ -7,35 +7,26 @@
 
 import Foundation
 
-struct MenuItem {
-
-	private var state: [String: State]
-
-	private var validation: [String: Bool]
-
-	init(state: [String : State], validation: [String : Bool]) {
-		self.state = state
-		self.validation = validation
-	}
+enum MenuItem {
+	case menu(_ id: Identifier, content: ItemContent, items: [MenuItem])
+	case custom(_ id: Identifier, content: ItemContent)
+	case separator
 }
 
-// MARK: - Public interface
+// MARK: - Nested data strcuts
 extension MenuItem {
 
-	func stateFor(_ id: String) -> State {
-		return state[id] ?? .off
+	enum Identifier {
+
+		case uuid(_ value: UUID)
+		case basic(_ value: String)
 	}
 
-	func isValid(_ id: String) -> Bool {
-		return validation[id] ?? false
-	}
-}
-
-// MARK: - Nested data structs
-extension MenuItem {
-
-	enum State {
-		case off
-		case on
+	struct ItemContent {
+		var title: String
+		var keyEquivalent: String
 	}
 }
+
+// MARK: - Equatable
+extension MenuItem.Identifier: Equatable { }

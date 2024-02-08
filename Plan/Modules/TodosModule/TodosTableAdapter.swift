@@ -17,8 +17,6 @@ final class TodosTableAdapter: NSObject {
 
 	private (set) var items: [TodoModel] = []
 
-	var selection: (([UUID]) -> Void)?
-
 	// MARK: - Initialization
 
 	init(table: NSTableView? = nil) {
@@ -36,6 +34,15 @@ extension TodosTableAdapter {
 	func apply(_ items: [TodoModel]) {
 		self.items = items
 		table?.reloadData()
+	}
+
+	var selection: [UUID] {
+		get {
+			let rows = table?.effectiveSelection() ?? .init()
+			return rows.map { row in
+				items[row].uuid
+			}
+		}
 	}
 }
 
@@ -110,24 +117,6 @@ extension TodosTableAdapter {
 // MARK: - Menu support
 extension TodosTableAdapter {
 
-	func validateMenuItem(_ itemIdentifier: NSUserInterfaceItemIdentifier) -> Bool {
-		guard let rows = table?.effectiveSelection() else {
-			return false
-		}
-
-		switch itemIdentifier {
-		case .newMenuItem:
-			return true
-		case .bookmarkMenuItem,
-			 .setStatusMenuItem,
-			 .deleteMenuItem,
-			 .inFocusMenuItem:
-			return !rows.isEmpty
-		default:
-			return false
-		}
-	}
-
 	func menuItemState(for itemIdentifier: NSUserInterfaceItemIdentifier) -> NSControl.StateValue {
 		guard let rows = table?.effectiveSelection() else {
 			return .off
@@ -164,64 +153,5 @@ extension TodosTableAdapter {
 		} else {
 			return .off
 		}
-	}
-}
-
-extension TodosTableAdapter {
-
-	func delete() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.delete(ids)
-	}
-
-	func bookmark() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.performModification(.bookmark, forTodos: ids)
-	}
-
-	func unbookmark() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.performModification(.unbookmark, forTodos: ids)
-	}
-
-	func markIncomplete() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.performModification(.setStatus(false), forTodos: ids)
-	}
-
-	func complete() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.performModification(.setStatus(true), forTodos: ids)
-	}
-
-	func focusOn() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.performModification(.focus, forTodos: ids)
-	}
-
-	func unfocusOn() {
-		guard let rows = table?.effectiveSelection() else {
-			return
-		}
-		let ids = rows.map { items[$0].uuid }
-		output?.performModification(.unfocus, forTodos: ids)
 	}
 }

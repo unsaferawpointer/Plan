@@ -167,3 +167,102 @@ extension TodosPresenterTests {
 		XCTAssertEqual(ids, expectedIds)
 	}
 }
+
+// MARK: - TodosMenuDelegate
+extension TodosPresenterTests {
+
+	func testMenuItemHasBeenClickedWhenItemIsNewTodo() {
+		// Act
+		sut.menuItemHasBeenClicked(.newTodo)
+
+		// Assert
+		guard case let .performAction(action) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(action, .insert(["New todo"]))
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsMarkAsCompleted() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.menuItemHasBeenClicked(.markAsCompleted)
+
+		// Assert
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(modification, .setStatus(true))
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsMarkAsIncomplete() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.menuItemHasBeenClicked(.markAsIncomplete)
+
+		// Assert
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(modification, .setStatus(false))
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsBookmark() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.menuItemHasBeenClicked(.bookmark)
+
+		// Assert
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(modification, .bookmark)
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsUnbookmark() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.menuItemHasBeenClicked(.unbookmark)
+
+		// Assert
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(modification, .unbookmark)
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsDelete() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.menuItemHasBeenClicked(.delete)
+
+		// Assert
+		guard case let .performAction(action) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(action, .delete(expectedIds))
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+}

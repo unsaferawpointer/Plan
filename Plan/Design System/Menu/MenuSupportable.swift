@@ -13,16 +13,4 @@ protocol MenuSupportable {
 	@objc
 	optional func createNew(_ sender: NSMenuItem)
 
-	@objc
-	optional func delete(_ sender: NSMenuItem)
-
-	@objc
-	optional func toggleCompleted(_ sender: NSMenuItem)
-
-	@objc
-	optional func toggleBookmark(_ sender: NSMenuItem)
-
-	@objc
-	optional func toggleInFocus(_ sender: NSMenuItem)
-
 }

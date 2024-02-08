@@ -16,6 +16,7 @@ protocol TodosViewOutput: AnyObject, ViewOutput {
 
 protocol TodosView: AnyObject {
 	func display(_ state: TodosViewState)
+	var selection: [UUID] { get }
 }
 
 final class TodosViewController: NSViewController {
@@ -84,6 +85,10 @@ final class TodosViewController: NSViewController {
 // MARK: - TodosView
 extension TodosViewController: TodosView {
 
+	var selection: [UUID] {
+		return adapter?.selection ?? []
+	}
+
 	func display(_ state: TodosViewState) {
 		switch state {
 		case .placeholder(let title, let subtitle, let image):
@@ -105,49 +110,6 @@ extension TodosViewController: MenuSupportable {
 
 	func createNew(_ sender: NSMenuItem) {
 		output?.createTodo()
-	}
-
-	func toggleBookmark(_ sender: NSMenuItem) {
-		guard sender.state == .on else {
-			adapter?.bookmark()
-			return
-		}
-		adapter?.unbookmark()
-	}
-
-	func toggleCompleted(_ sender: NSMenuItem) {
-		guard sender.state == .on else {
-			adapter?.complete()
-			return
-		}
-		adapter?.markIncomplete()
-	}
-
-	func toggleInFocus(_ sender: NSMenuItem) {
-		guard sender.state == .on else {
-			adapter?.focusOn()
-			return
-		}
-		adapter?.unfocusOn()
-	}
-
-	func delete(_ sender: NSMenuItem) {
-		adapter?.delete()
-	}
-}
-
-// MARK: - NSMenuItemValidation
-extension TodosViewController: NSMenuItemValidation {
-
-	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-		guard let identifier = menuItem.identifier, let adapter else {
-			return false
-		}
-
-		let state = adapter.menuItemState(for: identifier)
-		menuItem.state = state
-
-		return adapter.validateMenuItem(identifier)
 	}
 }
 

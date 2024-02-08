@@ -7,13 +7,19 @@
 
 import Cocoa
 
+protocol TodosMenuItemValidation {
+	func validateItem(_ item: MenuItem.Identifier) -> Bool
+	func itemState(_ item: MenuItem.Identifier)
+}
+
 protocol TodosContextMenuProtocol: AnyObject {
-	func display(_ projects: [Project])
+	func display(_ items: [MenuItem])
 }
 protocol TodosContextMenuOutput: AnyObject {
 	func menuWillOpen()
 	func menuDidClose()
-	func itemHasBeenClicked(_ item: TodosMenuItemIdentifier)
+	func itemHasBeenClicked(_ item: MenuItem.Identifier)
+	func validateItem(_ item: MenuItem.Identifier) -> Bool
 }
 
 final class TodosContextMenu: NSMenu {
@@ -36,71 +42,7 @@ final class TodosContextMenu: NSMenu {
 private extension TodosContextMenu {
 
 	func configureItems() {
-		let new = NSMenuItem(
-			title: "New",
-			action: #selector(itemHasBeenClicked(_:)),
-			keyEquivalent: ""
-		)
-		new.target = self
-		new.representedObject = TodosMenuItemIdentifier.new
-		addItem(new)
-
-		addItem(.separator())
-
-		let complete = NSMenuItem(
-			title: "Complete",
-			action: #selector(itemHasBeenClicked(_:)),
-			keyEquivalent: ""
-		)
-		complete.target = self
-		complete.representedObject = TodosMenuItemIdentifier.complete
-		addItem(complete)
-
-		let focusOn = NSMenuItem(
-			title: "Focus on",
-			action: #selector(itemHasBeenClicked(_:)),
-			keyEquivalent: ""
-		)
-		focusOn.target = self
-		focusOn.representedObject = TodosMenuItemIdentifier.focusOn
-		addItem(focusOn)
-
-		let bookmark = NSMenuItem(
-			title: "Bookmark",
-			action: #selector(itemHasBeenClicked(_:)),
-			keyEquivalent: ""
-		)
-		bookmark.target = self
-		bookmark.representedObject = TodosMenuItemIdentifier.bookmark
-		addItem(bookmark)
-
-		addItem(.separator())
-
-		let projects = NSMenuItem(
-			title: "Projects",
-			action: #selector(itemHasBeenClicked(_:)),
-			keyEquivalent: ""
-		)
-		projects.target = self
-
-		let projectsMenu = NSMenu()
-		projectsMenu.delegate = self
-		projects.submenu = projectsMenu
-
-		addItem(projects)
-
-		self.projectsMenu = projectsMenu
-
-		addItem(.separator())
-
-		let delete = NSMenuItem(
-			title: "Delete",
-			action: #selector(itemHasBeenClicked(_:)),
-			keyEquivalent: ""
-		)
-		delete.target = self
-		delete.representedObject = TodosMenuItemIdentifier.delete
-		addItem(delete)
+		self.delegate = self
 	}
 }
 
@@ -109,7 +51,7 @@ extension TodosContextMenu {
 
 	@objc
 	func itemHasBeenClicked(_ sender: NSMenuItem) {
-		guard let id = sender.representedObject as? TodosMenuItemIdentifier else {
+		guard let id = sender.representedObject as? MenuItem.Identifier else {
 			return
 		}
 		output?.itemHasBeenClicked(id)
@@ -119,17 +61,10 @@ extension TodosContextMenu {
 // MARK: - TodosContextMenuProtocol
 extension TodosContextMenu: TodosContextMenuProtocol {
 
-	func display(_ projects: [Project]) {
-		projectsMenu?.removeAllItems()
-		for project in projects {
-			let item = NSMenuItem(
-				title: project.title,
-				action: #selector(itemHasBeenClicked(_:)),
-				keyEquivalent: ""
-			)
-			item.target = self
-			item.representedObject = TodosMenuItemIdentifier.project(project.uuid)
-			projectsMenu?.addItem(item)
+	func display(_ items: [MenuItem]) {
+		removeAllItems()
+		for item in MenuBuilder.makeItems(items, target: self, action: #selector(itemHasBeenClicked(_:))) {
+			addItem(item)
 		}
 	}
 }
@@ -138,7 +73,10 @@ extension TodosContextMenu: TodosContextMenuProtocol {
 extension TodosContextMenu: NSMenuItemValidation {
 
 	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-		return true
+		guard let id = menuItem.representedObject as? MenuItem.Identifier, let output else {
+			return false
+		}
+		return output.validateItem(id)
 	}
 }
 
@@ -152,4 +90,23 @@ extension TodosContextMenu: NSMenuDelegate {
 	func menuDidClose(_ menu: NSMenu) {
 		output?.menuDidClose()
 	}
+}
+
+extension MenuItem.Identifier {
+
+	static let newTodo: MenuItem.Identifier = .basic("newTodo")
+
+	static let bookmark: MenuItem.Identifier = .basic("bookmark")
+
+	static let unbookmark: MenuItem.Identifier = .basic("unbookmark")
+
+	static let markAsCompleted: MenuItem.Identifier = .basic("mark_as_completed")
+
+	static let markAsIncomplete: MenuItem.Identifier = .basic("mark_as_incomplete")
+
+	static let complete: MenuItem.Identifier = .basic("complete")
+
+	static let moveToProject: MenuItem.Identifier = .basic("move_to_project")
+
+	static let delete: MenuItem.Identifier = .basic("delete")
 }

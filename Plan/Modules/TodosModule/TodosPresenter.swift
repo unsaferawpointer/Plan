@@ -97,11 +97,48 @@ extension TodosPresenter: TodosViewOutput {
 	}
 }
 
-// MARK: - TodosMenuOutput
-extension TodosPresenter: TodosMenuOutput {
+// MARK: - TodosMenuDelegate
+extension TodosPresenter: TodosMenuDelegate {
 
-	func menuItemHasBeenClicked(_ item: TodosMenuItemIdentifier) {
-		// TODO: - Handle action
+	func menuItemHasBeenClicked(_ item: MenuItem.Identifier) {
+
+		guard let view else {
+			return
+		}
+
+		switch item {
+		case .newTodo:
+			createTodo()
+		case .delete:
+			delete(view.selection)
+		case .bookmark:
+			performModification(.bookmark, forTodos: view.selection)
+		case .unbookmark:
+			performModification(.unbookmark, forTodos: view.selection)
+		case .markAsCompleted:
+			performModification(.setStatus(true), forTodos: view.selection)
+		case .markAsIncomplete:
+			performModification(.setStatus(false), forTodos: view.selection)
+		case .uuid(let value):
+			// TODO: - Handle action
+			break
+		default:
+			break
+		}
+	}
+
+	func validateMenuItem(_ item: MenuItem.Identifier) -> Bool {
+		switch item {
+		case .newTodo:
+			return true
+		case .delete, .moveToProject, .bookmark, .unbookmark, .markAsCompleted, .markAsIncomplete, .uuid:
+			guard let selection = view?.selection else {
+				return false
+			}
+			return !selection.isEmpty
+		default:
+			return false
+		}
 	}
 }
 

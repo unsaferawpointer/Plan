@@ -9,7 +9,7 @@ import Cocoa
 
 final class TodosMenuAssembly {
 
-	static func assemble(output: TodosMenuOutput) -> NSMenu {
+	static func assemble(output: TodosMenuDelegate) -> NSMenu {
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let provider = ProjectsDataProvider(context: context!)
 		let presenter = TodosMenuPresenter(provider: provider)
