@@ -21,6 +21,7 @@ extension ProjectEntity {
 	@NSManaged public var uuid: UUID
 	@NSManaged public var title: String
 	@NSManaged public var creationDate: Date
+	@NSManaged public var isArchived: Bool
 	@NSManaged public var todos: NSSet?
 
 	public override func awakeFromInsert() {
@@ -29,6 +30,7 @@ extension ProjectEntity {
 		self.uuid = UUID()
 		self.title = ""
 		self.creationDate = Date()
+		self.isArchived = false
 	}
 
 }
