@@ -96,6 +96,7 @@
 		4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */; };
 		4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */; };
 		4CCEBB742B72C3D200B57EF1 /* TodosMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */; };
+		4CCEBB872B76632D00B57EF1 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +210,7 @@
 		4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuPresenter.swift; sourceTree = "<group>"; };
 		4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosContextMenu.swift; sourceTree = "<group>"; };
 		4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuDelegate.swift; sourceTree = "<group>"; };
+		4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			children = (
 				4C28412F2B6544F200BC4A9F /* NSWindow+Extension.swift */,
 				4C9103922B6E9D3400E7F03D /* NSTableView+Extension.swift */,
+				4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 				4C2841742B667BB200BC4A9F /* ProjectsDataProvider.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
+				4CCEBB872B76632D00B57EF1 /* NSView+Extension.swift in Sources */,
 				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
 				4C91036F2B6D549500E7F03D /* ProjectsStateProviderProtocol.swift in Sources */,
 				4C7708992B681EF800847955 /* TodoCell.swift in Sources */,

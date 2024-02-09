@@ -106,18 +106,6 @@ private extension SidebarViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview].forEach {
-			view.addSubview($0)
-			$0.translatesAutoresizingMaskIntoConstraints = false
-		}
-
-		NSLayoutConstraint.activate(
-			[
-				scrollview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
-				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-			]
-		)
+		scrollview.pin(to: view)
 	}
 }

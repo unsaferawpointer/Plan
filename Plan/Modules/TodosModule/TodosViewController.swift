@@ -142,23 +142,7 @@ private extension TodosViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview, placeholderView].forEach {
-			view.addSubview($0)
-			$0.translatesAutoresizingMaskIntoConstraints = false
-		}
-
-		NSLayoutConstraint.activate(
-			[
-				scrollview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
-				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-				placeholderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				placeholderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				placeholderView.topAnchor.constraint(equalTo: view.topAnchor),
-				placeholderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-			]
-		)
+		scrollview.pin(to: view)
+		placeholderView.pin(to: view)
 	}
 }
