@@ -32,8 +32,21 @@ final class TodosTableAdapter: NSObject {
 extension TodosTableAdapter {
 
 	func apply(_ items: [TodoModel]) {
+		let selectedRows = table?.selectedRowIndexes ?? .init()
+		let selectedIds = selectedRows.map { row in
+			self.items[row].uuid
+		}
+		let set = Set(selectedIds)
 		self.items = items
 		table?.reloadData()
+
+		for (index, item) in items.enumerated() {
+			guard set.contains(item.uuid) else {
+				continue
+			}
+			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
+		}
+
 	}
 
 	var selection: [UUID] {
@@ -111,47 +124,5 @@ extension TodosTableAdapter {
 			items[row].uuid
 		}
 		output?.selectionDidChange(ids)
-	}
-}
-
-// MARK: - Menu support
-extension TodosTableAdapter {
-
-	func menuItemState(for itemIdentifier: NSUserInterfaceItemIdentifier) -> NSControl.StateValue {
-		guard let rows = table?.effectiveSelection() else {
-			return .off
-		}
-
-		var hasEnabled = false
-		var hasDisabled = false
-
-		for row in rows {
-
-			var state = false
-
-			switch itemIdentifier {
-			case .bookmarkMenuItem:
-				state = items[row].isFavorite
-			case .setStatusMenuItem:
-				state = items[row].isDone
-			case .inFocusMenuItem:
-				state = items[row].inFocus
-			default:
-				state = false
-			}
-
-			switch state {
-			case false:	hasDisabled = true
-			case true:	hasEnabled = true
-			}
-		}
-
-		if hasEnabled && hasDisabled {
-			return .mixed
-		} else if hasEnabled {
-			return .on
-		} else {
-			return .off
-		}
 	}
 }
