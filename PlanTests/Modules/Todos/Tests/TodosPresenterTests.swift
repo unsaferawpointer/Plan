@@ -265,4 +265,23 @@ extension TodosPresenterTests {
 		XCTAssertEqual(action, .delete(expectedIds))
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
+
+	func testMenuItemHasBeenClickedWhenItemIsUUID() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		let expectedProject = UUID()
+
+		// Act
+		sut.menuItemHasBeenClicked(.uuid(expectedProject))
+
+		// Assert
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(modification, .setProject(expectedProject))
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
 }

@@ -120,7 +120,7 @@ extension TodosPresenter: TodosMenuDelegate {
 		case .markAsIncomplete:
 			performModification(.setStatus(false), forTodos: view.selection)
 		case .uuid(let value):
-			// TODO: - Handle action
+			performModification(.setProject(value), forTodos: view.selection)
 			break
 		default:
 			break

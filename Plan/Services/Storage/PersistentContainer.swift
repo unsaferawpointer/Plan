@@ -109,6 +109,12 @@ extension PersistentContainer: PersistentContainerProtocol {
 				entity.inFocus = true
 			case .unfocus:
 				entity.inFocus = false
+			case .setProject(let id):
+				guard let id, let target = try fetchEntities(ProjectEntity.self, with: [id]).first else {
+					entity.project = nil
+					return
+				}
+				entity.project = target
 			}
 		}
 	}
