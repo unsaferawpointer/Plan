@@ -53,7 +53,8 @@ extension TodosPresenterTests {
 				isDone: todo.isDone,
 				isFavorite: todo.isFavorite,
 				inFocus: todo.inFocus,
-				text: todo.text
+				text: todo.text, 
+				subtitle: todo.projectName ?? "w/o project"
 			)
 		}
 

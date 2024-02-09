@@ -18,6 +18,7 @@ struct Todo {
 	var isDone: Bool
 
 	var project: UUID?
+	var projectName: String?
 
 	// MARK: - Initialization
 
@@ -28,7 +29,8 @@ struct Todo {
 		inFocus: Bool = false,
 		isFavorite: Bool = false,
 		isDone: Bool = false,
-		project: UUID? = nil
+		project: UUID? = nil,
+		projectName: String? = nil
 	) {
 		self.uuid = uuid
 		self.creationDate = creationDate
@@ -36,6 +38,7 @@ struct Todo {
 		self.inFocus = inFocus
 		self.isFavorite = isFavorite
 		self.isDone = isDone
+		self.projectName = projectName
 	}
 }
 

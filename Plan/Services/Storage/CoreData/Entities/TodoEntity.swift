@@ -88,7 +88,8 @@ extension TodoEntity {
 			inFocus: inFocus,
 			isFavorite: isFavorite,
 			isDone: isDone,
-			project: project?.uuid
+			project: project?.uuid, 
+			projectName: project?.title
 		)
 	}
 }

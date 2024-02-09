@@ -27,7 +27,7 @@ extension TodosFactory: TodosFactoryProtocol {
 
 	func createTodo(with text: String) -> Todo {
 
-		var todo = Todo(text: text)
+		var todo = Todo(text: text, projectName: nil)
 
 		switch configuration {
 		case .inFocus:

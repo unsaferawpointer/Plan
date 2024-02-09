@@ -21,10 +21,26 @@ final class TodoCell: NSView {
 
 	// MARK: - UI-Properties
 
-	lazy var stack: NSStackView = {
-		let view = NSStackView(views: [checkbox, iconView, textfield])
+	lazy var basicStack: NSStackView = {
+		let view = NSStackView(views: [checkbox, labelsStack])
+		view.alignment = .centerY
+		view.orientation = .horizontal
+		return view
+	}()
+
+	lazy var titleStack: NSStackView = {
+		let view = NSStackView(views: [iconView, titleTextfield])
 		view.alignment = .firstBaseline
 		view.orientation = .horizontal
+		view.spacing = 4
+		return view
+	}()
+
+	lazy var labelsStack: NSStackView = {
+		let view = NSStackView(views: [titleStack, subtitleTextfield])
+		view.alignment = .leading
+		view.orientation = .vertical
+		view.spacing = 2
 		return view
 	}()
 
@@ -46,7 +62,7 @@ final class TodoCell: NSView {
 		return view
 	}()
 
-	lazy var textfield: NSTextField = {
+	lazy var titleTextfield: NSTextField = {
 		let view = NSTextField()
 		view.focusRingType = .default
 		view.cell?.sendsActionOnEndEditing = true
@@ -58,6 +74,23 @@ final class TodoCell: NSView {
 		view.cell?.sendsActionOnEndEditing = true
 		view.target = self
 		view.action = #selector(textfieldDidChangeText(_:))
+		return view
+	}()
+
+	lazy var subtitleTextfield: NSTextField = {
+		let view = NSTextField()
+		view.focusRingType = .default
+		view.cell?.sendsActionOnEndEditing = true
+		view.isBordered = false
+		view.drawsBackground = false
+		view.usesSingleLineMode = true
+		view.lineBreakMode = .byTruncatingMiddle
+		view.font = NSFont.preferredFont(forTextStyle: .callout)
+		view.textColor = .secondaryLabelColor
+		view.cell?.sendsActionOnEndEditing = true
+		view.target = self
+		view.action = #selector(textfieldDidChangeText(_:))
+		view.stringValue = "Programming"
 		return view
 	}()
 
@@ -108,15 +141,18 @@ private extension TodoCell {
 			return
 		}
 
-		textfield.stringValue = configuration.text
-		textfield.textColor = configuration.isDone ? .tertiaryLabelColor : .textColor
+		titleTextfield.stringValue = configuration.text
+		titleTextfield.textColor = configuration.isDone ? .secondaryLabelColor : .controlTextColor
+
+		subtitleTextfield.stringValue = configuration.subtitle
+		subtitleTextfield.textColor = configuration.isDone ? .tertiaryLabelColor : .secondaryLabelColor
 
 		checkbox.state = configuration.isDone ? .on : .off
 
 		iconView.isHidden = !configuration.isFavorite
 		iconView.contentTintColor = !configuration.isDone && configuration.isFavorite
 			? .systemYellow
-			: .secondaryLabelColor
+			: .tertiaryLabelColor
 		iconView.image = configuration.isFavorite
 		? NSImage(systemSymbolName: "star.fill", accessibilityDescription: nil)?
 			.withSymbolConfiguration(.init(scale: .small))
@@ -127,15 +163,15 @@ private extension TodoCell {
 
 	func configureConstraints() {
 
-		[stack].compactMap { $0 }.forEach {
+		[basicStack].compactMap { $0 }.forEach {
 			addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
 
 		[
-			stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-			stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-			stack.centerYAnchor.constraint(equalTo: centerYAnchor)
+			basicStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+			basicStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+			basicStack.centerYAnchor.constraint(equalTo: centerYAnchor)
 		]
 			.forEach { $0.isActive = true }
 	}

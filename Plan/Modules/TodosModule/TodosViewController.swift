@@ -41,7 +41,8 @@ final class TodosViewController: NSViewController {
 	lazy var table: NSTableView = {
 		let view = NSTableView()
 		view.style = .inset
-		view.rowSizeStyle = .large
+		view.rowSizeStyle = .custom
+		view.rowHeight = 42
 		view.floatsGroupRows = false
 		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
