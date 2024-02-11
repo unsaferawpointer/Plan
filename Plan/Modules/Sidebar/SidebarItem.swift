@@ -11,4 +11,9 @@ struct SidebarItem {
 	var id: Route
 	var icon: String
 	var title: String
+
+	var isEditable: Bool
 }
+
+// MARK: - Equatable
+extension SidebarItem: Equatable { }

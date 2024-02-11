@@ -11,7 +11,7 @@ final class TodosMenuAssembly {
 
 	static func assemble(output: TodosMenuDelegate) -> NSMenu {
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-		let provider = ProjectsDataProvider(context: context!)
+		let provider = ListsDataProvider(context: context!)
 		let presenter = TodosMenuPresenter(provider: provider)
 		presenter.output = output
 		let menu = TodosContextMenu()

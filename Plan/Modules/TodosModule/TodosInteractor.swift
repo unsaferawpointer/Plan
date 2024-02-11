@@ -50,7 +50,7 @@ extension TodosInteractor: TodosInteractorProtocol {
 		case .insert(let texts):
 			for text in texts {
 				let todo = factory.createTodo(with: text)
-				try storage.insertTodo(todo, to: todo.project)
+				try storage.insertTodo(todo, to: todo.list)
 			}
 		case .delete(let ids):
 			try storage.deleteTodos(with: ids)

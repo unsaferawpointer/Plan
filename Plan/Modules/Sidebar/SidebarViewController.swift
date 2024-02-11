@@ -7,8 +7,9 @@
 
 import Cocoa
 
-protocol SidebarViewOutput: ViewOutput {
+protocol SidebarViewOutput: ViewOutput, AnyObject {
 	func selectionDidChange(_ newValue: SidebarItem)
+	func labelDidChangeText(_ newText: String, forItem withId: UUID)
 }
 
 protocol SidebarView: AnyObject {
@@ -60,12 +61,7 @@ class SidebarViewController: NSViewController {
 		super.init(nibName: nil, bundle: nil)
 		configure(self)
 		self.adapter = SidebarTableAdapter(table: table)
-		adapter?.selection = { [weak self] newValue in
-			guard let self else {
-				return
-			}
-			self.output?.selectionDidChange(newValue)
-		}
+		adapter?.output = output
 	}
 	
 	required init?(coder: NSCoder) {

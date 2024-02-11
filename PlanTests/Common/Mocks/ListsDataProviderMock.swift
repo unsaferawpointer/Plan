@@ -1,5 +1,5 @@
 //
-//  ProjectsDataProviderMock.swift
+//  ListsDataProviderMock.swift
 //  PlanTests
 //
 //  Created by Anton Cherkasov on 28.01.2024.
@@ -8,17 +8,17 @@
 import Foundation
 @testable import Plan
 
-final class ProjectsDataProviderMock {
+final class ListsDataProviderMock {
 
 	private (set) var invocations: [Action] = []
 
 	var errorStub: Error?
 }
 
-// MARK: - ProjectsDataProviderProtocol
-extension ProjectsDataProviderMock: ProjectsDataProviderProtocol {
+// MARK: - ListsDataProviderProtocol
+extension ListsDataProviderMock: ListsDataProviderProtocol {
 
-	func subscribe(_ object: ProjectsDataProviderDelegate) throws {
+	func subscribe(_ object: ListsDataProviderDelegate) throws {
 		guard let error = errorStub else {
 			invocations.append(.subscribe(object))
 			return
@@ -28,9 +28,9 @@ extension ProjectsDataProviderMock: ProjectsDataProviderProtocol {
 }
 
 // MARK: - Nested data structs
-extension ProjectsDataProviderMock {
+extension ListsDataProviderMock {
 
 	enum Action {
-		case subscribe(_ object: ProjectsDataProviderDelegate)
+		case subscribe(_ object: ListsDataProviderDelegate)
 	}
 }

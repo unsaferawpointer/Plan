@@ -10,17 +10,19 @@ import CoreData
 
 protocol PersistentContainerProtocol {
 
-	func insertTodo(_ todo: Todo, to project: UUID?) throws
+	func insertTodo(_ todo: Todo, to list: UUID?) throws
 
 	func deleteTodos(with ids: [UUID]) throws
 
-	func insertProject(_ project: Project) throws
+	func insertList(_ list: List) throws
 
-	func setProject(title: String, with id: UUID) throws
+	func setList(title: String, with id: UUID) throws
 
-	func deleteProjects(with ids: [UUID]) throws
+	func deleteLists(with ids: [UUID]) throws
 
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) throws
+
+	func performModification(_ modification: ListModification, forLists ids: [UUID]) throws
 
 	func save() throws
 }
@@ -39,10 +41,10 @@ final class PersistentContainer {
 // MARK: - PersistentContainerProtocol
 extension PersistentContainer: PersistentContainerProtocol {
 
-	func insertTodo(_ todo: Todo, to project: UUID?) throws {
+	func insertTodo(_ todo: Todo, to list: UUID?) throws {
 		let new = TodoEntity(context, todo: todo)
 
-		guard let project, let target = try fetchEntities(ProjectEntity.self, with: [project]).first else {
+		guard let list, let target = try fetchEntities(ProjectEntity.self, with: [list]).first else {
 			return
 		}
 		new.project = target
@@ -72,18 +74,18 @@ extension PersistentContainer: PersistentContainerProtocol {
 		}
 	}
 
-	func insertProject(_ project: Project) throws {
-		let new = ProjectEntity(context, project: project)
+	func insertList(_ list: List) throws {
+		let new = ProjectEntity(context, list: list)
 	}
 
-	func setProject(title: String, with id: UUID) throws {
+	func setList(title: String, with id: UUID) throws {
 		guard let entity = try fetchEntities(ProjectEntity.self, with: [id]).first else {
 			return
 		}
 		entity.title = title
 	}
 
-	func deleteProjects(with ids: [UUID]) throws {
+	func deleteLists(with ids: [UUID]) throws {
 		let deleted = try fetchEntities(ProjectEntity.self, with: ids)
 
 		deleted.forEach {
@@ -109,12 +111,22 @@ extension PersistentContainer: PersistentContainerProtocol {
 				entity.inFocus = true
 			case .unfocus:
 				entity.inFocus = false
-			case .setProject(let id):
+			case .setList(let id):
 				guard let id, let target = try fetchEntities(ProjectEntity.self, with: [id]).first else {
 					entity.project = nil
 					return
 				}
 				entity.project = target
+			}
+		}
+	}
+
+	func performModification(_ modification: ListModification, forLists ids: [UUID]) throws {
+		let entities = try fetchEntities(ProjectEntity.self, with: ids)
+		for entity in entities {
+			switch modification {
+			case .setTitle(let newValue):
+				entity.title = newValue
 			}
 		}
 	}

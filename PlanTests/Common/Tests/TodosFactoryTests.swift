@@ -37,7 +37,7 @@ extension TodosFactoryTests {
 		XCTAssertEqual(result.text, expectedText)
 		XCTAssertEqual(result.inFocus, true)
 		XCTAssertEqual(result.isDone, false)
-		XCTAssertNil(result.project)
+		XCTAssertNil(result.list)
 	}
 
 	func testCreateTodoWhenConfigurationIsBacklog() {
@@ -54,7 +54,7 @@ extension TodosFactoryTests {
 		XCTAssertEqual(result.inFocus, false)
 		XCTAssertEqual(result.isDone, false)
 		XCTAssertEqual(result.isFavorite, false)
-		XCTAssertNil(result.project)
+		XCTAssertNil(result.list)
 	}
 
 	func testCreateTodoWhenConfigurationIsFavorites() {
@@ -71,7 +71,7 @@ extension TodosFactoryTests {
 		XCTAssertEqual(result.inFocus, false)
 		XCTAssertEqual(result.isDone, false)
 		XCTAssertEqual(result.isFavorite, true)
-		XCTAssertNil(result.project)
+		XCTAssertNil(result.list)
 	}
 
 	func testCreateTodoWhenConfigurationIsArchieve() {
@@ -88,15 +88,15 @@ extension TodosFactoryTests {
 		XCTAssertEqual(result.inFocus, false)
 		XCTAssertEqual(result.isDone, true)
 		XCTAssertEqual(result.isFavorite, false)
-		XCTAssertNil(result.project)
+		XCTAssertNil(result.list)
 	}
 
-	func testCreateTodoWhenConfigurationIsProject() {
+	func testCreateTodoWhenConfigurationIsLists() {
 		// Arrange
 		let expectedText = UUID().uuidString
-		let expectedProject = UUID()
+		let expectedList = UUID()
 
-		sut = TodosFactory(configuration: .project(expectedProject))
+		sut = TodosFactory(configuration: .list(expectedList))
 
 		// Act
 		let result = sut.createTodo(with: expectedText)
@@ -106,6 +106,6 @@ extension TodosFactoryTests {
 		XCTAssertEqual(result.inFocus, false)
 		XCTAssertEqual(result.isDone, false)
 		XCTAssertEqual(result.isFavorite, false)
-		XCTAssertEqual(result.project, expectedProject)
+		XCTAssertEqual(result.list, expectedList)
 	}
 }

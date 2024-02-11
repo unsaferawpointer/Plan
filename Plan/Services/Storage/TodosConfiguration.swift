@@ -12,6 +12,6 @@ enum TodosConfiguration {
 	case inFocus
 	case backlog
 	case favorites
-	case project(_ id: UUID)
+	case list(_ id: UUID)
 	case archieve
 }

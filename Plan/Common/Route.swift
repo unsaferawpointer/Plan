@@ -12,7 +12,7 @@ enum Route {
 	case backlog
 	case favorites
 	case archieve
-	case project(_ id: UUID)
+	case list(_ id: UUID)
 }
 
 // MARK: - Hashable

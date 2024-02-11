@@ -1,5 +1,5 @@
 //
-//  Project.swift
+//  List.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 27.01.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Project {
+struct List {
 
 	var uuid: UUID
 
@@ -17,4 +17,4 @@ struct Project {
 }
 
 // MARK: - Hashable
-extension Project: Hashable { }
+extension List: Hashable { }

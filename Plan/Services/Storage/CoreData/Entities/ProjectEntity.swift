@@ -58,15 +58,15 @@ extension ProjectEntity: Identifiable { }
 // MARK: - Support Project
 extension ProjectEntity {
 
-	convenience init(_ context: NSManagedObjectContext, project: Project) {
+	convenience init(_ context: NSManagedObjectContext, list: List) {
 		self.init(context: context)
 
-		self.uuid = project.uuid
-		self.title = project.title
+		self.uuid = list.uuid
+		self.title = list.title
 	}
 
-	var project: Project {
-		return Project(
+	var list: List {
+		return List(
 			uuid: uuid,
 			title: title,
 			count: todos?.count ?? 0

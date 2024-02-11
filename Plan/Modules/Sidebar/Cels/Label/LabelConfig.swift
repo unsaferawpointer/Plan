@@ -22,12 +22,14 @@ struct LabelConfig: ViewConfiguration {
 
 	// Icon color
 	var iconColor: NSColor?
+
+	var isEditable: Bool = false
 }
 
 // MARK: - Equatable
 extension LabelConfig: Equatable {
 
 	static func == (lhs: LabelConfig, rhs: LabelConfig) -> Bool {
-		return	lhs.title == rhs.title && lhs.iconName == rhs.iconName
+		return	lhs.title == rhs.title && lhs.iconName == rhs.iconName && lhs.isEditable == rhs.isEditable
 	}
 }

@@ -83,11 +83,11 @@ extension TodosInteractorTests {
 
 		// Assert
 		XCTAssertNil(expectedError)
-		guard case let .insertTodo(todo, project) = storage.invocations[0] else {
+		guard case let .insertTodo(todo, list) = storage.invocations[0] else {
 			return XCTFail()
 		}
 		XCTAssertEqual(todo, expectedTodo)
-		XCTAssertNil(project)
+		XCTAssertNil(list)
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()
 		}
@@ -110,7 +110,7 @@ extension TodosInteractorTests {
 
 		// Assert
 		XCTAssertNil(expectedError)
-		guard case let .performModification(modification, ids) = storage.invocations[0] else {
+		guard case let .performTodoModification(modification, ids) = storage.invocations[0] else {
 			return XCTFail()
 		}
 		XCTAssertEqual(modification, .setText(expectedText))

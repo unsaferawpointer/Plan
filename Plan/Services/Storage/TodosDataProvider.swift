@@ -95,7 +95,7 @@ extension TodosConfiguration {
 			return NSPredicate(format: "completionDate == %@ AND isFavorite == %@", argumentArray: [NSNull(), true])
 		case .archieve:
 			return NSPredicate(format: "completionDate != %@", argumentArray: [NSNull()])
-		case .project(let id):
+		case .list(let id):
 			return NSPredicate(format: "project.uuid == %@", argumentArray: [id])
 		}
 	}

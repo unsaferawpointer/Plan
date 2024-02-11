@@ -11,7 +11,7 @@ final class SidebarTableAdapter: NSObject {
 
 	weak var table: NSOutlineView?
 
-	var selection: ((SidebarItem) -> Void)?
+	weak var output: SidebarViewOutput?
 
 	// MARK: - Data
 
@@ -94,16 +94,17 @@ extension SidebarTableAdapter: NSOutlineViewDelegate {
 		switch row {
 		case 0..<items.count:
 			let item = items[row]
-			selection?(item)
+			output?.selectionDidChange(item)
 		default:
 			if let item = table?.item(atRow: row) as? SidebarItem {
-				selection?(item)
+				output?.selectionDidChange(item)
 			}
 		}
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
 		if let section = item as? SidebarSection {
+
 			let header = NSTextField(string: section.title)
 			header.isEditable = false
 			header.isBordered = false
@@ -120,18 +121,18 @@ extension SidebarTableAdapter: NSOutlineViewDelegate {
 				view?.identifier = id
 			}
 
-			let configuration = LabelConfig(title: item.title, iconName: item.icon, iconColor: nil)
+			let configuration = LabelConfig(title: item.title, iconName: item.icon, iconColor: nil, isEditable: item.isEditable)
 			view?.configure(configuration)
-			return view
-		} else if let item = item as? Project {
-			var view = table?.makeView(withIdentifier: id, owner: self) as? LabelView
-			if view == nil {
-				view = LabelView()
-				view?.identifier = id
+
+			switch item.id {
+			case .list(let id):
+				view?.labelDidChangeText = { [weak self] newValue in
+					self?.output?.labelDidChangeText(newValue, forItem: id)
+				}
+			default:
+				view?.labelDidChangeText = nil
 			}
 
-			let configuration = LabelConfig(title: item.title, iconName: "doc.text", iconColor: nil)
-			view?.configure(configuration)
 			return view
 		}
 

@@ -54,7 +54,7 @@ extension TodosPresenterTests {
 				isFavorite: todo.isFavorite,
 				inFocus: todo.inFocus,
 				text: todo.text, 
-				subtitle: todo.projectName ?? "w/o project"
+				subtitle: todo.listName ?? "w/o list"
 			)
 		}
 
@@ -272,17 +272,17 @@ extension TodosPresenterTests {
 		let expectedIds = [UUID(), UUID()]
 		view.selectionStub = expectedIds
 
-		let expectedProject = UUID()
+		let expectedList = UUID()
 
 		// Act
-		sut.menuItemHasBeenClicked(.uuid(expectedProject))
+		sut.menuItemHasBeenClicked(.uuid(expectedList))
 
 		// Assert
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
 		XCTAssertEqual(ids, expectedIds)
-		XCTAssertEqual(modification, .setProject(expectedProject))
+		XCTAssertEqual(modification, .setList(expectedList))
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
 }

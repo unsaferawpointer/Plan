@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias StateProviderProtocol = SidebarStateProviderProtocol & TodosStateProviderProtocol
+
 protocol StateProviderDelegate: AnyObject {
 	func selectionDidChange(new: Selection, old: Selection)
 }

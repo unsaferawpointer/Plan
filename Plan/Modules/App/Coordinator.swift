@@ -7,8 +7,6 @@
 
 import Cocoa
 
-typealias StateProviderProtocol = SidebarStateProviderProtocol & TodosStateProviderProtocol
-
 /// Interface of the coordinator
 protocol Coordinatable {
 
@@ -71,13 +69,13 @@ extension Coordinator: StateProviderDelegate {
 			presentDetail(with: .favorites)
 		case .archieve:
 			presentDetail(with: .archieve)
-		case .project(let id):
+		case .list(let id):
 			let detail = TodosAssembly.assemble(
 				stateProvider: stateProvider,
-				configuration: .project(id),
+				configuration: .list(id),
 				infoDelegate: self
 			)
-			router.present(content: nil, detail: detail)
+			router.present(detail: detail)
 		}
 	}
 }
@@ -91,7 +89,7 @@ private extension Coordinator {
 			configuration: configuration,
 			infoDelegate: self
 		)
-		router.present(content: nil, detail: detail)
+		router.present(detail: detail)
 	}
 }
 

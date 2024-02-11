@@ -15,13 +15,18 @@ final class PersistentContainerMock {
 // MARK: - PersistentContainerProtocol
 extension PersistentContainerMock: PersistentContainerProtocol {
 
-	func insertTodo(_ todo: Todo, to project: UUID?) throws {
-		let action: Action = .insertTodo(todo: todo, toProject: project)
+	func insertTodo(_ todo: Todo, to list: UUID?) throws {
+		let action: Action = .insertTodo(todo: todo, toList: list)
 		invocations.append(action)
 	}
 
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID]) throws {
-		let action: Action = .performModification(modification, forTodos: ids)
+		let action: Action = .performTodoModification(modification, forTodos: ids)
+		invocations.append(action)
+	}
+
+	func performModification(_ modification: ListModification, forLists ids: [UUID]) throws {
+		let action: Action = .performListModification(modification, forLists: ids)
 		invocations.append(action)
 	}
 
@@ -30,18 +35,18 @@ extension PersistentContainerMock: PersistentContainerProtocol {
 		invocations.append(action)
 	}
 	
-	func insertProject(_ project: Project) throws {
-		let action: Action = .insertProject(project: project)
+	func insertList(_ list: List) throws {
+		let action: Action = .insertList(list: list)
 		invocations.append(action)
 	}
 
-	func setProject(title: String, with id: UUID) throws {
-		let action: Action = .setProject(title: title, withId: id)
+	func setList(title: String, with id: UUID) throws {
+		let action: Action = .setList(title: title, withId: id)
 		invocations.append(action)
 	}
 
-	func deleteProjects(with ids: [UUID]) throws {
-		let action: Action = .deleteProjects(ids: ids)
+	func deleteLists(with ids: [UUID]) throws {
+		let action: Action = .deleteLists(ids: ids)
 		invocations.append(action)
 	}
 	
@@ -55,12 +60,13 @@ extension PersistentContainerMock: PersistentContainerProtocol {
 extension PersistentContainerMock {
 
 	enum Action {
-		case insertTodo(todo: Todo, toProject: UUID?)
+		case insertTodo(todo: Todo, toList: UUID?)
 		case deleteTodos(ids: [UUID])
-		case insertProject(project: Project)
-		case deleteProjects(ids: [UUID])
-		case setProject(title: String, withId: UUID)
-		case performModification(_ modification: TodoModification, forTodos: [UUID])
+		case insertList(list: List)
+		case deleteLists(ids: [UUID])
+		case setList(title: String, withId: UUID)
+		case performTodoModification(_ modification: TodoModification, forTodos: [UUID])
+		case performListModification(_ modification: ListModification, forLists: [UUID])
 		case save
 	}
 }

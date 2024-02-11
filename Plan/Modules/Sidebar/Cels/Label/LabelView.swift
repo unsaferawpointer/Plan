@@ -19,6 +19,8 @@ final class LabelView: NSTableCellView, ConfigurableView {
 		}
 	}
 
+	var labelDidChangeText: ((String) -> Void)?
+
 	// MARK: - ConfigurableField
 
 	init() {
@@ -49,6 +51,7 @@ private extension LabelView {
 
 	func updateUserInterface() {
 		textField?.stringValue = configuration.title
+		textField?.isEditable = configuration.isEditable
 		imageView?.image = NSImage(systemSymbolName: configuration.iconName ?? "star.fill", accessibilityDescription: nil)
 	}
 
@@ -58,8 +61,10 @@ private extension LabelView {
 			view.isBordered = false
 			view.drawsBackground = false
 			view.usesSingleLineMode = true
-			view.isEditable = false
 			view.lineBreakMode = .byTruncatingMiddle
+			view.cell?.sendsActionOnEndEditing = true
+			view.target = self
+			view.action = #selector(labelDidChangeText(_:))
 			return view
 		}()
 
@@ -97,3 +102,14 @@ private extension LabelView {
 			.forEach { $0.isActive = true }
 	}
 }
+
+// MARK: - Actions
+extension LabelView {
+
+	@objc
+	func labelDidChangeText(_ sender: NSTextField) {
+		let newValue = sender.stringValue
+		labelDidChangeText?(newValue)
+	}
+}
+

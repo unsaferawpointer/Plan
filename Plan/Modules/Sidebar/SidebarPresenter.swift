@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SidebarPresenterProtocol: AnyObject {
-	func present(_ projects: [Project])
+	func present(_ lists: [List])
 }
 
 final class SidebarPresenter {
@@ -35,20 +35,21 @@ final class SidebarPresenter {
 // MARK: - SidebarPresenterProtocol
 extension SidebarPresenter: SidebarPresenterProtocol {
 
-	func present(_ projects: [Project]) {
+	func present(_ lists: [List]) {
 
 		let staticContent: [SidebarItem] =
 		[
-			.init(id: .inbox, icon: "tray.fill", title: "Inbox"),
-			.init(id: .backlog, icon: "square.stack.3d.up.fill", title: "Backlog"),
-			.init(id: .archieve, icon: "shippingbox.fill", title: "Archieve")
+			.init(id: .inbox, icon: "tray.fill", title: "Inbox", isEditable: false),
+			.init(id: .backlog, icon: "square.stack.3d.up.fill", title: "Backlog", isEditable: false),
+			.init(id: .archieve, icon: "shippingbox.fill", title: "Archieve", isEditable: false)
 		]
 
-		let dynamicContent = projects.map { project in
+		let dynamicContent = lists.map { list in
 			SidebarItem(
-				id: .project(project.uuid),
+				id: .list(list.uuid),
 				icon: "doc.text",
-				title: project.title
+				title: list.title,
+				isEditable: true
 			)
 		}
 
@@ -69,13 +70,21 @@ extension SidebarPresenter: SidebarViewOutput {
 		}
 
 		do {
-			try interactor?.fetchProjects()
+			try interactor?.fetchLists()
 		} catch {
 			// TODO: - Handle action
 		}
 
 		let route = stateProvider.getRoute()
 		view?.selectItem(route)
+	}
+
+	func labelDidChangeText(_ newText: String, forItem withId: UUID) {
+		do {
+			try interactor?.perform(.setTitle(newText), forLists: [withId])
+		} catch {
+			// TODO: - Handle action
+		}
 	}
 
 	func selectionDidChange(_ newValue: SidebarItem) {

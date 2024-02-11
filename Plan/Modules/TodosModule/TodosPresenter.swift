@@ -120,7 +120,7 @@ extension TodosPresenter: TodosMenuDelegate {
 		case .markAsIncomplete:
 			performModification(.setStatus(false), forTodos: view.selection)
 		case .uuid(let value):
-			performModification(.setProject(value), forTodos: view.selection)
+			performModification(.setList(value), forTodos: view.selection)
 			break
 		default:
 			break
@@ -131,7 +131,7 @@ extension TodosPresenter: TodosMenuDelegate {
 		switch item {
 		case .newTodo:
 			return true
-		case .delete, .moveToProject, .bookmark, .unbookmark, .markAsCompleted, .markAsIncomplete, .uuid:
+		case .delete, .moveToList, .bookmark, .unbookmark, .markAsCompleted, .markAsIncomplete, .uuid:
 			guard let selection = view?.selection else {
 				return false
 			}
@@ -152,7 +152,7 @@ private extension TodosPresenter {
 			isFavorite: todo.isFavorite, 
 			inFocus: todo.inFocus,
 			text: todo.text, 
-			subtitle: todo.projectName ?? "w/o project"
+			subtitle: todo.listName ?? "w/o list"
 		)
 	}
 }

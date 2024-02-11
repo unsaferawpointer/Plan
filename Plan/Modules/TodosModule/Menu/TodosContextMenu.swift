@@ -24,7 +24,7 @@ protocol TodosContextMenuOutput: AnyObject {
 
 final class TodosContextMenu: NSMenu {
 
-	weak var projectsMenu: NSMenu?
+	weak var listsMenu: NSMenu?
 
 	var output: TodosContextMenuOutput?
 
@@ -106,7 +106,7 @@ extension MenuItem.Identifier {
 
 	static let complete: MenuItem.Identifier = .basic("complete")
 
-	static let moveToProject: MenuItem.Identifier = .basic("move_to_project")
+	static let moveToList: MenuItem.Identifier = .basic("move_to_list")
 
 	static let delete: MenuItem.Identifier = .basic("delete")
 }

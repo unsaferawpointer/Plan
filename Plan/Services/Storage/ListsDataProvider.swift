@@ -1,5 +1,5 @@
 //
-//  ProjectsDataProvider.swift
+//  ListsDataProvider.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 28.01.2024.
@@ -8,19 +8,19 @@
 import Foundation
 import CoreData
 
-protocol ProjectsDataProviderDelegate: AnyObject {
-	func providerDidChangeContent(_ newContent: [Project])
+protocol ListsDataProviderDelegate: AnyObject {
+	func providerDidChangeContent(_ newContent: [List])
 }
 
-protocol ProjectsDataProviderProtocol {
-	func subscribe(_ object: ProjectsDataProviderDelegate) throws
+protocol ListsDataProviderProtocol {
+	func subscribe(_ object: ListsDataProviderDelegate) throws
 }
 
-final class ProjectsDataProvider: NSObject {
+final class ListsDataProvider: NSObject {
 
 	var context: NSManagedObjectContext
 
-	weak var delegate: ProjectsDataProviderDelegate?
+	weak var delegate: ListsDataProviderDelegate?
 
 	lazy var controller: NSFetchedResultsController<ProjectEntity> = {
 
@@ -44,23 +44,23 @@ final class ProjectsDataProvider: NSObject {
 	}
 }
 
-// MARK: - ProjectsDataProviderProtocol
-extension ProjectsDataProvider: ProjectsDataProviderProtocol {
+// MARK: - ListsDataProviderProtocol
+extension ListsDataProvider: ListsDataProviderProtocol {
 
-	func subscribe(_ object: ProjectsDataProviderDelegate) throws {
+	func subscribe(_ object: ListsDataProviderDelegate) throws {
 		self.delegate = object
 
 		try controller.performFetch()
 
 		let entities = controller.fetchedObjects ?? []
-		let projects = entities.map(\.project)
+		let lists = entities.map(\.list)
 
-		delegate?.providerDidChangeContent(projects)
+		delegate?.providerDidChangeContent(lists)
 	}
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
-extension ProjectsDataProvider: NSFetchedResultsControllerDelegate {
+extension ListsDataProvider: NSFetchedResultsControllerDelegate {
 
 	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) { 
 
@@ -68,8 +68,8 @@ extension ProjectsDataProvider: NSFetchedResultsControllerDelegate {
 			return
 		}
 
-		let projects = entities.map(\.project)
+		let lists = entities.map(\.list)
 
-		delegate?.providerDidChangeContent(projects)
+		delegate?.providerDidChangeContent(lists)
 	}
 }

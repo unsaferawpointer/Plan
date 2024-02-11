@@ -8,21 +8,22 @@
 import Foundation
 
 protocol SidebarInteractorProtocol {
-	func fetchProjects() throws
+	func fetchLists() throws
+	func perform(_ modification: ListModification, forLists ids: [UUID]) throws
 }
 
 final class SidebarInteractor {
 
 	weak var presenter: SidebarPresenterProtocol?
 
-	private var provider: ProjectsDataProviderProtocol
+	private var provider: ListsDataProviderProtocol
 
 	private var storage: PersistentContainerProtocol
 
 	// MARK: - Initialization
 
 	init(
-		provider: ProjectsDataProviderProtocol,
+		provider: ListsDataProviderProtocol,
 		storage: PersistentContainerProtocol
 	) {
 		self.provider = provider
@@ -33,15 +34,20 @@ final class SidebarInteractor {
 // MARK: - SidebarInteractorProtocol
 extension SidebarInteractor: SidebarInteractorProtocol {
 
-	func fetchProjects() throws {
+	func fetchLists() throws {
 		try provider.subscribe(self)
+	}
+
+	func perform(_ modification: ListModification, forLists ids: [UUID]) throws {
+		try storage.performModification(modification, forLists: ids)
+		try storage.save()
 	}
 }
 
-// MARK: - ProjectsDataProviderDelegate
-extension SidebarInteractor: ProjectsDataProviderDelegate {
+// MARK: - ListsDataProviderDelegate
+extension SidebarInteractor: ListsDataProviderDelegate {
 
-	func providerDidChangeContent(_ newContent: [Project]) {
+	func providerDidChangeContent(_ newContent: [List]) {
 		presenter?.present(newContent)
 	}
 }

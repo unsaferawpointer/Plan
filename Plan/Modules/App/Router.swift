@@ -17,7 +17,7 @@ protocol Routable {
 	///    - detail: Detail view-controller
 	func showWindowAndOrderFront(sidebar: NSViewController, detail: NSViewController)
 
-	func present(content: NSViewController?, detail: NSViewController)
+	func present(detail: NSViewController)
 
 	func setWindow(title: String?, subtitle: String?)
 }
@@ -62,7 +62,7 @@ extension AppRouter: Routable {
 		self.mainWindow.toolbar = toolbar
 	}
 
-	func present(content: NSViewController?, detail: NSViewController) {
+	func present(detail: NSViewController) {
 		let count = splitViewController.splitViewItems.count
 
 		if let last = splitViewController.splitViewItems.last {
@@ -71,31 +71,6 @@ extension AppRouter: Routable {
 			let item = NSSplitViewItem(viewController: detail)
 			splitViewController.addSplitViewItem(item)
 		}
-
-		switch (count, content) {
-		case (2, .some(let content)):
-			let item = NSSplitViewItem(viewController: content)
-			item.minimumThickness = 240
-			item.maximumThickness = 240
-			item.allowsFullHeightLayout = true
-			item.titlebarSeparatorStyle = .automatic
-			splitViewController.insertSplitViewItem(item, at: 1)
-			toolbar.insertItem(withItemIdentifier: .trackingSplitItem, at: 1)
-			toolbar.insertItem(withItemIdentifier: .createProject, at: 1)
-		case (3, .some):
-			break
-		case (2, .none):
-			break
-		case (3, .none):
-			let item = splitViewController.splitViewItems[1]
-			splitViewController.removeSplitViewItem(item)
-			toolbar.removeItem(at: 1)
-			toolbar.removeItem(at: 1)
-		default:
-			break
-		}
-
-		toolbar.validateVisibleItems()
 	}
 
 	func setWindow(title: String?, subtitle: String?) {
@@ -145,41 +120,17 @@ private extension AppRouter {
 extension AppRouter: NSToolbarDelegate {
 
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		let count = splitViewController.splitViewItems.count
-
-		return count == 3
-		? [.flexibleSpace, .createProject, .trackingSplitItem, .toggleSidebar, .createTodo]
-			: [.flexibleSpace, .createTodo]
+		return [.flexibleSpace, .createTodo]
 	}
 
 	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		let count = splitViewController.splitViewItems.count
-
-		return count == 3
-		? [.flexibleSpace, .createProject, .trackingSplitItem, .toggleSidebar, .createTodo]
-			: [.flexibleSpace, .createTodo]
+		return [.flexibleSpace, .createTodo]
 	}
 
 	func toolbar(_ toolbar: NSToolbar,
 				 itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
 				 willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
 		switch itemIdentifier {
-		case .createProject:
-			return {
-				let item = NSToolbarItem(itemIdentifier: .createProject)
-				item.isNavigational = false
-				item.label = "Create project"
-				item.visibilityPriority = .high
-				item.view = {
-					let button = NSButton()
-					button.bezelStyle = .texturedRounded
-					button.image = NSImage(systemSymbolName: "plus", accessibilityDescription: nil)
-					button.target = self
-					button.action = #selector(newProject(_:))
-					return button
-				}()
-				return item
-			}()
 		case .createTodo:
 			return {
 				let item = NSToolbarItem(itemIdentifier: .createTodo)
@@ -210,11 +161,6 @@ extension AppRouter: NSToolbarDelegate {
 private extension AppRouter {
 
 	@objc
-	func newProject(_ sender: Any?) {
-		NotificationCenter.default.post(name: .toolbarNewProjectButtonHasBeenClicked, object: nil)
-	}
-
-	@objc
 	func newTodo(_ sender: Any?) {
 		NotificationCenter.default.post(name: .toolbarNewTodoButtonHasBeenClicked, object: nil)
 	}
@@ -222,16 +168,12 @@ private extension AppRouter {
 
 extension NSToolbarItem.Identifier {
 
-	static let createProject = NSToolbarItem.Identifier("createProject")
-
 	static let createTodo = NSToolbarItem.Identifier("createTodo")
 
 	static let trackingSplitItem = NSToolbarItem.Identifier(rawValue: "trackingSplitItem")
 }
 
 extension NSNotification.Name {
-
-	static var toolbarNewProjectButtonHasBeenClicked = NSNotification.Name("toolbarNewProjectHasBeenClicked")
 
 	static var toolbarNewTodoButtonHasBeenClicked = NSNotification.Name("toolbarNewTodoHasBeenClicked")
 }

@@ -14,7 +14,7 @@ enum TodoModification {
 	case unfocus
 	case bookmark
 	case unbookmark
-	case setProject(_ newValue: UUID?)
+	case setList(_ newValue: UUID?)
 }
 
 // MARK: - Equatable

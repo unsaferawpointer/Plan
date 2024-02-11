@@ -9,13 +9,13 @@ import Foundation
 
 final class TodosMenuPresenter {
 
-	var provider: ProjectsDataProviderProtocol
+	var provider: ListsDataProviderProtocol
 
 	weak var menu: TodosContextMenuProtocol?
 
 	weak var output: TodosMenuDelegate?
 
-	init(provider: ProjectsDataProviderProtocol) {
+	init(provider: ListsDataProviderProtocol) {
 		self.provider = provider
 	}
 }
@@ -44,13 +44,13 @@ extension TodosMenuPresenter: TodosContextMenuOutput {
 	}
 }
 
-// MARK: - ProjectsDataProviderDelegate
-extension TodosMenuPresenter: ProjectsDataProviderDelegate {
+// MARK: - ListsDataProviderDelegate
+extension TodosMenuPresenter: ListsDataProviderDelegate {
 
-	func providerDidChangeContent(_ newContent: [Project]) {
+	func providerDidChangeContent(_ newContent: [List]) {
 
-		let projectItems: [MenuItem] = newContent.map { project in
-				.custom(.uuid(project.uuid), content: .init(title: project.title, keyEquivalent: ""))
+		let listItems: [MenuItem] = newContent.map { list in
+				.custom(.uuid(list.uuid), content: .init(title: list.title, keyEquivalent: ""))
 		}
 
 		let items: [MenuItem] =
@@ -63,7 +63,7 @@ extension TodosMenuPresenter: ProjectsDataProviderDelegate {
 			.custom(.bookmark, content: .init(title: "Bookmark", keyEquivalent: "b")),
 			.custom(.unbookmark, content: .init(title: "Unbookmark", keyEquivalent: "")),
 			.separator,
-			.menu(.moveToProject, content: .init(title: "Move to project", keyEquivalent: ""), items: projectItems),
+			.menu(.moveToList, content: .init(title: "Move to list", keyEquivalent: ""), items: listItems),
 			.separator,
 			.custom(.delete, content: .init(title: "Delete", keyEquivalent: "\u{0008}"))
 		]
