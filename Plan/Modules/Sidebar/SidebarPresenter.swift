@@ -7,9 +7,15 @@
 
 import Foundation
 
+protocol SidebarPresenterProtocol: AnyObject {
+	func present(_ projects: [Project])
+}
+
 final class SidebarPresenter {
 
 	var stateProvider: SidebarStateProviderProtocol
+
+	var interactor: SidebarInteractorProtocol?
 
 	weak var titleDelegate: TitleDelegate?
 
@@ -26,6 +32,34 @@ final class SidebarPresenter {
 	}
 }
 
+// MARK: - SidebarPresenterProtocol
+extension SidebarPresenter: SidebarPresenterProtocol {
+
+	func present(_ projects: [Project]) {
+
+		let staticContent: [SidebarItem] =
+		[
+			.init(id: .inbox, icon: "tray.fill", title: "Inbox"),
+			.init(id: .backlog, icon: "square.stack.3d.up.fill", title: "Backlog"),
+			.init(id: .archieve, icon: "shippingbox.fill", title: "Archieve")
+		]
+
+		let dynamicContent = projects.map { project in
+			SidebarItem(
+				id: .project(project.uuid),
+				icon: "doc.text",
+				title: project.title
+			)
+		}
+
+		view?.display(
+			staticContent: staticContent,
+			sectionTitle: "Lists",
+			dynamicContent: dynamicContent
+		)
+	}
+}
+
 // MARK: - SidebarViewOutput
 extension SidebarPresenter: SidebarViewOutput {
 
@@ -34,28 +68,18 @@ extension SidebarPresenter: SidebarViewOutput {
 			return
 		}
 
-		switch stateProvider.getRoute() {
-		case .focus:
-			view?.selectItem(.focus)
-		case .backlog:
-			view?.selectItem(.backlog)
-		case .favorites:
-			view?.selectItem(.favorites)
-		case .projects:
-			view?.selectItem(.projects)
-		case .archieve:
-			view?.selectItem(.archieve)
+		do {
+			try interactor?.fetchProjects()
+		} catch {
+			// TODO: - Handle action
 		}
+
+		let route = stateProvider.getRoute()
+		view?.selectItem(route)
 	}
 
 	func selectionDidChange(_ newValue: SidebarItem) {
-		switch newValue {
-		case .focus:		stateProvider.navigate(to: .focus)
-		case .backlog:		stateProvider.navigate(to: .backlog)
-		case .favorites:	stateProvider.navigate(to: .favorites)
-		case .projects:		stateProvider.navigate(to: .projects)
-		case .archieve:		stateProvider.navigate(to: .archieve)
-		}
+		stateProvider.navigate(to: newValue.id)
 		titleDelegate?.titleDidChange(newValue.title)
 	}
 }

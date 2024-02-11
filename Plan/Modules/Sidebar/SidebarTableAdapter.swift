@@ -15,14 +15,9 @@ final class SidebarTableAdapter: NSObject {
 
 	// MARK: - Data
 
-	private var items: [SidebarItem] = 
-	[
-		.focus,
-		.backlog,
-		.favorites,
-		.projects,
-		.archieve
-	]
+	private var items: [SidebarItem] = []
+
+	private var section: SidebarSection = .init(title: "", items: [])
 
 	// MARK: - Initialization
 
@@ -39,11 +34,25 @@ final class SidebarTableAdapter: NSObject {
 // MARK: - Public interface
 extension SidebarTableAdapter {
 
-	func selectItem(_ item: SidebarItem) {
-		guard let index = items.firstIndex(of: item) else {
-			return
+	func display(staticContent: [SidebarItem], sectionTitle: String, dynamicContent: [SidebarItem]) {
+
+		self.items = staticContent
+		self.section.title = sectionTitle
+		self.section.items = dynamicContent
+
+		table?.reloadData()
+		table?.expandItem(section, expandChildren: true)
+	}
+
+	func selectItem(_ id: Route) {
+
+		if let index = items.firstIndex(where: { $0.id == id }) {
+			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
 		}
-		table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
+
+		if let index = section.items.firstIndex(where: { $0.id == id }) {
+			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
+		}
 	}
 }
 
@@ -51,17 +60,26 @@ extension SidebarTableAdapter {
 extension SidebarTableAdapter: NSOutlineViewDataSource {
 
 	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-		assert(item == nil, "Item should be nil")
-		return items[index]
+		guard let section = item as? SidebarSection else {
+			switch index {
+			case 0..<items.count:
+				return items[index]
+			default:
+				return section
+			}
+		}
+		return section.items[index]
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-		assert(item == nil, "Item should be nil")
-		return items.count
+		guard let section = item as? SidebarSection else {
+			return items.count + 1
+		}
+		return section.items.count
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-		return false
+		return item is SidebarSection
 	}
 }
 
@@ -72,38 +90,67 @@ extension SidebarTableAdapter: NSOutlineViewDelegate {
 		guard let row = table?.selectedRow, row != -1 else {
 			return
 		}
-		let item = items[row]
-		selection?(item)
+
+		switch row {
+		case 0..<items.count:
+			let item = items[row]
+			selection?(item)
+		default:
+			if let item = table?.item(atRow: row) as? SidebarItem {
+				selection?(item)
+			}
+		}
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-		guard let item = item as? SidebarItem else {
-			return nil
+		if let section = item as? SidebarSection {
+			let header = NSTextField(string: section.title)
+			header.isEditable = false
+			header.isBordered = false
+			header.drawsBackground = false
+			return header
 		}
 
 		let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
-		var view = table?.makeView(withIdentifier: id, owner: self) as? LabelView
-		if view == nil {
-			view = LabelView()
-			view?.identifier = id
+
+		if let item = item as? SidebarItem {
+			var view = table?.makeView(withIdentifier: id, owner: self) as? LabelView
+			if view == nil {
+				view = LabelView()
+				view?.identifier = id
+			}
+
+			let configuration = LabelConfig(title: item.title, iconName: item.icon, iconColor: nil)
+			view?.configure(configuration)
+			return view
+		} else if let item = item as? Project {
+			var view = table?.makeView(withIdentifier: id, owner: self) as? LabelView
+			if view == nil {
+				view = LabelView()
+				view?.identifier = id
+			}
+
+			let configuration = LabelConfig(title: item.title, iconName: "doc.text", iconColor: nil)
+			view?.configure(configuration)
+			return view
 		}
 
-		let configuration = LabelConfig(title: item.title, iconName: item.icon, iconColor: item.color)
-		view?.configure(configuration)
+		return nil
+	}
 
-		return view
+	func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
+		return item is SidebarSection
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, tintConfigurationForItem item: Any) -> NSTintConfiguration? {
-		guard let item = item as? SidebarItem else {
-			return nil
-		}
+		return .monochrome
+	}
 
-		guard let color = item.color else {
-			return .default
+	func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+		guard item is SidebarSection else {
+			return true
 		}
-
-		return .init(preferredColor: color)
+		return false
 	}
 
 }

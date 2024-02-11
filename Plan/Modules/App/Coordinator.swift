@@ -7,7 +7,7 @@
 
 import Cocoa
 
-typealias StateProviderProtocol = SidebarStateProviderProtocol & ProjectsStateProviderProtocol & TodosStateProviderProtocol
+typealias StateProviderProtocol = SidebarStateProviderProtocol & TodosStateProviderProtocol
 
 /// Interface of the coordinator
 protocol Coordinatable {
@@ -56,14 +56,14 @@ extension Coordinator: Coordinatable {
 extension Coordinator: StateProviderDelegate {
 
 	func selectionDidChange(new: Selection, old: Selection) {
-		guard new.route != old.route || new.projects != old.projects else {
+		guard new.route != old.route else {
 			return
 		}
 
 		infoDidChange("")
 
 		switch new.route {
-		case .focus:
+		case .inbox:
 			presentDetail(with: .inFocus)
 		case .backlog:
 			presentDetail(with: .backlog)
@@ -71,24 +71,13 @@ extension Coordinator: StateProviderDelegate {
 			presentDetail(with: .favorites)
 		case .archieve:
 			presentDetail(with: .archieve)
-		case .projects:
-			guard let id = new.projects.first else {
-				let detail = EmptyContentAssembly.assemble(.init(
-					title: "No selection",
-					subtitle: "Select a project.",
-					image: "ghost")
-				)
-				let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
-				router.present(content: content, detail: detail)
-				return
-			}
+		case .project(let id):
 			let detail = TodosAssembly.assemble(
 				stateProvider: stateProvider,
 				configuration: .project(id),
 				infoDelegate: self
 			)
-			let content = ProjectsAssembly.assemble(stateProvider: stateProvider)
-			router.present(content: content, detail: detail)
+			router.present(content: nil, detail: detail)
 		}
 	}
 }

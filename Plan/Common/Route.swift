@@ -8,9 +8,12 @@
 import Foundation
 
 enum Route {
-	case focus
+	case inbox
 	case backlog
 	case favorites
-	case projects
 	case archieve
+	case project(_ id: UUID)
 }
+
+// MARK: - Hashable
+extension Route: Hashable { }

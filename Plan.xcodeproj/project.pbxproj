@@ -97,6 +97,8 @@
 		4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */; };
 		4CCEBB742B72C3D200B57EF1 /* TodosMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */; };
 		4CCEBB872B76632D00B57EF1 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */; };
+		4CCEBBB02B778C6900B57EF1 /* SidebarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBAF2B778C6900B57EF1 /* SidebarInteractor.swift */; };
+		4CCEBBB42B77B07800B57EF1 /* SidebarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +213,8 @@
 		4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosContextMenu.swift; sourceTree = "<group>"; };
 		4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuDelegate.swift; sourceTree = "<group>"; };
 		4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
+		4CCEBBAF2B778C6900B57EF1 /* SidebarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarInteractor.swift; sourceTree = "<group>"; };
+		4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,9 +271,11 @@
 				4C28413A2B654D1A00BC4A9F /* Cels */,
 				4C2841422B65657300BC4A9F /* SidebarAssembly.swift */,
 				4C2841402B65629B00BC4A9F /* SidebarPresenter.swift */,
+				4CCEBBAF2B778C6900B57EF1 /* SidebarInteractor.swift */,
 				4C2841322B65459F00BC4A9F /* SidebarViewController.swift */,
 				4C2841382B654C1400BC4A9F /* SidebarTableAdapter.swift */,
 				4C2841342B65483700BC4A9F /* SidebarItem.swift */,
+				4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -805,6 +811,7 @@
 				4C9103912B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C2841552B6578A100BC4A9F /* ProjectsInteractor.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
+				4CCEBBB42B77B07800B57EF1 /* SidebarSection.swift in Sources */,
 				4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */,
 				4C2841332B65459F00BC4A9F /* SidebarViewController.swift in Sources */,
 				4C28414F2B65714000BC4A9F /* ProjectsViewController.swift in Sources */,
@@ -816,6 +823,7 @@
 				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
 				4C28413D2B654D3A00BC4A9F /* LabelView.swift in Sources */,
 				4C28415E2B658CB300BC4A9F /* ProjectConfiguration.swift in Sources */,
+				4CCEBBB02B778C6900B57EF1 /* SidebarInteractor.swift in Sources */,
 				4C9103672B6D3A0400E7F03D /* StateProvider.swift in Sources */,
 				4C2841592B65855200BC4A9F /* ProjectsTableAdapter.swift in Sources */,
 				4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */,

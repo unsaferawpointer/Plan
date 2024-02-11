@@ -13,7 +13,7 @@ protocol StateProviderDelegate: AnyObject {
 
 final class StateProvider {
 
-	var selection: Selection = .init(route: .focus) {
+	var selection: Selection = .init(route: .inbox) {
 		didSet {
 			delegate?.selectionDidChange(new: selection, old: oldValue)
 		}
@@ -32,15 +32,6 @@ extension StateProvider: SidebarStateProviderProtocol {
 
 	func navigate(to route: Route) {
 		selection.route = route
-		selection.projects = []
-	}
-}
-
-// MARK: - ProjectsStateProviderProtocol
-extension StateProvider: ProjectsStateProviderProtocol {
-
-	func selectProjects(_ ids: [UUID]) {
-		selection.projects = ids
 	}
 }
 
@@ -55,6 +46,5 @@ extension StateProvider: TodosStateProviderProtocol {
 struct Selection {
 
 	var route: Route
-	var projects: [UUID] = []
 	var todos: [UUID] = []
 }

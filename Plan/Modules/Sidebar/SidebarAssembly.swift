@@ -14,9 +14,14 @@ final class SidebarAssembly {
 		titleDelegate: TitleDelegate
 	) -> NSViewController {
 		let presenter = SidebarPresenter(stateProvider: stateProvider, titleDelegate: titleDelegate)
+		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+		let storage = PersistentContainer(context: context!)
+		let interactor = SidebarInteractor(provider: ProjectsDataProvider(context: context!), storage: storage)
 		return SidebarViewController { viewController in
 			viewController.output = presenter
 			presenter.view = viewController
+			interactor.presenter = presenter
+			presenter.interactor = interactor
 		}
 	}
 }

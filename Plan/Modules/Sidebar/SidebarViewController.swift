@@ -12,7 +12,12 @@ protocol SidebarViewOutput: ViewOutput {
 }
 
 protocol SidebarView: AnyObject {
-	func selectItem(_ item: SidebarItem)
+	func display(
+		staticContent: [SidebarItem],
+		sectionTitle: String,
+		dynamicContent: [SidebarItem]
+	)
+	func selectItem(_ id: Route)
 }
 
 class SidebarViewController: NSViewController {
@@ -86,8 +91,20 @@ class SidebarViewController: NSViewController {
 // MARK: - SidebarView
 extension SidebarViewController: SidebarView {
 
-	func selectItem(_ item: SidebarItem) {
-		adapter?.selectItem(item)
+	func display(
+		staticContent: [SidebarItem],
+		sectionTitle: String,
+		dynamicContent: [SidebarItem]
+	) {
+		adapter?.display(
+			staticContent: staticContent,
+			sectionTitle: sectionTitle,
+			dynamicContent: dynamicContent
+		)
+	}
+
+	func selectItem(_ id: Route) {
+		adapter?.selectItem(id)
 	}
 }
 
