@@ -16,7 +16,7 @@ struct TodoModel: ViewConfiguration {
 	var isFavorite: Bool
 	var inFocus: Bool
 	var text: String
-	var subtitle: String
+	var subtitle: String?
 
 }
 

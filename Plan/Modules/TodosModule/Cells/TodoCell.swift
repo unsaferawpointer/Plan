@@ -40,7 +40,7 @@ final class TodoCell: NSView {
 		let view = NSStackView(views: [titleStack, subtitleTextfield])
 		view.alignment = .leading
 		view.orientation = .vertical
-		view.spacing = 2
+		view.spacing = 0
 		return view
 	}()
 
@@ -85,7 +85,7 @@ final class TodoCell: NSView {
 		view.drawsBackground = false
 		view.usesSingleLineMode = true
 		view.lineBreakMode = .byTruncatingMiddle
-		view.font = NSFont.preferredFont(forTextStyle: .callout)
+		view.font = NSFont.preferredFont(forTextStyle: .caption1)
 		view.textColor = .secondaryLabelColor
 		view.cell?.sendsActionOnEndEditing = true
 		view.target = self
@@ -144,7 +144,14 @@ private extension TodoCell {
 		titleTextfield.stringValue = configuration.text
 		titleTextfield.textColor = configuration.isDone ? .secondaryLabelColor : .controlTextColor
 
-		subtitleTextfield.stringValue = configuration.subtitle
+		if let subtitle = configuration.subtitle {
+			subtitleTextfield.stringValue = subtitle
+			subtitleTextfield.isHidden = false
+		} else {
+			subtitleTextfield.stringValue = ""
+			subtitleTextfield.isHidden = true
+		}
+
 		subtitleTextfield.textColor = configuration.isDone ? .tertiaryLabelColor : .secondaryLabelColor
 
 		checkbox.state = configuration.isDone ? .on : .off

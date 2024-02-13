@@ -152,7 +152,7 @@ private extension TodosPresenter {
 			isFavorite: todo.isFavorite, 
 			inFocus: todo.inFocus,
 			text: todo.text, 
-			subtitle: todo.listName ?? "w/o list"
+			subtitle: todo.listName
 		)
 	}
 }
