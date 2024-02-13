@@ -17,7 +17,10 @@ final class SidebarAssembly {
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
 		let interactor = SidebarInteractor(provider: ListsDataProvider(context: context!), storage: storage)
-		return SidebarViewController { viewController in
+
+		let menu = SidebarMenuAssembly.assemble(delegate: presenter)
+
+		return SidebarViewController(menu) { viewController in
 			viewController.output = presenter
 			presenter.view = viewController
 			interactor.presenter = presenter

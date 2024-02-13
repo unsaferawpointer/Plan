@@ -92,3 +92,43 @@ extension SidebarPresenter: SidebarViewOutput {
 		titleDelegate?.titleDidChange(newValue.title)
 	}
 }
+
+// MARK: - MenuDelegate
+extension SidebarPresenter: MenuDelegate {
+
+	func menuItemHasBeenClicked(_ item: MenuItem.Identifier) {
+		switch item {
+		case .newList:
+			do {
+				try interactor?.perform(.insert("New list"))
+			} catch {
+				// TODO: - Handle action
+			}
+		case .deleteList:
+			do {
+				guard case let .list(id) = view?.clickedItem() else {
+					return
+				}
+				try interactor?.perform(.delete([id]))
+			} catch {
+				// TODO: - Handle action
+			}
+		default:
+			break
+		}
+	}
+	
+	func validateMenuItem(_ item: MenuItem.Identifier) -> Bool {
+		switch item {
+		case .newList:
+			return true
+		case .deleteList:
+			guard case .list = view?.clickedItem() else {
+				return false
+			}
+			return true
+		default:
+			return false
+		}
+	}
+}

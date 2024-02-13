@@ -169,7 +169,7 @@ extension TodosPresenterTests {
 	}
 }
 
-// MARK: - TodosMenuDelegate
+// MARK: - MenuDelegate
 extension TodosPresenterTests {
 
 	func testMenuItemHasBeenClickedWhenItemIsNewTodo() {

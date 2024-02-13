@@ -54,6 +54,16 @@ extension SidebarTableAdapter {
 			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
 		}
 	}
+
+	func clickedItem() -> Route? {
+		guard 
+			let clickedRow = table?.clickedRow, clickedRow != -1,
+			let item = table?.item(atRow: clickedRow) as? SidebarItem
+		else {
+			return nil
+		}
+		return item.id
+	}
 }
 
 // MARK: - NSOutlineViewDataSource

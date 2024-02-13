@@ -10,6 +10,7 @@ import Foundation
 protocol SidebarInteractorProtocol {
 	func fetchLists() throws
 	func perform(_ modification: ListModification, forLists ids: [UUID]) throws
+	func perform(_ action: SidebarAction) throws
 }
 
 final class SidebarInteractor {
@@ -40,6 +41,17 @@ extension SidebarInteractor: SidebarInteractorProtocol {
 
 	func perform(_ modification: ListModification, forLists ids: [UUID]) throws {
 		try storage.performModification(modification, forLists: ids)
+		try storage.save()
+	}
+
+	func perform(_ action: SidebarAction) throws {
+		switch action {
+		case .insert(let title):
+			let list = List(uuid: UUID(), title: title, count: 0)
+			try storage.insertList(list)
+		case .delete(let ids):
+			try storage.deleteLists(with: ids)
+		}
 		try storage.save()
 	}
 }

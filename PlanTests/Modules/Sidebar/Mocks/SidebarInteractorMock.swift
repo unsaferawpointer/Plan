@@ -22,7 +22,12 @@ extension SidebarInteractorMock: SidebarInteractorProtocol {
 	}
 	
 	func perform(_ modification: Plan.ListModification, forLists ids: [UUID]) throws {
-		let action: Action = .perform(modification, forLists: ids)
+		let action: Action = .performModification(modification, forLists: ids)
+		invocations.append(action)
+	}
+
+	func perform(_ action: SidebarAction) throws {
+		let action: Action = .performAction(action)
 		invocations.append(action)
 	}
 }
@@ -32,6 +37,7 @@ extension SidebarInteractorMock {
 
 	enum Action {
 		case fetchLists
-		case perform(_ modification: ListModification, forLists: [UUID])
+		case performModification(_ modification: ListModification, forLists: [UUID])
+		case performAction(_ action: SidebarAction)
 	}
 }

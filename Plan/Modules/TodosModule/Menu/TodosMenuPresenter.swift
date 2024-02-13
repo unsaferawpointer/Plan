@@ -13,7 +13,7 @@ final class TodosMenuPresenter {
 
 	weak var menu: TodosContextMenuProtocol?
 
-	weak var output: TodosMenuDelegate?
+	weak var output: MenuDelegate?
 
 	init(provider: ListsDataProviderProtocol) {
 		self.provider = provider

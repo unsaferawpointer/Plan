@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2232402B7AA27A00058D82 /* MenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C22323F2B7AA27A00058D82 /* MenuDelegate.swift */; };
+		4C2232422B7AA2D100058D82 /* SidebarMenuAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2232412B7AA2D100058D82 /* SidebarMenuAssembly.swift */; };
+		4C2232462B7AA5FD00058D82 /* SidebarContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2232452B7AA5FD00058D82 /* SidebarContextMenu.swift */; };
 		4C28412A2B6543E500BC4A9F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2841292B6543E500BC4A9F /* main.swift */; };
 		4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28412C2B6544BE00BC4A9F /* Router.swift */; };
 		4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28412F2B6544F200BC4A9F /* NSWindow+Extension.swift */; };
@@ -81,7 +84,6 @@
 		4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */; };
 		4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */; };
 		4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */; };
-		4CCEBB742B72C3D200B57EF1 /* TodosMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */; };
 		4CCEBB872B76632D00B57EF1 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */; };
 		4CCEBBB02B778C6900B57EF1 /* SidebarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBAF2B778C6900B57EF1 /* SidebarInteractor.swift */; };
 		4CCEBBB42B77B07800B57EF1 /* SidebarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */; };
@@ -93,6 +95,7 @@
 		4CCEBBC32B79413100B57EF1 /* SidebarInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC22B79413100B57EF1 /* SidebarInteractorMock.swift */; };
 		4CCEBBC52B7942C000B57EF1 /* TitleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC42B7942C000B57EF1 /* TitleDelegateMock.swift */; };
 		4CCEBBC72B79476200B57EF1 /* TodosStateProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC62B79476200B57EF1 /* TodosStateProviderProtocol.swift */; };
+		4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C22323F2B7AA27A00058D82 /* MenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDelegate.swift; sourceTree = "<group>"; };
+		4C2232412B7AA2D100058D82 /* SidebarMenuAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarMenuAssembly.swift; sourceTree = "<group>"; };
+		4C2232452B7AA5FD00058D82 /* SidebarContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarContextMenu.swift; sourceTree = "<group>"; };
 		4C2841292B6543E500BC4A9F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4C28412C2B6544BE00BC4A9F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4C28412F2B6544F200BC4A9F /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
@@ -191,7 +197,6 @@
 		4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuAssembly.swift; sourceTree = "<group>"; };
 		4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuPresenter.swift; sourceTree = "<group>"; };
 		4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosContextMenu.swift; sourceTree = "<group>"; };
-		4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuDelegate.swift; sourceTree = "<group>"; };
 		4CCEBB862B76632D00B57EF1 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
 		4CCEBBAF2B778C6900B57EF1 /* SidebarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarInteractor.swift; sourceTree = "<group>"; };
 		4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarSection.swift; sourceTree = "<group>"; };
@@ -203,6 +208,7 @@
 		4CCEBBC22B79413100B57EF1 /* SidebarInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarInteractorMock.swift; sourceTree = "<group>"; };
 		4CCEBBC42B7942C000B57EF1 /* TitleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDelegateMock.swift; sourceTree = "<group>"; };
 		4CCEBBC62B79476200B57EF1 /* TodosStateProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosStateProviderProtocol.swift; sourceTree = "<group>"; };
+		4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +236,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C22323C2B7AA21500058D82 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4C2232412B7AA2D100058D82 /* SidebarMenuAssembly.swift */,
+				4C2232452B7AA5FD00058D82 /* SidebarContextMenu.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		4C28412B2B6544A400BC4A9F /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +270,7 @@
 		4C2841312B65457E00BC4A9F /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				4C22323C2B7AA21500058D82 /* Menu */,
 				4C9103702B6D54C100E7F03D /* State */,
 				4C28413A2B654D1A00BC4A9F /* Cels */,
 				4C2841422B65657300BC4A9F /* SidebarAssembly.swift */,
@@ -264,6 +280,7 @@
 				4C2841382B654C1400BC4A9F /* SidebarTableAdapter.swift */,
 				4C2841342B65483700BC4A9F /* SidebarItem.swift */,
 				4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */,
+				4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -567,6 +584,7 @@
 				4C91038A2B6E99D900E7F03D /* MenuItem.swift */,
 				4C91038C2B6E99EF00E7F03D /* MenuBuilder.swift */,
 				4C9103902B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift */,
+				4C22323F2B7AA27A00058D82 /* MenuDelegate.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -593,7 +611,6 @@
 		4CCEBB682B72B61F00B57EF1 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				4CCEBB732B72C3D200B57EF1 /* TodosMenuDelegate.swift */,
 				4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */,
 				4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */,
 				4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */,
@@ -763,6 +780,7 @@
 				4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */,
 				4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */,
 				4C9103932B6E9D3400E7F03D /* NSTableView+Extension.swift in Sources */,
+				4C2232462B7AA5FD00058D82 /* SidebarContextMenu.swift in Sources */,
 				4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */,
 				4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */,
 				4C9103912B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
@@ -787,13 +805,16 @@
 				4C2841742B667BB200BC4A9F /* ListsDataProvider.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
+				4C2232422B7AA2D100058D82 /* SidebarMenuAssembly.swift in Sources */,
 				4CCEBB872B76632D00B57EF1 /* NSView+Extension.swift in Sources */,
+				4C2232402B7AA27A00058D82 /* MenuDelegate.swift in Sources */,
 				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
 				4C7708992B681EF800847955 /* TodoCell.swift in Sources */,
 				4C2841702B6643C000BC4A9F /* ProjectEntity.swift in Sources */,
 				4C91038D2B6E99EF00E7F03D /* MenuBuilder.swift in Sources */,
 				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
+				4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */,
 				4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */,
 				4C9103972B6EBAEA00E7F03D /* TodoModification.swift in Sources */,
 				4C91039C2B6FB2BD00E7F03D /* TodosViewState.swift in Sources */,
@@ -811,7 +832,6 @@
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
 				4C91039F2B6FB5D800E7F03D /* EmptyContentViewController.swift in Sources */,
 				4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */,
-				4CCEBB742B72C3D200B57EF1 /* TodosMenuDelegate.swift in Sources */,
 				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
 				4C91038B2B6E99D900E7F03D /* MenuItem.swift in Sources */,
 				4C9103952B6EBAC600E7F03D /* TodosAction.swift in Sources */,

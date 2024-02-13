@@ -97,8 +97,8 @@ extension TodosPresenter: TodosViewOutput {
 	}
 }
 
-// MARK: - TodosMenuDelegate
-extension TodosPresenter: TodosMenuDelegate {
+// MARK: - MenuDelegate
+extension TodosPresenter: MenuDelegate {
 
 	func menuItemHasBeenClicked(_ item: MenuItem.Identifier) {
 

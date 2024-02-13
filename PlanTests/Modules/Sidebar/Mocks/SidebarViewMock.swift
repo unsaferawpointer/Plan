@@ -11,6 +11,8 @@ import Foundation
 final class SidebarViewMock {
 
 	private (set) var invocations: [Action] = []
+
+	var clickedItemStub: Route?
 }
 
 // MARK: - TodosView
@@ -28,6 +30,10 @@ extension SidebarViewMock: SidebarView {
 	func selectItem(_ id: Route) {
 		let action: Action = .selectItem(id)
 		invocations.append(action)
+	}
+
+	func clickedItem() -> Route? {
+		clickedItemStub
 	}
 }
 

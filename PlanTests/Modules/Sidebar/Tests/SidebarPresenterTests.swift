@@ -97,7 +97,7 @@ extension SidebarPresenterTests {
 		sut.labelDidChangeText(expectedText, forItem: expectedId)
 
 		// Assert
-		guard case let .perform(modification, ids) = interactor.invocations[0] else {
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
 		XCTAssertEqual(modification, .setTitle(expectedText))
@@ -118,5 +118,55 @@ extension SidebarPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(route, .backlog)
+	}
+}
+
+// MARK: - MenuDelegate test-cases
+extension SidebarPresenterTests {
+
+	func testValidateMenuItemWhenMenuItemIsDeleteList() {
+		// Arrange
+		let expectedId = UUID()
+		view.clickedItemStub = .list(expectedId)
+
+		// Act
+		let result = sut.validateMenuItem(.deleteList)
+
+		// Assert
+		XCTAssertTrue(result)
+	}
+
+	func testValidateMenuItemWhenMenuItemIsNewList() {
+		// Act
+		let result = sut.validateMenuItem(.newList)
+
+		// Assert
+		XCTAssertTrue(result)
+	}
+
+	func testMenuItemHasBeenClickedWhenMenuItemIsNewList() {
+		// Act
+		sut.menuItemHasBeenClicked(.newList)
+
+		// Assert
+		guard case let .performAction(action) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(action, .insert("New list"))
+	}
+
+	func testMenuItemHasBeenClickedWhenMenuItemIsDeleteList() {
+		// Arrange
+		let expectedId = UUID()
+		view.clickedItemStub = .list(expectedId)
+
+		// Act
+		sut.menuItemHasBeenClicked(.deleteList)
+
+		// Assert
+		guard case let .performAction(action) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(action, .delete([expectedId]))
 	}
 }

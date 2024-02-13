@@ -19,6 +19,7 @@ protocol SidebarView: AnyObject {
 		dynamicContent: [SidebarItem]
 	)
 	func selectItem(_ id: Route)
+	func clickedItem() -> Route?
 }
 
 class SidebarViewController: NSViewController {
@@ -57,11 +58,12 @@ class SidebarViewController: NSViewController {
 
 	// MARK: - Initialization
 
-	init(configure: (SidebarViewController) -> Void) {
+	init(_ menu: NSMenu, configure: (SidebarViewController) -> Void) {
 		super.init(nibName: nil, bundle: nil)
 		configure(self)
 		self.adapter = SidebarTableAdapter(table: table)
 		adapter?.output = output
+		table.menu = menu
 	}
 	
 	required init?(coder: NSCoder) {
@@ -101,6 +103,10 @@ extension SidebarViewController: SidebarView {
 
 	func selectItem(_ id: Route) {
 		adapter?.selectItem(id)
+	}
+
+	func clickedItem() -> Route? {
+		adapter?.clickedItem()
 	}
 }
 
