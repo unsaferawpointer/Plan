@@ -60,20 +60,7 @@ enum TodoStatus {
 // MARK: - Hashable
 extension TodoStatus: Hashable { }
 
-//extension TodoStatus {
-//
-//	func next() -> TodoStatus? {
-//		switch self {
-//		case .incomplete:
-//			return .inProgress(startDate: Date())
-//		case .inProgress(let startDate):
-//			return .isDone(startDate: startDate, completionDate: Date())
-//		case .isDone(let startDate, let completionDate):
-//			<#code#>
-//		}
-//	}
-//}
-
+// MARK: - Computed properties
 extension TodoStatus {
 
 	var startDate: Date? {

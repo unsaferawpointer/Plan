@@ -13,12 +13,12 @@ protocol TodosFactoryProtocol {
 
 final class TodosFactory {
 
-	var configuration: TodosConfiguration
+	var predicate: TodosPredicate
 
 	// MARK: - Initialization
 
-	init(configuration: TodosConfiguration) {
-		self.configuration = configuration
+	init(configuration: TodosPredicate) {
+		self.predicate = configuration
 	}
 }
 
@@ -29,16 +29,16 @@ extension TodosFactory: TodosFactoryProtocol {
 
 		var todo = Todo(text: text, listName: nil)
 
-		switch configuration {
+		switch predicate {
 		case .inProgress:
 			todo.status = .inProgress(startDate: Date())
 		case .backlog:
 			todo.status = .incomplete
-		case .favorites:
+		case .isFavorite:
 			todo.isFavorite = true
 		case .list(let id):
 			todo.list = id
-		case .archieve:
+		case .isDone:
 			let date = Date()
 			todo.status = .isDone(startDate: date, completionDate: date)
 		}

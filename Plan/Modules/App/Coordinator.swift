@@ -43,7 +43,7 @@ extension Coordinator: Coordinatable {
 		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider, titleDelegate: self)
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
-			configuration: .inProgress,
+			predicate: .inProgress,
 			infoDelegate: self
 		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
@@ -66,13 +66,13 @@ extension Coordinator: StateProviderDelegate {
 		case .backlog:
 			presentDetail(with: .backlog)
 		case .favorites:
-			presentDetail(with: .favorites)
+			presentDetail(with: .isFavorite)
 		case .archieve:
-			presentDetail(with: .archieve)
+			presentDetail(with: .isDone)
 		case .list(let id):
 			let detail = TodosAssembly.assemble(
 				stateProvider: stateProvider,
-				configuration: .list(id),
+				predicate: .list(id),
 				infoDelegate: self
 			)
 			router.present(detail: detail)
@@ -83,10 +83,10 @@ extension Coordinator: StateProviderDelegate {
 // MARK: - Helpers
 private extension Coordinator {
 
-	func presentDetail(with configuration: TodosConfiguration) {
+	func presentDetail(with predicate: TodosPredicate) {
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
-			configuration: configuration,
+			predicate: predicate,
 			infoDelegate: self
 		)
 		router.present(detail: detail)

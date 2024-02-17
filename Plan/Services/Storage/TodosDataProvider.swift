@@ -13,6 +13,7 @@ protocol TodosDataProviderDelegate: AnyObject {
 }
 
 protocol TodosDataProviderProtocol {
+	func setOrder(_ order: [TodosOrder]) throws
 	func subscribe(_ object: TodosDataProviderDelegate) throws
 }
 
@@ -26,20 +27,20 @@ final class TodosDataProvider: NSObject {
 
 	// MARK: - Initialization
 
-	init(context: NSManagedObjectContext, configuration: TodosConfiguration) {
+	init(context: NSManagedObjectContext, predicate: TodosPredicate, order: [TodosOrder]) {
 		self.context = context
 		super.init()
-		self.controller = configure(with: configuration)
+		self.controller = configure(with: predicate, order: order)
 	}
 }
 
 // MARK: - Helpers
 private extension TodosDataProvider {
 
-	func configure(with configuration: TodosConfiguration) -> NSFetchedResultsController<TodoEntity> {
+	func configure(with predicate: TodosPredicate, order: [TodosOrder]) -> NSFetchedResultsController<TodoEntity> {
 		let request = TodoEntity.fetchRequest()
-		request.sortDescriptors = [NSSortDescriptor(keyPath: \TodoEntity.creationDate, ascending: true)]
-		request.predicate = configuration.predicate
+		request.sortDescriptors = order.map(\.sortDescriptor)
+		request.predicate = predicate.predicate
 
 		let controller = NSFetchedResultsController(
 			fetchRequest: request,
@@ -55,6 +56,11 @@ private extension TodosDataProvider {
 
 // MARK: - TodosDataProviderProtocol
 extension TodosDataProvider: TodosDataProviderProtocol {
+
+	func setOrder(_ order: [TodosOrder]) throws {
+		controller?.fetchRequest.sortDescriptors = order.map(\.sortDescriptor)
+		try controller?.performFetch()
+	}
 
 	func subscribe(_ object: TodosDataProviderDelegate) throws {
 		self.delegate = object
@@ -83,20 +89,36 @@ extension TodosDataProvider: NSFetchedResultsControllerDelegate {
 	}
 }
 
-extension TodosConfiguration {
+extension TodosOrder {
 
-	var predicate: NSPredicate? {
+	var sortDescriptor: NSSortDescriptor {
+		switch self {
+		case .isFavorite:
+			return NSSortDescriptor(keyPath: \TodoEntity.isFavorite, ascending: false)
+		case .isDone:
+			return NSSortDescriptor(keyPath: \TodoEntity.completionDate, ascending: true)
+		case .creationDate:
+			return NSSortDescriptor(keyPath: \TodoEntity.creationDate, ascending: true)
+		case .completionDate:
+			return NSSortDescriptor(keyPath: \TodoEntity.completionDate, ascending: true)
+		}
+	}
+}
+
+extension TodosPredicate {
+
+	var predicate: NSPredicate {
 		switch self {
 		case .inProgress:
 			return NSPredicate(format: "startDate != %@ AND completionDate == %@", argumentArray: [NSNull(), NSNull()])
 		case .backlog:
 			return NSPredicate(format: "startDate == %@ AND completionDate == %@", argumentArray: [NSNull(), NSNull()])
-		case .favorites:
-			return NSPredicate(format: "isFavorite == %@", argumentArray: [true])
-		case .archieve:
+		case .isDone:
 			return NSPredicate(format: "completionDate != %@", argumentArray: [NSNull()])
+		case .isFavorite:
+			return NSPredicate(format: "isFavorite == %@", argumentArray: [true])
 		case .list(let id):
-			return NSPredicate(format: "list.uuid == %@", argumentArray: [id])
+			return NSPredicate(format: "list.uuid == %@", argumentArray: [id ?? NSNull()])
 		}
 	}
 }

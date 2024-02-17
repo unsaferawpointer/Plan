@@ -11,17 +11,21 @@ final class TodosAssembly {
 
 	static func assemble(
 		stateProvider: TodosStateProviderProtocol,
-		configuration: TodosConfiguration,
+		predicate: TodosPredicate,
 		infoDelegate: InfoDelegate
 	) -> NSViewController {
 		let presenter = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate)
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
-		let factory = TodosFactory(configuration: configuration)
+		let factory = TodosFactory(configuration: predicate)
 		let interactor = TodosInteractor(
 			presenter: presenter,
-			provider: TodosDataProvider(context: context!, configuration: configuration),
-			storage: storage, 
+			provider: TodosDataProvider(
+				context: context!,
+				predicate: predicate,
+				order: [.isFavorite, .isDone, .creationDate]
+			),
+			storage: storage,
 			factory: factory
 		)
 
