@@ -1,5 +1,5 @@
 //
-//  ProjectEntity+CoreDataProperties.swift
+//  ListEntity+CoreDataProperties.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 28.01.2024.
@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-@objc(ProjectEntity)
-public class ProjectEntity: NSManagedObject { }
+@objc(ListEntity)
+public class ListEntity: NSManagedObject { }
 
-extension ProjectEntity {
+extension ListEntity {
 
-	@nonobjc public class func fetchRequest() -> NSFetchRequest<ProjectEntity> {
-		return NSFetchRequest<ProjectEntity>(entityName: "ProjectEntity")
+	@nonobjc public class func fetchRequest() -> NSFetchRequest<ListEntity> {
+		return NSFetchRequest<ListEntity>(entityName: "ListEntity")
 	}
 
 	@NSManaged public var uuid: UUID
@@ -36,7 +36,7 @@ extension ProjectEntity {
 }
 
 // MARK: Generated accessors for todos
-extension ProjectEntity {
+extension ListEntity {
 
 	@objc(addTodosObject:)
 	@NSManaged public func addToTodos(_ value: TodoEntity)
@@ -53,10 +53,10 @@ extension ProjectEntity {
 }
 
 // MARK: - Identifiable
-extension ProjectEntity: Identifiable { }
+extension ListEntity: Identifiable { }
 
 // MARK: - Support Project
-extension ProjectEntity {
+extension ListEntity {
 
 	convenience init(_ context: NSManagedObjectContext, list: List) {
 		self.init(context: context)

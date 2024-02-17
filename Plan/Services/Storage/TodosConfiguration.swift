@@ -9,7 +9,7 @@ import Foundation
 
 enum TodosConfiguration {
 
-	case inFocus
+	case inProgress
 	case backlog
 	case favorites
 	case list(_ id: UUID)

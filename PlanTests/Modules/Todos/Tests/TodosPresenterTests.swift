@@ -50,9 +50,8 @@ extension TodosPresenterTests {
 		let expectedItems = todos.map { todo in
 			TodoModel(
 				uuid: todo.uuid,
-				isDone: todo.isDone,
+				isDone: todo.status.isDone,
 				isFavorite: todo.isFavorite,
-				inFocus: todo.inFocus,
 				text: todo.text, 
 				subtitle: todo.listName
 			)
@@ -195,7 +194,7 @@ extension TodosPresenterTests {
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(modification, .setStatus(true))
+		XCTAssertEqual(modification, .complete)
 		XCTAssertEqual(ids, expectedIds)
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
@@ -212,7 +211,7 @@ extension TodosPresenterTests {
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(modification, .setStatus(false))
+		XCTAssertEqual(modification, .moveToBacklog)
 		XCTAssertEqual(ids, expectedIds)
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}

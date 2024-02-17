@@ -30,18 +30,17 @@ extension TodosFactory: TodosFactoryProtocol {
 		var todo = Todo(text: text, listName: nil)
 
 		switch configuration {
-		case .inFocus:
-			todo.inFocus = true
+		case .inProgress:
+			todo.status = .inProgress(startDate: Date())
 		case .backlog:
-			todo.isDone = false
-			todo.inFocus = false
+			todo.status = .incomplete
 		case .favorites:
 			todo.isFavorite = true
-			todo.isDone = false
 		case .list(let id):
 			todo.list = id
 		case .archieve:
-			todo.isDone = true
+			let date = Date()
+			todo.status = .isDone(startDate: date, completionDate: date)
 		}
 
 		return todo

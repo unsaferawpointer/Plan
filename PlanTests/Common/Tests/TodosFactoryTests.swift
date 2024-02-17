@@ -24,19 +24,20 @@ final class TodosFactoryTests: XCTestCase {
 // MARK: - TodosFactoryProtocol
 extension TodosFactoryTests {
 
-	func testCreateTodoWhenConfigurationIsInFocus() {
+	func testCreateTodoWhenConfigurationIsInProgress() {
 		// Arrange
 		let expectedText = UUID().uuidString
 
-		sut = TodosFactory(configuration: .inFocus)
+		sut = TodosFactory(configuration: .inProgress)
 
 		// Act
 		let result = sut.createTodo(with: expectedText)
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		XCTAssertEqual(result.inFocus, true)
-		XCTAssertEqual(result.isDone, false)
+		guard case .inProgress = result.status else {
+			return XCTFail()
+		}
 		XCTAssertNil(result.list)
 	}
 
@@ -51,8 +52,9 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		XCTAssertEqual(result.inFocus, false)
-		XCTAssertEqual(result.isDone, false)
+		guard case .incomplete = result.status else {
+			return XCTFail()
+		}
 		XCTAssertEqual(result.isFavorite, false)
 		XCTAssertNil(result.list)
 	}
@@ -68,8 +70,9 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		XCTAssertEqual(result.inFocus, false)
-		XCTAssertEqual(result.isDone, false)
+		guard case .incomplete = result.status else {
+			return XCTFail()
+		}
 		XCTAssertEqual(result.isFavorite, true)
 		XCTAssertNil(result.list)
 	}
@@ -85,8 +88,9 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		XCTAssertEqual(result.inFocus, false)
-		XCTAssertEqual(result.isDone, true)
+		guard case .isDone = result.status else {
+			return XCTFail()
+		}
 		XCTAssertEqual(result.isFavorite, false)
 		XCTAssertNil(result.list)
 	}
@@ -103,8 +107,9 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		XCTAssertEqual(result.inFocus, false)
-		XCTAssertEqual(result.isDone, false)
+		guard case .incomplete = result.status else {
+			return XCTFail()
+		}
 		XCTAssertEqual(result.isFavorite, false)
 		XCTAssertEqual(result.list, expectedList)
 	}

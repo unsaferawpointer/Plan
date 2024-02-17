@@ -43,7 +43,7 @@ extension Coordinator: Coordinatable {
 		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider, titleDelegate: self)
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
-			configuration: .inFocus,
+			configuration: .inProgress,
 			infoDelegate: self
 		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
@@ -62,7 +62,7 @@ extension Coordinator: StateProviderDelegate {
 
 		switch new.route {
 		case .inbox:
-			presentDetail(with: .inFocus)
+			presentDetail(with: .inProgress)
 		case .backlog:
 			presentDetail(with: .backlog)
 		case .favorites:

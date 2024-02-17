@@ -44,10 +44,10 @@ extension PersistentContainer: PersistentContainerProtocol {
 	func insertTodo(_ todo: Todo, to list: UUID?) throws {
 		let new = TodoEntity(context, todo: todo)
 
-		guard let list, let target = try fetchEntities(ProjectEntity.self, with: [list]).first else {
+		guard let list, let target = try fetchEntities(ListEntity.self, with: [list]).first else {
 			return
 		}
-		new.project = target
+		new.list = target
 	}
 
 	func setTodo(text: String, with id: UUID) throws {
@@ -75,18 +75,18 @@ extension PersistentContainer: PersistentContainerProtocol {
 	}
 
 	func insertList(_ list: List) throws {
-		let new = ProjectEntity(context, list: list)
+		let _ = ListEntity(context, list: list)
 	}
 
 	func setList(title: String, with id: UUID) throws {
-		guard let entity = try fetchEntities(ProjectEntity.self, with: [id]).first else {
+		guard let entity = try fetchEntities(ListEntity.self, with: [id]).first else {
 			return
 		}
 		entity.title = title
 	}
 
 	func deleteLists(with ids: [UUID]) throws {
-		let deleted = try fetchEntities(ProjectEntity.self, with: ids)
+		let deleted = try fetchEntities(ListEntity.self, with: ids)
 
 		deleted.forEach {
 			context.delete($0)
@@ -101,28 +101,28 @@ extension PersistentContainer: PersistentContainerProtocol {
 			switch modification {
 			case .setText(let newValue):
 				entity.text = newValue
-			case .setStatus(let newValue):
-				entity.isDone = newValue
 			case .bookmark:
 				entity.isFavorite = true
 			case .unbookmark:
 				entity.isFavorite = false
-			case .focus:
-				entity.inFocus = true
-			case .unfocus:
-				entity.inFocus = false
 			case .setList(let id):
-				guard let id, let target = try fetchEntities(ProjectEntity.self, with: [id]).first else {
-					entity.project = nil
+				guard let id, let target = try fetchEntities(ListEntity.self, with: [id]).first else {
+					entity.list = nil
 					return
 				}
-				entity.project = target
+				entity.list = target
+			case .complete:
+				entity.complete()
+			case .start:
+				entity.start()
+			case .moveToBacklog:
+				entity.moveToBacklog()
 			}
 		}
 	}
 
 	func performModification(_ modification: ListModification, forLists ids: [UUID]) throws {
-		let entities = try fetchEntities(ProjectEntity.self, with: ids)
+		let entities = try fetchEntities(ListEntity.self, with: ids)
 		for entity in entities {
 			switch modification {
 			case .setTitle(let newValue):

@@ -20,21 +20,21 @@ extension TodoEntity {
 
 	@NSManaged public var uuid: UUID
 	@NSManaged public var text: String
-	@NSManaged public var inFocus: Bool
 	@NSManaged public var isFavorite: Bool
+
+	@NSManaged public var startDate: Date?
 	@NSManaged public var creationDate: Date
 	@NSManaged public var completionDate: Date?
 
 	// MARK: - Relationships
 
-	@NSManaged public var project: ProjectEntity?
+	@NSManaged public var list: ListEntity?
 
 	public override func awakeFromInsert() {
 		super.awakeFromInsert()
 
 		self.uuid = UUID()
 		self.text = ""
-		self.inFocus = false
 		self.isFavorite = isFavorite
 		self.creationDate = Date()
 	}
@@ -61,6 +61,60 @@ extension TodoEntity {
 			completionDate = newValue ? Date() : nil
 		}
 	}
+
+	var status: TodoStatus {
+		get {
+			switch (startDate, completionDate) {
+			case (.some(let start), .none):
+				return .inProgress(startDate: start)
+			case (.some(let start), .some(let end)):
+				return .isDone(startDate: start, completionDate: end)
+			default:
+				return .incomplete
+			}
+		}
+		set {
+			switch newValue {
+			case .incomplete:
+				self.startDate = nil
+				self.completionDate = nil
+			case .inProgress(let start):
+				self.startDate = start
+				self.completionDate = nil
+			case .isDone(let start, let end):
+				self.startDate = start
+				self.completionDate = end
+			}
+		}
+	}
+}
+
+extension TodoEntity {
+
+	func start() {
+		switch status {
+		case .incomplete:
+			self.status = .inProgress(startDate: Date())
+		default:
+			break
+		}
+	}
+
+	func complete() {
+		switch status {
+		case .incomplete:
+			let date = Date()
+			self.status = .isDone(startDate: date, completionDate: date)
+		case .inProgress(let start):
+			self.status = .isDone(startDate: start, completionDate: Date())
+		case .isDone:
+			break
+		}
+	}
+
+	func moveToBacklog() {
+		self.status = .incomplete
+	}
 }
 
 // MARK: - Identifiable
@@ -74,9 +128,9 @@ extension TodoEntity {
 
 		self.uuid = todo.uuid
 		self.creationDate = todo.creationDate
-		self.isDone = todo.isDone
+		self.startDate = todo.status.startDate
+		self.completionDate = todo.status.completionDate
 		self.text = todo.text
-		self.inFocus = todo.inFocus
 		self.isFavorite = todo.isFavorite
 	}
 
@@ -85,11 +139,10 @@ extension TodoEntity {
 			uuid: uuid,
 			creationDate: creationDate,
 			text: text,
-			inFocus: inFocus,
 			isFavorite: isFavorite,
-			isDone: isDone,
-			list: project?.uuid,
-			listName: project?.title
+			status: status,
+			list: list?.uuid,
+			listName: list?.title
 		)
 	}
 }

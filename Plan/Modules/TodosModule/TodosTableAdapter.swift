@@ -99,7 +99,7 @@ extension TodosTableAdapter: NSTableViewDelegate {
 			self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
 		}
 		view?.checkboxAction = { [weak self] newValue in
-			self?.output?.performModification(.setStatus(newValue), forTodos: [model.uuid])
+			self?.output?.performModification(newValue ? .complete : .moveToBacklog, forTodos: [model.uuid])
 		}
 
 		return view

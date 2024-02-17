@@ -22,10 +22,10 @@ final class ListsDataProvider: NSObject {
 
 	weak var delegate: ListsDataProviderDelegate?
 
-	lazy var controller: NSFetchedResultsController<ProjectEntity> = {
+	lazy var controller: NSFetchedResultsController<ListEntity> = {
 
-		let request = ProjectEntity.fetchRequest()
-		request.sortDescriptors = [NSSortDescriptor(keyPath: \ProjectEntity.title, ascending: true)]
+		let request = ListEntity.fetchRequest()
+		request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.title, ascending: true)]
 
 		let controller = NSFetchedResultsController(
 			fetchRequest: request,
@@ -64,7 +64,7 @@ extension ListsDataProvider: NSFetchedResultsControllerDelegate {
 
 	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) { 
 
-		guard let entities = controller.fetchedObjects as? [ProjectEntity] else {
+		guard let entities = controller.fetchedObjects as? [ListEntity] else {
 			return
 		}
 

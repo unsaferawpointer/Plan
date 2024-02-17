@@ -87,16 +87,16 @@ extension TodosConfiguration {
 
 	var predicate: NSPredicate? {
 		switch self {
-		case .inFocus:
-			return NSPredicate(format: "inFocus == %@ AND completionDate == %@", argumentArray: [true, NSNull()])
+		case .inProgress:
+			return NSPredicate(format: "startDate != %@ AND completionDate == %@", argumentArray: [NSNull(), NSNull()])
 		case .backlog:
-			return NSPredicate(format: "inFocus == %@ AND completionDate == %@", argumentArray: [false, NSNull()])
+			return NSPredicate(format: "startDate == %@ AND completionDate == %@", argumentArray: [NSNull(), NSNull()])
 		case .favorites:
-			return NSPredicate(format: "completionDate == %@ AND isFavorite == %@", argumentArray: [NSNull(), true])
+			return NSPredicate(format: "isFavorite == %@", argumentArray: [true])
 		case .archieve:
 			return NSPredicate(format: "completionDate != %@", argumentArray: [NSNull()])
 		case .list(let id):
-			return NSPredicate(format: "project.uuid == %@", argumentArray: [id])
+			return NSPredicate(format: "list.uuid == %@", argumentArray: [id])
 		}
 	}
 }

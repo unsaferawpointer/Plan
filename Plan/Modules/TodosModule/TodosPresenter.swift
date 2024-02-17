@@ -116,9 +116,9 @@ extension TodosPresenter: MenuDelegate {
 		case .unbookmark:
 			performModification(.unbookmark, forTodos: view.selection)
 		case .markAsCompleted:
-			performModification(.setStatus(true), forTodos: view.selection)
+			performModification(.complete, forTodos: view.selection)
 		case .markAsIncomplete:
-			performModification(.setStatus(false), forTodos: view.selection)
+			performModification(.moveToBacklog, forTodos: view.selection)
 		case .uuid(let value):
 			performModification(.setList(value), forTodos: view.selection)
 			break
@@ -148,9 +148,8 @@ private extension TodosPresenter {
 	func makeModel(from todo: Todo) -> TodoModel {
 		return TodoModel(
 			uuid: todo.uuid,
-			isDone: todo.isDone,
-			isFavorite: todo.isFavorite, 
-			inFocus: todo.inFocus,
+			isDone: todo.status.isDone,
+			isFavorite: todo.isFavorite,
 			text: todo.text, 
 			subtitle: todo.listName
 		)
