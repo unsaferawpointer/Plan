@@ -37,8 +37,20 @@ extension TodosTableAdapter {
 			self.items[row].uuid
 		}
 		let set = Set(selectedIds)
+
+		let difference = items.difference(from: self.items)
 		self.items = items
-		table?.reloadData()
+
+		table?.beginUpdates()
+		for change in difference {
+			switch change {
+			case let .remove(oldOffset, element, newOffset):
+				table?.removeRows(at: .init(integer: oldOffset), withAnimation: [.effectFade])
+			case let .insert(newOffset, element, oldOffset):
+				table?.insertRows(at: .init(integer: newOffset), withAnimation: [.effectFade])
+			}
+		}
+		table?.endUpdates()
 
 		for (index, item) in items.enumerated() {
 			guard set.contains(item.uuid) else {
