@@ -250,6 +250,7 @@
 		4C28412B2B6544A400BC4A9F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4C2841362B654B9700BC4A9F /* Route.swift */,
 				4C28412C2B6544BE00BC4A9F /* Router.swift */,
 				4C2841462B65699500BC4A9F /* Coordinator.swift */,
 				4C9103662B6D3A0400E7F03D /* StateProvider.swift */,
@@ -473,7 +474,6 @@
 			children = (
 				4C6825A62B5C3802000DDD07 /* Extensions */,
 				4C91037B2B6D825B00E7F03D /* Models */,
-				4C2841362B654B9700BC4A9F /* Route.swift */,
 				4C2841612B65A0EF00BC4A9F /* ViewState.swift */,
 				4C2841632B65A11600BC4A9F /* ViewOutput.swift */,
 			);

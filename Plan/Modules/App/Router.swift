@@ -120,11 +120,11 @@ private extension AppRouter {
 extension AppRouter: NSToolbarDelegate {
 
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.flexibleSpace, .createTodo]
+		return [.toggleSidebarItem, .flexibleSpace, .createTodo]
 	}
 
 	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.flexibleSpace, .createTodo]
+		return [.toggleSidebarItem, .flexibleSpace, .createTodo]
 	}
 
 	func toolbar(_ toolbar: NSToolbar,
@@ -151,6 +151,22 @@ extension AppRouter: NSToolbarDelegate {
 			return NSTrackingSeparatorToolbarItem(identifier: NSToolbarItem.Identifier.trackingSplitItem,
 												  splitView: self.splitViewController.splitView,
 												  dividerIndex: 1)
+		case .toggleSidebarItem:
+			return {
+				let item = NSToolbarItem(itemIdentifier: .toggleSidebarItem)
+				item.isNavigational = true
+				item.label = "Toggle sidebar"
+				item.visibilityPriority = .high
+				item.view = {
+					let button = NSButton()
+					button.bezelStyle = .texturedRounded
+					button.image = NSImage(systemSymbolName: "sidebar.leading", accessibilityDescription: nil)
+					button.target = self
+					button.action = #selector(toggleSidebar(_:))
+					return button
+				}()
+				return item
+			}()
 		default:
 			return nil
 		}
@@ -164,6 +180,11 @@ private extension AppRouter {
 	func newTodo(_ sender: Any?) {
 		NotificationCenter.default.post(name: .toolbarNewTodoButtonHasBeenClicked, object: nil)
 	}
+
+	@objc
+	func toggleSidebar(_ sender: Any?) {
+		splitViewController.toggleSidebar(sender)
+	}
 }
 
 extension NSToolbarItem.Identifier {
@@ -171,6 +192,8 @@ extension NSToolbarItem.Identifier {
 	static let createTodo = NSToolbarItem.Identifier("createTodo")
 
 	static let trackingSplitItem = NSToolbarItem.Identifier(rawValue: "trackingSplitItem")
+
+	static let toggleSidebarItem = NSToolbarItem.Identifier(rawValue: "toggleSidebar")
 }
 
 extension NSNotification.Name {
