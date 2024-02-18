@@ -31,6 +31,7 @@ final class TodosInteractorTests: XCTestCase {
 			presenter: presenter,
 			provider: provider,
 			storage: storage, 
+			predicate: .backlog, 
 			factory: factory
 		)
 	}

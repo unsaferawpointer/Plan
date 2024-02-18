@@ -16,7 +16,8 @@ final class TodosFactoryMock {
 // MARK: - TodosFactoryProtocol
 extension TodosFactoryMock: TodosFactoryProtocol {
 
-	func createTodo(with text: String) -> Todo {
-		return todoStub
+	func createTodo(with text: String, satisfyPredicate predicate: TodosPredicate) -> Plan.Todo {
+		todoStub
 	}
+
 }

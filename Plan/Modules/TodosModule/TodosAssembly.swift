@@ -17,7 +17,7 @@ final class TodosAssembly {
 		let presenter = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate)
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
-		let factory = TodosFactory(configuration: predicate)
+		let factory = TodosFactory()
 		let interactor = TodosInteractor(
 			presenter: presenter,
 			provider: TodosDataProvider(
@@ -25,7 +25,8 @@ final class TodosAssembly {
 				predicate: predicate,
 				order: [.isFavorite, .isDone, .creationDate]
 			),
-			storage: storage,
+			storage: storage, 
+			predicate: predicate,
 			factory: factory
 		)
 

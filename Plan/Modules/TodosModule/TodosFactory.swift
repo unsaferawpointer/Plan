@@ -8,24 +8,15 @@
 import Foundation
 
 protocol TodosFactoryProtocol {
-	func createTodo(with text: String) -> Todo
+	func createTodo(with text: String, satisfyPredicate predicate: TodosPredicate) -> Todo
 }
 
-final class TodosFactory {
-
-	var predicate: TodosPredicate
-
-	// MARK: - Initialization
-
-	init(configuration: TodosPredicate) {
-		self.predicate = configuration
-	}
-}
+final class TodosFactory { }
 
 // MARK: - TodosFactoryProtocol
 extension TodosFactory: TodosFactoryProtocol {
 
-	func createTodo(with text: String) -> Todo {
+	func createTodo(with text: String, satisfyPredicate predicate: TodosPredicate) -> Todo {
 
 		var todo = Todo(text: text, listName: nil)
 

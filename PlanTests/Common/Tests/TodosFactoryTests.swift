@@ -13,7 +13,7 @@ final class TodosFactoryTests: XCTestCase {
 	private var sut: TodosFactory!
 
 	override func setUpWithError() throws {
-		sut = TodosFactory(configuration: .backlog)
+		sut = TodosFactory()
 	}
 
 	override func tearDownWithError() throws {
@@ -28,10 +28,10 @@ extension TodosFactoryTests {
 		// Arrange
 		let expectedText = UUID().uuidString
 
-		sut = TodosFactory(configuration: .inProgress)
+		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .inProgress)
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -45,10 +45,10 @@ extension TodosFactoryTests {
 		// Arrange
 		let expectedText = UUID().uuidString
 
-		sut = TodosFactory(configuration: .backlog)
+		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .backlog)
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -63,10 +63,10 @@ extension TodosFactoryTests {
 		// Arrange
 		let expectedText = UUID().uuidString
 
-		sut = TodosFactory(configuration: .favorites)
+		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .isFavorite)
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -81,10 +81,10 @@ extension TodosFactoryTests {
 		// Arrange
 		let expectedText = UUID().uuidString
 
-		sut = TodosFactory(configuration: .archieve)
+		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .isDone)
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -100,10 +100,10 @@ extension TodosFactoryTests {
 		let expectedText = UUID().uuidString
 		let expectedList = UUID()
 
-		sut = TodosFactory(configuration: .list(expectedList))
+		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .list(expectedList))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)

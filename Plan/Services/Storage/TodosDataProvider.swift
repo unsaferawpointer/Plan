@@ -13,7 +13,6 @@ protocol TodosDataProviderDelegate: AnyObject {
 }
 
 protocol TodosDataProviderProtocol {
-	func setOrder(_ order: [TodosOrder]) throws
 	func subscribe(_ object: TodosDataProviderDelegate) throws
 }
 
@@ -56,11 +55,6 @@ private extension TodosDataProvider {
 
 // MARK: - TodosDataProviderProtocol
 extension TodosDataProvider: TodosDataProviderProtocol {
-
-	func setOrder(_ order: [TodosOrder]) throws {
-		controller?.fetchRequest.sortDescriptors = order.map(\.sortDescriptor)
-		try controller?.performFetch()
-	}
 
 	func subscribe(_ object: TodosDataProviderDelegate) throws {
 		self.delegate = object

@@ -23,17 +23,21 @@ final class TodosInteractor {
 
 	private var factory: TodosFactoryProtocol
 
+	private var predicate: TodosPredicate
+
 	// MARK: - Initialization
 
 	init(
 		presenter: TodosPresenterProtocol,
 		provider: TodosDataProviderProtocol,
 		storage: PersistentContainerProtocol,
+		predicate: TodosPredicate,
 		factory: TodosFactoryProtocol
 	) {
 		self.presenter = presenter
 		self.provider = provider
 		self.storage = storage
+		self.predicate = predicate
 		self.factory = factory
 	}
 }
@@ -49,7 +53,7 @@ extension TodosInteractor: TodosInteractorProtocol {
 		switch action {
 		case .insert(let texts):
 			for text in texts {
-				let todo = factory.createTodo(with: text)
+				let todo = factory.createTodo(with: text, satisfyPredicate: predicate)
 				try storage.insertTodo(todo, to: todo.list)
 			}
 		case .delete(let ids):
