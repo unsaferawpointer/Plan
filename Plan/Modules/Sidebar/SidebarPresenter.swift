@@ -39,7 +39,7 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 
 		let staticContent: [SidebarItem] =
 		[
-			.init(id: .inbox, icon: "tray.fill", title: "In Progress", isEditable: false),
+			.init(id: .inbox, icon: "sun.max.fill", title: "My day", isEditable: false),
 			.init(id: .backlog, icon: "square.stack.3d.up.fill", title: "Backlog", isEditable: false),
 			.init(id: .archieve, icon: "shippingbox.fill", title: "Archieve", isEditable: false)
 		]

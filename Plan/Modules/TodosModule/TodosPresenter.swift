@@ -121,7 +121,8 @@ extension TodosPresenter: MenuDelegate {
 			performModification(.moveToBacklog, forTodos: view.selection)
 		case .uuid(let value):
 			performModification(.setList(value), forTodos: view.selection)
-			break
+		case .moveToMyDay:
+			performModification(.start, forTodos: view.selection)
 		default:
 			break
 		}
@@ -131,7 +132,7 @@ extension TodosPresenter: MenuDelegate {
 		switch item {
 		case .newTodo:
 			return true
-		case .delete, .moveToList, .bookmark, .unbookmark, .markAsCompleted, .markAsIncomplete, .uuid:
+		case .delete, .moveToList, .bookmark, .unbookmark, .markAsCompleted, .markAsIncomplete, .uuid, .moveToMyDay:
 			guard let selection = view?.selection else {
 				return false
 			}
