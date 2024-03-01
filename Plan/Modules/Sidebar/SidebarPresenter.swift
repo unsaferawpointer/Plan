@@ -47,7 +47,7 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 		let dynamicContent = lists.map { list in
 			SidebarItem(
 				id: .list(list.uuid),
-				icon: "doc.text",
+				icon: "list.bullet",
 				title: list.title,
 				isEditable: true
 			)
