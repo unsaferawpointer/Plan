@@ -46,16 +46,71 @@ extension TodosPresenterTests {
 
 	func testPresent() {
 		// Arrange
-		let todos: [Todo] = [.random, .random, .random]
-		let expectedItems = todos.map { todo in
-			TodoModel(
-				uuid: todo.uuid,
-				isDone: todo.status.isDone,
-				isFavorite: todo.isFavorite,
-				text: todo.text, 
-				subtitle: todo.listName
+
+		let todo0 = Todo(
+			uuid: UUID(),
+			creationDate: .now,
+			text: UUID().uuidString,
+			isFavorite: Bool.random(),
+			status: .incomplete,
+			list: UUID(),
+			listName: "list0"
+		)
+
+		let todo1 = Todo(
+			uuid: UUID(),
+			creationDate: .now,
+			text: UUID().uuidString,
+			isFavorite: Bool.random(),
+			status: .incomplete,
+			list: UUID(),
+			listName: "list0"
+		)
+
+		let todo2 = Todo(
+			uuid: UUID(),
+			creationDate: .now,
+			text: UUID().uuidString,
+			isFavorite: Bool.random(),
+			status: .incomplete,
+			list: UUID(),
+			listName: "list1"
+		)
+
+		let todos: [Todo] = [todo0, todo1, todo2]
+
+		let expectedItems: [TableItem] =
+		[
+			.header("list0"),
+			.custom(
+				.init(
+					uuid: todo0.uuid,
+					isDone: todo0.status.isDone,
+					isFavorite: todo0.isFavorite,
+					text: todo0.text,
+					subtitle: nil
+				)
+			),
+			.custom(
+				.init(
+					uuid: todo1.uuid,
+					isDone: todo1.status.isDone,
+					isFavorite: todo1.isFavorite,
+					text: todo1.text,
+					subtitle: nil
+				)
+			),
+			.header("list1"),
+			.custom(
+				.init(
+					uuid: todo2.uuid,
+					isDone: todo2.status.isDone,
+					isFavorite: todo2.isFavorite,
+					text: todo2.text,
+					subtitle: nil
+				)
 			)
-		}
+		]
 
 		// Act
 		sut.present(todos)
@@ -64,7 +119,7 @@ extension TodosPresenterTests {
 		guard case let .display(state) = view.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(state, .content(models: expectedItems))
+		XCTAssertEqual(state, .content(items: expectedItems))
 		XCTAssertEqual(view.invocations.count, 1)
 		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
 			return XCTFail()

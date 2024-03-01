@@ -15,7 +15,7 @@ final class TodosTableAdapter: NSObject {
 
 	// MARK: - Data
 
-	private (set) var items: [TodoModel] = []
+	private (set) var items: [TableItem] = []
 
 	// MARK: - Initialization
 
@@ -31,9 +31,9 @@ final class TodosTableAdapter: NSObject {
 
 extension TodosTableAdapter {
 
-	func apply(_ items: [TodoModel]) {
+	func apply(_ items: [TableItem]) {
 		let selectedRows = table?.selectedRowIndexes ?? .init()
-		let selectedIds = selectedRows.map { row in
+		let selectedIds = selectedRows.compactMap { row in
 			self.items[row].uuid
 		}
 		let set = Set(selectedIds)
@@ -53,7 +53,7 @@ extension TodosTableAdapter {
 		table?.endUpdates()
 
 		for (index, item) in items.enumerated() {
-			guard set.contains(item.uuid) else {
+			guard let uuid = item.uuid, set.contains(uuid) else {
 				continue
 			}
 			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
@@ -64,7 +64,7 @@ extension TodosTableAdapter {
 	var selection: [UUID] {
 		get {
 			let rows = table?.effectiveSelection() ?? .init()
-			return rows.map { row in
+			return rows.compactMap { row in
 				items[row].uuid
 			}
 		}
@@ -84,25 +84,40 @@ extension TodosTableAdapter: NSTableViewDelegate {
 
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
-		let model = items[row]
+		let item = items[row]
 
-		let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
-		var view = table?.makeView(withIdentifier: id, owner: self) as? TodoCell
-		if view == nil {
-			view = TodoCell()
-			view?.identifier = id
+		switch item {
+		case .header(let title):
+			let id = NSUserInterfaceItemIdentifier("header")
+			var view = table?.makeView(withIdentifier: id, owner: self) as? NSTextField
+			if view == nil {
+				view = NSTextField()
+				view?.isEditable = false
+				view?.isBordered = false
+				view?.drawsBackground = false
+				view?.font = NSFont.preferredFont(forTextStyle: .headline)
+				view?.identifier = id
+			}
+			view?.stringValue = title
+			return view
+		case .custom(let model):
+			let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
+			var view = table?.makeView(withIdentifier: id, owner: self) as? TodoCell
+			if view == nil {
+				view = TodoCell()
+				view?.identifier = id
+			}
+
+			view?.configure(model)
+
+			view?.textAction = { [weak self] newValue in
+				self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
+			}
+			view?.checkboxAction = { [weak self] newValue in
+				self?.output?.performModification(newValue ? .complete : .moveToBacklog, forTodos: [model.uuid])
+			}
+			return view
 		}
-
-		view?.configure(model)
-
-		view?.textAction = { [weak self] newValue in
-			self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
-		}
-		view?.checkboxAction = { [weak self] newValue in
-			self?.output?.performModification(newValue ? .complete : .moveToBacklog, forTodos: [model.uuid])
-		}
-
-		return view
 	}
 
 	func tableView(
@@ -118,10 +133,35 @@ extension TodosTableAdapter: NSTableViewDelegate {
 				guard let self else {
 					return
 				}
-				let item = items[row]
-				self.output?.delete([item.uuid])
+//				let item = items[row]
+//				self.output?.delete([item.uuid])
 			})
 		]
+	}
+
+	func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+		let item = items[row]
+
+		switch item {
+		case .custom(let model):
+			if let subtitle = model.subtitle {
+				return 36
+			}
+			return tableView.rowHeight
+		case .header:
+			return item.height
+		}
+	}
+
+	func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+		let item = items[row]
+
+		switch item {
+		case .custom:
+			return false
+		case .header:
+			return true
+		}
 	}
 }
 

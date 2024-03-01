@@ -88,7 +88,7 @@ extension TodosInteractorTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(todo, expectedTodo)
-		XCTAssertNil(list)
+		XCTAssertEqual(list, expectedTodo.list)
 		guard case .save = storage.invocations[1] else {
 			return XCTFail()
 		}

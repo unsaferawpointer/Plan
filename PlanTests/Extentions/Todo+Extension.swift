@@ -15,7 +15,9 @@ extension Todo {
 			uuid: .init(),
 			creationDate: Date(),
 			text: UUID().uuidString,
-			isFavorite: Bool.random()
+			isFavorite: Bool.random(),
+			list: .init(),
+			listName: UUID().uuidString
 		)
 	}
 }

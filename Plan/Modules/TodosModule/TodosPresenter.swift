@@ -34,11 +34,8 @@ final class TodosPresenter {
 extension TodosPresenter: TodosPresenterProtocol {
 
 	func present(_ todos: [Todo]) {
-		let models = todos.map { todo in
-			makeModel(from: todo)
-		}
 
-		guard !models.isEmpty else {
+		guard !todos.isEmpty else {
 			let state: TodosViewState = .placeholder(
 				title: "No todos, yet",
 				subtitle: "Add new todo using the plus button",
@@ -49,8 +46,29 @@ extension TodosPresenter: TodosPresenterProtocol {
 			return
 		}
 
-		view?.display(.content(models: models))
-		infoDelegate?.infoDidChange("\(models.count) incomplete todos")
+		let grouped = Dictionary(grouping: todos) { todo in
+			return todo.listName ?? ""
+		}
+
+		let sorted = grouped.sorted { lhs, rhs in
+			return lhs.key < rhs.key
+		}
+
+		var total: [TableItem] = []
+
+		for section in sorted {
+			total.append(.header(section.key))
+			let items = section.value.map { todo in
+				makeModel(from: todo)
+			}.map { model in
+				TableItem.custom(model)
+			}
+			total.append(contentsOf: items)
+		}
+
+
+		view?.display(.content(items: total))
+		infoDelegate?.infoDidChange("\(todos.count) incomplete todos")
 	}
 }
 
@@ -152,7 +170,7 @@ private extension TodosPresenter {
 			isDone: todo.status.isDone,
 			isFavorite: todo.isFavorite,
 			text: todo.text, 
-			subtitle: todo.listName
+			subtitle: nil
 		)
 	}
 }

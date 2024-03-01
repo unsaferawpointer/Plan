@@ -41,8 +41,7 @@ final class TodosViewController: NSViewController {
 	lazy var table: NSTableView = {
 		let view = NSTableView()
 		view.style = .inset
-		view.rowSizeStyle = .custom
-		view.rowHeight = 42
+		view.rowSizeStyle = .default
 		view.floatsGroupRows = false
 		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
@@ -99,9 +98,9 @@ extension TodosViewController: TodosView {
 			placeholderView.iconView.image = NSImage(named: image)
 
 			adapter?.apply([])
-		case .content(let models):
+		case .content(let items):
 			placeholderView.isHidden = true
-			adapter?.apply(models)
+			adapter?.apply(items)
 		}
 	}
 }

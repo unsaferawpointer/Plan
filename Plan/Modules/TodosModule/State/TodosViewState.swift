@@ -9,7 +9,7 @@ import Foundation
 
 enum TodosViewState {
 	case placeholder(title: String, subtitle: String, image: String)
-	case content(models: [TodoModel])
+	case content(items: [TableItem])
 }
 
 // MARK: - Equatable
