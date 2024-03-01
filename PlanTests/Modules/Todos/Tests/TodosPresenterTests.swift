@@ -27,7 +27,7 @@ final class TodosPresenterTests: XCTestCase {
 		interactor = TodosInteractorMock()
 		stateProvider = TodosStateProviderMock()
 		infoDelegate = InfoDelegateMock()
-		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate)
+		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate, grouping: .list)
 		sut.view = view
 		sut.interactor = interactor
 	}

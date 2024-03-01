@@ -83,6 +83,7 @@
 		4C9103A52B6FBBE700E7F03D /* EmptyContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */; };
 		4C9C15602B91031B00398331 /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C155F2B91031B00398331 /* TableItem.swift */; };
 		4CAD55942B703469006BD687 /* InfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD55932B703469006BD687 /* InfoDelegate.swift */; };
+		4CC8888F2B924AB00024C52D /* TodosGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8888E2B924AB00024C52D /* TodosGrouping.swift */; };
 		4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */; };
 		4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */; };
 		4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */; };
@@ -198,6 +199,7 @@
 		4C9103A42B6FBBE700E7F03D /* EmptyContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentPresenter.swift; sourceTree = "<group>"; };
 		4C9C155F2B91031B00398331 /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
 		4CAD55932B703469006BD687 /* InfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDelegate.swift; sourceTree = "<group>"; };
+		4CC8888E2B924AB00024C52D /* TodosGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosGrouping.swift; sourceTree = "<group>"; };
 		4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuAssembly.swift; sourceTree = "<group>"; };
 		4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuPresenter.swift; sourceTree = "<group>"; };
 		4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosContextMenu.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				4C7708932B681A2B00847955 /* TodosInteractor.swift */,
 				4C91037C2B6E44BF00E7F03D /* TodosFactory.swift */,
 				4C9103942B6EBAC600E7F03D /* TodosAction.swift */,
+				4CC8888E2B924AB00024C52D /* TodosGrouping.swift */,
 			);
 			path = TodosModule;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				4C7708AA2B6968B600847955 /* TodosDataProvider.swift in Sources */,
 				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
 				4C9103A32B6FBAED00E7F03D /* EmptyContentAssembly.swift in Sources */,
+				4CC8888F2B924AB00024C52D /* TodosGrouping.swift in Sources */,
 				4C2841742B667BB200BC4A9F /* ListsDataProvider.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,

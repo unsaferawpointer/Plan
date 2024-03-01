@@ -21,11 +21,18 @@ final class TodosPresenter {
 
 	weak var infoDelegate: InfoDelegate?
 
+	var grouping: TodosGrouping
+
 	// MARK: - Initialization
 
-	init(stateProvider: TodosStateProviderProtocol, infoDelegate: InfoDelegate) {
+	init(
+		stateProvider: TodosStateProviderProtocol,
+		infoDelegate: InfoDelegate,
+		grouping: TodosGrouping = .none
+	) {
 		self.stateProvider = stateProvider
 		self.infoDelegate = infoDelegate
+		self.grouping = grouping
 	}
 
 }
@@ -46,26 +53,35 @@ extension TodosPresenter: TodosPresenterProtocol {
 			return
 		}
 
-		let grouped = Dictionary(grouping: todos) { todo in
-			return todo.listName ?? ""
-		}
-
-		let sorted = grouped.sorted { lhs, rhs in
-			return lhs.key < rhs.key
-		}
-
 		var total: [TableItem] = []
 
-		for section in sorted {
-			total.append(.header(section.key))
-			let items = section.value.map { todo in
+		switch grouping {
+		case .none:
+			let items = todos.map { todo in
 				makeModel(from: todo)
 			}.map { model in
 				TableItem.custom(model)
 			}
 			total.append(contentsOf: items)
-		}
+		case .list:
+			let grouped = Dictionary(grouping: todos) { todo in
+				return todo.listName ?? ""
+			}
 
+			let sorted = grouped.sorted { lhs, rhs in
+				return lhs.key < rhs.key
+			}
+
+			for section in sorted {
+				total.append(.header(section.key))
+				let items = section.value.map { todo in
+					makeModel(from: todo)
+				}.map { model in
+					TableItem.custom(model)
+				}
+				total.append(contentsOf: items)
+			}
+		}
 
 		view?.display(.content(items: total))
 		infoDelegate?.infoDidChange("\(todos.count) incomplete todos")

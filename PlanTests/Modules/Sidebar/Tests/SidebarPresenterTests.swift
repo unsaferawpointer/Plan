@@ -62,9 +62,9 @@ extension SidebarPresenterTests {
 
 		XCTAssertEqual(sectionTitle, "Lists")
 
-		XCTAssertEqual(dynamicContent[0], .init(id: .list(lists[0].uuid), icon: "doc.text", title: lists[0].title, isEditable: true))
-		XCTAssertEqual(dynamicContent[1], .init(id: .list(lists[1].uuid), icon: "doc.text", title: lists[1].title, isEditable: true))
-		XCTAssertEqual(dynamicContent[2], .init(id: .list(lists[2].uuid), icon: "doc.text", title: lists[2].title, isEditable: true))
+		XCTAssertEqual(dynamicContent[0], .init(id: .list(lists[0].uuid), icon: "list.bullet", title: lists[0].title, isEditable: true))
+		XCTAssertEqual(dynamicContent[1], .init(id: .list(lists[1].uuid), icon: "list.bullet", title: lists[1].title, isEditable: true))
+		XCTAssertEqual(dynamicContent[2], .init(id: .list(lists[2].uuid), icon: "list.bullet", title: lists[2].title, isEditable: true))
 	}
 }
 

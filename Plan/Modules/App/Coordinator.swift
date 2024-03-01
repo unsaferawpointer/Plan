@@ -44,7 +44,9 @@ extension Coordinator: Coordinatable {
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
 			predicate: .inProgress,
-			infoDelegate: self
+			infoDelegate: self,
+			grouping: .list, 
+			order: [.isFavorite, .isDone, .creationDate]
 		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
@@ -62,18 +64,20 @@ extension Coordinator: StateProviderDelegate {
 
 		switch new.route {
 		case .inbox:
-			presentDetail(with: .inProgress)
+			presentDetail(with: .inProgress, grouping: .list, order: [.isFavorite, .creationDate])
 		case .backlog:
-			presentDetail(with: .backlog)
+			presentDetail(with: .backlog, grouping: .none, order: [.isFavorite, .creationDate])
 		case .favorites:
-			presentDetail(with: .isFavorite)
+			presentDetail(with: .isFavorite, grouping: .none, order: [.isFavorite, .creationDate])
 		case .archieve:
-			presentDetail(with: .isDone)
+			presentDetail(with: .isDone, grouping: .none, order: [.completionDate, .creationDate])
 		case .list(let id):
 			let detail = TodosAssembly.assemble(
 				stateProvider: stateProvider,
 				predicate: .list(id),
-				infoDelegate: self
+				infoDelegate: self,
+				grouping: .none, 
+				order: [.isFavorite, .isDone, .creationDate]
 			)
 			router.present(detail: detail)
 		}
@@ -83,11 +87,13 @@ extension Coordinator: StateProviderDelegate {
 // MARK: - Helpers
 private extension Coordinator {
 
-	func presentDetail(with predicate: TodosPredicate) {
+	func presentDetail(with predicate: TodosPredicate, grouping: TodosGrouping, order: [TodosOrder]) {
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
 			predicate: predicate,
-			infoDelegate: self
+			infoDelegate: self, 
+			grouping: grouping,
+			order: order
 		)
 		router.present(detail: detail)
 	}
