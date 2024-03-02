@@ -1,13 +1,13 @@
 //
-//  TodoCell.swift
+//  CheckboxCell.swift
 //  Plan
 //
-//  Created by Anton Cherkasov on 29.01.2024.
+//  Created by Anton Cherkasov on 02.03.2024.
 //
 
 import Cocoa
 
-final class TodoCell: NSView {
+final class CheckboxCell: NSView {
 
 	private var configuration: Configuration? {
 		didSet {
@@ -20,29 +20,6 @@ final class TodoCell: NSView {
 	var checkboxAction: ((Bool) -> Void)?
 
 	// MARK: - UI-Properties
-
-	lazy var basicStack: NSStackView = {
-		let view = NSStackView(views: [checkbox, labelsStack])
-		view.alignment = .centerY
-		view.orientation = .horizontal
-		return view
-	}()
-
-	lazy var titleStack: NSStackView = {
-		let view = NSStackView(views: [iconView, titleTextfield])
-		view.alignment = .firstBaseline
-		view.orientation = .horizontal
-		view.spacing = 4
-		return view
-	}()
-
-	lazy var labelsStack: NSStackView = {
-		let view = NSStackView(views: [titleStack, subtitleTextfield])
-		view.alignment = .leading
-		view.orientation = .vertical
-		view.spacing = 0
-		return view
-	}()
 
 	lazy var checkbox: NSButton = {
 		let selector = #selector(checkboxDidChangeState(_:))
@@ -77,28 +54,6 @@ final class TodoCell: NSView {
 		return view
 	}()
 
-	lazy var subtitleTextfield: NSTextField = {
-		let view = NSTextField()
-		view.focusRingType = .default
-		view.cell?.sendsActionOnEndEditing = true
-		view.isBordered = false
-		view.drawsBackground = false
-		view.usesSingleLineMode = true
-		view.lineBreakMode = .byTruncatingMiddle
-		view.font = NSFont.preferredFont(forTextStyle: .caption1)
-		view.textColor = .secondaryLabelColor
-		view.cell?.sendsActionOnEndEditing = true
-		view.target = self
-		view.action = #selector(textfieldDidChangeText(_:))
-		view.stringValue = "Programming"
-		return view
-	}()
-
-	lazy var iconView: NSImageView = {
-		let view = NSImageView()
-		return view
-	}()
-
 	// MARK: - ConfigurableField
 
 	init() {
@@ -120,9 +75,9 @@ final class TodoCell: NSView {
 }
 
 // MARK: - ConfigurableView
-extension TodoCell: ConfigurableView {
+extension CheckboxCell: ConfigurableView {
 
-	static var userIdentifier: String = "todocell"
+	static var userIdentifier: String = "CheckboxCell"
 
 	typealias Configuration = TodoModel
 
@@ -133,7 +88,7 @@ extension TodoCell: ConfigurableView {
 }
 
 // MARK: - Helpers
-private extension TodoCell {
+private extension CheckboxCell {
 
 	func updateUserInterface() {
 
@@ -144,48 +99,30 @@ private extension TodoCell {
 		titleTextfield.stringValue = configuration.text
 		titleTextfield.textColor = configuration.isDone ? .secondaryLabelColor : .controlTextColor
 
-		if let subtitle = configuration.subtitle {
-			subtitleTextfield.stringValue = subtitle
-			subtitleTextfield.isHidden = false
-		} else {
-			subtitleTextfield.stringValue = ""
-			subtitleTextfield.isHidden = true
-		}
-
-		subtitleTextfield.textColor = configuration.isDone ? .tertiaryLabelColor : .secondaryLabelColor
-
 		checkbox.state = configuration.isDone ? .on : .off
-
-		iconView.isHidden = !configuration.isFavorite
-		iconView.contentTintColor = !configuration.isDone && configuration.isFavorite
-			? .systemYellow
-			: .tertiaryLabelColor
-		iconView.image = configuration.isFavorite
-		? NSImage(systemSymbolName: "star.fill", accessibilityDescription: nil)?
-			.withSymbolConfiguration(.init(scale: .small))
-		: NSImage(systemSymbolName: "star", accessibilityDescription: nil)?
-			.withSymbolConfiguration(.init(scale: .small))
-		iconView.symbolConfiguration = NSImage.SymbolConfiguration(scale: .medium)
 	}
 
 	func configureConstraints() {
 
-		[basicStack].compactMap { $0 }.forEach {
+		[checkbox, titleTextfield].compactMap { $0 }.forEach {
 			addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
 
 		[
-			basicStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-			basicStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-			basicStack.centerYAnchor.constraint(equalTo: centerYAnchor)
+			checkbox.leadingAnchor.constraint(equalTo: leadingAnchor),
+			checkbox.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+			titleTextfield.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 8),
+			titleTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+			titleTextfield.firstBaselineAnchor.constraint(equalTo: checkbox.firstBaselineAnchor)
 		]
 			.forEach { $0.isActive = true }
 	}
 }
 
 // MARK: - Actions
-extension TodoCell {
+extension CheckboxCell {
 
 	@objc
 	func textfieldDidChangeText(_ sender: NSTextField) {

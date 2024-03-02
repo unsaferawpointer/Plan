@@ -186,7 +186,8 @@ private extension TodosPresenter {
 			isDone: todo.status.isDone,
 			isFavorite: todo.isFavorite,
 			text: todo.text, 
-			subtitle: nil
+			listName: todo.listName,
+			creationDate: todo.creationDate
 		)
 	}
 }

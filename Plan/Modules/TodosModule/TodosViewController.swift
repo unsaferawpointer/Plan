@@ -41,11 +41,11 @@ final class TodosViewController: NSViewController {
 	lazy var table: NSTableView = {
 		let view = NSTableView()
 		view.style = .inset
-		view.rowSizeStyle = .default
+		view.rowSizeStyle = .medium
 		view.floatsGroupRows = false
 		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
-		view.usesAlternatingRowBackgroundColors = false
+		view.usesAlternatingRowBackgroundColors = true
 		view.usesAutomaticRowHeights = false
 		return view
 	}()
@@ -79,6 +79,11 @@ final class TodosViewController: NSViewController {
 		configureSubscriptions()
 
 		output?.viewDidChange(state: .didLoad)
+	}
+
+	override func viewWillAppear() {
+		super.viewWillAppear()
+		table.sizeLastColumnToFit()
 	}
 }
 
@@ -132,13 +137,39 @@ private extension TodosViewController {
 
 	func configureUserInterface() {
 
-		table.headerView = nil
+//		table.headerView = nil
 		scrollview.documentView = table
 
 		table.frame = scrollview.bounds
+		table.allowsColumnResizing = true
+		table.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 
-		let column1 = NSTableColumn(identifier: .init(rawValue: "main"))
+		let column1 = NSTableColumn(identifier: .init(rawValue: "task"))
+		column1.title = "Task"
+		column1.resizingMask = .autoresizingMask
+
+		let column4 = NSTableColumn(identifier: .init(rawValue: "list"))
+		column4.title = "List"
+		column4.resizingMask = .autoresizingMask
+		column4.maxWidth = 120
+
+		let column2 = NSTableColumn(identifier: .init(rawValue: "creationDate"))
+		column2.title = "Date Created"
+		column2.resizingMask = .autoresizingMask
+		column2.minWidth = 180
+		column2.maxWidth = 240
+
+		let column3 = NSTableColumn(identifier: .init(rawValue: "favorite"))
+		column3.title = "Is Favorite"
+		column3.resizingMask = .autoresizingMask
+		column3.headerCell.alignment = .center
+		column3.minWidth = 64
+		column3.maxWidth = 64
+
 		table.addTableColumn(column1)
+		table.addTableColumn(column4)
+		table.addTableColumn(column2)
+		table.addTableColumn(column3)
 	}
 
 	func configureConstraints() {

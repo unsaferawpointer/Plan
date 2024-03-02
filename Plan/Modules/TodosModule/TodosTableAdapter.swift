@@ -101,22 +101,65 @@ extension TodosTableAdapter: NSTableViewDelegate {
 			view?.stringValue = title
 			return view
 		case .custom(let model):
-			let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
-			var view = table?.makeView(withIdentifier: id, owner: self) as? TodoCell
-			if view == nil {
-				view = TodoCell()
-				view?.identifier = id
-			}
 
-			view?.configure(model)
+			switch tableColumn?.identifier.rawValue {
+			case "task":
+				let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
+				var view = table?.makeView(withIdentifier: id, owner: self) as? CheckboxCell
+				if view == nil {
+					view = CheckboxCell()
+					view?.identifier = id
+				}
 
-			view?.textAction = { [weak self] newValue in
-				self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
+				view?.configure(model)
+
+				view?.textAction = { [weak self] newValue in
+					self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
+				}
+				view?.checkboxAction = { [weak self] newValue in
+					self?.output?.performModification(newValue ? .complete : .moveToBacklog, forTodos: [model.uuid])
+				}
+				return view
+			case "list":
+				let id = NSUserInterfaceItemIdentifier("list")
+				var view = table?.makeView(withIdentifier: id, owner: self) as? LabelCell
+				if view == nil {
+					view = LabelCell()
+					view?.identifier = id
+				}
+				view?.configure(model.listName ?? "--")
+				return view
+			case "creationDate":
+				let id = NSUserInterfaceItemIdentifier("creationDate")
+				var view = table?.makeView(withIdentifier: id, owner: self) as? LabelCell
+				if view == nil {
+					view = LabelCell()
+					view?.identifier = id
+				}
+
+				let formatter = DateFormatter()
+				formatter.doesRelativeDateFormatting = true
+				formatter.dateStyle = .medium
+				formatter.timeStyle = .short
+
+				let text = formatter.string(from: model.creationDate)
+				view?.configure(text)
+				return view
+			case "favorite":
+				let id = NSUserInterfaceItemIdentifier("toggle")
+				var view = table?.makeView(withIdentifier: id, owner: self) as? ToggleCell
+				if view == nil {
+					view = ToggleCell()
+					view?.identifier = id
+				}
+				view?.configure(model.isFavorite)
+				view?.checkboxAction = { [weak self] newValue in
+					self?.output?.performModification( newValue ? .bookmark : .unbookmark, forTodos: [model.uuid])
+				}
+				return view
+			default:
+				return nil
 			}
-			view?.checkboxAction = { [weak self] newValue in
-				self?.output?.performModification(newValue ? .complete : .moveToBacklog, forTodos: [model.uuid])
-			}
-			return view
 		}
 	}
 
@@ -139,20 +182,6 @@ extension TodosTableAdapter: NSTableViewDelegate {
 		]
 	}
 
-	func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		let item = items[row]
-
-		switch item {
-		case .custom(let model):
-			if let subtitle = model.subtitle {
-				return 36
-			}
-			return tableView.rowHeight
-		case .header:
-			return item.height
-		}
-	}
-
 	func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
 		let item = items[row]
 
@@ -162,6 +191,13 @@ extension TodosTableAdapter: NSTableViewDelegate {
 		case .header:
 			return true
 		}
+	}
+
+	func tableView(_ tableView: NSTableView, userCanChangeVisibilityOf column: NSTableColumn) -> Bool {
+		guard column.identifier.rawValue != "task" else {
+			return false
+		}
+		return true
 	}
 }
 

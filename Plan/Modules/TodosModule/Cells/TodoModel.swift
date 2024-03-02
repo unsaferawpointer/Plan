@@ -7,15 +7,14 @@
 
 import Foundation
 
-struct TodoModel: ViewConfiguration {
-
-	typealias View = TodoCell
+struct TodoModel {
 
 	var uuid: UUID
 	var isDone: Bool
 	var isFavorite: Bool
 	var text: String
-	var subtitle: String?
+	var listName: String?
+	var creationDate: Date
 
 }
 

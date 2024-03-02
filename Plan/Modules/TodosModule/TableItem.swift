@@ -26,16 +26,3 @@ extension TableItem {
 		}
 	}
 }
-
-// MARK: - Computed properties
-extension TableItem {
-
-	var height: CGFloat {
-		switch self {
-		case .header:
-			return 24
-		case .custom(let model):
-			return model.subtitle == nil ? 24 : 36
-		}
-	}
-}

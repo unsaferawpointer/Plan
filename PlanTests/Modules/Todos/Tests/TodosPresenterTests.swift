@@ -88,7 +88,8 @@ extension TodosPresenterTests {
 					isDone: todo0.status.isDone,
 					isFavorite: todo0.isFavorite,
 					text: todo0.text,
-					subtitle: nil
+					listName: todo0.listName,
+					creationDate: todo0.creationDate
 				)
 			),
 			.custom(
@@ -97,7 +98,8 @@ extension TodosPresenterTests {
 					isDone: todo1.status.isDone,
 					isFavorite: todo1.isFavorite,
 					text: todo1.text,
-					subtitle: nil
+					listName: todo1.listName,
+					creationDate: todo1.creationDate
 				)
 			),
 			.header("list1"),
@@ -107,7 +109,8 @@ extension TodosPresenterTests {
 					isDone: todo2.status.isDone,
 					isFavorite: todo2.isFavorite,
 					text: todo2.text,
-					subtitle: nil
+					listName: todo2.listName,
+					creationDate: todo2.creationDate
 				)
 			)
 		]
