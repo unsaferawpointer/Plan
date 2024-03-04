@@ -10,6 +10,7 @@ import Foundation
 struct SidebarItem {
 	var id: Route
 	var icon: String
+	var tintColor: TintColor = .monochrome
 	var title: String
 
 	var isEditable: Bool

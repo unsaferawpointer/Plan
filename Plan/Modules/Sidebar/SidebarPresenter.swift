@@ -39,15 +39,16 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 
 		let staticContent: [SidebarItem] =
 		[
-			.init(id: .inbox, icon: "sun.max.fill", title: "My day", isEditable: false),
-			.init(id: .backlog, icon: "square.stack.3d.up.fill", title: "Backlog", isEditable: false),
-			.init(id: .archieve, icon: "shippingbox.fill", title: "Archieve", isEditable: false)
+			.init(id: .inbox, icon: "bolt.fill", tintColor: .yellow, title: "In Focus", isEditable: false),
+			.init(id: .backlog, icon: "square.stack.3d.up.fill", tintColor: .monochrome, title: "Backlog", isEditable: false),
+			.init(id: .archieve, icon: "shippingbox.fill", tintColor: .monochrome, title: "Archieve", isEditable: false)
 		]
 
 		let dynamicContent = lists.map { list in
 			SidebarItem(
 				id: .list(list.uuid),
 				icon: "list.bullet",
+				tintColor: .monochrome,
 				title: list.title,
 				isEditable: true
 			)

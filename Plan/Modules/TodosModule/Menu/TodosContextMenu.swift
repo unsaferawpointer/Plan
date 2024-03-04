@@ -100,7 +100,7 @@ extension MenuItem.Identifier {
 
 	static let unbookmark: MenuItem.Identifier = .basic("unbookmark")
 
-	static let moveToMyDay: MenuItem.Identifier = .basic("moveToMyDay")
+	static let focusOn: MenuItem.Identifier = .basic("focusOn")
 
 	static let markAsCompleted: MenuItem.Identifier = .basic("mark_as_completed")
 

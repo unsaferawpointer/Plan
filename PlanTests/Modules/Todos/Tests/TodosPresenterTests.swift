@@ -351,7 +351,7 @@ extension TodosPresenterTests {
 		let expectedList = UUID()
 
 		// Act
-		sut.menuItemHasBeenClicked(.moveToMyDay)
+		sut.menuItemHasBeenClicked(.focusOn)
 
 		// Assert
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {

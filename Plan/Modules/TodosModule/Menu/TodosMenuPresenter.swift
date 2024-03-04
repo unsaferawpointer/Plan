@@ -57,7 +57,7 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 		[
 			.custom(.newTodo, content: .init(title: "New todo", keyEquivalent: "n")),
 			.separator,
-			.custom(.moveToMyDay, content: .init(title: "Move to My day", keyEquivalent: "")),
+			.custom(.focusOn, content: .init(title: "Focus on the task", keyEquivalent: "")),
 			.separator,
 			.custom(.markAsCompleted, content: .init(title: "Mark as Completed", keyEquivalent: "\r")),
 			.custom(.markAsIncomplete, content: .init(title: "Mark as Incomplete", keyEquivalent: "")),

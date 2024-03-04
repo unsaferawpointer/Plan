@@ -154,7 +154,10 @@ extension SidebarTableAdapter: NSOutlineViewDelegate {
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, tintConfigurationForItem item: Any) -> NSTintConfiguration? {
-		return .monochrome
+		guard let item = item as? SidebarItem else {
+			return .monochrome
+		}
+		return item.tintColor.configuration
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {

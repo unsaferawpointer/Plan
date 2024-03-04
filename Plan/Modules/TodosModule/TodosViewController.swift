@@ -47,6 +47,7 @@ final class TodosViewController: NSViewController {
 		view.allowsColumnResizing = false
 		view.usesAlternatingRowBackgroundColors = true
 		view.usesAutomaticRowHeights = false
+		view.floatsGroupRows = false
 		return view
 	}()
 
@@ -101,10 +102,11 @@ extension TodosViewController: TodosView {
 			placeholderView.title = title
 			placeholderView.subtitle = subtitle
 			placeholderView.iconView.image = NSImage(named: image)
-
+			table.usesAlternatingRowBackgroundColors = false
 			adapter?.apply([])
 		case .content(let items):
 			placeholderView.isHidden = true
+			table.usesAlternatingRowBackgroundColors = true
 			adapter?.apply(items)
 		}
 	}
@@ -153,12 +155,6 @@ private extension TodosViewController {
 		column4.resizingMask = .autoresizingMask
 		column4.maxWidth = 120
 
-		let column2 = NSTableColumn(identifier: .init(rawValue: "creationDate"))
-		column2.title = "Date Created"
-		column2.resizingMask = .autoresizingMask
-		column2.minWidth = 180
-		column2.maxWidth = 240
-
 		let column3 = NSTableColumn(identifier: .init(rawValue: "favorite"))
 		column3.title = "Is Favorite"
 		column3.resizingMask = .autoresizingMask
@@ -168,7 +164,6 @@ private extension TodosViewController {
 
 		table.addTableColumn(column1)
 		table.addTableColumn(column4)
-		table.addTableColumn(column2)
 		table.addTableColumn(column3)
 	}
 
