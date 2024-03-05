@@ -21,17 +21,15 @@ extension TodosFactory: TodosFactoryProtocol {
 		var todo = Todo(text: text, listName: nil)
 
 		switch predicate {
-		case .inProgress:
-			todo.status = .inProgress(startDate: Date())
+		case .inFocus:
+			todo.status = .inFocus
 		case .backlog:
-			todo.status = .incomplete
-		case .isFavorite:
-			todo.isFavorite = true
+			todo.status = .default
 		case .list(let id):
 			todo.list = id
 		case .isDone:
 			let date = Date()
-			todo.status = .isDone(startDate: date, completionDate: date)
+			todo.status = .done
 		}
 
 		return todo

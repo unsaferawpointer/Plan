@@ -9,11 +9,8 @@ import Foundation
 
 enum TodoModification {
 	case setText(_ newValue: String)
-	case complete
-	case start
-	case moveToBacklog
-	case bookmark
-	case unbookmark
+	case setStatus(_ newValue: TodoStatus)
+	case setUrgency(_ newValue: Urgency)
 	case setList(_ newValue: UUID?)
 }
 

@@ -96,15 +96,15 @@ extension MenuItem.Identifier {
 
 	static let newTodo: MenuItem.Identifier = .basic("newTodo")
 
-	static let bookmark: MenuItem.Identifier = .basic("bookmark")
-
-	static let unbookmark: MenuItem.Identifier = .basic("unbookmark")
-
 	static let focusOn: MenuItem.Identifier = .basic("focusOn")
+
+	static let moveToBacklog: MenuItem.Identifier = .basic("moveToBacklog")
 
 	static let markAsCompleted: MenuItem.Identifier = .basic("mark_as_completed")
 
 	static let markAsIncomplete: MenuItem.Identifier = .basic("mark_as_incomplete")
+
+	static let setUrgency: MenuItem.Identifier = .basic("set_urgency")
 
 	static let complete: MenuItem.Identifier = .basic("complete")
 

@@ -84,7 +84,7 @@
 		4CAD55942B703469006BD687 /* InfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD55932B703469006BD687 /* InfoDelegate.swift */; };
 		4CC8888F2B924AB00024C52D /* TodosGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8888E2B924AB00024C52D /* TodosGrouping.swift */; };
 		4CC888912B927E960024C52D /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC888902B927E960024C52D /* LabelCell.swift */; };
-		4CC888932B9280340024C52D /* ToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC888922B9280340024C52D /* ToggleCell.swift */; };
+		4CC888932B9280340024C52D /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC888922B9280340024C52D /* ImageCell.swift */; };
 		4CC888952B933FF80024C52D /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC888942B933FF80024C52D /* CheckboxCell.swift */; };
 		4CC888992B96590C0024C52D /* TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC888982B96590C0024C52D /* TintColor.swift */; };
 		4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */; };
@@ -203,7 +203,7 @@
 		4CAD55932B703469006BD687 /* InfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDelegate.swift; sourceTree = "<group>"; };
 		4CC8888E2B924AB00024C52D /* TodosGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosGrouping.swift; sourceTree = "<group>"; };
 		4CC888902B927E960024C52D /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
-		4CC888922B9280340024C52D /* ToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCell.swift; sourceTree = "<group>"; };
+		4CC888922B9280340024C52D /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		4CC888942B933FF80024C52D /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
 		4CC888982B96590C0024C52D /* TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintColor.swift; sourceTree = "<group>"; };
 		4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuAssembly.swift; sourceTree = "<group>"; };
@@ -610,7 +610,7 @@
 			children = (
 				4C9103992B6FB1C800E7F03D /* PlaceholderView.swift */,
 				4CC888902B927E960024C52D /* LabelCell.swift */,
-				4CC888922B9280340024C52D /* ToggleCell.swift */,
+				4CC888922B9280340024C52D /* ImageCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -851,7 +851,7 @@
 				4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C9103722B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift in Sources */,
-				4CC888932B9280340024C52D /* ToggleCell.swift in Sources */,
+				4CC888932B9280340024C52D /* ImageCell.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
 				4C91039F2B6FB5D800E7F03D /* EmptyContentViewController.swift in Sources */,
 				4C9C15602B91031B00398331 /* TableItem.swift in Sources */,

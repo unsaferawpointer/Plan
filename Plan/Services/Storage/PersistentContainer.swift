@@ -101,22 +101,16 @@ extension PersistentContainer: PersistentContainerProtocol {
 			switch modification {
 			case .setText(let newValue):
 				entity.text = newValue
-			case .bookmark:
-				entity.isFavorite = true
-			case .unbookmark:
-				entity.isFavorite = false
+			case .setUrgency(let newValue):
+				entity.urgency = newValue
 			case .setList(let id):
 				guard let id, let target = try fetchEntities(ListEntity.self, with: [id]).first else {
 					entity.list = nil
 					return
 				}
 				entity.list = target
-			case .complete:
-				entity.complete()
-			case .start:
-				entity.start()
-			case .moveToBacklog:
-				entity.moveToBacklog()
+			case .setStatus(let newValue):
+				entity.status = newValue
 			}
 		}
 	}

@@ -8,8 +8,7 @@
 import Foundation
 
 enum TodosOrder {
-	case isFavorite
+	case urgency
 	case isDone
 	case creationDate
-	case completionDate
 }

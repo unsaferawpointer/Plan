@@ -117,7 +117,7 @@ extension TodosTableAdapter: NSTableViewDelegate {
 					self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
 				}
 				view?.checkboxAction = { [weak self] newValue in
-					self?.output?.performModification(newValue ? .complete : .moveToBacklog, forTodos: [model.uuid])
+					self?.output?.performModification( .setStatus(newValue ? .done : .default), forTodos: [model.uuid])
 				}
 				return view
 			case "list":
@@ -145,16 +145,23 @@ extension TodosTableAdapter: NSTableViewDelegate {
 				let text = formatter.string(from: model.creationDate)
 				view?.configure(text)
 				return view
-			case "favorite":
+			case "urgency":
 				let id = NSUserInterfaceItemIdentifier("toggle")
-				var view = table?.makeView(withIdentifier: id, owner: self) as? ToggleCell
+				var view = table?.makeView(withIdentifier: id, owner: self) as? ImageCell
 				if view == nil {
-					view = ToggleCell()
+					view = ImageCell()
 					view?.identifier = id
 				}
-				view?.configure(model.isFavorite)
-				view?.checkboxAction = { [weak self] newValue in
-					self?.output?.performModification( newValue ? .bookmark : .unbookmark, forTodos: [model.uuid])
+
+				switch model.urgency {
+				case .none:
+					return nil
+				case .middle:
+					let configuration = ImageCellConfiguration(icon: "bolt.fill", tint: .yellow)
+					view?.configure(configuration)
+				case .high:
+					let configuration = ImageCellConfiguration(icon: "bolt.fill", tint: .red)
+					view?.configure(configuration)
 				}
 				return view
 			default:

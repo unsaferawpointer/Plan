@@ -12,9 +12,9 @@ struct Todo {
 	var uuid: UUID
 	var creationDate: Date
 	var text: String
-	var isFavorite: Bool
 
 	var status: TodoStatus
+	var urgency: Urgency
 
 	var list: UUID?
 	var listName: String?
@@ -25,16 +25,16 @@ struct Todo {
 		uuid: UUID = UUID(),
 		creationDate: Date = Date(),
 		text: String,
-		isFavorite: Bool = false,
-		status: TodoStatus = .incomplete,
+		status: TodoStatus = .default,
+		urgency: Urgency = .none,
 		list: UUID? = nil,
 		listName: String? = nil
 	) {
 		self.uuid = uuid
 		self.creationDate = creationDate
 		self.text = text
-		self.isFavorite = isFavorite
 		self.status = status
+		self.urgency = urgency
 		self.list = list
 		self.listName = listName
 	}
@@ -51,10 +51,16 @@ extension Todo: Identifiable {
 	}
 }
 
-enum TodoStatus {
-	case incomplete
-	case inProgress(startDate: Date)
-	case isDone(startDate: Date, completionDate: Date)
+enum TodoStatus: Int16 {
+	case `default` = 0
+	case inFocus
+	case done
+}
+
+enum Urgency: Int16 {
+	case none = 0
+	case middle
+	case high
 }
 
 // MARK: - Hashable
@@ -63,33 +69,13 @@ extension TodoStatus: Hashable { }
 // MARK: - Computed properties
 extension TodoStatus {
 
-	var startDate: Date? {
-		switch self {
-		case .incomplete:
-			return nil
-		case .inProgress(let startDate):
-			return startDate
-		case .isDone(let startDate, _):
-			return startDate
-		}
-	}
-
-	var completionDate: Date? {
-		switch self {
-		case .isDone(_ , let completionDate):
-			return completionDate
-		default:
-			return nil
-		}
-	}
-
 	var isDone: Bool {
 		switch self {
-		case .incomplete:
+		case .default:
 			return false
-		case .inProgress:
+		case .inFocus:
 			return false
-		case .isDone:
+		case .done:
 			return true
 		}
 	}

@@ -8,10 +8,9 @@
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TodoEntity" inverseName="list" inverseEntity="TodoEntity"/>
     </entity>
     <entity name="TodoEntity" representedClassName="TodoEntity" syncable="YES">
-        <attribute name="completionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="rawStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rawUrgency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListEntity" inverseName="todos" inverseEntity="ListEntity"/>

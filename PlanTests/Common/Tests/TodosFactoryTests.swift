@@ -24,18 +24,18 @@ final class TodosFactoryTests: XCTestCase {
 // MARK: - TodosFactoryProtocol
 extension TodosFactoryTests {
 
-	func testCreateTodoWhenConfigurationIsInProgress() {
+	func testCreateTodoWhenConfigurationIsInFocus() {
 		// Arrange
 		let expectedText = UUID().uuidString
 
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .inProgress)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .inFocus)
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		guard case .inProgress = result.status else {
+		guard case .inFocus = result.status else {
 			return XCTFail()
 		}
 		XCTAssertNil(result.list)
@@ -52,28 +52,10 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		guard case .incomplete = result.status else {
+		guard case .default = result.status else {
 			return XCTFail()
 		}
-		XCTAssertEqual(result.isFavorite, false)
-		XCTAssertNil(result.list)
-	}
-
-	func testCreateTodoWhenConfigurationIsFavorites() {
-		// Arrange
-		let expectedText = UUID().uuidString
-
-		sut = TodosFactory()
-
-		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .isFavorite)
-
-		// Assert
-		XCTAssertEqual(result.text, expectedText)
-		guard case .incomplete = result.status else {
-			return XCTFail()
-		}
-		XCTAssertEqual(result.isFavorite, true)
+		XCTAssertEqual(result.urgency, .none)
 		XCTAssertNil(result.list)
 	}
 
@@ -88,10 +70,10 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		guard case .isDone = result.status else {
+		guard case .done = result.status else {
 			return XCTFail()
 		}
-		XCTAssertEqual(result.isFavorite, false)
+		XCTAssertEqual(result.urgency, .none)
 		XCTAssertNil(result.list)
 	}
 
@@ -107,10 +89,10 @@ extension TodosFactoryTests {
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
-		guard case .incomplete = result.status else {
+		guard case .default = result.status else {
 			return XCTFail()
 		}
-		XCTAssertEqual(result.isFavorite, false)
+		XCTAssertEqual(result.urgency, .none)
 		XCTAssertEqual(result.list, expectedList)
 	}
 }

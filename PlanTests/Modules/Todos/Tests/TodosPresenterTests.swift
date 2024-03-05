@@ -51,8 +51,8 @@ extension TodosPresenterTests {
 			uuid: UUID(),
 			creationDate: .now,
 			text: UUID().uuidString,
-			isFavorite: Bool.random(),
-			status: .incomplete,
+			status: .default,
+			urgency: .middle,
 			list: UUID(),
 			listName: "list0"
 		)
@@ -61,8 +61,8 @@ extension TodosPresenterTests {
 			uuid: UUID(),
 			creationDate: .now,
 			text: UUID().uuidString,
-			isFavorite: Bool.random(),
-			status: .incomplete,
+			status: .default,
+			urgency: .middle,
 			list: UUID(),
 			listName: "list0"
 		)
@@ -71,8 +71,8 @@ extension TodosPresenterTests {
 			uuid: UUID(),
 			creationDate: .now,
 			text: UUID().uuidString,
-			isFavorite: Bool.random(),
-			status: .incomplete,
+			status: .default,
+			urgency: .middle,
 			list: UUID(),
 			listName: "list1"
 		)
@@ -86,7 +86,7 @@ extension TodosPresenterTests {
 				.init(
 					uuid: todo0.uuid,
 					isDone: todo0.status.isDone,
-					isFavorite: todo0.isFavorite,
+					urgency: todo0.urgency,
 					text: todo0.text,
 					listName: todo0.listName,
 					creationDate: todo0.creationDate
@@ -96,7 +96,7 @@ extension TodosPresenterTests {
 				.init(
 					uuid: todo1.uuid,
 					isDone: todo1.status.isDone,
-					isFavorite: todo1.isFavorite,
+					urgency: todo1.urgency,
 					text: todo1.text,
 					listName: todo1.listName,
 					creationDate: todo1.creationDate
@@ -107,7 +107,7 @@ extension TodosPresenterTests {
 				.init(
 					uuid: todo2.uuid,
 					isDone: todo2.status.isDone,
-					isFavorite: todo2.isFavorite,
+					urgency: todo2.urgency,
 					text: todo2.text,
 					listName: todo2.listName,
 					creationDate: todo2.creationDate
@@ -252,7 +252,7 @@ extension TodosPresenterTests {
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(modification, .complete)
+		XCTAssertEqual(modification, .setStatus(.done))
 		XCTAssertEqual(ids, expectedIds)
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
@@ -269,41 +269,7 @@ extension TodosPresenterTests {
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(modification, .moveToBacklog)
-		XCTAssertEqual(ids, expectedIds)
-		XCTAssertEqual(interactor.invocations.count, 1)
-	}
-
-	func testMenuItemHasBeenClickedWhenItemIsBookmark() {
-		// Arrange
-		let expectedIds = [UUID(), UUID()]
-		view.selectionStub = expectedIds
-
-		// Act
-		sut.menuItemHasBeenClicked(.bookmark)
-
-		// Assert
-		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
-			return XCTFail()
-		}
-		XCTAssertEqual(modification, .bookmark)
-		XCTAssertEqual(ids, expectedIds)
-		XCTAssertEqual(interactor.invocations.count, 1)
-	}
-
-	func testMenuItemHasBeenClickedWhenItemIsUnbookmark() {
-		// Arrange
-		let expectedIds = [UUID(), UUID()]
-		view.selectionStub = expectedIds
-
-		// Act
-		sut.menuItemHasBeenClicked(.unbookmark)
-
-		// Assert
-		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
-			return XCTFail()
-		}
-		XCTAssertEqual(modification, .unbookmark)
+		XCTAssertEqual(modification, .setStatus(.default))
 		XCTAssertEqual(ids, expectedIds)
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
@@ -343,7 +309,7 @@ extension TodosPresenterTests {
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
 
-	func testMenuItemHasBeenClickedWhenItemIsMoveToMyDay() {
+	func testMenuItemHasBeenClickedWhenItemIsFocusOnTheTask() {
 		// Arrange
 		let expectedIds = [UUID(), UUID()]
 		view.selectionStub = expectedIds
@@ -358,7 +324,7 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(ids, expectedIds)
-		XCTAssertEqual(modification, .start)
+		XCTAssertEqual(modification, .setStatus(.inFocus))
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
 }

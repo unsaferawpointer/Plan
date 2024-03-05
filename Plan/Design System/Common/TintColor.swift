@@ -15,6 +15,7 @@ enum TintColor {
 	case mint
 	case teal
 	case indigo
+	case red
 }
 
 extension TintColor {
@@ -35,6 +36,29 @@ extension TintColor {
 			return .init(preferredColor: .systemTeal)
 		case .indigo:
 			return .init(preferredColor: .systemIndigo)
+		case .red:
+			return .init(preferredColor: .systemRed)
+		}
+	}
+
+	var color: NSColor {
+		switch self {
+		case .default:
+			return .controlAccentColor
+		case .monochrome:
+			return .secondaryLabelColor
+		case .yellow:
+			return .systemYellow
+		case .blue:
+			return .systemBlue
+		case .mint:
+			return .systemMint
+		case .teal:
+			return .systemTeal
+		case .indigo:
+			return .systemIndigo
+		case .red:
+			return .systemRed
 		}
 	}
 }

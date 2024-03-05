@@ -20,11 +20,10 @@ extension TodoEntity {
 
 	@NSManaged public var uuid: UUID
 	@NSManaged public var text: String
-	@NSManaged public var isFavorite: Bool
+	@NSManaged public var rawStatus: Int16
+	@NSManaged public var rawUrgency: Int16
 
-	@NSManaged public var startDate: Date?
 	@NSManaged public var creationDate: Date
-	@NSManaged public var completionDate: Date?
 
 	// MARK: - Relationships
 
@@ -35,16 +34,12 @@ extension TodoEntity {
 
 		self.uuid = UUID()
 		self.text = ""
-		self.isFavorite = isFavorite
+		self.rawStatus = 0
+		self.rawUrgency = 0
 		self.creationDate = Date()
 	}
 
 	public override func willSave() {
-		if !isDeleted, let date = completionDate {
-			let max = max(creationDate, date)
-			let keyPath = NSExpression(forKeyPath: \TodoEntity.creationDate).keyPath
-			setPrimitiveValue(max, forKey: keyPath)
-		}
 		super.willSave()
 	}
 
@@ -53,37 +48,33 @@ extension TodoEntity {
 // MARK: - Calculated properties
 extension TodoEntity {
 
-	var isDone: Bool {
+	var status: TodoStatus {
 		get {
-			return completionDate != nil
+			return .init(rawValue: rawStatus) ?? .default
 		}
 		set {
-			completionDate = newValue ? Date() : nil
+			self.rawStatus = newValue.rawValue
 		}
 	}
 
-	var status: TodoStatus {
+	var urgency: Urgency {
 		get {
-			switch (startDate, completionDate) {
-			case (.some(let start), .none):
-				return .inProgress(startDate: start)
-			case (.some(let start), .some(let end)):
-				return .isDone(startDate: start, completionDate: end)
-			default:
-				return .incomplete
-			}
+			return .init(rawValue: rawUrgency) ?? .none
 		}
 		set {
-			switch newValue {
-			case .incomplete:
-				self.startDate = nil
-				self.completionDate = nil
-			case .inProgress(let start):
-				self.startDate = start
-				self.completionDate = nil
-			case .isDone(let start, let end):
-				self.startDate = start
-				self.completionDate = end
+			self.rawUrgency = newValue.rawValue
+		}
+	}
+
+	var isDone: Bool {
+		get {
+			return status == .done
+		}
+		set {
+			if newValue {
+				self.rawStatus =  TodoStatus.done.rawValue
+			} else {
+				self.rawStatus =  TodoStatus.default.rawValue
 			}
 		}
 	}
@@ -91,29 +82,12 @@ extension TodoEntity {
 
 extension TodoEntity {
 
-	func start() {
-		switch status {
-		case .incomplete:
-			self.status = .inProgress(startDate: Date())
-		default:
-			break
-		}
-	}
-
 	func complete() {
-		switch status {
-		case .incomplete:
-			let date = Date()
-			self.status = .isDone(startDate: date, completionDate: date)
-		case .inProgress(let start):
-			self.status = .isDone(startDate: start, completionDate: Date())
-		case .isDone:
-			break
-		}
+		self.rawStatus = TodoStatus.done.rawValue
 	}
 
 	func moveToBacklog() {
-		self.status = .incomplete
+		self.rawStatus = TodoStatus.default.rawValue
 	}
 }
 
@@ -128,10 +102,9 @@ extension TodoEntity {
 
 		self.uuid = todo.uuid
 		self.creationDate = todo.creationDate
-		self.startDate = todo.status.startDate
-		self.completionDate = todo.status.completionDate
+		self.rawStatus = todo.status.rawValue
 		self.text = todo.text
-		self.isFavorite = todo.isFavorite
+		self.rawUrgency = todo.urgency.rawValue
 	}
 
 	var todo: Todo {
@@ -139,8 +112,8 @@ extension TodoEntity {
 			uuid: uuid,
 			creationDate: creationDate,
 			text: text,
-			isFavorite: isFavorite,
 			status: status,
+			urgency: urgency,
 			list: list?.uuid,
 			listName: list?.title
 		)

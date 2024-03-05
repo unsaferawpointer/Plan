@@ -15,7 +15,7 @@ protocol StateProviderDelegate: AnyObject {
 
 final class StateProvider {
 
-	var selection: Selection = .init(route: .inbox) {
+	var selection: Selection = .init(route: .inFocus) {
 		didSet {
 			delegate?.selectionDidChange(new: selection, old: oldValue)
 		}

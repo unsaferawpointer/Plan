@@ -145,18 +145,22 @@ extension TodosPresenter: MenuDelegate {
 			createTodo()
 		case .delete:
 			delete(view.selection)
-		case .bookmark:
-			performModification(.bookmark, forTodos: view.selection)
-		case .unbookmark:
-			performModification(.unbookmark, forTodos: view.selection)
 		case .markAsCompleted:
-			performModification(.complete, forTodos: view.selection)
+			performModification(.setStatus(.done), forTodos: view.selection)
 		case .markAsIncomplete:
-			performModification(.moveToBacklog, forTodos: view.selection)
+			performModification(.setStatus(.default), forTodos: view.selection)
 		case .uuid(let value):
 			performModification(.setList(value), forTodos: view.selection)
 		case .focusOn:
-			performModification(.start, forTodos: view.selection)
+			performModification(.setStatus(.inFocus), forTodos: view.selection)
+		case .moveToBacklog:
+			performModification(.setStatus(.default), forTodos: view.selection)
+		case .basic("urgency_none"):
+			performModification(.setUrgency(.none), forTodos: view.selection)
+		case .basic("urgency_middle"):
+			performModification(.setUrgency(.middle), forTodos: view.selection)
+		case .basic("urgency_high"):
+			performModification(.setUrgency(.high), forTodos: view.selection)
 		default:
 			break
 		}
@@ -166,7 +170,7 @@ extension TodosPresenter: MenuDelegate {
 		switch item {
 		case .newTodo:
 			return true
-		case .delete, .moveToList, .bookmark, .unbookmark, .markAsCompleted, .markAsIncomplete, .uuid, .focusOn:
+		case .delete, .moveToList, .markAsCompleted, .markAsIncomplete, .uuid, .focusOn, .setUrgency, .basic:
 			guard let selection = view?.selection else {
 				return false
 			}
@@ -184,8 +188,8 @@ private extension TodosPresenter {
 		return TodoModel(
 			uuid: todo.uuid,
 			isDone: todo.status.isDone,
-			isFavorite: todo.isFavorite,
-			text: todo.text, 
+			urgency: todo.urgency,
+			text: todo.text,
 			listName: todo.listName,
 			creationDate: todo.creationDate
 		)

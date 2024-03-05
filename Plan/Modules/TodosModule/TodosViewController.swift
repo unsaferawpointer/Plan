@@ -139,7 +139,7 @@ private extension TodosViewController {
 
 	func configureUserInterface() {
 
-//		table.headerView = nil
+		table.headerView = nil
 		scrollview.documentView = table
 
 		table.frame = scrollview.bounds
@@ -155,8 +155,8 @@ private extension TodosViewController {
 		column4.resizingMask = .autoresizingMask
 		column4.maxWidth = 120
 
-		let column3 = NSTableColumn(identifier: .init(rawValue: "favorite"))
-		column3.title = "Is Favorite"
+		let column3 = NSTableColumn(identifier: .init(rawValue: "urgency"))
+		column3.title = "Urgency"
 		column3.resizingMask = .autoresizingMask
 		column3.headerCell.alignment = .center
 		column3.minWidth = 64

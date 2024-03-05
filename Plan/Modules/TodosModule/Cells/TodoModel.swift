@@ -11,7 +11,7 @@ struct TodoModel {
 
 	var uuid: UUID
 	var isDone: Bool
-	var isFavorite: Bool
+	var urgency: Urgency
 	var text: String
 	var listName: String?
 	var creationDate: Date

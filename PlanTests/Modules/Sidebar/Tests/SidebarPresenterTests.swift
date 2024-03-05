@@ -56,7 +56,7 @@ extension SidebarPresenterTests {
 			return XCTFail()
 		}
 
-		XCTAssertEqual(staticContent[0], .init(id: .inbox, icon: "bolt.fill", tintColor: .yellow, title: "In Focus", isEditable: false))
+		XCTAssertEqual(staticContent[0], .init(id: .inFocus, icon: "bolt.fill", tintColor: .yellow, title: "In Focus", isEditable: false))
 		XCTAssertEqual(staticContent[1], .init(id: .backlog, icon: "square.stack.3d.up.fill", tintColor: .monochrome, title: "Backlog", isEditable: false))
 		XCTAssertEqual(staticContent[2], .init(id: .archieve, icon: "shippingbox.fill", title: "Archieve", isEditable: false))
 

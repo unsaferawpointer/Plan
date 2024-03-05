@@ -58,12 +58,18 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 			.custom(.newTodo, content: .init(title: "New todo", keyEquivalent: "n")),
 			.separator,
 			.custom(.focusOn, content: .init(title: "Focus on the task", keyEquivalent: "")),
+			.custom(.moveToBacklog, content: .init(title: "Move to backlog", keyEquivalent: "")),
 			.separator,
 			.custom(.markAsCompleted, content: .init(title: "Mark as Completed", keyEquivalent: "\r")),
 			.custom(.markAsIncomplete, content: .init(title: "Mark as Incomplete", keyEquivalent: "")),
 			.separator,
-			.custom(.bookmark, content: .init(title: "Bookmark", keyEquivalent: "b")),
-			.custom(.unbookmark, content: .init(title: "Unbookmark", keyEquivalent: "")),
+			.menu(.setUrgency, content: .init(title: "Set urgency", keyEquivalent: ""), items:
+					[
+						.custom(.basic("urgency_none"), content: .init(title: "Low", keyEquivalent: "0")),
+						.custom(.basic("urgency_middle"), content: .init(title: "Middle", keyEquivalent: "1")),
+						.custom(.basic("urgency_high"), content: .init(title: "High", keyEquivalent: "2")),
+					]
+				 ),
 			.separator,
 			.menu(.moveToList, content: .init(title: "Move to list", keyEquivalent: ""), items: listItems),
 			.separator,

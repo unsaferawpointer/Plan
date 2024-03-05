@@ -87,14 +87,12 @@ extension TodosOrder {
 
 	var sortDescriptor: NSSortDescriptor {
 		switch self {
-		case .isFavorite:
-			return NSSortDescriptor(keyPath: \TodoEntity.isFavorite, ascending: false)
 		case .isDone:
-			return NSSortDescriptor(keyPath: \TodoEntity.completionDate, ascending: true)
+			return NSSortDescriptor(keyPath: \TodoEntity.rawStatus, ascending: true)
 		case .creationDate:
 			return NSSortDescriptor(keyPath: \TodoEntity.creationDate, ascending: true)
-		case .completionDate:
-			return NSSortDescriptor(keyPath: \TodoEntity.completionDate, ascending: true)
+		case .urgency:
+			return NSSortDescriptor(keyPath: \TodoEntity.rawUrgency, ascending: false)
 		}
 	}
 }
@@ -103,14 +101,12 @@ extension TodosPredicate {
 
 	var predicate: NSPredicate {
 		switch self {
-		case .inProgress:
-			return NSPredicate(format: "startDate != %@ AND completionDate == %@", argumentArray: [NSNull(), NSNull()])
+		case .inFocus:
+			return NSPredicate(format: "rawStatus == %@", argumentArray: [TodoStatus.inFocus.rawValue])
 		case .backlog:
-			return NSPredicate(format: "startDate == %@ AND completionDate == %@", argumentArray: [NSNull(), NSNull()])
+			return NSPredicate(format: "rawStatus == %@", argumentArray: [TodoStatus.default.rawValue])
 		case .isDone:
-			return NSPredicate(format: "completionDate != %@", argumentArray: [NSNull()])
-		case .isFavorite:
-			return NSPredicate(format: "isFavorite == %@", argumentArray: [true])
+			return NSPredicate(format: "rawStatus != %@", argumentArray: [TodoStatus.done.rawValue])
 		case .list(let id):
 			return NSPredicate(format: "list.uuid == %@", argumentArray: [id ?? NSNull()])
 		}

@@ -8,9 +8,8 @@
 import Foundation
 
 enum Route {
-	case inbox
+	case inFocus
 	case backlog
-	case favorites
 	case archieve
 	case list(_ id: UUID)
 }
