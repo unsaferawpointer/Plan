@@ -106,7 +106,7 @@ extension TodosPredicate {
 		case .backlog:
 			return NSPredicate(format: "rawStatus == %@", argumentArray: [TodoStatus.default.rawValue])
 		case .isDone:
-			return NSPredicate(format: "rawStatus != %@", argumentArray: [TodoStatus.done.rawValue])
+			return NSPredicate(format: "rawStatus > %@", argumentArray: [TodoStatus.inFocus.rawValue])
 		case .list(let id):
 			return NSPredicate(format: "list.uuid == %@", argumentArray: [id ?? NSNull()])
 		}

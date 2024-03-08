@@ -72,22 +72,11 @@ extension TodoEntity {
 		}
 		set {
 			if newValue {
-				self.rawStatus =  TodoStatus.done.rawValue
+				self.status =  .done
 			} else {
-				self.rawStatus =  TodoStatus.default.rawValue
+				self.status = .default
 			}
 		}
-	}
-}
-
-extension TodoEntity {
-
-	func complete() {
-		self.rawStatus = TodoStatus.done.rawValue
-	}
-
-	func moveToBacklog() {
-		self.rawStatus = TodoStatus.default.rawValue
 	}
 }
 

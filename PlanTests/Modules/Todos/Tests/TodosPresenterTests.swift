@@ -27,7 +27,7 @@ final class TodosPresenterTests: XCTestCase {
 		interactor = TodosInteractorMock()
 		stateProvider = TodosStateProviderMock()
 		infoDelegate = InfoDelegateMock()
-		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate, grouping: .list)
+		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate, grouping: .urgency)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -51,8 +51,8 @@ extension TodosPresenterTests {
 			uuid: UUID(),
 			creationDate: .now,
 			text: UUID().uuidString,
-			status: .default,
-			urgency: .middle,
+			status: .inFocus,
+			urgency: .none,
 			list: UUID(),
 			listName: "list0"
 		)
@@ -61,10 +61,10 @@ extension TodosPresenterTests {
 			uuid: UUID(),
 			creationDate: .now,
 			text: UUID().uuidString,
-			status: .default,
+			status: .done,
 			urgency: .middle,
 			list: UUID(),
-			listName: "list0"
+			listName: "list1"
 		)
 
 		let todo2 = Todo(
@@ -72,48 +72,12 @@ extension TodosPresenterTests {
 			creationDate: .now,
 			text: UUID().uuidString,
 			status: .default,
-			urgency: .middle,
+			urgency: .high,
 			list: UUID(),
-			listName: "list1"
+			listName: "list2"
 		)
 
 		let todos: [Todo] = [todo0, todo1, todo2]
-
-		let expectedItems: [TableItem] =
-		[
-			.header("list0"),
-			.custom(
-				.init(
-					uuid: todo0.uuid,
-					isDone: todo0.status.isDone,
-					urgency: todo0.urgency,
-					text: todo0.text,
-					listName: todo0.listName,
-					creationDate: todo0.creationDate
-				)
-			),
-			.custom(
-				.init(
-					uuid: todo1.uuid,
-					isDone: todo1.status.isDone,
-					urgency: todo1.urgency,
-					text: todo1.text,
-					listName: todo1.listName,
-					creationDate: todo1.creationDate
-				)
-			),
-			.header("list1"),
-			.custom(
-				.init(
-					uuid: todo2.uuid,
-					isDone: todo2.status.isDone,
-					urgency: todo2.urgency,
-					text: todo2.text,
-					listName: todo2.listName,
-					creationDate: todo2.creationDate
-				)
-			)
-		]
 
 		// Act
 		sut.present(todos)
@@ -122,7 +86,62 @@ extension TodosPresenterTests {
 		guard case let .display(state) = view.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(state, .content(items: expectedItems))
+
+		guard case let .content(items) = state else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(items[0], .header("High Urgency"))
+		XCTAssertEqual(
+			items[1],
+			.custom(
+				id: todo2.uuid,
+				configuration: .init(
+					checkboxValue: false,
+					iconTint: .red,
+					iconName: "bolt.fill",
+					text: todo2.text,
+					textColor: .primaryText,
+					trailingText: "list2",
+					elements: [.icon, .textfield, .trailingLabel]
+				)
+			)
+		)
+
+		XCTAssertEqual(items[2], .header("Middle Urgency"))
+		XCTAssertEqual(
+			items[3],
+			.custom(
+				id: todo1.uuid,
+				configuration: .init(
+					checkboxValue: true,
+					iconTint: .yellow,
+					iconName: "bolt.fill",
+					text: todo1.text,
+					textColor: .secondaryText,
+					trailingText: "list1",
+					elements: [.icon, .textfield, .trailingLabel]
+				)
+			)
+		)
+
+		XCTAssertEqual(items[4], .header("Not Urgency"))
+		XCTAssertEqual(
+			items[5],
+			.custom(
+				id: todo0.uuid,
+				configuration: .init(
+					checkboxValue: false,
+					iconTint: .monochrome,
+					iconName: "bolt.fill",
+					text: todo0.text,
+					textColor: .primaryText,
+					trailingText: "list0",
+					elements: [.textfield, .trailingLabel]
+				)
+			)
+		)
+
 		XCTAssertEqual(view.invocations.count, 1)
 		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
 			return XCTFail()
@@ -313,8 +332,6 @@ extension TodosPresenterTests {
 		// Arrange
 		let expectedIds = [UUID(), UUID()]
 		view.selectionStub = expectedIds
-
-		let expectedList = UUID()
 
 		// Act
 		sut.menuItemHasBeenClicked(.focusOn)

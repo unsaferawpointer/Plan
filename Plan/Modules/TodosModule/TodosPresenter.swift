@@ -58,9 +58,9 @@ extension TodosPresenter: TodosPresenterProtocol {
 		switch grouping {
 		case .none:
 			let items = todos.map { todo in
-				makeModel(from: todo)
+				(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield, .trailingLabel]))
 			}.map { model in
-				TableItem.custom(model)
+				TableItem.custom(id: model.0, configuration: model.1)
 			}
 			total.append(contentsOf: items)
 		case .list:
@@ -75,9 +75,59 @@ extension TodosPresenter: TodosPresenterProtocol {
 			for section in sorted {
 				total.append(.header(section.key))
 				let items = section.value.map { todo in
-					makeModel(from: todo)
+					(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield]))
 				}.map { model in
-					TableItem.custom(model)
+					TableItem.custom(id: model.0, configuration: model.1)
+				}
+				total.append(contentsOf: items)
+			}
+		case .urgency:
+			let grouped = Dictionary(grouping: todos) { todo in
+				return todo.urgency
+			}
+
+			let sorted = grouped.sorted { lhs, rhs in
+				return lhs.key.rawValue > rhs.key.rawValue
+			}
+
+			for section in sorted {
+				switch section.key {
+				case .none:
+					total.append(.header("Not Urgency"))
+				case .middle:
+					total.append(.header("Middle Urgency"))
+				case .high:
+					total.append(.header("High Urgency"))
+				}
+				let items = section.value.map { todo in
+					(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield, .trailingLabel]))
+				}.map { model in
+					TableItem.custom(id: model.0, configuration: model.1)
+				}
+				total.append(contentsOf: items)
+			}
+		case .status:
+			let grouped = Dictionary(grouping: todos) { todo in
+				return todo.status
+			}
+
+			let sorted = grouped.sorted { lhs, rhs in
+				return lhs.key.rawValue < rhs.key.rawValue
+			}
+
+			for section in sorted {
+				switch section.key {
+				case .default:
+					total.append(.header("Other"))
+				case .inFocus:
+					total.append(.header("In Focus"))
+				case .done:
+					total.append(.header("Done"))
+				}
+				let items = section.value.map { todo in
+					(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield, .trailingLabel]))
+				}.map { model in
+					TableItem.custom(id: model.0, configuration: model.1)
 				}
 				total.append(contentsOf: items)
 			}
@@ -128,6 +178,15 @@ extension TodosPresenter: TodosViewOutput {
 
 	func selectionDidChange(_ newValue: [UUID]) {
 		stateProvider.selectTodos(newValue)
+	}
+
+	func setGrouping(_ grouping: TodosGrouping) {
+		self.grouping = grouping
+		do {
+			try interactor?.fetchTodos()
+		} catch {
+			// TODO: - Handle action
+		}
 	}
 }
 
@@ -184,14 +243,32 @@ extension TodosPresenter: MenuDelegate {
 // MARK: - Helpers
 private extension TodosPresenter {
 
-	func makeModel(from todo: Todo) -> TodoModel {
-		return TodoModel(
-			uuid: todo.uuid,
-			isDone: todo.status.isDone,
-			urgency: todo.urgency,
+	func makeConfiguration(from todo: Todo, elements: CellElements) -> TodoCellConfiguration {
+
+		let iconTint: TintColor = {
+			switch todo.urgency {
+			case .middle:
+				return .yellow
+			case .high:
+				return .red
+			default:
+				return .monochrome
+			}
+		}()
+
+		var modificatedElements = elements
+		if todo.urgency == .none {
+			modificatedElements.remove(.icon)
+		}
+
+		return TodoCellConfiguration(
+			checkboxValue: todo.status == .done,
+			iconTint: iconTint,
+			iconName: "bolt.fill",
 			text: todo.text,
-			listName: todo.listName,
-			creationDate: todo.creationDate
+			textColor: todo.status == .done ? .secondaryText : .primaryText,
+			trailingText: todo.listName ?? "",
+			elements: modificatedElements
 		)
 	}
 }

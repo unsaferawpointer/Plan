@@ -9,7 +9,7 @@ import Foundation
 
 enum TableItem {
 	case header(_ title: String)
-	case custom(_ model: TodoModel)
+	case custom(id: UUID, configuration: TodoCellConfiguration)
 }
 
 // MARK: - Hashable
@@ -21,8 +21,21 @@ extension TableItem {
 		switch self {
 		case .header:
 			return nil
-		case .custom(let model):
-			return model.uuid
+		case .custom(let uuid, _):
+			return uuid
 		}
 	}
 }
+
+struct CellElements: OptionSet {
+
+	var rawValue: Int
+
+	static var icon = CellElements(rawValue: 1 << 0)
+
+	static var textfield = CellElements(rawValue: 1 << 1)
+
+	static var trailingLabel = CellElements(rawValue: 1 << 2)
+}
+
+extension CellElements: Hashable { }

@@ -100,73 +100,23 @@ extension TodosTableAdapter: NSTableViewDelegate {
 			}
 			view?.stringValue = title
 			return view
-		case .custom(let model):
-
-			switch tableColumn?.identifier.rawValue {
-			case "task":
-				let id = NSUserInterfaceItemIdentifier(LabelView.userIdentifier)
-				var view = table?.makeView(withIdentifier: id, owner: self) as? CheckboxCell
-				if view == nil {
-					view = CheckboxCell()
-					view?.identifier = id
-				}
-
-				view?.configure(model)
-
-				view?.textAction = { [weak self] newValue in
-					self?.output?.performModification(.setText(newValue), forTodos: [model.uuid])
-				}
-				view?.checkboxAction = { [weak self] newValue in
-					self?.output?.performModification( .setStatus(newValue ? .done : .default), forTodos: [model.uuid])
-				}
-				return view
-			case "list":
-				let id = NSUserInterfaceItemIdentifier("list")
-				var view = table?.makeView(withIdentifier: id, owner: self) as? LabelCell
-				if view == nil {
-					view = LabelCell()
-					view?.identifier = id
-				}
-				view?.configure(model.listName ?? "--")
-				return view
-			case "creationDate":
-				let id = NSUserInterfaceItemIdentifier("creationDate")
-				var view = table?.makeView(withIdentifier: id, owner: self) as? LabelCell
-				if view == nil {
-					view = LabelCell()
-					view?.identifier = id
-				}
-
-				let formatter = DateFormatter()
-				formatter.doesRelativeDateFormatting = true
-				formatter.dateStyle = .medium
-				formatter.timeStyle = .short
-
-				let text = formatter.string(from: model.creationDate)
-				view?.configure(text)
-				return view
-			case "urgency":
-				let id = NSUserInterfaceItemIdentifier("toggle")
-				var view = table?.makeView(withIdentifier: id, owner: self) as? ImageCell
-				if view == nil {
-					view = ImageCell()
-					view?.identifier = id
-				}
-
-				switch model.urgency {
-				case .none:
-					return nil
-				case .middle:
-					let configuration = ImageCellConfiguration(icon: "bolt.fill", tint: .yellow)
-					view?.configure(configuration)
-				case .high:
-					let configuration = ImageCellConfiguration(icon: "bolt.fill", tint: .red)
-					view?.configure(configuration)
-				}
-				return view
-			default:
-				return nil
+		case .custom(let uuid, let configuration):
+			let id = NSUserInterfaceItemIdentifier(TodoCell.userIdentifier)
+			var view = table?.makeView(withIdentifier: id, owner: self) as? TodoCell
+			if view == nil {
+				view = TodoCell()
+				view?.identifier = id
 			}
+
+			view?.configure(configuration)
+
+			view?.textAction = { [weak self] newValue in
+				self?.output?.performModification(.setText(newValue), forTodos: [uuid])
+			}
+			view?.checkboxAction = { [weak self] newValue in
+				self?.output?.performModification( .setStatus(newValue ? .done : .default), forTodos: [uuid])
+			}
+			return view
 		}
 	}
 

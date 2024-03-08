@@ -8,4 +8,9 @@
 enum TodosGrouping {
 	case none
 	case list
+	case urgency
+	case status
 }
+
+// MARK: - CaseIterable
+extension TodosGrouping: CaseIterable { }

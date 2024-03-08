@@ -16,6 +16,8 @@ enum TintColor {
 	case teal
 	case indigo
 	case red
+	case primaryText
+	case secondaryText
 }
 
 extension TintColor {
@@ -38,6 +40,10 @@ extension TintColor {
 			return .init(preferredColor: .systemIndigo)
 		case .red:
 			return .init(preferredColor: .systemRed)
+		case .primaryText:
+			return .init(preferredColor: .controlTextColor)
+		case .secondaryText:
+			return .init(preferredColor: .secondaryLabelColor)
 		}
 	}
 
@@ -59,6 +65,10 @@ extension TintColor {
 			return .systemIndigo
 		case .red:
 			return .systemRed
+		case .primaryText:
+			return .controlTextColor
+		case .secondaryText:
+			return .secondaryLabelColor
 		}
 	}
 }

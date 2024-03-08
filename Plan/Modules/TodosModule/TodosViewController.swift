@@ -11,6 +11,7 @@ protocol TodosViewOutput: AnyObject, ViewOutput {
 	func createTodo()
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID])
 	func selectionDidChange(_ newValue: [UUID])
+	func setGrouping(_ grouping: TodosGrouping)
 	func delete(_ ids: [UUID])
 }
 
@@ -42,12 +43,14 @@ final class TodosViewController: NSViewController {
 		let view = NSTableView()
 		view.style = .inset
 		view.rowSizeStyle = .medium
+		view.rowHeight = 42
 		view.floatsGroupRows = false
 		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
-		view.usesAlternatingRowBackgroundColors = true
+		view.usesAlternatingRowBackgroundColors = false
 		view.usesAutomaticRowHeights = false
 		view.floatsGroupRows = false
+		view.intercellSpacing = .init(width: 0, height: 4)
 		return view
 	}()
 
@@ -146,25 +149,10 @@ private extension TodosViewController {
 		table.allowsColumnResizing = true
 		table.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 
-		let column1 = NSTableColumn(identifier: .init(rawValue: "task"))
-		column1.title = "Task"
-		column1.resizingMask = .autoresizingMask
+		let column = NSTableColumn(identifier: .init(rawValue: "main"))
+		column.resizingMask = .autoresizingMask
 
-		let column4 = NSTableColumn(identifier: .init(rawValue: "list"))
-		column4.title = "List"
-		column4.resizingMask = .autoresizingMask
-		column4.maxWidth = 120
-
-		let column3 = NSTableColumn(identifier: .init(rawValue: "urgency"))
-		column3.title = "Urgency"
-		column3.resizingMask = .autoresizingMask
-		column3.headerCell.alignment = .center
-		column3.minWidth = 64
-		column3.maxWidth = 64
-
-		table.addTableColumn(column1)
-		table.addTableColumn(column4)
-		table.addTableColumn(column3)
+		table.addTableColumn(column)
 	}
 
 	func configureConstraints() {

@@ -64,7 +64,7 @@ extension Coordinator: StateProviderDelegate {
 
 		switch new.route {
 		case .inFocus:
-			presentDetail(with: .inFocus, grouping: .list, order: [.urgency, .creationDate])
+			presentDetail(with: .inFocus, grouping: .urgency, order: [.urgency, .creationDate])
 		case .backlog:
 			presentDetail(with: .backlog, grouping: .none, order: [.urgency, .creationDate])
 		case .archieve:
