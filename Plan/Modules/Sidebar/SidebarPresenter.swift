@@ -39,9 +39,9 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 
 		let staticContent: [SidebarItem] =
 		[
-			.init(id: .inFocus, icon: "bolt.fill", tintColor: .yellow, title: "In Focus", isEditable: false),
-			.init(id: .backlog, icon: "square.stack.3d.up.fill", tintColor: .monochrome, title: "Backlog", isEditable: false),
-			.init(id: .archieve, icon: "shippingbox.fill", tintColor: .monochrome, title: "Archieve", isEditable: false)
+			.init(id: .inFocus, icon: "sparkle", tintColor: .yellow, title: "In Focus", isEditable: false),
+			.init(id: .backlog, icon: "square.stack.3d.up", tintColor: .monochrome, title: "Backlog", isEditable: false),
+			.init(id: .archieve, icon: "shippingbox", tintColor: .monochrome, title: "Archieve", isEditable: false)
 		]
 
 		let dynamicContent = lists.map { list in
