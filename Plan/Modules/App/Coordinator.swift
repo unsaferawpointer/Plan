@@ -43,10 +43,8 @@ extension Coordinator: Coordinatable {
 		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider, titleDelegate: self)
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
-			predicate: .inFocus,
 			infoDelegate: self,
-			grouping: .list, 
-			order: [.urgency, .isDone, .creationDate]
+			behaviour: .inFocus
 		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
@@ -62,36 +60,12 @@ extension Coordinator: StateProviderDelegate {
 
 		infoDidChange("")
 
-		switch new.route {
-		case .inFocus:
-			presentDetail(with: .inFocus, grouping: .urgency, order: [.urgency, .creationDate])
-		case .backlog:
-			presentDetail(with: .backlog, grouping: .none, order: [.urgency, .creationDate])
-		case .archieve:
-			presentDetail(with: .isDone, grouping: .none, order: [.urgency, .creationDate])
-		case .list(let id):
-			let detail = TodosAssembly.assemble(
-				stateProvider: stateProvider,
-				predicate: .list(id),
-				infoDelegate: self,
-				grouping: .none, 
-				order: [.urgency, .isDone, .creationDate]
-			)
-			router.present(detail: detail)
-		}
-	}
-}
+		let behaviour = new.route.behaviour
 
-// MARK: - Helpers
-private extension Coordinator {
-
-	func presentDetail(with predicate: TodosPredicate, grouping: TodosGrouping, order: [TodosOrder]) {
 		let detail = TodosAssembly.assemble(
 			stateProvider: stateProvider,
-			predicate: predicate,
-			infoDelegate: self, 
-			grouping: grouping,
-			order: order
+			infoDelegate: self,
+			behaviour: behaviour
 		)
 		router.present(detail: detail)
 	}
@@ -110,5 +84,21 @@ extension Coordinator: TitleDelegate {
 
 	func titleDidChange(_ title: String) {
 		router.setWindow(title: title, subtitle: nil)
+	}
+}
+
+extension Route {
+
+	var behaviour: Behaviour {
+		switch self {
+		case .inFocus:
+			return .inFocus
+		case .backlog:
+			return .backlog
+		case .archieve:
+			return .archieve
+		case .list(let id):
+			return .list(id)
+		}
 	}
 }

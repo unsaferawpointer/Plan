@@ -150,12 +150,6 @@ extension TodosTableAdapter: NSTableViewDelegate {
 		}
 	}
 
-	func tableView(_ tableView: NSTableView, userCanChangeVisibilityOf column: NSTableColumn) -> Bool {
-		guard column.identifier.rawValue != "task" else {
-			return false
-		}
-		return true
-	}
 }
 
 // MARK: - Selection support

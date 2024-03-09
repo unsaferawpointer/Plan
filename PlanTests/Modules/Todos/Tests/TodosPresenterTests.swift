@@ -27,7 +27,7 @@ final class TodosPresenterTests: XCTestCase {
 		interactor = TodosInteractorMock()
 		stateProvider = TodosStateProviderMock()
 		infoDelegate = InfoDelegateMock()
-		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate, grouping: .urgency)
+		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate, behaviour: .inFocus)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -115,7 +115,7 @@ extension TodosPresenterTests {
 				id: todo1.uuid,
 				configuration: .init(
 					checkboxValue: true,
-					iconTint: .yellow,
+					iconTint: .secondaryText,
 					iconName: "bolt.fill",
 					text: todo1.text,
 					textColor: .secondaryText,

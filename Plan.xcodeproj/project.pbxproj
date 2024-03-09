@@ -51,6 +51,8 @@
 		4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */; };
 		4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825AE2B5D379D000DDD07 /* ConfigurableView.swift */; };
 		4C74690E2B9B7E850029E4F2 /* TodoCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C74690D2B9B7E850029E4F2 /* TodoCellConfiguration.swift */; };
+		4C7469232B9C9A9E0029E4F2 /* Behaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7469222B9C9A9E0029E4F2 /* Behaviour.swift */; };
+		4C7469252B9CA1890029E4F2 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7469242B9CA1890029E4F2 /* Configurator.swift */; };
 		4C7708922B6819AF00847955 /* TodosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708912B6819AF00847955 /* TodosPresenter.swift */; };
 		4C7708942B681A2B00847955 /* TodosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708932B681A2B00847955 /* TodosInteractor.swift */; };
 		4C7708972B681EAA00847955 /* TodosTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708962B681EAA00847955 /* TodosTableAdapter.swift */; };
@@ -170,6 +172,8 @@
 		4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		4C6825AE2B5D379D000DDD07 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		4C74690D2B9B7E850029E4F2 /* TodoCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCellConfiguration.swift; sourceTree = "<group>"; };
+		4C7469222B9C9A9E0029E4F2 /* Behaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behaviour.swift; sourceTree = "<group>"; };
+		4C7469242B9CA1890029E4F2 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		4C7708912B6819AF00847955 /* TodosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosPresenter.swift; sourceTree = "<group>"; };
 		4C7708932B681A2B00847955 /* TodosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosInteractor.swift; sourceTree = "<group>"; };
 		4C7708962B681EAA00847955 /* TodosTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosTableAdapter.swift; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 		4C2841482B656FD800BC4A9F /* TodosModule */ = {
 			isa = PBXGroup;
 			children = (
+				4C7469222B9C9A9E0029E4F2 /* Behaviour.swift */,
+				4C7469242B9CA1890029E4F2 /* Configurator.swift */,
 				4CCEBB682B72B61F00B57EF1 /* Menu */,
 				4C9103682B6D506400E7F03D /* State */,
 				4C7708952B681CE800847955 /* Cells */,
@@ -847,6 +853,7 @@
 				4C9103882B6E885D00E7F03D /* MenuSupportable.swift in Sources */,
 				4C6825AF2B5D379D000DDD07 /* ConfigurableView.swift in Sources */,
 				4C22324A2B80ED3300058D82 /* TodosPredicate.swift in Sources */,
+				4C7469232B9C9A9E0029E4F2 /* Behaviour.swift in Sources */,
 				4C7708922B6819AF00847955 /* TodosPresenter.swift in Sources */,
 				4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
@@ -858,6 +865,7 @@
 				4C2841722B667AFD00BC4A9F /* PersistentContainer.swift in Sources */,
 				4C2841392B654C1400BC4A9F /* SidebarTableAdapter.swift in Sources */,
 				4C91038B2B6E99D900E7F03D /* MenuItem.swift in Sources */,
+				4C7469252B9CA1890029E4F2 /* Configurator.swift in Sources */,
 				4C9103952B6EBAC600E7F03D /* TodosAction.swift in Sources */,
 				4CCEBB6E2B72B78500B57EF1 /* TodosContextMenu.swift in Sources */,
 				4C7708942B681A2B00847955 /* TodosInteractor.swift in Sources */,

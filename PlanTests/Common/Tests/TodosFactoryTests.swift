@@ -31,7 +31,7 @@ extension TodosFactoryTests {
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .inFocus)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .status(.inFocus))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -48,7 +48,7 @@ extension TodosFactoryTests {
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .backlog)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .status(.default))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -66,7 +66,7 @@ extension TodosFactoryTests {
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .isDone)
+		let result = sut.createTodo(with: expectedText, satisfyPredicate: .status(.done))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)

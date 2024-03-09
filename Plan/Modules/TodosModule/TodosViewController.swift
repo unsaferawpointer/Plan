@@ -11,7 +11,6 @@ protocol TodosViewOutput: AnyObject, ViewOutput {
 	func createTodo()
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID])
 	func selectionDidChange(_ newValue: [UUID])
-	func setGrouping(_ grouping: TodosGrouping)
 	func delete(_ ids: [UUID])
 }
 
@@ -146,7 +145,7 @@ private extension TodosViewController {
 		scrollview.documentView = table
 
 		table.frame = scrollview.bounds
-		table.allowsColumnResizing = true
+		table.allowsColumnResizing = false
 		table.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 
 		let column = NSTableColumn(identifier: .init(rawValue: "main"))

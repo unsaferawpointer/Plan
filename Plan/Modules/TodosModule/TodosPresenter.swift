@@ -21,18 +21,18 @@ final class TodosPresenter {
 
 	weak var infoDelegate: InfoDelegate?
 
-	var grouping: TodosGrouping
+	var behaviour: Behaviour
 
 	// MARK: - Initialization
 
 	init(
 		stateProvider: TodosStateProviderProtocol,
 		infoDelegate: InfoDelegate,
-		grouping: TodosGrouping = .none
+		behaviour: Behaviour
 	) {
 		self.stateProvider = stateProvider
 		self.infoDelegate = infoDelegate
-		self.grouping = grouping
+		self.behaviour = behaviour
 	}
 
 }
@@ -55,10 +55,14 @@ extension TodosPresenter: TodosPresenterProtocol {
 
 		var total: [TableItem] = []
 
-		switch grouping {
+		let configurator = Configurator()
+
+		var elements = configurator.elements(for: behaviour)
+
+		switch configurator.defaultGrouping(for: behaviour) {
 		case .none:
 			let items = todos.map { todo in
-				(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield, .trailingLabel]))
+				(todo.uuid, makeConfiguration(from: todo, elements: elements))
 			}.map { model in
 				TableItem.custom(id: model.0, configuration: model.1)
 			}
@@ -75,7 +79,7 @@ extension TodosPresenter: TodosPresenterProtocol {
 			for section in sorted {
 				total.append(.header(section.key))
 				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield]))
+					(todo.uuid, makeConfiguration(from: todo, elements: elements))
 				}.map { model in
 					TableItem.custom(id: model.0, configuration: model.1)
 				}
@@ -100,7 +104,7 @@ extension TodosPresenter: TodosPresenterProtocol {
 					total.append(.header("High Urgency"))
 				}
 				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield, .trailingLabel]))
+					(todo.uuid, makeConfiguration(from: todo, elements: elements))
 				}.map { model in
 					TableItem.custom(id: model.0, configuration: model.1)
 				}
@@ -125,7 +129,7 @@ extension TodosPresenter: TodosPresenterProtocol {
 					total.append(.header("Done"))
 				}
 				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: [.icon, .textfield, .trailingLabel]))
+					(todo.uuid, makeConfiguration(from: todo, elements: elements))
 				}.map { model in
 					TableItem.custom(id: model.0, configuration: model.1)
 				}
@@ -178,15 +182,6 @@ extension TodosPresenter: TodosViewOutput {
 
 	func selectionDidChange(_ newValue: [UUID]) {
 		stateProvider.selectTodos(newValue)
-	}
-
-	func setGrouping(_ grouping: TodosGrouping) {
-		self.grouping = grouping
-		do {
-			try interactor?.fetchTodos()
-		} catch {
-			// TODO: - Handle action
-		}
 	}
 }
 
@@ -245,16 +240,8 @@ private extension TodosPresenter {
 
 	func makeConfiguration(from todo: Todo, elements: CellElements) -> TodoCellConfiguration {
 
-		let iconTint: TintColor = {
-			switch todo.urgency {
-			case .middle:
-				return .yellow
-			case .high:
-				return .red
-			default:
-				return .monochrome
-			}
-		}()
+		let iconTint = todo.isDone ? .secondaryText : todo.urgency.color
+		let textColor: TintColor = todo.isDone ? .secondaryText : .primaryText
 
 		var modificatedElements = elements
 		if todo.urgency == .none {
@@ -266,9 +253,24 @@ private extension TodosPresenter {
 			iconTint: iconTint,
 			iconName: "bolt.fill",
 			text: todo.text,
-			textColor: todo.status == .done ? .secondaryText : .primaryText,
+			textColor: textColor,
 			trailingText: todo.listName ?? "",
 			elements: modificatedElements
 		)
+	}
+}
+
+// MARK: - Computed properties
+extension Urgency {
+
+	var color: TintColor {
+		switch self {
+		case .none:
+			return .monochrome
+		case .middle:
+			return .yellow
+		case .high:
+			return .red
+		}
 	}
 }

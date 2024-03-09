@@ -51,6 +51,14 @@ extension Todo: Identifiable {
 	}
 }
 
+// MARK: - Computed properties
+extension Todo {
+
+	var isDone: Bool {
+		return status.isDone
+	}
+}
+
 enum TodoStatus: Int16 {
 	case `default` = 0
 	case inFocus

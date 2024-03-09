@@ -8,8 +8,6 @@
 import Foundation
 
 enum TodosPredicate {
-	case inFocus
-	case backlog
-	case isDone
+	case status(_ value: TodoStatus)
 	case list(_ id: UUID?)
 }

@@ -101,14 +101,10 @@ extension TodosPredicate {
 
 	var predicate: NSPredicate {
 		switch self {
-		case .inFocus:
-			return NSPredicate(format: "rawStatus == %@", argumentArray: [TodoStatus.inFocus.rawValue])
-		case .backlog:
-			return NSPredicate(format: "rawStatus == %@", argumentArray: [TodoStatus.default.rawValue])
-		case .isDone:
-			return NSPredicate(format: "rawStatus > %@", argumentArray: [TodoStatus.inFocus.rawValue])
 		case .list(let id):
 			return NSPredicate(format: "list.uuid == %@", argumentArray: [id ?? NSNull()])
+		case .status(let value):
+			return NSPredicate(format: "rawStatus == %@", argumentArray: [value.rawValue])
 		}
 	}
 }

@@ -130,7 +130,6 @@ private extension TodoCell {
 
 		trailingLabel.isHidden = !configuration.elements.contains(.trailingLabel)
 		trailingLabel.stringValue = configuration.trailingText
-		trailingLabel.isHidden = false
 
 		checkbox.state = configuration.checkboxValue ? .on : .off
 
