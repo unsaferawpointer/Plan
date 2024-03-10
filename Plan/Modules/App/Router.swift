@@ -29,6 +29,8 @@ final class AppRouter: NSObject {
 
 	private var mainWindow: NSWindow
 
+	private var toolbarItems: [NSToolbarItem] = []
+
 	lazy private var toolbar: NSToolbar = {
 		let toolbar = NSToolbar(identifier: "toolbar")
 		toolbar.sizeMode = .regular
@@ -60,16 +62,28 @@ extension AppRouter: Routable {
 		configureUserInterface(sidebar: sidebar, detail: detail)
 		mainWindow.makeKeyAndOrderFront(nil)
 		self.mainWindow.toolbar = toolbar
+
+		if let toolbarSupportable = detail as? ToolbarSupportable {
+			let items = toolbarSupportable.makeToolbarItems()
+			updateToolbarItems(newItems: items)
+		} else {
+			updateToolbarItems(newItems: [])
+		}
 	}
 
 	func present(detail: NSViewController) {
-		let count = splitViewController.splitViewItems.count
-
 		if let last = splitViewController.splitViewItems.last {
 			splitViewController.removeSplitViewItem(last)
 
 			let item = NSSplitViewItem(viewController: detail)
 			splitViewController.addSplitViewItem(item)
+		}
+
+		if let toolbarSupportable = detail as? ToolbarSupportable {
+			let items = toolbarSupportable.makeToolbarItems()
+			updateToolbarItems(newItems: items)
+		} else {
+			updateToolbarItems(newItems: [])
 		}
 	}
 
@@ -120,37 +134,17 @@ private extension AppRouter {
 extension AppRouter: NSToolbarDelegate {
 
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.toggleSidebarItem, .flexibleSpace, .createTodo]
+		return [.toggleSidebarItem] + toolbarItems.map(\.itemIdentifier)
 	}
 
 	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.toggleSidebarItem, .flexibleSpace, .createTodo]
+		return [.toggleSidebarItem] + toolbarItems.map(\.itemIdentifier)
 	}
 
 	func toolbar(_ toolbar: NSToolbar,
 				 itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
 				 willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
 		switch itemIdentifier {
-		case .createTodo:
-			return {
-				let item = NSToolbarItem(itemIdentifier: .createTodo)
-				item.isNavigational = false
-				item.label = "Create todo"
-				item.visibilityPriority = .high
-				item.view = {
-					let button = NSButton()
-					button.bezelStyle = .texturedRounded
-					button.image = NSImage(systemSymbolName: "plus", accessibilityDescription: nil)
-					button.target = self
-					button.action = #selector(newTodo(_:))
-					return button
-				}()
-				return item
-			}()
-		case .trackingSplitItem:
-			return NSTrackingSeparatorToolbarItem(identifier: NSToolbarItem.Identifier.trackingSplitItem,
-												  splitView: self.splitViewController.splitView,
-												  dividerIndex: 1)
 		case .toggleSidebarItem:
 			return {
 				let item = NSToolbarItem(itemIdentifier: .toggleSidebarItem)
@@ -168,18 +162,37 @@ extension AppRouter: NSToolbarDelegate {
 				return item
 			}()
 		default:
-			return nil
+			return toolbarItems.first { $0.itemIdentifier == itemIdentifier }
+		}
+	}
+}
+
+// MARK: - Helpers
+private extension AppRouter {
+
+	func updateToolbarItems(newItems: [NSToolbarItem]) {
+
+		guard let toolbar = mainWindow.toolbar else {
+			return
+		}
+		let difference = newItems.difference(from: toolbarItems) { new, old in
+			return ObjectIdentifier(new) == ObjectIdentifier(old)
+		}
+		for change in difference {
+			switch change {
+			case .remove(let offset, _, _):
+				toolbarItems.remove(at: offset)
+				toolbar.removeItem(at: offset)
+			case .insert(let offset, let item, _):
+				toolbarItems.insert(item, at: offset)
+				toolbar.insertItem(withItemIdentifier: item.itemIdentifier, at: offset)
+			}
 		}
 	}
 }
 
 // MARK: - Actions
 private extension AppRouter {
-
-	@objc
-	func newTodo(_ sender: Any?) {
-		NotificationCenter.default.post(name: .toolbarNewTodoButtonHasBeenClicked, object: nil)
-	}
 
 	@objc
 	func toggleSidebar(_ sender: Any?) {
@@ -194,9 +207,23 @@ extension NSToolbarItem.Identifier {
 	static let trackingSplitItem = NSToolbarItem.Identifier(rawValue: "trackingSplitItem")
 
 	static let toggleSidebarItem = NSToolbarItem.Identifier(rawValue: "toggleSidebar")
+
+	static let groupingItem = NSToolbarItem.Identifier("groupingItem")
 }
 
 extension NSNotification.Name {
 
 	static var toolbarNewTodoButtonHasBeenClicked = NSNotification.Name("toolbarNewTodoHasBeenClicked")
+}
+
+extension MenuItem.Identifier {
+
+	static let noneGrouping: MenuItem.Identifier = .basic("noneGrouping")
+
+	static let priorityGrouping: MenuItem.Identifier = .basic("priorityGrouping")
+
+	static let listGrouping: MenuItem.Identifier = .basic("listGrouping")
+
+	static let statusGrouping: MenuItem.Identifier = .basic("statusGrouping")
+
 }

@@ -23,16 +23,21 @@ final class TodosPresenter {
 
 	var behaviour: Behaviour
 
+	var settingsProvider: TodosSettingsProviderProtocol
+
 	// MARK: - Initialization
 
 	init(
 		stateProvider: TodosStateProviderProtocol,
 		infoDelegate: InfoDelegate,
-		behaviour: Behaviour
+		behaviour: Behaviour,
+		settingsProvider: TodosSettingsProviderProtocol
 	) {
 		self.stateProvider = stateProvider
 		self.infoDelegate = infoDelegate
 		self.behaviour = behaviour
+		self.settingsProvider = settingsProvider
+		self.settingsProvider.delegate = self
 	}
 
 }
@@ -57,9 +62,9 @@ extension TodosPresenter: TodosPresenterProtocol {
 
 		let configurator = Configurator()
 
-		var elements = configurator.elements(for: behaviour)
+		let elements = configurator.elements(for: behaviour)
 
-		switch configurator.defaultGrouping(for: behaviour) {
+		switch settingsProvider.grouping {
 		case .none:
 			let items = todos.map { todo in
 				(todo.uuid, makeConfiguration(from: todo, elements: elements))
@@ -78,14 +83,16 @@ extension TodosPresenter: TodosPresenterProtocol {
 
 			for section in sorted {
 				total.append(.header(section.key))
+				var modificatedElements = elements
+				modificatedElements.remove(.trailingLabel)
 				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: elements))
+					(todo.uuid, makeConfiguration(from: todo, elements: modificatedElements))
 				}.map { model in
 					TableItem.custom(id: model.0, configuration: model.1)
 				}
 				total.append(contentsOf: items)
 			}
-		case .urgency:
+		case .priority:
 			let grouped = Dictionary(grouping: todos) { todo in
 				return todo.priority
 			}
@@ -189,6 +196,16 @@ extension TodosPresenter: TodosViewOutput {
 	}
 }
 
+// MARK: - TodosSettingsDelegate
+extension TodosPresenter: TodosSettingsDelegate {
+
+	func settingsDidChange() {
+		DispatchQueue.main.async {
+			try? self.interactor?.fetchTodos()
+		}
+	}
+}
+
 // MARK: - MenuDelegate
 extension TodosPresenter: MenuDelegate {
 
@@ -219,6 +236,14 @@ extension TodosPresenter: MenuDelegate {
 			performModification(.setUrgency(.medium), forTodos: view.selection)
 		case .highPriority:
 			performModification(.setUrgency(.high), forTodos: view.selection)
+		case .noneGrouping:
+			settingsProvider.grouping = .none
+		case .listGrouping:
+			settingsProvider.grouping = .list
+		case .priorityGrouping:
+			settingsProvider.grouping = .priority
+		case .statusGrouping:
+			settingsProvider.grouping = .status
 		default:
 			break
 		}
@@ -226,7 +251,17 @@ extension TodosPresenter: MenuDelegate {
 
 	func validateMenuItem(_ item: MenuItem.Identifier) -> Bool {
 		switch item {
-		case .newTodo:
+		case .newTodo, .noneGrouping, .priorityGrouping:
+			return true
+		case .listGrouping:
+			guard case .list = behaviour else {
+				return true
+			}
+			return false
+		case .statusGrouping:
+			guard case .list = behaviour else {
+				return false
+			}
 			return true
 		case .delete,
 				.moveToList,
@@ -258,7 +293,7 @@ private extension TodosPresenter {
 		let textColor: TintColor = todo.isDone ? .secondaryText : .primaryText
 
 		var modificatedElements = elements
-		if todo.priority == .low {
+		if todo.priority == .low || todo.isDone {
 			modificatedElements.remove(.icon)
 		}
 

@@ -79,7 +79,6 @@ final class TodosViewController: NSViewController {
 		configureUserInterface()
 		configureConstraints()
 		configureAdapter()
-		configureSubscriptions()
 
 		output?.viewDidChange(state: .didLoad)
 	}
@@ -114,6 +113,62 @@ extension TodosViewController: TodosView {
 	}
 }
 
+// MARK: - ToolbarSupportable
+extension TodosViewController: ToolbarSupportable {
+
+	func makeToolbarItems() -> [NSToolbarItem] {
+		return
+		[
+			{
+				let item = NSToolbarItem(itemIdentifier: .createTodo)
+				item.isNavigational = false
+				item.label = "Create todo"
+				item.visibilityPriority = .high
+				item.view = {
+					let button = NSButton()
+					button.bezelStyle = .texturedRounded
+					button.image = NSImage(systemSymbolName: "plus", accessibilityDescription: nil)
+					button.target = self
+					button.action = #selector(newTodo(_:))
+					return button
+				}()
+				return item
+			}(),
+			{
+				let item = NSToolbarItem(itemIdentifier: .groupingItem)
+				item.isNavigational = false
+				item.label = "Create todo"
+				item.visibilityPriority = .high
+				item.view = {
+					let button = NSComboButton()
+					button.style = .unified
+					button.image = NSImage(systemSymbolName: "square.grid.3x1.below.line.grid.1x2", accessibilityDescription: nil)
+
+					let items = MenuBuilder.makeItems(
+						[
+							.custom(.noneGrouping, content: .init(title: "None", keyEquivalent: "")),
+							.separator,
+							.custom(.priorityGrouping, content: .init(title: "Priority", keyEquivalent: "")),
+							.custom(.listGrouping, content: .init(title: "List", keyEquivalent: "")),
+							.custom(.statusGrouping, content: .init(title: "Completion", keyEquivalent: ""))
+						],
+						target: self,
+						action: #selector(MenuSupportable.menuItemHasBeenClicked(_:))
+					)
+
+					let menu = NSMenu()
+					menu.items = items
+
+					button.menu = menu
+
+					return button
+				}()
+				return item
+			}()
+		]
+	}
+}
+
 // MARK: - MenuSupportable
 extension TodosViewController: MenuSupportable {
 
@@ -136,17 +191,17 @@ extension TodosViewController: NSMenuItemValidation {
 	}
 }
 
+// MARK: - Actions
+extension TodosViewController {
+
+	@objc
+	func newTodo(_ sender: Any?) {
+		output?.createTodo()
+	}
+}
+
 // MARK: - Helpers
 private extension TodosViewController {
-
-	func configureSubscriptions() {
-		NotificationCenter.default.addObserver(
-			forName: .toolbarNewTodoButtonHasBeenClicked,
-			object: nil,
-			queue: .main) { [weak self] _ in
-				self?.output?.createTodo()
-			}
-	}
 
 	func configureAdapter() {
 		self.adapter = TodosTableAdapter(table: table)

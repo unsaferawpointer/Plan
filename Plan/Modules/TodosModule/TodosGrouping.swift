@@ -5,10 +5,10 @@
 //  Created by Anton Cherkasov on 01.03.2024.
 //
 
-enum TodosGrouping {
+enum TodosGrouping: String {
 	case none
 	case list
-	case urgency
+	case priority
 	case status
 }
 

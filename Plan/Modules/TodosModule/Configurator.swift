@@ -29,7 +29,7 @@ extension Configurator {
 
 	func defaultGrouping(for behaviour: Behaviour) -> TodosGrouping {
 		switch behaviour {
-		case .inFocus:	return .urgency
+		case .inFocus:	return .priority
 		case .backlog:	return .list
 		case .archieve:	return .none
 		case .list:		return .none

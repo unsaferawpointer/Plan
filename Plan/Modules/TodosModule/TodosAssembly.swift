@@ -18,7 +18,8 @@ final class TodosAssembly {
 		let presenter = TodosPresenter(
 			stateProvider: stateProvider,
 			infoDelegate: infoDelegate,
-			behaviour: behaviour
+			behaviour: behaviour, 
+			settingsProvider: TodosSettingsProvider(behaviour: behaviour)
 		)
 		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 		let storage = PersistentContainer(context: context!)
