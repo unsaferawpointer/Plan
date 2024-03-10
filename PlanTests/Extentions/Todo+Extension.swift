@@ -15,7 +15,7 @@ extension Todo {
 			uuid: .init(),
 			creationDate: Date(),
 			text: UUID().uuidString,
-			urgency: .middle,
+			priority: .medium,
 			list: .init(),
 			listName: UUID().uuidString
 		)

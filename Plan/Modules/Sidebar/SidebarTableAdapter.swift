@@ -57,8 +57,8 @@ extension SidebarTableAdapter {
 
 	func clickedItem() -> Route? {
 		guard 
-			let clickedRow = table?.clickedRow, clickedRow != -1,
-			let item = table?.item(atRow: clickedRow) as? SidebarItem
+			let row = table?.effectiveSelection().first,
+			let item = table?.item(atRow: row) as? SidebarItem
 		else {
 			return nil
 		}

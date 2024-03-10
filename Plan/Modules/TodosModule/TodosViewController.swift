@@ -7,11 +7,11 @@
 
 import Cocoa
 
-protocol TodosViewOutput: AnyObject, ViewOutput { 
+protocol TodosViewOutput: AnyObject, ViewOutput, MenuDelegate {
 	func createTodo()
 	func performModification(_ modification: TodoModification, forTodos ids: [UUID])
 	func selectionDidChange(_ newValue: [UUID])
-	func delete(_ ids: [UUID])
+	func delete(_ ids: [UUID]?)
 }
 
 protocol TodosView: AnyObject {
@@ -117,8 +117,22 @@ extension TodosViewController: TodosView {
 // MARK: - MenuSupportable
 extension TodosViewController: MenuSupportable {
 
-	func createNew(_ sender: NSMenuItem) {
-		output?.createTodo()
+	func menuItemHasBeenClicked(_ sender: NSMenuItem) {
+		guard let id = sender.representedObject as? MenuItem.Identifier else {
+			return
+		}
+		output?.menuItemHasBeenClicked(id)
+	}
+}
+
+// MARK: - NSMenuItemValidation
+extension TodosViewController: NSMenuItemValidation {
+
+	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+		guard let id = menuItem.representedObject as? MenuItem.Identifier, let output else {
+			return false
+		}
+		return output.validateMenuItem(id)
 	}
 }
 

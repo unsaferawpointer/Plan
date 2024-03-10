@@ -14,7 +14,7 @@ struct Todo {
 	var text: String
 
 	var status: TodoStatus
-	var urgency: Urgency
+	var priority: Priority
 
 	var list: UUID?
 	var listName: String?
@@ -26,7 +26,7 @@ struct Todo {
 		creationDate: Date = Date(),
 		text: String,
 		status: TodoStatus = .default,
-		urgency: Urgency = .none,
+		priority: Priority = .low,
 		list: UUID? = nil,
 		listName: String? = nil
 	) {
@@ -34,7 +34,7 @@ struct Todo {
 		self.creationDate = creationDate
 		self.text = text
 		self.status = status
-		self.urgency = urgency
+		self.priority = priority
 		self.list = list
 		self.listName = listName
 	}
@@ -65,9 +65,9 @@ enum TodoStatus: Int16 {
 	case done
 }
 
-enum Urgency: Int16 {
-	case none = 0
-	case middle
+enum Priority: Int16 {
+	case low = 0
+	case medium
 	case high
 }
 

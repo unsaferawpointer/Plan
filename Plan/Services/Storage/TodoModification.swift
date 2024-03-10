@@ -10,7 +10,7 @@ import Foundation
 enum TodoModification {
 	case setText(_ newValue: String)
 	case setStatus(_ newValue: TodoStatus)
-	case setUrgency(_ newValue: Urgency)
+	case setUrgency(_ newValue: Priority)
 	case setList(_ newValue: UUID?)
 }
 

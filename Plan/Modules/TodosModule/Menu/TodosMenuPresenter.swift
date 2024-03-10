@@ -63,11 +63,11 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 			.custom(.markAsCompleted, content: .init(title: "Mark as Completed", keyEquivalent: "\r")),
 			.custom(.markAsIncomplete, content: .init(title: "Mark as Incomplete", keyEquivalent: "")),
 			.separator,
-			.menu(.setUrgency, content: .init(title: "Set urgency", keyEquivalent: ""), items:
+			.menu(.setUrgency, content: .init(title: "Priority", keyEquivalent: ""), items:
 					[
-						.custom(.basic("urgency_none"), content: .init(title: "Low", keyEquivalent: "0")),
-						.custom(.basic("urgency_middle"), content: .init(title: "Middle", keyEquivalent: "1")),
-						.custom(.basic("urgency_high"), content: .init(title: "High", keyEquivalent: "2")),
+						.custom(.lowPriority, content: .init(title: "Low", keyEquivalent: "1")),
+						.custom(.mediumPriority, content: .init(title: "Middle", keyEquivalent: "2")),
+						.custom(.lowPriority, content: .init(title: "High", keyEquivalent: "3")),
 					]
 				 ),
 			.separator,

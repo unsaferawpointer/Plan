@@ -7,7 +7,7 @@
 
 import Cocoa
 
-protocol SidebarViewOutput: ViewOutput, AnyObject {
+protocol SidebarViewOutput: ViewOutput, MenuDelegate, AnyObject {
 	func selectionDidChange(_ newValue: SidebarItem)
 	func labelDidChangeText(_ newText: String, forItem withId: UUID)
 }
@@ -126,5 +126,27 @@ private extension SidebarViewController {
 
 	func configureConstraints() {
 		scrollview.pin(to: view)
+	}
+}
+
+// MARK: - MenuSupportable
+extension SidebarViewController: MenuSupportable {
+
+	func menuItemHasBeenClicked(_ sender: NSMenuItem) {
+		guard let id = sender.representedObject as? MenuItem.Identifier else {
+			return
+		}
+		output?.menuItemHasBeenClicked(id)
+	}
+}
+
+// MARK: - NSMenuItemValidation
+extension SidebarViewController: NSMenuItemValidation {
+
+	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+		guard let id = menuItem.representedObject as? MenuItem.Identifier, let output else {
+			return false
+		}
+		return output.validateMenuItem(id)
 	}
 }

@@ -57,9 +57,9 @@ extension TodoEntity {
 		}
 	}
 
-	var urgency: Urgency {
+	var urgency: Priority {
 		get {
-			return .init(rawValue: rawUrgency) ?? .none
+			return .init(rawValue: rawUrgency) ?? .low
 		}
 		set {
 			self.rawUrgency = newValue.rawValue
@@ -93,7 +93,7 @@ extension TodoEntity {
 		self.creationDate = todo.creationDate
 		self.rawStatus = todo.status.rawValue
 		self.text = todo.text
-		self.rawUrgency = todo.urgency.rawValue
+		self.rawUrgency = todo.priority.rawValue
 	}
 
 	var todo: Todo {
@@ -102,7 +102,7 @@ extension TodoEntity {
 			creationDate: creationDate,
 			text: text,
 			status: status,
-			urgency: urgency,
+			priority: urgency,
 			list: list?.uuid,
 			listName: list?.title
 		)

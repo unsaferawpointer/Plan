@@ -11,6 +11,5 @@ import Cocoa
 protocol MenuSupportable {
 
 	@objc
-	optional func createNew(_ sender: NSMenuItem)
-
+	func menuItemHasBeenClicked(_ sender: NSMenuItem)
 }

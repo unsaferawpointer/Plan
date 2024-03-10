@@ -110,5 +110,11 @@ extension MenuItem.Identifier {
 
 	static let moveToList: MenuItem.Identifier = .basic("move_to_list")
 
+	static let lowPriority: MenuItem.Identifier = .basic("low_priority")
+
+	static let mediumPriority: MenuItem.Identifier = .basic("medium_priority")
+
+	static let highPriority: MenuItem.Identifier = .basic("high_priority")
+
 	static let delete: MenuItem.Identifier = .basic("delete")
 }

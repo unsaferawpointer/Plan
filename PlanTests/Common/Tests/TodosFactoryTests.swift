@@ -55,7 +55,7 @@ extension TodosFactoryTests {
 		guard case .default = result.status else {
 			return XCTFail()
 		}
-		XCTAssertEqual(result.urgency, .none)
+		XCTAssertEqual(result.priority, .low)
 		XCTAssertNil(result.list)
 	}
 
@@ -73,7 +73,7 @@ extension TodosFactoryTests {
 		guard case .done = result.status else {
 			return XCTFail()
 		}
-		XCTAssertEqual(result.urgency, .none)
+		XCTAssertEqual(result.priority, .low)
 		XCTAssertNil(result.list)
 	}
 
@@ -92,7 +92,7 @@ extension TodosFactoryTests {
 		guard case .default = result.status else {
 			return XCTFail()
 		}
-		XCTAssertEqual(result.urgency, .none)
+		XCTAssertEqual(result.priority, .low)
 		XCTAssertEqual(result.list, expectedList)
 	}
 }

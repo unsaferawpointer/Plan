@@ -87,7 +87,7 @@ extension TodosPresenter: TodosPresenterProtocol {
 			}
 		case .urgency:
 			let grouped = Dictionary(grouping: todos) { todo in
-				return todo.urgency
+				return todo.priority
 			}
 
 			let sorted = grouped.sorted { lhs, rhs in
@@ -96,12 +96,12 @@ extension TodosPresenter: TodosPresenterProtocol {
 
 			for section in sorted {
 				switch section.key {
-				case .none:
-					total.append(.header("Not Urgency"))
-				case .middle:
-					total.append(.header("Middle Urgency"))
+				case .low:
+					total.append(.header("Low Priority"))
+				case .medium:
+					total.append(.header("Medium Priority"))
 				case .high:
-					total.append(.header("High Urgency"))
+					total.append(.header("High Priority"))
 				}
 				let items = section.value.map { todo in
 					(todo.uuid, makeConfiguration(from: todo, elements: elements))
@@ -172,9 +172,13 @@ extension TodosPresenter: TodosViewOutput {
 		}
 	}
 
-	func delete(_ ids: [UUID]) {
+	func delete(_ ids: [UUID]?) {
+		guard let view else {
+			return
+		}
 		do {
-			try interactor?.perform(.delete(ids))
+			let deleted = ids ?? view.selection
+			try interactor?.perform(.delete(deleted))
 		} catch {
 			// TODO: - Handle action
 		}
@@ -209,11 +213,11 @@ extension TodosPresenter: MenuDelegate {
 			performModification(.setStatus(.inFocus), forTodos: view.selection)
 		case .moveToBacklog:
 			performModification(.setStatus(.default), forTodos: view.selection)
-		case .basic("urgency_none"):
-			performModification(.setUrgency(.none), forTodos: view.selection)
-		case .basic("urgency_middle"):
-			performModification(.setUrgency(.middle), forTodos: view.selection)
-		case .basic("urgency_high"):
+		case .lowPriority:
+			performModification(.setUrgency(.low), forTodos: view.selection)
+		case .mediumPriority:
+			performModification(.setUrgency(.medium), forTodos: view.selection)
+		case .highPriority:
 			performModification(.setUrgency(.high), forTodos: view.selection)
 		default:
 			break
@@ -224,7 +228,17 @@ extension TodosPresenter: MenuDelegate {
 		switch item {
 		case .newTodo:
 			return true
-		case .delete, .moveToList, .markAsCompleted, .markAsIncomplete, .uuid, .focusOn, .setUrgency, .basic:
+		case .delete,
+				.moveToList,
+				.markAsCompleted,
+				.markAsIncomplete,
+				.uuid,
+				.focusOn,
+				.setUrgency,
+				.moveToBacklog,
+				.lowPriority,
+				.mediumPriority,
+				.highPriority:
 			guard let selection = view?.selection else {
 				return false
 			}
@@ -240,11 +254,11 @@ private extension TodosPresenter {
 
 	func makeConfiguration(from todo: Todo, elements: CellElements) -> TodoCellConfiguration {
 
-		let iconTint = todo.isDone ? .secondaryText : todo.urgency.color
+		let iconTint = todo.isDone ? .secondaryText : todo.priority.color
 		let textColor: TintColor = todo.isDone ? .secondaryText : .primaryText
 
 		var modificatedElements = elements
-		if todo.urgency == .none {
+		if todo.priority == .low {
 			modificatedElements.remove(.icon)
 		}
 
@@ -261,13 +275,13 @@ private extension TodosPresenter {
 }
 
 // MARK: - Computed properties
-extension Urgency {
+extension Priority {
 
 	var color: TintColor {
 		switch self {
-		case .none:
+		case .low:
 			return .monochrome
-		case .middle:
+		case .medium:
 			return .yellow
 		case .high:
 			return .red

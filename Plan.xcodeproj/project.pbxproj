@@ -264,6 +264,7 @@
 		4C28412B2B6544A400BC4A9F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
 				4C2841362B654B9700BC4A9F /* Route.swift */,
 				4C28412C2B6544BE00BC4A9F /* Router.swift */,
 				4C2841462B65699500BC4A9F /* Coordinator.swift */,
@@ -423,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				4C2841292B6543E500BC4A9F /* main.swift */,
-				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
 				4C6825982B5C2FF2000DDD07 /* Common */,
 				4C2841652B66438F00BC4A9F /* Services */,
 				4C6825AB2B5D36CA000DDD07 /* Design System */,

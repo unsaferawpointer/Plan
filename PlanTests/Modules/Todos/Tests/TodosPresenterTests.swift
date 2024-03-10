@@ -52,7 +52,7 @@ extension TodosPresenterTests {
 			creationDate: .now,
 			text: UUID().uuidString,
 			status: .inFocus,
-			urgency: .none,
+			priority: .low,
 			list: UUID(),
 			listName: "list0"
 		)
@@ -62,7 +62,7 @@ extension TodosPresenterTests {
 			creationDate: .now,
 			text: UUID().uuidString,
 			status: .done,
-			urgency: .middle,
+			priority: .medium,
 			list: UUID(),
 			listName: "list1"
 		)
@@ -72,7 +72,7 @@ extension TodosPresenterTests {
 			creationDate: .now,
 			text: UUID().uuidString,
 			status: .default,
-			urgency: .high,
+			priority: .high,
 			list: UUID(),
 			listName: "list2"
 		)
@@ -91,7 +91,7 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 
-		XCTAssertEqual(items[0], .header("High Urgency"))
+		XCTAssertEqual(items[0], .header("High Priority"))
 		XCTAssertEqual(
 			items[1],
 			.custom(
@@ -108,7 +108,7 @@ extension TodosPresenterTests {
 			)
 		)
 
-		XCTAssertEqual(items[2], .header("Middle Urgency"))
+		XCTAssertEqual(items[2], .header("Medium Priority"))
 		XCTAssertEqual(
 			items[3],
 			.custom(
@@ -125,7 +125,7 @@ extension TodosPresenterTests {
 			)
 		)
 
-		XCTAssertEqual(items[4], .header("Not Urgency"))
+		XCTAssertEqual(items[4], .header("Low Priority"))
 		XCTAssertEqual(
 			items[5],
 			.custom(
@@ -222,6 +222,21 @@ extension TodosPresenterTests {
 
 		// Act
 		sut.delete(expectedIds)
+
+		// Assert
+		guard case let .performAction(action) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(action, .delete(expectedIds))
+	}
+
+	func testDeleteWhenIdsIsNil() {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.delete(nil)
 
 		// Assert
 		guard case let .performAction(action) = interactor.invocations[0] else {
@@ -342,6 +357,42 @@ extension TodosPresenterTests {
 		}
 		XCTAssertEqual(ids, expectedIds)
 		XCTAssertEqual(modification, .setStatus(.inFocus))
+		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsLowPriority() {
+		// Arrange & Act & Assert
+		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .lowPriority, expectedValue: .low)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsMediumPriority() {
+		// Arrange & Act & Assert
+		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .mediumPriority, expectedValue: .medium)
+	}
+
+	func testMenuItemHasBeenClickedWhenItemIsHighPriority() {
+		// Arrange & Act & Assert
+		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .highPriority, expectedValue: .high)
+	}
+}
+
+// MARK: - Helpers
+private extension TodosPresenterTests {
+
+	func testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: MenuItem.Identifier, expectedValue: Priority) {
+		// Arrange
+		let expectedIds = [UUID(), UUID()]
+		view.selectionStub = expectedIds
+
+		// Act
+		sut.menuItemHasBeenClicked(itemIdentifier)
+
+		// Assert
+		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(ids, expectedIds)
+		XCTAssertEqual(modification, .setUrgency(expectedValue))
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
 }
