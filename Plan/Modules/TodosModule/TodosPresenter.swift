@@ -64,7 +64,7 @@ extension TodosPresenter: TodosPresenterProtocol {
 
 		let elements = configurator.elements(for: behaviour)
 
-		switch settingsProvider.grouping {
+		switch settingsProvider.getGrouping(for: behaviour) {
 		case .none:
 			let items = todos.map { todo in
 				(todo.uuid, makeConfiguration(from: todo, elements: elements))
@@ -224,26 +224,16 @@ extension TodosPresenter: MenuDelegate {
 			performModification(.setStatus(.done), forTodos: view.selection)
 		case .markAsIncomplete:
 			performModification(.setStatus(.default), forTodos: view.selection)
-		case .uuid(let value):
+		case .list(let value):
 			performModification(.setList(value), forTodos: view.selection)
 		case .focusOn:
 			performModification(.setStatus(.inFocus), forTodos: view.selection)
 		case .moveToBacklog:
 			performModification(.setStatus(.default), forTodos: view.selection)
-		case .lowPriority:
-			performModification(.setUrgency(.low), forTodos: view.selection)
-		case .mediumPriority:
-			performModification(.setUrgency(.medium), forTodos: view.selection)
-		case .highPriority:
-			performModification(.setUrgency(.high), forTodos: view.selection)
-		case .noneGrouping:
-			settingsProvider.grouping = .none
-		case .listGrouping:
-			settingsProvider.grouping = .list
-		case .priorityGrouping:
-			settingsProvider.grouping = .priority
-		case .statusGrouping:
-			settingsProvider.grouping = .status
+		case .priority(let value):
+			performModification(.setPriority(value), forTodos: view.selection)
+		case .grouping(let value):
+			settingsProvider.setGrouping(value, for: behaviour)
 		default:
 			break
 		}
@@ -251,29 +241,32 @@ extension TodosPresenter: MenuDelegate {
 
 	func validateMenuItem(_ item: MenuItem.Identifier) -> Bool {
 		switch item {
-		case .newTodo, .noneGrouping, .priorityGrouping:
-			return true
-		case .listGrouping:
-			guard case .list = behaviour else {
+		case .grouping(let value):
+			switch value {
+			case .none, .priority:
+				return true
+			case .list:
+				guard case .list = behaviour else {
+					return true
+				}
+				return false
+			case .status:
+				guard case .list = behaviour else {
+					return false
+				}
 				return true
 			}
-			return false
-		case .statusGrouping:
-			guard case .list = behaviour else {
-				return false
-			}
+		case .newTodo:
 			return true
 		case .delete,
 				.moveToList,
 				.markAsCompleted,
 				.markAsIncomplete,
-				.uuid,
+				.list,
 				.focusOn,
 				.setUrgency,
 				.moveToBacklog,
-				.lowPriority,
-				.mediumPriority,
-				.highPriority:
+				.priority:
 			guard let selection = view?.selection else {
 				return false
 			}

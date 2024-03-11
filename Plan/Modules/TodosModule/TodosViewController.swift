@@ -146,11 +146,11 @@ extension TodosViewController: ToolbarSupportable {
 
 					let items = MenuBuilder.makeItems(
 						[
-							.custom(.noneGrouping, content: .init(title: "None", keyEquivalent: "")),
+							.custom(.grouping(.none), content: .init(title: "None", keyEquivalent: "")),
 							.separator,
-							.custom(.priorityGrouping, content: .init(title: "Priority", keyEquivalent: "")),
-							.custom(.listGrouping, content: .init(title: "List", keyEquivalent: "")),
-							.custom(.statusGrouping, content: .init(title: "Completion", keyEquivalent: ""))
+							.custom(.grouping(.priority), content: .init(title: "Priority", keyEquivalent: "")),
+							.custom(.grouping(.list), content: .init(title: "List", keyEquivalent: "")),
+							.custom(.grouping(.status), content: .init(title: "Status", keyEquivalent: ""))
 						],
 						target: self,
 						action: #selector(MenuSupportable.menuItemHasBeenClicked(_:))

@@ -101,7 +101,7 @@ extension PersistentContainer: PersistentContainerProtocol {
 			switch modification {
 			case .setText(let newValue):
 				entity.text = newValue
-			case .setUrgency(let newValue):
+			case .setPriority(let newValue):
 				entity.urgency = newValue
 			case .setList(let id):
 				guard let id, let target = try fetchEntities(ListEntity.self, with: [id]).first else {

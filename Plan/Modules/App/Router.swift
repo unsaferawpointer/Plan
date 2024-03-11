@@ -215,15 +215,3 @@ extension NSNotification.Name {
 
 	static var toolbarNewTodoButtonHasBeenClicked = NSNotification.Name("toolbarNewTodoHasBeenClicked")
 }
-
-extension MenuItem.Identifier {
-
-	static let noneGrouping: MenuItem.Identifier = .basic("noneGrouping")
-
-	static let priorityGrouping: MenuItem.Identifier = .basic("priorityGrouping")
-
-	static let listGrouping: MenuItem.Identifier = .basic("listGrouping")
-
-	static let statusGrouping: MenuItem.Identifier = .basic("statusGrouping")
-
-}

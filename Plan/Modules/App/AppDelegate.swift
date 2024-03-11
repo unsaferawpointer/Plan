@@ -187,9 +187,9 @@ private extension AppDelegate {
 							content: .init(title: "Priority", keyEquivalent: ""),
 							items:
 								[
-									.custom(.lowPriority, content: .init(title: "Low", keyEquivalent: "1")),
-									.custom(.mediumPriority, content: .init(title: "Medium", keyEquivalent: "2")),
-									.custom(.highPriority, content: .init(title: "High", keyEquivalent: "3"))
+									.custom(.priority(.low), content: .init(title: "Low", keyEquivalent: "1")),
+									.custom(.priority(.medium), content: .init(title: "Medium", keyEquivalent: "2")),
+									.custom(.priority(.high), content: .init(title: "High", keyEquivalent: "3"))
 								]
 						),
 						.separator,

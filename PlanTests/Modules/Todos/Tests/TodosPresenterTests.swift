@@ -342,7 +342,7 @@ extension TodosPresenterTests {
 		let expectedList = UUID()
 
 		// Act
-		sut.menuItemHasBeenClicked(.uuid(expectedList))
+		sut.menuItemHasBeenClicked(.list(expectedList))
 
 		// Assert
 		guard case let .performModification(modification, ids) = interactor.invocations[0] else {
@@ -402,7 +402,7 @@ private extension TodosPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(ids, expectedIds)
-		XCTAssertEqual(modification, .setUrgency(expectedValue))
+		XCTAssertEqual(modification, .setPriority(expectedValue))
 		XCTAssertEqual(interactor.invocations.count, 1)
 	}
 }

@@ -18,7 +18,9 @@ extension MenuItem {
 
 	enum Identifier {
 
-		case uuid(_ value: UUID)
+		case list(_ value: UUID)
+		case grouping(_ value: TodosGrouping)
+		case priority(_ value: Priority)
 		case basic(_ value: String)
 	}
 

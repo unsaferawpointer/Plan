@@ -17,20 +17,19 @@ final class TodosSettingsProviderMock {
 // MARK: - TodosSettingsProviderProtocol
 extension TodosSettingsProviderMock: TodosSettingsProviderProtocol {
 
-	var grouping: TodosGrouping {
-		get {
-			stubs.grouping
-		}
-		set(newValue) {
-			invocations.append(.setGrouping(newValue))
-		}
+	func getGrouping(for behaviour: Behaviour) -> TodosGrouping {
+		return stubs.grouping
 	}
 	
+	func setGrouping(_ grouping: TodosGrouping, for behaviour: Behaviour) {
+		invocations.append(.setGrouping(grouping))
+	}
+
 	var delegate: TodosSettingsDelegate? {
 		get {
 			stubs.delegate
 		}
-		set(newValue) {
+		set {
 			invocations.append(.setDelegate(newValue))
 		}
 	}
