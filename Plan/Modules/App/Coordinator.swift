@@ -12,6 +12,8 @@ protocol Coordinatable {
 
 	/// Start flow
 	func start()
+
+	func quit()
 }
 
 /// App coordinator
@@ -47,6 +49,10 @@ extension Coordinator: Coordinatable {
 			behaviour: .inFocus
 		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
+	}
+
+	func quit() {
+		NSApplication.shared.terminate(nil)
 	}
 }
 

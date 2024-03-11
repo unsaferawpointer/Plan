@@ -209,7 +209,15 @@ private extension AppDelegate {
 extension AppDelegate: MenuSupportable {
 
 	func menuItemHasBeenClicked(_ sender: NSMenuItem) {
-		print(#function)
+		guard let id = sender.representedObject as? MenuItem.Identifier else {
+			return
+		}
+		switch id {
+		case .quit:
+			coordinator.quit()
+		default:
+			break
+		}
 	}
 }
 
