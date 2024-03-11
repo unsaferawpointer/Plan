@@ -55,6 +55,7 @@
 		4C7469252B9CA1890029E4F2 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7469242B9CA1890029E4F2 /* Configurator.swift */; };
 		4C74692A2B9DE26E0029E4F2 /* TodosSettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7469292B9DE26E0029E4F2 /* TodosSettingsProvider.swift */; };
 		4C74692C2B9E3AC30029E4F2 /* ToolbarSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C74692B2B9E3AC30029E4F2 /* ToolbarSupportable.swift */; };
+		4C7469312B9F57580029E4F2 /* TodosSettingsProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7469302B9F57580029E4F2 /* TodosSettingsProviderMock.swift */; };
 		4C7708922B6819AF00847955 /* TodosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708912B6819AF00847955 /* TodosPresenter.swift */; };
 		4C7708942B681A2B00847955 /* TodosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708932B681A2B00847955 /* TodosInteractor.swift */; };
 		4C7708972B681EAA00847955 /* TodosTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7708962B681EAA00847955 /* TodosTableAdapter.swift */; };
@@ -178,6 +179,7 @@
 		4C7469242B9CA1890029E4F2 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		4C7469292B9DE26E0029E4F2 /* TodosSettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosSettingsProvider.swift; sourceTree = "<group>"; };
 		4C74692B2B9E3AC30029E4F2 /* ToolbarSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarSupportable.swift; sourceTree = "<group>"; };
+		4C7469302B9F57580029E4F2 /* TodosSettingsProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosSettingsProviderMock.swift; sourceTree = "<group>"; };
 		4C7708912B6819AF00847955 /* TodosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosPresenter.swift; sourceTree = "<group>"; };
 		4C7708932B681A2B00847955 /* TodosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosInteractor.swift; sourceTree = "<group>"; };
 		4C7708962B681EAA00847955 /* TodosTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosTableAdapter.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				4C517AEA2B697684000E4DC1 /* TodosViewMock.swift */,
 				4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */,
 				4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */,
+				4C7469302B9F57580029E4F2 /* TodosSettingsProviderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				4C7708A22B6966FD00847955 /* TodosInteractorTests.swift in Sources */,
 				4CCEBBBD2B79399700B57EF1 /* SidebarInteractorTests.swift in Sources */,
 				4CCEBBC12B793F8400B57EF1 /* SidebarViewMock.swift in Sources */,
+				4C7469312B9F57580029E4F2 /* TodosSettingsProviderMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,12 +22,20 @@ final class TodosPresenterTests: XCTestCase {
 
 	private var infoDelegate: InfoDelegateMock!
 
+	private var settingsProvider: TodosSettingsProviderMock!
+
 	override func setUpWithError() throws {
 		view = TodosViewMock()
 		interactor = TodosInteractorMock()
 		stateProvider = TodosStateProviderMock()
 		infoDelegate = InfoDelegateMock()
-		sut = TodosPresenter(stateProvider: stateProvider, infoDelegate: infoDelegate, behaviour: .inFocus)
+		settingsProvider = TodosSettingsProviderMock()
+		sut = TodosPresenter(
+			stateProvider: stateProvider,
+			infoDelegate: infoDelegate,
+			behaviour: .inFocus,
+			settingsProvider: settingsProvider
+		)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -79,6 +87,8 @@ extension TodosPresenterTests {
 
 		let todos: [Todo] = [todo0, todo1, todo2]
 
+		settingsProvider.stubs.grouping = .priority
+
 		// Act
 		sut.present(todos)
 
@@ -120,7 +130,7 @@ extension TodosPresenterTests {
 					text: todo1.text,
 					textColor: .secondaryText,
 					trailingText: "list1",
-					elements: [.icon, .textfield, .trailingLabel]
+					elements: [.textfield, .trailingLabel]
 				)
 			)
 		)
