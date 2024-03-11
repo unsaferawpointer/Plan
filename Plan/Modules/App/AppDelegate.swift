@@ -215,6 +215,8 @@ extension AppDelegate: MenuSupportable {
 		switch id {
 		case .quit:
 			coordinator.quit()
+		case .about:
+			coordinator.showAboutPanel()
 		default:
 			break
 		}

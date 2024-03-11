@@ -14,6 +14,8 @@ protocol Coordinatable {
 	func start()
 
 	func quit()
+
+	func showAboutPanel()
 }
 
 /// App coordinator
@@ -53,6 +55,10 @@ extension Coordinator: Coordinatable {
 
 	func quit() {
 		NSApplication.shared.terminate(nil)
+	}
+
+	func showAboutPanel() {
+		NSApp.orderFrontStandardAboutPanel()
 	}
 }
 
