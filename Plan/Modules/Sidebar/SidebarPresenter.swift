@@ -121,7 +121,7 @@ extension SidebarPresenter: MenuDelegate {
 	
 	func validateMenuItem(_ item: MenuItem.Identifier) -> Bool {
 		switch item {
-		case .newList:
+		case .newList, .file, .editor:
 			return true
 		case .deleteList:
 			guard case .list = view?.clickedItem() else {

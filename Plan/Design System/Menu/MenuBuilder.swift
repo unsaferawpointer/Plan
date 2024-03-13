@@ -35,6 +35,7 @@ extension MenuBuilder {
 			new.representedObject = id
 
 			let menu = NSMenu()
+			menu.title = content.title
 
 			for item in makeItems(items, target: target, action: action) {
 				menu.addItem(item)

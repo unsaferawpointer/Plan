@@ -134,7 +134,7 @@ private extension AppDelegate {
 
 		let appItem = MenuBuilder.makeItem(
 			.menu(
-				.basic("main"),
+				.main,
 				content: .init(title: "", keyEquivalent: ""),
 				items:
 					[
@@ -152,7 +152,7 @@ private extension AppDelegate {
 
 		let fileItem = MenuBuilder.makeItem(
 			.menu(
-				.basic("file"),
+				.file,
 				content: .init(title: "File", keyEquivalent: ""),
 				items:
 					[
@@ -169,7 +169,7 @@ private extension AppDelegate {
 
 		let editorItem = MenuBuilder.makeItem(
 			.menu(
-				.basic("editor"),
+				.editor,
 				content: .init(
 					title: "Editor",
 					keyEquivalent: ""
@@ -232,7 +232,7 @@ extension AppDelegate: NSMenuItemValidation {
 		}
 
 		switch id {
-		case .about, .quit:
+		case .main, .about, .quit:
 			return true
 		default:
 			return false
@@ -245,4 +245,10 @@ extension MenuItem.Identifier {
 	static let quit: MenuItem.Identifier = .basic("quit")
 
 	static let about: MenuItem.Identifier = .basic("about")
+
+	static let main: MenuItem.Identifier = .basic("main")
+
+	static let file: MenuItem.Identifier = .basic("file")
+
+	static let editor: MenuItem.Identifier = .basic("editor")
 }

@@ -256,7 +256,7 @@ extension TodosPresenter: MenuDelegate {
 				}
 				return true
 			}
-		case .newTodo:
+		case .newTodo, .file, .editor:
 			return true
 		case .delete,
 				.moveToList,
