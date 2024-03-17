@@ -200,9 +200,7 @@ extension TodosPresenter: TodosViewOutput {
 extension TodosPresenter: TodosSettingsDelegate {
 
 	func settingsDidChange() {
-		DispatchQueue.main.async {
-			try? self.interactor?.fetchTodos()
-		}
+		try? self.interactor?.fetchTodos()
 	}
 }
 

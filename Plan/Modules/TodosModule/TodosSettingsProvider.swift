@@ -23,6 +23,10 @@ protocol TodosSettingsProviderProtocol {
 final class TodosSettingsProvider {
 
 	weak var delegate: TodosSettingsDelegate?
+
+	init() {
+		addObserver()
+	}
 }
 
 // MARK: - TodosSettingsProviderProtocol
