@@ -34,9 +34,12 @@ final class SidebarTableAdapter: NSObject {
 // MARK: - Public interface
 extension SidebarTableAdapter {
 
-	func display(staticContent: [SidebarItem], sectionTitle: String, dynamicContent: [SidebarItem]) {
-
+	func display(staticContent: [SidebarItem]) {
 		self.items = staticContent
+		table?.reloadData()
+	}
+
+	func display(sectionTitle: String, dynamicContent: [SidebarItem]) {
 		self.section.title = sectionTitle
 		self.section.items = dynamicContent
 

@@ -1,0 +1,75 @@
+//
+//  SidebarItemFactory.swift
+//  Plan
+//
+//  Created by Anton Cherkasov on 17.03.2024.
+//
+
+import Foundation
+
+protocol SidebarItemsFactoryProtocol {
+	func makeStaticContent() -> [SidebarItem]
+	func makeDynamicContent(from lists: [List]) -> [SidebarItem]
+	func makeSectionTitle() -> String
+}
+
+final class SidebarItemFactory {
+
+}
+
+// MARK: - SidebarItemFactoryProtocol
+extension SidebarItemFactory: SidebarItemsFactoryProtocol {
+
+	func makeSectionTitle() -> String {
+		return "Lists"
+	}
+
+	func makeDynamicContent(from lists: [List]) -> [SidebarItem] {
+		return lists.map { list in
+			SidebarItem(
+				id: .list(list.uuid),
+				icon: "list.bullet",
+				tintColor: .monochrome,
+				title: list.title,
+				isEditable: true
+			)
+		}
+	}
+
+	func makeStaticContent() -> [SidebarItem] {
+		return [makeInFocus(), makeBacklog(), makeArchieve()]
+	}
+}
+
+private extension SidebarItemFactory {
+
+	func makeInFocus() -> SidebarItem {
+		return .init(
+			id: .inFocus,
+			icon: "sparkle",
+			tintColor: .yellow,
+			title: "In Focus",
+			isEditable: false
+		)
+	}
+
+	func makeBacklog() -> SidebarItem {
+		return .init(
+			id: .backlog,
+			icon: "square.stack.3d.up",
+			tintColor: .monochrome,
+			title: "Backlog",
+			isEditable: false
+		)
+	}
+
+	func makeArchieve() -> SidebarItem {
+		return .init(
+			id: .archieve,
+			icon: "shippingbox",
+			tintColor: .monochrome,
+			title: "Archieve",
+			isEditable: false
+		)
+	}
+}

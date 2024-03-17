@@ -18,9 +18,13 @@ final class SidebarViewMock {
 // MARK: - TodosView
 extension SidebarViewMock: SidebarView {
 
-	func display(staticContent: [SidebarItem], sectionTitle: String, dynamicContent: [SidebarItem]) {
-		let action: Action = .display(
-			staticContent: staticContent,
+	func display(staticContent: [SidebarItem]) {
+		let action: Action = .displayStaticContent(staticContent)
+		invocations.append(action)
+	}
+	
+	func display(sectionTitle: String, dynamicContent: [SidebarItem]) {
+		let action: Action = .displayDynamicContent(
 			sectionTitle: sectionTitle,
 			dynamicContent: dynamicContent
 		)
@@ -41,7 +45,8 @@ extension SidebarViewMock: SidebarView {
 extension SidebarViewMock {
 
 	enum Action {
-		case display(staticContent: [SidebarItem], sectionTitle: String, dynamicContent: [SidebarItem])
+		case displayStaticContent(_ content: [SidebarItem])
+		case displayDynamicContent(sectionTitle: String, dynamicContent: [SidebarItem])
 		case selectItem(_ id: Route)
 	}
 }

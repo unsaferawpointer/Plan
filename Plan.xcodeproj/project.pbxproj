@@ -107,6 +107,9 @@
 		4CCEBBC72B79476200B57EF1 /* TodosStateProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC62B79476200B57EF1 /* TodosStateProviderProtocol.swift */; };
 		4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */; };
 		4CDC64032B9B26AE00E5E4AA /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */; };
+		4CF443BA2BA7603300F464ED /* SidebarItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */; };
+		4CF443BC2BA7651D00F464ED /* SidebarItemsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */; };
+		4CF443BF2BA7698500F464ED /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BE2BA7698500F464ED /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +234,9 @@
 		4CCEBBC62B79476200B57EF1 /* TodosStateProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosStateProviderProtocol.swift; sourceTree = "<group>"; };
 		4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAction.swift; sourceTree = "<group>"; };
 		4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemFactory.swift; sourceTree = "<group>"; };
+		4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemsFactoryMock.swift; sourceTree = "<group>"; };
+		4CF443BE2BA7698500F464ED /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +311,7 @@
 				4C2841342B65483700BC4A9F /* SidebarItem.swift */,
 				4CCEBBB32B77B07800B57EF1 /* SidebarSection.swift */,
 				4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */,
+				4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -403,6 +410,7 @@
 			children = (
 				4C2841822B66DB0500BC4A9F /* List+Extension.swift */,
 				4C7708AB2B69723300847955 /* Todo+Extension.swift */,
+				4CF443BE2BA7698500F464ED /* String+Extension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -667,6 +675,7 @@
 				4CCEBBC02B793F8400B57EF1 /* SidebarViewMock.swift */,
 				4CCEBBC22B79413100B57EF1 /* SidebarInteractorMock.swift */,
 				4C9103752B6D7D7800E7F03D /* SidebarStateProviderMock.swift */,
+				4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -838,6 +847,7 @@
 				4C7708AA2B6968B600847955 /* TodosDataProvider.swift in Sources */,
 				4C2841412B65629B00BC4A9F /* SidebarPresenter.swift in Sources */,
 				4C9103A32B6FBAED00E7F03D /* EmptyContentAssembly.swift in Sources */,
+				4CF443BA2BA7603300F464ED /* SidebarItemFactory.swift in Sources */,
 				4CC8888F2B924AB00024C52D /* TodosGrouping.swift in Sources */,
 				4C2841742B667BB200BC4A9F /* ListsDataProvider.swift in Sources */,
 				4CC888992B96590C0024C52D /* TintColor.swift in Sources */,
@@ -907,11 +917,13 @@
 				4C91037F2B6E48D400E7F03D /* TodosFactoryMock.swift in Sources */,
 				4C28417E2B66D4D700BC4A9F /* ListsDataProviderMock.swift in Sources */,
 				4C2841802B66D75D00BC4A9F /* PersistentContainerMock.swift in Sources */,
+				4CF443BF2BA7698500F464ED /* String+Extension.swift in Sources */,
 				4CCEBBC32B79413100B57EF1 /* SidebarInteractorMock.swift in Sources */,
 				4C7708A62B69678800847955 /* TodosPresenterMock.swift in Sources */,
 				4C7708A22B6966FD00847955 /* TodosInteractorTests.swift in Sources */,
 				4CCEBBBD2B79399700B57EF1 /* SidebarInteractorTests.swift in Sources */,
 				4CCEBBC12B793F8400B57EF1 /* SidebarViewMock.swift in Sources */,
+				4CF443BC2BA7651D00F464ED /* SidebarItemsFactoryMock.swift in Sources */,
 				4C7469312B9F57580029E4F2 /* TodosSettingsProviderMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

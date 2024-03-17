@@ -15,6 +15,8 @@ final class SidebarPresenter {
 
 	var stateProvider: SidebarStateProviderProtocol
 
+	var itemsFactory: SidebarItemsFactoryProtocol
+
 	var interactor: SidebarInteractorProtocol?
 
 	weak var titleDelegate: TitleDelegate?
@@ -25,9 +27,11 @@ final class SidebarPresenter {
 
 	init(
 		stateProvider: SidebarStateProviderProtocol,
+		itemsFactory: SidebarItemsFactoryProtocol,
 		titleDelegate: TitleDelegate
 	) {
 		self.stateProvider = stateProvider
+		self.itemsFactory = itemsFactory
 		self.titleDelegate = titleDelegate
 	}
 }
@@ -37,28 +41,10 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 
 	func present(_ lists: [List]) {
 
-		let staticContent: [SidebarItem] =
-		[
-			.init(id: .inFocus, icon: "sparkle", tintColor: .yellow, title: "In Focus", isEditable: false),
-			.init(id: .backlog, icon: "square.stack.3d.up", tintColor: .monochrome, title: "Backlog", isEditable: false),
-			.init(id: .archieve, icon: "shippingbox", tintColor: .monochrome, title: "Archieve", isEditable: false)
-		]
+		let dynamicContent = itemsFactory.makeDynamicContent(from: lists)
+		let sectionTitle = itemsFactory.makeSectionTitle()
 
-		let dynamicContent = lists.map { list in
-			SidebarItem(
-				id: .list(list.uuid),
-				icon: "list.bullet",
-				tintColor: .monochrome,
-				title: list.title,
-				isEditable: true
-			)
-		}
-
-		view?.display(
-			staticContent: staticContent,
-			sectionTitle: "Lists",
-			dynamicContent: dynamicContent
-		)
+		view?.display(sectionTitle: sectionTitle, dynamicContent: dynamicContent)
 	}
 }
 
@@ -69,6 +55,9 @@ extension SidebarPresenter: SidebarViewOutput {
 		guard case .didLoad = newState else {
 			return
 		}
+
+		let staticContent = itemsFactory.makeStaticContent()
+		view?.display(staticContent: staticContent)
 
 		do {
 			try interactor?.fetchLists()

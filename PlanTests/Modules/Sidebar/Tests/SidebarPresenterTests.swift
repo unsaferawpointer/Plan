@@ -22,12 +22,19 @@ final class SidebarPresenterTests: XCTestCase {
 
 	private var titleDelegate: TitleDelegateMock!
 
+	private var itemsFactory: SidebarItemsFactoryMock!
+
 	override func setUpWithError() throws {
 		view = SidebarViewMock()
 		interactor = SidebarInteractorMock()
 		stateProvider = SidebarStateProviderMock()
 		titleDelegate = TitleDelegateMock()
-		sut = SidebarPresenter(stateProvider: stateProvider, titleDelegate: titleDelegate)
+		itemsFactory = SidebarItemsFactoryMock()
+		sut = SidebarPresenter(
+			stateProvider: stateProvider,
+			itemsFactory: itemsFactory,
+			titleDelegate: titleDelegate
+		)
 		sut.view = view
 		sut.interactor = interactor
 	}
@@ -37,6 +44,7 @@ final class SidebarPresenterTests: XCTestCase {
 		view = nil
 		interactor = nil
 		stateProvider = nil
+		itemsFactory = nil
 		titleDelegate = nil
 	}
 }
@@ -48,23 +56,18 @@ extension SidebarPresenterTests {
 		// Arrange
 		let lists: [List] = [.random, .random, .random]
 
+		itemsFactory.stubs.dynamicContent = [.random, .random, .random]
+
 		// Act
 		sut.present(lists)
 
 		// Assert
-		guard case let .display(staticContent, sectionTitle, dynamicContent) = view.invocations[0] else {
+		guard case let .displayDynamicContent(sectionTitle, dynamicContent) = view.invocations[0] else {
 			return XCTFail()
 		}
 
-		XCTAssertEqual(staticContent[0], .init(id: .inFocus, icon: "sparkle", tintColor: .yellow, title: "In Focus", isEditable: false))
-		XCTAssertEqual(staticContent[1], .init(id: .backlog, icon: "square.stack.3d.up", tintColor: .monochrome, title: "Backlog", isEditable: false))
-		XCTAssertEqual(staticContent[2], .init(id: .archieve, icon: "shippingbox", title: "Archieve", isEditable: false))
-
-		XCTAssertEqual(sectionTitle, "Lists")
-
-		XCTAssertEqual(dynamicContent[0], .init(id: .list(lists[0].uuid), icon: "list.bullet", title: lists[0].title, isEditable: true))
-		XCTAssertEqual(dynamicContent[1], .init(id: .list(lists[1].uuid), icon: "list.bullet", title: lists[1].title, isEditable: true))
-		XCTAssertEqual(dynamicContent[2], .init(id: .list(lists[2].uuid), icon: "list.bullet", title: lists[2].title, isEditable: true))
+		XCTAssertEqual(sectionTitle, itemsFactory.stubs.sectionTitle)
+		XCTAssertEqual(dynamicContent, itemsFactory.stubs.dynamicContent)
 	}
 }
 
@@ -74,6 +77,7 @@ extension SidebarPresenterTests {
 	func testViewDidChange() {
 		// Arrange
 		stateProvider.routeStub = .backlog
+		itemsFactory.stubs.staticContent = [.random, .random, .random]
 
 		// Act
 		sut.viewDidChange(state: .didLoad)
@@ -82,7 +86,11 @@ extension SidebarPresenterTests {
 		guard case .fetchLists = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		guard case let .selectItem(id) = view.invocations[0] else {
+		guard case let .displayStaticContent(content) = view.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(content, itemsFactory.stubs.staticContent)
+		guard case let .selectItem(id) = view.invocations[1] else {
 			return XCTFail()
 		}
 		XCTAssertEqual(id, .backlog)
@@ -168,5 +176,17 @@ extension SidebarPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(action, .delete([expectedId]))
+	}
+}
+
+extension SidebarItem {
+
+	static var random: SidebarItem {
+		return .init(
+			id: .backlog,
+			icon: .random,
+			title: .random,
+			isEditable: .random()
+		)
 	}
 }
