@@ -372,17 +372,17 @@ extension TodosPresenterTests {
 
 	func testMenuItemHasBeenClickedWhenItemIsLowPriority() {
 		// Arrange & Act & Assert
-		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .lowPriority, expectedValue: .low)
+		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .priority(.low), expectedValue: .low)
 	}
 
 	func testMenuItemHasBeenClickedWhenItemIsMediumPriority() {
 		// Arrange & Act & Assert
-		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .mediumPriority, expectedValue: .medium)
+		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .priority(.medium), expectedValue: .medium)
 	}
 
 	func testMenuItemHasBeenClickedWhenItemIsHighPriority() {
 		// Arrange & Act & Assert
-		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .highPriority, expectedValue: .high)
+		testMenuItemHasBeenClickedWhenItemIsPriority(itemIdentifier: .priority(.high), expectedValue: .high)
 	}
 }
 
