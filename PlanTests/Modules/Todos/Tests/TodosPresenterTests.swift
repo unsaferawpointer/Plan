@@ -24,16 +24,20 @@ final class TodosPresenterTests: XCTestCase {
 
 	private var settingsProvider: TodosSettingsProviderMock!
 
+	private var itemsFactory: TodoItemsFactoryMock!
+
 	override func setUpWithError() throws {
 		view = TodosViewMock()
 		interactor = TodosInteractorMock()
 		stateProvider = TodosStateProviderMock()
 		infoDelegate = InfoDelegateMock()
 		settingsProvider = TodosSettingsProviderMock()
+		itemsFactory = TodoItemsFactoryMock()
 		sut = TodosPresenter(
 			stateProvider: stateProvider,
 			infoDelegate: infoDelegate,
-			behaviour: .inFocus,
+			behaviour: .inFocus, 
+			itemsFactory: itemsFactory,
 			settingsProvider: settingsProvider
 		)
 		sut.view = view
@@ -46,6 +50,8 @@ final class TodosPresenterTests: XCTestCase {
 		interactor = nil
 		stateProvider = nil
 		infoDelegate = nil
+		settingsProvider = nil
+		itemsFactory = nil
 	}
 }
 
@@ -55,37 +61,15 @@ extension TodosPresenterTests {
 	func testPresent() {
 		// Arrange
 
-		let todo0 = Todo(
-			uuid: UUID(),
-			creationDate: .now,
-			text: UUID().uuidString,
-			status: .inFocus,
-			priority: .low,
-			list: UUID(),
-			listName: "list0"
-		)
+		itemsFactory.stubs.items =
+		[
+			.header(.random),
+			.custom(id: .init(), configuration: .random),
+			.custom(id: .init(), configuration: .random),
+			.custom(id: .init(), configuration: .random)
+		]
 
-		let todo1 = Todo(
-			uuid: UUID(),
-			creationDate: .now,
-			text: UUID().uuidString,
-			status: .done,
-			priority: .medium,
-			list: UUID(),
-			listName: "list1"
-		)
-
-		let todo2 = Todo(
-			uuid: UUID(),
-			creationDate: .now,
-			text: UUID().uuidString,
-			status: .default,
-			priority: .high,
-			list: UUID(),
-			listName: "list2"
-		)
-
-		let todos: [Todo] = [todo0, todo1, todo2]
+		let todos: [Todo] = [.random, .random, .random]
 
 		settingsProvider.stubs.grouping = .priority
 
@@ -101,56 +85,7 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 
-		XCTAssertEqual(items[0], .header("High Priority"))
-		XCTAssertEqual(
-			items[1],
-			.custom(
-				id: todo2.uuid,
-				configuration: .init(
-					checkboxValue: false,
-					iconTint: .red,
-					iconName: "bolt.fill",
-					text: todo2.text,
-					textColor: .primaryText,
-					trailingText: "list2",
-					elements: [.icon, .textfield, .trailingLabel]
-				)
-			)
-		)
-
-		XCTAssertEqual(items[2], .header("Medium Priority"))
-		XCTAssertEqual(
-			items[3],
-			.custom(
-				id: todo1.uuid,
-				configuration: .init(
-					checkboxValue: true,
-					iconTint: .secondaryText,
-					iconName: "bolt.fill",
-					text: todo1.text,
-					textColor: .secondaryText,
-					trailingText: "list1",
-					elements: [.textfield, .trailingLabel]
-				)
-			)
-		)
-
-		XCTAssertEqual(items[4], .header("Low Priority"))
-		XCTAssertEqual(
-			items[5],
-			.custom(
-				id: todo0.uuid,
-				configuration: .init(
-					checkboxValue: false,
-					iconTint: .monochrome,
-					iconName: "bolt.fill",
-					text: todo0.text,
-					textColor: .primaryText,
-					trailingText: "list0",
-					elements: [.textfield, .trailingLabel]
-				)
-			)
-		)
+		XCTAssertEqual(items, itemsFactory.stubs.items)
 
 		XCTAssertEqual(view.invocations.count, 1)
 		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {

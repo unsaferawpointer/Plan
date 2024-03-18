@@ -110,6 +110,9 @@
 		4CF443BA2BA7603300F464ED /* SidebarItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */; };
 		4CF443BC2BA7651D00F464ED /* SidebarItemsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */; };
 		4CF443BF2BA7698500F464ED /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BE2BA7698500F464ED /* String+Extension.swift */; };
+		4CF443C12BA8BB7F00F464ED /* TodoItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443C02BA8BB7F00F464ED /* TodoItemFactory.swift */; };
+		4CF443C32BA8C79A00F464ED /* TodoItemsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443C22BA8C79A00F464ED /* TodoItemsFactoryMock.swift */; };
+		4CF443C62BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443C52BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +240,9 @@
 		4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemFactory.swift; sourceTree = "<group>"; };
 		4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemsFactoryMock.swift; sourceTree = "<group>"; };
 		4CF443BE2BA7698500F464ED /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4CF443C02BA8BB7F00F464ED /* TodoItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemFactory.swift; sourceTree = "<group>"; };
+		4CF443C22BA8C79A00F464ED /* TodoItemsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemsFactoryMock.swift; sourceTree = "<group>"; };
+		4CF443C52BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoCellConfiguration+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +357,7 @@
 				4C91037C2B6E44BF00E7F03D /* TodosFactory.swift */,
 				4C9103942B6EBAC600E7F03D /* TodosAction.swift */,
 				4CC8888E2B924AB00024C52D /* TodosGrouping.swift */,
+				4CF443C02BA8BB7F00F464ED /* TodoItemFactory.swift */,
 			);
 			path = TodosModule;
 			sourceTree = "<group>";
@@ -555,6 +562,7 @@
 		4C77089E2B69662800847955 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
+				4CF443C42BA8C96700F464ED /* Helpers */,
 				4C7708A02B69663900847955 /* Tests */,
 				4C77089F2B69663300847955 /* Mocks */,
 			);
@@ -569,6 +577,7 @@
 				4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */,
 				4C9103772B6D7F1700E7F03D /* TodosStateProviderMock.swift */,
 				4C7469302B9F57580029E4F2 /* TodosSettingsProviderMock.swift */,
+				4CF443C22BA8C79A00F464ED /* TodoItemsFactoryMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -687,6 +696,14 @@
 				4CCEBBBC2B79399700B57EF1 /* SidebarInteractorTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		4CF443C42BA8C96700F464ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4CF443C52BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -864,6 +881,7 @@
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
 				4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */,
 				4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */,
+				4CF443C12BA8BB7F00F464ED /* TodoItemFactory.swift in Sources */,
 				4C9103972B6EBAEA00E7F03D /* TodoModification.swift in Sources */,
 				4C91039C2B6FB2BD00E7F03D /* TodosViewState.swift in Sources */,
 				4CCEBBB62B78E62600B57EF1 /* ListModification.swift in Sources */,
@@ -903,11 +921,13 @@
 			files = (
 				4CCEBBC52B7942C000B57EF1 /* TitleDelegateMock.swift in Sources */,
 				4CCEBBBF2B793AB200B57EF1 /* SidebarPresenterMock.swift in Sources */,
+				4CF443C32BA8C79A00F464ED /* TodoItemsFactoryMock.swift in Sources */,
 				4C2D5DA12B7170360078B6FF /* InfoDelegateMock.swift in Sources */,
 				4C7708A82B69680300847955 /* TodosDataProviderMock.swift in Sources */,
 				4C2841832B66DB0500BC4A9F /* List+Extension.swift in Sources */,
 				4C517AEF2B6978C6000E4DC1 /* TodosInteractorMock.swift in Sources */,
 				4C9103832B6E4B1B00E7F03D /* TodosFactoryTests.swift in Sources */,
+				4CF443C62BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift in Sources */,
 				4C7708A42B69670C00847955 /* TodosPresenterTests.swift in Sources */,
 				4C9103782B6D7F1700E7F03D /* TodosStateProviderMock.swift in Sources */,
 				4C7708AC2B69723300847955 /* Todo+Extension.swift in Sources */,

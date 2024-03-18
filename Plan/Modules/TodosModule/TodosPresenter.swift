@@ -23,6 +23,8 @@ final class TodosPresenter {
 
 	var behaviour: Behaviour
 
+	var itemsFactory: TodoItemsFactoryProtocol
+
 	var settingsProvider: TodosSettingsProviderProtocol
 
 	// MARK: - Initialization
@@ -31,11 +33,13 @@ final class TodosPresenter {
 		stateProvider: TodosStateProviderProtocol,
 		infoDelegate: InfoDelegate,
 		behaviour: Behaviour,
+		itemsFactory: TodoItemsFactoryProtocol,
 		settingsProvider: TodosSettingsProviderProtocol
 	) {
 		self.stateProvider = stateProvider
 		self.infoDelegate = infoDelegate
 		self.behaviour = behaviour
+		self.itemsFactory = itemsFactory
 		self.settingsProvider = settingsProvider
 		self.settingsProvider.delegate = self
 	}
@@ -58,93 +62,15 @@ extension TodosPresenter: TodosPresenterProtocol {
 			return
 		}
 
-		var total: [TableItem] = []
+		let grouping = settingsProvider.getGrouping(for: behaviour)
 
-		let configurator = Configurator()
+		let items = itemsFactory.makeItems(
+			from: todos,
+			grouping: grouping,
+			behaviour: behaviour
+		)
 
-		let elements = configurator.elements(for: behaviour)
-
-		switch settingsProvider.getGrouping(for: behaviour) {
-		case .none:
-			let items = todos.map { todo in
-				(todo.uuid, makeConfiguration(from: todo, elements: elements))
-			}.map { model in
-				TableItem.custom(id: model.0, configuration: model.1)
-			}
-			total.append(contentsOf: items)
-		case .list:
-			let grouped = Dictionary(grouping: todos) { todo in
-				return todo.listName ?? ""
-			}
-
-			let sorted = grouped.sorted { lhs, rhs in
-				return lhs.key < rhs.key
-			}
-
-			for section in sorted {
-				total.append(.header(section.key))
-				var modificatedElements = elements
-				modificatedElements.remove(.trailingLabel)
-				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: modificatedElements))
-				}.map { model in
-					TableItem.custom(id: model.0, configuration: model.1)
-				}
-				total.append(contentsOf: items)
-			}
-		case .priority:
-			let grouped = Dictionary(grouping: todos) { todo in
-				return todo.priority
-			}
-
-			let sorted = grouped.sorted { lhs, rhs in
-				return lhs.key.rawValue > rhs.key.rawValue
-			}
-
-			for section in sorted {
-				switch section.key {
-				case .low:
-					total.append(.header("Low Priority"))
-				case .medium:
-					total.append(.header("Medium Priority"))
-				case .high:
-					total.append(.header("High Priority"))
-				}
-				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: elements))
-				}.map { model in
-					TableItem.custom(id: model.0, configuration: model.1)
-				}
-				total.append(contentsOf: items)
-			}
-		case .status:
-			let grouped = Dictionary(grouping: todos) { todo in
-				return todo.status
-			}
-
-			let sorted = grouped.sorted { lhs, rhs in
-				return lhs.key.rawValue < rhs.key.rawValue
-			}
-
-			for section in sorted {
-				switch section.key {
-				case .default:
-					total.append(.header("Other"))
-				case .inFocus:
-					total.append(.header("In Focus"))
-				case .done:
-					total.append(.header("Done"))
-				}
-				let items = section.value.map { todo in
-					(todo.uuid, makeConfiguration(from: todo, elements: elements))
-				}.map { model in
-					TableItem.custom(id: model.0, configuration: model.1)
-				}
-				total.append(contentsOf: items)
-			}
-		}
-
-		view?.display(.content(items: total))
+		view?.display(.content(items: items))
 		infoDelegate?.infoDidChange("\(todos.count) incomplete todos")
 	}
 }
@@ -265,38 +191,10 @@ extension TodosPresenter: MenuDelegate {
 				.setUrgency,
 				.moveToBacklog,
 				.priority:
-			guard let selection = view?.selection else {
-				return false
-			}
-			return !selection.isEmpty
+			return view?.selection.isEmpty == false
 		default:
 			return false
 		}
-	}
-}
-
-// MARK: - Helpers
-private extension TodosPresenter {
-
-	func makeConfiguration(from todo: Todo, elements: CellElements) -> TodoCellConfiguration {
-
-		let iconTint = todo.isDone ? .secondaryText : todo.priority.color
-		let textColor: TintColor = todo.isDone ? .secondaryText : .primaryText
-
-		var modificatedElements = elements
-		if todo.priority == .low || todo.isDone {
-			modificatedElements.remove(.icon)
-		}
-
-		return TodoCellConfiguration(
-			checkboxValue: todo.status == .done,
-			iconTint: iconTint,
-			iconName: "bolt.fill",
-			text: todo.text,
-			textColor: textColor,
-			trailingText: todo.listName ?? "",
-			elements: modificatedElements
-		)
 	}
 }
 
