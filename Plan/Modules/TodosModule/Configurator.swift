@@ -22,7 +22,7 @@ extension Configurator {
 		switch behaviour {
 		case .inFocus:	return [.urgency, .isDone, .creationDate]
 		case .backlog:	return [.urgency, .creationDate]
-		case .archieve:	return [.creationDate]
+		case .archieve:	return [.completionDate, .creationDate]
 		case .list:		return [.isDone, .urgency, .creationDate]
 		}
 	}

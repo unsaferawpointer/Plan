@@ -20,10 +20,11 @@ extension TodoEntity {
 
 	@NSManaged public var uuid: UUID
 	@NSManaged public var text: String
-	@NSManaged public var rawStatus: Int16
-	@NSManaged public var rawUrgency: Int16
+	@NSManaged private (set) var rawStatus: Int16
+	@NSManaged private (set) var rawUrgency: Int16
 
-	@NSManaged public var creationDate: Date
+	@NSManaged private (set) var creationDate: Date
+	@NSManaged private (set) var completionDate: Date?
 
 	// MARK: - Relationships
 
@@ -37,6 +38,7 @@ extension TodoEntity {
 		self.rawStatus = 0
 		self.rawUrgency = 0
 		self.creationDate = Date()
+		self.completionDate = nil
 	}
 
 	public override func willSave() {
@@ -54,6 +56,12 @@ extension TodoEntity {
 		}
 		set {
 			self.rawStatus = newValue.rawValue
+			switch newValue {
+			case .done:
+				self.completionDate = Date()
+			default:
+				self.completionDate = nil
+			}
 		}
 	}
 

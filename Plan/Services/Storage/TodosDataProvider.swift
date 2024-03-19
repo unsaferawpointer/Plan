@@ -93,6 +93,8 @@ extension TodosOrder {
 			return NSSortDescriptor(keyPath: \TodoEntity.creationDate, ascending: true)
 		case .urgency:
 			return NSSortDescriptor(keyPath: \TodoEntity.rawUrgency, ascending: false)
+		case .completionDate:
+			return NSSortDescriptor(keyPath: \TodoEntity.completionDate, ascending: false)
 		}
 	}
 }

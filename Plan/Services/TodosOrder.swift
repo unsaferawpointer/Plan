@@ -11,4 +11,5 @@ enum TodosOrder {
 	case urgency
 	case isDone
 	case creationDate
+	case completionDate
 }
