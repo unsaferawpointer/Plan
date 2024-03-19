@@ -17,6 +17,7 @@ protocol SidebarView: AnyObject {
 	func display(sectionTitle: String, dynamicContent: [SidebarItem])
 	func selectItem(_ id: Route)
 	func clickedItem() -> Route?
+	func selectedItem() -> Route?
 }
 
 class SidebarViewController: NSViewController {
@@ -85,6 +86,10 @@ class SidebarViewController: NSViewController {
 
 // MARK: - SidebarView
 extension SidebarViewController: SidebarView {
+
+	func selectedItem() -> Route? {
+		adapter?.selectedItem()
+	}
 
 	func display(staticContent: [SidebarItem]) {
 		adapter?.display(staticContent: staticContent)

@@ -13,10 +13,15 @@ final class SidebarViewMock {
 	private (set) var invocations: [Action] = []
 
 	var clickedItemStub: Route?
+	var selectedItemStub: Route?
 }
 
 // MARK: - TodosView
 extension SidebarViewMock: SidebarView {
+
+	func selectedItem() -> Route? {
+		selectedItemStub
+	}
 
 	func display(staticContent: [SidebarItem]) {
 		let action: Action = .displayStaticContent(staticContent)

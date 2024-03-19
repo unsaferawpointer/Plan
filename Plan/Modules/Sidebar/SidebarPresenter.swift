@@ -99,7 +99,11 @@ extension SidebarPresenter: MenuDelegate {
 				guard case let .list(id) = view?.clickedItem() else {
 					return
 				}
+				let selected = view?.selectedItem()
 				try interactor?.perform(.delete([id]))
+				if case let .list(selectedId) = selected, selectedId == id {
+					view?.selectItem(.inFocus)
+				}
 			} catch {
 				// TODO: - Handle action
 			}

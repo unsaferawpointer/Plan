@@ -13,6 +13,12 @@ final class SidebarTableAdapter: NSObject {
 
 	weak var output: SidebarViewOutput?
 
+	// MARK: - Internal state
+
+	private var selection: Route?
+
+	private var isEditing: Bool = false
+
 	// MARK: - Data
 
 	private var items: [SidebarItem] = []
@@ -36,26 +42,46 @@ extension SidebarTableAdapter {
 
 	func display(staticContent: [SidebarItem]) {
 		self.items = staticContent
+
+		isEditing = true
 		table?.reloadData()
+		selectItem(selection)
+		isEditing = false
 	}
 
 	func display(sectionTitle: String, dynamicContent: [SidebarItem]) {
 		self.section.title = sectionTitle
 		self.section.items = dynamicContent
 
-		table?.reloadData()
+		isEditing = true
+		table?.reloadItem(section, reloadChildren: true)
 		table?.expandItem(section, expandChildren: true)
+		selectItem(selection)
+		isEditing = false
 	}
 
-	func selectItem(_ id: Route) {
+	func selectItem(_ id: Route?) {
+		guard let id else {
+			return
+		}
 
 		if let index = items.firstIndex(where: { $0.id == id }) {
 			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
 		}
 
 		if let index = section.items.firstIndex(where: { $0.id == id }) {
-			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
+			table?.selectRowIndexes(.init(integer: index + items.count + 1), byExtendingSelection: false)
 		}
+	}
+
+	func selectedItem() -> Route? {
+		guard
+			let row = table?.selectedRow, row != -1,
+			let item = table?.item(atRow: row) as? SidebarItem
+		else {
+			return nil
+		}
+		return item.id
 	}
 
 	func clickedItem() -> Route? {
@@ -100,17 +126,19 @@ extension SidebarTableAdapter: NSOutlineViewDataSource {
 extension SidebarTableAdapter: NSOutlineViewDelegate {
 
 	func outlineViewSelectionDidChange(_ notification: Notification) {
-		guard let row = table?.selectedRow, row != -1 else {
+		guard let row = table?.selectedRow, row != -1, !isEditing else {
 			return
 		}
 
 		switch row {
 		case 0..<items.count:
 			let item = items[row]
+			self.selection = item.id
 			output?.selectionDidChange(item)
 		default:
 			if let item = table?.item(atRow: row) as? SidebarItem {
 				output?.selectionDidChange(item)
+				self.selection = item.id
 			}
 		}
 	}

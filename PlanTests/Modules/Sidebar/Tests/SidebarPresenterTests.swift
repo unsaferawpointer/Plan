@@ -177,6 +177,22 @@ extension SidebarPresenterTests {
 		}
 		XCTAssertEqual(action, .delete([expectedId]))
 	}
+
+	func testMenuItemHasBeenClickedWhenToDeleteSelectedList() {
+		// Arrange
+		let expectedId = UUID()
+		view.clickedItemStub = .list(expectedId)
+		view.selectedItemStub = .list(expectedId)
+
+		// Act
+		sut.menuItemHasBeenClicked(.deleteList)
+
+		// Assert
+		guard case let .selectItem(id) = view.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(id, .inFocus)
+	}
 }
 
 extension SidebarItem {
