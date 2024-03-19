@@ -97,6 +97,13 @@ final class TodoCell: NSView {
 
 	// MARK: - NSView life-cycle
 
+	override func layout() {
+		super.layout()
+		wantsLayer = true
+		layer?.backgroundColor = NSColor.quinaryLabel.cgColor
+		layer?.cornerRadius = 4
+	}
+
 	override func prepareForReuse() {
 		super.prepareForReuse()
 	}
