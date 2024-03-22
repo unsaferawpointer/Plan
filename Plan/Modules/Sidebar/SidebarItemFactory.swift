@@ -46,7 +46,7 @@ private extension SidebarItemFactory {
 	func makeInFocus() -> SidebarItem {
 		return .init(
 			id: .inFocus,
-			icon: "sparkle",
+			icon: "sparkles",
 			tintColor: .yellow,
 			title: "In Focus",
 			isEditable: false

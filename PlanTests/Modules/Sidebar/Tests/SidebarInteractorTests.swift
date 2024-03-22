@@ -18,12 +18,12 @@ final class SidebarInteractorTests: XCTestCase {
 
 	private var provider: ListsDataProviderMock!
 
-	private var storage: PersistentContainerMock!
+	private var storage: DataStorageMock!
 
 	override func setUpWithError() throws {
 		presenter = SidebarPresenterMock()
 		provider = ListsDataProviderMock()
-		storage = PersistentContainerMock()
+		storage = DataStorageMock()
 		sut = SidebarInteractor(
 			provider: provider,
 			storage: storage

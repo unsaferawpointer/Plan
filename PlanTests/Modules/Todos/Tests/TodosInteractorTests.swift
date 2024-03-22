@@ -18,14 +18,14 @@ final class TodosInteractorTests: XCTestCase {
 
 	private var provider: TodosDataProviderMock!
 
-	private var storage: PersistentContainerMock!
+	private var storage: DataStorageMock!
 
 	private var factory: TodosFactoryMock!
 
 	override func setUpWithError() throws {
 		presenter = TodosPresenterMock()
 		provider = TodosDataProviderMock()
-		storage = PersistentContainerMock()
+		storage = DataStorageMock()
 		factory = TodosFactoryMock()
 		sut = TodosInteractor(
 			presenter: presenter,

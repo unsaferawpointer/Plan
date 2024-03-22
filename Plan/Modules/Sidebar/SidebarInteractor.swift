@@ -19,13 +19,13 @@ final class SidebarInteractor {
 
 	private var provider: ListsDataProviderProtocol
 
-	private var storage: PersistentContainerProtocol
+	private var storage: DataStorageProtocol
 
 	// MARK: - Initialization
 
 	init(
 		provider: ListsDataProviderProtocol,
-		storage: PersistentContainerProtocol
+		storage: DataStorageProtocol
 	) {
 		self.provider = provider
 		self.storage = storage

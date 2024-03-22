@@ -19,7 +19,7 @@ final class TodosInteractor {
 
 	private var provider: TodosDataProviderProtocol
 
-	private var storage: PersistentContainerProtocol
+	private var storage: DataStorageProtocol
 
 	private var factory: TodosFactoryProtocol
 
@@ -30,7 +30,7 @@ final class TodosInteractor {
 	init(
 		presenter: TodosPresenterProtocol,
 		provider: TodosDataProviderProtocol,
-		storage: PersistentContainerProtocol,
+		storage: DataStorageProtocol,
 		predicate: TodosPredicate,
 		factory: TodosFactoryProtocol
 	) {

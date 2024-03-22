@@ -18,9 +18,9 @@ final class SidebarAssembly {
 			itemsFactory: SidebarItemFactory(),
 			titleDelegate: titleDelegate
 		)
-		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-		let storage = PersistentContainer(context: context!)
-		let interactor = SidebarInteractor(provider: ListsDataProvider(context: context!), storage: storage)
+		let context = PersistentContainer.shared.mainContext
+		let storage = DataStorage(context: context)
+		let interactor = SidebarInteractor(provider: ListsDataProvider(context: context), storage: storage)
 
 		let menu = SidebarMenuAssembly.assemble(delegate: presenter)
 

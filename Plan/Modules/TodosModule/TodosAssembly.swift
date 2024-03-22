@@ -22,13 +22,13 @@ final class TodosAssembly {
 			itemsFactory: TodoItemFactory(), 
 			settingsProvider: TodosSettingsProvider()
 		)
-		let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-		let storage = PersistentContainer(context: context!)
+		let context = PersistentContainer.shared.mainContext
+		let storage = DataStorage(context: context)
 		let factory = TodosFactory()
 		let interactor = TodosInteractor(
 			presenter: presenter,
 			provider: TodosDataProvider(
-				context: context!,
+				context: context,
 				predicate: configurator.predicate(for: behaviour),
 				order: configurator.sortOrder(for: behaviour)
 			),

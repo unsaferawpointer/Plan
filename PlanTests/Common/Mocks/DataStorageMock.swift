@@ -1,5 +1,5 @@
 //
-//  PersistentContainerMock.swift
+//  DataStorageMock.swift
 //  PlanTests
 //
 //  Created by Anton Cherkasov on 28.01.2024.
@@ -8,12 +8,12 @@
 import Foundation
 @testable import Plan
 
-final class PersistentContainerMock {
+final class DataStorageMock {
 	private (set) var invocations: [Action] = []
 }
 
 // MARK: - PersistentContainerProtocol
-extension PersistentContainerMock: PersistentContainerProtocol {
+extension DataStorageMock: DataStorageProtocol {
 
 	func insertTodo(_ todo: Todo, to list: UUID?) throws {
 		let action: Action = .insertTodo(todo: todo, toList: list)
@@ -57,7 +57,7 @@ extension PersistentContainerMock: PersistentContainerProtocol {
 }
 
 // MARK: - Nested data structs
-extension PersistentContainerMock {
+extension DataStorageMock {
 
 	enum Action {
 		case insertTodo(todo: Todo, toList: UUID?)
