@@ -24,8 +24,12 @@ final class TodosSettingsProvider {
 
 	weak var delegate: TodosSettingsDelegate?
 
-	init() {
-		addObserver()
+	private var settingsStorage: SettingsStorageProtocol
+
+	// MARK: - Initialization
+
+	init(settingsStorage: SettingsStorageProtocol = SettingsStorage()) {
+		self.settingsStorage = settingsStorage
 	}
 }
 
@@ -34,19 +38,17 @@ extension TodosSettingsProvider: TodosSettingsProviderProtocol {
 
 	func getGrouping(for behaviour: Behaviour) -> TodosGrouping {
 		let key = key(for: behaviour)
-		guard let value = UserDefaults.standard.string(forKey: key) else {
-			return .none
-		}
-		return TodosGrouping(rawValue: value) ?? .none
+		return settingsStorage.getValue(type: TodosGrouping.self, withKey: key) ?? .none
 	}
 	
 	func setGrouping(_ grouping: TodosGrouping, for behaviour: Behaviour) {
 		let key = key(for: behaviour)
-		UserDefaults.standard.setValue(grouping.rawValue, forKey: key)
+		settingsStorage.setValue(value: grouping, withKey: key)
 	}
 }
 
-extension TodosSettingsProvider {
+// MARK: - Helpers
+private extension TodosSettingsProvider {
 
 	func key(for behaviour: Behaviour) -> String {
 		switch behaviour {
@@ -69,16 +71,10 @@ extension TodosSettingsProvider {
 	}
 }
 
-// MARK: - Helpers
-private extension TodosSettingsProvider {
+// MARK: - SettingsStorageDelegate
+extension TodosSettingsProvider: SettingsStorageDelegate {
 
-	func addObserver() {
-		NotificationCenter.default.addObserver(
-			forName: UserDefaults.didChangeNotification,
-			object: nil,
-			queue: .main
-		) { [weak self] _ in
-			self?.delegate?.settingsDidChange()
-		}
+	func settingsDidChange() {
+		delegate?.settingsDidChange()
 	}
 }

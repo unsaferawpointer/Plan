@@ -15,8 +15,6 @@ final class SidebarTableAdapter: NSObject {
 
 	// MARK: - Internal state
 
-	private var selection: Route?
-
 	private var isEditing: Bool = false
 
 	// MARK: - Data
@@ -45,7 +43,6 @@ extension SidebarTableAdapter {
 
 		isEditing = true
 		table?.reloadData()
-		selectItem(selection)
 		isEditing = false
 	}
 
@@ -56,7 +53,6 @@ extension SidebarTableAdapter {
 		isEditing = true
 		table?.reloadItem(section, reloadChildren: true)
 		table?.expandItem(section, expandChildren: true)
-		selectItem(selection)
 		isEditing = false
 	}
 
@@ -65,6 +61,8 @@ extension SidebarTableAdapter {
 			return
 		}
 
+		isEditing = true
+
 		if let index = items.firstIndex(where: { $0.id == id }) {
 			table?.selectRowIndexes(.init(integer: index), byExtendingSelection: false)
 		}
@@ -72,12 +70,14 @@ extension SidebarTableAdapter {
 		if let index = section.items.firstIndex(where: { $0.id == id }) {
 			table?.selectRowIndexes(.init(integer: index + items.count + 1), byExtendingSelection: false)
 		}
+		isEditing = false
 	}
 
 	func selectedItem() -> Route? {
 		guard
 			let row = table?.selectedRow, row != -1,
-			let item = table?.item(atRow: row) as? SidebarItem
+			let item = table?.item(atRow: row) as? SidebarItem,
+			!isEditing
 		else {
 			return nil
 		}
@@ -133,12 +133,10 @@ extension SidebarTableAdapter: NSOutlineViewDelegate {
 		switch row {
 		case 0..<items.count:
 			let item = items[row]
-			self.selection = item.id
 			output?.selectionDidChange(item)
 		default:
 			if let item = table?.item(atRow: row) as? SidebarItem {
 				output?.selectionDidChange(item)
-				self.selection = item.id
 			}
 		}
 	}

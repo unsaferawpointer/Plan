@@ -17,7 +17,7 @@ final class TodosPresenter {
 
 	weak var view: TodosView?
 
-	var stateProvider: TodosStateProviderProtocol
+	var settingsProvider: TodosSettingsProviderProtocol
 
 	weak var infoDelegate: InfoDelegate?
 
@@ -25,18 +25,15 @@ final class TodosPresenter {
 
 	var itemsFactory: TodoItemsFactoryProtocol
 
-	var settingsProvider: TodosSettingsProviderProtocol
-
 	// MARK: - Initialization
 
 	init(
-		stateProvider: TodosStateProviderProtocol,
 		infoDelegate: InfoDelegate,
 		behaviour: Behaviour,
 		itemsFactory: TodoItemsFactoryProtocol,
 		settingsProvider: TodosSettingsProviderProtocol
 	) {
-		self.stateProvider = stateProvider
+		self.settingsProvider = settingsProvider
 		self.infoDelegate = infoDelegate
 		self.behaviour = behaviour
 		self.itemsFactory = itemsFactory
@@ -118,7 +115,7 @@ extension TodosPresenter: TodosViewOutput {
 	}
 
 	func selectionDidChange(_ newValue: [UUID]) {
-		stateProvider.selectTodos(newValue)
+		// TODO: - Handle action
 	}
 }
 

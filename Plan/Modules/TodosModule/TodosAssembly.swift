@@ -10,17 +10,16 @@ import Cocoa
 final class TodosAssembly {
 
 	static func assemble(
-		stateProvider: TodosStateProviderProtocol,
+		settingsProvider: TodosSettingsProviderProtocol,
 		infoDelegate: InfoDelegate,
 		behaviour: Behaviour
 	) -> NSViewController {
 		let configurator = Configurator()
 		let presenter = TodosPresenter(
-			stateProvider: stateProvider,
 			infoDelegate: infoDelegate,
 			behaviour: behaviour, 
 			itemsFactory: TodoItemFactory(), 
-			settingsProvider: TodosSettingsProvider()
+			settingsProvider: TodosSettingsProvider(settingsStorage: SettingsStorage())
 		)
 		let context = PersistentContainer.shared.mainContext
 		let storage = DataStorage(context: context)

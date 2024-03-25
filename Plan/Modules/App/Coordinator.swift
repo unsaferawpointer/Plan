@@ -23,7 +23,7 @@ final class Coordinator {
 
 	private (set) var router: Routable
 
-	private (set) var stateProvider: StateProviderProtocol
+	private (set) var settingsProvider: SettingsProviderProtocol
 
 	// MARK: - Initialization
 
@@ -31,12 +31,13 @@ final class Coordinator {
 	///
 	/// - Parameters:
 	///    - router: App router
-	init(router: Routable = AppRouter()) {
+	init(
+		router: Routable = AppRouter(),
+		settingsProvider: SettingsProviderProtocol = SettingsProvider(settingsStorage: SettingsStorage())
+	) {
 		self.router = router
-		let stateProvider = StateProvider()
-		self.stateProvider = stateProvider
-
-		stateProvider.delegate = self
+		self.settingsProvider = settingsProvider
+		self.settingsProvider.delegate = self
 	}
 }
 
@@ -44,11 +45,14 @@ final class Coordinator {
 extension Coordinator: Coordinatable {
 
 	func start() {
-		let sidebar = SidebarAssembly.assemble(stateProvider: stateProvider, titleDelegate: self)
+		let sidebar = SidebarAssembly.assemble(
+			settingsProvider: SidebarSettingsProvider(appSettings: settingsProvider),
+			titleDelegate: self
+		)
 		let detail = TodosAssembly.assemble(
-			stateProvider: stateProvider,
+			settingsProvider: TodosSettingsProvider(settingsStorage: SettingsStorage()),
 			infoDelegate: self,
-			behaviour: .inFocus
+			behaviour: settingsProvider.route.behaviour
 		)
 		router.showWindowAndOrderFront(sidebar: sidebar, detail: detail)
 	}
@@ -62,20 +66,16 @@ extension Coordinator: Coordinatable {
 	}
 }
 
-// MARK: - StateProviderDelegate
-extension Coordinator: StateProviderDelegate {
+// MARK: - SettingsProviderDelegate
+extension Coordinator: SettingsProviderDelegate {
 
-	func selectionDidChange(new: Selection, old: Selection) {
-		guard new.route != old.route else {
-			return
-		}
-
+	func providerDidChangeSelection(newValue: Route) {
 		infoDidChange("")
 
-		let behaviour = new.route.behaviour
+		let behaviour = newValue.behaviour
 
 		let detail = TodosAssembly.assemble(
-			stateProvider: stateProvider,
+			settingsProvider: TodosSettingsProvider(settingsStorage: SettingsStorage()),
 			infoDelegate: self,
 			behaviour: behaviour
 		)

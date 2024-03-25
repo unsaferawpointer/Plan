@@ -18,8 +18,6 @@ final class TodosPresenterTests: XCTestCase {
 
 	private var interactor: TodosInteractorMock!
 
-	private var stateProvider: TodosStateProviderMock!
-
 	private var infoDelegate: InfoDelegateMock!
 
 	private var settingsProvider: TodosSettingsProviderMock!
@@ -29,12 +27,10 @@ final class TodosPresenterTests: XCTestCase {
 	override func setUpWithError() throws {
 		view = TodosViewMock()
 		interactor = TodosInteractorMock()
-		stateProvider = TodosStateProviderMock()
 		infoDelegate = InfoDelegateMock()
 		settingsProvider = TodosSettingsProviderMock()
 		itemsFactory = TodoItemsFactoryMock()
 		sut = TodosPresenter(
-			stateProvider: stateProvider,
 			infoDelegate: infoDelegate,
 			behaviour: .inFocus, 
 			itemsFactory: itemsFactory,
@@ -48,7 +44,6 @@ final class TodosPresenterTests: XCTestCase {
 		sut = nil
 		view = nil
 		interactor = nil
-		stateProvider = nil
 		infoDelegate = nil
 		settingsProvider = nil
 		itemsFactory = nil
@@ -188,20 +183,6 @@ extension TodosPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(action, .delete(expectedIds))
-	}
-
-	func testSelectionDidChange() {
-		// Arrange
-		let expectedIds = [UUID(), UUID()]
-
-		// Act
-		sut.selectionDidChange(expectedIds)
-
-		// Assert
-		guard case let .selectTodos(ids) = stateProvider.invocations[0] else {
-			return XCTFail()
-		}
-		XCTAssertEqual(ids, expectedIds)
 	}
 }
 

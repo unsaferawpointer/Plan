@@ -13,7 +13,7 @@ protocol SidebarPresenterProtocol: AnyObject {
 
 final class SidebarPresenter {
 
-	var stateProvider: SidebarStateProviderProtocol
+	var settingsProvider: SidebarSettingsProviderProtocol
 
 	var itemsFactory: SidebarItemsFactoryProtocol
 
@@ -26,11 +26,11 @@ final class SidebarPresenter {
 	// MARK: - Initialization
 
 	init(
-		stateProvider: SidebarStateProviderProtocol,
+		settingsProvider: SidebarSettingsProviderProtocol,
 		itemsFactory: SidebarItemsFactoryProtocol,
 		titleDelegate: TitleDelegate
 	) {
-		self.stateProvider = stateProvider
+		self.settingsProvider = settingsProvider
 		self.itemsFactory = itemsFactory
 		self.titleDelegate = titleDelegate
 	}
@@ -45,6 +45,18 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 		let sectionTitle = itemsFactory.makeSectionTitle()
 
 		view?.display(sectionTitle: sectionTitle, dynamicContent: dynamicContent)
+		guard case let .list(id) = settingsProvider.selection else {
+			return
+		}
+		if lists.contains(where: { $0.uuid == id }) {
+			view?.selectItem(.list(id))
+		} else if let item = itemsFactory.makeStaticContent().first {
+			view?.selectItem(item.id)
+			settingsProvider.selection = item.id
+			titleDelegate?.titleDidChange(item.title)
+		} else {
+			fatalError()
+		}
 	}
 }
 
@@ -65,7 +77,7 @@ extension SidebarPresenter: SidebarViewOutput {
 			// TODO: - Handle action
 		}
 
-		let route = stateProvider.getRoute()
+		let route = settingsProvider.selection
 		view?.selectItem(route)
 	}
 
@@ -78,7 +90,7 @@ extension SidebarPresenter: SidebarViewOutput {
 	}
 
 	func selectionDidChange(_ newValue: SidebarItem) {
-		stateProvider.navigate(to: newValue.id)
+		settingsProvider.selection = newValue.id
 		titleDelegate?.titleDidChange(newValue.title)
 	}
 }
@@ -99,11 +111,7 @@ extension SidebarPresenter: MenuDelegate {
 				guard case let .list(id) = view?.clickedItem() else {
 					return
 				}
-				let selected = view?.selectedItem()
 				try interactor?.perform(.delete([id]))
-				if case let .list(selectedId) = selected, selectedId == id {
-					view?.selectItem(.inFocus)
-				}
 			} catch {
 				// TODO: - Handle action
 			}

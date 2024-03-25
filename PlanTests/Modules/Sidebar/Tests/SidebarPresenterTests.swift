@@ -18,7 +18,7 @@ final class SidebarPresenterTests: XCTestCase {
 
 	private var interactor: SidebarInteractorMock!
 
-	private var stateProvider: SidebarStateProviderMock!
+	private var settingsProvider: SidebarSettingsProviderMock!
 
 	private var titleDelegate: TitleDelegateMock!
 
@@ -27,11 +27,11 @@ final class SidebarPresenterTests: XCTestCase {
 	override func setUpWithError() throws {
 		view = SidebarViewMock()
 		interactor = SidebarInteractorMock()
-		stateProvider = SidebarStateProviderMock()
+		settingsProvider = SidebarSettingsProviderMock()
 		titleDelegate = TitleDelegateMock()
 		itemsFactory = SidebarItemsFactoryMock()
 		sut = SidebarPresenter(
-			stateProvider: stateProvider,
+			settingsProvider: settingsProvider,
 			itemsFactory: itemsFactory,
 			titleDelegate: titleDelegate
 		)
@@ -43,7 +43,7 @@ final class SidebarPresenterTests: XCTestCase {
 		sut = nil
 		view = nil
 		interactor = nil
-		stateProvider = nil
+		settingsProvider = nil
 		itemsFactory = nil
 		titleDelegate = nil
 	}
@@ -69,6 +69,48 @@ extension SidebarPresenterTests {
 		XCTAssertEqual(sectionTitle, itemsFactory.stubs.sectionTitle)
 		XCTAssertEqual(dynamicContent, itemsFactory.stubs.dynamicContent)
 	}
+
+	func testPresentWhenSelectedListHasBeenDeleted() throws {
+		// Arrange
+		let lists: [List] = [.random, .random, .random]
+		itemsFactory.stubs.dynamicContent = [.random, .random, .random]
+		itemsFactory.stubs.staticContent = [.random, .random, .random]
+
+		let first = try XCTUnwrap(itemsFactory.stubs.staticContent.first)
+
+		// Select random list
+		settingsProvider.stubs.selection = .list(.init())
+
+		// Act
+		sut.present(lists)
+
+		// Assert
+		guard case let .displayDynamicContent(sectionTitle, dynamicContent) = view.invocations[0] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(sectionTitle, itemsFactory.stubs.sectionTitle)
+		XCTAssertEqual(dynamicContent, itemsFactory.stubs.dynamicContent)
+
+		guard case let .selectItem(route) = view.invocations[1] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(route, first.id)
+
+		XCTAssertEqual(view.invocations.count, 2)
+
+		guard case let .titleDidChange(title) = titleDelegate.invocations[0] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(title, first.title)
+
+		guard case let .setSelection(selection) = settingsProvider.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(selection, first.id)
+	}
 }
 
 // MARK: - SidebarViewOutput
@@ -76,7 +118,7 @@ extension SidebarPresenterTests {
 
 	func testViewDidChange() {
 		// Arrange
-		stateProvider.routeStub = .backlog
+		settingsProvider.stubs.selection = .backlog
 		itemsFactory.stubs.staticContent = [.random, .random, .random]
 
 		// Act
@@ -116,13 +158,13 @@ extension SidebarPresenterTests {
 		// Arrange
 		let expectedTitle = UUID().uuidString
 		let expectedItem = SidebarItem(id: .backlog, icon: UUID().uuidString, title: expectedTitle, isEditable: false)
-		stateProvider.routeStub = .backlog
+		settingsProvider.stubs.selection = .backlog
 
 		// Act
 		sut.selectionDidChange(expectedItem)
 
 		// Assert
-		guard case let .navigate(route) = stateProvider.invocations[0] else {
+		guard case let .setSelection(route) = settingsProvider.invocations[0] else {
 			return XCTFail()
 		}
 		XCTAssertEqual(route, .backlog)
@@ -176,22 +218,6 @@ extension SidebarPresenterTests {
 			return XCTFail()
 		}
 		XCTAssertEqual(action, .delete([expectedId]))
-	}
-
-	func testMenuItemHasBeenClickedWhenToDeleteSelectedList() {
-		// Arrange
-		let expectedId = UUID()
-		view.clickedItemStub = .list(expectedId)
-		view.selectedItemStub = .list(expectedId)
-
-		// Act
-		sut.menuItemHasBeenClicked(.deleteList)
-
-		// Assert
-		guard case let .selectItem(id) = view.invocations[0] else {
-			return XCTFail()
-		}
-		XCTAssertEqual(id, .inFocus)
 	}
 }
 
