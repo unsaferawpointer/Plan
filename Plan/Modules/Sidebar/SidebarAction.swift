@@ -8,7 +8,7 @@
 import Foundation
 
 enum SidebarAction {
-	case insert(_ title: String)
+	case insert(_ id: UUID, title: String)
 	case delete(_ ids: [UUID])
 }
 

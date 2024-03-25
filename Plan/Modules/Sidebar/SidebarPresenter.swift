@@ -45,18 +45,7 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 		let sectionTitle = itemsFactory.makeSectionTitle()
 
 		view?.display(sectionTitle: sectionTitle, dynamicContent: dynamicContent)
-		guard case let .list(id) = settingsProvider.selection else {
-			return
-		}
-		if lists.contains(where: { $0.uuid == id }) {
-			view?.selectItem(.list(id))
-		} else if let item = itemsFactory.makeStaticContent().first {
-			view?.selectItem(item.id)
-			settingsProvider.selection = item.id
-			titleDelegate?.titleDidChange(item.title)
-		} else {
-			fatalError()
-		}
+		invalidateSelection(lists: lists)
 	}
 }
 
@@ -71,14 +60,17 @@ extension SidebarPresenter: SidebarViewOutput {
 		let staticContent = itemsFactory.makeStaticContent()
 		view?.display(staticContent: staticContent)
 
+		let selection = settingsProvider.selection
+		if let item = staticContent.first(where: { $0.id == selection }) {
+			view?.selectItem(selection)
+			titleDelegate?.titleDidChange(item.title)
+		}
+
 		do {
 			try interactor?.fetchLists()
 		} catch {
 			// TODO: - Handle action
 		}
-
-		let route = settingsProvider.selection
-		view?.selectItem(route)
 	}
 
 	func labelDidChangeText(_ newText: String, forItem withId: UUID) {
@@ -102,7 +94,14 @@ extension SidebarPresenter: MenuDelegate {
 		switch item {
 		case .newList:
 			do {
-				try interactor?.perform(.insert("New list"))
+				let id = UUID()
+				settingsProvider.selection = .list(id)
+
+				try interactor?.perform(.insert(id, title: "New list"))
+
+				view?.selectItem(.list(id))
+				titleDelegate?.titleDidChange("New list")
+
 			} catch {
 				// TODO: - Handle action
 			}
@@ -131,6 +130,26 @@ extension SidebarPresenter: MenuDelegate {
 			return true
 		default:
 			return false
+		}
+	}
+}
+
+// MARK: - Helpers
+private extension SidebarPresenter {
+
+	func invalidateSelection(lists: [List]) {
+		guard case let .list(id) = settingsProvider.selection else {
+			return
+		}
+		if let list = lists.first(where: { $0.uuid == id }) {
+			view?.selectItem(.list(id))
+			titleDelegate?.titleDidChange(list.title)
+		} else if let item = itemsFactory.makeStaticContent().first {
+			view?.selectItem(item.id)
+			settingsProvider.selection = item.id
+			titleDelegate?.titleDidChange(item.title)
+		} else {
+			fatalError()
 		}
 	}
 }

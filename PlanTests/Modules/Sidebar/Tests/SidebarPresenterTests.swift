@@ -202,7 +202,10 @@ extension SidebarPresenterTests {
 		guard case let .performAction(action) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(action, .insert("New list"))
+		guard case let .insert(id, title) = action else {
+			return XCTFail()
+		}
+		XCTAssertEqual(title, "New list")
 	}
 
 	func testMenuItemHasBeenClickedWhenMenuItemIsDeleteList() {
