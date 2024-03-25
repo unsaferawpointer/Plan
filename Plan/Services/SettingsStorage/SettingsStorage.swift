@@ -12,10 +12,6 @@ protocol SettingsStorageProtocol {
 	func setValue<T: RawRepresentable>(value: T, withKey key: String) where T.RawValue == String
 }
 
-protocol SettingsStorageDelegate: AnyObject {
-	func settingsDidChange()
-}
-
 final class SettingsStorage { 
 
 	init() {}

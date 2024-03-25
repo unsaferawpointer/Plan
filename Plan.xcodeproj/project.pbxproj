@@ -112,7 +112,6 @@
 		4CF443C62BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443C52BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift */; };
 		4CF443CF2BADCE4E00F464ED /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443CE2BADCE4E00F464ED /* PersistentContainer.swift */; };
 		4CF443D22BAF274900F464ED /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443D12BAF274900F464ED /* SettingsStorage.swift */; };
-		4CF443D42BB0263C00F464ED /* TodosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443D32BB0263C00F464ED /* TodosSettings.swift */; };
 		4CF443D82BB0346100F464ED /* SidebarSettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443D72BB0346100F464ED /* SidebarSettingsProvider.swift */; };
 		4CF443DA2BB04EC000F464ED /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443D92BB04EC000F464ED /* SettingsProvider.swift */; };
 		4CF443DD2BB08C0200F464ED /* SidebarTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443DC2BB08C0200F464ED /* SidebarTableDelegate.swift */; };
@@ -246,7 +245,6 @@
 		4CF443C52BA8C97A00F464ED /* TodoCellConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoCellConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		4CF443CE2BADCE4E00F464ED /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		4CF443D12BAF274900F464ED /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
-		4CF443D32BB0263C00F464ED /* TodosSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosSettings.swift; sourceTree = "<group>"; };
 		4CF443D72BB0346100F464ED /* SidebarSettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarSettingsProvider.swift; sourceTree = "<group>"; };
 		4CF443D92BB04EC000F464ED /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		4CF443DC2BB08C0200F464ED /* SidebarTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableDelegate.swift; sourceTree = "<group>"; };
@@ -729,7 +727,6 @@
 			isa = PBXGroup;
 			children = (
 				4C7469292B9DE26E0029E4F2 /* TodosSettingsProvider.swift */,
-				4CF443D32BB0263C00F464ED /* TodosSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -919,7 +916,6 @@
 				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
 				4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */,
-				4CF443D42BB0263C00F464ED /* TodosSettings.swift in Sources */,
 				4C28416E2B6643C000BC4A9F /* TodoEntity.swift in Sources */,
 				4CF443C12BA8BB7F00F464ED /* TodoItemFactory.swift in Sources */,
 				4C9103972B6EBAEA00E7F03D /* TodoModification.swift in Sources */,

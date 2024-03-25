@@ -44,6 +44,7 @@ extension TodosSettingsProvider: TodosSettingsProviderProtocol {
 	func setGrouping(_ grouping: TodosGrouping, for behaviour: Behaviour) {
 		let key = key(for: behaviour)
 		settingsStorage.setValue(value: grouping, withKey: key)
+		delegate?.settingsDidChange()
 	}
 }
 
@@ -68,13 +69,5 @@ extension TodosSettingsProvider {
 		static let backlogGrouping = "backlog_grouping"
 		static let archieveGrouping = "archieve_grouping"
 		static let listGrouping = "list_grouping"
-	}
-}
-
-// MARK: - SettingsStorageDelegate
-extension TodosSettingsProvider: SettingsStorageDelegate {
-
-	func settingsDidChange() {
-		delegate?.settingsDidChange()
 	}
 }

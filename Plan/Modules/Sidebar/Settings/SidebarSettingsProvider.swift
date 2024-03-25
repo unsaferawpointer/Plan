@@ -7,10 +7,7 @@
 
 import Foundation
 
-protocol SidebarSettingsDelegate: AnyObject {
-	func settingsDidChange()
-}
-
+protocol SidebarSettingsDelegate: AnyObject { }
 
 protocol SidebarSettingsProviderProtocol {
 
