@@ -11,17 +11,30 @@ protocol SidebarItemsFactoryProtocol {
 	func makeStaticContent() -> [SidebarItem]
 	func makeDynamicContent(from lists: [List]) -> [SidebarItem]
 	func makeSectionTitle() -> String
+	func makeNewListTitle() -> String
 }
 
 final class SidebarItemFactory {
+
+	var localization: SidebarLocalizationProtocol
+
+	// MARK: - Initialization
+
+	init(localization: SidebarLocalizationProtocol) {
+		self.localization = localization
+	}
 
 }
 
 // MARK: - SidebarItemFactoryProtocol
 extension SidebarItemFactory: SidebarItemsFactoryProtocol {
 
+	func makeNewListTitle() -> String {
+		return localization.newListTitle
+	}
+
 	func makeSectionTitle() -> String {
-		return "Lists"
+		return localization.sectionTitle
 	}
 
 	func makeDynamicContent(from lists: [List]) -> [SidebarItem] {
@@ -48,7 +61,7 @@ private extension SidebarItemFactory {
 			id: .inFocus,
 			icon: "sparkles",
 			tintColor: .yellow,
-			title: "In Focus",
+			title: localization.inFocusItemTitle,
 			isEditable: false
 		)
 	}
@@ -58,7 +71,7 @@ private extension SidebarItemFactory {
 			id: .backlog,
 			icon: "square.stack.3d.up",
 			tintColor: .monochrome,
-			title: "Backlog",
+			title: localization.backlogItemTitle,
 			isEditable: false
 		)
 	}
@@ -68,7 +81,7 @@ private extension SidebarItemFactory {
 			id: .archieve,
 			icon: "shippingbox",
 			tintColor: .monochrome,
-			title: "Archieve",
+			title: localization.archieveItemTitle,
 			isEditable: false
 		)
 	}

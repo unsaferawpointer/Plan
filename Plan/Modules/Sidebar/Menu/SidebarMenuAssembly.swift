@@ -10,6 +10,6 @@ import Cocoa
 final class SidebarMenuAssembly {
 
 	static func assemble(delegate: MenuDelegate) -> NSMenu {
-		return SidebarContextMenu(delegate: delegate)
+		return SidebarContextMenu(delegate: delegate, localization: SidebarMenuLocalization())
 	}
 }

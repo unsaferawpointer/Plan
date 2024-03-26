@@ -97,10 +97,12 @@ extension SidebarPresenter: MenuDelegate {
 				let id = UUID()
 				settingsProvider.selection = .list(id)
 
-				try interactor?.perform(.insert(id, title: "New list"))
+				let title = itemsFactory.makeNewListTitle()
+
+				try interactor?.perform(.insert(id, title: title))
 
 				view?.selectItem(.list(id))
-				titleDelegate?.titleDidChange("New list")
+				titleDelegate?.titleDidChange(title)
 
 			} catch {
 				// TODO: - Handle action

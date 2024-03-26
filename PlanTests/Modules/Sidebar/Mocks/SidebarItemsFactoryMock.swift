@@ -16,6 +16,10 @@ final class SidebarItemsFactoryMock {
 // MARK: - SidebarItemsFactoryProtocol
 extension SidebarItemsFactoryMock: SidebarItemsFactoryProtocol {
 
+	func makeNewListTitle() -> String {
+		stubs.newListTitle
+	}
+
 	func makeStaticContent() -> [SidebarItem] {
 		stubs.staticContent
 	}
@@ -35,6 +39,7 @@ extension SidebarItemsFactoryMock {
 	struct Stubs {
 		var dynamicContent: [SidebarItem] = []
 		var staticContent: [SidebarItem] = []
-		var sectionTitle: String = UUID().uuidString
+		var sectionTitle: String = .random
+		var newListTitle: String = .random
 	}
 }

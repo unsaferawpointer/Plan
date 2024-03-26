@@ -15,7 +15,7 @@ final class SidebarAssembly {
 	) -> NSViewController {
 		let presenter = SidebarPresenter(
 			settingsProvider: settingsProvider,
-			itemsFactory: SidebarItemFactory(),
+			itemsFactory: SidebarItemFactory(localization: SidebarLocalization()),
 			titleDelegate: titleDelegate
 		)
 		let context = PersistentContainer.shared.mainContext

@@ -11,8 +11,11 @@ final class SidebarContextMenu: NSMenu {
 
 	weak var menuDelegate: MenuDelegate?
 
-	init(delegate: MenuDelegate) {
+	private var localization: SidebarMenuLocalizationProtocol
+
+	init(delegate: MenuDelegate, localization: SidebarMenuLocalizationProtocol) {
 		self.menuDelegate = delegate
+		self.localization = localization
 		super.init(title: "")
 		configureItems()
 	}
@@ -28,14 +31,14 @@ private extension SidebarContextMenu {
 	func configureItems() {
 
 		let newList = NSMenuItem()
-		newList.title = "New list"
+		newList.title = localization.contextMenuItemNewList
 		newList.keyEquivalent = "n"
 		newList.target = self
 		newList.representedObject = MenuItem.Identifier.newList
 		newList.action = #selector(itemHasBeenClicked(_:))
 
 		let deleteList = NSMenuItem()
-		deleteList.title = "Delete"
+		deleteList.title = localization.contextMenuItemDeleteList
 		deleteList.keyEquivalent = "\u{0008}"
 		deleteList.target = self
 		deleteList.representedObject = MenuItem.Identifier.deleteList
