@@ -79,8 +79,11 @@ class SidebarViewController: NSViewController {
 
 		configureUserInterface()
 		configureConstraints()
+	}
 
-		output?.viewDidChange(state: .didLoad)
+	override func viewWillAppear() {
+		super.viewWillAppear()
+		output?.viewDidChange(state: .willAppear)
 	}
 }
 

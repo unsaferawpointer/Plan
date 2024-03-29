@@ -122,7 +122,7 @@ extension SidebarPresenterTests {
 		itemsFactory.stubs.staticContent = [.random, .random, .random]
 
 		// Act
-		sut.viewDidChange(state: .didLoad)
+		sut.viewDidChange(state: .willAppear)
 
 		// Assert
 		guard case .fetchLists = interactor.invocations[0] else {

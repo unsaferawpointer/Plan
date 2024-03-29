@@ -53,7 +53,7 @@ extension SidebarPresenter: SidebarPresenterProtocol {
 extension SidebarPresenter: SidebarViewOutput {
 
 	func viewDidChange(state newState: ViewState) {
-		guard case .didLoad = newState else {
+		guard case .willAppear = newState else {
 			return
 		}
 
