@@ -50,12 +50,12 @@ extension TodosPresenter: TodosPresenterProtocol {
 
 		guard !todos.isEmpty else {
 			let state: TodosViewState = .placeholder(
-				title: "No todos, yet",
-				subtitle: "Add new todo using the plus button",
+				title: itemsFactory.placeholderTitle,
+				subtitle: itemsFactory.placeholderSubtitle,
 				image: "ghost"
 			)
 			view?.display(state)
-			infoDelegate?.infoDidChange("No incomplete todos")
+			infoDelegate?.infoDidChange(itemsFactory.infoSubtitleForEmptyState)
 			return
 		}
 
@@ -68,7 +68,22 @@ extension TodosPresenter: TodosPresenterProtocol {
 		)
 
 		view?.display(.content(items: items))
-		infoDelegate?.infoDidChange("\(todos.count) incomplete todos")
+
+		let subtitle = {
+			switch behaviour {
+			case .archieve:
+				return itemsFactory.infoSubtitleCompletedTodos(count: todos.count)
+			case .backlog, .inFocus:
+				return itemsFactory.infoSubtitle(for: todos.count)
+			default:
+				let count = todos.filter { $0.isDone == false }.count
+				return count == 0
+					? itemsFactory.infoSubtitleAllTasksAreCompleted
+					: itemsFactory.infoSubtitle(for: count)
+			}
+		}()
+
+		infoDelegate?.infoDidChange(subtitle)
 	}
 }
 

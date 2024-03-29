@@ -18,7 +18,7 @@ final class TodosAssembly {
 		let presenter = TodosPresenter(
 			infoDelegate: infoDelegate,
 			behaviour: behaviour, 
-			itemsFactory: TodoItemFactory(), 
+			itemsFactory: TodoItemFactory(localization: TodosLocalization()), 
 			settingsProvider: TodosSettingsProvider(settingsStorage: SettingsStorage())
 		)
 		let context = PersistentContainer.shared.mainContext

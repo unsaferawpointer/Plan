@@ -20,4 +20,28 @@ extension Todo {
 			listName: UUID().uuidString
 		)
 	}
+
+	static var completed: Todo {
+		return .init(
+			uuid: .init(),
+			creationDate: Date(),
+			text: UUID().uuidString,
+			status: .done,
+			priority: .medium,
+			list: .init(),
+			listName: UUID().uuidString
+		)
+	}
+
+	static var incomplete: Todo {
+		return .init(
+			uuid: .init(),
+			creationDate: Date(),
+			text: UUID().uuidString,
+			status: Bool.random() ? .inFocus : .default,
+			priority: .medium,
+			list: .init(),
+			listName: UUID().uuidString
+		)
+	}
 }

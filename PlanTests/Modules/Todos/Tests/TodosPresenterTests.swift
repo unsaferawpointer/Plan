@@ -30,14 +30,8 @@ final class TodosPresenterTests: XCTestCase {
 		infoDelegate = InfoDelegateMock()
 		settingsProvider = TodosSettingsProviderMock()
 		itemsFactory = TodoItemsFactoryMock()
-		sut = TodosPresenter(
-			infoDelegate: infoDelegate,
-			behaviour: .inFocus, 
-			itemsFactory: itemsFactory,
-			settingsProvider: settingsProvider
-		)
-		sut.view = view
-		sut.interactor = interactor
+
+		configureTestable()
 	}
 
 	override func tearDownWithError() throws {
@@ -86,7 +80,53 @@ extension TodosPresenterTests {
 		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(info, "3 incomplete todos")
+		XCTAssertEqual(info, itemsFactory.stubs.infoSubtitleForCount)
+	}
+
+	func testPresentWhenBehaviourIsArchieve() {
+		// Arrange
+		let todos: [Todo] = [.completed, .completed, .completed]
+
+		configureTestable(behaviour: .archieve)
+
+		settingsProvider.stubs.grouping = .priority
+
+		// Act
+		sut.present(todos)
+
+		// Assert
+		guard case let .display(state) = view.invocations[0] else {
+			return XCTFail()
+		}
+
+		guard case let .content(items) = state else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(items, itemsFactory.stubs.items)
+
+		XCTAssertEqual(view.invocations.count, 1)
+		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(info, itemsFactory.stubs.infoSubtitleCompletedTodosForCount)
+	}
+
+	func testPresentWhenAllTodosAreCompleted() {
+		// Arrange
+
+		let todos: [Todo] = [.completed, .completed, .completed]
+
+		configureTestable(behaviour: .list(.init()))
+
+		// Act
+		sut.present(todos)
+
+		// Assert
+		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(info, itemsFactory.stubs.infoSubtitleAllTasksAreCompleted)
 	}
 
 	func testPresentWhenDataIsEmpty() {
@@ -103,8 +143,8 @@ extension TodosPresenterTests {
 		XCTAssertEqual(
 			state,
 				.placeholder(
-					title: "No todos, yet",
-					subtitle: "Add new todo using the plus button",
+					title: itemsFactory.stubs.placeholderTitle,
+					subtitle: itemsFactory.stubs.placeholderSubtitle,
 					image: "ghost"
 				)
 		)
@@ -112,7 +152,7 @@ extension TodosPresenterTests {
 		guard case let .infoDidChange(info) = infoDelegate.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(info, "No incomplete todos")
+		XCTAssertEqual(info, itemsFactory.infoSubtitleForEmptyState)
 	}
 }
 
@@ -320,5 +360,20 @@ private extension TodosPresenterTests {
 		XCTAssertEqual(ids, expectedIds)
 		XCTAssertEqual(modification, .setPriority(expectedValue))
 		XCTAssertEqual(interactor.invocations.count, 1)
+	}
+}
+
+// MARK: - Helpers
+private extension TodosPresenterTests {
+
+	func configureTestable(behaviour: Behaviour = .inFocus) {
+		sut = TodosPresenter(
+			infoDelegate: infoDelegate,
+			behaviour: behaviour,
+			itemsFactory: itemsFactory,
+			settingsProvider: settingsProvider
+		)
+		sut.view = view
+		sut.interactor = interactor
 	}
 }

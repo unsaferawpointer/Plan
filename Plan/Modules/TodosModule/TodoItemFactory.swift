@@ -9,12 +9,31 @@ import Foundation
 
 protocol TodoItemsFactoryProtocol {
 	func makeItems(from todos: [Todo], grouping: TodosGrouping, behaviour: Behaviour) -> [TableItem]
+	func infoSubtitle(for count: Int) -> String
+	var infoSubtitleForEmptyState: String { get }
+	var infoSubtitleAllTasksAreCompleted: String { get }
+	func infoSubtitleCompletedTodos(count: Int) -> String
+	var placeholderTitle: String { get }
+	var placeholderSubtitle: String { get }
 }
 
-final class TodoItemFactory { }
+final class TodoItemFactory { 
+
+	private var localization: TodosLocalizationProtocol
+
+	// MARK: - Initialization
+
+	init(localization: TodosLocalizationProtocol) {
+		self.localization = localization
+	}
+}
 
 // MARK: - TodoItemFactoryProtocol
 extension TodoItemFactory: TodoItemsFactoryProtocol {
+
+	func infoSubtitleCompletedTodos(count: Int) -> String {
+		localization.infoSubtitleCompletedTodos(count: count)
+	}
 
 	func makeItems(from todos: [Todo], grouping: TodosGrouping, behaviour: Behaviour) -> [TableItem] {
 		var total: [TableItem] = []
@@ -50,11 +69,14 @@ extension TodoItemFactory: TodoItemsFactoryProtocol {
 			for section in sorted {
 				switch section.key {
 				case .low:
-					total.append(.header("Low Priority"))
+					let title = localization.headerLowPriority
+					total.append(.header(title))
 				case .medium:
-					total.append(.header("Medium Priority"))
+					let title = localization.headerMediumPriority
+					total.append(.header(title))
 				case .high:
-					total.append(.header("High Priority"))
+					let title = localization.headerHighPriority
+					total.append(.header(title))
 				}
 				let items = section.value.map { todo in
 					makeConfiguration(from: todo, elements: elements)
@@ -68,11 +90,14 @@ extension TodoItemFactory: TodoItemsFactoryProtocol {
 			for section in sorted {
 				switch section.key {
 				case .default:
-					total.append(.header("Incomplete"))
+					let title = localization.headerIncomplete
+					total.append(.header(title))
 				case .inFocus:
-					total.append(.header("In Focus"))
+					let title = localization.headerInFocus
+					total.append(.header(title))
 				case .done:
-					total.append(.header("Done"))
+					let title = localization.headerCompleted
+					total.append(.header(title))
 				}
 				let items = section.value.map { todo in
 					makeConfiguration(from: todo, elements: elements)
@@ -82,6 +107,26 @@ extension TodoItemFactory: TodoItemsFactoryProtocol {
 		}
 
 		return total
+	}
+
+	func infoSubtitle(for count: Int) -> String {
+		localization.infoSubtitle(count: count)
+	}
+
+	var infoSubtitleForEmptyState: String {
+		localization.infoSubtitleForEmptyState
+	}
+
+	var infoSubtitleAllTasksAreCompleted: String {
+		localization.infoSubtitleAllTasksAreCompleted
+	}
+
+	var placeholderTitle: String {
+		localization.placeholderTitle
+	}
+
+	var placeholderSubtitle: String {
+		localization.placeholderSubtitle
 	}
 }
 

@@ -48,6 +48,8 @@
 		4C517AEF2B6978C6000E4DC1 /* TodosInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */; };
 		4C51CC392BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C51CC382BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings */; };
 		4C51CC3B2BB354C9007A1AD6 /* SidebarMenuLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51CC3A2BB354C9007A1AD6 /* SidebarMenuLocalization.swift */; };
+		4C51CC472BB74F40007A1AD6 /* TodosLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51CC462BB74F40007A1AD6 /* TodosLocalization.swift */; };
+		4C51CC492BB74F86007A1AD6 /* TodosLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C51CC482BB74F86007A1AD6 /* TodosLocalizable.xcstrings */; };
 		4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68259B2B5C300F000DDD07 /* Todo.swift */; };
 		4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825A72B5C3817000DDD07 /* Dictionary+Extension.swift */; };
 		4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */; };
@@ -185,6 +187,8 @@
 		4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosInteractorMock.swift; sourceTree = "<group>"; };
 		4C51CC382BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = SidebarMenuLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C51CC3A2BB354C9007A1AD6 /* SidebarMenuLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarMenuLocalization.swift; sourceTree = "<group>"; };
+		4C51CC462BB74F40007A1AD6 /* TodosLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosLocalization.swift; sourceTree = "<group>"; };
+		4C51CC482BB74F86007A1AD6 /* TodosLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = TodosLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C68259B2B5C300F000DDD07 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		4C6825A72B5C3817000DDD07 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		4C6825AC2B5D3760000DDD07 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 			children = (
 				4C7469222B9C9A9E0029E4F2 /* Behaviour.swift */,
 				4C7469242B9CA1890029E4F2 /* Configurator.swift */,
+				4C51CC452BB74F12007A1AD6 /* Localization */,
 				4CF443D52BB02AEC00F464ED /* Settings */,
 				4CCEBB682B72B61F00B57EF1 /* Menu */,
 				4C9103682B6D506400E7F03D /* State */,
@@ -534,6 +539,15 @@
 			children = (
 				4C51CC382BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings */,
 				4C51CC3A2BB354C9007A1AD6 /* SidebarMenuLocalization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		4C51CC452BB74F12007A1AD6 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4C51CC462BB74F40007A1AD6 /* TodosLocalization.swift */,
+				4C51CC482BB74F86007A1AD6 /* TodosLocalizable.xcstrings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -875,6 +889,7 @@
 				4C51CC392BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings in Resources */,
 				4CF443E22BB333A000F464ED /* SidebarLocalizable.xcstrings in Resources */,
 				4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */,
+				4C51CC492BB74F86007A1AD6 /* TodosLocalizable.xcstrings in Resources */,
 				4C3718052B5447450086B3D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -910,6 +925,7 @@
 				4C9103912B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
 				4CCEBBB42B77B07800B57EF1 /* SidebarSection.swift in Sources */,
+				4C51CC472BB74F40007A1AD6 /* TodosLocalization.swift in Sources */,
 				4CF443D82BB0346100F464ED /* SidebarSettingsProvider.swift in Sources */,
 				4CF443DA2BB04EC000F464ED /* SettingsProvider.swift in Sources */,
 				4CCEBB6C2B72B67200B57EF1 /* TodosMenuPresenter.swift in Sources */,
