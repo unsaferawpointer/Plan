@@ -115,55 +115,7 @@ extension TodosViewController: TodosView {
 extension TodosViewController: ToolbarSupportable {
 
 	func makeToolbarItems() -> [NSToolbarItem] {
-		return
-		[
-			{
-				let item = NSToolbarItem(itemIdentifier: .createTodo)
-				item.isNavigational = false
-				item.label = "Create todo"
-				item.visibilityPriority = .high
-				item.view = {
-					let button = NSButton()
-					button.bezelStyle = .texturedRounded
-					button.image = NSImage(systemSymbolName: "plus", accessibilityDescription: nil)
-					button.target = self
-					button.action = #selector(newTodo(_:))
-					return button
-				}()
-				return item
-			}(),
-			{
-				let item = NSToolbarItem(itemIdentifier: .groupingItem)
-				item.isNavigational = false
-				item.label = "Create todo"
-				item.visibilityPriority = .high
-				item.view = {
-					let button = NSComboButton()
-					button.style = .unified
-					button.image = NSImage(systemSymbolName: "square.grid.3x1.below.line.grid.1x2", accessibilityDescription: nil)
-
-					let items = MenuBuilder.makeItems(
-						[
-							.custom(.grouping(.none), content: .init(title: "None", keyEquivalent: "")),
-							.separator,
-							.custom(.grouping(.priority), content: .init(title: "Priority", keyEquivalent: "")),
-							.custom(.grouping(.list), content: .init(title: "List", keyEquivalent: "")),
-							.custom(.grouping(.status), content: .init(title: "Status", keyEquivalent: ""))
-						],
-						target: self,
-						action: #selector(MenuSupportable.menuItemHasBeenClicked(_:))
-					)
-
-					let menu = NSMenu()
-					menu.items = items
-
-					button.menu = menu
-
-					return button
-				}()
-				return item
-			}()
-		]
+		return TodosToolbarAssembly.build(target: self)
 	}
 }
 
