@@ -11,12 +11,18 @@ final class TodosMenuPresenter {
 
 	var provider: ListsDataProviderProtocol
 
+	var localization: TodosMenuLocalization
+
 	weak var menu: TodosContextMenuProtocol?
 
 	weak var output: MenuDelegate?
 
-	init(provider: ListsDataProviderProtocol) {
+	init(
+		provider: ListsDataProviderProtocol,
+		localization: TodosMenuLocalization
+	) {
 		self.provider = provider
+		self.localization = localization
 	}
 }
 
@@ -55,25 +61,43 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 
 		let items: [MenuItem] =
 		[
-			.custom(.newTodo, content: .init(title: "New todo", keyEquivalent: "n")),
+			.custom(.newTodo, content: .init(title: localization.newTodo, keyEquivalent: "n")),
 			.separator,
-			.custom(.focusOn, content: .init(title: "Focus on the task", keyEquivalent: "")),
-			.custom(.moveToBacklog, content: .init(title: "Move to backlog", keyEquivalent: "")),
+			.custom(.focusOn, content: .init(title: localization.focusOnTask, keyEquivalent: "")),
+			.custom(.moveToBacklog, content: .init(title: localization.moveToBacklog, keyEquivalent: "")),
 			.separator,
-			.custom(.markAsCompleted, content: .init(title: "Mark as Completed", keyEquivalent: "\r")),
-			.custom(.markAsIncomplete, content: .init(title: "Mark as Incomplete", keyEquivalent: "")),
+			.custom(.markAsCompleted, content: .init(title: localization.markAsCompleted, keyEquivalent: "\r")),
+			.custom(.markAsIncomplete, content: .init(title: localization.markAsIncomplete, keyEquivalent: "")),
 			.separator,
-			.menu(.setUrgency, content: .init(title: "Priority", keyEquivalent: ""), items:
+			.menu(.setUrgency, content: .init(title: localization.priority, keyEquivalent: ""), items:
 					[
-						.custom(.priority(.low), content: .init(title: "Low", keyEquivalent: "1")),
-						.custom(.priority(.medium), content: .init(title: "Medium", keyEquivalent: "2")),
-						.custom(.priority(.high), content: .init(title: "High", keyEquivalent: "3")),
+						.custom(
+							.priority(.low),
+							content: .init(
+								title: localization.priorityTitle(for: .low),
+								keyEquivalent: "1"
+							)
+						),
+						.custom(
+							.priority(.medium),
+							content: .init(
+								title: localization.priorityTitle(for: .medium),
+								keyEquivalent: "2"
+							)
+						),
+						.custom(
+							.priority(.high),
+							content: .init(
+								title: localization.priorityTitle(for: .high),
+								keyEquivalent: "3"
+							)
+						),
 					]
 				 ),
 			.separator,
-			.menu(.moveToList, content: .init(title: "Move to list", keyEquivalent: ""), items: listItems),
+			.menu(.moveToList, content: .init(title: localization.moveToList, keyEquivalent: ""), items: listItems),
 			.separator,
-			.custom(.delete, content: .init(title: "Delete", keyEquivalent: "\u{0008}"))
+			.custom(.delete, content: .init(title: localization.delete, keyEquivalent: "\u{0008}"))
 		]
 
 		menu?.display(items)

@@ -107,6 +107,8 @@
 		4CCEBBC32B79413100B57EF1 /* SidebarInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC22B79413100B57EF1 /* SidebarInteractorMock.swift */; };
 		4CCEBBC52B7942C000B57EF1 /* TitleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC42B7942C000B57EF1 /* TitleDelegateMock.swift */; };
 		4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */; };
+		4CDB87742BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */; };
+		4CDB87762BB8391B0019AC71 /* TodosMenuLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */; };
 		4CDC64032B9B26AE00E5E4AA /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */; };
 		4CF443BA2BA7603300F464ED /* SidebarItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */; };
 		4CF443BC2BA7651D00F464ED /* SidebarItemsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */; };
@@ -246,6 +248,8 @@
 		4CCEBBC22B79413100B57EF1 /* SidebarInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarInteractorMock.swift; sourceTree = "<group>"; };
 		4CCEBBC42B7942C000B57EF1 /* TitleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDelegateMock.swift; sourceTree = "<group>"; };
 		4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAction.swift; sourceTree = "<group>"; };
+		4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = TodosMenuLocalizable.xcstrings; sourceTree = "<group>"; };
+		4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuLocalization.swift; sourceTree = "<group>"; };
 		4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemFactory.swift; sourceTree = "<group>"; };
 		4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemsFactoryMock.swift; sourceTree = "<group>"; };
@@ -702,6 +706,7 @@
 		4CCEBB682B72B61F00B57EF1 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4CDB87722BB838E20019AC71 /* Localization */,
 				4CCEBB692B72B64000B57EF1 /* TodosMenuAssembly.swift */,
 				4CCEBB6B2B72B67200B57EF1 /* TodosMenuPresenter.swift */,
 				4CCEBB6D2B72B78500B57EF1 /* TodosContextMenu.swift */,
@@ -738,6 +743,15 @@
 				4CCEBBBC2B79399700B57EF1 /* SidebarInteractorTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		4CDB87722BB838E20019AC71 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */,
+				4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		4CF443C42BA8C96700F464ED /* Helpers */ = {
@@ -887,6 +901,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C51CC392BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings in Resources */,
+				4CDB87742BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings in Resources */,
 				4CF443E22BB333A000F464ED /* SidebarLocalizable.xcstrings in Resources */,
 				4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */,
 				4C51CC492BB74F86007A1AD6 /* TodosLocalizable.xcstrings in Resources */,
@@ -982,6 +997,7 @@
 				4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C9103722B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift in Sources */,
+				4CDB87762BB8391B0019AC71 /* TodosMenuLocalization.swift in Sources */,
 				4CF443D22BAF274900F464ED /* SettingsStorage.swift in Sources */,
 				4CC888932B9280340024C52D /* ImageCell.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,
