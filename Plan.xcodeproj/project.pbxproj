@@ -112,6 +112,11 @@
 		4CDB87842BB8B7C70019AC71 /* TodosToolbarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87832BB8B7C70019AC71 /* TodosToolbarAssembly.swift */; };
 		4CDB87872BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB87862BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings */; };
 		4CDB87892BB8B88D0019AC71 /* TodosToolbarLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87882BB8B88D0019AC71 /* TodosToolbarLocalization.swift */; };
+		4CDB878B2BB956740019AC71 /* MenuItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB878A2BB956740019AC71 /* MenuItem+Extension.swift */; };
+		4CDB87902BB964670019AC71 /* TodosMenuItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB878F2BB964670019AC71 /* TodosMenuItem+Extension.swift */; };
+		4CDB87912BB96B4E0019AC71 /* MenuLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB878E2BB95FA10019AC71 /* MenuLocalizable.xcstrings */; };
+		4CDB87932BB96BF70019AC71 /* SidebarMenuItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */; };
+		4CDB87952BB96FFF0019AC71 /* NSMenu+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87942BB96FFF0019AC71 /* NSMenu+Extension.swift */; };
 		4CDC64032B9B26AE00E5E4AA /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */; };
 		4CF443BA2BA7603300F464ED /* SidebarItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */; };
 		4CF443BC2BA7651D00F464ED /* SidebarItemsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */; };
@@ -256,6 +261,11 @@
 		4CDB87832BB8B7C70019AC71 /* TodosToolbarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosToolbarAssembly.swift; sourceTree = "<group>"; };
 		4CDB87862BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = TodosToolbarLocalizable.xcstrings; sourceTree = "<group>"; };
 		4CDB87882BB8B88D0019AC71 /* TodosToolbarLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosToolbarLocalization.swift; sourceTree = "<group>"; };
+		4CDB878A2BB956740019AC71 /* MenuItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem+Extension.swift"; sourceTree = "<group>"; };
+		4CDB878E2BB95FA10019AC71 /* MenuLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = MenuLocalizable.xcstrings; sourceTree = "<group>"; };
+		4CDB878F2BB964670019AC71 /* TodosMenuItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosMenuItem+Extension.swift"; sourceTree = "<group>"; };
+		4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidebarMenuItem+Extension.swift"; sourceTree = "<group>"; };
+		4CDB87942BB96FFF0019AC71 /* NSMenu+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extension.swift"; sourceTree = "<group>"; };
 		4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemFactory.swift; sourceTree = "<group>"; };
 		4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemsFactoryMock.swift; sourceTree = "<group>"; };
@@ -304,6 +314,7 @@
 				4C51CC372BB3548C007A1AD6 /* Localization */,
 				4C2232412B7AA2D100058D82 /* SidebarMenuAssembly.swift */,
 				4C2232452B7AA5FD00058D82 /* SidebarContextMenu.swift */,
+				4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -311,6 +322,7 @@
 		4C28412B2B6544A400BC4A9F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4CDB878D2BB95F3D0019AC71 /* Menu */,
 				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
 				4C2841362B654B9700BC4A9F /* Route.swift */,
 				4C28412C2B6544BE00BC4A9F /* Router.swift */,
@@ -685,6 +697,7 @@
 				4C91038C2B6E99EF00E7F03D /* MenuBuilder.swift */,
 				4C9103902B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift */,
 				4C22323F2B7AA27A00058D82 /* MenuDelegate.swift */,
+				4CDB87942BB96FFF0019AC71 /* NSMenu+Extension.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -757,6 +770,7 @@
 			children = (
 				4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */,
 				4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */,
+				4CDB878F2BB964670019AC71 /* TodosMenuItem+Extension.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -777,6 +791,15 @@
 				4CDB87882BB8B88D0019AC71 /* TodosToolbarLocalization.swift */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		4CDB878D2BB95F3D0019AC71 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB878E2BB95FA10019AC71 /* MenuLocalizable.xcstrings */,
+				4CDB878A2BB956740019AC71 /* MenuItem+Extension.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		4CF443C42BA8C96700F464ED /* Helpers */ = {
@@ -928,6 +951,7 @@
 				4C51CC392BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings in Resources */,
 				4CDB87742BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings in Resources */,
 				4CF443E22BB333A000F464ED /* SidebarLocalizable.xcstrings in Resources */,
+				4CDB87912BB96B4E0019AC71 /* MenuLocalizable.xcstrings in Resources */,
 				4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */,
 				4CDB87872BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings in Resources */,
 				4C51CC492BB74F86007A1AD6 /* TodosLocalizable.xcstrings in Resources */,
@@ -965,6 +989,7 @@
 				4C2841302B6544F200BC4A9F /* NSWindow+Extension.swift in Sources */,
 				4C9103912B6E9A2D00E7F03D /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C3717FB2B5447440086B3D1 /* AppDelegate.swift in Sources */,
+				4CDB878B2BB956740019AC71 /* MenuItem+Extension.swift in Sources */,
 				4CDB87842BB8B7C70019AC71 /* TodosToolbarAssembly.swift in Sources */,
 				4CCEBBB42B77B07800B57EF1 /* SidebarSection.swift in Sources */,
 				4C51CC472BB74F40007A1AD6 /* TodosLocalization.swift in Sources */,
@@ -983,6 +1008,7 @@
 				4C2841372B654B9700BC4A9F /* Route.swift in Sources */,
 				4C28412D2B6544BE00BC4A9F /* Router.swift in Sources */,
 				4C28413D2B654D3A00BC4A9F /* LabelView.swift in Sources */,
+				4CDB87902BB964670019AC71 /* TodosMenuItem+Extension.swift in Sources */,
 				4CCEBBB02B778C6900B57EF1 /* SidebarInteractor.swift in Sources */,
 				4C74692A2B9DE26E0029E4F2 /* TodosSettingsProvider.swift in Sources */,
 				4C2841622B65A0EF00BC4A9F /* ViewState.swift in Sources */,
@@ -994,6 +1020,7 @@
 				4CC8888F2B924AB00024C52D /* TodosGrouping.swift in Sources */,
 				4C2841742B667BB200BC4A9F /* ListsDataProvider.swift in Sources */,
 				4CC888992B96590C0024C52D /* TintColor.swift in Sources */,
+				4CDB87932BB96BF70019AC71 /* SidebarMenuItem+Extension.swift in Sources */,
 				4CF443DD2BB08C0200F464ED /* SidebarTableDelegate.swift in Sources */,
 				4C2841352B65483700BC4A9F /* SidebarItem.swift in Sources */,
 				4C2841472B65699500BC4A9F /* Coordinator.swift in Sources */,
@@ -1004,6 +1031,7 @@
 				4C28412A2B6543E500BC4A9F /* main.swift in Sources */,
 				4C2841702B6643C000BC4A9F /* ListEntity.swift in Sources */,
 				4C91038D2B6E99EF00E7F03D /* MenuBuilder.swift in Sources */,
+				4CDB87952BB96FFF0019AC71 /* NSMenu+Extension.swift in Sources */,
 				4C2841642B65A11600BC4A9F /* ViewOutput.swift in Sources */,
 				4C28414A2B656FF600BC4A9F /* TodosViewController.swift in Sources */,
 				4CDB87892BB8B88D0019AC71 /* TodosToolbarLocalization.swift in Sources */,

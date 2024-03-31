@@ -104,7 +104,7 @@ extension MenuItem.Identifier {
 
 	static let markAsIncomplete: MenuItem.Identifier = .basic("mark_as_incomplete")
 
-	static let setUrgency: MenuItem.Identifier = .basic("set_urgency")
+	static let setPriority: MenuItem.Identifier = .basic("priority")
 
 	static let complete: MenuItem.Identifier = .basic("complete")
 

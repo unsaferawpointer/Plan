@@ -180,7 +180,7 @@ extension SidebarPresenterTests {
 		view.clickedItemStub = .list(expectedId)
 
 		// Act
-		let result = sut.validateMenuItem(.deleteList)
+		let result = sut.validateMenuItem(.delete)
 
 		// Assert
 		XCTAssertTrue(result)
@@ -214,7 +214,7 @@ extension SidebarPresenterTests {
 		view.clickedItemStub = .list(expectedId)
 
 		// Act
-		sut.menuItemHasBeenClicked(.deleteList)
+		sut.menuItemHasBeenClicked(.delete)
 
 		// Assert
 		guard case let .performAction(action) = interactor.invocations[0] else {

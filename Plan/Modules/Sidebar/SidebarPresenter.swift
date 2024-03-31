@@ -107,7 +107,7 @@ extension SidebarPresenter: MenuDelegate {
 			} catch {
 				// TODO: - Handle action
 			}
-		case .deleteList:
+		case .delete:
 			do {
 				guard case let .list(id) = view?.clickedItem() else {
 					return
@@ -125,7 +125,7 @@ extension SidebarPresenter: MenuDelegate {
 		switch item {
 		case .newList, .file, .editor:
 			return true
-		case .deleteList:
+		case .delete:
 			guard case .list = view?.clickedItem() else {
 				return false
 			}

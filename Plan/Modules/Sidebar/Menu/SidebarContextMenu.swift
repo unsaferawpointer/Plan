@@ -30,19 +30,10 @@ private extension SidebarContextMenu {
 
 	func configureItems() {
 
-		let newList = NSMenuItem()
-		newList.title = localization.contextMenuItemNewList
-		newList.keyEquivalent = "n"
-		newList.target = self
-		newList.representedObject = MenuItem.Identifier.newList
-		newList.action = #selector(itemHasBeenClicked(_:))
+		let action = #selector(itemHasBeenClicked(_:))
 
-		let deleteList = NSMenuItem()
-		deleteList.title = localization.contextMenuItemDeleteList
-		deleteList.keyEquivalent = "\u{0008}"
-		deleteList.target = self
-		deleteList.representedObject = MenuItem.Identifier.deleteList
-		deleteList.action = #selector(itemHasBeenClicked(_:))
+		let newList = MenuBuilder.makeItem(.newList, target: self, action: action)
+		let deleteList = MenuBuilder.makeItem(.delete, target: self, action: action)
 
 		addItem(newList)
 		addItem(.separator())
@@ -77,7 +68,5 @@ extension SidebarContextMenu: NSMenuItemValidation {
 extension MenuItem.Identifier {
 
 	static let newList: MenuItem.Identifier = .basic("newList")
-
-	static let deleteList: MenuItem.Identifier = .basic("deleteList")
 }
 

@@ -200,9 +200,9 @@ extension TodosPresenter: MenuDelegate {
 				.markAsIncomplete,
 				.list,
 				.focusOn,
-				.setUrgency,
+				.priority,
 				.moveToBacklog,
-				.priority:
+				.setPriority:
 			return view?.selection.isEmpty == false
 		default:
 			return false

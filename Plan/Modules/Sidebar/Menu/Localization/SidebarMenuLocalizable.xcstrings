@@ -1,24 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "sidebar_context_menu_item_delete" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete List"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Удалить список"
-          }
-        }
-      }
-    },
-    "sidebar_context_menu_item_new" : {
+    "new_list" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

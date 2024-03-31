@@ -61,13 +61,3 @@ extension MenuBuilder {
 		}
 	}
 }
-
-extension MenuItem {
-
-	static var newTodo: MenuItem {
-		return .custom(.newTodo, content: .init(title: "New todo", keyEquivalent: "n"))
-	}
-	static var newList: MenuItem {
-		return .custom(.newList, content: .init(title: "New list", keyEquivalent: "N"))
-	}
-}

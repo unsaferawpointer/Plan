@@ -61,15 +61,15 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 
 		let items: [MenuItem] =
 		[
-			.custom(.newTodo, content: .init(title: localization.newTodo, keyEquivalent: "n")),
+			.newTodo,
 			.separator,
-			.custom(.focusOn, content: .init(title: localization.focusOnTask, keyEquivalent: "")),
-			.custom(.moveToBacklog, content: .init(title: localization.moveToBacklog, keyEquivalent: "")),
+			.focusOn,
+			.moveToBacklog,
 			.separator,
-			.custom(.markAsCompleted, content: .init(title: localization.markAsCompleted, keyEquivalent: "\r")),
-			.custom(.markAsIncomplete, content: .init(title: localization.markAsIncomplete, keyEquivalent: "")),
+			.markAsCompleted,
+			.markAsIncomplete,
 			.separator,
-			.menu(.setUrgency, content: .init(title: localization.priority, keyEquivalent: ""), items:
+			.menu(.setPriority, content: .init(title: localization.priority, keyEquivalent: ""), items:
 					[
 						.custom(
 							.priority(.low),
@@ -97,7 +97,7 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 			.separator,
 			.menu(.moveToList, content: .init(title: localization.moveToList, keyEquivalent: ""), items: listItems),
 			.separator,
-			.custom(.delete, content: .init(title: localization.delete, keyEquivalent: "\u{0008}"))
+			.delete
 		]
 
 		menu?.display(items)
