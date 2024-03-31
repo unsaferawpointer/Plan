@@ -111,7 +111,10 @@ extension TodosPresenter: TodosViewOutput {
 
 	func createTodo() {
 		do {
-			try interactor?.perform(.insert(["New todo"]))
+			let id = UUID()
+			try interactor?.perform(.insertTodo(id, text: "New todo"))
+			view?.scrollTo(id: id)
+			view?.focusOn(id: id)
 		} catch {
 			// TODO: - Handle action
 		}

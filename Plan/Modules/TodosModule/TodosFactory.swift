@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TodosFactoryProtocol {
-	func createTodo(with text: String, satisfyPredicate predicate: TodosPredicate) -> Todo
+	func createTodo(with id: UUID, text: String, satisfyPredicate predicate: TodosPredicate) -> Todo
 }
 
 final class TodosFactory { }
@@ -16,9 +16,9 @@ final class TodosFactory { }
 // MARK: - TodosFactoryProtocol
 extension TodosFactory: TodosFactoryProtocol {
 
-	func createTodo(with text: String, satisfyPredicate predicate: TodosPredicate) -> Todo {
+	func createTodo(with id: UUID, text: String, satisfyPredicate predicate: TodosPredicate) -> Todo {
 
-		var todo = Todo(text: text, listName: nil)
+		var todo = Todo(uuid: id, text: text, listName: nil)
 
 		switch predicate {
 		case .list(let id):

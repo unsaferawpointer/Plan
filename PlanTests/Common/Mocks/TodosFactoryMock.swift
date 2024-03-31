@@ -16,7 +16,7 @@ final class TodosFactoryMock {
 // MARK: - TodosFactoryProtocol
 extension TodosFactoryMock: TodosFactoryProtocol {
 
-	func createTodo(with text: String, satisfyPredicate predicate: TodosPredicate) -> Plan.Todo {
+	func createTodo(with id: UUID, text: String, satisfyPredicate predicate: Plan.TodosPredicate) -> Plan.Todo {
 		todoStub
 	}
 

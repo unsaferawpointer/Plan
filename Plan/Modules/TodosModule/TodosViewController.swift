@@ -16,6 +16,8 @@ protocol TodosViewOutput: AnyObject, ViewOutput, MenuDelegate {
 
 protocol TodosView: AnyObject {
 	func display(_ state: TodosViewState)
+	func focusOn(id: UUID)
+	func scrollTo(id: UUID)
 	var selection: [UUID] { get }
 }
 
@@ -108,6 +110,14 @@ extension TodosViewController: TodosView {
 			placeholderView.isHidden = true
 			adapter?.apply(items)
 		}
+	}
+
+	func focusOn(id: UUID) {
+		adapter?.focusOn(id: id)
+	}
+
+	func scrollTo(id: UUID) {
+		adapter?.scrollTo(id)
 	}
 }
 

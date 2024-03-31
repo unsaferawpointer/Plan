@@ -77,7 +77,7 @@ extension TodosInteractorTests {
 
 		// Act
 		do {
-			try sut.perform(.insert([expectedText]))
+			try sut.perform(.insertTodos([expectedText]))
 		} catch {
 			expectedError = error
 		}

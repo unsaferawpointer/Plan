@@ -177,7 +177,24 @@ extension TodosPresenterTests {
 		guard case let .performAction(action) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(action, .insert(["New todo"]))
+		guard case let .insertTodo(id, text) = action else {
+			return XCTFail()
+		}
+		XCTAssertEqual(text, "New todo")
+
+		guard case let .scrollTo(scrollDestination) = view.invocations[0] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(scrollDestination, id)
+
+		guard case let .focusOn(focusDestination) = view.invocations[1] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(focusDestination, id)
+
+		XCTAssertEqual(view.invocations.count, 2)
 	}
 
 	func testTextfieldDidChange() {
@@ -237,7 +254,24 @@ extension TodosPresenterTests {
 		guard case let .performAction(action) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		XCTAssertEqual(action, .insert(["New todo"]))
+		guard case let .insertTodo(id, text) = action else {
+			return XCTFail()
+		}
+		XCTAssertEqual(text, "New todo")
+
+		guard case let .scrollTo(scrollDestination) = view.invocations[0] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(scrollDestination, id)
+
+		guard case let .focusOn(focusDestination) = view.invocations[1] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(focusDestination, id)
+
+		XCTAssertEqual(view.invocations.count, 2)
 	}
 
 	func testMenuItemHasBeenClickedWhenItemIsMarkAsCompleted() {

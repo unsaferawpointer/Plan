@@ -8,7 +8,8 @@
 import Foundation
 
 enum TodosAction {
-	case insert(_ texts: [String])
+	case insertTodos(_ texts: [String])
+	case insertTodo(_ id: UUID, text: String)
 	case delete(_ ids: [UUID])
 }
 

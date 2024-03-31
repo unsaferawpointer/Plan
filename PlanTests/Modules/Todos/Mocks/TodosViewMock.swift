@@ -18,6 +18,16 @@ final class TodosViewMock {
 // MARK: - TodosView
 extension TodosViewMock: TodosView {
 
+	func focusOn(id: UUID) {
+		let action: Action = .focusOn(id: id)
+		invocations.append(action)
+	}
+	
+	func scrollTo(id: UUID) {
+		let action: Action = .scrollTo(id: id)
+		invocations.append(action)
+	}
+
 	var selection: [UUID] {
 		selectionStub
 	}
@@ -33,5 +43,7 @@ extension TodosViewMock {
 
 	enum Action {
 		case display(_ state: TodosViewState)
+		case focusOn(id: UUID)
+		case scrollTo(id: UUID)
 	}
 }

@@ -51,15 +51,20 @@ extension TodosInteractor: TodosInteractorProtocol {
 
 	func perform(_ action: TodosAction) throws {
 		switch action {
-		case .insert(let texts):
+		case .insertTodos(let texts):
 			for text in texts {
-				let todo = factory.createTodo(with: text, satisfyPredicate: predicate)
+				let todo = factory.createTodo(with: UUID(), text: text, satisfyPredicate: predicate)
 				try storage.insertTodo(todo, to: todo.list)
 			}
+			try storage.save()
+		case let .insertTodo(id, text):
+			let todo = factory.createTodo(with: id, text: text, satisfyPredicate: predicate)
+			try storage.insertTodo(todo, to: todo.list)
+			try storage.save()
 		case .delete(let ids):
 			try storage.deleteTodos(with: ids)
+			try storage.save()
 		}
-		try storage.save()
 	}
 
 	func perform(_ modification: TodoModification, forTodos ids: [UUID]) throws {

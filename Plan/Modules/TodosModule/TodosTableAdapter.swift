@@ -29,6 +29,7 @@ final class TodosTableAdapter: NSObject {
 	}
 }
 
+// MARK: - Public interface
 extension TodosTableAdapter {
 
 	func apply(_ items: [TableItem]) {
@@ -67,6 +68,28 @@ extension TodosTableAdapter {
 			return rows.compactMap { row in
 				items[row].uuid
 			}
+		}
+	}
+
+	func focusOn(id: UUID) {
+		guard
+			let firstIndex = items.firstIndex(where: { $0.uuid == id } ),
+			let view = table?.view(atColumn: 0, row: firstIndex, makeIfNecessary: false) as? TodoCell
+		else {
+			return
+		}
+		view.focusOn()
+	}
+
+	func scrollTo(_ id: UUID) {
+		guard
+			let firstIndex = items.firstIndex(where: { $0.uuid == id } )
+		else {
+			return
+		}
+		NSAnimationContext.runAnimationGroup { context in
+			context.allowsImplicitAnimation = true
+			table?.scrollRowToVisible(firstIndex)
 		}
 	}
 }

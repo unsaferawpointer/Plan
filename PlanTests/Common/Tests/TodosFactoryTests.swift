@@ -26,12 +26,13 @@ extension TodosFactoryTests {
 
 	func testCreateTodoWhenConfigurationIsInFocus() {
 		// Arrange
-		let expectedText = UUID().uuidString
+		let expectedText: String = .random
+		let expectedId = UUID()
 
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .status(.inFocus))
+		let result = sut.createTodo(with: expectedId, text: expectedText, satisfyPredicate: .status(.inFocus))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -43,12 +44,13 @@ extension TodosFactoryTests {
 
 	func testCreateTodoWhenConfigurationIsBacklog() {
 		// Arrange
-		let expectedText = UUID().uuidString
+		let expectedText: String = .random
+		let expectedId = UUID()
 
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .status(.default))
+		let result = sut.createTodo(with: expectedId, text: expectedText, satisfyPredicate: .status(.default))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -62,11 +64,12 @@ extension TodosFactoryTests {
 	func testCreateTodoWhenConfigurationIsArchieve() {
 		// Arrange
 		let expectedText = UUID().uuidString
+		let expectedId = UUID()
 
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .status(.done))
+		let result = sut.createTodo(with: expectedId, text: expectedText, satisfyPredicate: .status(.done))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)
@@ -79,13 +82,14 @@ extension TodosFactoryTests {
 
 	func testCreateTodoWhenConfigurationIsLists() {
 		// Arrange
-		let expectedText = UUID().uuidString
+		let expectedText: String = .random
+		let expectedId = UUID()
 		let expectedList = UUID()
 
 		sut = TodosFactory()
 
 		// Act
-		let result = sut.createTodo(with: expectedText, satisfyPredicate: .list(expectedList))
+		let result = sut.createTodo(with: expectedId, text: expectedText, satisfyPredicate: .list(expectedList))
 
 		// Assert
 		XCTAssertEqual(result.text, expectedText)

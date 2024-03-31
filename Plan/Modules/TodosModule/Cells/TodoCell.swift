@@ -122,6 +122,14 @@ extension TodoCell: ConfigurableView {
 
 }
 
+// MARK: - Public interface
+extension TodoCell {
+
+	func focusOn() {
+		titleTextfield.becomeFirstResponder()
+	}
+}
+
 // MARK: - Helpers
 private extension TodoCell {
 
