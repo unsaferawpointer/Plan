@@ -243,6 +243,23 @@
         }
       }
     },
+    "new_todo_title_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New todo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новое задание"
+          }
+        }
+      }
+    },
     "placeholder_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {

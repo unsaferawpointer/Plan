@@ -16,6 +16,10 @@ final class TodoItemsFactoryMock {
 // MARK: - TodoItemsFactoryProtocol
 extension TodoItemsFactoryMock: TodoItemsFactoryProtocol {
 
+	var newTodoTitlePlaceholder: String {
+		stubs.newTodoTitlePlaceholder
+	}
+
 	func infoSubtitle(for count: Int) -> String {
 		stubs.infoSubtitleForCount
 	}
@@ -57,5 +61,6 @@ extension TodoItemsFactoryMock {
 		var infoSubtitleCompletedTodosForCount: String = .random
 		var placeholderTitle: String = .random
 		var placeholderSubtitle: String = .random
+		var newTodoTitlePlaceholder: String = .random
 	}
 }

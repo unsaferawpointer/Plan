@@ -47,7 +47,6 @@
 		4C517AEB2B697684000E4DC1 /* TodosViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C517AEA2B697684000E4DC1 /* TodosViewMock.swift */; };
 		4C517AEF2B6978C6000E4DC1 /* TodosInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */; };
 		4C51CC392BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C51CC382BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings */; };
-		4C51CC3B2BB354C9007A1AD6 /* SidebarMenuLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51CC3A2BB354C9007A1AD6 /* SidebarMenuLocalization.swift */; };
 		4C51CC472BB74F40007A1AD6 /* TodosLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51CC462BB74F40007A1AD6 /* TodosLocalization.swift */; };
 		4C51CC492BB74F86007A1AD6 /* TodosLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C51CC482BB74F86007A1AD6 /* TodosLocalizable.xcstrings */; };
 		4C68259C2B5C300F000DDD07 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68259B2B5C300F000DDD07 /* Todo.swift */; };
@@ -108,7 +107,6 @@
 		4CCEBBC52B7942C000B57EF1 /* TitleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC42B7942C000B57EF1 /* TitleDelegateMock.swift */; };
 		4CCEBBC92B79571A00B57EF1 /* SidebarAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */; };
 		4CDB87742BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */; };
-		4CDB87762BB8391B0019AC71 /* TodosMenuLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */; };
 		4CDB87842BB8B7C70019AC71 /* TodosToolbarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87832BB8B7C70019AC71 /* TodosToolbarAssembly.swift */; };
 		4CDB87872BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB87862BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings */; };
 		4CDB87892BB8B88D0019AC71 /* TodosToolbarLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87882BB8B88D0019AC71 /* TodosToolbarLocalization.swift */; };
@@ -196,7 +194,6 @@
 		4C517AEA2B697684000E4DC1 /* TodosViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewMock.swift; sourceTree = "<group>"; };
 		4C517AEE2B6978C6000E4DC1 /* TodosInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosInteractorMock.swift; sourceTree = "<group>"; };
 		4C51CC382BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = SidebarMenuLocalizable.xcstrings; sourceTree = "<group>"; };
-		4C51CC3A2BB354C9007A1AD6 /* SidebarMenuLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarMenuLocalization.swift; sourceTree = "<group>"; };
 		4C51CC462BB74F40007A1AD6 /* TodosLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosLocalization.swift; sourceTree = "<group>"; };
 		4C51CC482BB74F86007A1AD6 /* TodosLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = TodosLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C68259B2B5C300F000DDD07 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
@@ -257,7 +254,6 @@
 		4CCEBBC42B7942C000B57EF1 /* TitleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDelegateMock.swift; sourceTree = "<group>"; };
 		4CCEBBC82B79571A00B57EF1 /* SidebarAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarAction.swift; sourceTree = "<group>"; };
 		4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = TodosMenuLocalizable.xcstrings; sourceTree = "<group>"; };
-		4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosMenuLocalization.swift; sourceTree = "<group>"; };
 		4CDB87832BB8B7C70019AC71 /* TodosToolbarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosToolbarAssembly.swift; sourceTree = "<group>"; };
 		4CDB87862BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = TodosToolbarLocalizable.xcstrings; sourceTree = "<group>"; };
 		4CDB87882BB8B88D0019AC71 /* TodosToolbarLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosToolbarLocalization.swift; sourceTree = "<group>"; };
@@ -314,7 +310,6 @@
 				4C51CC372BB3548C007A1AD6 /* Localization */,
 				4C2232412B7AA2D100058D82 /* SidebarMenuAssembly.swift */,
 				4C2232452B7AA5FD00058D82 /* SidebarContextMenu.swift */,
-				4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -561,7 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				4C51CC382BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings */,
-				4C51CC3A2BB354C9007A1AD6 /* SidebarMenuLocalization.swift */,
+				4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -769,7 +764,6 @@
 			isa = PBXGroup;
 			children = (
 				4CDB87732BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings */,
-				4CDB87752BB8391B0019AC71 /* TodosMenuLocalization.swift */,
 				4CDB878F2BB964670019AC71 /* TodosMenuItem+Extension.swift */,
 			);
 			path = Localization;
@@ -982,7 +976,6 @@
 			files = (
 				4C2841432B65657300BC4A9F /* SidebarAssembly.swift in Sources */,
 				4C3718002B5447440086B3D1 /* Plan.xcdatamodeld in Sources */,
-				4C51CC3B2BB354C9007A1AD6 /* SidebarMenuLocalization.swift in Sources */,
 				4C9103932B6E9D3400E7F03D /* NSTableView+Extension.swift in Sources */,
 				4C2232462B7AA5FD00058D82 /* SidebarContextMenu.swift in Sources */,
 				4C28413F2B654D7500BC4A9F /* LabelConfig.swift in Sources */,
@@ -1053,7 +1046,6 @@
 				4CCEBB6A2B72B64000B57EF1 /* TodosMenuAssembly.swift in Sources */,
 				4C6825AD2B5D3760000DDD07 /* ViewConfiguration.swift in Sources */,
 				4C9103722B6D54CE00E7F03D /* SidebarStateProviderProtocol.swift in Sources */,
-				4CDB87762BB8391B0019AC71 /* TodosMenuLocalization.swift in Sources */,
 				4CF443D22BAF274900F464ED /* SettingsStorage.swift in Sources */,
 				4CC888932B9280340024C52D /* ImageCell.swift in Sources */,
 				4C6825A82B5C3817000DDD07 /* Dictionary+Extension.swift in Sources */,

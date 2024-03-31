@@ -12,7 +12,7 @@ final class TodosMenuAssembly {
 	static func assemble(output: MenuDelegate) -> NSMenu {
 		let context = PersistentContainer.shared.mainContext
 		let provider = ListsDataProvider(context: context)
-		let presenter = TodosMenuPresenter(provider: provider, localization: TodosMenuLocalization())
+		let presenter = TodosMenuPresenter(provider: provider)
 		presenter.output = output
 		let menu = TodosContextMenu()
 		menu.output = presenter

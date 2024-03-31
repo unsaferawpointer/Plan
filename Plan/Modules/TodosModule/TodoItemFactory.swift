@@ -15,6 +15,7 @@ protocol TodoItemsFactoryProtocol {
 	func infoSubtitleCompletedTodos(count: Int) -> String
 	var placeholderTitle: String { get }
 	var placeholderSubtitle: String { get }
+	var newTodoTitlePlaceholder: String { get }
 }
 
 final class TodoItemFactory { 
@@ -127,6 +128,10 @@ extension TodoItemFactory: TodoItemsFactoryProtocol {
 
 	var placeholderSubtitle: String {
 		localization.placeholderSubtitle
+	}
+
+	var newTodoTitlePlaceholder: String {
+		localization.newTodoTitlePlaceholder
 	}
 }
 

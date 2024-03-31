@@ -11,18 +11,14 @@ final class TodosMenuPresenter {
 
 	var provider: ListsDataProviderProtocol
 
-	var localization: TodosMenuLocalization
-
 	weak var menu: TodosContextMenuProtocol?
 
 	weak var output: MenuDelegate?
 
 	init(
-		provider: ListsDataProviderProtocol,
-		localization: TodosMenuLocalization
+		provider: ListsDataProviderProtocol
 	) {
 		self.provider = provider
-		self.localization = localization
 	}
 }
 
@@ -69,33 +65,9 @@ extension TodosMenuPresenter: ListsDataProviderDelegate {
 			.markAsCompleted,
 			.markAsIncomplete,
 			.separator,
-			.menu(.setPriority, content: .init(title: localization.priority, keyEquivalent: ""), items:
-					[
-						.custom(
-							.priority(.low),
-							content: .init(
-								title: localization.priorityTitle(for: .low),
-								keyEquivalent: "1"
-							)
-						),
-						.custom(
-							.priority(.medium),
-							content: .init(
-								title: localization.priorityTitle(for: .medium),
-								keyEquivalent: "2"
-							)
-						),
-						.custom(
-							.priority(.high),
-							content: .init(
-								title: localization.priorityTitle(for: .high),
-								keyEquivalent: "3"
-							)
-						),
-					]
-				 ),
+			.setPriority,
 			.separator,
-			.menu(.moveToList, content: .init(title: localization.moveToList, keyEquivalent: ""), items: listItems),
+			.moveToList(with: listItems),
 			.separator,
 			.delete
 		]

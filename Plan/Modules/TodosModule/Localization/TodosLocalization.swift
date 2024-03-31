@@ -32,6 +32,8 @@ protocol TodosLocalizationProtocol {
 	var placeholderTitle: String { get }
 
 	var placeholderSubtitle: String { get }
+
+	var newTodoTitlePlaceholder: String { get }
 }
 
 final class TodosLocalization { }
@@ -85,6 +87,10 @@ extension TodosLocalization: TodosLocalizationProtocol {
 
 	var placeholderSubtitle: String {
 		return String(localized: "placeholder_subtitle")
+	}
+
+	var newTodoTitlePlaceholder: String {
+		return String(localized: "new_todo_title_placeholder")
 	}
 }
 

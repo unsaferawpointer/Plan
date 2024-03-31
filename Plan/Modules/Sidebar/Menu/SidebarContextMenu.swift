@@ -11,11 +11,8 @@ final class SidebarContextMenu: NSMenu {
 
 	weak var menuDelegate: MenuDelegate?
 
-	private var localization: SidebarMenuLocalizationProtocol
-
-	init(delegate: MenuDelegate, localization: SidebarMenuLocalizationProtocol) {
+	init(delegate: MenuDelegate) {
 		self.menuDelegate = delegate
-		self.localization = localization
 		super.init(title: "")
 		configureItems()
 	}

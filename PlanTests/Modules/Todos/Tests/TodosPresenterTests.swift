@@ -180,7 +180,7 @@ extension TodosPresenterTests {
 		guard case let .insertTodo(id, text) = action else {
 			return XCTFail()
 		}
-		XCTAssertEqual(text, "New todo")
+		XCTAssertEqual(text, itemsFactory.newTodoTitlePlaceholder)
 
 		guard case let .scrollTo(scrollDestination) = view.invocations[0] else {
 			return XCTFail()
@@ -257,7 +257,7 @@ extension TodosPresenterTests {
 		guard case let .insertTodo(id, text) = action else {
 			return XCTFail()
 		}
-		XCTAssertEqual(text, "New todo")
+		XCTAssertEqual(text, itemsFactory.newTodoTitlePlaceholder)
 
 		guard case let .scrollTo(scrollDestination) = view.invocations[0] else {
 			return XCTFail()
