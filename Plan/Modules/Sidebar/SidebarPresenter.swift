@@ -101,8 +101,11 @@ extension SidebarPresenter: MenuDelegate {
 
 				try interactor?.perform(.insert(id, title: title))
 
-				view?.selectItem(.list(id))
 				titleDelegate?.titleDidChange(title)
+
+				view?.selectItem(.list(id))
+				view?.scrollTo(.list(id))
+				view?.focusOn(.list(id))
 
 			} catch {
 				// TODO: - Handle action

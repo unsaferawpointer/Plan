@@ -202,10 +202,32 @@ extension SidebarPresenterTests {
 		guard case let .performAction(action) = interactor.invocations[0] else {
 			return XCTFail()
 		}
-		guard case let .insert(_, title) = action else {
+		guard case let .insert(id, title) = action else {
 			return XCTFail()
 		}
 		XCTAssertEqual(title, itemsFactory.stubs.newListTitle)
+
+		guard case let .selectItem(selectedRoute) = view.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(selectedRoute, .list(id))
+
+		guard case let .scrollTo(scrollDestination) = view.invocations[1] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(scrollDestination, .list(id))
+
+		guard case let .focusOn(focusDestination) = view.invocations[2] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(focusDestination, .list(id))
+
+		XCTAssertEqual(view.invocations.count, 3)
+
+		guard case let .titleDidChange(toolbarTitle) = titleDelegate.invocations[0] else {
+			return XCTFail()
+		}
+		XCTAssertEqual(toolbarTitle, title)
 	}
 
 	func testMenuItemHasBeenClickedWhenMenuItemIsDeleteList() {

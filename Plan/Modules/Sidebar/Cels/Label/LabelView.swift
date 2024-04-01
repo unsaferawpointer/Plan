@@ -46,6 +46,14 @@ final class LabelView: NSTableCellView, ConfigurableView {
 	}
 }
 
+// MARK: - Public interface
+extension LabelView {
+
+	func focusOn() {
+		textField?.becomeFirstResponder()
+	}
+}
+
 // MARK: - Helpers
 private extension LabelView {
 

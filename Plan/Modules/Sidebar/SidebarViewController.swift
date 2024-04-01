@@ -18,6 +18,8 @@ protocol SidebarView: AnyObject {
 	func selectItem(_ id: Route)
 	func clickedItem() -> Route?
 	func selectedItem() -> Route?
+	func scrollTo(_ route: Route)
+	func focusOn(_ route: Route)
 }
 
 class SidebarViewController: NSViewController {
@@ -89,6 +91,14 @@ class SidebarViewController: NSViewController {
 
 // MARK: - SidebarView
 extension SidebarViewController: SidebarView {
+
+	func scrollTo(_ route: Route) {
+		adapter?.scrollTo(id: route)
+	}
+	
+	func focusOn(_ route: Route) {
+		adapter?.focusOn(id: route)
+	}
 
 	func selectedItem() -> Route? {
 		adapter?.selectedItem()

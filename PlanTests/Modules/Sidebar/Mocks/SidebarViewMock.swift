@@ -19,6 +19,16 @@ final class SidebarViewMock {
 // MARK: - TodosView
 extension SidebarViewMock: SidebarView {
 
+	func scrollTo(_ route: Route) {
+		let action: Action = .scrollTo(route)
+		invocations.append(action)
+	}
+	
+	func focusOn(_ route: Route) {
+		let action: Action = .focusOn(route)
+		invocations.append(action)
+	}
+
 	func selectedItem() -> Route? {
 		selectedItemStub
 	}
@@ -53,5 +63,7 @@ extension SidebarViewMock {
 		case displayStaticContent(_ content: [SidebarItem])
 		case displayDynamicContent(sectionTitle: String, dynamicContent: [SidebarItem])
 		case selectItem(_ id: Route)
+		case scrollTo(_ route: Route)
+		case focusOn(_ route: Route)
 	}
 }

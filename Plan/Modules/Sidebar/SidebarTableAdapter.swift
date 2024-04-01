@@ -93,6 +93,38 @@ extension SidebarTableAdapter {
 		}
 		return item.id
 	}
+
+	func scrollTo(id: Route) {
+		if let index = items.firstIndex(where: { $0.id == id }) {
+			NSAnimationContext.runAnimationGroup { context in
+				context.allowsImplicitAnimation = true
+				table?.scrollRowToVisible(index)
+			}
+		}
+
+		if let index = section.items.firstIndex(where: { $0.id == id }) {
+			NSAnimationContext.runAnimationGroup { context in
+				context.allowsImplicitAnimation = true
+				table?.scrollRowToVisible(index + items.count + 1)
+			}
+		}
+	}
+
+	func focusOn(id: Route) {
+		if
+			let index = items.firstIndex(where: { $0.id == id }),
+			let view = table?.view(atColumn: 0, row: index, makeIfNecessary: false) as? LabelView
+		{
+			view.focusOn()
+		}
+
+		if 
+			let index = section.items.firstIndex(where: { $0.id == id }),
+			let view = table?.view(atColumn: 0, row: index + items.count + 1, makeIfNecessary: false) as? LabelView
+		{
+			view.focusOn()
+		}
+	}
 }
 
 // MARK: - NSOutlineViewDataSource
