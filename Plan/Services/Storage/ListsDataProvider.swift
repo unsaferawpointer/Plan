@@ -25,7 +25,10 @@ final class ListsDataProvider: NSObject {
 	lazy var controller: NSFetchedResultsController<ListEntity> = {
 
 		let request = ListEntity.fetchRequest()
-		request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.title, ascending: true)]
+		request.sortDescriptors = [
+			NSSortDescriptor(keyPath: \ListEntity.creationDate, ascending: true),
+			NSSortDescriptor(keyPath: \ListEntity.title, ascending: true)
+		]
 
 		let controller = NSFetchedResultsController(
 			fetchRequest: request,
