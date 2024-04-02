@@ -115,6 +115,7 @@
 		4CDB87912BB96B4E0019AC71 /* MenuLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB878E2BB95FA10019AC71 /* MenuLocalizable.xcstrings */; };
 		4CDB87932BB96BF70019AC71 /* SidebarMenuItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */; };
 		4CDB87952BB96FFF0019AC71 /* NSMenu+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB87942BB96FFF0019AC71 /* NSMenu+Extension.swift */; };
+		4CDB879A2BBB3CE60019AC71 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB87992BBB3CE60019AC71 /* InfoPlist.xcstrings */; };
 		4CDC64032B9B26AE00E5E4AA /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */; };
 		4CF443BA2BA7603300F464ED /* SidebarItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */; };
 		4CF443BC2BA7651D00F464ED /* SidebarItemsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */; };
@@ -262,6 +263,7 @@
 		4CDB878F2BB964670019AC71 /* TodosMenuItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosMenuItem+Extension.swift"; sourceTree = "<group>"; };
 		4CDB87922BB96BF70019AC71 /* SidebarMenuItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidebarMenuItem+Extension.swift"; sourceTree = "<group>"; };
 		4CDB87942BB96FFF0019AC71 /* NSMenu+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extension.swift"; sourceTree = "<group>"; };
+		4CDB87992BBB3CE60019AC71 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		4CDC64022B9B26AE00E5E4AA /* TodoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		4CF443B92BA7603300F464ED /* SidebarItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemFactory.swift; sourceTree = "<group>"; };
 		4CF443BB2BA7651D00F464ED /* SidebarItemsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemsFactoryMock.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		4C28412B2B6544A400BC4A9F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4CDB879B2BBB3DE30019AC71 /* Localization */,
 				4CDB878D2BB95F3D0019AC71 /* Menu */,
 				4C3717FA2B5447440086B3D1 /* AppDelegate.swift */,
 				4C2841362B654B9700BC4A9F /* Route.swift */,
@@ -796,6 +799,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		4CDB879B2BBB3DE30019AC71 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB87992BBB3CE60019AC71 /* InfoPlist.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		4CF443C42BA8C96700F464ED /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -945,6 +956,7 @@
 				4C51CC392BB354AF007A1AD6 /* SidebarMenuLocalizable.xcstrings in Resources */,
 				4CDB87742BB838FE0019AC71 /* TodosMenuLocalizable.xcstrings in Resources */,
 				4CF443E22BB333A000F464ED /* SidebarLocalizable.xcstrings in Resources */,
+				4CDB879A2BBB3CE60019AC71 /* InfoPlist.xcstrings in Resources */,
 				4CDB87912BB96B4E0019AC71 /* MenuLocalizable.xcstrings in Resources */,
 				4C3718022B5447450086B3D1 /* Assets.xcassets in Resources */,
 				4CDB87872BB8B86E0019AC71 /* TodosToolbarLocalizable.xcstrings in Resources */,
@@ -1259,12 +1271,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Beta Plan";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© Copyright 2024, Anton Cherkasov";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1274,6 +1290,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paperwave.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1285,12 +1302,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Plan;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© Copyright 2024, Anton Cherkasov";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1300,6 +1321,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paperwave.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
