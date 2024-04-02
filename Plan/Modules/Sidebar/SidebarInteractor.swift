@@ -47,7 +47,7 @@ extension SidebarInteractor: SidebarInteractorProtocol {
 	func perform(_ action: SidebarAction) throws {
 		switch action {
 		case .insert(let id, let title):
-			let list = List(uuid: id, title: title, count: 0)
+			let list = List(uuid: id, title: title, isFavorite: false, count: 0)
 			try storage.insertList(list)
 		case .delete(let ids):
 			try storage.deleteLists(with: ids)

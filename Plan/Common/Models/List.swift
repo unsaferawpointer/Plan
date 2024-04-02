@@ -13,6 +13,8 @@ struct List {
 
 	var title: String
 
+	var isFavorite: Bool
+
 	var count: Int
 }
 

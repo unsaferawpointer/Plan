@@ -22,6 +22,7 @@ extension ListEntity {
 	@NSManaged public var title: String
 	@NSManaged public var creationDate: Date
 	@NSManaged public var isArchived: Bool
+	@NSManaged public var isFavorite: Bool
 	@NSManaged public var todos: NSSet?
 
 	public override func awakeFromInsert() {
@@ -30,6 +31,7 @@ extension ListEntity {
 		self.uuid = UUID()
 		self.title = ""
 		self.creationDate = Date()
+		self.isFavorite = false
 		self.isArchived = false
 	}
 
@@ -68,7 +70,8 @@ extension ListEntity {
 	var list: List {
 		return List(
 			uuid: uuid,
-			title: title,
+			title: title, 
+			isFavorite: isFavorite,
 			count: todos?.count ?? 0
 		)
 	}

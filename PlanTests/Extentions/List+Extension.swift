@@ -13,7 +13,8 @@ extension List {
 	static var random: List {
 		return List(
 			uuid: .init(),
-			title: UUID().uuidString,
+			title: UUID().uuidString, 
+			isFavorite: Bool.random(),
 			count: Int.random(in: 0...128)
 		)
 	}
