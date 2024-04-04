@@ -47,13 +47,28 @@ extension SidebarTableAdapter {
 	}
 
 	func display(sectionTitle: String, dynamicContent: [SidebarItem]) {
+
+		let old = section.items
+		let new = dynamicContent
+
+		let difference = new.difference(from: old)
+
 		self.section.title = sectionTitle
 		self.section.items = dynamicContent
 
 		isEditing = true
-		table?.reloadItem(section, reloadChildren: true)
-		table?.expandItem(section, expandChildren: true)
+		for change in difference {
+			switch change {
+			case let .remove(offset, _, _):
+				let indexes = IndexSet(integer: offset)
+				table?.removeItems(at: indexes, inParent: section, withAnimation: .effectFade)
+			case let .insert(offset, _, _):
+				let indexes = IndexSet(integer: offset)
+				table?.insertItems(at: indexes, inParent: section, withAnimation: .effectFade)
+			}
+		}
 		isEditing = false
+		table?.expandItem(section, expandChildren: true)
 	}
 
 	func selectItem(_ id: Route?) {
