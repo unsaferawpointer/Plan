@@ -87,6 +87,15 @@ extension Node {
 		}
 	}
 
+	func allSatisfy<T: Equatable>(_ keyPath: KeyPath<Value, T>, equalsTo value: T) -> Bool {
+		guard !children.isEmpty else {
+			return self.value[keyPath: keyPath] == value
+		}
+		return children.allSatisfy {
+			$0.allSatisfy(keyPath, equalsTo: value)
+		}
+	}
+
 	func setProperty<T>(_ keyPath: WritableKeyPath<Value, T>, to value: T, downstream: Bool) {
 		self.value[keyPath: keyPath] = value
 		if downstream {

@@ -69,6 +69,8 @@ class ListViewController: NSViewController {
 
 	lazy var placeholderView = PlaceholderView(frame: .zero)
 
+	lazy var bottomBar = BottomBar(frame: .zero)
+
 	// MARK: - Initialization
 
 	init(configure: (ListViewController) -> Void) {
@@ -108,6 +110,20 @@ extension ListViewController: HierarchyView {
 
 		adapter?.apply(snapshot)
 
+		let allCompleted = snapshot.root.map {
+			$0.status
+		}.allSatisfy {
+			$0
+		}
+
+		if allCompleted && !snapshot.root.isEmpty {
+			bottomBar.text = "Все задания выполнены"
+		} else if snapshot.root.isEmpty {
+			bottomBar.text = "Заданий нет"
+		} else {
+			bottomBar.text = ""
+		}
+
 		placeholderView.isHidden = !snapshot.identifiers.isEmpty
 		placeholderView.title = "No Items, yet"
 		placeholderView.subtitle = "Add a new element using the plus."
@@ -146,6 +162,7 @@ private extension ListViewController {
 
 		scrollview.documentView = table
 		scrollview.hasVerticalScroller = false
+		scrollview.automaticallyAdjustsContentInsets = true
 
 		let identifier = NSUserInterfaceItemIdentifier("main")
 		let column = NSTableColumn(identifier: identifier)
@@ -155,7 +172,7 @@ private extension ListViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview, placeholderView].forEach {
+		[scrollview, placeholderView, bottomBar].forEach {
 			view.addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
@@ -170,7 +187,12 @@ private extension ListViewController {
 				placeholderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				placeholderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				placeholderView.topAnchor.constraint(equalTo: view.topAnchor),
-				placeholderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				placeholderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+				bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+				bottomBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+				bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				bottomBar.heightAnchor.constraint(equalToConstant: 32)
 			]
 		)
 	}

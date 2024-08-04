@@ -59,6 +59,7 @@
 		4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */; };
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C298EE82C5FE17100474956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C298EE72C5FE15700474956 /* Main.storyboard */; };
+		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extension.swift"; sourceTree = "<group>"; };
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C298EE72C5FE15700474956 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +188,6 @@
 		4C298E502C5FDC2000474956 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EAB2C5FDE2100474956 /* DesignSystem */,
 				4C298E5D2C5FDC2100474956 /* Plan.entitlements */,
 				4C298E5C2C5FDC2100474956 /* Info.plist */,
 				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
@@ -195,6 +196,7 @@
 				4C298E7F2C5FDC5700474956 /* Resource */,
 				4C298E532C5FDC2000474956 /* ViewController.swift */,
 				4C298E552C5FDC2000474956 /* Document.swift */,
+				4C298EAB2C5FDE2100474956 /* DesignSystem */,
 				4C298E802C5FDD2C00474956 /* Docs */,
 			);
 			path = Plan;
@@ -252,9 +254,8 @@
 		4C298E822C5FDD5A00474956 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4C298E882C5FDD8200474956 /* Dictionary+Extension.swift */,
-				4C298E892C5FDD8200474956 /* Sequence+Extension.swift */,
 				4C298E832C5FDD6900474956 /* Tree */,
+				4C298EE92C5FE4B100474956 /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -358,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */,
+				4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -382,6 +384,15 @@
 				4C298EB62C5FDE6700474956 /* NSScrollView+Extension.swift */,
 				4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */,
 				4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C298EE92C5FE4B100474956 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C298E892C5FDD8200474956 /* Sequence+Extension.swift */,
+				4C298E882C5FDD8200474956 /* Dictionary+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -536,6 +547,7 @@
 				4C298EBD2C5FDE6700474956 /* NSImage+Extension.swift in Sources */,
 				4C298EBC2C5FDE6700474956 /* NSOutlineView+Extension.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
+				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,
