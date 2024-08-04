@@ -98,13 +98,13 @@
 		4C298E502C5FDC2000474956 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				4C298E5D2C5FDC2100474956 /* Plan.entitlements */,
+				4C298E5C2C5FDC2100474956 /* Info.plist */,
 				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
+				4C298E7F2C5FDC5700474956 /* Resource */,
 				4C298E532C5FDC2000474956 /* ViewController.swift */,
 				4C298E552C5FDC2000474956 /* Document.swift */,
-				4C298E572C5FDC2100474956 /* Assets.xcassets */,
-				4C298E592C5FDC2100474956 /* Main.storyboard */,
-				4C298E5C2C5FDC2100474956 /* Info.plist */,
-				4C298E5D2C5FDC2100474956 /* Plan.entitlements */,
+				4C298E802C5FDD2C00474956 /* Docs */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -124,6 +124,30 @@
 				4C298E722C5FDC2100474956 /* PlanUITestsLaunchTests.swift */,
 			);
 			path = PlanUITests;
+			sourceTree = "<group>";
+		};
+		4C298E7F2C5FDC5700474956 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4C298E572C5FDC2100474956 /* Assets.xcassets */,
+				4C298E592C5FDC2100474956 /* Main.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4C298E802C5FDD2C00474956 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				4C298E812C5FDD3600474956 /* List */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		4C298E812C5FDD3600474956 /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
