@@ -34,7 +34,7 @@ protocol ListViewOutput {
 
 protocol HierarchyView: AnyObject {
 
-	func display(_ snapshot: HierarchySnapshot)
+	func display(_ model: ListUnitModel)
 
 	func setConfiguration(_ configuration: DropConfiguration)
 
@@ -106,27 +106,20 @@ class ListViewController: NSViewController {
 // MARK: - HierarchyView
 extension ListViewController: HierarchyView {
 
-	func display(_ snapshot: HierarchySnapshot) {
+	func display(_ model: ListUnitModel) {
 
-		adapter?.apply(snapshot)
-
-		let allCompleted = snapshot.root.map {
-			$0.status
-		}.allSatisfy {
-			$0
+		switch model {
+		case .placeholder(let title, let subtitle):
+			placeholderView.isHidden = false
+			placeholderView.subtitle = subtitle
+			placeholderView.title = title
+			adapter?.apply(.init())
+			bottomBar.model = .init()
+		case .regular(let snapshot, let status):
+			placeholderView.isHidden = true
+			adapter?.apply(snapshot)
+			bottomBar.model = status
 		}
-
-		if allCompleted && !snapshot.root.isEmpty {
-			bottomBar.text = "Все задания выполнены"
-		} else if snapshot.root.isEmpty {
-			bottomBar.text = "Заданий нет"
-		} else {
-			bottomBar.text = ""
-		}
-
-		placeholderView.isHidden = !snapshot.identifiers.isEmpty
-		placeholderView.title = "No Items, yet"
-		placeholderView.subtitle = "Add a new element using the plus."
 	}
 
 	func setConfiguration(_ configuration: DropConfiguration) {
@@ -191,8 +184,7 @@ private extension ListViewController {
 
 				bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				bottomBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-				bottomBar.heightAnchor.constraint(equalToConstant: 32)
+				bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 			]
 		)
 	}

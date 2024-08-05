@@ -18,14 +18,20 @@ final class ListPresenter {
 
 	weak var view: HierarchyView?
 
-	init(storage: DocumentStorage<HierarchyContent>) {
+	var statusFactory: ListUnitStatusFactoryProtocol
+
+	init(
+		storage: DocumentStorage<HierarchyContent>,
+		statusFactory: ListUnitStatusFactoryProtocol = ListUnitStatusFactory()
+	) {
 		self.storage = storage
+		self.statusFactory = statusFactory
 		storage.addObservation(for: self) { [weak self] _, content in
 			guard let self else {
 				return
 			}
-			let snapshot = makeSnapshot()
-			self.view?.display(snapshot)
+			let model = makeModel()
+			self.view?.display(model)
 		}
 	}
 }
@@ -34,7 +40,8 @@ final class ListPresenter {
 extension ListPresenter: ListViewOutput {
 
 	func viewDidLoad() {
-		view?.display(makeSnapshot())
+		let model = makeModel()
+		view?.display(model)
 		view?.setConfiguration(makeDropConfiguration())
 	}
 
@@ -108,6 +115,26 @@ extension ListPresenter: ListViewOutput {
 }
 
 extension ListPresenter {
+
+	func makeModel() -> ListUnitModel {
+		let snapshot = makeSnapshot()
+
+		let isCompleted = snapshot.root.map {
+			$0.status
+		}.allSatisfy {
+			$0
+		}
+
+		let model: ListUnitModel = if !snapshot.root.isEmpty {
+			.regular(snapshot: snapshot, status: statusFactory.makeModel(for: storage.state.hierarchy))
+		} else {
+			.placeholder(
+				title: "No Items, yet",
+				subtitle: "Add a new element using the plus."
+			)
+		}
+		return model
+	}
 
 	func makeNode(_ entity: Node<ItemContent>) -> TransferNode {
 		return TransferNode(value: entity.value, children: entity.children.map({ node in

@@ -35,6 +35,22 @@ extension Root {
 			item.setProperty(keyPath, to: value, downstream: downstream)
 		}
 	}
+
+	func allSatisfy<T: Equatable>(_ keyPath: KeyPath<Value, T>, equalsTo value: T) -> Bool {
+		return nodes.allSatisfy { $0.allSatisfy(keyPath, equalsTo: value) }
+	}
+
+	var count: Int {
+		return nodes.reduce(0) { partialResult, node in
+			return partialResult + node.count
+		}
+	}
+
+	func count<T: Equatable>(where keyPath: KeyPath<Value, T>, equalsTo value: T) -> Int {
+		return nodes.reduce(0) { partialResult, node in
+			return partialResult + node.count(where: keyPath, equalsTo: value)
+		}
+	}
 }
 
 // MARK: - Helpers

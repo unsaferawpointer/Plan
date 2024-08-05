@@ -60,6 +60,10 @@
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C298EE82C5FE17100474956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C298EE72C5FE15700474956 /* Main.storyboard */; };
 		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
+		4C81FB612C5FF9D7006300E6 /* ListUnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */; };
+		4C81FB632C600D88006300E6 /* ListUnitStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */; };
+		4C81FB652C601810006300E6 /* ListUnitLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* ListUnitLocalization.swift */; };
+		4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +142,10 @@
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C298EE72C5FE15700474956 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitModel.swift; sourceTree = "<group>"; };
+		4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitStatusFactory.swift; sourceTree = "<group>"; };
+		4C81FB642C601810006300E6 /* ListUnitLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitLocalization.swift; sourceTree = "<group>"; };
+		4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ListUnitLocalizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +339,10 @@
 				4C298EA42C5FDE0A00474956 /* ListItemView.swift */,
 				4C298EA52C5FDE0A00474956 /* ListPresenter.swift */,
 				4C298EA62C5FDE0A00474956 /* ListViewController.swift */,
+				4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */,
+				4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */,
+				4C81FB642C601810006300E6 /* ListUnitLocalization.swift */,
+				4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -483,6 +495,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 4C298E452C5FDC2000474956;
 			productRefGroup = 4C298E4F2C5FDC2000474956 /* Products */;
@@ -502,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
+				4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */,
 				4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,8 +541,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C81FB612C5FF9D7006300E6 /* ListUnitModel.swift in Sources */,
 				4C298EBF2C5FDE6700474956 /* NSTextField+Extension.swift in Sources */,
 				4C298E542C5FDC2000474956 /* ViewController.swift in Sources */,
+				4C81FB652C601810006300E6 /* ListUnitLocalization.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
@@ -548,6 +564,7 @@
 				4C298EBC2C5FDE6700474956 /* NSOutlineView+Extension.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
+				4C81FB632C600D88006300E6 /* ListUnitStatusFactory.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,

@@ -9,7 +9,19 @@ import Cocoa
 
 class BottomBar: NSView {
 
-	var text: String = "Estimation - 12 sp" {
+	var model: Model = .init() {
+		didSet {
+			configureInterface()
+		}
+	}
+
+	var progressValue: Double = 0.0 {
+		didSet {
+			configureInterface()
+		}
+	}
+
+	var trailingText: String = "" {
 		didSet {
 			configureInterface()
 		}
@@ -19,7 +31,7 @@ class BottomBar: NSView {
 
 	lazy var background: NSVisualEffectView = {
 		let view = NSVisualEffectView(frame: .zero)
-		view.blendingMode = .behindWindow
+		view.blendingMode = .withinWindow
 		view.material = .headerView
 		return view
 	}()
@@ -30,7 +42,7 @@ class BottomBar: NSView {
 		return view
 	}()
 
-	lazy var label: NSTextField = {
+	lazy var leadingLabel: NSTextField = {
 		let view = NSTextField(frame: .zero)
 		view.isEditable = false
 		view.usesSingleLineMode = true
@@ -38,6 +50,33 @@ class BottomBar: NSView {
 		view.drawsBackground = false
 		view.textColor = .secondaryLabelColor
 		view.font = NSFont.preferredFont(forTextStyle: .callout)
+		return view
+	}()
+
+	lazy var trailingLabel: NSTextField = {
+		let view = NSTextField(frame: .zero)
+		view.isEditable = false
+		view.usesSingleLineMode = true
+		view.isBordered = false
+		view.drawsBackground = false
+		view.textColor = .secondaryLabelColor
+		view.font = NSFont.preferredFont(forTextStyle: .callout)
+		return view
+	}()
+
+	lazy var progress: NSProgressIndicator = {
+		let view = NSProgressIndicator(frame: .zero)
+		view.controlTint = .graphiteControlTint
+		view.isIndeterminate = false
+		view.minValue = 0.0
+		view.maxValue = 100.0
+		return view
+	}()
+
+	lazy var stack: NSStackView = {
+		let view = NSStackView(views: [leadingLabel, NSView(), trailingLabel])
+		view.orientation = .horizontal
+		view.spacing = 0
 		return view
 	}()
 
@@ -61,19 +100,21 @@ class BottomBar: NSView {
 extension BottomBar {
 
 	func configureInterface() {
-		label.stringValue = text
+		leadingLabel.stringValue = model.leadingText
+		trailingLabel.stringValue = model.trailingText
+		progress.doubleValue = model.progress ?? 0
 	}
 
 	func configureConstraints() {
 
-		[background].forEach {
+		[background, divider].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			addSubview($0)
 		}
 
-		[label, divider].forEach {
+		[stack, progress].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
-			addSubview($0)
+			background.addSubview($0)
 		}
 
 		NSLayoutConstraint.activate(
@@ -88,11 +129,39 @@ extension BottomBar {
 				background.bottomAnchor.constraint(equalTo: bottomAnchor),
 				background.topAnchor.constraint(equalTo: topAnchor),
 
-				label.leadingAnchor.constraint(greaterThanOrEqualTo: background.leadingAnchor, constant: 24),
-				label.trailingAnchor.constraint(lessThanOrEqualTo: background.trailingAnchor, constant: -24),
-				label.centerYAnchor.constraint(equalTo: background.centerYAnchor),
-				label.centerXAnchor.constraint(equalTo: background.centerXAnchor)
+				stack.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 24),
+				stack.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -24),
+				stack.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
+				stack.bottomAnchor.constraint(equalTo: progress.topAnchor),
+
+				progress.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 24),
+				progress.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -24),
+				progress.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -8)
 			]
 		)
+	}
+}
+
+// MARK: - Nested data structs
+extension BottomBar {
+
+	struct Model {
+
+		let leadingText: String
+		let trailingText: String
+
+		let progress: Double?
+
+		// MARK: - Initialization
+
+		init(
+			leadingText: String = "",
+			trailingText: String = "",
+			progress: Double? = nil
+		) {
+			self.leadingText = leadingText
+			self.trailingText = trailingText
+			self.progress = progress
+		}
 	}
 }

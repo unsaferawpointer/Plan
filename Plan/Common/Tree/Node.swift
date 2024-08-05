@@ -69,6 +69,15 @@ extension Node {
 		}
 	}
 
+	var count: Int {
+		guard !children.isEmpty else {
+			return 1
+		}
+		return children.reduce(0) { partialResult, node in
+			return partialResult + node.count
+		}
+	}
+
 	func reduce(_ keyPath: KeyPath<Value, Bool>) -> Bool {
 		guard !children.isEmpty else {
 			return value[keyPath: keyPath]
@@ -84,6 +93,15 @@ extension Node {
 		}
 		return children.reduce(0) { partialResult, node in
 			return partialResult + node.reduce(keyPath)
+		}
+	}
+
+	func count<T: Equatable>(where keyPath: KeyPath<Value, T>, equalsTo value: T) -> Int {
+		guard !children.isEmpty else {
+			return self.value[keyPath: keyPath] == value ? 1 : 0
+		}
+		return children.reduce(0) { partialResult, node in
+			return partialResult + node.count(where: keyPath, equalsTo: value)
 		}
 	}
 
