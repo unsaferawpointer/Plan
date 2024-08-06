@@ -175,7 +175,7 @@ private extension ListViewController {
 				scrollview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
-				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				scrollview.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
 
 				placeholderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				placeholderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
