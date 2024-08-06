@@ -64,6 +64,7 @@
 		4C81FB632C600D88006300E6 /* ListUnitStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */; };
 		4C81FB652C601810006300E6 /* ListUnitLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* ListUnitLocalization.swift */; };
 		4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */; };
+		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitStatusFactory.swift; sourceTree = "<group>"; };
 		4C81FB642C601810006300E6 /* ListUnitLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitLocalization.swift; sourceTree = "<group>"; };
 		4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ListUnitLocalizable.xcstrings; sourceTree = "<group>"; };
+		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 				4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */,
 				4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */,
 				4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */,
+				4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */,
 			);
 			path = TableAdapter;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				4C298ED12C5FDEA500474956 /* DocumentError.swift in Sources */,
 				4C298EBD2C5FDE6700474956 /* NSImage+Extension.swift in Sources */,
 				4C298EBC2C5FDE6700474956 /* NSOutlineView+Extension.swift in Sources */,
+				4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4C81FB632C600D88006300E6 /* ListUnitStatusFactory.swift in Sources */,

@@ -145,30 +145,6 @@ extension ListPresenter {
 	func makeDropConfiguration() -> DropConfiguration {
 		var configuration = DropConfiguration()
 		configuration.types = [.id, .item]
-		configuration.onMove = { [weak self] ids, destination in
-			guard let self else {
-				return
-			}
-			storage.modificate { content in
-				content.moveItems(with: ids, to: destination)
-			}
-		}
-		configuration.invalidateMoving = { [weak self] ids, destination in
-			guard let self else {
-				return false
-			}
-			return self.storage.state.validateMoving(ids, to: destination)
-		}
-
-		configuration.onInsert = { [weak self] transferNodes, destination in
-			guard let self else {
-				return
-			}
-			self.storage.modificate { content in
-				content.insertItems(from: transferNodes, to: destination)
-			}
-		}
-
 		return configuration
 	}
 
@@ -230,6 +206,26 @@ extension ListPresenter {
 						content.setStatus(newStatus, for: [entity.id])
 					}
 				}
+		}
+	}
+}
+
+// MARK: - HierarchyDropDelegate
+extension ListPresenter: HierarchyDropDelegate {
+
+	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
+		storage.modificate { content in
+			content.moveItems(with: ids, to: destination)
+		}
+	}
+	
+	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool {
+		return self.storage.state.validateMoving(ids, to: destination)
+	}
+	
+	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
+		storage.modificate { content in
+			content.insertItems(from: nodes, to: destination)
 		}
 	}
 }

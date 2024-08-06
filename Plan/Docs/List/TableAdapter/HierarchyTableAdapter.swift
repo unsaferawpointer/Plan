@@ -39,6 +39,8 @@ final class HierarchyTableAdapter: NSObject {
 
 	var cache: [UUID: ListItem] = [:]
 
+	weak var dropDelegate: HierarchyDropDelegate?
+
 	// MARK: - Initialization
 
 	init(table: NSOutlineView) {
@@ -351,7 +353,8 @@ extension HierarchyTableAdapter {
 		let identifiers = getIdentifiers(from: info)
 
 		if isLocal(from: info) {
-			return dropConfiguration.invalidateMoving?(identifiers, destination) ?? true ? .private : []
+			let isValid = dropDelegate?.validateMoving(ids: identifiers, to: destination) ?? false
+			return isValid ? .private : []
 		}
 
 		return .copy
@@ -363,12 +366,15 @@ extension HierarchyTableAdapter {
 
 		if isLocal(from: info) {
 			let identifiers = getIdentifiers(from: info)
-			dropConfiguration?.onMove?(identifiers, destination)
-
-			NSAnimationContext.runAnimationGroup { context in
-				table?.animator().expandItem(item)
+			if let delegate = dropDelegate {
+				delegate.move(ids: identifiers, to: destination)
+				NSAnimationContext.runAnimationGroup { context in
+					table?.animator().expandItem(item)
+				}
+				return true
+			} else {
+				return false
 			}
-			return true
 		} else {
 			let pasteboardItems = info.draggingPasteboard.pasteboardItems
 
@@ -385,9 +391,15 @@ extension HierarchyTableAdapter {
 				nodes.append(node)
 			}
 
-			dropConfiguration?.onInsert?(nodes, destination)
-
-			return true
+			if let delegate = dropDelegate {
+				delegate.insert(nodes, to: destination)
+				NSAnimationContext.runAnimationGroup { context in
+					table?.animator().expandItem(item)
+				}
+				return true
+			} else {
+				return false
+			}
 		}
 	}
 }
