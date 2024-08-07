@@ -191,21 +191,8 @@ extension ListPresenter {
 				number: entity.reduce(\.count),
 				menu: menu,
 				animateIcon: false,
-				provider: provider) { [weak self] newText in
-					guard let self else {
-						return
-					}
-					storage.modificate { content in
-						content.setText(newText, for: entity.id)
-					}
-				} statusDidChange: { [weak self] newStatus in
-					guard let self else {
-						return
-					}
-					storage.modificate { content in
-						content.setStatus(newStatus, for: [entity.id])
-					}
-				}
+				provider: provider
+			)
 		}
 	}
 }
@@ -226,6 +213,22 @@ extension ListPresenter: HierarchyDropDelegate {
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
 		storage.modificate { content in
 			content.insertItems(from: nodes, to: destination)
+		}
+	}
+}
+
+// MARK: - ListItemViewOutput
+extension ListPresenter: ListItemViewOutput {
+
+	func textfieldDidChange(_ id: UUID, newText: String) {
+		storage.modificate { content in
+			content.setText(newText, for: id)
+		}
+	}
+
+	func checkboxDidChange(_ id: UUID, newValue: Bool) {
+		storage.modificate { content in
+			content.setStatus(newValue, for: [id])
 		}
 	}
 }

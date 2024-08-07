@@ -7,7 +7,14 @@
 
 import Cocoa
 
+protocol ListItemViewOutput: AnyObject {
+	func textfieldDidChange(_ id: UUID, newText: String)
+	func checkboxDidChange(_ id: UUID, newValue: Bool)
+}
+
 final class ListItemView: NSView {
+
+	weak var delegate: ListItemViewOutput?
 
 	static var reuseIdentifier: String = "label"
 
@@ -151,7 +158,7 @@ extension ListItemView {
 		guard sender === textfield else {
 			return
 		}
-		model.textDidChange(sender.stringValue)
+		delegate?.textfieldDidChange(model.id, newText: sender.stringValue)
 	}
 
 	@objc
@@ -159,6 +166,6 @@ extension ListItemView {
 		guard sender === checkbox else {
 			return
 		}
-		model.statusDidChange(sender.state == .on)
+		delegate?.checkboxDidChange(model.id, newValue: sender.state == .on)
 	}
 }

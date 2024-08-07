@@ -39,7 +39,7 @@ final class HierarchyTableAdapter: NSObject {
 
 	var cache: [UUID: ListItem] = [:]
 
-	weak var dropDelegate: HierarchyDropDelegate?
+	weak var delegate: (HierarchyDropDelegate & ListItemViewOutput)?
 
 	// MARK: - Initialization
 
@@ -254,6 +254,7 @@ extension HierarchyTableAdapter: NSOutlineViewDelegate {
 		}
 
 		view?.model = model
+		view?.delegate = delegate
 
 		return view
 	}
@@ -353,7 +354,7 @@ extension HierarchyTableAdapter {
 		let identifiers = getIdentifiers(from: info)
 
 		if isLocal(from: info) {
-			let isValid = dropDelegate?.validateMoving(ids: identifiers, to: destination) ?? false
+			let isValid = delegate?.validateMoving(ids: identifiers, to: destination) ?? false
 			return isValid ? .private : []
 		}
 
@@ -366,7 +367,7 @@ extension HierarchyTableAdapter {
 
 		if isLocal(from: info) {
 			let identifiers = getIdentifiers(from: info)
-			if let delegate = dropDelegate {
+			if let delegate = delegate {
 				delegate.move(ids: identifiers, to: destination)
 				NSAnimationContext.runAnimationGroup { context in
 					table?.animator().expandItem(item)
@@ -391,7 +392,7 @@ extension HierarchyTableAdapter {
 				nodes.append(node)
 			}
 
-			if let delegate = dropDelegate {
+			if let delegate = delegate {
 				delegate.insert(nodes, to: destination)
 				NSAnimationContext.runAnimationGroup { context in
 					table?.animator().expandItem(item)

@@ -27,10 +27,6 @@ struct HierarchyModel {
 
 	var provider: ((UUID) -> TransferNode?)?
 
-	var textDidChange: (String) -> ()
-
-	var statusDidChange: (Bool) -> ()
-
 	// MARK: - Initialization
 
 	init(
@@ -42,9 +38,7 @@ struct HierarchyModel {
 		number: Int,
 		menu: MenuItem,
 		animateIcon: Bool,
-		provider: ((UUID) -> TransferNode?)?,
-		textDidChange: @escaping (String) -> (),
-		statusDidChange: @escaping (Bool) -> ()
+		provider: ((UUID) -> TransferNode?)?
 	) {
 		self.uuid = uuid
 		self.status = status
@@ -55,8 +49,6 @@ struct HierarchyModel {
 		self.menu = menu
 		self.animateIcon = animateIcon
 		self.provider = provider
-		self.textDidChange = textDidChange
-		self.statusDidChange = statusDidChange
 	}
 }
 

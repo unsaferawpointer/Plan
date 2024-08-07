@@ -53,7 +53,7 @@ class ListViewController: NSViewController {
 
 	var adapter: HierarchyTableAdapter?
 
-	var output: (ListViewOutput & HierarchyDropDelegate)?
+	var output: (ListViewOutput & HierarchyDropDelegate & ListItemViewOutput)?
 
 	// MARK: - Computed properties
 
@@ -124,7 +124,7 @@ extension ListViewController: HierarchyView {
 
 	func setConfiguration(_ configuration: DropConfiguration) {
 		adapter?.dropConfiguration = configuration
-		adapter?.dropDelegate = output
+		adapter?.delegate = output
 	}
 
 	func scroll(to id: UUID) {
