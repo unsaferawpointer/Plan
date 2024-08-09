@@ -14,11 +14,7 @@ protocol ListUnitLocalizationProtocol {
 	func progressText(for progress: Double) -> String
 }
 
-
-final class ListUnitLocalization {
-
-
-}
+final class ListUnitLocalization { }
 
 // MARK: - ListUnitLocalizationProtocol
 extension ListUnitLocalization: ListUnitLocalizationProtocol {
@@ -36,7 +32,7 @@ extension ListUnitLocalization: ListUnitLocalizationProtocol {
 	}
 
 	func progressText(for progress: Double) -> String {
-		var formatter = NumberFormatter()
+		let formatter = NumberFormatter()
 		formatter.numberStyle = .percent
 		formatter.maximumFractionDigits = 0
 		return formatter.string(from: NSNumber(value: progress)) ?? ""

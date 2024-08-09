@@ -28,11 +28,11 @@ final class HierarchyAnimator {
 
 		calculate(in: nil, animate: animate) { parent in
 			guard let parent else {
-				return (old: old.root.map(\.id), new: new.root.map(\.id))
+				return (old: old.root, new: new.root)
 			}
 			return (
-				old: old.storage[unsafe: parent].map(\.id),
-				new: new.storage[unsafe: parent].map(\.id)
+				old: old.storage[unsafe: parent],
+				new: new.storage[unsafe: parent]
 			)
 		}
 	}

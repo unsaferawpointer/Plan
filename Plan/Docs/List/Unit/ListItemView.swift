@@ -20,14 +20,9 @@ final class ListItemView: NSView {
 
 	var model: HierarchyModel {
 		didSet {
-			let iconChanged = oldValue.effectiveIcon != model.effectiveIcon
-			updateUserInterface(iconChanged: iconChanged)
+			updateUserInterface()
 		}
 	}
-
-	// MARK: - Internal state
-
-	var isReady = false
 
 	// MARK: - UI-Properties
 
@@ -97,7 +92,6 @@ final class ListItemView: NSView {
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
-		self.isReady = false
 	}
 
 	override func becomeFirstResponder() -> Bool {
@@ -109,28 +103,27 @@ final class ListItemView: NSView {
 // MARK: - Helpers
 private extension ListItemView {
 
-	func updateUserInterface(iconChanged: Bool) {
+	func updateUserInterface() {
 
-		textfield.text = model.text
-		textfield.textColor = model.status ? .secondaryLabelColor : .labelColor
+		let content = model.content
+
+		textfield.text = content.text
+		textfield.textColor = content.textColor.colorValue
 
 		badge.isHidden = !model.hasBadge
-		badge.title = "\(model.number)"
+		badge.title = "\(content.number)"
 
-		checkbox.isHidden = !model.style.isCheckbox
-		checkbox.state = model.status ? .on : .off
+		checkbox.isHidden = !content.style.isCheckbox
+		checkbox.state = content.isOn ? .on : .off
 
-		let isHidden = !(model.style.hasIcon || model.isFavorite)
-		imageView.image = NSImage(systemSymbolName: model.effectiveIcon)
-		imageView.contentTintColor = model.isFavorite && !model.status ? .systemYellow : .textColor
-		imageView.isHidden = isHidden
-
-		if iconChanged && isReady {
-			if #available(macOS 14.0, *) {
-				imageView.addSymbolEffect(.bounce)
-			}
+		switch content.style {
+		case .checkbox:
+			imageView.isHidden = true
+		case .icon(let name, let color):
+			imageView.isHidden = false
+			imageView.image = NSImage(systemSymbolName: name)
+			imageView.contentTintColor = color.colorValue
 		}
-		self.isReady = true
 	}
 
 	func configureConstraints() {

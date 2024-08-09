@@ -11,19 +11,9 @@ struct HierarchyModel {
 
 	var uuid: UUID
 
-	var status: Bool
-
-	var text: String
-
-	var style: Style
-
-	var isFavorite: Bool
-
-	var number: Int
+	var content: Content
 
 	var menu: MenuItem
-
-	var animateIcon: Bool
 
 	var provider: ((UUID) -> TransferNode?)?
 
@@ -31,23 +21,13 @@ struct HierarchyModel {
 
 	init(
 		uuid: UUID = UUID(),
-		status: Bool,
-		text: String,
-		style: Style = .checkbox,
-		isFavorite: Bool,
-		number: Int,
+		content: Content,
 		menu: MenuItem,
-		animateIcon: Bool,
 		provider: ((UUID) -> TransferNode?)?
 	) {
 		self.uuid = uuid
-		self.status = status
-		self.text = text
-		self.style = style
-		self.isFavorite = isFavorite
-		self.number = number
+		self.content = content
 		self.menu = menu
-		self.animateIcon = animateIcon
 		self.provider = provider
 	}
 }
@@ -75,27 +55,46 @@ extension HierarchyModel: Hashable {
 extension HierarchyModel {
 
 	var hasBadge: Bool {
-		return number > 0
+		return content.number > 0
 	}
 
-	var effectiveIcon: String? {
-		switch style {
-		case .checkbox:
-			return isFavorite ? "star.fill" : nil
-		case .list:
-			return isFavorite ? "star.fill" : "doc.text"
-		case .icon(let name):
-			return isFavorite ? "star.fill" : name
-		}
-	}
+//	var effectiveIcon: String? {
+//		switch content.style {
+//		case .checkbox:
+//			content.isFavorite ? "star.fill" : nil
+//		case .list:
+//			content.isFavorite ? "star.fill" : "doc.text"
+//		case .icon(let name):
+//			content.isFavorite ? "star.fill" : name
+//		}
+//	}
 }
 
+// MARK: - Nested data structs
 extension HierarchyModel {
 
 	enum Style: Equatable {
 		case checkbox
-		case list
-		case icon(_ name: String)
+		case icon(_ name: String, color: Color)
+	}
+
+	enum Color {
+		case primary
+		case secondary
+		case yellow
+	}
+
+	struct Content {
+
+		var isOn: Bool
+
+		var text: String
+
+		var textColor: Color
+
+		var style: Style
+
+		var number: Int
 	}
 }
 
@@ -113,5 +112,20 @@ extension HierarchyModel.Style {
 
 	var isCheckbox: Bool {
 		return self == .checkbox
+	}
+}
+
+// MARK: - Computed properties
+extension HierarchyModel.Color {
+
+	var colorValue: NSColor {
+		switch self {
+		case .primary:
+			return .labelColor
+		case .secondary:
+			return .secondaryLabelColor
+		case .yellow:
+			return .systemYellow
+		}
 	}
 }

@@ -13,9 +13,13 @@ struct HierarchySnapshot {
 
 	typealias Model = HierarchyModel
 
-	private(set) var root: [Model] = []
+	// MARK: - Hierarchy
 
-	private(set) var storage: [ID: [Model]] = [:]
+	private(set) var root: [ID] = []
+
+	private(set) var storage: [ID: [ID]] = [:]
+
+	// MARK: - Cache
 
 	private(set) var cache: [ID: Model] = [:]
 
@@ -24,8 +28,12 @@ struct HierarchySnapshot {
 	// MARK: - Initialization
 
 	init(_ base: [Node<ItemContent>], transform: (Node<ItemContent>) -> Model) {
-		self.root = base.map { container in
-			makeItem(base: container, transform: transform)
+		self.root = base.map(\.id)
+		base.forEach { node in
+			normalize(base: node, parent: nil)
+		}
+		base.forEach { node in
+			makeItem(base: node, transform: transform)
 		}
 	}
 
@@ -37,11 +45,15 @@ struct HierarchySnapshot {
 extension HierarchySnapshot {
 
 	func rootItem(at index: Int) -> Model {
-		return root[index]
+		let id = root[index]
+		guard let model = cache[id] else {
+			fatalError()
+		}
+		return model
 	}
 
 	func rootIdentifier(at index: Int) -> ID {
-		return root[index].id
+		return root[index]
 	}
 
 	func numberOfRootItems() -> Int {
@@ -56,10 +68,10 @@ extension HierarchySnapshot {
 	}
 
 	func childOfItem(_ id: ID, at index: Int) -> Model {
-		guard let children = storage[id] else {
+		guard let id = storage[id]?[index], let model = cache[id] else {
 			fatalError()
 		}
-		return children[index]
+		return model
 	}
 
 	func model(with id: ID) -> Model {
@@ -70,17 +82,33 @@ extension HierarchySnapshot {
 // MARK: - Helpers
 private extension HierarchySnapshot {
 
-	mutating func makeItem(base: Node<ItemContent>, transform: (Node<ItemContent>) -> Model) -> Model {
-
-		let item = transform(base)
+	mutating func normalize(base: Node<ItemContent>, parent: ID?) {
 
 		// Store in cache
-		identifiers.insert(item.id)
-		cache[item.id] = item
+		identifiers.insert(base.id)
+		storage[base.id] = base.children.map(\.id)
 
-		storage[base.id] = base.children.map { entity in
+		for child in base.children {
+			normalize(base: child, parent: base.id)
+		}
+	}
+
+	mutating func makeItem(base: Node<ItemContent>, transform: (Node<ItemContent>) -> Model) {
+
+		// Store in cache
+		cache[base.id] = transform(base)
+
+		base.children.forEach { entity in
 			makeItem(base: entity, transform: transform)
 		}
-		return item
+	}
+}
+
+// MARK: - Nested data structs
+extension HierarchySnapshot {
+
+	struct Info {
+		var isDone: Bool
+		var number: Int
 	}
 }

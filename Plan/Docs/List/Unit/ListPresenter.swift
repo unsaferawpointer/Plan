@@ -40,9 +40,10 @@ final class ListPresenter {
 extension ListPresenter: ListViewOutput {
 
 	func viewDidLoad() {
-		let model = makeModel()
-		view?.display(model)
-		view?.setConfiguration(makeDropConfiguration())
+		view?.display(makeModel())
+		view?.setConfiguration(
+			DropConfiguration(types: [.id, .item])
+		)
 	}
 
 	func deleteItems(_ ids: [UUID]) {
@@ -69,7 +70,6 @@ extension ListPresenter: ListViewOutput {
 			view?.expand(first)
 		}
 		view?.focus(on: id)
-
 	}
 
 	func setState(_ flag: Bool, withSelection selection: [UUID]) {
@@ -119,14 +119,12 @@ extension ListPresenter {
 	func makeModel() -> ListUnitModel {
 		let snapshot = makeSnapshot()
 
-		let isCompleted = snapshot.root.map {
-			$0.status
-		}.allSatisfy {
-			$0
-		}
+		let isCompleted = storage.state.hierarchy.allSatisfy(\.isDone, equalsTo: true)
+
+		let status = statusFactory.makeModel(for: storage.state.hierarchy)
 
 		let model: ListUnitModel = if !snapshot.root.isEmpty {
-			.regular(snapshot: snapshot, status: statusFactory.makeModel(for: storage.state.hierarchy))
+			.regular(snapshot: snapshot, status: status)
 		} else {
 			.placeholder(
 				title: "No Items, yet",
@@ -142,57 +140,82 @@ extension ListPresenter {
 		}))
 	}
 
-	func makeDropConfiguration() -> DropConfiguration {
-		var configuration = DropConfiguration()
-		configuration.types = [.id, .item]
-		return configuration
-	}
-
 	func makeSnapshot() -> HierarchySnapshot {
 		let items = storage.state.hierarchy.nodes
 		return HierarchySnapshot(items) { entity in
+
+			let isDone = entity.reduce(\.isDone)
+			let isFavorite = entity.value.isFavorite
+
+			let isLeaf = entity.children.count == 0
+			let icon = entity.value.iconName
+
 			let menu = MenuItem(
 				state:
 					[
-						"set_status_menu_item" : entity.reduce(\.isDone) ? .on : .off,
-						"bookmark_menu_item" : entity.value.isFavorite ? .on : .off
+						"set_status_menu_item" : isDone ? .on : .off,
+						"bookmark_menu_item" : isFavorite ? .on : .off
 					],
 				validation:
 					[
 						"set_status_menu_item" : true,
 						"bookmark_menu_item": true,
 						"delete_menu_item": true,
-						"set_estimation_menu_item": entity.children.count == 0
+						"set_estimation_menu_item": isLeaf
 					]
 			)
 
-			let style: HierarchyModel.Style = {
-				if entity.children.count > 0 {
-					if let name = entity.value.iconName {
-						return .icon(name)
-					} else {
-						return .list
-					}
-				} else {
-					return .checkbox
-				}
-			}()
+			let style = makeStyle(
+				isDone: isDone,
+				isFavorite: isFavorite,
+				icon: icon,
+				isLeaf: isLeaf
+			)
 
 			let provider = { [weak self] (identifier: UUID) -> TransferNode? in
 				return self?.makeNode(entity)
 			}
 
+			let status = entity.reduce(\.isDone)
+			let number = entity.reduce(\.count)
+
+			let textColor: HierarchyModel.Color = isDone ? .secondary : .primary
+
+			let content: HierarchyModel.Content = .init(
+				isOn: status,
+				text: entity.value.text, 
+				textColor: textColor,
+				style: style,
+				number: number
+			)
+
 			return HierarchyModel(
 				uuid: entity.value.uuid,
-				status: entity.reduce(\.isDone),
-				text: entity.value.text,
-				style: style,
-				isFavorite: entity.value.options.contains(.favorite),
-				number: entity.reduce(\.count),
+				content: content,
 				menu: menu,
-				animateIcon: false,
 				provider: provider
 			)
+		}
+	}
+}
+
+extension ListPresenter {
+
+	func makeStyle(isDone: Bool, isFavorite: Bool, icon: String?, isLeaf: Bool) -> HierarchyModel.Style {
+
+		guard !isLeaf else {
+			return .checkbox
+		}
+
+		switch (isDone, isFavorite) {
+		case (true, true):
+			return .icon(icon ?? "doc.text", color: .secondary)
+		case (true, false):
+			return .icon(icon ?? "doc.text", color: .secondary)
+		case (false, true):
+			return .icon("star.fill", color: .yellow)
+		case (false, false):
+			return .icon(icon ?? "doc.text", color: .primary)
 		}
 	}
 }
