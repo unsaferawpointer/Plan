@@ -10,6 +10,7 @@ import Foundation
 protocol ListUnitLocalizationProtocol {
 	var allTaskCompleted: String { get }
 	var emptyList: String { get }
+	var newItemTitle: String { get }
 	func statusMessage(for count: Int) -> String
 	func progressText(for progress: Double) -> String
 }
@@ -25,6 +26,10 @@ extension ListUnitLocalization: ListUnitLocalizationProtocol {
 
 	var emptyList: String {
 		return String(localized: "empty_list", table: "ListUnitLocalizable")
+	}
+
+	var newItemTitle: String {
+		return String(localized: "new_item_title", table: "ListUnitLocalizable")
 	}
 
 	func statusMessage(for count: Int) -> String {

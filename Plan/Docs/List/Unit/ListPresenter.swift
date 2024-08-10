@@ -7,14 +7,13 @@
 
 import Foundation
 
-protocol ListPresenterProtocol {
-	func deleteItems(_ ids: [UUID])
-	func createNew(with selection: [UUID])
+protocol ListPresenterProtocol: AnyObject {
+	func present(_ content: HierarchyContent)
 }
 
 final class ListPresenter {
 
-	var storage: DocumentStorage<HierarchyContent>
+	var interactor: ListInteractorProtocol?
 
 	weak var view: HierarchyView?
 
@@ -22,21 +21,32 @@ final class ListPresenter {
 
 	var modelFactory: ListModelFactoryProtocol
 
+	var localization: ListUnitLocalizationProtocol
+
 	init(
-		storage: DocumentStorage<HierarchyContent>,
 		statusFactory: ListUnitStatusFactoryProtocol = ListUnitStatusFactory(),
-		modelFactory: ListModelFactoryProtocol = ListModelFactory()
+		modelFactory: ListModelFactoryProtocol = ListModelFactory(),
+		localization: ListUnitLocalizationProtocol = ListUnitLocalization()
 	) {
-		self.storage = storage
 		self.statusFactory = statusFactory
 		self.modelFactory = modelFactory
-		storage.addObservation(for: self) { [weak self] _, content in
-			guard let self else {
-				return
-			}
-			let model = makeModel()
-			self.view?.display(model)
-		}
+		self.localization = localization
+	}
+}
+
+extension ListPresenter {
+
+	var selection: [UUID] {
+		return view?.selection ?? []
+	}
+}
+
+// MARK: - ListPresenterProtocol
+extension ListPresenter: ListPresenterProtocol {
+
+	func present(_ content: HierarchyContent) {
+		let model = makeModel(root: content.hierarchy)
+		self.view?.display(model)
 	}
 }
 
@@ -44,86 +54,71 @@ final class ListPresenter {
 extension ListPresenter: ListViewOutput {
 
 	func viewDidLoad() {
-		view?.display(makeModel())
 		view?.setConfiguration(
 			DropConfiguration(types: [.id, .item])
 		)
+		interactor?.fetchData()
 	}
 
-	func deleteItems(_ ids: [UUID]) {
-		storage.modificate { content in
-			content.deleteItems(ids)
+	func deleteItems() {
+		interactor?.deleteItems(selection)
+	}
+
+	func createNew() {
+		guard let interactor else {
+			return
 		}
-	}
 
-	func createNew(with selection: [UUID]) {
 		let first = selection.first
-		let id = UUID()
-		let itemContent = ItemContent(uuid: id, text: "New item", isDone: false, iconName: nil, count: 0, options: [])
-		let destination: HierarchyDestination = if let first {
-			.onItem(with: first)
-		} else {
-			.toRoot
-		}
+		let id = interactor.createNew(with: localization.newItemTitle, in: first)
 
-		storage.modificate { content in
-			content.insertItems(with: [itemContent], to: destination)
-		}
 		view?.scroll(to: id)
 		if let first {
-			view?.expand(first)
+			view?.expand([first])
 		}
 		view?.focus(on: id)
 	}
 
-	func setState(_ flag: Bool, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setStatus(flag, for: selection)
-		}
+	func setState(_ flag: Bool) {
+		interactor?.setState(flag, withSelection: selection)
 	}
 
-	func setBookmark(_ flag: Bool, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setFavoriteFlag(flag, for: selection)
-		}
+	func setBookmark(_ flag: Bool) {
+		interactor?.setBookmark(flag, withSelection: selection)
 	}
 
-	func setEstimation(_ value: Int, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setEstimation(value, for: selection)
-		}
+	func setEstimation(_ value: Int) {
+		interactor?.setEstimation(value, withSelection: selection)
 	}
 
-	func setIcon(_ value: String?, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setIcon(value, for: selection)
-		}
+	func setIcon(_ value: String?) {
+		interactor?.setIcon(value, withSelection: selection)
 	}
 
 	func canUndo() -> Bool {
-		storage.canUndo()
+		interactor?.canUndo() ?? false
 	}
 
 	func canRedo() -> Bool {
-		storage.canRedo()
+		interactor?.canRedo() ?? false
 	}
 
 	func redo() {
-		storage.redo()
+		interactor?.redo()
 	}
 
 	func undo() {
-		storage.undo()
+		interactor?.undo()
 	}
 
 }
 
 extension ListPresenter {
 
-	func makeModel() -> ListUnitModel {
-		let snapshot = makeSnapshot()
+	func makeModel(root: Root<ItemContent>) -> ListUnitModel {
+		let snapshot = makeSnapshot(root)
 
-		let status = statusFactory.makeModel(for: storage.state.hierarchy)
+		let status = statusFactory.makeModel(for: root)
 
 		let model: ListUnitModel = if !snapshot.root.isEmpty {
 			.regular(snapshot: snapshot, status: status)
@@ -136,8 +131,8 @@ extension ListPresenter {
 		return model
 	}
 
-	func makeSnapshot() -> HierarchySnapshot {
-		let items = storage.state.hierarchy.nodes
+	func makeSnapshot(_ root: Root<ItemContent>) -> HierarchySnapshot {
+		let items = root.nodes
 		return HierarchySnapshot(items) { item, info in
 			modelFactory.makeModel(item: item, info: info)
 		}
@@ -148,19 +143,15 @@ extension ListPresenter {
 extension ListPresenter: HierarchyDropDelegate {
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
-		storage.modificate { content in
-			content.moveItems(with: ids, to: destination)
-		}
+		interactor?.move(ids: ids, to: destination)
 	}
 	
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool {
-		return self.storage.state.validateMoving(ids, to: destination)
+		return interactor?.validateMoving(ids: ids, to: destination) ?? false
 	}
 	
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
-		storage.modificate { content in
-			content.insertItems(from: nodes, to: destination)
-		}
+		interactor?.insert(nodes, to: destination)
 	}
 }
 
@@ -168,14 +159,10 @@ extension ListPresenter: HierarchyDropDelegate {
 extension ListPresenter: ListItemViewOutput {
 
 	func textfieldDidChange(_ id: UUID, newText: String) {
-		storage.modificate { content in
-			content.setText(newText, for: id)
-		}
+		interactor?.textDidChange(id, newText: newText)
 	}
 
 	func checkboxDidChange(_ id: UUID, newValue: Bool) {
-		storage.modificate { content in
-			content.setStatus(newValue, for: [id])
-		}
+		interactor?.statusDidChange(id, newValue: newValue)
 	}
 }

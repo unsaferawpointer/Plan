@@ -66,6 +66,7 @@
 		4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 		4C8C6CC52C6765F500E09697 /* ListModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */; };
+		4C8C6CC92C67ACA300E09697 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* ListInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ListUnitLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModelFactory.swift; sourceTree = "<group>"; };
+		4C8C6CC82C67ACA300E09697 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				4C298EA72C5FDE0A00474956 /* ListAssembly.swift */,
+				4C8C6CC82C67ACA300E09697 /* ListInteractor.swift */,
 				4C298EA42C5FDE0A00474956 /* ListItemView.swift */,
 				4C298EA52C5FDE0A00474956 /* ListPresenter.swift */,
 				4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */,
@@ -559,6 +562,7 @@
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
+				4C8C6CC92C67ACA300E09697 /* ListInteractor.swift in Sources */,
 				4C298ECB2C5FDEA500474956 /* Dictionary+Extension.swift in Sources */,
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
 				4C298ECD2C5FDEA500474956 /* DocumentFile.swift in Sources */,

@@ -11,17 +11,17 @@ protocol ListViewOutput {
 
 	func viewDidLoad()
 
-	func deleteItems(_ ids: [UUID])
+	func deleteItems()
 
-	func createNew(with selection: [UUID])
+	func createNew()
 
-	func setState(_ flag: Bool, withSelection selection: [UUID])
+	func setState(_ flag: Bool)
 
-	func setBookmark(_ flag: Bool, withSelection selection: [UUID])
+	func setBookmark(_ flag: Bool)
 
-	func setEstimation(_ value: Int, withSelection selection: [UUID])
+	func setEstimation(_ value: Int)
 
-	func setIcon(_ value: String?, withSelection selection: [UUID])
+	func setIcon(_ value: String?)
 
 	func canUndo() -> Bool
 
@@ -42,9 +42,11 @@ protocol HierarchyView: AnyObject {
 
 	func select(_ id: UUID)
 
-	func expand(_ id: UUID?)
+	func expand(_ ids: [UUID])
 
 	func focus(on id: UUID)
+
+	var selection: [UUID] { get }
 }
 
 class ListViewController: NSViewController {
@@ -54,12 +56,6 @@ class ListViewController: NSViewController {
 	var adapter: HierarchyTableAdapter?
 
 	var output: (ListViewOutput & HierarchyDropDelegate & ListItemViewOutput)?
-
-	// MARK: - Computed properties
-
-	var selection: [UUID] {
-		return table.selectedIdentifiers()
-	}
 
 	// MARK: - UI-Properties
 
@@ -100,6 +96,7 @@ class ListViewController: NSViewController {
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		table.sizeLastColumnToFit()
+		adapter?.expand([])
 	}
 }
 
@@ -135,12 +132,16 @@ extension ListViewController: HierarchyView {
 		adapter?.select(id)
 	}
 
-	func expand(_ id: UUID?) {
-		adapter?.expand(id)
+	func expand(_ ids: [UUID]) {
+		adapter?.expand(ids)
 	}
 
 	func focus(on id: UUID) {
 		adapter?.focus(on: id)
+	}
+
+	var selection: [UUID] {
+		return table.selectedIdentifiers()
 	}
 }
 
@@ -242,36 +243,36 @@ extension ListViewController: MenuSupportable {
 
 	@IBAction
 	func createNew(_ sender: NSMenuItem) {
-		output?.createNew(with: selection)
+		output?.createNew()
 	}
 
 	@IBAction
 	func delete(_ sender: NSMenuItem) {
-		output?.deleteItems(selection)
+		output?.deleteItems()
 	}
 
 	@IBAction
 	func toggleBookmark(_ sender: NSMenuItem) {
 		let enabled = sender.state == .on
-		output?.setBookmark(!enabled, withSelection: selection)
+		output?.setBookmark(!enabled)
 	}
 
 	@IBAction
 	func toggleCompleted(_ sender: NSMenuItem) {
 		let enabled = sender.state == .on
-		output?.setState(!enabled, withSelection: selection)
+		output?.setState(!enabled)
 	}
 
 	@IBAction
 	func setEstimation(_ sender: NSMenuItem) {
 		let number = sender.tag
-		output?.setEstimation(number, withSelection: selection)
+		output?.setEstimation(number)
 	}
 
 	@IBAction
 	func setIcon(_ sender: NSMenuItem) {
 		let iconName = sender.representedObject as? String
-		output?.setIcon(iconName, withSelection: selection)
+		output?.setIcon(iconName)
 	}
 
 	@IBAction

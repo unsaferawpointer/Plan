@@ -10,10 +10,14 @@ import Cocoa
 final class ListAssembly {
 
 	static func build(storage: DocumentStorage<HierarchyContent>) -> NSViewController {
-		let presenter = ListPresenter(storage: storage)
+		let presenter = ListPresenter()
+		let interactor = ListInteractor(storage: storage)
 		return ListViewController { viewController in
 			viewController.output = presenter
 			presenter.view = viewController
+
+			presenter.interactor = interactor
+			interactor.presenter = presenter
 		}
 	}
 }

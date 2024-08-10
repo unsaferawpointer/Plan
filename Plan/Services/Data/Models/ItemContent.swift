@@ -20,6 +20,24 @@ struct ItemContent {
 	var count: Int
 
 	var options: EntityOptions
+
+	// MARK: - Initialization
+
+	init(
+		uuid: UUID,
+		text: String,
+		isDone: Bool = false,
+		iconName: String? = nil,
+		count: Int = 0,
+		options: EntityOptions = []
+	) {
+		self.uuid = uuid
+		self.text = text
+		self.isDone = isDone
+		self.iconName = iconName
+		self.count = count
+		self.options = options
+	}
 }
 
 // MARK: - Hashable

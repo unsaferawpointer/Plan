@@ -57,17 +57,6 @@ extension HierarchyModel {
 	var hasBadge: Bool {
 		return content.number > 0
 	}
-
-//	var effectiveIcon: String? {
-//		switch content.style {
-//		case .checkbox:
-//			content.isFavorite ? "star.fill" : nil
-//		case .list:
-//			content.isFavorite ? "star.fill" : "doc.text"
-//		case .icon(let name):
-//			content.isFavorite ? "star.fill" : name
-//		}
-//	}
 }
 
 // MARK: - Nested data structs
