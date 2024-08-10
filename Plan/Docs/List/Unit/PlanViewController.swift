@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  PlanViewController.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 29.09.2023.
@@ -7,7 +7,7 @@
 
 import Cocoa
 
-protocol ListViewOutput {
+protocol PlanViewOutput {
 
 	func viewDidLoad()
 
@@ -34,7 +34,7 @@ protocol ListViewOutput {
 
 protocol HierarchyView: AnyObject {
 
-	func display(_ model: ListUnitModel)
+	func display(_ model: PlanModel)
 
 	func setConfiguration(_ configuration: DropConfiguration)
 
@@ -49,13 +49,13 @@ protocol HierarchyView: AnyObject {
 	var selection: [UUID] { get }
 }
 
-class ListViewController: NSViewController {
+class PlanViewController: NSViewController {
 
 	// MARK: - DI
 
 	var adapter: HierarchyTableAdapter?
 
-	var output: (ListViewOutput & HierarchyDropDelegate & ListItemViewOutput)?
+	var output: (PlanViewOutput & HierarchyDropDelegate & ListItemViewOutput)?
 
 	// MARK: - UI-Properties
 
@@ -69,7 +69,7 @@ class ListViewController: NSViewController {
 
 	// MARK: - Initialization
 
-	init(configure: (ListViewController) -> Void) {
+	init(configure: (PlanViewController) -> Void) {
 		super.init(nibName: nil, bundle: nil)
 		configure(self)
 		self.adapter = HierarchyTableAdapter(table: table)
@@ -101,9 +101,9 @@ class ListViewController: NSViewController {
 }
 
 // MARK: - HierarchyView
-extension ListViewController: HierarchyView {
+extension PlanViewController: HierarchyView {
 
-	func display(_ model: ListUnitModel) {
+	func display(_ model: PlanModel) {
 
 		switch model {
 		case .placeholder(let title, let subtitle):
@@ -146,7 +146,7 @@ extension ListViewController: HierarchyView {
 }
 
 // MARK: - Helpers
-private extension ListViewController {
+private extension PlanViewController {
 
 	func configureUserInterface() {
 
@@ -211,7 +211,7 @@ private extension ListViewController {
 }
 
 // MARK: - NSMenuItemValidation
-extension ListViewController: NSMenuItemValidation {
+extension PlanViewController: NSMenuItemValidation {
 
 	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
 		guard let identifier = menuItem.identifier, let adapter else {
@@ -239,7 +239,7 @@ extension ListViewController: NSMenuItemValidation {
 }
 
 // MARK: - MenuSupportable
-extension ListViewController: MenuSupportable {
+extension PlanViewController: MenuSupportable {
 
 	@IBAction
 	func createNew(_ sender: NSMenuItem) {

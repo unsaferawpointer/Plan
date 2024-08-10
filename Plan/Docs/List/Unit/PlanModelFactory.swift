@@ -1,5 +1,5 @@
 //
-//  ListModelFactory.swift
+//  PlanModelFactory.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 10.08.2024.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol ListModelFactoryProtocol {
+protocol PlanModelFactoryProtocol {
 	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> HierarchyModel
 }
 
-final class ListModelFactory { }
+final class PlanModelFactory { }
 
 // MARK: - ListModelFactoryProtocol
-extension ListModelFactory: ListModelFactoryProtocol {
+extension PlanModelFactory: PlanModelFactoryProtocol {
 
 	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> HierarchyModel {
 		let menu = makeMenu(
@@ -42,7 +42,7 @@ extension ListModelFactory: ListModelFactoryProtocol {
 }
 
 // MARK: - Helpers
-private extension ListModelFactory {
+private extension PlanModelFactory {
 
 	func makeContent(isDone: Bool, text: String, isFavorite: Bool, icon: String?, isLeaf: Bool, number: Int) -> HierarchyModel.Content {
 

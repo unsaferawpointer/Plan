@@ -7,12 +7,12 @@
 
 import Cocoa
 
-class ListDocument: NSDocument {
+class PlanDocument: NSDocument {
 
 	lazy var storage: DocumentStorage<HierarchyContent> = {
 		return DocumentStorage<HierarchyContent>(
 			initialState: .empty,
-			provider: ListDataProvider(), 
+			provider: PlanDataProvider(), 
 			undoManager: undoManager
 		)
 	}()
@@ -31,7 +31,7 @@ class ListDocument: NSDocument {
 		let windowController = storyboard.instantiateController(
 			withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")
 		) as! NSWindowController
-		windowController.window?.contentViewController = ListAssembly.build(storage: storage)
+		windowController.window?.contentViewController = PlanAssembly.build(storage: storage)
 		self.addWindowController(windowController)
 	}
 

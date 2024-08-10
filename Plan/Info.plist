@@ -16,7 +16,7 @@
 				<string>dev.paperwave.plan</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).ListDocument</string>
+			<string>$(PRODUCT_MODULE_NAME).PlanDocument</string>
 		</dict>
 	</array>
 	<key>UTImportedTypeDeclarations</key>

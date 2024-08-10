@@ -1,5 +1,5 @@
 //
-//  ListDataProvider.swift
+//  PlanDataProvider.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 27.09.2023.
@@ -8,14 +8,14 @@
 import Foundation
 
 /// Data provider of board document
-final class ListDataProvider {
+final class PlanDataProvider {
 
 	/// Last supported version
 	let lastVersion: Version = .v1
 }
 
 // MARK: - ContentProvider
-extension ListDataProvider: ContentProvider {
+extension PlanDataProvider: ContentProvider {
 
 	typealias Content = HierarchyContent
 
@@ -57,7 +57,7 @@ extension ListDataProvider: ContentProvider {
 }
 
 // MARK: - Helpers
-private extension ListDataProvider {
+private extension PlanDataProvider {
 
 	func migrate(_ data: Data) throws -> Content {
 
@@ -78,7 +78,7 @@ private extension ListDataProvider {
 }
 
 // MARK: - Nested data structs
-extension ListDataProvider {
+extension PlanDataProvider {
 
 	/// Version of a document file
 	enum Version: String {

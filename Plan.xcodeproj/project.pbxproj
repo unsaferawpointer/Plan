@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
 		4C298E542C5FDC2000474956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E532C5FDC2000474956 /* ViewController.swift */; };
-		4C298E562C5FDC2000474956 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E552C5FDC2000474956 /* Document.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E672C5FDC2100474956 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E662C5FDC2100474956 /* PlanTests.swift */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
@@ -42,16 +41,16 @@
 		4C298ED42C5FDEAC00474956 /* NodeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E872C5FDD7700474956 /* NodeValue.swift */; };
 		4C298ED52C5FDEAC00474956 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E852C5FDD7700474956 /* Root.swift */; };
 		4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */; };
-		4C298ED72C5FDEBC00474956 /* ListDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E992C5FDDE200474956 /* ListDocument.swift */; };
+		4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E992C5FDDE200474956 /* PlanDocument.swift */; };
 		4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAA2C5FDE1A00474956 /* ItemDataProvider.swift */; };
-		4C298ED92C5FDEBC00474956 /* ListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA72C5FDE0A00474956 /* ListAssembly.swift */; };
-		4C298EDA2C5FDEBC00474956 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA42C5FDE0A00474956 /* ListItemView.swift */; };
+		4C298ED92C5FDEBC00474956 /* PlanAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */; };
+		4C298EDA2C5FDEBC00474956 /* PlanItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */; };
 		4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA92C5FDE1A00474956 /* TransferNode.swift */; };
 		4C298EDC2C5FDEBC00474956 /* HierarchyDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */; };
-		4C298EDD2C5FDEBC00474956 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA52C5FDE0A00474956 /* ListPresenter.swift */; };
-		4C298EDE2C5FDEBC00474956 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA62C5FDE0A00474956 /* ListViewController.swift */; };
+		4C298EDD2C5FDEBC00474956 /* PlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */; };
+		4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA62C5FDE0A00474956 /* PlanViewController.swift */; };
 		4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E982C5FDDE200474956 /* HierarchyContent.swift */; };
-		4C298EE02C5FDEBC00474956 /* ListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9A2C5FDDE200474956 /* ListDataProvider.swift */; };
+		4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */; };
 		4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */; };
 		4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */; };
 		4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */; };
@@ -60,13 +59,13 @@
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C298EE82C5FE17100474956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C298EE72C5FE15700474956 /* Main.storyboard */; };
 		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
-		4C81FB612C5FF9D7006300E6 /* ListUnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */; };
-		4C81FB632C600D88006300E6 /* ListUnitStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */; };
-		4C81FB652C601810006300E6 /* ListUnitLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* ListUnitLocalization.swift */; };
-		4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */; };
+		4C81FB612C5FF9D7006300E6 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* PlanModel.swift */; };
+		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
+		4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* PlanLocalization.swift */; };
+		4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
-		4C8C6CC52C6765F500E09697 /* ListModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */; };
-		4C8C6CC92C67ACA300E09697 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* ListInteractor.swift */; };
+		4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */; };
+		4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +89,6 @@
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C298E532C5FDC2000474956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4C298E552C5FDC2000474956 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C298E5C2C5FDC2100474956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C298E5D2C5FDC2100474956 /* Plan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Plan.entitlements; sourceTree = "<group>"; };
@@ -116,8 +114,8 @@
 		4C298E962C5FDDCB00474956 /* EntityOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityOptions.swift; sourceTree = "<group>"; };
 		4C298E972C5FDDCB00474956 /* ItemContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContent.swift; sourceTree = "<group>"; };
 		4C298E982C5FDDE200474956 /* HierarchyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyContent.swift; sourceTree = "<group>"; };
-		4C298E992C5FDDE200474956 /* ListDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDocument.swift; sourceTree = "<group>"; };
-		4C298E9A2C5FDDE200474956 /* ListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataProvider.swift; sourceTree = "<group>"; };
+		4C298E992C5FDDE200474956 /* PlanDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDocument.swift; sourceTree = "<group>"; };
+		4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDataProvider.swift; sourceTree = "<group>"; };
 		4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyStringPresenter.swift; sourceTree = "<group>"; };
 		4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDestination.swift; sourceTree = "<group>"; };
 		4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyModel.swift; sourceTree = "<group>"; };
@@ -125,10 +123,10 @@
 		4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableAnimator.swift; sourceTree = "<group>"; };
 		4C298EA12C5FDDF800474956 /* DropConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConfiguration.swift; sourceTree = "<group>"; };
 		4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchySnapshot.swift; sourceTree = "<group>"; };
-		4C298EA42C5FDE0A00474956 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
-		4C298EA52C5FDE0A00474956 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
-		4C298EA62C5FDE0A00474956 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		4C298EA72C5FDE0A00474956 /* ListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAssembly.swift; sourceTree = "<group>"; };
+		4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItemCell.swift; sourceTree = "<group>"; };
+		4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPresenter.swift; sourceTree = "<group>"; };
+		4C298EA62C5FDE0A00474956 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAssembly.swift; sourceTree = "<group>"; };
 		4C298EA92C5FDE1A00474956 /* TransferNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferNode.swift; sourceTree = "<group>"; };
 		4C298EAA2C5FDE1A00474956 /* ItemDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataProvider.swift; sourceTree = "<group>"; };
 		4C298EAC2C5FDE2D00474956 /* IconCagetory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCagetory.swift; sourceTree = "<group>"; };
@@ -145,13 +143,13 @@
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C298EE72C5FE15700474956 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
-		4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitModel.swift; sourceTree = "<group>"; };
-		4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitStatusFactory.swift; sourceTree = "<group>"; };
-		4C81FB642C601810006300E6 /* ListUnitLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitLocalization.swift; sourceTree = "<group>"; };
-		4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ListUnitLocalizable.xcstrings; sourceTree = "<group>"; };
+		4C81FB602C5FF9D7006300E6 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
+		4C81FB642C601810006300E6 /* PlanLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLocalization.swift; sourceTree = "<group>"; };
+		4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = PlanLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
-		4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModelFactory.swift; sourceTree = "<group>"; };
-		4C8C6CC82C67ACA300E09697 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
+		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,11 +203,10 @@
 				4C298E5D2C5FDC2100474956 /* Plan.entitlements */,
 				4C298E5C2C5FDC2100474956 /* Info.plist */,
 				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
+				4C298E7F2C5FDC5700474956 /* Resource */,
 				4C298E8A2C5FDD8800474956 /* Services */,
 				4C298E822C5FDD5A00474956 /* Common */,
-				4C298E7F2C5FDC5700474956 /* Resource */,
 				4C298E532C5FDC2000474956 /* ViewController.swift */,
-				4C298E552C5FDC2000474956 /* Document.swift */,
 				4C298EAB2C5FDE2100474956 /* DesignSystem */,
 				4C298E802C5FDD2C00474956 /* Docs */,
 			);
@@ -253,14 +250,10 @@
 		4C298E812C5FDD3600474956 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CCD2C67DC1400E09697 /* Views */,
 				4C298EA82C5FDE1300474956 /* Models */,
 				4C298EA32C5FDE0200474956 /* Unit */,
 				4C298E9D2C5FDDEC00474956 /* TableAdapter */,
-				4C298E982C5FDDE200474956 /* HierarchyContent.swift */,
-				4C298E9A2C5FDDE200474956 /* ListDataProvider.swift */,
-				4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */,
-				4C298E992C5FDDE200474956 /* ListDocument.swift */,
-				4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -329,12 +322,14 @@
 		4C298E9D2C5FDDEC00474956 /* TableAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EA12C5FDDF800474956 /* DropConfiguration.swift */,
+				4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */,
+				4C298E982C5FDDE200474956 /* HierarchyContent.swift */,
 				4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */,
 				4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */,
 				4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */,
 				4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */,
 				4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */,
+				4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */,
 			);
 			path = TableAdapter;
 			sourceTree = "<group>";
@@ -342,16 +337,16 @@
 		4C298EA32C5FDE0200474956 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EA72C5FDE0A00474956 /* ListAssembly.swift */,
-				4C8C6CC82C67ACA300E09697 /* ListInteractor.swift */,
-				4C298EA42C5FDE0A00474956 /* ListItemView.swift */,
-				4C298EA52C5FDE0A00474956 /* ListPresenter.swift */,
-				4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */,
-				4C298EA62C5FDE0A00474956 /* ListViewController.swift */,
-				4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */,
-				4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */,
-				4C81FB642C601810006300E6 /* ListUnitLocalization.swift */,
-				4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */,
+				4C8C6CCE2C67DC2F00E09697 /* Localization */,
+				4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */,
+				4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */,
+				4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */,
+				4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */,
+				4C298EA62C5FDE0A00474956 /* PlanViewController.swift */,
+				4C81FB602C5FF9D7006300E6 /* PlanModel.swift */,
+				4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */,
+				4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */,
+				4C298E992C5FDDE200474956 /* PlanDocument.swift */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -368,6 +363,7 @@
 		4C298EAB2C5FDE2100474956 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CCF2C67DCC700E09697 /* DragAndDrop */,
 				4C298EB52C5FDE5200474956 /* Extensions */,
 				4C298EAF2C5FDE3F00474956 /* Menu */,
 				4C298EAD2C5FDE3300474956 /* Views */,
@@ -416,6 +412,31 @@
 				4C298E882C5FDD8200474956 /* Dictionary+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C8C6CCD2C67DC1400E09697 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C8C6CCE2C67DC2F00E09697 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */,
+				4C81FB642C601810006300E6 /* PlanLocalization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		4C8C6CCF2C67DCC700E09697 /* DragAndDrop */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EA12C5FDDF800474956 /* DropConfiguration.swift */,
+			);
+			path = DragAndDrop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,7 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
-				4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */,
+				4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */,
 				4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,10 +571,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C81FB612C5FF9D7006300E6 /* ListUnitModel.swift in Sources */,
+				4C81FB612C5FF9D7006300E6 /* PlanModel.swift in Sources */,
 				4C298EBF2C5FDE6700474956 /* NSTextField+Extension.swift in Sources */,
 				4C298E542C5FDC2000474956 /* ViewController.swift in Sources */,
-				4C81FB652C601810006300E6 /* ListUnitLocalization.swift in Sources */,
+				4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
@@ -562,7 +583,7 @@
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
-				4C8C6CC92C67ACA300E09697 /* ListInteractor.swift in Sources */,
+				4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */,
 				4C298ECB2C5FDEA500474956 /* Dictionary+Extension.swift in Sources */,
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
 				4C298ECD2C5FDEA500474956 /* DocumentFile.swift in Sources */,
@@ -575,7 +596,7 @@
 				4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
-				4C81FB632C600D88006300E6 /* ListUnitStatusFactory.swift in Sources */,
+				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,
@@ -584,26 +605,25 @@
 				4C298EC12C5FDE8900474956 /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */,
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
-				4C298ED72C5FDEBC00474956 /* ListDocument.swift in Sources */,
+				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
-				4C8C6CC52C6765F500E09697 /* ListModelFactory.swift in Sources */,
-				4C298ED92C5FDEBC00474956 /* ListAssembly.swift in Sources */,
-				4C298EDA2C5FDEBC00474956 /* ListItemView.swift in Sources */,
+				4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */,
+				4C298ED92C5FDEBC00474956 /* PlanAssembly.swift in Sources */,
+				4C298EDA2C5FDEBC00474956 /* PlanItemCell.swift in Sources */,
 				4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */,
 				4C298EDC2C5FDEBC00474956 /* HierarchyDestination.swift in Sources */,
-				4C298EDD2C5FDEBC00474956 /* ListPresenter.swift in Sources */,
+				4C298EDD2C5FDEBC00474956 /* PlanPresenter.swift in Sources */,
 				4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */,
 				4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */,
 				4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */,
 				4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */,
-				4C298EDE2C5FDEBC00474956 /* ListViewController.swift in Sources */,
+				4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */,
 				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
-				4C298EE02C5FDEBC00474956 /* ListDataProvider.swift in Sources */,
+				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,
 				4C298EC32C5FDE8900474956 /* MenuBuilder+Item.swift in Sources */,
 				4C298EC42C5FDE8900474956 /* MenuItem.swift in Sources */,
 				4C298EC52C5FDE9100474956 /* IconCagetory.swift in Sources */,
-				4C298E562C5FDC2000474956 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

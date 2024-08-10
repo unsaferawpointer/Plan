@@ -1,5 +1,5 @@
 //
-//  ListPresenter.swift
+//  PlanPresenter.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 02.10.2023.
@@ -11,22 +11,22 @@ protocol ListPresenterProtocol: AnyObject {
 	func present(_ content: HierarchyContent)
 }
 
-final class ListPresenter {
+final class PlanPresenter {
 
-	var interactor: ListInteractorProtocol?
+	var interactor: PlanInteractorProtocol?
 
 	weak var view: HierarchyView?
 
-	var statusFactory: ListUnitStatusFactoryProtocol
+	var statusFactory: PlanStatusFactoryProtocol
 
-	var modelFactory: ListModelFactoryProtocol
+	var modelFactory: PlanModelFactoryProtocol
 
-	var localization: ListUnitLocalizationProtocol
+	var localization: PlanLocalizationProtocol
 
 	init(
-		statusFactory: ListUnitStatusFactoryProtocol = ListUnitStatusFactory(),
-		modelFactory: ListModelFactoryProtocol = ListModelFactory(),
-		localization: ListUnitLocalizationProtocol = ListUnitLocalization()
+		statusFactory: PlanStatusFactoryProtocol = PlanStatusFactory(),
+		modelFactory: PlanModelFactoryProtocol = PlanModelFactory(),
+		localization: PlanLocalizationProtocol = PlanLocalization()
 	) {
 		self.statusFactory = statusFactory
 		self.modelFactory = modelFactory
@@ -34,7 +34,7 @@ final class ListPresenter {
 	}
 }
 
-extension ListPresenter {
+extension PlanPresenter {
 
 	var selection: [UUID] {
 		return view?.selection ?? []
@@ -42,7 +42,7 @@ extension ListPresenter {
 }
 
 // MARK: - ListPresenterProtocol
-extension ListPresenter: ListPresenterProtocol {
+extension PlanPresenter: ListPresenterProtocol {
 
 	func present(_ content: HierarchyContent) {
 		let model = makeModel(root: content.hierarchy)
@@ -51,7 +51,7 @@ extension ListPresenter: ListPresenterProtocol {
 }
 
 // MARK: - ListPresenterProtocol
-extension ListPresenter: ListViewOutput {
+extension PlanPresenter: PlanViewOutput {
 
 	func viewDidLoad() {
 		view?.setConfiguration(
@@ -113,14 +113,14 @@ extension ListPresenter: ListViewOutput {
 
 }
 
-extension ListPresenter {
+extension PlanPresenter {
 
-	func makeModel(root: Root<ItemContent>) -> ListUnitModel {
+	func makeModel(root: Root<ItemContent>) -> PlanModel {
 		let snapshot = makeSnapshot(root)
 
 		let status = statusFactory.makeModel(for: root)
 
-		let model: ListUnitModel = if !snapshot.root.isEmpty {
+		let model: PlanModel = if !snapshot.root.isEmpty {
 			.regular(snapshot: snapshot, status: status)
 		} else {
 			.placeholder(
@@ -140,7 +140,7 @@ extension ListPresenter {
 }
 
 // MARK: - HierarchyDropDelegate
-extension ListPresenter: HierarchyDropDelegate {
+extension PlanPresenter: HierarchyDropDelegate {
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
 		interactor?.move(ids: ids, to: destination)
@@ -156,7 +156,7 @@ extension ListPresenter: HierarchyDropDelegate {
 }
 
 // MARK: - ListItemViewOutput
-extension ListPresenter: ListItemViewOutput {
+extension PlanPresenter: ListItemViewOutput {
 
 	func textfieldDidChange(_ id: UUID, newText: String) {
 		interactor?.textDidChange(id, newText: newText)

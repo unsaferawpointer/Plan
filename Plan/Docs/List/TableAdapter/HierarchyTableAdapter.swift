@@ -159,7 +159,7 @@ extension HierarchyTableAdapter {
 		guard let item = cache[id], let row = table?.row(forItem: item), row != -1 else {
 			return
 		}
-		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? ListItemView
+		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? PlanItemCell
 		_ = view?.becomeFirstResponder()
 	}
 }
@@ -250,10 +250,10 @@ extension HierarchyTableAdapter: NSOutlineViewDelegate {
 
 		let model = snapshot.model(with: item.uuid)
 
-		let id = NSUserInterfaceItemIdentifier(ListItemView.reuseIdentifier)
-		var view = table?.makeView(withIdentifier: id, owner: self) as? ListItemView
+		let id = NSUserInterfaceItemIdentifier(PlanItemCell.reuseIdentifier)
+		var view = table?.makeView(withIdentifier: id, owner: self) as? PlanItemCell
 		if view == nil {
-			view = ListItemView(model)
+			view = PlanItemCell(model)
 			view?.identifier = id
 		}
 
@@ -448,7 +448,7 @@ extension HierarchyTableAdapter {
 	}
 
 	func configureRow(with model: HierarchyModel, at row: Int) {
-		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? ListItemView
+		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? PlanItemCell
 		view?.model = model
 	}
 }

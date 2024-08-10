@@ -1,5 +1,5 @@
 //
-//  ListInteractor.swift
+//  PlanInteractor.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 10.08.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ListInteractorProtocol {
+protocol PlanInteractorProtocol {
 
 	func fetchData()
 
@@ -31,7 +31,7 @@ protocol ListInteractorProtocol {
 	func undo()
 }
 
-final class ListInteractor {
+final class PlanInteractor {
 
 	private let storage: DocumentStorage<HierarchyContent>
 
@@ -48,8 +48,8 @@ final class ListInteractor {
 	}
 }
 
-// MARK: - ListInteractorProtocol
-extension ListInteractor: ListInteractorProtocol {
+// MARK: - PlanInteractorProtocol
+extension PlanInteractor: PlanInteractorProtocol {
 
 	func fetchData() {
 		presenter?.present(storage.state)

@@ -1,5 +1,5 @@
 //
-//  ListItemView.swift
+//  PlanItemCell.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 01.10.2023.
@@ -12,7 +12,7 @@ protocol ListItemViewOutput: AnyObject {
 	func checkboxDidChange(_ id: UUID, newValue: Bool)
 }
 
-final class ListItemView: NSView {
+final class PlanItemCell: NSView {
 
 	weak var delegate: ListItemViewOutput?
 
@@ -101,7 +101,7 @@ final class ListItemView: NSView {
 }
 
 // MARK: - Helpers
-private extension ListItemView {
+private extension PlanItemCell {
 
 	func updateUserInterface() {
 
@@ -144,7 +144,7 @@ private extension ListItemView {
 }
 
 // MARK: - Actions
-extension ListItemView {
+extension PlanItemCell {
 
 	@objc
 	func textfieldDidChange(_ sender: NSTextField) {

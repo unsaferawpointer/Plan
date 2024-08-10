@@ -1,5 +1,5 @@
 //
-//  ListUnitStatusFactory.swift
+//  PlanStatusFactory.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 04.08.2024.
@@ -7,23 +7,23 @@
 
 import Foundation
 
-protocol ListUnitStatusFactoryProtocol {
+protocol PlanStatusFactoryProtocol {
 	func makeModel(for root: Root<ItemContent>) -> BottomBar.Model
 }
 
-final class ListUnitStatusFactory {
+final class PlanStatusFactory {
 
-	var localization: ListUnitLocalizationProtocol
+	var localization: PlanLocalizationProtocol
 
 	// MARK: - Initialization
 
-	init(localization: ListUnitLocalizationProtocol = ListUnitLocalization()) {
+	init(localization: PlanLocalizationProtocol = PlanLocalization()) {
 		self.localization = localization
 	}
 }
 
-// MARK: - ListUnitStatusFactoryProtocol
-extension ListUnitStatusFactory: ListUnitStatusFactoryProtocol {
+// MARK: - PlanStatusFactoryProtocol
+extension PlanStatusFactory: PlanStatusFactoryProtocol {
 
 	func makeModel(for root: Root<ItemContent>) -> BottomBar.Model {
 		let isEmpty = root.nodes.isEmpty
