@@ -23,11 +23,13 @@ struct HierarchySnapshot {
 
 	private(set) var cache: [ID: Model] = [:]
 
+	private(set) var info: [ID: Info] = [:]
+
 	private(set) var identifiers: Set<ID> = .init()
 
 	// MARK: - Initialization
 
-	init(_ base: [Node<ItemContent>], transform: (Node<ItemContent>) -> Model) {
+	init(_ base: [Node<ItemContent>], transform: (ItemContent, Info) -> Model) {
 		self.root = base.map(\.id)
 		base.forEach { node in
 			normalize(base: node, parent: nil)
@@ -88,15 +90,25 @@ private extension HierarchySnapshot {
 		identifiers.insert(base.id)
 		storage[base.id] = base.children.map(\.id)
 
+		info[base.id] = Info(
+			isDone: base.reduce(\.isDone),
+			number: base.reduce(\.count),
+			isLeaf: base.children.isEmpty
+		)
+
 		for child in base.children {
 			normalize(base: child, parent: base.id)
 		}
 	}
 
-	mutating func makeItem(base: Node<ItemContent>, transform: (Node<ItemContent>) -> Model) {
+	mutating func makeItem(base: Node<ItemContent>, transform: (ItemContent, Info) -> Model) {
+
+		guard let info = self.info[base.id] else {
+			fatalError()
+		}
 
 		// Store in cache
-		cache[base.id] = transform(base)
+		cache[base.id] = transform(base.value, info)
 
 		base.children.forEach { entity in
 			makeItem(base: entity, transform: transform)
@@ -110,5 +122,6 @@ extension HierarchySnapshot {
 	struct Info {
 		var isDone: Bool
 		var number: Int
+		var isLeaf: Bool
 	}
 }

@@ -65,6 +65,7 @@
 		4C81FB652C601810006300E6 /* ListUnitLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* ListUnitLocalization.swift */; };
 		4C81FB672C60BB2D006300E6 /* ListUnitLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
+		4C8C6CC52C6765F500E09697 /* ListModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		4C81FB642C601810006300E6 /* ListUnitLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitLocalization.swift; sourceTree = "<group>"; };
 		4C81FB662C60BB2D006300E6 /* ListUnitLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ListUnitLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
+		4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +343,7 @@
 				4C298EA72C5FDE0A00474956 /* ListAssembly.swift */,
 				4C298EA42C5FDE0A00474956 /* ListItemView.swift */,
 				4C298EA52C5FDE0A00474956 /* ListPresenter.swift */,
+				4C8C6CC42C6765F500E09697 /* ListModelFactory.swift */,
 				4C298EA62C5FDE0A00474956 /* ListViewController.swift */,
 				4C81FB602C5FF9D7006300E6 /* ListUnitModel.swift */,
 				4C81FB622C600D88006300E6 /* ListUnitStatusFactory.swift */,
@@ -579,6 +582,7 @@
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* ListDocument.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
+				4C8C6CC52C6765F500E09697 /* ListModelFactory.swift in Sources */,
 				4C298ED92C5FDEBC00474956 /* ListAssembly.swift in Sources */,
 				4C298EDA2C5FDEBC00474956 /* ListItemView.swift in Sources */,
 				4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */,
