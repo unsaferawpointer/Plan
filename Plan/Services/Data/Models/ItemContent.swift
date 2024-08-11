@@ -11,9 +11,11 @@ struct ItemContent {
 
 	var uuid: UUID
 
+	var created: Date
+
 	var text: String
 
-	var isDone: Bool
+	var status: ItemStatus
 
 	var iconName: String?
 
@@ -25,15 +27,17 @@ struct ItemContent {
 
 	init(
 		uuid: UUID,
+		created: Date = .now,
 		text: String,
-		isDone: Bool = false,
+		status: ItemStatus = .open,
 		iconName: String? = nil,
 		count: Int = 0,
 		options: EntityOptions = []
 	) {
 		self.uuid = uuid
+		self.created = created
 		self.text = text
-		self.isDone = isDone
+		self.status = status
 		self.iconName = iconName
 		self.count = count
 		self.options = options
@@ -48,8 +52,9 @@ extension ItemContent: Decodable {
 
 	enum CodingKeys: CodingKey {
 		case uuid
+		case created
 		case text
-		case isDone
+		case status
 		case iconName
 		case count
 		case options
@@ -58,15 +63,17 @@ extension ItemContent: Decodable {
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		let uuid = try container.decode(UUID.self, forKey: .uuid)
+		let created = try container.decode(Date.self, forKey: .created)
 		let text = try container.decode(String.self, forKey: .text)
-		let isDone = try container.decode(Bool.self, forKey: .isDone)
+		let status = try container.decode(ItemStatus.self, forKey: .status)
 		let iconName = try container.decodeIfPresent(String.self, forKey: .iconName)
 		let count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
 		let options = try container.decode(EntityOptions.self, forKey: .options)
 		self.init(
 			uuid: uuid,
+			created: created,
 			text: text,
-			isDone: isDone,
+			status: status,
 			iconName: iconName,
 			count: count,
 			options: options
@@ -80,8 +87,9 @@ extension ItemContent: Encodable {
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(uuid, forKey: .uuid)
+		try container.encode(created, forKey: .created)
 		try container.encode(text, forKey: .text)
-		try container.encode(isDone, forKey: .isDone)
+		try container.encode(status, forKey: .status)
 		try container.encode(iconName, forKey: .iconName)
 		try container.encode(count, forKey: .count)
 		try container.encode(options, forKey: .options)
@@ -113,6 +121,18 @@ extension ItemContent {
 			} else {
 				options.remove(.favorite)
 			}
+		}
+	}
+
+	var isDone: Bool {
+		get {
+			switch status {
+			case .open: false
+			case .done: true
+			}
+		}
+		set {
+			status = newValue ? .done(completed: max(.now, created)) : .open
 		}
 	}
 }

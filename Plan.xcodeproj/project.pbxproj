@@ -66,6 +66,7 @@
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 		4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */; };
 		4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */; };
+		4C8C6CD12C67E94400E09697 /* ItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD02C67E94400E09697 /* ItemStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
 		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
+		4C8C6CD02C67E94400E09697 /* ItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 			children = (
 				4C298E962C5FDDCB00474956 /* EntityOptions.swift */,
 				4C298E972C5FDDCB00474956 /* ItemContent.swift */,
+				4C8C6CD02C67E94400E09697 /* ItemStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,
 				4C298ED42C5FDEAC00474956 /* NodeValue.swift in Sources */,
+				4C8C6CD12C67E94400E09697 /* ItemStatus.swift in Sources */,
 				4C298ED52C5FDEAC00474956 /* Root.swift in Sources */,
 				4C298EC12C5FDE8900474956 /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */,
