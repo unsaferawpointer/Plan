@@ -82,8 +82,10 @@ private extension PlanModelFactory {
 		}
 
 		switch (isDone, isFavorite) {
-		case (true, _):
+		case (true, false):
 			return .icon(icon ?? "doc.text", color: .secondary)
+		case (true, true):
+			return .icon(icon ?? "star.fill", color: .secondary)
 		case (false, true):
 			return .icon("star.fill", color: .yellow)
 		case (false, false):
