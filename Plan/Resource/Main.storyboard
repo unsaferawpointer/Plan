@@ -199,13 +199,13 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="zy7-OT-5At"/>
-                                        <menuItem title="Fold" keyEquivalent="" id="UrB-X3-k21" userLabel="Fold">
+                                        <menuItem title="Fold" keyEquivalent="" identifier="fold_menu_item" id="UrB-X3-k21" userLabel="Fold">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="fold:" target="Ady-hI-5gd" id="ohU-4s-bUq"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Unfold" keyEquivalent="" id="pm0-a3-KIs" userLabel="Unfold">
+                                        <menuItem title="Unfold" keyEquivalent="" identifier="unfold_menu_item" id="pm0-a3-KIs" userLabel="Unfold">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="unfold:" target="Ady-hI-5gd" id="Aw5-oY-SOZ"/>

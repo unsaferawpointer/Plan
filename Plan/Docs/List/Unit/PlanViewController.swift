@@ -30,6 +30,10 @@ protocol PlanViewOutput {
 	func redo()
 
 	func undo()
+
+	func fold()
+
+	func unfold()
 }
 
 protocol HierarchyView: AnyObject {
@@ -43,6 +47,8 @@ protocol HierarchyView: AnyObject {
 	func select(_ id: UUID)
 
 	func expand(_ ids: [UUID])
+
+	func collapse(_ ids: [UUID])
 
 	func focus(on id: UUID)
 
@@ -134,6 +140,10 @@ extension PlanViewController: HierarchyView {
 
 	func expand(_ ids: [UUID]) {
 		adapter?.expand(ids)
+	}
+
+	func collapse(_ ids: [UUID]) {
+		adapter?.collapse(ids)
 	}
 
 	func focus(on id: UUID) {
@@ -228,6 +238,8 @@ extension PlanViewController: NSMenuItemValidation {
 			 .setIconMenuItem,
 			 .iconsGroupMenuItem:
 			return true
+		case .foldMenuItem, .unfoldMenuItem:
+			return !adapter.selection.isEmpty
 		default:
 			break
 		}
@@ -283,5 +295,15 @@ extension PlanViewController: MenuSupportable {
 	@IBAction
 	func redo(_ sender: NSMenuItem) {
 		output?.redo()
+	}
+
+	@IBAction
+	func fold(_ sender: NSMenuItem) {
+		output?.fold()
+	}
+
+	@IBAction
+	func unfold(_ sender: NSMenuItem) {
+		output?.unfold()
 	}
 }

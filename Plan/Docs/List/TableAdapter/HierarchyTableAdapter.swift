@@ -155,6 +155,19 @@ extension HierarchyTableAdapter {
 		}
 	}
 
+	func collapse(_ ids: [UUID]) {
+		guard let table else {
+			return
+		}
+
+		let items = ids.compactMap { cache[$0] }
+		NSAnimationContext.runAnimationGroup { context in
+			for item in items {
+				table.animator().collapseItem(item)
+			}
+		}
+	}
+
 	func focus(on id: UUID) {
 		guard let item = cache[id], let row = table?.row(forItem: item), row != -1 else {
 			return

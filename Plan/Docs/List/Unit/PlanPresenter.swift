@@ -111,6 +111,14 @@ extension PlanPresenter: PlanViewOutput {
 		interactor?.undo()
 	}
 
+	func fold() {
+		view?.collapse(selection)
+	}
+
+	func unfold() {
+		view?.expand(selection)
+	}
+
 }
 
 extension PlanPresenter {

@@ -15,6 +15,10 @@ extension NSUserInterfaceItemIdentifier {
 
 	static let newMenuItem = NSUserInterfaceItemIdentifier("new_menu_item")
 
+	static let foldMenuItem = NSUserInterfaceItemIdentifier("fold_menu_item")
+
+	static let unfoldMenuItem = NSUserInterfaceItemIdentifier("unfold_menu_item")
+
 	static let setEstimationMenuItem = NSUserInterfaceItemIdentifier("set_estimation_menu_item")
 
 	static let setIconMenuItem = NSUserInterfaceItemIdentifier("set_icon_menu_item")
