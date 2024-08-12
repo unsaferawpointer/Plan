@@ -34,6 +34,8 @@ protocol PlanViewOutput {
 	func fold()
 
 	func unfold()
+
+	func paste()
 }
 
 protocol HierarchyView: AnyObject {
@@ -236,7 +238,8 @@ extension PlanViewController: NSMenuItemValidation {
 		case .newMenuItem,
 			 .setEstimationMenuItem,
 			 .setIconMenuItem,
-			 .iconsGroupMenuItem:
+			 .iconsGroupMenuItem,
+			 .pasteMenuItem:
 			return true
 		case .foldMenuItem, .unfoldMenuItem:
 			return !adapter.selection.isEmpty
@@ -305,5 +308,10 @@ extension PlanViewController: MenuSupportable {
 	@IBAction
 	func unfold(_ sender: NSMenuItem) {
 		output?.unfold()
+	}
+
+	@IBAction
+	func paste(_ sender: NSMenuItem) {
+		output?.paste()
 	}
 }

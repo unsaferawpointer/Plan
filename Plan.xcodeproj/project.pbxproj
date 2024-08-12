@@ -71,6 +71,7 @@
 		4C8C6CD82C68F44000E09697 /* TextParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD72C68F44000E09697 /* TextParserTests.swift */; };
 		4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */; };
 		4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */; };
+		4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		4C8C6CD72C68F44000E09697 /* TextParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextParserTests.swift; sourceTree = "<group>"; };
 		4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserConfiguration.swift; sourceTree = "<group>"; };
+		4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 		4C298E822C5FDD5A00474956 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CE12C6A68A500E09697 /* Pasteboard */,
 				4C298E832C5FDD6900474956 /* Tree */,
 				4C298EE92C5FE4B100474956 /* Extensions */,
 			);
@@ -478,6 +481,14 @@
 			path = TextParser;
 			sourceTree = "<group>";
 		};
+		4C8C6CE12C6A68A500E09697 /* Pasteboard */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */,
+			);
+			path = Pasteboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -630,6 +641,7 @@
 				4C298ECE2C5FDEA500474956 /* DocumentDataRepresentation.swift in Sources */,
 				4C298ECF2C5FDEA500474956 /* VersionedFile.swift in Sources */,
 				4C298ED02C5FDEA500474956 /* DocumentDataPublisher.swift in Sources */,
+				4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */,
 				4C298ED12C5FDEA500474956 /* DocumentError.swift in Sources */,
 				4C298EBD2C5FDE6700474956 /* NSImage+Extension.swift in Sources */,
 				4C298EBC2C5FDE6700474956 /* NSOutlineView+Extension.swift in Sources */,

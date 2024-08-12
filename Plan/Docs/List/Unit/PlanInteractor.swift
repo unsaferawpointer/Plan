@@ -30,11 +30,15 @@ protocol PlanInteractorProtocol {
 	func canRedo() -> Bool
 	func redo()
 	func undo()
+
+	func insertFromPasteboard(to destination: HierarchyDestination<UUID>)
 }
 
 final class PlanInteractor {
 
 	private let storage: DocumentStorage<HierarchyContent>
+
+	private let pasteboard: PasteboardFacadeProtocol
 
 	weak var presenter: ListPresenterProtocol?
 
@@ -44,9 +48,11 @@ final class PlanInteractor {
 
 	init(
 		storage: DocumentStorage<HierarchyContent>,
+		pasteboard: PasteboardFacadeProtocol = PasteboardFacade(),
 		parser: TextParserProtocol = TextParser(configuration: .default)
 	) {
 		self.storage = storage
+		self.pasteboard = pasteboard
 		self.parser = parser
 		storage.addObservation(for: self) { [weak self] _, content in
 			guard let self else {
@@ -163,5 +169,12 @@ extension PlanInteractor: PlanInteractorProtocol {
 
 	func undo() {
 		storage.undo()
+	}
+
+	func insertFromPasteboard(to destination: HierarchyDestination<UUID>) {
+		guard let text = pasteboard.getString() else {
+			return
+		}
+		insert(texts: [text], to: destination)
 	}
 }

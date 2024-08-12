@@ -119,6 +119,16 @@ extension PlanPresenter: PlanViewOutput {
 		view?.expand(selection)
 	}
 
+	func paste() {
+		let destination: HierarchyDestination<UUID> = {
+			guard let first = selection.first else {
+				return .toRoot
+			}
+			return .onItem(with: first)
+		}()
+		interactor?.insertFromPasteboard(to: destination)
+	}
+
 }
 
 extension PlanPresenter {
