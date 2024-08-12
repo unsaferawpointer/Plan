@@ -17,11 +17,11 @@ final class PlanPresenter {
 
 	weak var view: HierarchyView?
 
-	var statusFactory: PlanStatusFactoryProtocol
+	private var statusFactory: PlanStatusFactoryProtocol
 
-	var modelFactory: PlanModelFactoryProtocol
+	private var modelFactory: PlanModelFactoryProtocol
 
-	var localization: PlanLocalizationProtocol
+	private var localization: PlanLocalizationProtocol
 
 	init(
 		statusFactory: PlanStatusFactoryProtocol = PlanStatusFactory(),
@@ -154,37 +154,5 @@ extension PlanPresenter {
 		return HierarchySnapshot(items) { item, info in
 			modelFactory.makeModel(item: item, info: info)
 		}
-	}
-}
-
-// MARK: - HierarchyDropDelegate
-extension PlanPresenter: HierarchyDropDelegate {
-
-	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
-		interactor?.move(ids: ids, to: destination)
-	}
-	
-	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool {
-		return interactor?.validateMoving(ids: ids, to: destination) ?? false
-	}
-	
-	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
-		interactor?.insert(nodes, to: destination)
-	}
-
-	func insert(_ texts: [String], to destination: HierarchyDestination<UUID>) {
-		interactor?.insert(texts: texts, to: destination)
-	}
-}
-
-// MARK: - ListItemViewOutput
-extension PlanPresenter: ListItemViewOutput {
-
-	func textfieldDidChange(_ id: UUID, newText: String) {
-		interactor?.textDidChange(id, newText: newText)
-	}
-
-	func checkboxDidChange(_ id: UUID, newValue: Bool) {
-		interactor?.statusDidChange(id, newValue: newValue)
 	}
 }

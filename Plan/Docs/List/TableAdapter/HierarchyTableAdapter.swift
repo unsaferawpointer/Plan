@@ -323,7 +323,6 @@ extension HierarchyTableAdapter {
 		if let node = snapshot.model(with: item.uuid).provider?(item.uuid), let data = try? JSONEncoder().encode(node) {
 			pasteboardItem.setData(data, forType: .item)
 		}
-		pasteboardItem.setString("test", forType: .string)
 		return pasteboardItem
 	}
 

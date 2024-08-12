@@ -72,6 +72,8 @@
 		4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */; };
 		4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */; };
 		4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */; };
+		4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */; };
+		4C8C6CE62C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,8 @@
 		4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserConfiguration.swift; sourceTree = "<group>"; };
 		4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacade.swift; sourceTree = "<group>"; };
+		4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
+		4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+ListItemViewOutput.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,7 +360,7 @@
 				4C8C6CCE2C67DC2F00E09697 /* Localization */,
 				4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */,
 				4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */,
-				4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */,
+				4C8C6CE22C6A742700E09697 /* Presenter */,
 				4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */,
 				4C298EA62C5FDE0A00474956 /* PlanViewController.swift */,
 				4C81FB602C5FF9D7006300E6 /* PlanModel.swift */,
@@ -487,6 +491,16 @@
 				4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */,
 			);
 			path = Pasteboard;
+			sourceTree = "<group>";
+		};
+		4C8C6CE22C6A742700E09697 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */,
+				4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */,
+				4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -633,7 +647,9 @@
 				4C298EC72C5FDEA500474956 /* Versioned.swift in Sources */,
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
+				4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
+				4C8C6CE62C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift in Sources */,
 				4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */,
 				4C298ECB2C5FDEA500474956 /* Dictionary+Extension.swift in Sources */,
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
