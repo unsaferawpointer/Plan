@@ -7,11 +7,11 @@
 
 import Foundation
 
-extension Collection {
+extension Sequence {
 
-	func firstIndex<T: Equatable>(where keyPath: KeyPath<Element, T>, equalsTo value: T) -> Index? {
-		return firstIndex { element in
-			element[keyPath: keyPath] == value
-		}
+	public func min<T: Comparable>(by keyPath: KeyPath<Element, T>) -> T? {
+		return map {
+			$0[keyPath: keyPath]
+		}.min()
 	}
 }

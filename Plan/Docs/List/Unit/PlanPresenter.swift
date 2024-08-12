@@ -55,7 +55,7 @@ extension PlanPresenter: PlanViewOutput {
 
 	func viewDidLoad() {
 		view?.setConfiguration(
-			DropConfiguration(types: [.id, .item])
+			DropConfiguration(types: [.id, .item, .string])
 		)
 		interactor?.fetchData()
 	}
@@ -160,6 +160,10 @@ extension PlanPresenter: HierarchyDropDelegate {
 	
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
 		interactor?.insert(nodes, to: destination)
+	}
+
+	func insert(_ texts: [String], to destination: HierarchyDestination<UUID>) {
+		interactor?.insert(texts: texts, to: destination)
 	}
 }
 

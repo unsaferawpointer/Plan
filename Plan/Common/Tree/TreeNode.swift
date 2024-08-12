@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TreeNode {
+protocol TreeNode<Value> {
 
 	associatedtype Value
 

@@ -21,6 +21,7 @@ protocol PlanInteractorProtocol {
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>)
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>)
+	func insert(texts: [String], to destination: HierarchyDestination<UUID>)
 
 	func textDidChange(_ id: UUID, newText: String)
 	func statusDidChange(_ id: UUID, newValue: Bool)
@@ -37,8 +38,16 @@ final class PlanInteractor {
 
 	weak var presenter: ListPresenterProtocol?
 
-	init(storage: DocumentStorage<HierarchyContent>) {
+	var parser: TextParserProtocol
+
+	// MARK: - Initialization
+
+	init(
+		storage: DocumentStorage<HierarchyContent>,
+		parser: TextParserProtocol = TextParser(configuration: .default)
+	) {
 		self.storage = storage
+		self.parser = parser
 		storage.addObservation(for: self) { [weak self] _, content in
 			guard let self else {
 				return
@@ -112,6 +121,15 @@ extension PlanInteractor: PlanInteractorProtocol {
 	}
 
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
+		storage.modificate { content in
+			content.insertItems(from: nodes, to: destination)
+		}
+	}
+
+	func insert(texts: [String], to destination: HierarchyDestination<UUID>) {
+		let nodes: [any TreeNode<ItemContent>] = texts.flatMap {
+			parser.parse(from: $0)
+		}
 		storage.modificate { content in
 			content.insertItems(from: nodes, to: destination)
 		}

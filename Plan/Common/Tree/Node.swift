@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Node<Value: NodeValue> {
+final class Node<Value: NodeValue>: TreeNode {
 
 	typealias ID = Value.ID
 

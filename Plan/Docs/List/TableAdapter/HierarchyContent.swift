@@ -82,7 +82,7 @@ extension HierarchyContent {
 		hierarchy.insertItems(with: contents, to: destination)
 	}
 
-	func insertItems<T: TreeNode>(from nodes: [T], to destination: HierarchyDestination<UUID>) where T.Value == ItemContent {
+	func insertItems(from nodes: [any TreeNode<ItemContent>], to destination: HierarchyDestination<UUID>) {
 		hierarchy.insertItems(from: nodes, to: destination)
 	}
 

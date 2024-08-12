@@ -348,9 +348,6 @@ extension HierarchyTableAdapter {
 			}
 			transferItem.delete(.init(identifiers))
 
-			let string = HierarchyStringPresenter().string(for: transferItem)
-			pasterboardItem.setString(string, forType: .string)
-
 			guard let modificatedData = try? JSONEncoder().encode(transferItem) else {
 				continue
 			}
@@ -407,6 +404,16 @@ extension HierarchyTableAdapter {
 					continue
 				}
 				nodes.append(node)
+			}
+
+			let texts = pasteboardItems?.compactMap {
+				$0.data(forType: .string)
+			}.compactMap {
+				String(data: $0, encoding: .utf8)
+			}
+
+			if let texts, !texts.isEmpty {
+				delegate?.insert(texts, to: destination)
 			}
 
 			if let delegate = delegate {

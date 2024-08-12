@@ -92,7 +92,7 @@ extension Root {
 		}
 	}
 
-	func insertItems<T: TreeNode>(from data: [T], to destination: HierarchyDestination<Value.ID>) where T.Value == Value {
+	func insertItems(from data: [any TreeNode<Value>], to destination: HierarchyDestination<Value.ID>) {
 		let items = data.map { node in
 			makeNode(from: node)
 		}
@@ -115,7 +115,7 @@ extension Root {
 		}
 	}
 
-	func makeNode<T: TreeNode>(from other: T) -> Node<T.Value> where T.Value == Value {
+	func makeNode(from other: any TreeNode<Value>) -> Node<Value> {
 		let node = Node<Value>(value: other.value, children: other.children.map({ node in
 			makeNode(from: node)
 		}))

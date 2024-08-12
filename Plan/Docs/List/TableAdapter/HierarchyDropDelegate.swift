@@ -14,4 +14,6 @@ protocol HierarchyDropDelegate: AnyObject {
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool
 
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>)
+
+	func insert(_ texts: [String], to destination: HierarchyDestination<UUID>)
 }

@@ -11,7 +11,7 @@ struct EntityOptions: OptionSet {
 
 	var rawValue: Int16
 
-	static let empty = EntityOptions(rawValue: 1 << 0)
+	static let empty = EntityOptions(rawValue: 0)
 	static let favorite = EntityOptions(rawValue: 1 << 1)
 }
 
