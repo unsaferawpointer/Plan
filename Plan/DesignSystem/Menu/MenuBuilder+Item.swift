@@ -14,6 +14,8 @@ extension MenuBuilder {
 		case new
 		case delete
 
+		case paste
+
 		case favorite
 		case completed
 
@@ -132,6 +134,14 @@ extension MenuBuilder.Item {
 				main.submenu?.addItem(item)
 			}
 			return main
+		case .paste:
+			let item = NSMenuItem(
+				title: "Paste",
+				action: #selector(MenuSupportable.paste(_:)),
+				keyEquivalent: "v"
+			)
+			item.identifier = .pasteMenuItem
+			return item
 		}
 	}
 }

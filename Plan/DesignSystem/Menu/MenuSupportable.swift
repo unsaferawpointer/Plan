@@ -34,4 +34,7 @@ protocol MenuSupportable {
 	@objc
 	optional func redo(_ sender: NSMenuItem)
 
+	@objc
+	optional func paste(_ sender: NSMenuItem)
+
 }
