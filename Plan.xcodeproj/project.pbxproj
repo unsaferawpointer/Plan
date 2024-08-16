@@ -74,6 +74,7 @@
 		4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */; };
 		4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */; };
 		4C8C6CE62C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */; };
+		4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,7 @@
 		4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacade.swift; sourceTree = "<group>"; };
 		4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
 		4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+ListItemViewOutput.swift"; sourceTree = "<group>"; };
+		4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 		4C298E8A2C5FDD8800474956 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CE72C6BD63D00E09697 /* BasicFormatter */,
 				4C8C6CD22C68D27000E09697 /* TextParser */,
 				4C298E8F2C5FDDAE00474956 /* Data */,
 				4C298E8B2C5FDD9500474956 /* Storage */,
@@ -416,9 +419,8 @@
 		4C298EB52C5FDE5200474956 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */,
-				4C298EB72C5FDE6700474956 /* NSOutlineView+Extension.swift */,
 				4C298EB62C5FDE6700474956 /* NSScrollView+Extension.swift */,
+				4C8C6CEA2C6BDAFD00E09697 /* New Group */,
 				4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */,
 				4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */,
 			);
@@ -501,6 +503,23 @@
 				4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4C8C6CE72C6BD63D00E09697 /* BasicFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */,
+			);
+			path = BasicFormatter;
+			sourceTree = "<group>";
+		};
+		4C8C6CEA2C6BDAFD00E09697 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EB72C5FDE6700474956 /* NSOutlineView+Extension.swift */,
+				4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -689,6 +708,7 @@
 				4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */,
 				4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */,
 				4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */,
+				4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */,
 				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
 				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,

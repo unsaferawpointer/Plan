@@ -32,6 +32,7 @@ protocol PlanInteractorProtocol {
 	func undo()
 
 	func insertFromPasteboard(to destination: HierarchyDestination<UUID>)
+	func copyToPasteboard(_ ids: [UUID])
 }
 
 final class PlanInteractor {
@@ -44,16 +45,20 @@ final class PlanInteractor {
 
 	var parser: TextParserProtocol
 
+	var formatter: BasicFormatterProtocol
+
 	// MARK: - Initialization
 
 	init(
 		storage: DocumentStorage<HierarchyContent>,
 		pasteboard: PasteboardFacadeProtocol = PasteboardFacade(),
-		parser: TextParserProtocol = TextParser(configuration: .default)
+		parser: TextParserProtocol = TextParser(configuration: .default),
+		formatter: BasicFormatterProtocol = BasicFormatter()
 	) {
 		self.storage = storage
 		self.pasteboard = pasteboard
 		self.parser = parser
+		self.formatter = formatter
 		storage.addObservation(for: self) { [weak self] _, content in
 			guard let self else {
 				return
@@ -176,5 +181,11 @@ extension PlanInteractor: PlanInteractorProtocol {
 			return
 		}
 		insert(texts: [text], to: destination)
+	}
+
+	func copyToPasteboard(_ ids: [UUID]) {
+		let nodes = storage.state.hierarchy.nodes(with: ids)
+		let text = formatter.format(nodes: nodes)
+		pasteboard.setString(text)
 	}
 }

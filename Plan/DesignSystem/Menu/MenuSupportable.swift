@@ -37,4 +37,6 @@ protocol MenuSupportable {
 	@objc
 	optional func paste(_ sender: NSMenuItem)
 
+	@objc
+	optional func copy(_ sender: NSMenuItem)
 }

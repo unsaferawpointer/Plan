@@ -27,6 +27,12 @@ final class Root<Value: NodeValue> {
 
 extension Root {
 
+	func nodes(with ids: [ID]) -> [Node<Value>] {
+		return ids.compactMap {
+			cache[$0]
+		}
+	}
+
 	func setProperty<T>(_ keyPath: WritableKeyPath<Value, T>, to value: T, for ids: [ID], downstream: Bool = false) {
 		for id in ids {
 			guard let item = cache[id] else {

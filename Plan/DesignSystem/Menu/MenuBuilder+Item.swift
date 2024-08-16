@@ -14,6 +14,7 @@ extension MenuBuilder {
 		case new
 		case delete
 
+		case copy
 		case paste
 
 		case favorite
@@ -134,6 +135,14 @@ extension MenuBuilder.Item {
 				main.submenu?.addItem(item)
 			}
 			return main
+		case .copy:
+			let item = NSMenuItem(
+				title: "Copy",
+				action: #selector(MenuSupportable.copy(_:)),
+				keyEquivalent: "c"
+			)
+			item.identifier = .copyMenuItem
+			return item
 		case .paste:
 			let item = NSMenuItem(
 				title: "Paste",

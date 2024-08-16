@@ -9,16 +9,22 @@ import AppKit
 
 protocol PasteboardFacadeProtocol {
 	func getString() -> String?
+	func setString(_ value: String)
 }
 
-final class PasteboardFacade {
-
+final class PasteboardFacade { 
+	let pasteboard = NSPasteboard.general
 }
 
 // MARK: - PasteboardFacadeProtocol
 extension PasteboardFacade: PasteboardFacadeProtocol {
 
 	func getString() -> String? {
-		return NSPasteboard.general.string(forType: .string)
+		return pasteboard.string(forType: .string)
+	}
+
+	func setString(_ value: String) {
+		pasteboard.clearContents()
+		pasteboard.setString(value, forType: .string)
 	}
 }

@@ -129,6 +129,10 @@ extension PlanPresenter: PlanViewOutput {
 		interactor?.insertFromPasteboard(to: destination)
 	}
 
+	func copy() {
+		interactor?.copyToPasteboard(selection)
+	}
+
 }
 
 extension PlanPresenter {

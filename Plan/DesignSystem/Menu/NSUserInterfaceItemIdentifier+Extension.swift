@@ -33,4 +33,6 @@ extension NSUserInterfaceItemIdentifier {
 
 	static let pasteMenuItem = NSUserInterfaceItemIdentifier("paste_menu_item")
 
+	static let copyMenuItem = NSUserInterfaceItemIdentifier("copy_menu_item")
+
 }

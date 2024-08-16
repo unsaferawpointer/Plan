@@ -114,6 +114,26 @@ extension Node {
 		}
 	}
 
+	func childrenIds() -> [ID] {
+		var result = children.map(\.id)
+		for child in children {
+			result.append(contentsOf: child.childrenIds())
+		}
+		return result
+	}
+
+	func isAncestor(of other: ID) -> Bool {
+		guard children.contains(where: { $0.id == other }) else {
+			for child in children {
+				if child.isAncestor(of: other) {
+					return true
+				}
+			}
+			return false
+		}
+		return true
+	}
+
 	func setProperty<T>(_ keyPath: WritableKeyPath<Value, T>, to value: T, downstream: Bool) {
 		self.value[keyPath: keyPath] = value
 		if downstream {
