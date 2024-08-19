@@ -9,5 +9,5 @@ import Cocoa
 
 struct DropConfiguration {
 
-	var types: [NSPasteboard.PasteboardType] = []
+	var types: [DropInfo.Identifier] = []
 }

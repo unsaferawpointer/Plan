@@ -9,9 +9,16 @@ import Foundation
 
 protocol TreeNode<Value> {
 
-	associatedtype Value
+	associatedtype Value: Identifiable
 
 	var value: Value { get }
 
 	var children: [Self] { get }
+}
+
+extension TreeNode {
+
+	var id: Value.ID {
+		value.id
+	}
 }

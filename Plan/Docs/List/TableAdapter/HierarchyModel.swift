@@ -15,20 +15,16 @@ struct HierarchyModel {
 
 	var menu: MenuItem
 
-	var provider: ((UUID) -> TransferNode?)?
-
 	// MARK: - Initialization
 
 	init(
 		uuid: UUID = UUID(),
 		content: Content,
-		menu: MenuItem,
-		provider: ((UUID) -> TransferNode?)?
+		menu: MenuItem
 	) {
 		self.uuid = uuid
 		self.content = content
 		self.menu = menu
-		self.provider = provider
 	}
 }
 

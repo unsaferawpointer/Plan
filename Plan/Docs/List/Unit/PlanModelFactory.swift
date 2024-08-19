@@ -32,12 +32,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			number: info.number
 		)
 
-		return HierarchyModel(
-			uuid: item.uuid,
-			content: content,
-			menu: menu,
-			provider: nil
-		)
+		return HierarchyModel(uuid: item.uuid, content: content, menu: menu)
 	}
 }
 

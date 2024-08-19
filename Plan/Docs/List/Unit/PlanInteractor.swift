@@ -10,6 +10,7 @@ import Foundation
 protocol PlanInteractorProtocol {
 
 	func fetchData()
+	func node(_ id: UUID) -> any TreeNode<ItemContent>
 
 	func createNew(with text: String, in target: UUID?) -> UUID
 	func deleteItems(_ ids: [UUID])
@@ -73,6 +74,10 @@ extension PlanInteractor: PlanInteractorProtocol {
 
 	func fetchData() {
 		presenter?.present(storage.state)
+	}
+
+	func node(_ id: UUID) -> any TreeNode<ItemContent> {
+		return storage.state.hierarchy[id]
 	}
 
 	func createNew(with text: String, in target: UUID?) -> UUID {
@@ -145,7 +150,6 @@ extension PlanInteractor: PlanInteractorProtocol {
 			content.insertItems(from: nodes, to: destination)
 		}
 	}
-
 
 	func textDidChange(_ id: UUID, newText: String) {
 		storage.modificate { content in

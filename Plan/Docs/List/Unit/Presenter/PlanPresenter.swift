@@ -23,14 +23,18 @@ final class PlanPresenter {
 
 	private var localization: PlanLocalizationProtocol
 
+	private (set) var formatter: BasicFormatterProtocol
+
 	init(
 		statusFactory: PlanStatusFactoryProtocol = PlanStatusFactory(),
 		modelFactory: PlanModelFactoryProtocol = PlanModelFactory(),
-		localization: PlanLocalizationProtocol = PlanLocalization()
+		localization: PlanLocalizationProtocol = PlanLocalization(),
+		formatter: BasicFormatterProtocol = BasicFormatter()
 	) {
 		self.statusFactory = statusFactory
 		self.modelFactory = modelFactory
 		self.localization = localization
+		self.formatter = formatter
 	}
 }
 

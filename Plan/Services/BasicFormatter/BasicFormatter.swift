@@ -8,7 +8,8 @@
 import Foundation
 
 protocol BasicFormatterProtocol {
-	func format(nodes: [Node<ItemContent>]) -> String
+	func format(nodes: [any TreeNode<ItemContent>]) -> String
+	func texts(for nodes: [any TreeNode<ItemContent>]) -> [String]
 }
 
 final class BasicFormatter {
@@ -25,70 +26,61 @@ final class BasicFormatter {
 // MARK: - BasicFormatterProtocol
 extension BasicFormatter: BasicFormatterProtocol {
 
-	func format(nodes: [Node<ItemContent>]) -> String {
+	func format(nodes: [any TreeNode<ItemContent>]) -> String {
 
 		var lines: [String] = []
+		let filtered = filter(nodes: nodes)
 
-		for node in filter(nodes: nodes) {
+		for node in filtered {
 			let nodeLines = text(for: node, indent: 0)
 			lines.append(contentsOf: nodeLines)
 		}
 
 		return lines.joined(separator: "\n")
 	}
+
+	func texts(for nodes: [any TreeNode<ItemContent>]) -> [String] {
+		return []
+	}
 }
 
 // MARK: - Helpers
 private extension BasicFormatter {
 
-	func filter(nodes: [Node<ItemContent>]) -> [Node<ItemContent>] {
-		var children = Set<UUID>()
+	func filter(nodes: [any TreeNode<ItemContent>]) -> [any TreeNode<ItemContent>] {
 
-		for node in nodes {
+		var cache = Set<UUID>()
+
+		let flatten = nodes.flatMap { $0.children }
+
+		for node in flatten {
+			guard !cache.contains(node.id) else {
+				continue
+			}
 			var queue = [node]
 			while !queue.isEmpty {
 				let current = queue.remove(at: 0)
-				children.insert(current.id)
+				cache.insert(current.id)
 				for child in current.children {
-					queue.append(child)
+					queue.insert(child, at: 0)
 				}
 			}
-			children.remove(node.id)
 		}
 
 		return nodes.filter { node in
-			!children.contains(node.id)
+			!cache.contains(node.id)
 		}
 	}
 
-	func text(for node: Node<ItemContent>, indent: Int) -> [String] {
+	func text(for node: any TreeNode<ItemContent>, indent: Int) -> [String] {
 		let indentPrefix = Array(repeating: format.indent.value, count: indent).joined()
-		let line = indentPrefix + format.prefix.sign + node.value.text
+		let line = indentPrefix + format.prefix.sign + " " + node.value.text
+		print("line = \(line)")
 		return [line] + node.children.flatMap { text(for: $0, indent: indent + 1) }
-	}
-
-	func childrens(_ root: Node<ItemContent>) -> Set<UUID> {
-
-
-		var queue = [root]
-
-		var result = Set<UUID>()
-
-		while !queue.isEmpty {
-
-			let current = queue.remove(at: 0)
-			result.insert(current.id)
-			for child in current.children {
-				queue.append(child)
-			}
-		}
-
-		result.remove(root.id)
-
-		return result
 	}
 }
 
+// MARK: - Nested data structs
 extension BasicFormatter {
 
 	struct Format {

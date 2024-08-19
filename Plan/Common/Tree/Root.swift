@@ -25,6 +25,16 @@ final class Root<Value: NodeValue> {
 	}
 }
 
+// MARK: - Subscripts
+extension Root {
+
+	subscript(_ id: ID) -> Node<Value> {
+		get {
+			cache[unsafe: id]
+		}
+	}
+}
+
 extension Root {
 
 	func nodes(with ids: [ID]) -> [Node<Value>] {

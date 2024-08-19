@@ -75,6 +75,8 @@
 		4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */; };
 		4C8C6CE62C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */; };
 		4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */; };
+		4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEC2C72695B00E09697 /* DropInfo.swift */; };
+		4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +170,8 @@
 		4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
 		4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+ListItemViewOutput.swift"; sourceTree = "<group>"; };
 		4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatter.swift; sourceTree = "<group>"; };
+		4C8C6CEC2C72695B00E09697 /* DropInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInfo.swift; sourceTree = "<group>"; };
+		4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableDropLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +349,7 @@
 		4C298E9D2C5FDDEC00474956 /* TableAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CEB2C72693A00E09697 /* DragAndDrop */,
 				4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */,
 				4C298E982C5FDDE200474956 /* HierarchyContent.swift */,
 				4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */,
@@ -522,6 +527,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		4C8C6CEB2C72693A00E09697 /* DragAndDrop */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C6CEC2C72695B00E09697 /* DropInfo.swift */,
+				4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */,
+			);
+			path = DragAndDrop;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -692,6 +706,7 @@
 				4C298ED52C5FDEAC00474956 /* Root.swift in Sources */,
 				4C298EC12C5FDE8900474956 /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */,
+				4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */,
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
@@ -712,6 +727,7 @@
 				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
 				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,
+				4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */,
 				4C298EC32C5FDE8900474956 /* MenuBuilder+Item.swift in Sources */,
 				4C298EC42C5FDE8900474956 /* MenuItem.swift in Sources */,
 				4C298EC52C5FDE9100474956 /* IconCagetory.swift in Sources */,

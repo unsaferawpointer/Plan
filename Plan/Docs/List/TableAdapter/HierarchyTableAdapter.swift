@@ -25,7 +25,7 @@ final class HierarchyTableAdapter: NSObject {
 	var dropConfiguration: DropConfiguration? {
 		didSet {
 			table?.unregisterDraggedTypes()
-			table?.registerForDraggedTypes(dropConfiguration?.types ?? [])
+			table?.registerForDraggedTypes(dropConfiguration?.types.map(\.type) ?? [])
 		}
 	}
 
@@ -58,7 +58,7 @@ final class HierarchyTableAdapter: NSObject {
 extension HierarchyTableAdapter {
 
 	func apply(_ new: HierarchySnapshot) {
-		var old = snapshot
+		let old = snapshot
 
 		let intersection = old.identifiers.intersection(new.identifiers)
 
@@ -319,10 +319,6 @@ extension HierarchyTableAdapter {
 		}
 		let pasteboardItem = NSPasteboardItem()
 		pasteboardItem.setString(item.uuid.uuidString, forType: .id)
-
-		if let node = snapshot.model(with: item.uuid).provider?(item.uuid), let data = try? JSONEncoder().encode(node) {
-			pasteboardItem.setData(data, forType: .item)
-		}
 		return pasteboardItem
 	}
 
@@ -332,25 +328,32 @@ extension HierarchyTableAdapter {
 		willBeginAt screenPoint: NSPoint,
 		forItems draggedItems: [Any]
 	) {
+
+		guard let delegate else {
+			return
+		}
+
 		let identifiers = draggedItems.compactMap { item in
 			item as? ListItem
 		}.map { item in
 			return item.uuid
 		}
 
-		for pasterboardItem in session.draggingPasteboard.pasteboardItems ?? [] {
+		precondition(session.draggingPasteboard.pasteboardItems?.count == identifiers.count)
+
+		for item in session.draggingPasteboard.pasteboardItems ?? [] {
 			guard
-				let data = pasterboardItem.data(forType: .item),
-				var transferItem = try? JSONDecoder().decode(TransferNode.self, from: data)
+				let uuidString = item.string(forType: .id),
+				let id = UUID(uuidString: uuidString)
 			else {
 				continue
 			}
-			transferItem.delete(.init(identifiers))
 
-			guard let modificatedData = try? JSONEncoder().encode(transferItem) else {
-				continue
+			let dropInfo = delegate.item(for: id, with: identifiers)
+
+			for (key, data) in dropInfo.data {
+				item.setData(data, forType: key.type)
 			}
-			pasterboardItem.setData(modificatedData, forType: .item)
 		}
 	}
 
@@ -360,9 +363,7 @@ extension HierarchyTableAdapter {
 		proposedItem item: Any?,
 		proposedChildIndex index: Int
 	) -> NSDragOperation {
-		guard let dropConfiguration else {
-			return []
-		}
+
 		let destination = getDestination(proposedItem: item, proposedChildIndex: index)
 		let identifiers = getIdentifiers(from: info)
 
@@ -376,55 +377,43 @@ extension HierarchyTableAdapter {
 
 	func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
 
+		guard let delegate else {
+			return false
+		}
+
 		let destination = getDestination(proposedItem: item, proposedChildIndex: index)
 
-		if isLocal(from: info) {
+		guard !isLocal(from: info) else {
 			let identifiers = getIdentifiers(from: info)
-			if let delegate = delegate {
-				delegate.move(ids: identifiers, to: destination)
-				NSAnimationContext.runAnimationGroup { context in
-					table?.animator().expandItem(item)
-				}
-				return true
-			} else {
-				return false
+			delegate.move(ids: identifiers, to: destination)
+			NSAnimationContext.runAnimationGroup { context in
+				table?.animator().expandItem(item)
 			}
-		} else {
-			let pasteboardItems = info.draggingPasteboard.pasteboardItems
-
-			var nodes = [TransferNode]()
-
-			for pasteboardItem in pasteboardItems ?? [] {
-				guard let data = pasteboardItem.data(forType: .item) else {
-					continue
-				}
-				let decoder = JSONDecoder()
-				guard let node = try? decoder.decode(TransferNode.self, from: data) else {
-					continue
-				}
-				nodes.append(node)
-			}
-
-			let texts = pasteboardItems?.compactMap {
-				$0.data(forType: .string)
-			}.compactMap {
-				String(data: $0, encoding: .utf8)
-			}
-
-			if let texts, !texts.isEmpty {
-				delegate?.insert(texts, to: destination)
-			}
-
-			if let delegate = delegate {
-				delegate.insert(nodes, to: destination)
-				NSAnimationContext.runAnimationGroup { context in
-					table?.animator().expandItem(item)
-				}
-				return true
-			} else {
-				return false
-			}
+			return true
 		}
+
+		guard
+			let availableTypes = dropConfiguration?.types,
+			let pasteboardItems = info.draggingPasteboard.pasteboardItems
+		else {
+			return false
+		}
+
+		let items = pasteboardItems.map { item in
+			let tuples = availableTypes.compactMap { identifier -> (DropInfo.Identifier, Data)? in
+				guard let data = item.data(forType: identifier.type) else {
+					return nil
+				}
+				return (identifier, data)
+			}
+			let data = Dictionary(uniqueKeysWithValues: tuples)
+			return DropInfo.Item(data: data)
+		}
+
+		let info = DropInfo(items: items)
+
+		delegate.insert(info, to: destination)
+		return true
 	}
 }
 
@@ -474,7 +463,7 @@ extension HierarchyTableAdapter {
 
 extension NSPasteboard.PasteboardType {
 
-	static let id = NSPasteboard.PasteboardType("com.paperwave.hierarchy.item-id")
+	static let id = NSPasteboard.PasteboardType("dev.paperwave.plan.item-id")
 
-	static let item = NSPasteboard.PasteboardType("com.paperwave.hierarchy.item")
+	static let item = NSPasteboard.PasteboardType("dev.paperwave.plan.item")
 }
