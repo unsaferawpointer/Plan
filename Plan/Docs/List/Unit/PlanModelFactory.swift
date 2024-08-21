@@ -73,7 +73,16 @@ private extension PlanModelFactory {
 	func makeStyle(isDone: Bool, isFavorite: Bool, icon: String?, isLeaf: Bool) -> HierarchyModel.Style {
 
 		guard !isLeaf else {
-			return .checkbox
+			switch (isDone, isFavorite) {
+			case (true, false):
+				return .checkbox
+			case (true, true):
+				return .checkboxWithIcon(icon ?? "star.fill", color: .secondary)
+			case (false, true):
+				return .checkboxWithIcon("star.fill", color: .yellow)
+			case (false, false):
+				return .checkbox
+			}
 		}
 
 		switch (isDone, isFavorite) {

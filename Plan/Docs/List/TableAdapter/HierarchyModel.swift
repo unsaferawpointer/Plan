@@ -60,6 +60,7 @@ extension HierarchyModel {
 
 	enum Style: Equatable {
 		case checkbox
+		case checkboxWithIcon(_ name: String, color: Color)
 		case icon(_ name: String, color: Color)
 	}
 
@@ -95,8 +96,15 @@ extension HierarchyModel.Style {
 		}
 	}
 
-	var isCheckbox: Bool {
-		return self == .checkbox
+	var hasCheckbox: Bool {
+		switch self {
+		case .checkbox:
+			return true
+		case .checkboxWithIcon:
+			return true
+		case .icon:
+			return false
+		}
 	}
 }
 

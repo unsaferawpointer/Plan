@@ -113,13 +113,17 @@ private extension PlanItemCell {
 		badge.isHidden = !model.hasBadge
 		badge.title = "\(content.number)"
 
-		checkbox.isHidden = !content.style.isCheckbox
+		checkbox.isHidden = !content.style.hasCheckbox
 		checkbox.state = content.isOn ? .on : .off
 
 		switch content.style {
 		case .checkbox:
 			imageView.isHidden = true
 		case .icon(let name, let color):
+			imageView.isHidden = false
+			imageView.image = NSImage(systemSymbolName: name)
+			imageView.contentTintColor = color.colorValue
+		case .checkboxWithIcon(let name, let color):
 			imageView.isHidden = false
 			imageView.image = NSImage(systemSymbolName: name)
 			imageView.contentTintColor = color.colorValue
