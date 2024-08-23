@@ -77,6 +77,8 @@
 		4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */; };
 		4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEC2C72695B00E09697 /* DropInfo.swift */; };
 		4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */; };
+		4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */; };
+		4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CF52C78FFB800E09697 /* AppPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +174,8 @@
 		4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatter.swift; sourceTree = "<group>"; };
 		4C8C6CEC2C72695B00E09697 /* DropInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInfo.swift; sourceTree = "<group>"; };
 		4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableDropLogic.swift; sourceTree = "<group>"; };
+		4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPage.swift; sourceTree = "<group>"; };
+		4C8C6CF52C78FFB800E09697 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +251,7 @@
 		4C298E6F2C5FDC2100474956 /* PlanUITests */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CF02C78C9A200E09697 /* Pages */,
 				4C298E702C5FDC2100474956 /* PlanUITests.swift */,
 				4C298E722C5FDC2100474956 /* PlanUITestsLaunchTests.swift */,
 			);
@@ -536,6 +541,15 @@
 			path = DragAndDrop;
 			sourceTree = "<group>";
 		};
+		4C8C6CF02C78C9A200E09697 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C6CF52C78FFB800E09697 /* AppPage.swift */,
+				4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -748,6 +762,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */,
+				4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */,
+				4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */,
 				4C298E732C5FDC2100474956 /* PlanUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

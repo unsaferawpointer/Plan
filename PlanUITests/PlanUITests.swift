@@ -9,33 +9,86 @@ import XCTest
 
 final class PlanUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+	override func setUpWithError() throws {
+		continueAfterFailure = false
+	}
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
+	override func tearDownWithError() throws {
+		// Put teardown code here. This method is called after the invocation of each test method in the class.
+	}
+}
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
+// MARK: - Creation
+extension PlanUITests {
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+	func test_createFlatList() {
+		//Arrange
+		let app = prepareApp()
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+		let window = app.firstWindow()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+		let doc = DocumentPage(window: window)
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+		// Act
+		doc.newItems(count: 3, in: nil)
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 3)
+		doc.checkLeadingLabel(expectedTitle: "3 tasks")
+		doc.checkTrailingLabel(expectedTitle: "0 %")
+		doc.checkProgress(expectedValue: 0)
+	}
+
+	func test_createNestedList() {
+		//Arrange
+		let app = prepareApp()
+
+		let window = app.firstWindow()
+
+		let doc = DocumentPage(window: window)
+
+		// Act
+		doc.newItems(count: 1, in: nil)
+		doc.newItems(count: 1, in: 0)
+		doc.newItems(count: 1, in: 1)
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 3)
+		doc.checkLeadingLabel(expectedTitle: "1 task")
+		doc.checkTrailingLabel(expectedTitle: "0 %")
+		doc.checkProgress(expectedValue: 0)
+	}
+
+	func test_createNewItem() {
+		//Arrange
+		let app = prepareApp()
+
+		let window = app.firstWindow()
+
+		let doc = DocumentPage(window: window)
+
+		// Act
+		doc.newItems(count: 1, in: nil)
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 3)
+		doc.checkLeadingLabel(expectedTitle: "1 task")
+		doc.checkTrailingLabel(expectedTitle: "0 %")
+		doc.checkProgress(expectedValue: 0)
+	}
+}
+
+// MARK: - Helpers
+private extension PlanUITests {
+
+	func prepareApp() -> AppPage {
+		let app = AppPage(app: XCUIApplication())
+
+		app.launch()
+		app.closeAll()
+
+		app.newDoc()
+
+		return app
+	}
 }

@@ -85,7 +85,23 @@ class BottomBar: NSView {
 		configureConstraints()
 		configureInterface()
 	}
-	
+
+	// MARK: - Accessibility
+
+	override func accessibilityChildren() -> [Any]? {
+		return [leadingLabel, trailingLabel, progress]
+	}
+
+	override func accessibilityRole() -> NSAccessibility.Role? {
+		return .unknown
+	}
+
+	override func isAccessibilityElement() -> Bool {
+		return true
+	}
+
+	// MARK: - View lifecycle
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -103,6 +119,12 @@ extension BottomBar {
 		leadingLabel.stringValue = model.leadingText
 		trailingLabel.stringValue = model.trailingText
 		progress.doubleValue = model.progress ?? 0
+
+		// MARK: - Accessibility
+		identifier = .init("bottom-bar")
+		leadingLabel.identifier = .init("leading-label")
+		trailingLabel.identifier = .init("trailing-label")
+		progress.identifier = .init("progress")
 	}
 
 	func configureConstraints() {
