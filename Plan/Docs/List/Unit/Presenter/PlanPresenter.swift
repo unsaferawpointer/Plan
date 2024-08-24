@@ -62,6 +62,7 @@ extension PlanPresenter: PlanViewOutput {
 			DropConfiguration(types: [.id, .item, .string])
 		)
 		interactor?.fetchData()
+		view?.expandAll()
 	}
 
 	func deleteItems() {

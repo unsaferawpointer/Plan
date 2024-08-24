@@ -141,14 +141,18 @@ extension HierarchyTableAdapter {
 		table.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
 	}
 
-	func expand(_ ids: [UUID]) {
+	func expand(_ ids: [UUID]?) {
 		guard let table else {
 			return
 		}
 
-		let items = ids.compactMap { cache[$0] }
+		guard let ids else {
+			table.animator().expandItem(nil, expandChildren: true)
+			return
+		}
 
 		NSAnimationContext.runAnimationGroup { context in
+			let items = ids.compactMap { cache[$0] }
 			for item in items {
 				table.animator().expandItem(item)
 			}

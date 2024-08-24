@@ -52,6 +52,8 @@ protocol HierarchyView: AnyObject {
 
 	func expand(_ ids: [UUID])
 
+	func expandAll()
+
 	func collapse(_ ids: [UUID])
 
 	func focus(on id: UUID)
@@ -144,6 +146,10 @@ extension PlanViewController: HierarchyView {
 
 	func expand(_ ids: [UUID]) {
 		adapter?.expand(ids)
+	}
+
+	func expandAll() {
+		adapter?.expand(nil)
 	}
 
 	func collapse(_ ids: [UUID]) {
