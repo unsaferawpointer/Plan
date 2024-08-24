@@ -430,7 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				4C298EB62C5FDE6700474956 /* NSScrollView+Extension.swift */,
-				4C8C6CEA2C6BDAFD00E09697 /* New Group */,
+				4C298EB72C5FDE6700474956 /* NSOutlineView+Extension.swift */,
+				4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */,
 				4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */,
 				4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */,
 			);
@@ -521,15 +522,6 @@
 				4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */,
 			);
 			path = BasicFormatter;
-			sourceTree = "<group>";
-		};
-		4C8C6CEA2C6BDAFD00E09697 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				4C298EB72C5FDE6700474956 /* NSOutlineView+Extension.swift */,
-				4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		4C8C6CEB2C72693A00E09697 /* DragAndDrop */ = {

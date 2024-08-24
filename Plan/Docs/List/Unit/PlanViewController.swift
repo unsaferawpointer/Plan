@@ -215,6 +215,7 @@ private extension PlanViewController {
 					.favorite,
 					.completed,
 					.separator,
+					.copy,
 					.paste,
 					.separator,
 					.setEstimation,
