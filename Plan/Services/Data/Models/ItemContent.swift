@@ -81,6 +81,9 @@ extension ItemContent: Decodable {
 	}
 }
 
+// MARK: - Equatable
+extension ItemContent: Equatable { }
+
 // MARK: - Encodable
 extension ItemContent: Encodable {
 

@@ -71,7 +71,7 @@ extension PlanUITests {
 		doc.newItems(count: 1, in: nil)
 
 		// Assert
-		XCTAssertEqual(doc.rowsCount, 3)
+		XCTAssertEqual(doc.rowsCount, 1)
 		doc.checkLeadingLabel(expectedTitle: "1 task")
 		doc.checkTrailingLabel(expectedTitle: "0 %")
 		doc.checkProgress(expectedValue: 0)

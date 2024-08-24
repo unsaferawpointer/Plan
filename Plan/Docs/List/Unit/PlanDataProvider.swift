@@ -11,7 +11,7 @@ import Foundation
 final class PlanDataProvider {
 
 	/// Last supported version
-	let lastVersion: Version = .v1
+	let lastVersion: PlanVersion = .v1
 }
 
 // MARK: - ContentProvider
@@ -20,8 +20,11 @@ extension PlanDataProvider: ContentProvider {
 	typealias Content = HierarchyContent
 
 	func data(ofType typeName: String, content: Content) throws -> Data {
-		switch typeName.lowercased() {
-		case "dev.zeroindex.plan":
+
+		let type = DocumentType(rawValue: typeName.lowercased())
+
+		switch type {
+		case .plan:
 			let file = DocumentFile(version: lastVersion.rawValue, content: content)
 			let encoder = JSONEncoder()
 			encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -33,8 +36,11 @@ extension PlanDataProvider: ContentProvider {
 	}
 
 	func read(from data: Data, ofType typeName: String) throws -> Content {
-		switch typeName.lowercased() {
-		case "dev.zeroindex.plan":
+
+		let type = DocumentType(rawValue: typeName.lowercased())
+
+		switch type {
+		case .plan:
 			return try migrate(data)
 		default:
 			throw DocumentError.unexpectedFormat
@@ -67,21 +73,12 @@ private extension PlanDataProvider {
 		guard let versionedFile = try? decoder.decode(VersionedFile.self, from: data) else {
 			throw DocumentError.unexpectedFormat
 		}
-		guard let version = Version(rawValue: versionedFile.version), version == lastVersion else {
+		guard let version = PlanVersion(rawValue: versionedFile.version), version <= lastVersion else {
 			throw DocumentError.unknownVersion
 		}
 		guard let file = try? decoder.decode(DocumentFile<HierarchyContent>.self, from: data) else {
 			throw DocumentError.unexpectedFormat
 		}
 		return file.content
-	}
-}
-
-// MARK: - Nested data structs
-extension PlanDataProvider {
-
-	/// Version of a document file
-	enum Version: String {
-		case v1
 	}
 }

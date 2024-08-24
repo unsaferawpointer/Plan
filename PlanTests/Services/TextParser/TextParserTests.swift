@@ -90,7 +90,7 @@ extension TextParserTests {
 		XCTAssertEqual(result[1].value.text, "line 4")
 		XCTAssertFalse(result[1].value.isDone)
 		XCTAssertEqual(result[1].value.count, 0)
-		XCTAssertEqual(result[1].value.options, .empty)
+		XCTAssertEqual(result[1].value.options, [])
 		XCTAssertFalse(result[1].value.isFavorite)
 		XCTAssertNil(result[1].value.iconName)
 
@@ -99,7 +99,7 @@ extension TextParserTests {
 		XCTAssertEqual(result[1].children[0].value.text, "line 5")
 		XCTAssertFalse(result[1].children[0].value.isDone)
 		XCTAssertEqual(result[1].children[0].value.count, 0)
-		XCTAssertEqual(result[1].children[0].value.options, .empty)
+		XCTAssertEqual(result[1].children[0].value.options, [])
 		XCTAssertFalse(result[1].children[0].value.isFavorite)
 		XCTAssertNil(result[1].children[0].value.iconName)
 	}

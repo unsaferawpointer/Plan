@@ -75,7 +75,6 @@ private extension BasicFormatter {
 	func text(for node: any TreeNode<ItemContent>, indent: Int) -> [String] {
 		let indentPrefix = Array(repeating: format.indent.value, count: indent).joined()
 		let line = indentPrefix + format.prefix.sign + " " + node.value.text
-		print("line = \(line)")
 		return [line] + node.children.flatMap { text(for: $0, indent: indent + 1) }
 	}
 }

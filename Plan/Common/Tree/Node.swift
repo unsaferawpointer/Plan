@@ -184,11 +184,14 @@ extension Node {
 extension Node: Hashable {
 
 	static func == (lhs: Node<Value>, rhs: Node<Value>) -> Bool {
-		return lhs.id == rhs.id
+		return lhs.id == rhs.id 
+				&& lhs.value == rhs.value
+				&& lhs.children == rhs.children
 	}
 
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(id)
+		hasher.combine(value)
 	}
 }
 
