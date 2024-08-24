@@ -13,7 +13,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dev.paperwave.plan</string>
+				<string>dev.zeroindex.plan</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).PlanDocument</string>
@@ -31,7 +31,7 @@
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>dev.paperwave.plan</string>
+			<string>dev.zeroindex.plan</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

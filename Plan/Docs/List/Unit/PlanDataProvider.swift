@@ -21,7 +21,7 @@ extension PlanDataProvider: ContentProvider {
 
 	func data(ofType typeName: String, content: Content) throws -> Data {
 		switch typeName.lowercased() {
-		case "dev.paperwave.plan":
+		case "dev.zeroindex.plan":
 			let file = DocumentFile(version: lastVersion.rawValue, content: content)
 			let encoder = JSONEncoder()
 			encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -34,7 +34,7 @@ extension PlanDataProvider: ContentProvider {
 
 	func read(from data: Data, ofType typeName: String) throws -> Content {
 		switch typeName.lowercased() {
-		case "dev.paperwave.plan":
+		case "dev.zeroindex.plan":
 			return try migrate(data)
 		default:
 			throw DocumentError.unexpectedFormat

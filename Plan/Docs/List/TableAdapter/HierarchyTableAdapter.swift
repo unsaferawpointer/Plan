@@ -467,7 +467,7 @@ extension HierarchyTableAdapter {
 
 extension NSPasteboard.PasteboardType {
 
-	static let id = NSPasteboard.PasteboardType("dev.paperwave.plan.item-id")
+	static let id = NSPasteboard.PasteboardType("dev.zeroindex.plan.item-id")
 
-	static let item = NSPasteboard.PasteboardType("dev.paperwave.plan.item")
+	static let item = NSPasteboard.PasteboardType("dev.zeroindex.Plan.item")
 }
