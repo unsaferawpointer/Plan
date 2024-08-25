@@ -96,7 +96,7 @@ extension PlanPresenter: PlanViewOutput {
 		interactor?.setEstimation(value, withSelection: selection)
 	}
 
-	func setIcon(_ value: String?) {
+	func setIcon(_ value: IconName?) {
 		interactor?.setIcon(value, withSelection: selection)
 	}
 

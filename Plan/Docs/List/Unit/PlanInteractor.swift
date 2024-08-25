@@ -17,7 +17,7 @@ protocol PlanInteractorProtocol {
 	func setState(_ flag: Bool, withSelection selection: [UUID])
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID])
 	func setEstimation(_ value: Int, withSelection selection: [UUID])
-	func setIcon(_ value: String?, withSelection selection: [UUID])
+	func setIcon(_ value: IconName?, withSelection selection: [UUID])
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>)
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool
@@ -118,7 +118,7 @@ extension PlanInteractor: PlanInteractorProtocol {
 		}
 	}
 
-	func setIcon(_ value: String?, withSelection selection: [UUID]) {
+	func setIcon(_ value: IconName?, withSelection selection: [UUID]) {
 		storage.modificate { content in
 			content.setIcon(value, for: selection)
 		}

@@ -70,7 +70,7 @@ extension HierarchyContent {
 		hierarchy.setProperty(\.count, to: value, for: ids, downstream: false)
 	}
 
-	func setIcon(_ value: String?, for ids: [UUID]) {
+	func setIcon(_ value: IconName?, for ids: [UUID]) {
 		hierarchy.setProperty(\.iconName, to: value, for: ids, downstream: false)
 	}
 

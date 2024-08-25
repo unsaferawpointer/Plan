@@ -106,7 +106,7 @@ private extension PlanDataProviderTests {
 						created: Date(timeIntervalSince1970: 1723315099),
 						text: "Item 0",
 						status: .open,
-						iconName: "folder",
+						iconName: .folder,
 						count: 0,
 						options: [])
 				),
@@ -116,7 +116,7 @@ private extension PlanDataProviderTests {
 						created: Date(timeIntervalSince1970: 1723315099),
 						text: "Item 1",
 						status: .done(completed: Date(timeIntervalSince1970: 1723316999)),
-						iconName: "folder",
+						iconName: .folder,
 						count: 3,
 						options: .favorite),
 					children: [

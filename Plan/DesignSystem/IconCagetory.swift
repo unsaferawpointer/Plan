@@ -11,11 +11,11 @@ struct IconCategory {
 
 	var title: String
 
-	var icons: [String]
+	var icons: [IconName]
 
 	// MARK: - Initialization
 
-	init(title: String, icons: [String]) {
+	init(title: String, icons: [IconName]) {
 		self.title = title
 		self.icons = icons
 	}
@@ -28,17 +28,17 @@ extension IconCategory {
 		title: "Objects & Tools",
 		icons:
 			[
-				"folder",
-				"archivebox",
-				"doc",
-				"doc.text",
-				"note.text",
-				"book.closed",
-				"creditcard",
-				"hammer",
-				"flask",
-				"cube",
-				"slider.horizontal.2.square"
+				.folder,
+				.archivebox,
+				.doc,
+				.docText,
+				.noteText,
+				.bookClosed,
+				.creditcard,
+				.hammer,
+				.flask,
+				.cube,
+				.sliderHorizontal2Square
 			]
 	)
 
@@ -46,15 +46,15 @@ extension IconCategory {
 		title: "Sport",
 		icons:
 			[
-				"baseball",
-				"basketball",
-				"football",
-				"tennisball",
-				"volleyball",
-				"skateboard",
-				"skis",
-				"snowboard",
-				"surfboard"
+				.baseball,
+				.basketball,
+				.football,
+				.tennisball,
+				.volleyball,
+				.skateboard,
+				.skis,
+				.snowboard,
+				.surfboard
 			]
 	)
 
@@ -62,20 +62,20 @@ extension IconCategory {
 		title: "Devices",
 		icons:
 			[
-				"keyboard",
-				"printer",
-				"scanner",
-				"display",
-				"laptopcomputer",
-				"headphones",
-				"av.remote",
-				"tv",
-				"gamecontroller",
-				"camera",
-				"candybarphone",
-				"smartphone",
-				"simcard",
-				"sdcard"
+				.keyboard,
+				.printer,
+				.scanner,
+				.display,
+				.laptopcomputer,
+				.headphones,
+				.avRemote,
+				.tv,
+				.gamecontroller,
+				.camera,
+				.candybarphone,
+				.smartphone,
+				.simcard,
+				.sdcard
 			]
 	)
 
@@ -83,16 +83,15 @@ extension IconCategory {
 		title: "Health",
 		icons:
 			[
-				"cross.case",
-				"pills",
-				"cross",
-				"flask",
-				"cross.vial",
-				"heart.text.square",
-				"syringe",
-				"medical.thermometer",
-				"microbe",
-				"bandage"
+				.crossCase,
+				.pills,
+				.cross,
+				.crossVial,
+				.heartTextSquare,
+				.syringe,
+				.medicalThermometer,
+				.microbe,
+				.bandage
 			]
 	)
 
@@ -100,15 +99,15 @@ extension IconCategory {
 		title: "Everyday life",
 		icons:
 			[
-				"tshirt",
-				"shoe",
-				"comb",
-				"cup.and.saucer",
-				"wineglass",
-				"fork.knife",
-				"bag",
-				"gym.bag",
-				"suitcase"
+				.tshirt,
+				.shoe,
+				.comb,
+				.cupAndSaucer,
+				.wineglass,
+				.forkKnife,
+				.bag,
+				.gymBag,
+				.suitcase
 			]
 	)
 }

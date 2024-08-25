@@ -21,7 +21,7 @@ protocol PlanViewOutput {
 
 	func setEstimation(_ value: Int)
 
-	func setIcon(_ value: String?)
+	func setIcon(_ value: IconName?)
 
 	func canUndo() -> Bool
 
@@ -298,7 +298,7 @@ extension PlanViewController: MenuSupportable {
 
 	@IBAction
 	func setIcon(_ sender: NSMenuItem) {
-		let iconName = sender.representedObject as? String
+		let iconName = sender.representedObject as? IconName
 		output?.setIcon(iconName)
 	}
 

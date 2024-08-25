@@ -85,6 +85,7 @@
 		4CBAC42B2C7A832D00534CC3 /* PlanVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAC42A2C7A832D00534CC3 /* PlanVersion.swift */; };
 		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */; };
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
+		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		4CBAC42A2C7A832D00534CC3 /* PlanVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanVersion.swift; sourceTree = "<group>"; };
 		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1.json; sourceTree = "<group>"; };
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
+		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 				4C298E962C5FDDCB00474956 /* EntityOptions.swift */,
 				4C298E972C5FDDCB00474956 /* ItemContent.swift */,
 				4C8C6CD02C67E94400E09697 /* ItemStatus.swift */,
+				4CCCFA5F2C7B747D002DDD95 /* IconName.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */,
 				4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */,
 				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
+				4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */,
 				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,
 				4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */,

@@ -17,7 +17,7 @@ struct ItemContent {
 
 	var status: ItemStatus
 
-	var iconName: String?
+	var iconName: IconName?
 
 	var count: Int
 
@@ -30,7 +30,7 @@ struct ItemContent {
 		created: Date = .now,
 		text: String,
 		status: ItemStatus = .open,
-		iconName: String? = nil,
+		iconName: IconName? = nil,
 		count: Int = 0,
 		options: EntityOptions = []
 	) {
@@ -66,7 +66,11 @@ extension ItemContent: Decodable {
 		let created = try container.decode(Date.self, forKey: .created)
 		let text = try container.decode(String.self, forKey: .text)
 		let status = try container.decode(ItemStatus.self, forKey: .status)
-		let iconName = try container.decodeIfPresent(String.self, forKey: .iconName)
+		let iconName: IconName? = if let name = try container.decodeIfPresent(String.self, forKey: .iconName) {
+			IconName(rawValue: name)
+		} else {
+			nil
+		}
 		let count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
 		let options = try container.decode(EntityOptions.self, forKey: .options)
 		self.init(
@@ -93,7 +97,7 @@ extension ItemContent: Encodable {
 		try container.encode(created, forKey: .created)
 		try container.encode(text, forKey: .text)
 		try container.encode(status, forKey: .status)
-		try container.encode(iconName, forKey: .iconName)
+		try container.encode(iconName?.rawValue, forKey: .iconName)
 		try container.encode(count, forKey: .count)
 		try container.encode(options, forKey: .options)
 	}

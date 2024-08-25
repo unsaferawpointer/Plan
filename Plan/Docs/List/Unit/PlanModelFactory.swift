@@ -39,7 +39,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 // MARK: - Helpers
 private extension PlanModelFactory {
 
-	func makeContent(isDone: Bool, text: String, isFavorite: Bool, icon: String?, isLeaf: Bool, number: Int) -> HierarchyModel.Content {
+	func makeContent(isDone: Bool, text: String, isFavorite: Bool, icon: IconName?, isLeaf: Bool, number: Int) -> HierarchyModel.Content {
 
 		let style = makeStyle(isDone: isDone, isFavorite: isFavorite, icon: icon, isLeaf: isLeaf)
 		let textColor: HierarchyModel.Color = isDone ? .secondary : .primary
@@ -70,14 +70,14 @@ private extension PlanModelFactory {
 		)
 	}
 
-	func makeStyle(isDone: Bool, isFavorite: Bool, icon: String?, isLeaf: Bool) -> HierarchyModel.Style {
+	func makeStyle(isDone: Bool, isFavorite: Bool, icon: IconName?, isLeaf: Bool) -> HierarchyModel.Style {
 
 		guard !isLeaf else {
 			switch (isDone, isFavorite) {
 			case (true, false):
 				return .checkbox
 			case (true, true):
-				return .checkboxWithIcon(icon ?? "star.fill", color: .secondary)
+				return .checkboxWithIcon(icon?.rawValue ?? "star.fill", color: .secondary)
 			case (false, true):
 				return .checkboxWithIcon("star.fill", color: .yellow)
 			case (false, false):
@@ -87,13 +87,13 @@ private extension PlanModelFactory {
 
 		switch (isDone, isFavorite) {
 		case (true, false):
-			return .icon(icon ?? "doc.text", color: .secondary)
+			return .icon(icon?.rawValue ?? "doc.text", color: .secondary)
 		case (true, true):
-			return .icon(icon ?? "star.fill", color: .secondary)
+			return .icon(icon?.rawValue ?? "star.fill", color: .secondary)
 		case (false, true):
 			return .icon("star.fill", color: .yellow)
 		case (false, false):
-			return .icon(icon ?? "doc.text", color: .primary)
+			return .icon(icon?.rawValue ?? "doc.text", color: .primary)
 		}
 	}
 }
