@@ -7,22 +7,19 @@
 
 import Cocoa
 
-protocol ListItemViewOutput: AnyObject {
-	func textfieldDidChange(_ id: UUID, newText: String)
-	func checkboxDidChange(_ id: UUID, newValue: Bool)
-}
+final class PlanItemCell: NSView, TableCell {
 
-final class PlanItemCell: NSView {
+	typealias Model = PlanItemModel
 
-	weak var delegate: ListItemViewOutput?
+	static var reuseIdentifier: String = "item_cell"
 
-	static var reuseIdentifier: String = "label"
-
-	var model: HierarchyModel {
+	var model: Model {
 		didSet {
 			updateUserInterface()
 		}
 	}
+
+	var action: ((PlanItemModel) -> Void)?
 
 	// MARK: - UI-Properties
 
@@ -59,16 +56,8 @@ final class PlanItemCell: NSView {
 		return view
 	}()
 
-	lazy var badge: NSButton = {
-		let view = NSButton()
-		view.setButtonType(.momentaryChange)
-		view.bezelStyle = .badge
-		view.isHidden = true
-		return view
-	}()
-
 	lazy var container: NSStackView = {
-		let view = NSStackView(views: [checkbox, imageView, textfield, badge])
+		let view = NSStackView(views: [checkbox, imageView, textfield])
 		view.orientation = .horizontal
 		view.distribution = .fillProportionally
 		view.alignment = .lastBaseline
@@ -77,7 +66,7 @@ final class PlanItemCell: NSView {
 
 	// MARK: - Initialization
 
-	init(_ model: HierarchyModel) {
+	init(_ model: Model) {
 		self.model = model
 		super.init(frame: .zero)
 		configureConstraints()
@@ -105,28 +94,18 @@ private extension PlanItemCell {
 
 	func updateUserInterface() {
 
-		let content = model.content
+		textfield.text = model.text
+		textfield.textColor = model.textColor.colorValue
 
-		textfield.text = content.text
-		textfield.textColor = content.textColor.colorValue
+		checkbox.isHidden = model.checkboxIsHidden
+		if let isOn = model.isOn {
+			checkbox.state = isOn ? .on : .off
+		}
 
-		badge.isHidden = !model.hasBadge
-		badge.title = "\(content.number)"
-
-		checkbox.isHidden = !content.style.hasCheckbox
-		checkbox.state = content.isOn ? .on : .off
-
-		switch content.style {
-		case .checkbox:
-			imageView.isHidden = true
-		case .icon(let name, let color):
-			imageView.isHidden = false
-			imageView.image = NSImage(systemSymbolName: name)
-			imageView.contentTintColor = color.colorValue
-		case .checkboxWithIcon(let name, let color):
-			imageView.isHidden = false
-			imageView.image = NSImage(systemSymbolName: name)
-			imageView.contentTintColor = color.colorValue
+		imageView.isHidden = model.imageIsHidden
+		imageView.contentTintColor = model.iconColor?.colorValue
+		if let icon = model.icon {
+			imageView.image = NSImage(systemSymbolName: icon)
 		}
 	}
 
@@ -155,7 +134,9 @@ extension PlanItemCell {
 		guard sender === textfield else {
 			return
 		}
-		delegate?.textfieldDidChange(model.id, newText: sender.stringValue)
+		var modificated = model
+		modificated.text = sender.stringValue
+		action?(modificated)
 	}
 
 	@objc
@@ -163,6 +144,8 @@ extension PlanItemCell {
 		guard sender === checkbox else {
 			return
 		}
-		delegate?.checkboxDidChange(model.id, newValue: sender.state == .on)
+		var modificated = model
+		modificated.isOn = sender.state == .on
+		action?(modificated)
 	}
 }

@@ -10,6 +10,10 @@ import Foundation
 struct EntityOptions: OptionSet {
 
 	var rawValue: Int16
+}
+
+// MARK: - Templates
+extension EntityOptions {
 
 	static let favorite = EntityOptions(rawValue: 1 << 0)
 }

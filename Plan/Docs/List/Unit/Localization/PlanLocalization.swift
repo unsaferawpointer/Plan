@@ -13,6 +13,9 @@ protocol PlanLocalizationProtocol {
 	var newItemTitle: String { get }
 	func statusMessage(for count: Int) -> String
 	func progressText(for progress: Double) -> String
+
+	var createdDateColumnTitle: String { get }
+	var completedDateColumnTitle: String { get }
 }
 
 final class PlanLocalization { }
@@ -41,5 +44,13 @@ extension PlanLocalization: PlanLocalizationProtocol {
 		formatter.numberStyle = .percent
 		formatter.maximumFractionDigits = 0
 		return formatter.string(from: NSNumber(value: progress)) ?? ""
+	}
+
+	var createdDateColumnTitle: String {
+		return String(localized: "created_date_table_column", table: "PlanLocalizable")
+	}
+
+	var completedDateColumnTitle: String {
+		return String(localized: "completed_date_table_column", table: "PlanLocalizable")
 	}
 }

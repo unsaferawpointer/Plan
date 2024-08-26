@@ -11,7 +11,11 @@ struct HierarchyModel {
 
 	var uuid: UUID
 
-	var content: Content
+	var content: PlanItemModel
+
+	var createdAt: String
+
+	var completedAt: String
 
 	var menu: MenuItem
 
@@ -19,11 +23,15 @@ struct HierarchyModel {
 
 	init(
 		uuid: UUID = UUID(),
-		content: Content,
+		content: PlanItemModel,
+		createdAt: String,
+		completedAt: String,
 		menu: MenuItem
 	) {
 		self.uuid = uuid
 		self.content = content
+		self.createdAt = createdAt
+		self.completedAt = completedAt
 		self.menu = menu
 	}
 }
@@ -45,80 +53,5 @@ extension HierarchyModel: Hashable {
 
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(uuid)
-	}
-}
-
-extension HierarchyModel {
-
-	var hasBadge: Bool {
-		return content.number > 0
-	}
-}
-
-// MARK: - Nested data structs
-extension HierarchyModel {
-
-	enum Style: Equatable {
-		case checkbox
-		case checkboxWithIcon(_ name: String, color: Color)
-		case icon(_ name: String, color: Color)
-	}
-
-	enum Color {
-		case primary
-		case secondary
-		case yellow
-	}
-
-	struct Content {
-
-		var isOn: Bool
-
-		var text: String
-
-		var textColor: Color
-
-		var style: Style
-
-		var number: Int
-	}
-}
-
-// MARK: - Computed properties
-extension HierarchyModel.Style {
-
-	var hasIcon: Bool {
-		switch self {
-		case .checkbox:
-			return false
-		default:
-			return true
-		}
-	}
-
-	var hasCheckbox: Bool {
-		switch self {
-		case .checkbox:
-			return true
-		case .checkboxWithIcon:
-			return true
-		case .icon:
-			return false
-		}
-	}
-}
-
-// MARK: - Computed properties
-extension HierarchyModel.Color {
-
-	var colorValue: NSColor {
-		switch self {
-		case .primary:
-			return .labelColor
-		case .secondary:
-			return .secondaryLabelColor
-		case .yellow:
-			return .systemYellow
-		}
 	}
 }

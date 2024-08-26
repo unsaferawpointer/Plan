@@ -69,6 +69,38 @@
         }
       }
     },
+    "completed_date_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Completed"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата завершения"
+          }
+        }
+      }
+    },
+    "created_date_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Created"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата создания"
+          }
+        }
+      }
+    },
     "empty_list" : {
       "localizations" : {
         "en" : {
@@ -79,7 +111,7 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Заданий нет"
           }
         }

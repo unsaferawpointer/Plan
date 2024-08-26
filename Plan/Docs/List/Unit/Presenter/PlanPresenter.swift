@@ -58,6 +58,28 @@ extension PlanPresenter: ListPresenterProtocol {
 extension PlanPresenter: PlanViewOutput {
 
 	func viewDidLoad() {
+
+		let createdDate = TextColumn<HierarchyModel>(
+			identifier: "created_date_table_column",
+			keyPath: \.createdAt,
+			title: localization.createdDateColumnTitle
+		)
+
+		let competedDate = TextColumn<HierarchyModel>(
+			identifier: "completed_date_table_column",
+			keyPath: \.completedAt,
+			title: localization.completedDateColumnTitle
+		)
+
+		let main = DescriptionTableColumn(keyPath: \.content) { [weak self] id, value in
+			if let isOn = value.isOn {
+				self?.interactor?.modificate(id, newText: value.text, newStatus: isOn)
+			} else {
+				self?.interactor?.modificate(id, newText: value.text)
+			}
+		}
+
+		view?.setConfiguration([main, createdDate, competedDate])
 		view?.setConfiguration(
 			DropConfiguration(types: [.id, .item, .string])
 		)

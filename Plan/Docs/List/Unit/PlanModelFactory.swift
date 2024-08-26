@@ -23,34 +23,39 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			isLeaf: info.isLeaf
 		)
 
-		let content = makeContent(
-			isDone: info.isDone,
-			text: item.text,
-			isFavorite: item.isFavorite,
-			icon: item.iconName,
-			isLeaf: info.isLeaf,
-			number: info.number
-		)
+		let content = makeContent(for: item, isLeaf: info.isLeaf)
 
-		return HierarchyModel(uuid: item.uuid, content: content, menu: menu)
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		formatter.timeStyle = .short
+		let dateCreated = formatter.string(from: item.created)
+
+		let dateCompleted = if let date = item.status.completionDate {
+			formatter.string(from: date)
+		} else {
+			"--"
+		}
+
+		return HierarchyModel(
+			uuid: item.uuid,
+			content: content,
+			createdAt: dateCreated,
+			completedAt: dateCompleted,
+			menu: menu
+		)
 	}
 }
 
 // MARK: - Helpers
 private extension PlanModelFactory {
 
-	func makeContent(isDone: Bool, text: String, isFavorite: Bool, icon: IconName?, isLeaf: Bool, number: Int) -> HierarchyModel.Content {
+	func makeContent(for item: ItemContent, isLeaf: Bool) -> PlanItemModel {
+		let textColor = self.textColor(for: item)
+		let iconColor = self.iconColor(for: item, isLeaf: isLeaf)
+		let isOn = isLeaf ? item.isDone : nil
+		let icon = self.icon(for: item, isLeaf: isLeaf)
 
-		let style = makeStyle(isDone: isDone, isFavorite: isFavorite, icon: icon, isLeaf: isLeaf)
-		let textColor: HierarchyModel.Color = isDone ? .secondary : .primary
-
-		return .init(
-			isOn: isDone,
-			text: text,
-			textColor: textColor,
-			style: style,
-			number: number
-		)
+		return PlanItemModel(isOn: isOn, text: item.text, textColor: textColor, icon: icon, iconColor: iconColor)
 	}
 
 	func makeMenu(isDone: Bool, isFavorite: Bool, isLeaf: Bool) -> MenuItem {
@@ -70,30 +75,27 @@ private extension PlanModelFactory {
 		)
 	}
 
-	func makeStyle(isDone: Bool, isFavorite: Bool, icon: IconName?, isLeaf: Bool) -> HierarchyModel.Style {
-
-		guard !isLeaf else {
-			switch (isDone, isFavorite) {
-			case (true, false):
-				return .checkbox
-			case (true, true):
-				return .checkboxWithIcon(icon?.rawValue ?? "star.fill", color: .secondary)
-			case (false, true):
-				return .checkboxWithIcon("star.fill", color: .yellow)
-			case (false, false):
-				return .checkbox
-			}
-		}
-
-		switch (isDone, isFavorite) {
-		case (true, false):
-			return .icon(icon?.rawValue ?? "doc.text", color: .secondary)
-		case (true, true):
-			return .icon(icon?.rawValue ?? "star.fill", color: .secondary)
+	func iconColor(for item: ItemContent, isLeaf: Bool) -> Color? {
+		switch (item.isDone, item.isFavorite) {
 		case (false, true):
-			return .icon("star.fill", color: .yellow)
-		case (false, false):
-			return .icon(icon?.rawValue ?? "doc.text", color: .primary)
+			return .yellow
+		default:
+			return .secondary
 		}
+	}
+
+	func textColor(for item: ItemContent) -> Color {
+		return item.isDone ? .secondary : .primary
+	}
+
+	func icon(for item: ItemContent, isLeaf: Bool) -> String? {
+
+		if isLeaf && !item.isFavorite {
+			return nil
+		} else if item.isFavorite {
+			return "star.fill"
+		}
+
+		return item.iconName?.rawValue ?? "doc.text"
 	}
 }

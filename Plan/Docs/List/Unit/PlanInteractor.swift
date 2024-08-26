@@ -24,8 +24,8 @@ protocol PlanInteractorProtocol {
 	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>)
 	func insert(texts: [String], to destination: HierarchyDestination<UUID>)
 
-	func textDidChange(_ id: UUID, newText: String)
-	func statusDidChange(_ id: UUID, newValue: Bool)
+	func modificate(_ id: UUID, newText: String, newStatus: Bool)
+	func modificate(_ id: UUID, newText: String)
 
 	func canUndo() -> Bool
 	func canRedo() -> Bool
@@ -151,15 +151,16 @@ extension PlanInteractor: PlanInteractorProtocol {
 		}
 	}
 
-	func textDidChange(_ id: UUID, newText: String) {
+	func modificate(_ id: UUID, newText: String, newStatus: Bool) {
 		storage.modificate { content in
 			content.setText(newText, for: id)
+			content.setStatus(newStatus, for: [id])
 		}
 	}
 
-	func statusDidChange(_ id: UUID, newValue: Bool) {
+	func modificate(_ id: UUID, newText: String) {
 		storage.modificate { content in
-			content.setStatus(newValue, for: [id])
+			content.setText(newText, for: id)
 		}
 	}
 

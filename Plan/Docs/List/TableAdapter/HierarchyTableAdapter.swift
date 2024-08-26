@@ -29,6 +29,8 @@ final class HierarchyTableAdapter: NSObject {
 		}
 	}
 
+	var columns: [any TableColumn<HierarchyModel>]?
+
 	// MARK: - UI-State
 
 	private(set) var selection = Set<UUID>()
@@ -39,7 +41,7 @@ final class HierarchyTableAdapter: NSObject {
 
 	var cache: [UUID: ListItem] = [:]
 
-	weak var delegate: (HierarchyDropDelegate & ListItemViewOutput)?
+	weak var delegate: (HierarchyDropDelegate)?
 
 	// MARK: - Initialization
 
@@ -56,6 +58,10 @@ final class HierarchyTableAdapter: NSObject {
 
 // MARK: - Public interface
 extension HierarchyTableAdapter {
+
+	func configure(columns: [any TableColumn<HierarchyModel>]) {
+		self.columns = columns
+	}
 
 	func apply(_ new: HierarchySnapshot) {
 		let old = snapshot
@@ -261,23 +267,27 @@ extension HierarchyTableAdapter: NSOutlineViewDataSource {
 extension HierarchyTableAdapter: NSOutlineViewDelegate {
 
 	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-		guard let item = item as? ListItem else {
+		guard let item = item as? ListItem, let tableColumn else {
 			return nil
 		}
 
 		let model = snapshot.model(with: item.uuid)
 
-		let id = NSUserInterfaceItemIdentifier(PlanItemCell.reuseIdentifier)
-		var view = table?.makeView(withIdentifier: id, owner: self) as? PlanItemCell
-		if view == nil {
-			view = PlanItemCell(model)
-			view?.identifier = id
+		let identifier = tableColumn.identifier.rawValue
+		guard let index = columns?.firstIndex(where: { $0.identifier == identifier }), let columns else {
+			return nil
 		}
+		print("index = \(index)")
+		return columns[index].makeCellIfNeeded(from: model, in: outlineView)
+	}
 
-		view?.model = model
-		view?.delegate = delegate
-
-		return view
+	func outlineView(_ outlineView: NSOutlineView, userCanChangeVisibilityOf column: NSTableColumn) -> Bool {
+		switch column.identifier.rawValue {
+		case "createdAt", "completedAt", "estimation":
+			return true
+		default:
+			return false
+		}
 	}
 
 }
@@ -460,8 +470,12 @@ extension HierarchyTableAdapter {
 	}
 
 	func configureRow(with model: HierarchyModel, at row: Int) {
-		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? PlanItemCell
-		view?.model = model
+		guard let table else {
+			return
+		}
+		for column in columns ?? [] {
+			column.configureCell(for: model, at: row, in: table)
+		}
 	}
 }
 

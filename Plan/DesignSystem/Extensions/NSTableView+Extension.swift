@@ -20,4 +20,11 @@ extension NSTableView {
 			return selectedRowIndexes
 		}
 	}
+
+	func view(column: NSUserInterfaceItemIdentifier, row: Int, makeIfNecessary: Bool) -> NSView? {
+		guard let index = tableColumns.firstIndex(where: \.identifier, equalsTo: column) else {
+			return nil
+		}
+		return view(atColumn: index, row: row, makeIfNecessary: makeIfNecessary)
+	}
 }

@@ -46,6 +46,8 @@ protocol HierarchyView: AnyObject {
 
 	func setConfiguration(_ configuration: DropConfiguration)
 
+	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>])
+
 	func scroll(to id: UUID)
 
 	func select(_ id: UUID)
@@ -65,9 +67,9 @@ class PlanViewController: NSViewController {
 
 	// MARK: - DI
 
-	var adapter: HierarchyTableAdapter?
+	private (set) var adapter: HierarchyTableAdapter?
 
-	var output: (PlanViewOutput & HierarchyDropDelegate & ListItemViewOutput)?
+	var output: (PlanViewOutput & HierarchyDropDelegate)?
 
 	// MARK: - UI-Properties
 
@@ -131,6 +133,15 @@ extension PlanViewController: HierarchyView {
 		}
 	}
 
+	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>]) {
+		for model in columns {
+			let column = NSTableColumn(identifier: .init(rawValue: model.identifier))
+			column.title = model.title
+			table.addTableColumn(column)
+		}
+		adapter?.configure(columns: columns)
+	}
+
 	func setConfiguration(_ configuration: DropConfiguration) {
 		adapter?.dropConfiguration = configuration
 		adapter?.delegate = output
@@ -170,7 +181,6 @@ private extension PlanViewController {
 
 	func configureUserInterface() {
 
-		table.headerView = nil
 		table.autoresizesOutlineColumn = false
 		table.allowsMultipleSelection = true
 		table.frame = scrollview.bounds
@@ -179,9 +189,39 @@ private extension PlanViewController {
 		scrollview.hasVerticalScroller = false
 		scrollview.automaticallyAdjustsContentInsets = true
 
-		let identifier = NSUserInterfaceItemIdentifier("main")
-		let column = NSTableColumn(identifier: identifier)
-		table.addTableColumn(column)
+//		let identifier = NSUserInterfaceItemIdentifier("main")
+//		let column = NSTableColumn(identifier: identifier)
+//		column.title = "Description"
+//		column.resizingMask = .autoresizingMask
+//		column.minWidth = 360.0
+//		table.addTableColumn(column)
+//
+//		let estimation = NSTableColumn(identifier: .init(rawValue: "estimation"))
+//		estimation.title = "Estimation"
+//		estimation.resizingMask = .userResizingMask
+//		estimation.maxWidth = 76
+//		estimation.minWidth = 64
+//		estimation.isHidden = true
+//		table.addTableColumn(estimation)
+//
+//		let createdAt = NSTableColumn(identifier: .init(rawValue: "createdAt"))
+//		createdAt.title = "Date Created"
+//		createdAt.resizingMask = .userResizingMask
+//		createdAt.maxWidth = 240
+//		createdAt.minWidth = 160
+//		createdAt.isHidden = true
+//		table.addTableColumn(createdAt)
+//
+//		let completedAt = NSTableColumn(identifier: .init(rawValue: "completedAt"))
+//		completedAt.title = "Date Completed"
+//		completedAt.resizingMask = .userResizingMask
+//		completedAt.maxWidth = 240
+//		completedAt.minWidth = 160
+//		completedAt.isHidden = true
+//		table.addTableColumn(completedAt)
+
+		table.allowsColumnResizing = true
+		table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
 
 		table.menu = makeContextMenu()
 	}
@@ -233,102 +273,20 @@ private extension PlanViewController {
 	}
 }
 
-// MARK: - NSMenuItemValidation
-extension PlanViewController: NSMenuItemValidation {
-
-	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-		guard let identifier = menuItem.identifier, let adapter else {
-			return false
-		}
-
-		switch identifier {
-		case .redoMenuItem:
-			return output?.canRedo() ?? false
-		case .undoMenuItem:
-			return output?.canUndo() ?? false
-		case .newMenuItem,
-			 .setEstimationMenuItem,
-			 .setIconMenuItem,
-			 .iconsGroupMenuItem,
-			 .pasteMenuItem,
-			 .copyMenuItem:
-			return true
-		case .foldMenuItem, .unfoldMenuItem:
-			return !adapter.selection.isEmpty
-		default:
-			break
-		}
-		let state = adapter.menuItemState(for: identifier.rawValue)
-		menuItem.state = state
-
-		return adapter.validateMenuItem(identifier.rawValue)
-	}
+extension String {
+	static let dateCreatedColumn = "date_created_column"
 }
 
-// MARK: - MenuSupportable
-extension PlanViewController: MenuSupportable {
-
-	@IBAction
-	func createNew(_ sender: NSMenuItem) {
-		output?.createNew()
-	}
-
-	@IBAction
-	func delete(_ sender: NSMenuItem) {
-		output?.deleteItems()
-	}
-
-	@IBAction
-	func toggleBookmark(_ sender: NSMenuItem) {
-		let enabled = sender.state == .on
-		output?.setBookmark(!enabled)
-	}
-
-	@IBAction
-	func toggleCompleted(_ sender: NSMenuItem) {
-		let enabled = sender.state == .on
-		output?.setState(!enabled)
-	}
-
-	@IBAction
-	func setEstimation(_ sender: NSMenuItem) {
-		let number = sender.tag
-		output?.setEstimation(number)
-	}
-
-	@IBAction
-	func setIcon(_ sender: NSMenuItem) {
-		let iconName = sender.representedObject as? IconName
-		output?.setIcon(iconName)
-	}
-
-	@IBAction
-	func undo(_ sender: NSMenuItem) {
-		output?.undo()
-	}
-
-	@IBAction
-	func redo(_ sender: NSMenuItem) {
-		output?.redo()
-	}
-
-	@IBAction
-	func fold(_ sender: NSMenuItem) {
-		output?.fold()
-	}
-
-	@IBAction
-	func unfold(_ sender: NSMenuItem) {
-		output?.unfold()
-	}
-
-	@IBAction
-	func paste(_ sender: NSMenuItem) {
-		output?.paste()
-	}
-
-	@IBAction
-	func copy(_ sender: NSMenuItem) {
-		output?.copy()
-	}
-}
+//private extension NSTableColumn {
+//
+//	static var dateCreated: NSTableColumn {
+//
+//		let createdAt = NSTableColumn(identifier: .init(rawValue: "createdAt"))
+//		createdAt.title = "Date Created"
+//		createdAt.resizingMask = .userResizingMask
+//		createdAt.maxWidth = 240
+//		createdAt.minWidth = 160
+//		createdAt.isHidden = true
+//		table.addTableColumn(createdAt)
+//	}
+//}

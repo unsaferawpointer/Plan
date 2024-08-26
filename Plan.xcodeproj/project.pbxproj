@@ -62,6 +62,11 @@
 		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
 		4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* PlanLocalization.swift */; };
 		4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */; };
+		4C85143D2C7E459000C7475C /* TextColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85143C2C7E459000C7475C /* TextColumn.swift */; };
+		4C85143F2C7E486100C7475C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85143E2C7E486100C7475C /* TableCell.swift */; };
+		4C8514412C7E489A00C7475C /* DescriptionTableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514402C7E489A00C7475C /* DescriptionTableColumn.swift */; };
+		4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514422C7E4D3500C7475C /* PlanItemModel.swift */; };
+		4C8514462C7E4D9D00C7475C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514452C7E4D9D00C7475C /* Color.swift */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 		4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */; };
 		4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */; };
@@ -72,7 +77,6 @@
 		4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */; };
 		4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */; };
 		4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */; };
-		4C8C6CE62C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */; };
 		4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */; };
 		4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEC2C72695B00E09697 /* DropInfo.swift */; };
 		4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */; };
@@ -86,6 +90,12 @@
 		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */; };
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
 		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
+		4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA612C7BB611002DDD95 /* TextCell.swift */; };
+		4CCCFA642C7C725C002DDD95 /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA632C7C725C002DDD95 /* BadgeCell.swift */; };
+		4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */; };
+		4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */; };
+		4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */; };
+		4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +176,11 @@
 		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
 		4C81FB642C601810006300E6 /* PlanLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLocalization.swift; sourceTree = "<group>"; };
 		4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = PlanLocalizable.xcstrings; sourceTree = "<group>"; };
+		4C85143C2C7E459000C7475C /* TextColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColumn.swift; sourceTree = "<group>"; };
+		4C85143E2C7E486100C7475C /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		4C8514402C7E489A00C7475C /* DescriptionTableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableColumn.swift; sourceTree = "<group>"; };
+		4C8514422C7E4D3500C7475C /* PlanItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItemModel.swift; sourceTree = "<group>"; };
+		4C8514452C7E4D9D00C7475C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
 		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
@@ -176,7 +191,6 @@
 		4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserConfiguration.swift; sourceTree = "<group>"; };
 		4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacade.swift; sourceTree = "<group>"; };
 		4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
-		4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+ListItemViewOutput.swift"; sourceTree = "<group>"; };
 		4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatter.swift; sourceTree = "<group>"; };
 		4C8C6CEC2C72695B00E09697 /* DropInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInfo.swift; sourceTree = "<group>"; };
 		4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableDropLogic.swift; sourceTree = "<group>"; };
@@ -190,6 +204,12 @@
 		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1.json; sourceTree = "<group>"; };
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
+		4CCCFA612C7BB611002DDD95 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		4CCCFA632C7C725C002DDD95 /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
+		4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumn.swift; sourceTree = "<group>"; };
+		4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableColumn+Extension.swift"; sourceTree = "<group>"; };
+		4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
+		4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,8 +410,8 @@
 				4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */,
 				4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */,
 				4C8C6CE22C6A742700E09697 /* Presenter */,
+				4CCCFA6B2C7CF0F0002DDD95 /* ViewController */,
 				4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */,
-				4C298EA62C5FDE0A00474956 /* PlanViewController.swift */,
 				4C81FB602C5FF9D7006300E6 /* PlanModel.swift */,
 				4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */,
 				4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */,
@@ -414,6 +434,8 @@
 		4C298EAB2C5FDE2100474956 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				4C8514442C7E4D9000C7475C /* Common */,
+				4C85143B2C7E457700C7475C /* TableColumns */,
 				4C8C6CCF2C67DCC700E09697 /* DragAndDrop */,
 				4C298EB52C5FDE5200474956 /* Extensions */,
 				4C298EAF2C5FDE3F00474956 /* Menu */,
@@ -428,6 +450,8 @@
 			children = (
 				4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */,
 				4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */,
+				4CCCFA612C7BB611002DDD95 /* TextCell.swift */,
+				4CCCFA632C7C725C002DDD95 /* BadgeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,6 +476,7 @@
 				4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */,
 				4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */,
 				4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */,
+				4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -466,10 +491,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4C85143B2C7E457700C7475C /* TableColumns */ = {
+			isa = PBXGroup;
+			children = (
+				4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */,
+				4C85143C2C7E459000C7475C /* TextColumn.swift */,
+				4C85143E2C7E486100C7475C /* TableCell.swift */,
+				4C8514402C7E489A00C7475C /* DescriptionTableColumn.swift */,
+			);
+			path = TableColumns;
+			sourceTree = "<group>";
+		};
+		4C8514442C7E4D9000C7475C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4C8514452C7E4D9D00C7475C /* Color.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		4C8C6CCD2C67DC1400E09697 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */,
+				4C8514422C7E4D3500C7475C /* PlanItemModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -529,7 +574,6 @@
 			children = (
 				4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */,
 				4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */,
-				4C8C6CE52C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -609,6 +653,16 @@
 				4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */,
 			);
 			path = v1;
+			sourceTree = "<group>";
+		};
+		4CCCFA6B2C7CF0F0002DDD95 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EA62C5FDE0A00474956 /* PlanViewController.swift */,
+				4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */,
+				4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -748,9 +802,13 @@
 			files = (
 				4C81FB612C5FF9D7006300E6 /* PlanModel.swift in Sources */,
 				4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */,
+				4C8514462C7E4D9D00C7475C /* Color.swift in Sources */,
 				4C298EBF2C5FDE6700474956 /* NSTextField+Extension.swift in Sources */,
 				4C298E542C5FDC2000474956 /* ViewController.swift in Sources */,
 				4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */,
+				4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */,
+				4CCCFA642C7C725C002DDD95 /* BadgeCell.swift in Sources */,
+				4C8514412C7E489A00C7475C /* DescriptionTableColumn.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
@@ -760,7 +818,6 @@
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
 				4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
-				4C8C6CE62C6A748700E09697 /* PlanPresenter+ListItemViewOutput.swift in Sources */,
 				4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */,
 				4C298ECB2C5FDEA500474956 /* Dictionary+Extension.swift in Sources */,
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
@@ -770,11 +827,13 @@
 				4C298ED02C5FDEA500474956 /* DocumentDataPublisher.swift in Sources */,
 				4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */,
 				4C298ED12C5FDEA500474956 /* DocumentError.swift in Sources */,
+				4C85143F2C7E486100C7475C /* TableCell.swift in Sources */,
 				4C298EBD2C5FDE6700474956 /* NSImage+Extension.swift in Sources */,
 				4C298EBC2C5FDE6700474956 /* NSOutlineView+Extension.swift in Sources */,
 				4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */,
 				4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
+				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4CBAC42B2C7A832D00534CC3 /* PlanVersion.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
@@ -789,16 +848,20 @@
 				4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */,
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
+				4C85143D2C7E459000C7475C /* TextColumn.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
 				4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */,
+				4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */,
 				4C298ED92C5FDEBC00474956 /* PlanAssembly.swift in Sources */,
 				4C298EDA2C5FDEBC00474956 /* PlanItemCell.swift in Sources */,
+				4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */,
 				4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */,
 				4C298EDC2C5FDEBC00474956 /* HierarchyDestination.swift in Sources */,
 				4C298EDD2C5FDEBC00474956 /* PlanPresenter.swift in Sources */,
 				4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */,
 				4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */,
 				4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */,
+				4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */,
 				4C8C6CD42C68D28700E09697 /* TextParser.swift in Sources */,
 				4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */,
 				4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */,
@@ -809,6 +872,7 @@
 				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,
 				4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */,
+				4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */,
 				4C298EC32C5FDE8900474956 /* MenuBuilder+Item.swift in Sources */,
 				4C298EC42C5FDE8900474956 /* MenuItem.swift in Sources */,
 				4C298EC52C5FDE9100474956 /* IconCagetory.swift in Sources */,
@@ -978,7 +1042,7 @@
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -991,7 +1055,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1007,7 +1071,7 @@
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1020,7 +1084,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

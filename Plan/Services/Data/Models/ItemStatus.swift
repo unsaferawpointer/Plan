@@ -12,6 +12,19 @@ enum ItemStatus {
 	case done(completed: Date)
 }
 
+// MARK: - Computed properties
+extension ItemStatus {
+
+	var completionDate: Date? {
+		switch self {
+		case .open:
+			return nil
+		case .done(let completed):
+			return completed
+		}
+	}
+}
+
 // MARK: - Codable
 extension ItemStatus: Codable { }
 
