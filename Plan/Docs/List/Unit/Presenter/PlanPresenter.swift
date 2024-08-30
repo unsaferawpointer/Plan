@@ -78,11 +78,7 @@ extension PlanPresenter: PlanViewOutput {
 			title: localization.descriptionColumnTitle,
 			keyPath: \.content,
 			options: .init(minWidth: 320, maxWidth: nil, isRequired: true, isHidden: false)) { [weak self] id, value in
-				if let isOn = value.isOn {
-					self?.interactor?.modificate(id, newText: value.text, newStatus: isOn)
-				} else {
-					self?.interactor?.modificate(id, newText: value.text)
-				}
+				self?.modificate(id: id, newText: value.text, newStatus: value.isOn)
 			}
 
 		let estimation = AnyColumn<HierarchyModel, BadgeCell>(
@@ -197,6 +193,23 @@ extension PlanPresenter {
 		let items = root.nodes
 		return HierarchySnapshot(items) { item, info in
 			modelFactory.makeModel(item: item, info: info)
+		}
+	}
+}
+
+// MARK: - Helpers
+private extension PlanPresenter {
+
+	func modificate(id: UUID, newText: String, newStatus: Bool?) {
+		let trimmed = newText.trimmingCharacters(in: .whitespacesAndNewlines)
+		guard !trimmed.isEmpty else {
+			interactor?.deleteItems([id])
+			return
+		}
+		if let isOn = newStatus {
+			interactor?.modificate(id, newText: trimmed, newStatus: isOn)
+		} else {
+			interactor?.modificate(id, newText: trimmed)
 		}
 	}
 }
