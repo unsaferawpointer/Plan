@@ -69,6 +69,17 @@ extension DocumentPage {
 		row.click()
 	}
 
+	func type(inRow index: Int) {
+		let row = row(for: index)
+		row.click()
+
+		let textfield = row.descendants(matching: .textField).firstMatch
+		textfield.click()
+		textfield.typeText("lfksdjlfkd")
+
+		
+	}
+
 	func dragRow(at index: Int, toRow targetIndex: Int) {
 
 		let draggedRow = row(for: index).textFields.firstMatch
@@ -77,8 +88,21 @@ extension DocumentPage {
 		draggedRow.press(forDuration: 1, thenDragTo: targetRow)
 	}
 
+	func invokeContextMenu(for index: Int, andClick item: String) {
+
+		let row = self.row(for: index)
+		row.rightClick()
+
+		outline.menuItems[item].click()
+	}
+
 	var needToSave: Bool {
 		return window.sheets.firstMatch.exists
+	}
+
+	func disclosedChildRowsCount(for index: Int) -> Int {
+		let row = self.row(for: index)
+		return row.disclosedChildRows.count
 	}
 
 	func close() {

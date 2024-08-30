@@ -76,6 +76,87 @@ extension PlanUITests {
 		doc.checkTrailingLabel(expectedTitle: "0 %")
 		doc.checkProgress(expectedValue: 0)
 	}
+
+	func test_createNewItem_whenPressShortcut() {
+		//Arrange
+		let app = prepareApp()
+
+		let window = app.firstWindow()
+
+		let doc = DocumentPage(window: window)
+
+		// Act
+		doc.newItems(count: 1, in: nil)
+		doc.selectRow(0)
+		app.press("t", modifierFlags: [.command])
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 2)
+	}
+}
+
+// MARK: - Context Menu
+extension PlanUITests {
+
+	func test_clickNewMenuItem() {
+		//Arrange
+		let app = prepareApp()
+
+		let window = app.firstWindow()
+
+		let doc = DocumentPage(window: window)
+		doc.newItems(count: 1, in: nil)
+
+		// Act
+		doc.selectRow(0)
+		doc.invokeContextMenu(for: 0, andClick: .newMenuItem)
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 2)
+		XCTAssertEqual(doc.disclosedChildRowsCount(for: 0), 1)
+		XCTAssertEqual(doc.disclosedChildRowsCount(for: 1), 0)
+	}
+
+	func test_clickStatusMenuItem() {
+		//Arrange
+		let app = prepareApp()
+
+		let window = app.firstWindow()
+
+		let doc = DocumentPage(window: window)
+		doc.newItems(count: 1, in: nil)
+
+		// Act
+		doc.selectRow(0)
+		doc.invokeContextMenu(for: 0, andClick: .statusMenuItem)
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 1)
+		doc.checkLeadingLabel(expectedTitle: "All tasks completed")
+		doc.checkTrailingLabel(expectedTitle: "100 %")
+		doc.checkProgress(expectedValue: 1)
+	}
+
+	func test_clickDeleteMenuItem() {
+		//Arrange
+		let app = prepareApp()
+
+		let window = app.firstWindow()
+
+		let doc = DocumentPage(window: window)
+
+		doc.newItems(count: 1, in: nil)
+		doc.newItems(count: 1, in: 0)
+		doc.newItems(count: 1, in: 1)
+
+		// Act
+		doc.selectRow(0)
+		doc.invokeContextMenu(for: 0, andClick: .deleteMenuItem)
+
+		// Assert
+		XCTAssertEqual(doc.rowsCount, 0)
+	}
+
 }
 
 // MARK: - Helpers
@@ -91,4 +172,10 @@ private extension PlanUITests {
 
 		return app
 	}
+}
+
+private extension String {
+	static var deleteMenuItem = "delete_menu_item"
+	static var newMenuItem = "new_menu_item"
+	static var statusMenuItem = "set_status_menu_item"
 }

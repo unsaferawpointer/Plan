@@ -284,6 +284,7 @@
 		4C298E6F2C5FDC2100474956 /* PlanUITests */ = {
 			isa = PBXGroup;
 			children = (
+				4C8514492C820C0800C7475C /* Common */,
 				4C8C6CF02C78C9A200E09697 /* Pages */,
 				4C298E702C5FDC2100474956 /* PlanUITests.swift */,
 				4C298E722C5FDC2100474956 /* PlanUITestsLaunchTests.swift */,
@@ -503,6 +504,13 @@
 			isa = PBXGroup;
 			children = (
 				4C8514452C7E4D9D00C7475C /* Color.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4C8514492C820C0800C7475C /* Common */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Common;
 			sourceTree = "<group>";
