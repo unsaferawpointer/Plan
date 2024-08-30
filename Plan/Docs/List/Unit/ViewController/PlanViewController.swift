@@ -137,6 +137,14 @@ extension PlanViewController: HierarchyView {
 		for model in columns {
 			let column = NSTableColumn(identifier: .init(rawValue: model.identifier))
 			column.title = model.title
+			column.resizingMask = model.options.isRequired ? .autoresizingMask : .userResizingMask
+			column.isHidden = model.options.isHidden
+			if let minWidth = model.options.minWidth {
+				column.minWidth = minWidth
+			}
+			if let maxWidth = model.options.maxWidth {
+				column.maxWidth = maxWidth
+			}
 			table.addTableColumn(column)
 		}
 		adapter?.configure(columns: columns)
@@ -189,39 +197,8 @@ private extension PlanViewController {
 		scrollview.hasVerticalScroller = false
 		scrollview.automaticallyAdjustsContentInsets = true
 
-//		let identifier = NSUserInterfaceItemIdentifier("main")
-//		let column = NSTableColumn(identifier: identifier)
-//		column.title = "Description"
-//		column.resizingMask = .autoresizingMask
-//		column.minWidth = 360.0
-//		table.addTableColumn(column)
-//
-//		let estimation = NSTableColumn(identifier: .init(rawValue: "estimation"))
-//		estimation.title = "Estimation"
-//		estimation.resizingMask = .userResizingMask
-//		estimation.maxWidth = 76
-//		estimation.minWidth = 64
-//		estimation.isHidden = true
-//		table.addTableColumn(estimation)
-//
-//		let createdAt = NSTableColumn(identifier: .init(rawValue: "createdAt"))
-//		createdAt.title = "Date Created"
-//		createdAt.resizingMask = .userResizingMask
-//		createdAt.maxWidth = 240
-//		createdAt.minWidth = 160
-//		createdAt.isHidden = true
-//		table.addTableColumn(createdAt)
-//
-//		let completedAt = NSTableColumn(identifier: .init(rawValue: "completedAt"))
-//		completedAt.title = "Date Completed"
-//		completedAt.resizingMask = .userResizingMask
-//		completedAt.maxWidth = 240
-//		completedAt.minWidth = 160
-//		completedAt.isHidden = true
-//		table.addTableColumn(completedAt)
-
 		table.allowsColumnResizing = true
-		table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
+		table.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 
 		table.menu = makeContextMenu()
 	}

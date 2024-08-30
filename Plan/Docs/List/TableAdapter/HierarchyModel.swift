@@ -17,6 +17,8 @@ struct HierarchyModel {
 
 	var completedAt: String
 
+	var badge: String?
+
 	var menu: MenuItem
 
 	// MARK: - Initialization
@@ -26,12 +28,14 @@ struct HierarchyModel {
 		content: PlanItemModel,
 		createdAt: String,
 		completedAt: String,
+		badge: String?,
 		menu: MenuItem
 	) {
 		self.uuid = uuid
 		self.content = content
 		self.createdAt = createdAt
 		self.completedAt = completedAt
+		self.badge = badge
 		self.menu = menu
 	}
 }

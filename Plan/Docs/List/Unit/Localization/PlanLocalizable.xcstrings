@@ -101,6 +101,22 @@
         }
       }
     },
+    "description_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Описание"
+          }
+        }
+      }
+    },
     "empty_list" : {
       "localizations" : {
         "en" : {
@@ -113,6 +129,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заданий нет"
+          }
+        }
+      }
+    },
+    "estimation_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimation"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оценка"
           }
         }
       }

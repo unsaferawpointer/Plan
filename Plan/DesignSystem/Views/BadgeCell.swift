@@ -7,15 +7,20 @@
 
 import Cocoa
 
-final class BadgeCell: NSView {
+final class BadgeCell: NSView, TableCell {
+	
+
+	typealias Model = String?
 
 	static var reuseIdentifier: String = "badge_cell"
 
-	var text: String? {
+	var model: Model {
 		didSet {
 			updateUserInterface()
 		}
 	}
+
+	var action: ((Model) -> Void)?
 
 	// MARK: - UI-Properties
 
@@ -29,8 +34,8 @@ final class BadgeCell: NSView {
 
 	// MARK: - Initialization
 
-	init(_ text: String) {
-		self.text = text
+	init(_ model: Model) {
+		self.model = model
 		super.init(frame: .zero)
 		configureConstraints()
 	}
@@ -51,13 +56,13 @@ final class BadgeCell: NSView {
 private extension BadgeCell {
 
 	func updateUserInterface() {
-		guard let text else {
+		guard let model else {
 			badge.title = ""
 			badge.isHidden = true
 			return
 		}
 		badge.isHidden = false
-		badge.title = text
+		badge.title = model
 	}
 
 	func configureConstraints() {

@@ -16,6 +16,8 @@ protocol PlanLocalizationProtocol {
 
 	var createdDateColumnTitle: String { get }
 	var completedDateColumnTitle: String { get }
+	var descriptionColumnTitle: String { get }
+	var estimationColumnTitle: String { get }
 }
 
 final class PlanLocalization { }
@@ -52,5 +54,13 @@ extension PlanLocalization: PlanLocalizationProtocol {
 
 	var completedDateColumnTitle: String {
 		return String(localized: "completed_date_table_column", table: "PlanLocalizable")
+	}
+
+	var descriptionColumnTitle: String {
+		return String(localized: "description_table_column", table: "PlanLocalizable")
+	}
+
+	var estimationColumnTitle: String {
+		return String(localized: "estimation_table_column", table: "PlanLocalizable")
 	}
 }

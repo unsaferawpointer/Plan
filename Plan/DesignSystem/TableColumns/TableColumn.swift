@@ -21,6 +21,8 @@ protocol TableColumn<Model> {
 
 	var title: String { get }
 
+	var options: TableColumnOptions { get }
+
 	var action: ((Model.ID, Value) -> Void)? { get set }
 }
 
@@ -46,4 +48,15 @@ extension TableColumn {
 		let cell = table.view(column: id, row: row, makeIfNecessary: false) as? Cell
 		cell?.model = model[keyPath: keyPath]
 	}
+}
+
+struct TableColumnOptions {
+
+	let minWidth: CGFloat?
+
+	let maxWidth: CGFloat?
+
+	var isRequired: Bool
+
+	var isHidden: Bool
 }

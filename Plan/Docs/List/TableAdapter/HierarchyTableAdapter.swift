@@ -277,17 +277,14 @@ extension HierarchyTableAdapter: NSOutlineViewDelegate {
 		guard let index = columns?.firstIndex(where: { $0.identifier == identifier }), let columns else {
 			return nil
 		}
-		print("index = \(index)")
 		return columns[index].makeCellIfNeeded(from: model, in: outlineView)
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, userCanChangeVisibilityOf column: NSTableColumn) -> Bool {
-		switch column.identifier.rawValue {
-		case "createdAt", "completedAt", "estimation":
-			return true
-		default:
-			return false
-		}
+
+		let optionalColumns = columns?.filter { !$0.options.isRequired }.map(\.identifier)
+
+		return optionalColumns?.contains(column.identifier.rawValue) ?? false
 	}
 
 }

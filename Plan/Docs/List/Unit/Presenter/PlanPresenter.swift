@@ -59,27 +59,40 @@ extension PlanPresenter: PlanViewOutput {
 
 	func viewDidLoad() {
 
-		let createdDate = TextColumn<HierarchyModel>(
+		let dateCreated = AnyColumn<HierarchyModel, TextCell>(
 			identifier: "created_date_table_column",
+			title: localization.createdDateColumnTitle,
 			keyPath: \.createdAt,
-			title: localization.createdDateColumnTitle
+			options: .init(minWidth: 200, maxWidth: 240, isRequired: false, isHidden: true)
 		)
 
-		let competedDate = TextColumn<HierarchyModel>(
+		let dateCompleted = AnyColumn<HierarchyModel, TextCell>(
 			identifier: "completed_date_table_column",
+			title: localization.completedDateColumnTitle,
 			keyPath: \.completedAt,
-			title: localization.completedDateColumnTitle
+			options: .init(minWidth: 200, maxWidth: 240, isRequired: false, isHidden: true)
 		)
 
-		let main = DescriptionTableColumn(keyPath: \.content) { [weak self] id, value in
-			if let isOn = value.isOn {
-				self?.interactor?.modificate(id, newText: value.text, newStatus: isOn)
-			} else {
-				self?.interactor?.modificate(id, newText: value.text)
+		let main = AnyColumn<HierarchyModel, PlanItemCell>(
+			identifier: "description_table_column",
+			title: localization.descriptionColumnTitle,
+			keyPath: \.content,
+			options: .init(minWidth: 320, maxWidth: nil, isRequired: true, isHidden: false)) { [weak self] id, value in
+				if let isOn = value.isOn {
+					self?.interactor?.modificate(id, newText: value.text, newStatus: isOn)
+				} else {
+					self?.interactor?.modificate(id, newText: value.text)
+				}
 			}
-		}
 
-		view?.setConfiguration([main, createdDate, competedDate])
+		let estimation = AnyColumn<HierarchyModel, BadgeCell>(
+			identifier: "estimation_table_column",
+			title: localization.estimationColumnTitle,
+			keyPath: \.badge,
+			options: .init(minWidth: 56, maxWidth: 72, isRequired: false, isHidden: false)
+		)
+
+		view?.setConfiguration([main, estimation, dateCreated, dateCompleted])
 		view?.setConfiguration(
 			DropConfiguration(types: [.id, .item, .string])
 		)

@@ -62,11 +62,10 @@
 		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
 		4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* PlanLocalization.swift */; };
 		4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */; };
-		4C85143D2C7E459000C7475C /* TextColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85143C2C7E459000C7475C /* TextColumn.swift */; };
 		4C85143F2C7E486100C7475C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85143E2C7E486100C7475C /* TableCell.swift */; };
-		4C8514412C7E489A00C7475C /* DescriptionTableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514402C7E489A00C7475C /* DescriptionTableColumn.swift */; };
 		4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514422C7E4D3500C7475C /* PlanItemModel.swift */; };
 		4C8514462C7E4D9D00C7475C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514452C7E4D9D00C7475C /* Color.swift */; };
+		4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514472C80DCCA00C7475C /* AnyColumn.swift */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 		4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */; };
 		4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */; };
@@ -176,11 +175,10 @@
 		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
 		4C81FB642C601810006300E6 /* PlanLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLocalization.swift; sourceTree = "<group>"; };
 		4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = PlanLocalizable.xcstrings; sourceTree = "<group>"; };
-		4C85143C2C7E459000C7475C /* TextColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColumn.swift; sourceTree = "<group>"; };
 		4C85143E2C7E486100C7475C /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
-		4C8514402C7E489A00C7475C /* DescriptionTableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableColumn.swift; sourceTree = "<group>"; };
 		4C8514422C7E4D3500C7475C /* PlanItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItemModel.swift; sourceTree = "<group>"; };
 		4C8514452C7E4D9D00C7475C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		4C8514472C80DCCA00C7475C /* AnyColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyColumn.swift; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
 		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
@@ -495,9 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */,
-				4C85143C2C7E459000C7475C /* TextColumn.swift */,
+				4C8514472C80DCCA00C7475C /* AnyColumn.swift */,
 				4C85143E2C7E486100C7475C /* TableCell.swift */,
-				4C8514402C7E489A00C7475C /* DescriptionTableColumn.swift */,
 			);
 			path = TableColumns;
 			sourceTree = "<group>";
@@ -808,7 +805,6 @@
 				4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */,
 				4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */,
 				4CCCFA642C7C725C002DDD95 /* BadgeCell.swift in Sources */,
-				4C8514412C7E489A00C7475C /* DescriptionTableColumn.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
@@ -837,6 +833,7 @@
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4CBAC42B2C7A832D00534CC3 /* PlanVersion.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
+				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,
@@ -848,7 +845,6 @@
 				4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */,
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
-				4C85143D2C7E459000C7475C /* TextColumn.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
 				4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */,
 				4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */,

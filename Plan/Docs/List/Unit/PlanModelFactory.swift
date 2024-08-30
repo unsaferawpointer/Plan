@@ -36,11 +36,14 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			"--"
 		}
 
+		let badge = item.count > 0 ? "\(item.count)" : nil
+
 		return HierarchyModel(
 			uuid: item.uuid,
 			content: content,
 			createdAt: dateCreated,
-			completedAt: dateCompleted,
+			completedAt: dateCompleted, 
+			badge: badge,
 			menu: menu
 		)
 	}
@@ -96,6 +99,6 @@ private extension PlanModelFactory {
 			return "star.fill"
 		}
 
-		return item.iconName?.rawValue ?? "doc.text"
+		return item.iconName?.rawValue
 	}
 }
