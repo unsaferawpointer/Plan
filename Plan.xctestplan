@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "DF85D4C0-5DE8-4461-A96C-8D4B631B83CA",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Plan.xcodeproj",
+      "identifier" : "4C298E4D2C5FDC2000474956",
+      "name" : "Plan"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Plan.xcodeproj",
+        "identifier" : "4C298E612C5FDC2100474956",
+        "name" : "PlanTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Plan.xcodeproj",
+        "identifier" : "4C298E6B2C5FDC2100474956",
+        "name" : "PlanUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

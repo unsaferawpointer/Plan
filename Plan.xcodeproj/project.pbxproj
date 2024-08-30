@@ -179,6 +179,7 @@
 		4C8514422C7E4D3500C7475C /* PlanItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItemModel.swift; sourceTree = "<group>"; };
 		4C8514452C7E4D9D00C7475C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4C8514472C80DCCA00C7475C /* AnyColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyColumn.swift; sourceTree = "<group>"; };
+		4C85144A2C82300100C7475C /* Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Plan.xctestplan; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
 		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 		4C298E452C5FDC2000474956 = {
 			isa = PBXGroup;
 			children = (
+				4C85144A2C82300100C7475C /* Plan.xctestplan */,
 				4C298E502C5FDC2000474956 /* Plan */,
 				4C298E652C5FDC2100474956 /* PlanTests */,
 				4C298E6F2C5FDC2100474956 /* PlanUITests */,
