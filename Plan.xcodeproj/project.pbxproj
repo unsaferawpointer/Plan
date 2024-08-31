@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
-		4C298E542C5FDC2000474956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E532C5FDC2000474956 /* ViewController.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
 		4C298E732C5FDC2100474956 /* PlanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E722C5FDC2100474956 /* PlanUITestsLaunchTests.swift */; };
@@ -127,7 +126,6 @@
 /* Begin PBXFileReference section */
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C298E532C5FDC2000474956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C298E5C2C5FDC2100474956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C298E5D2C5FDC2100474956 /* Plan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Plan.entitlements; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				4C298E7F2C5FDC5700474956 /* Resource */,
 				4C298E8A2C5FDD8800474956 /* Services */,
 				4C298E822C5FDD5A00474956 /* Common */,
-				4C298E532C5FDC2000474956 /* ViewController.swift */,
 				4C298EAB2C5FDE2100474956 /* DesignSystem */,
 				4C298E802C5FDD2C00474956 /* Docs */,
 			);
@@ -857,7 +854,6 @@
 				4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */,
 				4C8514462C7E4D9D00C7475C /* Color.swift in Sources */,
 				4C298EBF2C5FDE6700474956 /* NSTextField+Extension.swift in Sources */,
-				4C298E542C5FDC2000474956 /* ViewController.swift in Sources */,
 				4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */,
 				4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */,
 				4CCCFA642C7C725C002DDD95 /* BadgeCell.swift in Sources */,

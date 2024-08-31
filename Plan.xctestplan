@@ -4,7 +4,7 @@
       "id" : "DF85D4C0-5DE8-4461-A96C-8D4B631B83CA",
       "name" : "Test Scheme Action",
       "options" : {
-
+        "distributor" : "com.apple.TestFlight"
       }
     }
   ],
