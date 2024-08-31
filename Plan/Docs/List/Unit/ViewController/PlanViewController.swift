@@ -40,7 +40,7 @@ protocol PlanViewOutput {
 	func copy()
 }
 
-protocol HierarchyView: AnyObject {
+protocol PlanView: AnyObject {
 
 	func display(_ model: PlanModel)
 
@@ -114,8 +114,8 @@ class PlanViewController: NSViewController {
 	}
 }
 
-// MARK: - HierarchyView
-extension PlanViewController: HierarchyView {
+// MARK: - PlanView
+extension PlanViewController: PlanView {
 
 	func display(_ model: PlanModel) {
 

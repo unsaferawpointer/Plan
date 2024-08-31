@@ -66,6 +66,16 @@
 		4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514422C7E4D3500C7475C /* PlanItemModel.swift */; };
 		4C8514462C7E4D9D00C7475C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514452C7E4D9D00C7475C /* Color.swift */; };
 		4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514472C80DCCA00C7475C /* AnyColumn.swift */; };
+		4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85144B2C8235C700C7475C /* PlanPresenterTests.swift */; };
+		4C85144E2C8248A200C7475C /* PlanColumnsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85144D2C8248A200C7475C /* PlanColumnsFactory.swift */; };
+		4C8514522C832D4300C7475C /* PlanLocalizationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514512C832D4300C7475C /* PlanLocalizationMock.swift */; };
+		4C8514542C832DFB00C7475C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514532C832DFB00C7475C /* String+Extension.swift */; };
+		4C8514562C832ED300C7475C /* PlanColumnsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514552C832ED300C7475C /* PlanColumnsFactoryMock.swift */; };
+		4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514572C832F7400C7475C /* PlanModelFactoryMock.swift */; };
+		4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514592C83302E00C7475C /* PlanStatusFactoryMock.swift */; };
+		4C85145C2C83314600C7475C /* BasicFormatterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145B2C83314600C7475C /* BasicFormatterMock.swift */; };
+		4C85145E2C8332B600C7475C /* PlanViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145D2C8332B600C7475C /* PlanViewMock.swift */; };
+		4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 		4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */; };
 		4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */; };
@@ -180,6 +190,16 @@
 		4C8514452C7E4D9D00C7475C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4C8514472C80DCCA00C7475C /* AnyColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyColumn.swift; sourceTree = "<group>"; };
 		4C85144A2C82300100C7475C /* Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Plan.xctestplan; sourceTree = "<group>"; };
+		4C85144B2C8235C700C7475C /* PlanPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPresenterTests.swift; sourceTree = "<group>"; };
+		4C85144D2C8248A200C7475C /* PlanColumnsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnsFactory.swift; sourceTree = "<group>"; };
+		4C8514512C832D4300C7475C /* PlanLocalizationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLocalizationMock.swift; sourceTree = "<group>"; };
+		4C8514532C832DFB00C7475C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4C8514552C832ED300C7475C /* PlanColumnsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnsFactoryMock.swift; sourceTree = "<group>"; };
+		4C8514572C832F7400C7475C /* PlanModelFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactoryMock.swift; sourceTree = "<group>"; };
+		4C8514592C83302E00C7475C /* PlanStatusFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactoryMock.swift; sourceTree = "<group>"; };
+		4C85145B2C83314600C7475C /* BasicFormatterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatterMock.swift; sourceTree = "<group>"; };
+		4C85145D2C8332B600C7475C /* PlanViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewMock.swift; sourceTree = "<group>"; };
+		4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractorMock.swift; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
 		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
@@ -407,14 +427,13 @@
 		4C298EA32C5FDE0200474956 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				4C85144F2C824E0700C7475C /* Factories */,
 				4C8C6CCE2C67DC2F00E09697 /* Localization */,
 				4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */,
 				4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */,
 				4C8C6CE22C6A742700E09697 /* Presenter */,
 				4CCCFA6B2C7CF0F0002DDD95 /* ViewController */,
-				4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */,
 				4C81FB602C5FF9D7006300E6 /* PlanModel.swift */,
-				4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */,
 				4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */,
 				4C298E992C5FDDE200474956 /* PlanDocument.swift */,
 			);
@@ -515,6 +534,30 @@
 			children = (
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4C85144F2C824E0700C7475C /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */,
+				4C85144D2C8248A200C7475C /* PlanColumnsFactory.swift */,
+				4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		4C8514502C832D3300C7475C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				4C8514592C83302E00C7475C /* PlanStatusFactoryMock.swift */,
+				4C8514512C832D4300C7475C /* PlanLocalizationMock.swift */,
+				4C8514552C832ED300C7475C /* PlanColumnsFactoryMock.swift */,
+				4C8514572C832F7400C7475C /* PlanModelFactoryMock.swift */,
+				4C85145B2C83314600C7475C /* BasicFormatterMock.swift */,
+				4C85145D2C8332B600C7475C /* PlanViewMock.swift */,
+				4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		4C8C6CCD2C67DC1400E09697 /* Views */ = {
@@ -622,6 +665,7 @@
 		4C8C6CF82C7A556200E09697 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				4C8514502C832D3300C7475C /* Mocks */,
 				4C8C6CFC2C7A56A700E09697 /* Tests */,
 				4C8C6CF92C7A556900E09697 /* Resources */,
 			);
@@ -640,6 +684,7 @@
 			isa = PBXGroup;
 			children = (
 				4C8C6CFD2C7A582700E09697 /* PlanDataProviderTests.swift */,
+				4C85144B2C8235C700C7475C /* PlanPresenterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -648,6 +693,7 @@
 			isa = PBXGroup;
 			children = (
 				4C8C6CFF2C7A604A00E09697 /* UUID+Extension.swift */,
+				4C8514532C832DFB00C7475C /* String+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -846,6 +892,7 @@
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
+				4C85144E2C8248A200C7475C /* PlanColumnsFactory.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,
 				4C298ED42C5FDEAC00474956 /* NodeValue.swift in Sources */,
 				4C8C6CD12C67E94400E09697 /* ItemStatus.swift in Sources */,
@@ -889,8 +936,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8514522C832D4300C7475C /* PlanLocalizationMock.swift in Sources */,
+				4C85145C2C83314600C7475C /* BasicFormatterMock.swift in Sources */,
+				4C85145E2C8332B600C7475C /* PlanViewMock.swift in Sources */,
 				4C8C6CD82C68F44000E09697 /* TextParserTests.swift in Sources */,
+				4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */,
+				4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */,
+				4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */,
+				4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */,
+				4C8514562C832ED300C7475C /* PlanColumnsFactoryMock.swift in Sources */,
 				4C8C6CFE2C7A582700E09697 /* PlanDataProviderTests.swift in Sources */,
+				4C8514542C832DFB00C7475C /* String+Extension.swift in Sources */,
 				4C8C6D002C7A604A00E09697 /* UUID+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1048,7 +1104,7 @@
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1077,7 +1133,7 @@
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;

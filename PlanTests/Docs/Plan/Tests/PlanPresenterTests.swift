@@ -1,0 +1,102 @@
+//
+//  PlanPresenterTests.swift
+//  PlanTests
+//
+//  Created by Anton Cherkasov on 30.08.2024.
+//
+
+import XCTest
+@testable import Plan
+
+final class PlanPresenterTests: XCTestCase {
+
+	var sut: PlanPresenter!
+
+	var statusFactory: PlanStatusFactoryMock!
+
+	var columnsFactory: PlanColumnsFactoryMock!
+
+	var modelFactory: PlanModelFactoryMock!
+
+	var localization: PlanLocalizationMock!
+
+	var formatter: BasicFormatterMock!
+
+	var view: PlanViewMock!
+
+	var interactor: PlanInteractorMock!
+
+	override func setUpWithError() throws {
+
+		statusFactory = PlanStatusFactoryMock()
+
+		columnsFactory = PlanColumnsFactoryMock()
+
+		modelFactory = PlanModelFactoryMock()
+
+		localization = PlanLocalizationMock()
+
+		formatter = BasicFormatterMock()
+
+		view = PlanViewMock()
+
+		interactor = PlanInteractorMock()
+
+		sut = PlanPresenter(
+			statusFactory: statusFactory,
+			modelFactory: modelFactory,
+			columnsFactory: columnsFactory,
+			localization: localization,
+			formatter: formatter
+		)
+		sut.view = view
+		sut.interactor = interactor
+	}
+
+	override func tearDownWithError() throws {
+		sut = nil
+	}
+}
+
+// MARK: - PlanViewOutput interface testing
+extension PlanPresenterTests {
+	
+	func test_viewDidLoad() {
+		// Act
+		sut.viewDidLoad()
+
+		// Assert
+		guard case .setColumnsConfiguration = view.invocations[0] else {
+			return XCTFail()
+		}
+
+		guard case let .setDropConfiguration(dropConfiguration) = view.invocations[1] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(dropConfiguration.types, [.id, .item, .string])
+
+		guard case .fetchData = interactor.invocations[0] else {
+			return XCTFail()
+		}
+
+		guard case .expandAll = view.invocations[2] else {
+			return XCTFail()
+		}
+	}
+
+	func test_deleteItems() {
+		// Arrange
+		view.stubs.selection = [.uuid0, .uuid1, .uuid2]
+
+		// Act
+		sut.deleteItems()
+
+		// Assert
+		guard case let .deleteItems(ids) = interactor.invocations[0] else {
+			return XCTFail()
+		}
+
+		XCTAssertEqual(ids, view.stubs.selection)
+	}
+}
