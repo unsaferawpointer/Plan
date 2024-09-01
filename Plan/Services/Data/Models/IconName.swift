@@ -70,4 +70,10 @@ enum IconName: String {
 	case bag = "bag.fill"
 	case gymBag = "gym.bag.fill"
 	case suitcase = "suitcase.fill"
+
+	// MARK: - Building
+	case house = "house.fill"
+	case building2 = "building.2.fill"
+	case building = "building.fill"
+	case buildingColumns = "building.columns.fill"
 }

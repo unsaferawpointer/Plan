@@ -110,6 +110,17 @@ extension IconCategory {
 				.suitcase
 			]
 	)
+
+	static var building: IconCategory = .init(
+		title: "Buildings",
+		icons: [
+			.house,
+			.building,
+			.building2,
+			.buildingColumns,
+
+		]
+	)
 }
 
 extension IconCategory {
@@ -120,6 +131,7 @@ extension IconCategory {
 		.sport,
 		.devices,
 		.health,
-		.life
+		.life,
+		.building
 	]
 }
