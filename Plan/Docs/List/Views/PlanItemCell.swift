@@ -60,7 +60,7 @@ final class PlanItemCell: NSView, TableCell {
 		let view = NSStackView(views: [checkbox, imageView, textfield])
 		view.orientation = .horizontal
 		view.distribution = .fillProportionally
-		view.alignment = .lastBaseline
+		view.alignment = .centerY
 		return view
 	}()
 

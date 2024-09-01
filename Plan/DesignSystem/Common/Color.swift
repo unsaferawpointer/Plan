@@ -10,6 +10,7 @@ import Cocoa
 enum Color {
 	case primary
 	case secondary
+	case tertiary
 	case yellow
 }
 
@@ -22,6 +23,8 @@ extension Color {
 			return .labelColor
 		case .secondary:
 			return .secondaryLabelColor
+		case .tertiary:
+			return .tertiaryLabelColor
 		case .yellow:
 			return .systemYellow
 		}

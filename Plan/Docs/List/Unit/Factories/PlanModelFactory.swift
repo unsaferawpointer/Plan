@@ -83,7 +83,7 @@ private extension PlanModelFactory {
 		case (false, true):
 			return .yellow
 		default:
-			return .secondary
+			return .tertiary
 		}
 	}
 
