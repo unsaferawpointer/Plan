@@ -6,7 +6,7 @@
 				"value" : {
 					"count" : 0,
 					"created" : 1723315099,
-					"iconName" : "folder",
+					"iconName" : "folder.fill",
 					"options" : 0,
 					"status" : {
 						"open" : { }
@@ -20,7 +20,7 @@
 				"value" : {
 					"count" : 3,
 					"created" : 1723315099,
-					"iconName" : "folder",
+					"iconName" : "folder.fill",
 					"options" : 1,
 					"status" : {
 						"done" : {
