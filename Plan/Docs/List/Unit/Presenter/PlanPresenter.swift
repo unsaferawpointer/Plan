@@ -171,19 +171,11 @@ extension PlanPresenter: PlanColumnsFactoryDelegate {
 private extension PlanPresenter {
 
 	func makeModel(root: Root<ItemContent>) -> PlanModel {
-		let snapshot = makeSnapshot(root)
 
+		let snapshot = makeSnapshot(root)
 		let status = statusFactory.makeModel(for: root)
 
-		let model: PlanModel = if !snapshot.root.isEmpty {
-			.regular(snapshot: snapshot, status: status)
-		} else {
-			.placeholder(
-				title: "No Items, yet",
-				subtitle: "Add a new element using the plus."
-			)
-		}
-		return model
+		return PlanModel(bottomBar: status, snapshot: snapshot)
 	}
 
 	func makeSnapshot(_ root: Root<ItemContent>) -> HierarchySnapshot {

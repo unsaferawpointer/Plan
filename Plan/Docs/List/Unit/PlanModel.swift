@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PlanModel {
-	case placeholder(title: String, subtitle: String)
-	case regular(snapshot: HierarchySnapshot, status: BottomBar.Model)
+struct PlanModel {
+	let bottomBar: BottomBar.Model
+	let snapshot: HierarchySnapshot
 }

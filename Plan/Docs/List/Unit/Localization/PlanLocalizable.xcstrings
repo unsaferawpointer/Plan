@@ -122,13 +122,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No tasks"
+            "value" : "No items, yet"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заданий нет"
+            "value" : "Пока нет пунктов"
           }
         }
       }

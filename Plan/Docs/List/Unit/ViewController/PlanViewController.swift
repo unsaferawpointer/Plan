@@ -77,8 +77,6 @@ class PlanViewController: NSViewController {
 
 	lazy var table = NSOutlineView.inset
 
-	lazy var placeholderView = PlaceholderView(frame: .zero)
-
 	lazy var bottomBar = BottomBar(frame: .zero)
 
 	// MARK: - Initialization
@@ -118,19 +116,8 @@ class PlanViewController: NSViewController {
 extension PlanViewController: PlanView {
 
 	func display(_ model: PlanModel) {
-
-		switch model {
-		case .placeholder(let title, let subtitle):
-			placeholderView.isHidden = false
-			placeholderView.subtitle = subtitle
-			placeholderView.title = title
-			adapter?.apply(.init())
-			bottomBar.model = .init()
-		case .regular(let snapshot, let status):
-			placeholderView.isHidden = true
-			adapter?.apply(snapshot)
-			bottomBar.model = status
-		}
+		adapter?.apply(model.snapshot)
+		bottomBar.model = model.bottomBar
 	}
 
 	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>]) {
@@ -204,7 +191,7 @@ private extension PlanViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview, placeholderView, bottomBar].forEach {
+		[scrollview, bottomBar].forEach {
 			view.addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
@@ -215,11 +202,6 @@ private extension PlanViewController {
 				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
 				scrollview.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
-
-				placeholderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				placeholderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				placeholderView.topAnchor.constraint(equalTo: view.topAnchor),
-				placeholderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
 				bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				bottomBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -253,17 +235,3 @@ private extension PlanViewController {
 extension String {
 	static let dateCreatedColumn = "date_created_column"
 }
-
-//private extension NSTableColumn {
-//
-//	static var dateCreated: NSTableColumn {
-//
-//		let createdAt = NSTableColumn(identifier: .init(rawValue: "createdAt"))
-//		createdAt.title = "Date Created"
-//		createdAt.resizingMask = .userResizingMask
-//		createdAt.maxWidth = 240
-//		createdAt.minWidth = 160
-//		createdAt.isHidden = true
-//		table.addTableColumn(createdAt)
-//	}
-//}
