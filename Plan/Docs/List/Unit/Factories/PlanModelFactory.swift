@@ -36,14 +36,14 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			"--"
 		}
 
-		let badge = item.count > 0 ? "\(item.count)" : nil
+		let number = NumberCell.Model(isEditable: info.isLeaf, value: info.number)
 
 		return HierarchyModel(
 			uuid: item.uuid,
 			content: content,
 			createdAt: dateCreated,
 			completedAt: dateCompleted, 
-			badge: badge,
+			value: number,
 			menu: menu
 		)
 	}

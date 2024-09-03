@@ -226,9 +226,9 @@ DQ
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="ZHW-BL-ZS1"/>
-                                        <menuItem title="Set estimation" identifier="estimation" id="Ddk-Nn-Sin" userLabel="Set Estimation">
+                                        <menuItem title="Set Number" identifier="estimation" id="Ddk-Nn-Sin">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" id="x2W-gf-wTn">
+                                            <menu key="submenu" title="Set Number" id="x2W-gf-wTn">
                                                 <items>
                                                     <menuItem title="None" keyEquivalent="0" identifier="set_estimation_menu_item" id="6U2-HD-Q2d" userLabel="None">
                                                         <connections>
@@ -251,32 +251,32 @@ DQ
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="JmJ-OH-f7b"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="5" tag="5" keyEquivalent="4" identifier="set_estimation_menu_item" id="n7M-k8-uVM">
+                                                    <menuItem title="4" tag="4" keyEquivalent="4" identifier="set_estimation_menu_item" id="n7M-k8-uVM">
                                                         <connections>
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="No8-xH-cN0"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="8" tag="8" keyEquivalent="5" identifier="set_estimation_menu_item" id="ZYy-qp-4I3">
+                                                    <menuItem title="5" tag="5" keyEquivalent="5" identifier="set_estimation_menu_item" id="ZYy-qp-4I3">
                                                         <connections>
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="I8a-cB-otk"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="13" tag="13" keyEquivalent="6" identifier="set_estimation_menu_item" id="jnA-id-ZNG">
+                                                    <menuItem title="6" tag="6" keyEquivalent="6" identifier="set_estimation_menu_item" id="jnA-id-ZNG">
                                                         <connections>
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="1IS-kA-1PF"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="21" tag="21" keyEquivalent="7" identifier="set_estimation_menu_item" id="0nE-yV-cma">
+                                                    <menuItem title="7" tag="7" keyEquivalent="7" identifier="set_estimation_menu_item" id="0nE-yV-cma">
                                                         <connections>
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="tS2-Og-SWH"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="34" tag="34" keyEquivalent="8" identifier="set_estimation_menu_item" id="dMu-1h-hkS" userLabel="34">
+                                                    <menuItem title="8" tag="8" keyEquivalent="8" identifier="set_estimation_menu_item" id="dMu-1h-hkS">
                                                         <connections>
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="STB-bN-c6C"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="55" tag="55" keyEquivalent="9" identifier="set_estimation_menu_item" id="xwi-2H-H0F">
+                                                    <menuItem title="9" tag="9" keyEquivalent="9" identifier="set_estimation_menu_item" id="xwi-2H-H0F">
                                                         <connections>
                                                             <action selector="setEstimation:" target="Ady-hI-5gd" id="YnC-0O-NjX"/>
                                                         </connections>

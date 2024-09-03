@@ -68,7 +68,7 @@ extension MenuBuilder.Item {
 			return item
 		case .setEstimation:
 			let main = NSMenuItem(
-				title: "Set estimation",
+				title: "Set number",
 				action: nil,
 				keyEquivalent: ""
 			)
@@ -85,7 +85,7 @@ extension MenuBuilder.Item {
 
 			main.submenu?.addItem(.separator())
 
-			for (index, number) in [1, 2, 3, 5, 8, 13, 21, 34, 55].enumerated() {
+			for (index, number) in [1, 2, 3, 4, 5, 6, 7, 8, 9].enumerated() {
 				let item = NSMenuItem(
 					title: "\(number)",
 					action: #selector(MenuSupportable.setEstimation(_:)),

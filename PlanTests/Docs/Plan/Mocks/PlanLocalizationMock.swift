@@ -47,7 +47,7 @@ extension PlanLocalizationMock: PlanLocalizationProtocol {
 		stubs.descriptionColumnTitle
 	}
 	
-	var estimationColumnTitle: String {
+	var numberColumnTitle: String {
 		stubs.estimationColumnTitle
 	}
 }

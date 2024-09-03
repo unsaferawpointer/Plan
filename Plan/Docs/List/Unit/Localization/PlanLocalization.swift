@@ -17,7 +17,7 @@ protocol PlanLocalizationProtocol {
 	var createdDateColumnTitle: String { get }
 	var completedDateColumnTitle: String { get }
 	var descriptionColumnTitle: String { get }
-	var estimationColumnTitle: String { get }
+	var numberColumnTitle: String { get }
 }
 
 final class PlanLocalization { }
@@ -60,7 +60,7 @@ extension PlanLocalization: PlanLocalizationProtocol {
 		return String(localized: "description_table_column", table: "PlanLocalizable")
 	}
 
-	var estimationColumnTitle: String {
-		return String(localized: "estimation_table_column", table: "PlanLocalizable")
+	var numberColumnTitle: String {
+		return String(localized: "number_table_column", table: "PlanLocalizable")
 	}
 }

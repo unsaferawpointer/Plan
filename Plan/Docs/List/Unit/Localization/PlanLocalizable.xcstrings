@@ -133,22 +133,6 @@
         }
       }
     },
-    "estimation_table_column" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estimation"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Оценка"
-          }
-        }
-      }
-    },
     "new_item_title" : {
       "localizations" : {
         "en" : {
@@ -161,6 +145,22 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Новый пункт"
+          }
+        }
+      }
+    },
+    "number_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Число"
           }
         }
       }

@@ -165,6 +165,10 @@ extension PlanPresenter: PlanColumnsFactoryDelegate {
 			interactor?.modificate(id, newText: trimmed)
 		}
 	}
+
+	func modificate(id: UUID, value: Int) {
+		interactor?.setEstimation(value, withSelection: selection)
+	}
 }
 
 // MARK: - Helpers
@@ -181,7 +185,8 @@ private extension PlanPresenter {
 	func makeSnapshot(_ root: Root<ItemContent>) -> HierarchySnapshot {
 		let items = root.nodes
 		return HierarchySnapshot(items) { item, info in
-			modelFactory.makeModel(item: item, info: info)
+			print("item = \(item.text) info = \(info)")
+			return modelFactory.makeModel(item: item, info: info)
 		}
 	}
 }

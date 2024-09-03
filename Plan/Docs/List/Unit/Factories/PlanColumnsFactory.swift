@@ -9,6 +9,7 @@ import Foundation
 
 protocol PlanColumnsFactoryDelegate: AnyObject {
 	func modificate(id: UUID, newText: String, newStatus: Bool?)
+	func modificate(id: UUID, value: Int)
 }
 
 protocol PlanColumnsFactoryProtocol {
@@ -53,13 +54,15 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 				delegate?.modificate(id: id, newText: value.text, newStatus: value.isOn)
 			}
 
-		let estimation = AnyColumn<HierarchyModel, BadgeCell>(
-			identifier: "estimation_table_column",
-			title: localization.estimationColumnTitle,
-			keyPath: \.badge,
-			options: .init(minWidth: 56, maxWidth: 72, isRequired: false, isHidden: false)
-		)
+		let value = AnyColumn<HierarchyModel, NumberCell>(
+			identifier: "value_table_column",
+			title: localization.numberColumnTitle,
+			keyPath: \.value,
+			options: .init(minWidth: 72, maxWidth: 96, isRequired: false, isHidden: false)
+		) { [weak delegate] id, value in
+			delegate?.modificate(id: id, value: value.value)
+		}
 
-		return [main, estimation, dateCreated, dateCompleted]
+		return [main, value, dateCreated, dateCompleted]
 	}
 }

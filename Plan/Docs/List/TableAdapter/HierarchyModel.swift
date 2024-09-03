@@ -17,7 +17,7 @@ struct HierarchyModel {
 
 	var completedAt: String
 
-	var badge: String?
+	var value: NumberCell.Model
 
 	var menu: MenuItem
 
@@ -28,14 +28,14 @@ struct HierarchyModel {
 		content: PlanItemModel,
 		createdAt: String,
 		completedAt: String,
-		badge: String?,
+		value: NumberCell.Model,
 		menu: MenuItem
 	) {
 		self.uuid = uuid
 		self.content = content
 		self.createdAt = createdAt
 		self.completedAt = completedAt
-		self.badge = badge
+		self.value = value
 		self.menu = menu
 	}
 }

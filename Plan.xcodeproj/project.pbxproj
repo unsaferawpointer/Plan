@@ -56,6 +56,8 @@
 		4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */; };
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C298EE82C5FE17100474956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C298EE72C5FE15700474956 /* Main.storyboard */; };
+		4C365C7D2C8784F400C7DF6E /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C7C2C8784F400C7DF6E /* NumberCell.swift */; };
+		4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C802C87990900C7DF6E /* ValueFormatter.swift */; };
 		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
 		4C81FB612C5FF9D7006300E6 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* PlanModel.swift */; };
 		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
@@ -99,7 +101,6 @@
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
 		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
 		4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA612C7BB611002DDD95 /* TextCell.swift */; };
-		4CCCFA642C7C725C002DDD95 /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA632C7C725C002DDD95 /* BadgeCell.swift */; };
 		4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */; };
 		4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */; };
 		4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */; };
@@ -178,6 +179,8 @@
 		4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extension.swift"; sourceTree = "<group>"; };
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C298EE72C5FE15700474956 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4C365C7C2C8784F400C7DF6E /* NumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		4C365C802C87990900C7DF6E /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4C81FB602C5FF9D7006300E6 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
@@ -222,7 +225,6 @@
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
 		4CCCFA612C7BB611002DDD95 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
-		4CCCFA632C7C725C002DDD95 /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumn.swift; sourceTree = "<group>"; };
 		4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableColumn+Extension.swift"; sourceTree = "<group>"; };
 		4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
@@ -468,7 +470,7 @@
 				4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */,
 				4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */,
 				4CCCFA612C7BB611002DDD95 /* TextCell.swift */,
-				4CCCFA632C7C725C002DDD95 /* BadgeCell.swift */,
+				4C365C7C2C8784F400C7DF6E /* NumberCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				4C8514452C7E4D9D00C7475C /* Color.swift */,
+				4C365C802C87990900C7DF6E /* ValueFormatter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -854,13 +857,14 @@
 				4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */,
 				4C8514462C7E4D9D00C7475C /* Color.swift in Sources */,
 				4C298EBF2C5FDE6700474956 /* NSTextField+Extension.swift in Sources */,
+				4C365C7D2C8784F400C7DF6E /* NumberCell.swift in Sources */,
 				4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */,
 				4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */,
-				4CCCFA642C7C725C002DDD95 /* BadgeCell.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
 				4C298EC62C5FDEA500474956 /* Sequence+Extension.swift in Sources */,
+				4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */,
 				4C298EC72C5FDEA500474956 /* Versioned.swift in Sources */,
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
@@ -1113,7 +1117,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1142,7 +1146,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
