@@ -11,7 +11,7 @@ final class TextCell: NSView, TableCell {
 
 	static var reuseIdentifier: String = "text_cell"
 
-	var model: String {
+	var model: Model {
 		didSet {
 			updateUserInterface()
 		}
@@ -29,14 +29,15 @@ final class TextCell: NSView, TableCell {
 		view.usesSingleLineMode = true
 		view.lineBreakMode = .byTruncatingMiddle
 		view.font = NSFont.preferredFont(forTextStyle: .body)
-		view.textColor = .secondaryLabelColor
-		view.isEditable = false
+		view.cell?.sendsActionOnEndEditing = true
+		view.target = self
+		view.action = #selector(textfieldDidChange(_:))
 		return view
 	}()
 
 	// MARK: - Initialization
 
-	init(_ model: String) {
+	init(_ model: Model) {
 		self.model = model
 		super.init(frame: .zero)
 		configureConstraints()
@@ -63,7 +64,10 @@ final class TextCell: NSView, TableCell {
 private extension TextCell {
 
 	func updateUserInterface() {
-		textfield.text = model
+		textfield.text = model.value
+		textfield.textColor = model.configuration.textColor.colorValue
+		textfield.formatter = model.configuration.validation?.value
+		textfield.isEditable = model.configuration.isEditable
 	}
 
 	func configureConstraints() {
@@ -80,5 +84,56 @@ private extension TextCell {
 		]
 			.forEach { $0.isActive = true }
 
+	}
+}
+
+// MARK: - Actions
+extension TextCell {
+
+	@objc
+	func textfieldDidChange(_ sender: NSTextField) {
+		guard sender === textfield else {
+			return
+		}
+
+		let text = sender.stringValue
+
+		action?(text)
+	}
+
+}
+
+extension TextCell {
+
+	struct Model: CellModel {
+
+		typealias Value = String
+
+		typealias Configuration = TextCell.Configuration
+
+		let configuration: TextCell.Configuration
+
+		let value: String
+
+	}
+
+	struct Configuration {
+		let textColor: Color
+		let isEditable: Bool
+		let validation: Validation?
+	}
+
+	enum Validation {
+		case integer
+	}
+}
+
+extension TextCell.Validation {
+
+	var value: NumberFormatter {
+		switch self {
+		case .integer:
+			return ValueFormatter()
+		}
 	}
 }

@@ -19,7 +19,7 @@ final class PlanItemCell: NSView, TableCell {
 		}
 	}
 
-	var action: ((PlanItemModel) -> Void)?
+	var action: ((PlanItemModel.Value) -> Void)?
 
 	// MARK: - UI-Properties
 
@@ -94,17 +94,20 @@ private extension PlanItemCell {
 
 	func updateUserInterface() {
 
-		textfield.text = model.text
-		textfield.textColor = model.textColor.colorValue
+		let value = model.value
+		let configuration = model.configuration
 
+		// Value
+		textfield.text = value.text
+		checkbox.state = (value.isOn ?? false) ? .on : .off
+
+		// Configuration
+		textfield.textColor = configuration.textColor.colorValue
 		checkbox.isHidden = model.checkboxIsHidden
-		if let isOn = model.isOn {
-			checkbox.state = isOn ? .on : .off
-		}
 
 		imageView.isHidden = model.imageIsHidden
-		imageView.contentTintColor = model.iconColor?.colorValue
-		if let icon = model.icon {
+		imageView.contentTintColor = configuration.iconColor?.colorValue
+		if let icon = configuration.icon {
 			imageView.image = NSImage(systemSymbolName: icon)
 		}
 	}
@@ -134,9 +137,11 @@ extension PlanItemCell {
 		guard sender === textfield else {
 			return
 		}
-		var modificated = model
-		modificated.text = sender.stringValue
-		action?(modificated)
+
+		let isOn = checkbox.state == .on
+		let text = sender.stringValue
+
+		action?(.init(isOn: isOn, text: text))
 	}
 
 	@objc
@@ -144,8 +149,10 @@ extension PlanItemCell {
 		guard sender === checkbox else {
 			return
 		}
-		var modificated = model
-		modificated.isOn = sender.state == .on
-		action?(modificated)
+
+		let isOn = sender.state == .on
+		let text = textfield.stringValue
+
+		action?(.init(isOn: isOn, text: text))
 	}
 }

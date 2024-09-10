@@ -7,28 +7,28 @@
 
 import Foundation
 
-struct AnyColumn<Model: Identifiable, Cell: TableCell>: TableColumn {
+struct AnyColumn<RowModel: Identifiable, Cell: TableCell>: TableColumn {
 
-	typealias Value = Cell.Model
+	typealias CellModel = Cell.Model
 
 	var identifier: String
 	
 	var title: String
 	
-	var keyPath: KeyPath<Model, Value>
+	var keyPath: KeyPath<RowModel, CellModel>
 
 	var options: TableColumnOptions
 
-	var action: ((Model.ID, Value) -> Void)?
+	var action: ((RowModel.ID, CellModel.Value) -> Void)?
 
 	// MARK: - Initialization
 
 	init(
 		identifier: String,
 		title: String,
-		keyPath: KeyPath<Model, Value>,
+		keyPath: KeyPath<RowModel, CellModel>,
 		options: TableColumnOptions,
-		action: ((Model.ID, Value) -> Void)? = nil
+		action: ((RowModel.ID, CellModel.Value) -> Void)? = nil
 	) {
 		self.identifier = identifier
 		self.title = title

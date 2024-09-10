@@ -7,26 +7,34 @@
 
 import Foundation
 
-struct PlanItemModel {
+struct PlanItemModel: CellModel {
 
-	var isOn: Bool?
+	var value: Value
 
-	var text: String
-
-	var textColor: Color
-
-	var icon: String?
-
-	var iconColor: Color?
+	var configuration: Configuration
 }
 
 extension PlanItemModel {
 
 	var checkboxIsHidden: Bool {
-		return isOn == nil
+		return value.isOn == nil
 	}
 
 	var imageIsHidden: Bool {
-		return icon == nil
+		return configuration.icon == nil
+	}
+}
+
+extension PlanItemModel {
+
+	struct Value {
+		var isOn: Bool?
+		var text: String
+	}
+
+	struct Configuration {
+		var textColor: Color
+		var icon: String?
+		var iconColor: Color?
 	}
 }

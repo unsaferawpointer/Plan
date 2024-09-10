@@ -7,15 +7,15 @@
 
 import Cocoa
 
-protocol TableColumn<Model> {
+protocol TableColumn<RowModel> {
 
-	associatedtype Value
+	associatedtype CellModel
 
-	associatedtype Model: Identifiable
+	associatedtype RowModel: Identifiable
 
-	associatedtype Cell: TableCell where Cell.Model == Value
+	associatedtype Cell: TableCell where Cell.Model == CellModel
 
-	var keyPath: KeyPath<Model, Value> { get }
+	var keyPath: KeyPath<RowModel, CellModel> { get }
 
 	var identifier: String { get }
 
@@ -23,13 +23,13 @@ protocol TableColumn<Model> {
 
 	var options: TableColumnOptions { get }
 
-	var action: ((Model.ID, Value) -> Void)? { get set }
+	var action: ((RowModel.ID, CellModel.Value) -> Void)? { get set }
 }
 
 // MARK: - Implementation by-default
 extension TableColumn {
 
-	func makeCellIfNeeded(from model: Model, in table: NSTableView) -> NSView? {
+	func makeCellIfNeeded(from model: RowModel, in table: NSTableView) -> NSView? {
 		let id = NSUserInterfaceItemIdentifier(Cell.reuseIdentifier)
 		var view = table.makeView(withIdentifier: id, owner: self) as? Cell
 		if view == nil {
@@ -43,7 +43,7 @@ extension TableColumn {
 		return view
 	}
 
-	func configureCell(for model: Model, at row: Int, in table: NSTableView) {
+	func configureCell(for model: RowModel, at row: Int, in table: NSTableView) {
 		let id = NSUserInterfaceItemIdentifier(identifier)
 		let cell = table.view(column: id, row: row, makeIfNecessary: false) as? Cell
 		cell?.model = model[keyPath: keyPath]

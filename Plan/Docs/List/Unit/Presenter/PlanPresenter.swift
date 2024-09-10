@@ -185,7 +185,6 @@ private extension PlanPresenter {
 	func makeSnapshot(_ root: Root<ItemContent>) -> HierarchySnapshot {
 		let items = root.nodes
 		return HierarchySnapshot(items) { item, info in
-			print("item = \(item.text) info = \(info)")
 			return modelFactory.makeModel(item: item, info: info)
 		}
 	}

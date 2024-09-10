@@ -9,7 +9,7 @@ import Cocoa
 
 protocol TableCell: NSView {
 
-	associatedtype Model
+	associatedtype Model: CellModel
 
 	static var reuseIdentifier: String { get }
 
@@ -17,5 +17,5 @@ protocol TableCell: NSView {
 
 	init(_ model: Model)
 
-	var action: ((Model) -> Void)? { get set }
+	var action: ((Model.Value) -> Void)? { get set }
 }

@@ -69,17 +69,6 @@ extension DocumentPage {
 		row.click()
 	}
 
-	func type(inRow index: Int) {
-		let row = row(for: index)
-		row.click()
-
-		let textfield = row.descendants(matching: .textField).firstMatch
-		textfield.click()
-		textfield.typeText("lfksdjlfkd")
-
-		
-	}
-
 	func dragRow(at index: Int, toRow targetIndex: Int) {
 
 		let draggedRow = row(for: index).textFields.firstMatch

@@ -184,6 +184,8 @@ private extension PlanViewController {
 		scrollview.hasVerticalScroller = false
 		scrollview.automaticallyAdjustsContentInsets = true
 
+		table.headerView?.setAccessibilityRole(.unknown)
+
 		table.allowsColumnResizing = true
 		table.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 

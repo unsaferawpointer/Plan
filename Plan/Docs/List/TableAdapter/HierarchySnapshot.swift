@@ -93,7 +93,8 @@ private extension HierarchySnapshot {
 		info[base.id] = Info(
 			isDone: base.reduce(\.isDone),
 			number: base.reduce(\.count),
-			isLeaf: base.children.isEmpty
+			isLeaf: base.children.isEmpty,
+			count: base.count
 		)
 
 		for child in base.children {
@@ -123,5 +124,6 @@ extension HierarchySnapshot {
 		var isDone: Bool
 		var number: Int
 		var isLeaf: Bool
+		var count: Int
 	}
 }

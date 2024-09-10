@@ -13,11 +13,11 @@ struct HierarchyModel {
 
 	var content: PlanItemModel
 
-	var createdAt: String
+	var createdAt: TextCell.Model
 
-	var completedAt: String
+	var completedAt: TextCell.Model
 
-	var value: NumberCell.Model
+	var value: TextCell.Model
 
 	var menu: MenuItem
 
@@ -26,9 +26,9 @@ struct HierarchyModel {
 	init(
 		uuid: UUID = UUID(),
 		content: PlanItemModel,
-		createdAt: String,
-		completedAt: String,
-		value: NumberCell.Model,
+		createdAt: TextCell.Model,
+		completedAt: TextCell.Model,
+		value: TextCell.Model,
 		menu: MenuItem
 	) {
 		self.uuid = uuid
