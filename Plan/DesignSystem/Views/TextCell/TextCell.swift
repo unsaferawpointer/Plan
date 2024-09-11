@@ -11,7 +11,7 @@ final class TextCell: NSView, TableCell {
 
 	static var reuseIdentifier: String = "text_cell"
 
-	var model: Model {
+	var model: TextModel {
 		didSet {
 			updateUserInterface()
 		}
@@ -37,7 +37,7 @@ final class TextCell: NSView, TableCell {
 
 	// MARK: - Initialization
 
-	init(_ model: Model) {
+	init(_ model: TextModel) {
 		self.model = model
 		super.init(frame: .zero)
 		configureConstraints()
@@ -99,41 +99,5 @@ extension TextCell {
 		let text = sender.stringValue
 
 		action?(text)
-	}
-
-}
-
-extension TextCell {
-
-	struct Model: CellModel {
-
-		typealias Value = String
-
-		typealias Configuration = TextCell.Configuration
-
-		let configuration: TextCell.Configuration
-
-		let value: String
-
-	}
-
-	struct Configuration {
-		let textColor: Color
-		let isEditable: Bool
-		let validation: Validation?
-	}
-
-	enum Validation {
-		case integer
-	}
-}
-
-extension TextCell.Validation {
-
-	var value: NumberFormatter {
-		switch self {
-		case .integer:
-			return ValueFormatter()
-		}
 	}
 }

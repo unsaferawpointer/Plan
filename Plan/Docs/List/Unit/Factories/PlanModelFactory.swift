@@ -11,7 +11,16 @@ protocol PlanModelFactoryProtocol {
 	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> HierarchyModel
 }
 
-final class PlanModelFactory { }
+final class PlanModelFactory { 
+	
+	var localization: PlanLocalizationProtocol
+
+	// MARK: - Initialization
+
+	init(localization: PlanLocalizationProtocol = PlanLocalization()) {
+		self.localization = localization
+	}
+}
 
 // MARK: - ListModelFactoryProtocol
 extension PlanModelFactory: PlanModelFactoryProtocol {
@@ -25,34 +34,23 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 
 		let content = makeContent(for: item, isLeaf: info.isLeaf)
 
-		let formatter = DateFormatter()
-		formatter.dateStyle = .medium
-		formatter.timeStyle = .short
-
-		let dateCreatedRaw = formatter.string(from: item.created)
-		let dateCreated = TextCell.Model(
-			configuration: .init(textColor: .secondary, isEditable: false, validation: nil),
-			value: dateCreatedRaw
+		let dateCreated = TextModel(
+			configuration: .init(textColor: .secondary),
+			value: localization.formattedDate(for: item.created, placeholder: nil)
 		)
 
-		let dateCompletedRaw = if let date = item.status.completionDate {
-			formatter.string(from: date)
-		} else {
-			"--"
-		}
-
-		let dateCompleted = TextCell.Model(
-			configuration: .init(textColor: .secondary, isEditable: false, validation: nil),
-			value: dateCompletedRaw
+		let dateCompleted = TextModel(
+			configuration: .init(textColor: .secondary),
+			value: localization.formattedDate(for: item.status.completionDate, placeholder: "--")
 		)
 
-		let rawNumber = (info.number > 0) ? "\(info.number)" : ""
-
-		let groupInfo = info.number > 0 ? "\(info.count) items - \(info.number)" : "\(info.count) items"
-
-		let number = TextCell.Model(
-			configuration: .init(textColor: info.isLeaf ? .secondary : .tertiary, isEditable: info.isLeaf, validation: .integer),
-			value: info.isLeaf ? rawNumber : groupInfo
+		let value = TextModel(
+			configuration: .init(
+				textColor: info.isLeaf ? .secondary : .tertiary,
+				isEditable: info.isLeaf,
+				validation: .integer
+			),
+			value: valueInfo(number: info.number, count: info.count)
 		)
 
 		return HierarchyModel(
@@ -60,7 +58,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			content: content,
 			createdAt: dateCreated,
 			completedAt: dateCompleted, 
-			value: number,
+			value: value,
 			menu: menu
 		)
 	}
@@ -68,6 +66,21 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 
 // MARK: - Helpers
 private extension PlanModelFactory {
+
+	func valueInfo(number: Int, count: Int) -> String {
+
+		let isLeaf = count == 0
+
+		guard !isLeaf else {
+			return number > 0 ? localization.valueInfo(number: number) : ""
+		}
+
+		guard number > 0 else {
+			return localization.valueInfo(count: count)
+		}
+
+		return localization.valueInfo(count: count, number: number)
+	}
 
 	func makeContent(for item: ItemContent, isLeaf: Bool) -> PlanItemModel {
 		let textColor = self.textColor(for: item)

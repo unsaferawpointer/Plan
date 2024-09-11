@@ -18,6 +18,11 @@ protocol PlanLocalizationProtocol {
 	var completedDateColumnTitle: String { get }
 	var descriptionColumnTitle: String { get }
 	var numberColumnTitle: String { get }
+
+	func formattedDate(for date: Date?, placeholder: String?) -> String
+	func valueInfo(count: Int) -> String
+	func valueInfo(number: Int) -> String
+	func valueInfo(count: Int, number: Int) -> String
 }
 
 final class PlanLocalization { }
@@ -62,5 +67,30 @@ extension PlanLocalization: PlanLocalizationProtocol {
 
 	var numberColumnTitle: String {
 		return String(localized: "number_table_column", table: "PlanLocalizable")
+	}
+
+	func formattedDate(for date: Date?, placeholder: String?) -> String {
+
+		guard let date else {
+			return placeholder ?? ""
+		}
+
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		formatter.timeStyle = .short
+
+		return formatter.string(from: date)
+	}
+
+	func valueInfo(count: Int) -> String {
+		return String(localized: "\(count) items", table: "PlanLocalizable")
+	}
+
+	func valueInfo(number: Int) -> String {
+		return "\(number)"
+	}
+
+	func valueInfo(count: Int, number: Int) -> String {
+		return String(localized: "\(count) items - \(number)", table: "PlanLocalizable")
 	}
 }

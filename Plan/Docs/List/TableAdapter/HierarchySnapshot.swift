@@ -94,7 +94,7 @@ private extension HierarchySnapshot {
 			isDone: base.reduce(\.isDone),
 			number: base.reduce(\.count),
 			isLeaf: base.children.isEmpty,
-			count: base.count
+			count: base.children.count
 		)
 
 		for child in base.children {
