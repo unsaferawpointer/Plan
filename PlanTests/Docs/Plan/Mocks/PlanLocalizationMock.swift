@@ -5,6 +5,7 @@
 //  Created by Anton Cherkasov on 31.08.2024.
 //
 
+import Foundation
 @testable import Plan
 
 final class PlanLocalizationMock {
@@ -50,6 +51,22 @@ extension PlanLocalizationMock: PlanLocalizationProtocol {
 	var numberColumnTitle: String {
 		stubs.estimationColumnTitle
 	}
+
+	func formattedDate(for date: Date?, placeholder: String?) -> String {
+		stubs.formattedDate
+	}
+
+	func valueInfo(count: Int) -> String {
+		stubs.valueInfoForCount
+	}
+
+	func valueInfo(number: Int) -> String {
+		stubs.valueInfoForNumber
+	}
+
+	func valueInfo(count: Int, number: Int) -> String {
+		stubs.valueInfoForCountAndNumber
+	}
 }
 
 // MARK: - Nested data structs
@@ -65,5 +82,9 @@ extension PlanLocalizationMock {
 		var completedDateColumnTitle: String = .random
 		var descriptionColumnTitle: String = .random
 		var estimationColumnTitle: String = .random
+		var formattedDate: String = .random
+		var valueInfoForCount: String = .random
+		var valueInfoForNumber: String = .random
+		var valueInfoForCountAndNumber: String = .random
 	}
 }
