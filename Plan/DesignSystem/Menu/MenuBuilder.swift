@@ -17,6 +17,8 @@ extension MenuBuilder {
 		for item in items {
 			menu.addItem(item.makeItem())
 		}
+		// MARK: - Accessibility
+		menu.setAccessibilityIdentifier("outline_context_menu")
 		return menu
 	}
 }

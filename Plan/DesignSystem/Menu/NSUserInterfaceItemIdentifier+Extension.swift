@@ -21,7 +21,11 @@ extension NSUserInterfaceItemIdentifier {
 
 	static let setEstimationMenuItem = NSUserInterfaceItemIdentifier("set_estimation_menu_item")
 
+	static let numberMenuItem = NSUserInterfaceItemIdentifier("number_menu_item")
+
 	static let setIconMenuItem = NSUserInterfaceItemIdentifier("set_icon_menu_item")
+
+	static let iconMenuItem = NSUserInterfaceItemIdentifier("icon_menu_item")
 
 	static let iconsGroupMenuItem = NSUserInterfaceItemIdentifier("icons_group_menu_item")
 

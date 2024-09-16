@@ -108,6 +108,7 @@
 		4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */; };
 		4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */; };
 		4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */; };
+		4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69F252C98C121009D06AD /* Menu.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +236,7 @@
 		4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableColumn+Extension.swift"; sourceTree = "<group>"; };
 		4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
 		4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
+		4CE69F252C98C121009D06AD /* Menu.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Menu.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +490,7 @@
 				4C298EB22C5FDE4600474956 /* MenuItem.swift */,
 				4C298EB42C5FDE4600474956 /* MenuSupportable.swift */,
 				4C298EB32C5FDE4600474956 /* NSUserInterfaceItemIdentifier+Extension.swift */,
+				4CE69F252C98C121009D06AD /* Menu.xcstrings */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 			files = (
 				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
 				4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */,
+				4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */,
 				4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -69,20 +69,17 @@ extension DocumentPage {
 		row.click()
 	}
 
+	func rightClick(_ index: Int) {
+		let row = row(for: index)
+		row.rightClick()
+	}
+
 	func dragRow(at index: Int, toRow targetIndex: Int) {
 
 		let draggedRow = row(for: index).textFields.firstMatch
 		let targetRow = row(for: targetIndex).textFields.firstMatch
 
 		draggedRow.press(forDuration: 1, thenDragTo: targetRow)
-	}
-
-	func invokeContextMenu(for index: Int, andClick item: String) {
-
-		let row = self.row(for: index)
-		row.rightClick()
-
-		outline.menuItems[item].click()
 	}
 
 	var needToSave: Bool {
@@ -101,6 +98,27 @@ extension DocumentPage {
 			let deleteButton = savePanel.buttons["DontSaveButton"]
 			deleteButton.click()
 		}
+	}
+}
+
+// MARK: - Context menu support
+extension DocumentPage {
+
+	func invokeContextMenu(for index: Int, andClick item: String) {
+
+		let row = self.row(for: index)
+		row.rightClick()
+
+		outline.menuItems[item].click()
+	}
+
+	func menuItem(for id: String, block: (XCUIElement) -> Void) {
+		let menu = outline.menus["outline_context_menu"]
+		guard menu.exists else {
+			XCTFail("The context menu is missing.")
+			return
+		}
+		block(menu.menuItems[id])
 	}
 }
 

@@ -34,7 +34,7 @@ extension MenuBuilder.Item {
 		switch self {
 		case .new:
 			let item = NSMenuItem(
-				title: "New",
+				title: String(localized: "new_item", table: "Menu"),
 				action: #selector(MenuSupportable.createNew),
 				keyEquivalent: "n"
 			)
@@ -42,17 +42,18 @@ extension MenuBuilder.Item {
 			return item
 		case .delete:
 			let item = NSMenuItem(
-				title: "Delete",
+				title: String(localized: "delete_item", table: "Menu"),
 				action: #selector(MenuSupportable.delete),
 				keyEquivalent: "\u{0008}"
 			)
+			item.image = NSImage(systemSymbolName: "trash")
 			item.identifier = .deleteMenuItem
 			return item
 		case .separator:
 			return .separator()
 		case .favorite:
 			let item = NSMenuItem(
-				title: "Bookmark",
+				title: String(localized: "bookmarked_item", table: "Menu"),
 				action: #selector(MenuSupportable.toggleBookmark(_:)),
 				keyEquivalent: "b"
 			)
@@ -60,7 +61,7 @@ extension MenuBuilder.Item {
 			return item
 		case .completed:
 			let item = NSMenuItem(
-				title: "Completed",
+				title: String(localized: "completed_item", table: "Menu"),
 				action: #selector(MenuSupportable.toggleCompleted(_:)),
 				keyEquivalent: "\r"
 			)
@@ -68,10 +69,11 @@ extension MenuBuilder.Item {
 			return item
 		case .setEstimation:
 			let main = NSMenuItem(
-				title: "Set number",
+				title: String(localized: "number_item", table: "Menu"),
 				action: nil,
 				keyEquivalent: ""
 			)
+			main.identifier = .numberMenuItem
 			main.submenu = NSMenu()
 
 			let none = NSMenuItem(
@@ -98,10 +100,11 @@ extension MenuBuilder.Item {
 			return main
 		case .setIcon:
 			let main = NSMenuItem(
-				title: "Set icon",
+				title: String(localized: "icon_item", table: "Menu"),
 				action: nil,
 				keyEquivalent: ""
 			)
+			main.identifier = .iconMenuItem
 			main.submenu = NSMenu()
 
 			let none = NSMenuItem(
@@ -137,7 +140,7 @@ extension MenuBuilder.Item {
 			return main
 		case .copy:
 			let item = NSMenuItem(
-				title: "Copy",
+				title: String(localized: "copy_item", table: "Menu"),
 				action: #selector(MenuSupportable.copy(_:)),
 				keyEquivalent: "c"
 			)
@@ -145,7 +148,7 @@ extension MenuBuilder.Item {
 			return item
 		case .paste:
 			let item = NSMenuItem(
-				title: "Paste",
+				title: String(localized: "paste_item", table: "Menu"),
 				action: #selector(MenuSupportable.paste(_:)),
 				keyEquivalent: "v"
 			)
