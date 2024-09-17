@@ -97,6 +97,22 @@
         }
       }
     },
+    "none_item" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        }
+      }
+    },
     "number_item" : {
       "localizations" : {
         "en" : {

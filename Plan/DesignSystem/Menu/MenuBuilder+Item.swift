@@ -108,7 +108,7 @@ extension MenuBuilder.Item {
 			main.submenu = NSMenu()
 
 			let none = NSMenuItem(
-				title: "None",
+				title: String(localized: "none_item", table: "Menu"),
 				action: #selector(MenuSupportable.setIcon(_:)),
 				keyEquivalent: ""
 			)
@@ -117,11 +117,11 @@ extension MenuBuilder.Item {
 
 			main.submenu?.addItem(.separator())
 
-			for category in IconCategory.categories {
+			for category in IconCategory.allCases {
 
 				let item = NSMenuItem()
 				item.submenu = NSMenu()
-				item.title = category.title
+				item.title = category.displayName
 				item.identifier = .iconsGroupMenuItem
 
 				for icon in category.icons {

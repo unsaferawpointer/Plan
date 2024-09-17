@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C0259022C9A25140045B3CF /* Icons.xcstrings */; };
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
@@ -21,7 +22,7 @@
 		4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EB12C5FDE4600474956 /* MenuBuilder.swift */; };
 		4C298EC32C5FDE8900474956 /* MenuBuilder+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EB02C5FDE4600474956 /* MenuBuilder+Item.swift */; };
 		4C298EC42C5FDE8900474956 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EB22C5FDE4600474956 /* MenuItem.swift */; };
-		4C298EC52C5FDE9100474956 /* IconCagetory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAC2C5FDE2D00474956 /* IconCagetory.swift */; };
+		4C298EC52C5FDE9100474956 /* IconCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAC2C5FDE2D00474956 /* IconCategory.swift */; };
 		4C298EC62C5FDEA500474956 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E892C5FDD8200474956 /* Sequence+Extension.swift */; };
 		4C298EC72C5FDEA500474956 /* Versioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E912C5FDDB500474956 /* Versioned.swift */; };
 		4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E972C5FDDCB00474956 /* ItemContent.swift */; };
@@ -129,6 +130,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C0259022C9A25140045B3CF /* Icons.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Icons.xcstrings; sourceTree = "<group>"; };
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,7 +172,7 @@
 		4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAssembly.swift; sourceTree = "<group>"; };
 		4C298EA92C5FDE1A00474956 /* TransferNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferNode.swift; sourceTree = "<group>"; };
 		4C298EAA2C5FDE1A00474956 /* ItemDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataProvider.swift; sourceTree = "<group>"; };
-		4C298EAC2C5FDE2D00474956 /* IconCagetory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCagetory.swift; sourceTree = "<group>"; };
+		4C298EAC2C5FDE2D00474956 /* IconCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCategory.swift; sourceTree = "<group>"; };
 		4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		4C298EB02C5FDE4600474956 /* MenuBuilder+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuBuilder+Item.swift"; sourceTree = "<group>"; };
 		4C298EB12C5FDE4600474956 /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
@@ -264,6 +266,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0259012C9A24F80045B3CF /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EAC2C5FDE2D00474956 /* IconCategory.swift */,
+				4C0259022C9A25140045B3CF /* Icons.xcstrings */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		4C298E452C5FDC2000474956 = {
 			isa = PBXGroup;
 			children = (
@@ -461,13 +472,13 @@
 		4C298EAB2C5FDE2100474956 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				4C0259012C9A24F80045B3CF /* Icons */,
 				4C8514442C7E4D9000C7475C /* Common */,
 				4C85143B2C7E457700C7475C /* TableColumns */,
 				4C8C6CCF2C67DCC700E09697 /* DragAndDrop */,
 				4C298EB52C5FDE5200474956 /* Extensions */,
 				4C298EAF2C5FDE3F00474956 /* Menu */,
 				4C298EAD2C5FDE3300474956 /* Views */,
-				4C298EAC2C5FDE2D00474956 /* IconCagetory.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -845,6 +856,7 @@
 			files = (
 				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
 				4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */,
+				4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */,
 				4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */,
 				4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */,
 			);
@@ -952,7 +964,7 @@
 				4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */,
 				4C298EC32C5FDE8900474956 /* MenuBuilder+Item.swift in Sources */,
 				4C298EC42C5FDE8900474956 /* MenuItem.swift in Sources */,
-				4C298EC52C5FDE9100474956 /* IconCagetory.swift in Sources */,
+				4C298EC52C5FDE9100474956 /* IconCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1073,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1117,6 +1130,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
