@@ -65,16 +65,6 @@
         }
       }
     },
-    "%lld items - %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld items - %2$lld"
-          }
-        }
-      }
-    },
     "%lld tasks" : {
       "localizations" : {
         "en" : {

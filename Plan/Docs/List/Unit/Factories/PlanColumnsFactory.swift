@@ -58,7 +58,7 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			identifier: "value_table_column",
 			title: localization.numberColumnTitle,
 			keyPath: \.value,
-			options: .init(minWidth: 72, maxWidth: 96, isRequired: false, isHidden: false)
+			options: .init(minWidth: 160, maxWidth: 160, isRequired: false, isHidden: false)
 		) { [weak delegate] id, value in
 			delegate?.modificate(id: id, value: Int(value) ?? 0)
 		}

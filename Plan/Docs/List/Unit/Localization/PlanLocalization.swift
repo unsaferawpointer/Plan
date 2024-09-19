@@ -91,6 +91,7 @@ extension PlanLocalization: PlanLocalizationProtocol {
 	}
 
 	func valueInfo(count: Int, number: Int) -> String {
-		return String(localized: "\(count) items - \(number)", table: "PlanLocalizable")
+		let prefix = String(localized: "\(count) items", table: "PlanLocalizable")
+		return prefix + " - \(number)"
 	}
 }
