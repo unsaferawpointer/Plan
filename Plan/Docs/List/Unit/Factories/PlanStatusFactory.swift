@@ -40,7 +40,7 @@ extension PlanStatusFactory: PlanStatusFactoryProtocol {
 			return .init(
 				leadingText: localization.emptyList,
 				trailingText: localization.progressText(for: 0),
-				progress: 100
+				progress: 0
 			)
 		}
 
