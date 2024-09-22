@@ -26,6 +26,8 @@ final class PlanPresenterTests: XCTestCase {
 
 	var interactor: PlanInteractorMock!
 
+	var generalPasteboard: PasteboardFacadeMock!
+
 	override func setUpWithError() throws {
 
 		statusFactory = PlanStatusFactoryMock()
@@ -36,18 +38,18 @@ final class PlanPresenterTests: XCTestCase {
 
 		localization = PlanLocalizationMock()
 
-		formatter = BasicFormatterMock()
-
 		view = PlanViewMock()
 
 		interactor = PlanInteractorMock()
+
+		generalPasteboard = PasteboardFacadeMock()
 
 		sut = PlanPresenter(
 			statusFactory: statusFactory,
 			modelFactory: modelFactory,
 			columnsFactory: columnsFactory,
 			localization: localization,
-			formatter: formatter
+			generalPasteboard: generalPasteboard
 		)
 		sut.view = view
 		sut.interactor = interactor
@@ -55,6 +57,12 @@ final class PlanPresenterTests: XCTestCase {
 
 	override func tearDownWithError() throws {
 		sut = nil
+		statusFactory = nil
+		columnsFactory = nil
+		modelFactory = nil
+		localization = nil
+		view = nil
+		generalPasteboard = nil
 	}
 }
 

@@ -18,66 +18,29 @@ extension PlanPresenter: HierarchyDropDelegate {
 		return interactor?.validateMoving(ids: ids, to: destination) ?? false
 	}
 
-	func insert(_ info: DropInfo, to destination: HierarchyDestination<UUID>) {
-		let nodesData = info.items.compactMap {
-			$0.data[.item]
-		}
+	func write(ids: [UUID], to pasteboard: PasteboardFacadeProtocol) {
+		let nodes = interactor?.nodes(ids) ?? []
+		self.pasteboard.write(nodes, to: pasteboard, clearContents: false)
+	}
 
-		guard !nodesData.isEmpty else {
+	func insert(from pasteboard: PasteboardFacadeProtocol, to destination: HierarchyDestination<UUID>) {
 
-			let texts = info.items.compactMap {
-				$0.data[.string]
-			}.compactMap {
-				String(data: $0, encoding: .utf8)
-			}
-			insertTexts(texts, to: destination)
+		
+
+		let nodes = self.pasteboard.readNodes(from: pasteboard)
+
+		guard !nodes.isEmpty else {
+
+			let texts = self.pasteboard.readTexts(from: pasteboard)
+			interactor?.insert(texts: texts, to: destination)
 			return
 		}
-
-		let nodes = nodesData.compactMap {
-			try? JSONDecoder().decode(TransferNode.self, from: $0)
-		}
-		insertNodes(nodes, to: destination)
-	}
-
-	func node(for id: UUID, selection: [UUID]) -> TransferNode {
-		guard let interactor else {
-			fatalError()
-		}
-		let anyNode = interactor.node(id)
-		var transferNode = makeNode(anyNode)
-		transferNode.delete(Set(selection))
-		return transferNode
-	}
-
-	func item(for id: UUID, with other: [UUID]) -> DropInfo.Item {
-		guard let interactor else {
-			fatalError("Can`t find the interactor")
-		}
-		let node = interactor.node(id)
-
-		var item = DropInfo.Item(data: [:])
-
-
-		var transferNode = makeNode(node)
-		transferNode.delete(Set(other))
-
-		let text = formatter.format(nodes: [transferNode])
-
-		if let data = text.data(using: .utf8) {
-			item.data[.string] = data
-		}
-
-		if let data = try? JSONEncoder().encode(transferNode) {
-			item.data[.item] = data
-		}
-
-		return item
+		interactor?.insert(nodes, to: destination)
 	}
 }
 
 // MARK: - Helpers
-private extension PlanPresenter {
+extension PlanPresenter {
 
 	func insertNodes(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
 		interactor?.insert(nodes, to: destination)
@@ -88,11 +51,5 @@ private extension PlanPresenter {
 			return
 		}
 		interactor?.insert(texts: texts, to: destination)
-	}
-
-	func makeNode(_ entity: any TreeNode<ItemContent>) -> TransferNode {
-		return TransferNode(value: entity.value, children: entity.children.map({ node in
-			makeNode(node)
-		}))
 	}
 }

@@ -27,7 +27,12 @@ extension PlanInteractorMock: PlanInteractorProtocol {
 		}
 		return stub
 	}
-	
+
+	func nodes(_ ids: [UUID]) -> [any TreeNode<ItemContent>] {
+		invocations.append(.nodes(ids))
+		return stubs.nodes
+	}
+
 	func createNew(with text: String, in target: UUID?) -> UUID {
 		invocations.append(.createNew(text: text, target: target))
 		return stubs.createNew
@@ -61,15 +66,15 @@ extension PlanInteractorMock: PlanInteractorProtocol {
 		invocations.append(.validateMoving(ids: ids, destination: destination))
 		return stubs.validateMoving
 	}
-	
-	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
-		invocations.append(.insert(nodes, destination: destination))
+
+	func insert(_ nodes: [any TreeNode<ItemContent>], to destination: Plan.HierarchyDestination<UUID>) {
+		invocations.append(.insertNodes(nodes, destination: destination))
 	}
-	
+
 	func insert(texts: [String], to destination: HierarchyDestination<UUID>) {
-		invocations.append(.insert(texts: texts, destination: destination))
+		invocations.append(.insertTexts(texts: texts, destination: destination))
 	}
-	
+
 	func modificate(_ id: UUID, newText: String, newStatus: Bool) {
 		invocations.append(.modificate(id, newText: newText, newStatus: newStatus))
 	}
@@ -111,6 +116,7 @@ extension PlanInteractorMock {
 	enum Action {
 		case fetchData
 		case node(_ id: UUID)
+		case nodes(_ ids: [UUID])
 		case createNew(text: String, target: UUID?)
 		case deleteItems(_ ids: [UUID])
 		case setState(_ flag: Bool, selection: [UUID])
@@ -119,8 +125,8 @@ extension PlanInteractorMock {
 		case setIcon(_ value: IconName?, selection: [UUID])
 		case move(ids: [UUID], destination: HierarchyDestination<UUID>)
 		case validateMoving(ids: [UUID], destination: HierarchyDestination<UUID>)
-		case insert(_ nodes: [Plan.TransferNode], destination: HierarchyDestination<UUID>)
-		case insert(texts: [String], destination: HierarchyDestination<UUID>)
+		case insertNodes(_ nodes: [any TreeNode<ItemContent>], destination: HierarchyDestination<UUID>)
+		case insertTexts(texts: [String], destination: HierarchyDestination<UUID>)
 		case modificate(_ id: UUID, newText: String, newStatus: Bool)
 		case modificate(_ id: UUID, newText: String)
 		case canUndo
@@ -133,6 +139,7 @@ extension PlanInteractorMock {
 
 	struct Stubs {
 		var node: (any TreeNode<ItemContent>)?
+		var nodes: [any TreeNode<ItemContent>] = []
 		var createNew = UUID()
 		var validateMoving: Bool = false
 		var canUndo: Bool = false

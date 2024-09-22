@@ -8,8 +8,7 @@
 import Foundation
 
 protocol BasicFormatterProtocol {
-	func format(nodes: [any TreeNode<ItemContent>]) -> String
-	func texts(for nodes: [any TreeNode<ItemContent>]) -> [String]
+	func format(_ node: any TreeNode<ItemContent>) -> String
 }
 
 final class BasicFormatter {
@@ -26,21 +25,8 @@ final class BasicFormatter {
 // MARK: - BasicFormatterProtocol
 extension BasicFormatter: BasicFormatterProtocol {
 
-	func format(nodes: [any TreeNode<ItemContent>]) -> String {
-
-		var lines: [String] = []
-		let filtered = filter(nodes: nodes)
-
-		for node in filtered {
-			let nodeLines = text(for: node, indent: 0)
-			lines.append(contentsOf: nodeLines)
-		}
-
-		return lines.joined(separator: "\n")
-	}
-
-	func texts(for nodes: [any TreeNode<ItemContent>]) -> [String] {
-		return []
+	func format(_ node: any TreeNode<ItemContent>) -> String {
+		return text(for: node, indent: 0).joined(separator: "\n")
 	}
 }
 

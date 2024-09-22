@@ -25,7 +25,9 @@ final class PlanPresenter {
 
 	private var localization: PlanLocalizationProtocol
 
-	private (set) var formatter: BasicFormatterProtocol
+	var pasteboard: PlanPasteboardProtocol
+
+	var generalPasteboard: PasteboardFacadeProtocol
 
 	// MARK: - Initialization
 
@@ -34,20 +36,31 @@ final class PlanPresenter {
 		modelFactory: PlanModelFactoryProtocol = PlanModelFactory(),
 		columnsFactory: PlanColumnsFactoryProtocol = PlanColumnsFactory(),
 		localization: PlanLocalizationProtocol = PlanLocalization(),
-		formatter: BasicFormatterProtocol = BasicFormatter()
+		pasteboard: PlanPasteboardProtocol = PlanPasteboard(),
+		generalPasteboard: PasteboardFacadeProtocol = PasteboardFacade(pasteboard: .general)
 	) {
 		self.statusFactory = statusFactory
 		self.modelFactory = modelFactory
 		self.columnsFactory = columnsFactory
 		self.localization = localization
-		self.formatter = formatter
+		self.pasteboard = pasteboard
+		self.generalPasteboard = generalPasteboard
 	}
 }
 
+// MARK: - Computed properties
 extension PlanPresenter {
 
 	var selection: [UUID] {
 		return view?.selection ?? []
+	}
+
+	var destination: HierarchyDestination<UUID> {
+		return if let first = selection.first {
+			.onItem(with: first)
+		} else {
+			.toRoot
+		}
 	}
 }
 
@@ -135,17 +148,42 @@ extension PlanPresenter: PlanViewOutput {
 	}
 
 	func paste() {
-		let destination: HierarchyDestination<UUID> = {
-			guard let first = selection.first else {
-				return .toRoot
-			}
-			return .onItem(with: first)
-		}()
-		interactor?.insertFromPasteboard(to: destination)
+
+		let general = PasteboardFacade(pasteboard: .general)
+
+		let destination: HierarchyDestination<UUID> = if let first = selection.first {
+			.onItem(with: first)
+		} else {
+			.toRoot
+		}
+
+		let nodes = pasteboard.readNodes(from: general)
+
+		guard !nodes.isEmpty else {
+
+			let texts = pasteboard.readTexts(from: general)
+			interactor?.insert(texts: texts, to: destination)
+			return
+		}
+		interactor?.insert(nodes, to: destination)
+	}
+
+	func canPaste() -> Bool {
+		return pasteboard.contains(
+			types: [.string, .item],
+			in: generalPasteboard
+		)
 	}
 
 	func copy() {
-		interactor?.copyToPasteboard(selection)
+		guard let nodes = interactor?.nodes(selection) else {
+			return
+		}
+		pasteboard.write(
+			nodes,
+			to: generalPasteboard,
+			clearContents: true
+		)
 	}
 
 }

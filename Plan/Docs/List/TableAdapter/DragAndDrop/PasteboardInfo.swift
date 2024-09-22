@@ -7,19 +7,19 @@
 
 import AppKit
 
-struct DropInfo {
+struct PasteboardInfo {
 
 	var items: [Item] = []
 }
 
 // MARK: - Nested data structs
-extension DropInfo {
+extension PasteboardInfo {
 
 	struct Item {
-		var data: [Identifier: Data]
+		var data: [`Type`: Data]
 	}
 
-	enum Identifier: String {
+	enum `Type`: String {
 		case item
 		case string
 		case id
@@ -27,9 +27,9 @@ extension DropInfo {
 }
 
 // MARK: - Comptuted properties
-extension DropInfo.Identifier {
+extension PasteboardInfo.`Type` {
 
-	var type: NSPasteboard.PasteboardType {
+	var value: NSPasteboard.PasteboardType {
 		switch self {
 		case .item:			.item
 		case .string:		.string

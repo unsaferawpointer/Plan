@@ -16,7 +16,7 @@ extension Dictionary {
 		return value
 	}
 
-	subscript(_ key: Key?) -> Value? {
+	subscript(optional key: Key?) -> Value? {
 		guard let key else {
 			return nil
 		}

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C0259022C9A25140045B3CF /* Icons.xcstrings */; };
+		4C0259092C9F051F0045B3CF /* UndoManagerSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */; };
+		4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02590B2CA044CF0045B3CF /* PlanPasteboard.swift */; };
+		4C02590E2CA354360045B3CF /* PasteboardFacadeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */; };
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
@@ -89,7 +92,7 @@
 		4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */; };
 		4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */; };
 		4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */; };
-		4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEC2C72695B00E09697 /* DropInfo.swift */; };
+		4C8C6CED2C72695B00E09697 /* PasteboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEC2C72695B00E09697 /* PasteboardInfo.swift */; };
 		4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */; };
 		4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */; };
 		4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CF52C78FFB800E09697 /* AppPage.swift */; };
@@ -131,6 +134,9 @@
 
 /* Begin PBXFileReference section */
 		4C0259022C9A25140045B3CF /* Icons.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Icons.xcstrings; sourceTree = "<group>"; };
+		4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoManagerSupportable.swift; sourceTree = "<group>"; };
+		4C02590B2CA044CF0045B3CF /* PlanPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPasteboard.swift; sourceTree = "<group>"; };
+		4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacadeMock.swift; sourceTree = "<group>"; };
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -218,7 +224,7 @@
 		4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacade.swift; sourceTree = "<group>"; };
 		4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
 		4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatter.swift; sourceTree = "<group>"; };
-		4C8C6CEC2C72695B00E09697 /* DropInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInfo.swift; sourceTree = "<group>"; };
+		4C8C6CEC2C72695B00E09697 /* PasteboardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardInfo.swift; sourceTree = "<group>"; };
 		4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableDropLogic.swift; sourceTree = "<group>"; };
 		4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPage.swift; sourceTree = "<group>"; };
 		4C8C6CF52C78FFB800E09697 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
@@ -273,6 +279,14 @@
 				4C0259022C9A25140045B3CF /* Icons.xcstrings */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		4C02590A2CA044700045B3CF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C02590B2CA044CF0045B3CF /* PlanPasteboard.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4C298E452C5FDC2000474956 = {
@@ -352,6 +366,7 @@
 		4C298E812C5FDD3600474956 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				4C02590A2CA044700045B3CF /* Helpers */,
 				4C8C6CCD2C67DC1400E09697 /* Views */,
 				4C298EA82C5FDE1300474956 /* Models */,
 				4C298EA32C5FDE0200474956 /* Unit */,
@@ -388,6 +403,7 @@
 				4C298E8F2C5FDDAE00474956 /* Data */,
 				4C8C6CE12C6A68A500E09697 /* Pasteboard */,
 				4C298E8B2C5FDD9500474956 /* Storage */,
+				4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -576,6 +592,7 @@
 				4C85145B2C83314600C7475C /* BasicFormatterMock.swift */,
 				4C85145D2C8332B600C7475C /* PlanViewMock.swift */,
 				4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */,
+				4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -659,7 +676,7 @@
 		4C8C6CEB2C72693A00E09697 /* DragAndDrop */ = {
 			isa = PBXGroup;
 			children = (
-				4C8C6CEC2C72695B00E09697 /* DropInfo.swift */,
+				4C8C6CEC2C72695B00E09697 /* PasteboardInfo.swift */,
 				4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */,
 			);
 			path = DragAndDrop;
@@ -933,7 +950,7 @@
 				4C298ED52C5FDEAC00474956 /* Root.swift in Sources */,
 				4C298EC12C5FDE8900474956 /* NSUserInterfaceItemIdentifier+Extension.swift in Sources */,
 				4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */,
-				4C8C6CED2C72695B00E09697 /* DropInfo.swift in Sources */,
+				4C8C6CED2C72695B00E09697 /* PasteboardInfo.swift in Sources */,
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
@@ -957,8 +974,10 @@
 				4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */,
 				4C9FFEF72C920CBD005FC397 /* TextModel.swift in Sources */,
 				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
+				4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */,
 				4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */,
 				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
+				4C0259092C9F051F0045B3CF /* UndoManagerSupportable.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,
 				4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */,
 				4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */,
@@ -981,6 +1000,7 @@
 				4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */,
 				4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */,
 				4C8514562C832ED300C7475C /* PlanColumnsFactoryMock.swift in Sources */,
+				4C02590E2CA354360045B3CF /* PasteboardFacadeMock.swift in Sources */,
 				4C8C6CFE2C7A582700E09697 /* PlanDataProviderTests.swift in Sources */,
 				4C8514542C832DFB00C7475C /* String+Extension.swift in Sources */,
 				4C8C6D002C7A604A00E09697 /* UUID+Extension.swift in Sources */,

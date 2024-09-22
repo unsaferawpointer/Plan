@@ -13,7 +13,7 @@ protocol HierarchyDropDelegate: AnyObject {
 
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool
 
-	func insert(_ info: DropInfo, to destination: HierarchyDestination<UUID>)
+	func insert(from pasteboard: PasteboardFacadeProtocol, to destination: HierarchyDestination<UUID>)
 
-	func item(for id: UUID, with other: [UUID]) -> DropInfo.Item
+	func write(ids: [UUID], to pasteboard: PasteboardFacadeProtocol)
 }

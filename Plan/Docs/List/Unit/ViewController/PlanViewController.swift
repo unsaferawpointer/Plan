@@ -37,6 +37,8 @@ protocol PlanViewOutput {
 
 	func paste()
 
+	func canPaste() -> Bool
+
 	func copy()
 }
 
@@ -67,7 +69,7 @@ class PlanViewController: NSViewController {
 
 	// MARK: - DI
 
-	private (set) var adapter: HierarchyTableAdapter?
+	private(set) var adapter: HierarchyTableAdapter?
 
 	var output: (PlanViewOutput & HierarchyDropDelegate)?
 

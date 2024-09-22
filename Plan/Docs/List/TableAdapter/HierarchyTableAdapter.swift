@@ -25,7 +25,7 @@ final class HierarchyTableAdapter: NSObject {
 	var dropConfiguration: DropConfiguration? {
 		didSet {
 			table?.unregisterDraggedTypes()
-			table?.registerForDraggedTypes(dropConfiguration?.types.map(\.type) ?? [])
+			table?.registerForDraggedTypes(dropConfiguration?.types.map(\.value) ?? [])
 		}
 	}
 
@@ -94,7 +94,7 @@ extension HierarchyTableAdapter {
 			}
 			switch animation {
 			case .remove(let offset, let parent):
-				let item = cache[parent]
+				let item = cache[optional: parent]
 				let rows = IndexSet(integer: offset)
 				table?.removeItems(
 					at: rows,
@@ -102,7 +102,7 @@ extension HierarchyTableAdapter {
 					withAnimation: [.effectFade, .slideLeft]
 				)
 			case .insert(let offset, let parent):
-				let destination = cache[parent]
+				let destination = cache[optional: parent]
 				let rows = IndexSet(integer: offset)
 				table?.insertItems(
 					at: rows,
@@ -110,7 +110,7 @@ extension HierarchyTableAdapter {
 					withAnimation: [.effectFade, .slideRight]
 				)
 			case .reload(let id):
-				guard let item = cache[id] else {
+				guard let item = cache[optional: id] else {
 					return
 				}
 				table?.reloadItem(item)
@@ -352,20 +352,8 @@ extension HierarchyTableAdapter {
 
 		precondition(session.draggingPasteboard.pasteboardItems?.count == identifiers.count)
 
-		for item in session.draggingPasteboard.pasteboardItems ?? [] {
-			guard
-				let uuidString = item.string(forType: .id),
-				let id = UUID(uuidString: uuidString)
-			else {
-				continue
-			}
-
-			let dropInfo = delegate.item(for: id, with: identifiers)
-
-			for (key, data) in dropInfo.data {
-				item.setData(data, forType: key.type)
-			}
-		}
+		let pasteboard = PasteboardFacade(pasteboard: session.draggingPasteboard)
+		delegate.write(ids: identifiers, to: pasteboard)
 	}
 
 	func outlineView(
@@ -403,33 +391,13 @@ extension HierarchyTableAdapter {
 			return true
 		}
 
-		guard
-			let availableTypes = dropConfiguration?.types,
-			let pasteboardItems = info.draggingPasteboard.pasteboardItems
-		else {
-			return false
-		}
-
-		let items = pasteboardItems.map { item in
-			let tuples = availableTypes.compactMap { identifier -> (DropInfo.Identifier, Data)? in
-				guard let data = item.data(forType: identifier.type) else {
-					return nil
-				}
-				return (identifier, data)
-			}
-			let data = Dictionary(uniqueKeysWithValues: tuples)
-			return DropInfo.Item(data: data)
-		}
-
-		let info = DropInfo(items: items)
-
-		delegate.insert(info, to: destination)
+		delegate.insert(from: PasteboardFacade(pasteboard: info.draggingPasteboard), to: destination)
 		return true
 	}
 }
 
 // MARK: - Helpers
-extension HierarchyTableAdapter {
+private extension HierarchyTableAdapter {
 
 	func getDestination(proposedItem item: Any?, proposedChildIndex index: Int) -> HierarchyDestination<UUID> {
 		switch (item, index) {

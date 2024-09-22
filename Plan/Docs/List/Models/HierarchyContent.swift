@@ -9,9 +9,9 @@ import Foundation
 
 final class HierarchyContent {
 
-	private (set) var uuid: UUID
+	private(set) var uuid: UUID
 
-	private (set) var hierarchy: Root<ItemContent>
+	private(set) var hierarchy: Root<ItemContent>
 
 	// MARK: - Initialization
 

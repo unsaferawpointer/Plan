@@ -8,23 +8,68 @@
 import AppKit
 
 protocol PasteboardFacadeProtocol {
-	func getString() -> String?
-	func setString(_ value: String)
+
+	typealias `Type` = PasteboardInfo.`Type`
+
+	func contains(_ types: Set<`Type`>) -> Bool
+	func info(for types: Set<`Type`>) -> PasteboardInfo?
+	func setInfo(_ info: PasteboardInfo, clearContents: Bool)
 }
 
-final class PasteboardFacade { 
-	let pasteboard = NSPasteboard.general
+final class PasteboardFacade {
+
+	let pasteboard: NSPasteboard
+
+	// MARK: - Initialization
+
+	init(pasteboard: NSPasteboard = .general) {
+		self.pasteboard = pasteboard
+	}
 }
 
 // MARK: - PasteboardFacadeProtocol
 extension PasteboardFacade: PasteboardFacadeProtocol {
 
-	func getString() -> String? {
-		return pasteboard.string(forType: .string)
+	func contains(_ types: Set<PasteboardInfo.`Type`>) -> Bool {
+		return types.contains { type in
+			pasteboard.data(forType: type.value) != nil
+		}
 	}
 
-	func setString(_ value: String) {
-		pasteboard.clearContents()
-		pasteboard.setString(value, forType: .string)
+	func info(for types: Set<PasteboardInfo.`Type`>) -> PasteboardInfo? {
+
+		let items = pasteboard.pasteboardItems?.map { item in
+			let tuples = types.compactMap { identifier -> (PasteboardInfo.`Type`, Data)? in
+				guard let data = item.data(forType: identifier.value) else {
+					return nil
+				}
+				return (identifier, data)
+			}
+			let data = Dictionary(uniqueKeysWithValues: tuples)
+			return PasteboardInfo.Item(data: data)
+		}
+
+		guard let items else {
+			return nil
+		}
+
+		return PasteboardInfo(items: items)
+	}
+
+	func setInfo(_ info: PasteboardInfo, clearContents: Bool) {
+
+		if clearContents {
+			pasteboard.clearContents()
+		}
+
+		let items = info.items.map {
+			let item = NSPasteboardItem()
+			for (key, data) in $0.data {
+				item.setData(data, forType: key.value)
+			}
+			return item
+		}
+
+		pasteboard.writeObjects(items)
 	}
 }

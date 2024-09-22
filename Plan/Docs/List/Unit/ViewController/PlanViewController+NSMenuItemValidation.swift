@@ -24,9 +24,10 @@ extension PlanViewController: NSMenuItemValidation {
 				.setEstimationMenuItem,
 				.setIconMenuItem,
 				.iconsGroupMenuItem,
-				.pasteMenuItem,
 				.copyMenuItem:
 			return true
+		case .pasteMenuItem:
+			return output?.canPaste() ?? false
 		case .foldMenuItem, .unfoldMenuItem:
 			return !adapter.selection.isEmpty
 		default:

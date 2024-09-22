@@ -8,18 +8,15 @@
 @testable import Plan
 
 final class BasicFormatterMock {
+
 	var stubs = Stubs()
 }
 
 // MARK: - BasicFormatterProtocol
 extension BasicFormatterMock: BasicFormatterProtocol {
 
-	func format(nodes: [any TreeNode<ItemContent>]) -> String {
+	func format(_ node: any TreeNode<Plan.ItemContent>) -> String {
 		stubs.format
-	}
-
-	func texts(for nodes: [any TreeNode<ItemContent>]) -> [String] {
-		stubs.texts
 	}
 }
 
@@ -28,6 +25,5 @@ extension BasicFormatterMock {
 
 	struct Stubs {
 		var format: String = .random
-		var texts: [String] = []
 	}
 }

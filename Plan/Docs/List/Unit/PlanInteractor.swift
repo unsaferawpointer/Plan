@@ -7,10 +7,11 @@
 
 import Foundation
 
-protocol PlanInteractorProtocol {
+protocol PlanInteractorProtocol: UndoManagerSupportable {
 
 	func fetchData()
 	func node(_ id: UUID) -> any TreeNode<ItemContent>
+	func nodes(_ ids: [UUID]) -> [any TreeNode<ItemContent>]
 
 	func createNew(with text: String, in target: UUID?) -> UUID
 	func deleteItems(_ ids: [UUID])
@@ -21,19 +22,11 @@ protocol PlanInteractorProtocol {
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>)
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool
-	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>)
+	func insert(_ nodes: [any TreeNode<ItemContent>], to destination: HierarchyDestination<UUID>)
 	func insert(texts: [String], to destination: HierarchyDestination<UUID>)
 
 	func modificate(_ id: UUID, newText: String, newStatus: Bool)
 	func modificate(_ id: UUID, newText: String)
-
-	func canUndo() -> Bool
-	func canRedo() -> Bool
-	func redo()
-	func undo()
-
-	func insertFromPasteboard(to destination: HierarchyDestination<UUID>)
-	func copyToPasteboard(_ ids: [UUID])
 }
 
 final class PlanInteractor {
@@ -46,20 +39,16 @@ final class PlanInteractor {
 
 	var parser: TextParserProtocol
 
-	var formatter: BasicFormatterProtocol
-
 	// MARK: - Initialization
 
 	init(
 		storage: DocumentStorage<HierarchyContent>,
 		pasteboard: PasteboardFacadeProtocol = PasteboardFacade(),
-		parser: TextParserProtocol = TextParser(configuration: .default),
-		formatter: BasicFormatterProtocol = BasicFormatter()
+		parser: TextParserProtocol = TextParser(configuration: .default)
 	) {
 		self.storage = storage
 		self.pasteboard = pasteboard
 		self.parser = parser
-		self.formatter = formatter
 		storage.addObservation(for: self) { [weak self] _, content in
 			guard let self else {
 				return
@@ -77,7 +66,11 @@ extension PlanInteractor: PlanInteractorProtocol {
 	}
 
 	func node(_ id: UUID) -> any TreeNode<ItemContent> {
-		return storage.state.hierarchy[id]
+		storage.state.hierarchy[id]
+	}
+
+	func nodes(_ ids: [UUID]) -> [any TreeNode<ItemContent>] {
+		storage.state.hierarchy.nodes(with: ids)
 	}
 
 	func createNew(with text: String, in target: UUID?) -> UUID {
@@ -136,7 +129,7 @@ extension PlanInteractor: PlanInteractorProtocol {
 		return storage.state.validateMoving(ids, to: destination)
 	}
 
-	func insert(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
+	func insert(_ nodes: [any TreeNode<ItemContent>], to destination: HierarchyDestination<UUID>) {
 		storage.modificate { content in
 			content.insertItems(from: nodes, to: destination)
 		}
@@ -163,7 +156,10 @@ extension PlanInteractor: PlanInteractorProtocol {
 			content.setText(newText, for: id)
 		}
 	}
+}
 
+// MARK: - UndoManagerSupportable
+extension PlanInteractor: UndoManagerSupportable {
 
 	func canUndo() -> Bool {
 		storage.canUndo()
@@ -179,18 +175,5 @@ extension PlanInteractor: PlanInteractorProtocol {
 
 	func undo() {
 		storage.undo()
-	}
-
-	func insertFromPasteboard(to destination: HierarchyDestination<UUID>) {
-		guard let text = pasteboard.getString() else {
-			return
-		}
-		insert(texts: [text], to: destination)
-	}
-
-	func copyToPasteboard(_ ids: [UUID]) {
-		let nodes = storage.state.hierarchy.nodes(with: ids)
-		let text = formatter.format(nodes: nodes)
-		pasteboard.setString(text)
 	}
 }
