@@ -40,6 +40,8 @@ protocol PlanViewOutput {
 	func canPaste() -> Bool
 
 	func copy()
+
+	func cut()
 }
 
 protocol PlanView: AnyObject {
@@ -224,6 +226,7 @@ private extension PlanViewController {
 					.favorite,
 					.completed,
 					.separator,
+					.cut,
 					.copy,
 					.paste,
 					.separator,

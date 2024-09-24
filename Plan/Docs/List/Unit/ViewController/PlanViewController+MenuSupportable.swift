@@ -65,6 +65,11 @@ extension PlanViewController: MenuSupportable {
 	}
 
 	@IBAction
+	func cut(_ sender: NSMenuItem) {
+		output?.cut()
+	}
+
+	@IBAction
 	func paste(_ sender: NSMenuItem) {
 		output?.paste()
 	}

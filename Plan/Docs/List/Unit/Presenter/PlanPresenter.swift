@@ -147,21 +147,24 @@ extension PlanPresenter: PlanViewOutput {
 		view?.expand(selection)
 	}
 
-	func paste() {
-
-		let general = PasteboardFacade(pasteboard: .general)
-
-		let destination: HierarchyDestination<UUID> = if let first = selection.first {
-			.onItem(with: first)
-		} else {
-			.toRoot
+	func cut() {
+		guard let nodes = interactor?.nodes(selection) else {
+			return
 		}
+		pasteboard.write(
+			nodes,
+			to: generalPasteboard,
+			clearContents: true
+		)
+		interactor?.deleteItems(selection)
+	}
 
-		let nodes = pasteboard.readNodes(from: general)
+	func paste() {
+		let nodes = pasteboard.readNodes(from: generalPasteboard)
 
 		guard !nodes.isEmpty else {
 
-			let texts = pasteboard.readTexts(from: general)
+			let texts = pasteboard.readTexts(from: generalPasteboard)
 			interactor?.insert(texts: texts, to: destination)
 			return
 		}

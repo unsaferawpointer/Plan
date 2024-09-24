@@ -15,6 +15,7 @@ extension MenuBuilder {
 		case delete
 
 		case copy
+		case cut
 		case paste
 
 		case favorite
@@ -153,6 +154,14 @@ extension MenuBuilder.Item {
 				keyEquivalent: "v"
 			)
 			item.identifier = .pasteMenuItem
+			return item
+		case .cut:
+			let item = NSMenuItem(
+				title: String(localized: "cut_item", table: "Menu"),
+				action: #selector(MenuSupportable.cut(_:)),
+				keyEquivalent: "x"
+			)
+			item.identifier = .cutMenuItem
 			return item
 		}
 	}

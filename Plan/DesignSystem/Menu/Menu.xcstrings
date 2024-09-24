@@ -49,6 +49,22 @@
         }
       }
     },
+    "cut_item" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cut"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Вырезать"
+          }
+        }
+      }
+    },
     "delete_item" : {
       "localizations" : {
         "en" : {

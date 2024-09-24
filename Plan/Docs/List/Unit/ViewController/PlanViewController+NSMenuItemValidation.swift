@@ -23,12 +23,11 @@ extension PlanViewController: NSMenuItemValidation {
 		case .newMenuItem,
 				.setEstimationMenuItem,
 				.setIconMenuItem,
-				.iconsGroupMenuItem,
-				.copyMenuItem:
+				.iconsGroupMenuItem:
 			return true
 		case .pasteMenuItem:
 			return output?.canPaste() ?? false
-		case .foldMenuItem, .unfoldMenuItem:
+		case .foldMenuItem, .unfoldMenuItem, .cutMenuItem, .copyMenuItem:
 			return !adapter.selection.isEmpty
 		default:
 			break
