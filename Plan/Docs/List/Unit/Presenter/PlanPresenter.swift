@@ -160,11 +160,13 @@ extension PlanPresenter: PlanViewOutput {
 	}
 
 	func paste() {
+		print("\(#function)")
 		let nodes = pasteboard.readNodes(from: generalPasteboard)
 
 		guard !nodes.isEmpty else {
 
 			let texts = pasteboard.readTexts(from: generalPasteboard)
+			print("text = \(texts)")
 			interactor?.insert(texts: texts, to: destination)
 			return
 		}

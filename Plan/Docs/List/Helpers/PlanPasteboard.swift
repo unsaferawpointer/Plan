@@ -60,8 +60,9 @@ extension PlanPasteboard: PlanPasteboardProtocol {
 		guard let info = pasteboard.info(for: [.string]) else {
 			return []
 		}
+
 		return info.items.map(\.data).compactMap {
-			$0[.item]
+			$0[.string]
 		}.compactMap {
 			String(data: $0, encoding: .utf8)
 		}
@@ -69,7 +70,7 @@ extension PlanPasteboard: PlanPasteboardProtocol {
 
 	func readNodes(from pasteboard: PasteboardFacadeProtocol) -> [any TreeNode<ItemContent>] {
 
-		guard let info = pasteboard.info(for: [.item, .string]) else {
+		guard let info = pasteboard.info(for: [.item]) else {
 			return []
 		}
 
