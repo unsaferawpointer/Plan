@@ -11,15 +11,54 @@ extension MenuBuilder {
 
 	enum Item {
 
-		case new
-		case delete
+		// MARK: - Plan
 
-		case copy
+		case about
+		case hide
+		case hideOther
+		case showAll
+		case quit
+
+		// MARK: - File
+
+		case newDocument
+		case open
+		case close
+		case save
+		case saveAs
+		case revert
+
+		// MARK: - Edit
+
+		case undo
+		case redo
 		case cut
+		case copy
 		case paste
+		case selectAll
+
+		// MARK: - Editor
+
+		case newItem
+		case fold
+		case unfold
+		case delete
 
 		case favorite
 		case completed
+
+		// MARK: - View
+
+		case showToolbar
+		case customizeToolbar
+		case enterFullScreen
+
+		// MARK: - Window
+
+		case minimize
+		case bringAllToFront
+
+		// MARK: - Other
 
 		case setEstimation
 
@@ -33,10 +72,10 @@ extension MenuBuilder.Item {
 
 	func makeItem() -> NSMenuItem {
 		switch self {
-		case .new:
+		case .newItem:
 			let item = NSMenuItem(
 				title: String(localized: "new_item", table: "Menu"),
-				action: #selector(MenuSupportable.createNew),
+				action: .createNew,
 				keyEquivalent: "n"
 			)
 			item.identifier = .newMenuItem
@@ -44,7 +83,7 @@ extension MenuBuilder.Item {
 		case .delete:
 			let item = NSMenuItem(
 				title: String(localized: "delete_item", table: "Menu"),
-				action: #selector(MenuSupportable.delete),
+				action: .delete,
 				keyEquivalent: "\u{0008}"
 			)
 			item.image = NSImage(systemSymbolName: "trash")
@@ -55,7 +94,7 @@ extension MenuBuilder.Item {
 		case .favorite:
 			let item = NSMenuItem(
 				title: String(localized: "bookmarked_item", table: "Menu"),
-				action: #selector(MenuSupportable.toggleBookmark(_:)),
+				action: .toggleBookmarked,
 				keyEquivalent: "b"
 			)
 			item.identifier = .bookmarkMenuItem
@@ -63,7 +102,7 @@ extension MenuBuilder.Item {
 		case .completed:
 			let item = NSMenuItem(
 				title: String(localized: "completed_item", table: "Menu"),
-				action: #selector(MenuSupportable.toggleCompleted(_:)),
+				action: .toggleCompleted,
 				keyEquivalent: "\r"
 			)
 			item.identifier = .setStatusMenuItem
@@ -142,7 +181,7 @@ extension MenuBuilder.Item {
 		case .copy:
 			let item = NSMenuItem(
 				title: String(localized: "copy_item", table: "Menu"),
-				action: #selector(MenuSupportable.copy(_:)),
+				action: .copy,
 				keyEquivalent: "c"
 			)
 			item.identifier = .copyMenuItem
@@ -150,7 +189,7 @@ extension MenuBuilder.Item {
 		case .paste:
 			let item = NSMenuItem(
 				title: String(localized: "paste_item", table: "Menu"),
-				action: #selector(MenuSupportable.paste(_:)),
+				action: .paste,
 				keyEquivalent: "v"
 			)
 			item.identifier = .pasteMenuItem
@@ -158,10 +197,187 @@ extension MenuBuilder.Item {
 		case .cut:
 			let item = NSMenuItem(
 				title: String(localized: "cut_item", table: "Menu"),
-				action: #selector(MenuSupportable.cut(_:)),
+				action: .cut,
 				keyEquivalent: "x"
 			)
 			item.identifier = .cutMenuItem
+			return item
+		case .about:
+			let displayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+
+			let item = NSMenuItem(
+				title: "About \(displayName ?? "Plan")",
+				action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)),
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .hide:
+
+			let displayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+
+			let item = NSMenuItem(
+				title: "Hide \(displayName ?? "Plan")",
+				action: #selector(NSApplication.hide(_:)),
+				keyEquivalent: "h"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .hideOther:
+			let item = NSMenuItem(
+				title: "Hide Others",
+				action: #selector(NSApplication.hideOtherApplications(_:)),
+				keyEquivalent: "H"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .showAll:
+			let item = NSMenuItem(
+				title: "Show All",
+				action: #selector(NSApplication.unhideAllApplications(_:)),
+				keyEquivalent: "H"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .quit:
+
+			let displayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+
+			let item = NSMenuItem(
+				title: "Quit \(displayName ?? "Plan")",
+				action: #selector(NSApplication.terminate(_:)),
+				keyEquivalent: "q"
+			)
+
+			// TODO: - Add user identifier && localization
+			return item
+		case .newDocument:
+			let item = NSMenuItem(
+				title: "New",
+				action: #selector(NSDocumentController.newDocument(_:)),
+				keyEquivalent: "n"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .open:
+			let item = NSMenuItem(
+				title: "Open...",
+				action: #selector(NSDocumentController.openDocument(_:)),
+				keyEquivalent: "o"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .close:
+			let item = NSMenuItem(
+				title: "Close",
+				action: #selector(NSPopover.performClose(_:)),
+				keyEquivalent: "w"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .save:
+			let item = NSMenuItem(
+				title: "Save...",
+				action: #selector(NSDocument.save(_:)),
+				keyEquivalent: "s"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .saveAs:
+			let item = NSMenuItem(
+				title: "Save As...",
+				action: #selector(NSDocument.saveAs(_:)),
+				keyEquivalent: "S"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .revert:
+			let item = NSMenuItem(
+				title: "Revert To Saved",
+				action: #selector(NSDocument.revertToSaved(_:)),
+				keyEquivalent: "r"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .undo:
+			let item = NSMenuItem(
+				title: "Undo",
+				action: .undo,
+				keyEquivalent: "z"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .redo:
+			let item = NSMenuItem(
+				title: "Redo",
+				action: .redo,
+				keyEquivalent: "Z"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .selectAll:
+			let item = NSMenuItem(
+				title: "Select All",
+				action: .selectAll,
+				keyEquivalent: "a"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .fold:
+			let item = NSMenuItem(
+				title: "Fold",
+				action: .fold,
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .unfold:
+			let item = NSMenuItem(
+				title: "Unfold",
+				action: .unfold,
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .showToolbar:
+			let item = NSMenuItem(
+				title: "Show Toolbar",
+				action: .toggleToolbarShown,
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .customizeToolbar:
+			let item = NSMenuItem(
+				title: "Customize Toolbar…",
+				action: .runToolbarCustomizationPalette,
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .enterFullScreen:
+			let item = NSMenuItem(
+				title: "Enter Full Screen",
+				action: .toggleFullScreen,
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .minimize:
+			let item = NSMenuItem(
+				title: "Minimize",
+				action: .performMiniaturize,
+				keyEquivalent: "m"
+			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .bringAllToFront:
+			let item = NSMenuItem(
+				title: "Bring All to Front",
+				action: .arrangeInFront,
+				keyEquivalent: ""
+			)
+			// TODO: - Add user identifier && localization
 			return item
 		}
 	}

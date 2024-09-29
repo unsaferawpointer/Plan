@@ -11,6 +11,8 @@
 		4C0259092C9F051F0045B3CF /* UndoManagerSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */; };
 		4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02590B2CA044CF0045B3CF /* PlanPasteboard.swift */; };
 		4C02590E2CA354360045B3CF /* PasteboardFacadeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */; };
+		4C02591D2CA9B1D80045B3CF /* Selector+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02591C2CA9B1D80045B3CF /* Selector+Extension.swift */; };
+		4C0259202CA9EF5B0045B3CF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02591F2CA9EF5B0045B3CF /* main.swift */; };
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
@@ -137,6 +139,8 @@
 		4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoManagerSupportable.swift; sourceTree = "<group>"; };
 		4C02590B2CA044CF0045B3CF /* PlanPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPasteboard.swift; sourceTree = "<group>"; };
 		4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacadeMock.swift; sourceTree = "<group>"; };
+		4C02591C2CA9B1D80045B3CF /* Selector+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Selector+Extension.swift"; sourceTree = "<group>"; };
+		4C02591F2CA9EF5B0045B3CF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -289,6 +293,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		4C02591E2CA9E3050045B3CF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		4C298E452C5FDC2000474956 = {
 			isa = PBXGroup;
 			children = (
@@ -315,7 +327,8 @@
 			children = (
 				4C298E5D2C5FDC2100474956 /* Plan.entitlements */,
 				4C298E5C2C5FDC2100474956 /* Info.plist */,
-				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
+				4C02591F2CA9EF5B0045B3CF /* main.swift */,
+				4C02591E2CA9E3050045B3CF /* App */,
 				4C298E7F2C5FDC5700474956 /* Resource */,
 				4C298E8A2C5FDD8800474956 /* Services */,
 				4C298E822C5FDD5A00474956 /* Common */,
@@ -541,6 +554,7 @@
 				4C298E892C5FDD8200474956 /* Sequence+Extension.swift */,
 				4C298E882C5FDD8200474956 /* Dictionary+Extension.swift */,
 				4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */,
+				4C02591C2CA9B1D80045B3CF /* Selector+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -913,6 +927,7 @@
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
 				4C298EC62C5FDEA500474956 /* Sequence+Extension.swift in Sources */,
+				4C0259202CA9EF5B0045B3CF /* main.swift in Sources */,
 				4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */,
 				4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */,
 				4C298EC72C5FDEA500474956 /* Versioned.swift in Sources */,
@@ -925,6 +940,7 @@
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
 				4C298ECD2C5FDEA500474956 /* DocumentFile.swift in Sources */,
 				4C298ECE2C5FDEA500474956 /* DocumentDataRepresentation.swift in Sources */,
+				4C02591D2CA9B1D80045B3CF /* Selector+Extension.swift in Sources */,
 				4C298ECF2C5FDEA500474956 /* VersionedFile.swift in Sources */,
 				4C9FFEF32C920C31005FC397 /* TextConfiguration.swift in Sources */,
 				4C298ED02C5FDEA500474956 /* DocumentDataPublisher.swift in Sources */,
@@ -1169,7 +1185,6 @@
 				INFOPLIST_FILE = Plan/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1198,7 +1213,6 @@
 				INFOPLIST_FILE = Plan/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -11,23 +11,43 @@ import Cocoa
 extension PlanViewController: NSMenuItemValidation {
 
 	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-		guard let identifier = menuItem.identifier, let adapter else {
+
+		guard let adapter else {
+			return false
+		}
+
+		switch menuItem.action {
+		case .createNew:
+			return true
+		case .redo:
+			return output?.canRedo() ?? false
+		case .undo:
+			return output?.canUndo() ?? false
+		case .cut, .copy, .fold, .unfold, .delete:
+			return !adapter.selection.isEmpty
+		case .paste:
+			return output?.canPaste() ?? false
+		case .toggleCompleted, .toggleBookmarked:
+
+			if let id = menuItem.identifier?.rawValue {
+				let state = adapter.menuItemState(for: id)
+				menuItem.state = state
+			}
+
+			return !adapter.selection.isEmpty
+		default:
+			break
+		}
+
+		guard let identifier = menuItem.identifier else {
 			return false
 		}
 
 		switch identifier {
-		case .redoMenuItem:
-			return output?.canRedo() ?? false
-		case .undoMenuItem:
-			return output?.canUndo() ?? false
-		case .newMenuItem,
-				.setEstimationMenuItem,
-				.setIconMenuItem,
-				.iconsGroupMenuItem:
-			return true
-		case .pasteMenuItem:
-			return output?.canPaste() ?? false
-		case .foldMenuItem, .unfoldMenuItem, .cutMenuItem, .copyMenuItem:
+		case
+			 .setEstimationMenuItem,
+			 .setIconMenuItem,
+			 .iconsGroupMenuItem:
 			return !adapter.selection.isEmpty
 		default:
 			break

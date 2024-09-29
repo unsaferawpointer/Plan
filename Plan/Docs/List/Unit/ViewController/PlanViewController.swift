@@ -221,7 +221,7 @@ private extension PlanViewController {
 			withTitle: "Context", 
 			for: 
 				[
-					.new,
+					.newItem,
 					.separator,
 					.favorite,
 					.completed,
