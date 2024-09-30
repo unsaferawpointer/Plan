@@ -52,7 +52,9 @@ extension AppDelegate {
 					.separator,
 					.hide,
 					.hideOther,
-					.showAll
+					.showAll,
+					.separator,
+					.quit
 				]
 		)
 		return item
@@ -68,6 +70,7 @@ extension AppDelegate {
 				[
 					.newDocument,
 					.open,
+					.openRecent,
 					.separator,
 					.close,
 					.save,

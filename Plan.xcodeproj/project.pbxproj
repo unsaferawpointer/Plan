@@ -13,6 +13,9 @@
 		4C02590E2CA354360045B3CF /* PasteboardFacadeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */; };
 		4C02591D2CA9B1D80045B3CF /* Selector+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02591C2CA9B1D80045B3CF /* Selector+Extension.swift */; };
 		4C0259202CA9EF5B0045B3CF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02591F2CA9EF5B0045B3CF /* main.swift */; };
+		4C0259222CAB1DCB0045B3CF /* OpenRecentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259212CAB1DCB0045B3CF /* OpenRecentMenu.swift */; };
+		4C0259262CAB2CBD0045B3CF /* DocumentControllerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259252CAB2CBD0045B3CF /* DocumentControllerFacade.swift */; };
+		4C0259282CAB2FA60045B3CF /* WorkspaceFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259272CAB2FA60045B3CF /* WorkspaceFacade.swift */; };
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
@@ -141,6 +144,9 @@
 		4C02590D2CA354360045B3CF /* PasteboardFacadeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacadeMock.swift; sourceTree = "<group>"; };
 		4C02591C2CA9B1D80045B3CF /* Selector+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Selector+Extension.swift"; sourceTree = "<group>"; };
 		4C02591F2CA9EF5B0045B3CF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4C0259212CAB1DCB0045B3CF /* OpenRecentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecentMenu.swift; sourceTree = "<group>"; };
+		4C0259252CAB2CBD0045B3CF /* DocumentControllerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentControllerFacade.swift; sourceTree = "<group>"; };
+		4C0259272CAB2FA60045B3CF /* WorkspaceFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFacade.swift; sourceTree = "<group>"; };
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -301,6 +307,23 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		4C0259232CAB201E0045B3CF /* OpenRecent */ = {
+			isa = PBXGroup;
+			children = (
+				4C0259212CAB1DCB0045B3CF /* OpenRecentMenu.swift */,
+			);
+			path = OpenRecent;
+			sourceTree = "<group>";
+		};
+		4C0259242CAB2CA20045B3CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4C0259252CAB2CBD0045B3CF /* DocumentControllerFacade.swift */,
+				4C0259272CAB2FA60045B3CF /* WorkspaceFacade.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		4C298E452C5FDC2000474956 = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +434,7 @@
 		4C298E8A2C5FDD8800474956 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4C0259242CAB2CA20045B3CF /* Common */,
 				4C8C6CE72C6BD63D00E09697 /* BasicFormatter */,
 				4C8C6CD22C68D27000E09697 /* TextParser */,
 				4C298E8F2C5FDDAE00474956 /* Data */,
@@ -525,6 +549,7 @@
 		4C298EAF2C5FDE3F00474956 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4C0259232CAB201E0045B3CF /* OpenRecent */,
 				4C298EB12C5FDE4600474956 /* MenuBuilder.swift */,
 				4C298EB02C5FDE4600474956 /* MenuBuilder+Item.swift */,
 				4C298EB22C5FDE4600474956 /* MenuItem.swift */,
@@ -932,6 +957,7 @@
 				4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */,
 				4C298EC72C5FDEA500474956 /* Versioned.swift in Sources */,
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
+				4C0259282CAB2FA60045B3CF /* WorkspaceFacade.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
 				4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
@@ -972,6 +998,7 @@
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
 				4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */,
 				4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */,
+				4C0259222CAB1DCB0045B3CF /* OpenRecentMenu.swift in Sources */,
 				4C298ED92C5FDEBC00474956 /* PlanAssembly.swift in Sources */,
 				4C298EDA2C5FDEBC00474956 /* PlanItemCell.swift in Sources */,
 				4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */,
@@ -992,6 +1019,7 @@
 				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
 				4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */,
 				4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */,
+				4C0259262CAB2CBD0045B3CF /* DocumentControllerFacade.swift in Sources */,
 				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
 				4C0259092C9F051F0045B3CF /* UndoManagerSupportable.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,

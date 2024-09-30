@@ -22,6 +22,7 @@ extension MenuBuilder {
 		// MARK: - File
 
 		case newDocument
+		case openRecent
 		case open
 		case close
 		case save
@@ -203,10 +204,10 @@ extension MenuBuilder.Item {
 			item.identifier = .cutMenuItem
 			return item
 		case .about:
-			let displayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
 
 			let item = NSMenuItem(
-				title: "About \(displayName ?? "Plan")",
+				title: "About \(appName ?? "Plan")",
 				action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)),
 				keyEquivalent: ""
 			)
@@ -214,10 +215,10 @@ extension MenuBuilder.Item {
 			return item
 		case .hide:
 
-			let displayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
 
 			let item = NSMenuItem(
-				title: "Hide \(displayName ?? "Plan")",
+				title: "Hide \(appName ?? "Plan")",
 				action: #selector(NSApplication.hide(_:)),
 				keyEquivalent: "h"
 			)
@@ -227,24 +228,25 @@ extension MenuBuilder.Item {
 			let item = NSMenuItem(
 				title: "Hide Others",
 				action: #selector(NSApplication.hideOtherApplications(_:)),
-				keyEquivalent: "H"
+				keyEquivalent: "h"
 			)
+			item.keyEquivalentModifierMask = [.command, .option]
 			// TODO: - Add user identifier && localization
 			return item
 		case .showAll:
 			let item = NSMenuItem(
 				title: "Show All",
 				action: #selector(NSApplication.unhideAllApplications(_:)),
-				keyEquivalent: "H"
+				keyEquivalent: ""
 			)
 			// TODO: - Add user identifier && localization
 			return item
 		case .quit:
 
-			let displayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
 
 			let item = NSMenuItem(
-				title: "Quit \(displayName ?? "Plan")",
+				title: "Quit \(appName ?? "Plan")",
 				action: #selector(NSApplication.terminate(_:)),
 				keyEquivalent: "q"
 			)
@@ -257,6 +259,17 @@ extension MenuBuilder.Item {
 				action: #selector(NSDocumentController.newDocument(_:)),
 				keyEquivalent: "n"
 			)
+			// TODO: - Add user identifier && localization
+			return item
+		case .openRecent:
+			let item = NSMenuItem(
+				title: "Open Recent",
+				action: nil,
+				keyEquivalent: ""
+			)
+
+			item.submenu = OpenRecentMenu(title: "Open Recent")
+
 			// TODO: - Add user identifier && localization
 			return item
 		case .open:
