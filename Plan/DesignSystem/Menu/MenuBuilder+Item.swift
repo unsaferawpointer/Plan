@@ -77,7 +77,7 @@ extension MenuBuilder.Item {
 			let item = NSMenuItem(
 				title: String(localized: "new_item", table: "Menu"),
 				action: .createNew,
-				keyEquivalent: "n"
+				keyEquivalent: "t"
 			)
 			item.identifier = .newMenuItem
 			return item
@@ -274,7 +274,7 @@ extension MenuBuilder.Item {
 			return item
 		case .open:
 			let item = NSMenuItem(
-				title: "Open...",
+				title: "Open…",
 				action: #selector(NSDocumentController.openDocument(_:)),
 				keyEquivalent: "o"
 			)
@@ -290,7 +290,7 @@ extension MenuBuilder.Item {
 			return item
 		case .save:
 			let item = NSMenuItem(
-				title: "Save...",
+				title: "Save…",
 				action: #selector(NSDocument.save(_:)),
 				keyEquivalent: "s"
 			)
@@ -298,7 +298,7 @@ extension MenuBuilder.Item {
 			return item
 		case .saveAs:
 			let item = NSMenuItem(
-				title: "Save As...",
+				title: "Save As…",
 				action: #selector(NSDocument.saveAs(_:)),
 				keyEquivalent: "S"
 			)
@@ -356,8 +356,9 @@ extension MenuBuilder.Item {
 			let item = NSMenuItem(
 				title: "Show Toolbar",
 				action: .toggleToolbarShown,
-				keyEquivalent: ""
+				keyEquivalent: "t"
 			)
+			item.keyEquivalentModifierMask = [.command, .option]
 			// TODO: - Add user identifier && localization
 			return item
 		case .customizeToolbar:
