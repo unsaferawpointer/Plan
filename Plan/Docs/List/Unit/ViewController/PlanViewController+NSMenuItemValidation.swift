@@ -34,7 +34,7 @@ extension PlanViewController: NSMenuItemValidation {
 				menuItem.state = state
 			}
 
-			return !adapter.selection.isEmpty
+			return !table.effectiveSelection().isEmpty
 		default:
 			break
 		}
