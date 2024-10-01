@@ -7,7 +7,7 @@
 
 import Cocoa
 
-protocol PlanViewOutput {
+protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
 
 	func viewDidLoad()
 
@@ -23,48 +23,18 @@ protocol PlanViewOutput {
 
 	func setIcon(_ value: IconName?)
 
-	func canUndo() -> Bool
-
-	func canRedo() -> Bool
-
-	func redo()
-
-	func undo()
-
 	func fold()
 
 	func unfold()
-
-	func paste()
-
-	func canPaste() -> Bool
-
-	func copy()
-
-	func cut()
 }
 
-protocol PlanView: AnyObject {
+protocol PlanView: AnyObject, OutlineSupportable {
 
 	func display(_ model: PlanModel)
 
 	func setConfiguration(_ configuration: DropConfiguration)
 
 	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>])
-
-	func scroll(to id: UUID)
-
-	func select(_ id: UUID)
-
-	func expand(_ ids: [UUID])
-
-	func expandAll()
-
-	func collapse(_ ids: [UUID])
-
-	func focus(on id: UUID)
-
-	var selection: [UUID] { get }
 }
 
 class PlanViewController: NSViewController {

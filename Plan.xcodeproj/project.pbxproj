@@ -16,6 +16,9 @@
 		4C0259222CAB1DCB0045B3CF /* OpenRecentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259212CAB1DCB0045B3CF /* OpenRecentMenu.swift */; };
 		4C0259262CAB2CBD0045B3CF /* DocumentControllerFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259252CAB2CBD0045B3CF /* DocumentControllerFacade.swift */; };
 		4C0259282CAB2FA60045B3CF /* WorkspaceFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259272CAB2FA60045B3CF /* WorkspaceFacade.swift */; };
+		4C02592A2CAC77830045B3CF /* PasteboardSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259292CAC77830045B3CF /* PasteboardSupportable.swift */; };
+		4C02592C2CAC787B0045B3CF /* TableSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02592B2CAC787B0045B3CF /* TableSupportable.swift */; };
+		4C02592E2CAC7A180045B3CF /* OutlineSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */; };
 		4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E512C5FDC2000474956 /* AppDelegate.swift */; };
 		4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C298E572C5FDC2100474956 /* Assets.xcassets */; };
 		4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E702C5FDC2100474956 /* PlanUITests.swift */; };
@@ -147,6 +150,9 @@
 		4C0259212CAB1DCB0045B3CF /* OpenRecentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecentMenu.swift; sourceTree = "<group>"; };
 		4C0259252CAB2CBD0045B3CF /* DocumentControllerFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentControllerFacade.swift; sourceTree = "<group>"; };
 		4C0259272CAB2FA60045B3CF /* WorkspaceFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFacade.swift; sourceTree = "<group>"; };
+		4C0259292CAC77830045B3CF /* PasteboardSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardSupportable.swift; sourceTree = "<group>"; };
+		4C02592B2CAC787B0045B3CF /* TableSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSupportable.swift; sourceTree = "<group>"; };
+		4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineSupportable.swift; sourceTree = "<group>"; };
 		4C298E4E2C5FDC2000474956 /* Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C298E512C5FDC2000474956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C298E572C5FDC2100474956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -318,6 +324,10 @@
 		4C0259242CAB2CA20045B3CF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */,
+				4C0259292CAC77830045B3CF /* PasteboardSupportable.swift */,
+				4C02592B2CAC787B0045B3CF /* TableSupportable.swift */,
+				4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */,
 				4C0259252CAB2CBD0045B3CF /* DocumentControllerFacade.swift */,
 				4C0259272CAB2FA60045B3CF /* WorkspaceFacade.swift */,
 			);
@@ -440,7 +450,6 @@
 				4C298E8F2C5FDDAE00474956 /* Data */,
 				4C8C6CE12C6A68A500E09697 /* Pasteboard */,
 				4C298E8B2C5FDD9500474956 /* Storage */,
-				4C0259082C9F051F0045B3CF /* UndoManagerSupportable.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -968,6 +977,7 @@
 				4C298ECE2C5FDEA500474956 /* DocumentDataRepresentation.swift in Sources */,
 				4C02591D2CA9B1D80045B3CF /* Selector+Extension.swift in Sources */,
 				4C298ECF2C5FDEA500474956 /* VersionedFile.swift in Sources */,
+				4C02592C2CAC787B0045B3CF /* TableSupportable.swift in Sources */,
 				4C9FFEF32C920C31005FC397 /* TextConfiguration.swift in Sources */,
 				4C298ED02C5FDEA500474956 /* DocumentDataPublisher.swift in Sources */,
 				4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */,
@@ -981,6 +991,7 @@
 				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4CBAC42B2C7A832D00534CC3 /* PlanVersion.swift in Sources */,
+				4C02592A2CAC77830045B3CF /* PasteboardSupportable.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
@@ -1009,6 +1020,7 @@
 				4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */,
 				4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */,
 				4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */,
+				4C02592E2CAC7A180045B3CF /* OutlineSupportable.swift in Sources */,
 				4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */,
 				4C8C6CD42C68D28700E09697 /* TextParser.swift in Sources */,
 				4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */,

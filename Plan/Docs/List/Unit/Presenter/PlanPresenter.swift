@@ -123,6 +123,18 @@ extension PlanPresenter: PlanViewOutput {
 		interactor?.setIcon(value, withSelection: selection)
 	}
 
+	func fold() {
+		view?.collapse(selection)
+	}
+
+	func unfold() {
+		view?.expand(selection)
+	}
+}
+
+// MARK: - UndoManagerSupportable
+extension PlanPresenter: UndoManagerSupportable {
+
 	func canUndo() -> Bool {
 		interactor?.canUndo() ?? false
 	}
@@ -138,14 +150,10 @@ extension PlanPresenter: PlanViewOutput {
 	func undo() {
 		interactor?.undo()
 	}
+}
 
-	func fold() {
-		view?.collapse(selection)
-	}
-
-	func unfold() {
-		view?.expand(selection)
-	}
+// MARK: - PasteboardSupportable
+extension PlanPresenter: PasteboardSupportable {
 
 	func cut() {
 		guard let nodes = interactor?.nodes(selection) else {
@@ -160,13 +168,11 @@ extension PlanPresenter: PlanViewOutput {
 	}
 
 	func paste() {
-		print("\(#function)")
 		let nodes = pasteboard.readNodes(from: generalPasteboard)
 
 		guard !nodes.isEmpty else {
 
 			let texts = pasteboard.readTexts(from: generalPasteboard)
-			print("text = \(texts)")
 			interactor?.insert(texts: texts, to: destination)
 			return
 		}
@@ -190,7 +196,6 @@ extension PlanPresenter: PlanViewOutput {
 			clearContents: true
 		)
 	}
-
 }
 
 // MARK: - PlanColumnsFactoryDelegate
