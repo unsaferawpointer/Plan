@@ -259,6 +259,7 @@ extension MenuBuilder.Item {
 				action: #selector(NSDocumentController.newDocument(_:)),
 				keyEquivalent: "n"
 			)
+			item.identifier = NSUserInterfaceItemIdentifier(rawValue: "new-menu-item")
 			// TODO: - Add user identifier && localization
 			return item
 		case .openRecent:

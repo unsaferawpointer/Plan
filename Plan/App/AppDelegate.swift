@@ -63,6 +63,7 @@ extension AppDelegate {
 	func buildFile() -> NSMenuItem {
 		let item = NSMenuItem()
 		item.title = "File"
+		item.identifier = NSUserInterfaceItemIdentifier(rawValue: "file-menu-item")
 
 		item.submenu = MenuBuilder.makeMenu(
 			withTitle: "File",

@@ -388,7 +388,6 @@
 		4C298E6F2C5FDC2100474956 /* PlanUITests */ = {
 			isa = PBXGroup;
 			children = (
-				4C8514492C820C0800C7475C /* Common */,
 				4C8C6CF02C78C9A200E09697 /* Pages */,
 				4C298E702C5FDC2100474956 /* PlanUITests.swift */,
 				4C298E722C5FDC2100474956 /* PlanUITestsLaunchTests.swift */,
@@ -615,13 +614,6 @@
 				4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */,
 				4C02592B2CAC787B0045B3CF /* TableSupportable.swift */,
 				4C365C802C87990900C7DF6E /* ValueFormatter.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		4C8514492C820C0800C7475C /* Common */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Common;
 			sourceTree = "<group>";

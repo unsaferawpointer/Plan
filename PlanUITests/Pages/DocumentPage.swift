@@ -66,7 +66,7 @@ extension DocumentPage {
 
 	func selectRow(_ index: Int) {
 		let row = row(for: index)
-		row.click()
+		row.cells.element(boundBy: 0).click()
 	}
 
 	func rightClick(_ index: Int) {
@@ -107,7 +107,7 @@ extension DocumentPage {
 	func invokeContextMenu(for index: Int, andClick item: String) {
 
 		let row = self.row(for: index)
-		row.rightClick()
+		row.cells.element(boundBy: 0).rightClick()
 
 		outline.menuItems[item].click()
 	}

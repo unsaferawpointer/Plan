@@ -24,7 +24,7 @@ extension PlanViewController: NSMenuItemValidation {
 		case .undo:
 			return output?.canUndo() ?? false
 		case .cut, .copy, .fold, .unfold, .delete:
-			return !adapter.selection.isEmpty
+			return !table.effectiveSelection().isEmpty
 		case .paste:
 			return output?.canPaste() ?? false
 		case .toggleCompleted, .toggleBookmarked:
@@ -48,7 +48,7 @@ extension PlanViewController: NSMenuItemValidation {
 			 .setEstimationMenuItem,
 			 .setIconMenuItem,
 			 .iconsGroupMenuItem:
-			return !adapter.selection.isEmpty
+			return !table.effectiveSelection().isEmpty
 		default:
 			break
 		}
