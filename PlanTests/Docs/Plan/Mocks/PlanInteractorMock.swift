@@ -50,7 +50,7 @@ extension PlanInteractorMock: PlanInteractorProtocol {
 		invocations.append(.setBookmark(flag, selection: selection))
 	}
 	
-	func setEstimation(_ value: Int, withSelection selection: [UUID]) {
+	func setNumber(_ value: Int, withSelection selection: [UUID]) {
 		invocations.append(.setEstimation(value, selection: selection))
 	}
 	

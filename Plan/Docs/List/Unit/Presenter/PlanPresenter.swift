@@ -116,7 +116,7 @@ extension PlanPresenter: PlanViewOutput {
 	}
 
 	func setEstimation(_ value: Int) {
-		interactor?.setEstimation(value, withSelection: selection)
+		interactor?.setNumber(value, withSelection: selection)
 	}
 
 	func setIcon(_ value: IconName?) {
@@ -215,7 +215,7 @@ extension PlanPresenter: PlanColumnsFactoryDelegate {
 	}
 
 	func modificate(id: UUID, value: Int) {
-		interactor?.setEstimation(value, withSelection: selection)
+		interactor?.setNumber(value, withSelection: selection)
 	}
 }
 

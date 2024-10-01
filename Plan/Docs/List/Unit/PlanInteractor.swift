@@ -17,7 +17,7 @@ protocol PlanInteractorProtocol: UndoManagerSupportable {
 	func deleteItems(_ ids: [UUID])
 	func setState(_ flag: Bool, withSelection selection: [UUID])
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID])
-	func setEstimation(_ value: Int, withSelection selection: [UUID])
+	func setNumber(_ value: Int, withSelection selection: [UUID])
 	func setIcon(_ value: IconName?, withSelection selection: [UUID])
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>)
@@ -94,27 +94,19 @@ extension PlanInteractor: PlanInteractorProtocol {
 	}
 
 	func setState(_ flag: Bool, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setStatus(flag, for: selection)
-		}
+		modificate(ids: selection, keyPath: \.isDone, value: flag, downstream: true)
 	}
 
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setFavoriteFlag(flag, for: selection)
-		}
+		modificate(ids: selection, keyPath: \.isFavorite, value: flag)
 	}
 
-	func setEstimation(_ value: Int, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setEstimation(value, for: selection)
-		}
+	func setNumber(_ value: Int, withSelection selection: [UUID]) {
+		modificate(ids: selection, keyPath: \.count, value: value)
 	}
 
 	func setIcon(_ value: IconName?, withSelection selection: [UUID]) {
-		storage.modificate { content in
-			content.setIcon(value, for: selection)
-		}
+		modificate(ids: selection, keyPath: \.iconName, value: value)
 	}
 
 
@@ -145,16 +137,16 @@ extension PlanInteractor: PlanInteractorProtocol {
 	}
 
 	func modificate(_ id: UUID, newText: String, newStatus: Bool) {
+		let textModification = AnyModification(keyPath: \ItemContent.text, value: newText)
+		let statustModification = AnyModification(keyPath: \ItemContent.isDone, value: newStatus)
 		storage.modificate { content in
-			content.setText(newText, for: id)
-			content.setStatus(newStatus, for: [id])
+			content.perform(textModification, for: [id])
+			content.perform(statustModification, for: [id])
 		}
 	}
 
 	func modificate(_ id: UUID, newText: String) {
-		storage.modificate { content in
-			content.setText(newText, for: id)
-		}
+		modificate(ids: [id], keyPath: \.text, value: newText)
 	}
 }
 
@@ -176,4 +168,20 @@ extension PlanInteractor: UndoManagerSupportable {
 	func undo() {
 		storage.undo()
 	}
+}
+
+// MARK: - Helpers
+private extension PlanInteractor {
+
+	func modificate<T>(ids: [UUID], keyPath: WritableKeyPath<ItemContent, T>, value: T, downstream: Bool = false) {
+		let modification = AnyModification(keyPath: keyPath, value: value)
+		storage.modificate { content in
+			content.perform(
+				modification,
+				for: ids,
+				downstream: downstream
+			)
+		}
+	}
+
 }
