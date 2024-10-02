@@ -11,6 +11,15 @@ extension MenuBuilder {
 
 	enum Item {
 
+		// MARK: - Main
+
+		case plan
+		case file
+		case edit
+		case editor
+		case view
+		case window
+
 		// MARK: - Plan
 
 		case about
@@ -50,7 +59,7 @@ extension MenuBuilder {
 
 		// MARK: - View
 
-		case showToolbar
+		case toggleToolbar
 		case customizeToolbar
 		case enterFullScreen
 
@@ -207,7 +216,7 @@ extension MenuBuilder.Item {
 			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
 
 			let item = NSMenuItem(
-				title: "About \(appName ?? "Plan")",
+				title: String(localized: "about_item \(appName ?? "Plan")", table: "Menu"),
 				action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)),
 				keyEquivalent: ""
 			)
@@ -218,7 +227,7 @@ extension MenuBuilder.Item {
 			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
 
 			let item = NSMenuItem(
-				title: "Hide \(appName ?? "Plan")",
+				title: String(localized: "hide_item \(appName ?? "Plan")", table: "Menu"),
 				action: #selector(NSApplication.hide(_:)),
 				keyEquivalent: "h"
 			)
@@ -226,7 +235,7 @@ extension MenuBuilder.Item {
 			return item
 		case .hideOther:
 			let item = NSMenuItem(
-				title: "Hide Others",
+				title: String(localized:"hide_others_item", table: "Menu"),
 				action: #selector(NSApplication.hideOtherApplications(_:)),
 				keyEquivalent: "h"
 			)
@@ -235,7 +244,7 @@ extension MenuBuilder.Item {
 			return item
 		case .showAll:
 			let item = NSMenuItem(
-				title: "Show All",
+				title: String(localized: "item_show_all", table: "Menu"),
 				action: #selector(NSApplication.unhideAllApplications(_:)),
 				keyEquivalent: ""
 			)
@@ -246,7 +255,7 @@ extension MenuBuilder.Item {
 			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
 
 			let item = NSMenuItem(
-				title: "Quit \(appName ?? "Plan")",
+				title: String(localized: "quit_item \(appName ?? "Plan")", table: "Menu"),
 				action: #selector(NSApplication.terminate(_:)),
 				keyEquivalent: "q"
 			)
@@ -255,7 +264,7 @@ extension MenuBuilder.Item {
 			return item
 		case .newDocument:
 			let item = NSMenuItem(
-				title: "New",
+				title: String(localized: "new_document_item", table: "Menu"),
 				action: #selector(NSDocumentController.newDocument(_:)),
 				keyEquivalent: "n"
 			)
@@ -264,18 +273,18 @@ extension MenuBuilder.Item {
 			return item
 		case .openRecent:
 			let item = NSMenuItem(
-				title: "Open Recent",
+				title: String(localized: "open_recent_item", table: "Menu"),
 				action: nil,
 				keyEquivalent: ""
 			)
 
-			item.submenu = OpenRecentMenu(title: "Open Recent")
+			item.submenu = OpenRecentMenu(title: String(localized: "Open Recent", table: "Menu"))
 
 			// TODO: - Add user identifier && localization
 			return item
 		case .open:
 			let item = NSMenuItem(
-				title: "Open…",
+				title: String(localized: "open_item", table: "Menu"),
 				action: #selector(NSDocumentController.openDocument(_:)),
 				keyEquivalent: "o"
 			)
@@ -283,7 +292,7 @@ extension MenuBuilder.Item {
 			return item
 		case .close:
 			let item = NSMenuItem(
-				title: "Close",
+				title: String(localized: "close_item", table: "Menu"),
 				action: #selector(NSPopover.performClose(_:)),
 				keyEquivalent: "w"
 			)
@@ -291,7 +300,7 @@ extension MenuBuilder.Item {
 			return item
 		case .save:
 			let item = NSMenuItem(
-				title: "Save…",
+				title: String(localized: "save_item", table: "Menu"),
 				action: #selector(NSDocument.save(_:)),
 				keyEquivalent: "s"
 			)
@@ -299,7 +308,7 @@ extension MenuBuilder.Item {
 			return item
 		case .saveAs:
 			let item = NSMenuItem(
-				title: "Save As…",
+				title: String(localized: "save_as_item", table: "Menu"),
 				action: #selector(NSDocument.saveAs(_:)),
 				keyEquivalent: "S"
 			)
@@ -315,7 +324,7 @@ extension MenuBuilder.Item {
 			return item
 		case .undo:
 			let item = NSMenuItem(
-				title: "Undo",
+				title: String(localized: "undo_item", table: "Menu"),
 				action: .undo,
 				keyEquivalent: "z"
 			)
@@ -323,7 +332,7 @@ extension MenuBuilder.Item {
 			return item
 		case .redo:
 			let item = NSMenuItem(
-				title: "Redo",
+				title: String(localized: "redo_item", table: "Menu"),
 				action: .redo,
 				keyEquivalent: "Z"
 			)
@@ -331,7 +340,7 @@ extension MenuBuilder.Item {
 			return item
 		case .selectAll:
 			let item = NSMenuItem(
-				title: "Select All",
+				title: String(localized: "select_all_item", table: "Menu"),
 				action: .selectAll,
 				keyEquivalent: "a"
 			)
@@ -339,7 +348,7 @@ extension MenuBuilder.Item {
 			return item
 		case .fold:
 			let item = NSMenuItem(
-				title: "Fold",
+				title: String(localized: "fold_item", table: "Menu"),
 				action: .fold,
 				keyEquivalent: ""
 			)
@@ -347,15 +356,15 @@ extension MenuBuilder.Item {
 			return item
 		case .unfold:
 			let item = NSMenuItem(
-				title: "Unfold",
+				title: String(localized: "unfold_item", table: "Menu"),
 				action: .unfold,
 				keyEquivalent: ""
 			)
 			// TODO: - Add user identifier && localization
 			return item
-		case .showToolbar:
+		case .toggleToolbar:
 			let item = NSMenuItem(
-				title: "Show Toolbar",
+				title: String(localized: "toggle_toolbar_shown_item", table: "Menu"),
 				action: .toggleToolbarShown,
 				keyEquivalent: "t"
 			)
@@ -364,7 +373,7 @@ extension MenuBuilder.Item {
 			return item
 		case .customizeToolbar:
 			let item = NSMenuItem(
-				title: "Customize Toolbar…",
+				title: String(localized: "сustomize_toolbar_item", table: "Menu"),
 				action: .runToolbarCustomizationPalette,
 				keyEquivalent: ""
 			)
@@ -380,7 +389,7 @@ extension MenuBuilder.Item {
 			return item
 		case .minimize:
 			let item = NSMenuItem(
-				title: "Minimize",
+				title: String(localized: "minimize_item", table: "Menu"),
 				action: .performMiniaturize,
 				keyEquivalent: "m"
 			)
@@ -388,11 +397,122 @@ extension MenuBuilder.Item {
 			return item
 		case .bringAllToFront:
 			let item = NSMenuItem(
-				title: "Bring All to Front",
+				title: String(localized: "bring_all_to_front_item", table: "Menu"),
 				action: .arrangeInFront,
 				keyEquivalent: ""
 			)
 			// TODO: - Add user identifier && localization
+			return item
+		case .file:
+			let item = NSMenuItem()
+			item.title = String(localized: "file_item", table: "Menu")
+			item.identifier = NSUserInterfaceItemIdentifier(rawValue: "file-menu-item")
+
+			item.submenu = MenuBuilder.makeMenu(
+				withTitle: String(localized: "file_item", table: "Menu"),
+				for:
+					[
+						.newDocument,
+						.open,
+						.openRecent,
+						.separator,
+						.close,
+						.save,
+						.saveAs,
+						.revert
+					]
+			)
+			return item
+		case .edit:
+			let item = NSMenuItem()
+			item.title = String(localized: "edit_item", table: "Menu")
+
+			item.submenu = MenuBuilder.makeMenu(
+				withTitle: String(localized: "edit_item", table: "Menu"),
+				for:
+					[
+						.undo,
+						.redo,
+						.separator,
+						.cut,
+						.copy,
+						.paste,
+						.separator,
+						.selectAll
+					]
+			)
+			return item
+		case .editor:
+			let item = NSMenuItem()
+			item.title = String(localized: "editor_item", table: "Menu")
+
+			item.submenu = MenuBuilder.makeMenu(
+				withTitle: String(localized: "editor_item", table: "Menu"),
+				for:
+					[
+						.newItem,
+						.separator,
+						.fold,
+						.unfold,
+						.separator,
+						.favorite,
+						.completed,
+						.separator,
+						.delete
+
+					]
+			)
+			return item
+		case .view:
+			let item = NSMenuItem()
+			item.title = String(localized: "view_item", table: "Menu")
+
+			item.submenu = MenuBuilder.makeMenu(
+				withTitle: String(localized: "view_item", table: "Menu"),
+				for:
+					[
+						.toggleToolbar,
+						.customizeToolbar,
+						.separator,
+						.enterFullScreen
+
+					]
+			)
+			return item
+		case .window:
+			let item = NSMenuItem()
+			item.title = String(localized: "window_item", table: "Menu")
+
+			item.submenu = MenuBuilder.makeMenu(
+				withTitle: String(localized: "window_item", table: "Menu"),
+				for:
+					[
+						.minimize,
+						.bringAllToFront
+
+					]
+			)
+			return item
+		case .plan:
+
+			let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
+
+			let item = NSMenuItem()
+			item.title = appName ?? "Plan"
+
+			item.submenu = MenuBuilder.makeMenu(
+				withTitle: appName ?? "Plan",
+				for:
+					[
+						.about,
+						.separator,
+						.hide,
+						.hideOther,
+						.showAll,
+						.separator,
+						.quit
+					]
+			)
 			return item
 		}
 	}

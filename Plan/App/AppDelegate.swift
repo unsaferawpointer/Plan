@@ -14,14 +14,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
 
-		let menu = NSMenu()
-		menu.addItem(buildPlan())
-		menu.addItem(buildFile())
-		menu.addItem(buildEdit())
-		menu.addItem(buildEditor())
-		menu.addItem(buildView())
-		menu.addItem(buildWindow())
-
+		let menu = MenuBuilder.makeMenu(
+			withTitle: "Main",
+			for:
+				[
+					.plan,
+					.file,
+					.edit,
+					.editor,
+					.view,
+					.window
+				]
+		)
 		self.menu = menu
 
 		NSApp.mainMenu = menu
@@ -35,136 +39,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return true
 	}
 
-}
-
-// MARK: - Main menu support
-extension AppDelegate {
-
-	func buildPlan() -> NSMenuItem {
-		let item = NSMenuItem()
-		item.title = "Plan"
-
-		item.submenu = MenuBuilder.makeMenu(
-			withTitle: "Plan",
-			for:
-				[
-					.about,
-					.separator,
-					.hide,
-					.hideOther,
-					.showAll,
-					.separator,
-					.quit
-				]
-		)
-		return item
-	}
-
-	func buildFile() -> NSMenuItem {
-		let item = NSMenuItem()
-		item.title = "File"
-		item.identifier = NSUserInterfaceItemIdentifier(rawValue: "file-menu-item")
-
-		item.submenu = MenuBuilder.makeMenu(
-			withTitle: "File",
-			for:
-				[
-					.newDocument,
-					.open,
-					.openRecent,
-					.separator,
-					.close,
-					.save,
-					.saveAs,
-					.revert
-				]
-		)
-		return item
-	}
-
-	func buildEdit() -> NSMenuItem {
-		let item = NSMenuItem()
-		item.title = "Edit"
-
-		item.submenu = MenuBuilder.makeMenu(
-			withTitle: "Edit",
-			for:
-				[
-					.undo,
-					.redo,
-					.separator,
-					.cut,
-					.copy,
-					.paste,
-					.separator,
-					.selectAll
-				]
-		)
-		return item
-	}
-
-	func buildEditor() -> NSMenuItem {
-		let item = NSMenuItem()
-		item.title = "Editor"
-
-		item.submenu = MenuBuilder.makeMenu(
-			withTitle: "Editor",
-			for:
-				[
-					.newItem,
-					.separator,
-					.fold,
-					.unfold,
-					.separator,
-					.favorite,
-					.completed,
-					.separator,
-					.delete
-
-				]
-		)
-		return item
-	}
-
-	func buildView() -> NSMenuItem {
-		let item = NSMenuItem()
-		item.title = "View"
-
-		item.submenu = MenuBuilder.makeMenu(
-			withTitle: "View",
-			for:
-				[
-					.showToolbar,
-					.customizeToolbar,
-					.separator,
-					.enterFullScreen
-
-				]
-		)
-		return item
-	}
-
-	func buildWindow() -> NSMenuItem {
-		let item = NSMenuItem()
-		item.title = "Window"
-
-		item.submenu = MenuBuilder.makeMenu(
-			withTitle: "Window",
-			for:
-				[
-					.minimize,
-					.bringAllToFront
-
-				]
-		)
-		return item
-	}
-}
-
-extension NSMenuItem {
-
-	func modificated(_ block: (NSMenuItem) -> Void) -> NSMenuItem {
-		block(self)
-		return self
-	}
 }
