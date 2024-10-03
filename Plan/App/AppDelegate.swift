@@ -9,26 +9,9 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-	var menu: NSMenu?
-
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
-
-		let menu = MenuBuilder.makeMenu(
-			withTitle: "Main",
-			for:
-				[
-					.plan,
-					.file,
-					.edit,
-					.editor,
-					.view,
-					.window
-				]
-		)
-		self.menu = menu
-
-		NSApp.mainMenu = menu
+		configureMenu()
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
@@ -39,4 +22,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return true
 	}
 
+}
+
+// MARK: - Helpers
+private extension AppDelegate {
+
+	func configureMenu() {
+
+		let menu = NSMenu(title: "Main")
+		menu.addItem(MenuBuilder.Item.plan.makeItem())
+		menu.addItem(MenuBuilder.Item.file.makeItem())
+		menu.addItem(MenuBuilder.Item.edit.makeItem())
+		menu.addItem(MenuBuilder.Item.editor.makeItem())
+		menu.addItem(MenuBuilder.Item.view.makeItem())
+
+		let windowMenuItem = MenuBuilder.Item.window.makeItem()
+		menu.addItem(windowMenuItem)
+
+		NSApp.windowsMenu = windowMenuItem.submenu
+		NSApp.mainMenu = menu
+	}
 }
