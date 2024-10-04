@@ -47,7 +47,8 @@ extension PlanViewController: NSMenuItemValidation {
 		case
 			 .setEstimationMenuItem,
 			 .setIconMenuItem,
-			 .iconsGroupMenuItem:
+			 .iconsGroupMenuItem,
+			 .setPriorityMenuItem:
 			return !table.effectiveSelection().isEmpty
 		default:
 			break

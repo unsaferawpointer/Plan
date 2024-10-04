@@ -12,6 +12,8 @@ enum Color {
 	case secondary
 	case tertiary
 	case yellow
+	case red
+	case quaternary
 }
 
 // MARK: - Computed properties
@@ -27,6 +29,10 @@ extension Color {
 			return .tertiaryLabelColor
 		case .yellow:
 			return .systemYellow
+		case .red:
+			return .systemRed
+		case .quaternary:
+			return .quaternaryLabelColor
 		}
 	}
 }

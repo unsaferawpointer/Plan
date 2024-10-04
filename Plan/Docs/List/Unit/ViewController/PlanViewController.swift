@@ -21,6 +21,8 @@ protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
 
 	func setEstimation(_ value: Int)
 
+	func setPriority(_ value: Int)
+
 	func setIcon(_ value: IconName?)
 
 	func fold()
@@ -200,6 +202,7 @@ private extension PlanViewController {
 					.copy,
 					.paste,
 					.separator,
+					.priority,
 					.setEstimation,
 					.setIcon,
 					.separator,

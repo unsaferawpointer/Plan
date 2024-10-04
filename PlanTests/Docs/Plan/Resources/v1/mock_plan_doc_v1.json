@@ -11,6 +11,7 @@
 					"status" : {
 						"open" : { }
 					},
+					"priority": 1,
 					"text" : "Item 0",
 					"uuid" : "056549A7-13F4-4D5C-A9CF-9A43606C4432"
 				},
@@ -27,6 +28,7 @@
 							"completed": 1723316999,
 						}
 					},
+					"priority": 2,
 					"text" : "Item 1",
 					"uuid" : "6462805F-DD7E-4925-8FF1-7952A679C04C"
 				},

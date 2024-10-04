@@ -53,12 +53,19 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			value: valueInfo(number: info.number, count: info.count)
 		)
 
+		let priority: IconModel = if let color = item.priority.color, info.isLeaf {
+			IconModel(value: .init(icon: .flag), configuration: .init(color: color))
+		} else {
+			IconModel(value: .init(icon: nil), configuration: .init())
+		}
+
 		return HierarchyModel(
 			uuid: item.uuid,
 			content: content,
 			createdAt: dateCreated,
 			completedAt: dateCompleted, 
 			value: value,
+			priority: priority,
 			menu: menu
 		)
 	}
@@ -133,5 +140,19 @@ private extension PlanModelFactory {
 		}
 
 		return item.iconName?.rawValue
+	}
+}
+
+extension ItemPriority {
+
+	var color: Color? {
+		switch self {
+		case .medium:
+			return .yellow
+		case .high:
+			return .red
+		default:
+			return nil
+		}
 	}
 }

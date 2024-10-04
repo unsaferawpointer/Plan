@@ -123,6 +123,9 @@
 		4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */; };
 		4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */; };
 		4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69F252C98C121009D06AD /* Menu.xcstrings */; };
+		4CFDFE9D2CAEFBFB000A6C2B /* ItemPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */; };
+		4CFDFEA02CAF1836000A6C2B /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */; };
+		4CFDFEA22CAF18CE000A6C2B /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +268,9 @@
 		4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
 		4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
 		4CE69F252C98C121009D06AD /* Menu.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Menu.xcstrings; sourceTree = "<group>"; };
+		4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPriority.swift; sourceTree = "<group>"; };
+		4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
+		4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +496,7 @@
 				4C298E972C5FDDCB00474956 /* ItemContent.swift */,
 				4C8C6CD02C67E94400E09697 /* ItemStatus.swift */,
 				4CCCFA5F2C7B747D002DDD95 /* IconName.swift */,
+				4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -551,6 +558,7 @@
 		4C298EAD2C5FDE3300474956 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4CFDFE9E2CAF181A000A6C2B /* IconCell */,
 				4C9FFEF12C920C1B005FC397 /* TextCell */,
 				4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */,
 				4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */,
@@ -812,6 +820,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		4CFDFE9E2CAF181A000A6C2B /* IconCell */ = {
+			isa = PBXGroup;
+			children = (
+				4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */,
+				4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */,
+			);
+			path = IconCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -963,6 +980,8 @@
 				4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */,
 				4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */,
 				4C298EC72C5FDEA500474956 /* Versioned.swift in Sources */,
+				4CFDFEA02CAF1836000A6C2B /* IconCell.swift in Sources */,
+				4CFDFE9D2CAEFBFB000A6C2B /* ItemPriority.swift in Sources */,
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
 				4C0259282CAB2FA60045B3CF /* WorkspaceFacade.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
@@ -1005,6 +1024,7 @@
 				4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */,
 				4C8C6CED2C72695B00E09697 /* PasteboardInfo.swift in Sources */,
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
+				4CFDFEA22CAF18CE000A6C2B /* IconModel.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
 				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
 				4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */,

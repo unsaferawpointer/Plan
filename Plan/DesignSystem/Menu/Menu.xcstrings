@@ -225,6 +225,16 @@
         }
       }
     },
+    "high" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Высокий"
+          }
+        }
+      }
+    },
     "icon_item" : {
       "localizations" : {
         "en" : {
@@ -253,6 +263,26 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Показать все"
+          }
+        }
+      }
+    },
+    "low" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Низкий"
+          }
+        }
+      }
+    },
+    "medium" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Средний"
           }
         }
       }
@@ -391,6 +421,22 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Вставить"
+          }
+        }
+      }
+    },
+    "priority_item" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Priority"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приоритет"
           }
         }
       }

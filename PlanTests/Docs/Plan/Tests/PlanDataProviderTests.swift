@@ -108,7 +108,9 @@ private extension PlanDataProviderTests {
 						status: .open,
 						iconName: .folder,
 						count: 0,
-						options: [])
+						options: [],
+						priority: .medium
+					)
 				),
 				Node<ItemContent>(
 					value: .init(
@@ -118,7 +120,9 @@ private extension PlanDataProviderTests {
 						status: .done(completed: Date(timeIntervalSince1970: 1723316999)),
 						iconName: .folder,
 						count: 3,
-						options: .favorite),
+						options: .favorite,
+						priority: .high
+					),
 					children: [
 						Node<ItemContent>(
 							value: .init(
@@ -126,7 +130,9 @@ private extension PlanDataProviderTests {
 								created: Date(timeIntervalSince1970: 1723315099),
 								text: "Item 1_0",
 								status: .open,
-								options: [])
+								options: [],
+								priority: .low
+							)
 						)
 					]
 				)

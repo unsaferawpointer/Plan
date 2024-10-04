@@ -16,6 +16,10 @@ final class PlanLocalizationMock {
 // MARK: - PlanLocalizationProtocol
 extension PlanLocalizationMock: PlanLocalizationProtocol {
 
+	var priorityColumnTitle: String {
+		stubs.priorityColumnTitle
+	}
+
 	var allTaskCompleted: String {
 		stubs.allTaskCompleted
 	}
@@ -86,5 +90,6 @@ extension PlanLocalizationMock {
 		var valueInfoForCount: String = .random
 		var valueInfoForNumber: String = .random
 		var valueInfoForCountAndNumber: String = .random
+		var priorityColumnTitle: String = .random
 	}
 }

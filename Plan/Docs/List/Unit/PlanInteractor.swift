@@ -17,6 +17,7 @@ protocol PlanInteractorProtocol: UndoManagerSupportable {
 	func deleteItems(_ ids: [UUID])
 	func setState(_ flag: Bool, withSelection selection: [UUID])
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID])
+	func setPriority(_ value: ItemPriority, withSelection selection: [UUID])
 	func setNumber(_ value: Int, withSelection selection: [UUID])
 	func setIcon(_ value: IconName?, withSelection selection: [UUID])
 
@@ -99,6 +100,10 @@ extension PlanInteractor: PlanInteractorProtocol {
 
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID]) {
 		modificate(ids: selection, keyPath: \.isFavorite, value: flag)
+	}
+
+	func setPriority(_ value: ItemPriority, withSelection selection: [UUID]) {
+		modificate(ids: selection, keyPath: \.priority, value: value)
 	}
 
 	func setNumber(_ value: Int, withSelection selection: [UUID]) {

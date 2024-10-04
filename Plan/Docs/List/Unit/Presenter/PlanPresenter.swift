@@ -115,6 +115,13 @@ extension PlanPresenter: PlanViewOutput {
 		interactor?.setBookmark(flag, withSelection: selection)
 	}
 
+	func setPriority(_ value: Int) {
+		guard let priority = ItemPriority(rawValue: value) else {
+			return
+		}
+		interactor?.setPriority(priority, withSelection: selection)
+	}
+
 	func setEstimation(_ value: Int) {
 		interactor?.setNumber(value, withSelection: selection)
 	}

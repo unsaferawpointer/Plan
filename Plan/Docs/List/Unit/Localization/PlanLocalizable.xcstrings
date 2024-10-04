@@ -228,6 +228,22 @@
           }
         }
       }
+    },
+    "priority_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Priority"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Приоритет"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

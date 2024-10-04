@@ -63,6 +63,13 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			delegate?.modificate(id: id, value: Int(value) ?? 0)
 		}
 
-		return [main, value, dateCreated, dateCompleted]
+		let priority = AnyColumn<HierarchyModel, IconCell>(
+			identifier: "priority_table_column",
+			title: localization.priorityColumnTitle,
+			keyPath: \.priority,
+			options: .init(minWidth: 56, maxWidth: 56, isRequired: false, isHidden: false)
+		)
+
+		return [main, value, priority, dateCreated, dateCompleted]
 	}
 }

@@ -18,6 +18,7 @@ protocol PlanLocalizationProtocol {
 	var completedDateColumnTitle: String { get }
 	var descriptionColumnTitle: String { get }
 	var numberColumnTitle: String { get }
+	var priorityColumnTitle: String { get }
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String
 	func valueInfo(count: Int) -> String
@@ -67,6 +68,10 @@ extension PlanLocalization: PlanLocalizationProtocol {
 
 	var numberColumnTitle: String {
 		return String(localized: "number_table_column", table: "PlanLocalizable")
+	}
+
+	var priorityColumnTitle: String {
+		return String(localized: "priority_table_column", table: "PlanLocalizable")
 	}
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String {

@@ -108,6 +108,10 @@ extension PlanInteractorMock: PlanInteractorProtocol {
 	func copyToPasteboard(_ ids: [UUID]) {
 		invocations.append(.copyToPasteboard(ids))
 	}
+
+	func setPriority(_ value: ItemPriority, withSelection selection: [UUID]) {
+		invocations.append(.setPriority(value: value, selection: selection))
+	}
 }
 
 // MARK: - Nested data structs
@@ -135,6 +139,7 @@ extension PlanInteractorMock {
 		case undo
 		case insertFromPasteboard(destination: HierarchyDestination<UUID>)
 		case copyToPasteboard(_ ids: [UUID])
+		case setPriority(value: ItemPriority, selection: [UUID])
 	}
 
 	struct Stubs {

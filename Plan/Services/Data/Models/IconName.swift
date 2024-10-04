@@ -9,6 +9,10 @@ import Foundation
 
 enum IconName: String {
 
+	// MARK: - Common
+
+	case flag = "flag.fill"
+
 	// MARK: - Objects
 	case folder = "folder.fill"
 	case archivebox = "archivebox.fill"
