@@ -1,5 +1,5 @@
 //
-//  PlanDataProvider.swift
+//  DataProvider.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 27.09.2023.
@@ -8,51 +8,45 @@
 import Foundation
 
 /// Data provider of board document
-final class PlanDataProvider {
-
-	/// Last supported version
-	let lastVersion: PlanVersion = .v1
-}
+final class DataProvider<Content: Codable> { }
 
 // MARK: - ContentProvider
-extension PlanDataProvider: ContentProvider {
-
-	typealias Content = HierarchyContent
+extension DataProvider: ContentProvider {
 
 	func data(ofType typeName: String, content: Content) throws -> Data {
 
-		let type = DocumentType(rawValue: typeName.lowercased())
+		guard let type = DocumentType(rawValue: typeName.lowercased()) else {
+			throw DocumentError.unexpectedFormat
+		}
 
 		switch type {
 		case .plan:
-			let file = DocumentFile(version: lastVersion.rawValue, content: content)
+			let file = DocumentFile(version: type.lastVersion, content: content)
 			let encoder = JSONEncoder()
 			encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
 			encoder.dateEncodingStrategy = .secondsSince1970
 			return try encoder.encode(file)
-		default:
-			throw DocumentError.unexpectedFormat
 		}
 	}
 
 	func read(from data: Data, ofType typeName: String) throws -> Content {
 
-		let type = DocumentType(rawValue: typeName.lowercased())
+		guard let type = DocumentType(rawValue: typeName.lowercased()) else {
+			throw DocumentError.unexpectedFormat
+		}
 
 		switch type {
 		case .plan:
-			return try migrate(data)
-		default:
-			throw DocumentError.unexpectedFormat
+			return try migrate(data, type: type)
 		}
 	}
 
-	func data(of content: HierarchyContent) throws -> Data {
+	func data(of content: Content) throws -> Data {
 		let encoder = JSONEncoder()
 		return try encoder.encode(content)
 	}
 
-	func read(from data: Data) throws -> HierarchyContent {
+	func read(from data: Data) throws -> Content {
 		let decoder = JSONDecoder()
 
 		guard let content = try? decoder.decode(Content.self, from: data) else {
@@ -63,9 +57,9 @@ extension PlanDataProvider: ContentProvider {
 }
 
 // MARK: - Helpers
-private extension PlanDataProvider {
+private extension DataProvider {
 
-	func migrate(_ data: Data) throws -> Content {
+	func migrate(_ data: Data, type: DocumentType) throws -> Content {
 
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .secondsSince1970
@@ -73,10 +67,10 @@ private extension PlanDataProvider {
 		guard let versionedFile = try? decoder.decode(VersionedFile.self, from: data) else {
 			throw DocumentError.unexpectedFormat
 		}
-		guard let version = PlanVersion(rawValue: versionedFile.version), version <= lastVersion else {
+		guard versionedFile.version <= type.lastVersion else {
 			throw DocumentError.unknownVersion
 		}
-		guard let file = try? decoder.decode(DocumentFile<HierarchyContent>.self, from: data) else {
+		guard let file = try? decoder.decode(DocumentFile<Content>.self, from: data) else {
 			throw DocumentError.unexpectedFormat
 		}
 		return file.content

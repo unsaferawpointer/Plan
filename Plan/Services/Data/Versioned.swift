@@ -9,5 +9,5 @@ import Foundation
 
 protocol Versioned {
 	
-	var version: String { get }
+	var version: Version { get }
 }

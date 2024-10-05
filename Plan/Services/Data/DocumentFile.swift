@@ -9,7 +9,7 @@ import Foundation
 
 struct DocumentFile<Content: Codable>: Versioned, Codable {
 
-	let version: String
+	let version: Version
 
 	var content: Content
 }

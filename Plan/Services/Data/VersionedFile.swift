@@ -9,5 +9,5 @@ import Foundation
 
 struct VersionedFile: Versioned, Codable {
 
-	var version: String
+	var version: Version
 }

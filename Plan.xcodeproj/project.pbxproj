@@ -62,7 +62,7 @@
 		4C298EDD2C5FDEBC00474956 /* PlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */; };
 		4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA62C5FDE0A00474956 /* PlanViewController.swift */; };
 		4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E982C5FDDE200474956 /* HierarchyContent.swift */; };
-		4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */; };
+		4C298EE02C5FDEBC00474956 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9A2C5FDDE200474956 /* DataProvider.swift */; };
 		4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */; };
 		4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */; };
 		4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */; };
@@ -126,6 +126,8 @@
 		4CFDFE9D2CAEFBFB000A6C2B /* ItemPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */; };
 		4CFDFEA02CAF1836000A6C2B /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */; };
 		4CFDFEA22CAF18CE000A6C2B /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */; };
+		4CFDFEA42CB09E28000A6C2B /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA32CB09E28000A6C2B /* Version.swift */; };
+		4CFDFEA72CB14F5D000A6C2B /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA62CB14F5D000A6C2B /* VersionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +189,7 @@
 		4C298E972C5FDDCB00474956 /* ItemContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContent.swift; sourceTree = "<group>"; };
 		4C298E982C5FDDE200474956 /* HierarchyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyContent.swift; sourceTree = "<group>"; };
 		4C298E992C5FDDE200474956 /* PlanDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDocument.swift; sourceTree = "<group>"; };
-		4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDataProvider.swift; sourceTree = "<group>"; };
+		4C298E9A2C5FDDE200474956 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyStringPresenter.swift; sourceTree = "<group>"; };
 		4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDestination.swift; sourceTree = "<group>"; };
 		4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyModel.swift; sourceTree = "<group>"; };
@@ -271,6 +273,8 @@
 		4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPriority.swift; sourceTree = "<group>"; };
 		4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
+		4CFDFEA32CB09E28000A6C2B /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		4CFDFEA62CB14F5D000A6C2B /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,7 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				4C298E992C5FDDE200474956 /* PlanDocument.swift */,
-				4C298E9A2C5FDDE200474956 /* PlanDataProvider.swift */,
+				4C298E9A2C5FDDE200474956 /* DataProvider.swift */,
 				4C02590A2CA044700045B3CF /* Helpers */,
 				4C8C6CCD2C67DC1400E09697 /* Views */,
 				4C298EA82C5FDE1300474956 /* Models */,
@@ -483,6 +487,7 @@
 				4C298E922C5FDDB500474956 /* DocumentError.swift */,
 				4C298E932C5FDDB500474956 /* DocumentFile.swift */,
 				4C298E912C5FDDB500474956 /* Versioned.swift */,
+				4CFDFEA32CB09E28000A6C2B /* Version.swift */,
 				4C298E902C5FDDB500474956 /* VersionedFile.swift */,
 				4C298E952C5FDDBF00474956 /* Models */,
 			);
@@ -748,6 +753,7 @@
 		4C8C6CF72C7A555D00E09697 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
+				4CFDFEA52CB14F4C000A6C2B /* Common */,
 				4C8C6CF82C7A556200E09697 /* Plan */,
 			);
 			path = Docs;
@@ -827,6 +833,14 @@
 				4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */,
 			);
 			path = IconCell;
+			sourceTree = "<group>";
+		};
+		4CFDFEA52CB14F4C000A6C2B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4CFDFEA62CB14F5D000A6C2B /* VersionTests.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1017,6 +1031,7 @@
 				4C0259322CAC7E2B0045B3CF /* AnyModification.swift in Sources */,
 				4C85144E2C8248A200C7475C /* PlanColumnsFactory.swift in Sources */,
 				4C298ED32C5FDEAC00474956 /* Node.swift in Sources */,
+				4CFDFEA42CB09E28000A6C2B /* Version.swift in Sources */,
 				4C298ED42C5FDEAC00474956 /* NodeValue.swift in Sources */,
 				4C8C6CD12C67E94400E09697 /* ItemStatus.swift in Sources */,
 				4C298ED52C5FDEAC00474956 /* Root.swift in Sources */,
@@ -1052,7 +1067,7 @@
 				4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */,
 				4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */,
 				4C0259262CAB2CBD0045B3CF /* DocumentControllerFacade.swift in Sources */,
-				4C298EE02C5FDEBC00474956 /* PlanDataProvider.swift in Sources */,
+				4C298EE02C5FDEBC00474956 /* DataProvider.swift in Sources */,
 				4C0259092C9F051F0045B3CF /* UndoManagerSupportable.swift in Sources */,
 				4C298EC22C5FDE8900474956 /* MenuBuilder.swift in Sources */,
 				4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */,
@@ -1071,6 +1086,7 @@
 				4C85145C2C83314600C7475C /* BasicFormatterMock.swift in Sources */,
 				4C85145E2C8332B600C7475C /* PlanViewMock.swift in Sources */,
 				4C8C6CD82C68F44000E09697 /* TextParserTests.swift in Sources */,
+				4CFDFEA72CB14F5D000A6C2B /* VersionTests.swift in Sources */,
 				4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */,
 				4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */,
 				4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */,

@@ -14,4 +14,11 @@ extension Collection {
 			element[keyPath: keyPath] == value
 		}
 	}
+
+	subscript(optional index: Index) -> Element? {
+		guard indices.contains(index) else {
+			return nil
+		}
+		return self[index]
+	}
 }
