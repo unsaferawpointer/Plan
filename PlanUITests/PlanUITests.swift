@@ -109,8 +109,12 @@ extension PlanUITests {
 		let doc = DocumentPage(window: window)
 		doc.newItems(count: 1, in: nil)
 
+		// Perform Copy
+		app.press("c", modifierFlags: [.command])
+
 		// Act
 		doc.rightClick(0)
+
 
 		// Assert
 		doc.menuItem(for: "new_menu_item") {
