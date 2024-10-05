@@ -9,6 +9,8 @@
     }
   ],
   "defaultOptions" : {
+    "language" : "en",
+    "region" : "US",
     "targetForVariableExpansion" : {
       "containerPath" : "container:Plan.xcodeproj",
       "identifier" : "4C298E4D2C5FDC2000474956",

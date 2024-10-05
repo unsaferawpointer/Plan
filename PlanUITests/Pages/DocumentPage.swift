@@ -66,6 +66,7 @@ extension DocumentPage {
 
 	func selectRow(_ index: Int) {
 		let row = row(for: index)
+		row.waitForExistence(timeout: 0.5)
 		row.cells.element(boundBy: 0).click()
 	}
 
@@ -132,6 +133,6 @@ private extension DocumentPage {
 	}
 
 	func bottomBar() -> XCUIElement {
-		return window.otherElements["bottom-bar"]
+		return window.groups["bottom-bar"]
 	}
 }

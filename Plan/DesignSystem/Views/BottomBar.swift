@@ -50,6 +50,10 @@ class BottomBar: NSView {
 		view.drawsBackground = false
 		view.textColor = .secondaryLabelColor
 		view.font = NSFont.preferredFont(forTextStyle: .callout)
+
+		// Accessibility
+		view.identifier = .init("leading-label")
+		view.setAccessibilityRole(.staticText)
 		return view
 	}()
 
@@ -61,6 +65,10 @@ class BottomBar: NSView {
 		view.drawsBackground = false
 		view.textColor = .secondaryLabelColor
 		view.font = NSFont.preferredFont(forTextStyle: .callout)
+
+		// Accessibility
+		view.identifier = .init("trailing-label")
+		view.setAccessibilityRole(.staticText)
 		return view
 	}()
 
@@ -70,6 +78,9 @@ class BottomBar: NSView {
 		view.isIndeterminate = false
 		view.minValue = 0.0
 		view.maxValue = 100.0
+
+		// Accessibility
+		view.identifier = .init("progress")
 		return view
 	}()
 
@@ -88,12 +99,8 @@ class BottomBar: NSView {
 
 	// MARK: - Accessibility
 
-	override func accessibilityChildren() -> [Any]? {
-		return [leadingLabel, trailingLabel, progress]
-	}
-
 	override func accessibilityRole() -> NSAccessibility.Role? {
-		return .unknown
+		return .group
 	}
 
 	override func isAccessibilityElement() -> Bool {
@@ -122,9 +129,6 @@ extension BottomBar {
 
 		// MARK: - Accessibility
 		identifier = .init("bottom-bar")
-		leadingLabel.identifier = .init("leading-label")
-		trailingLabel.identifier = .init("trailing-label")
-		progress.identifier = .init("progress")
 	}
 
 	func configureConstraints() {

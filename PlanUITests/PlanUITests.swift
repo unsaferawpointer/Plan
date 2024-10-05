@@ -35,8 +35,10 @@ extension PlanUITests {
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 3)
 		doc.checkLeadingLabel(expectedTitle: "3 tasks")
-		doc.checkTrailingLabel(expectedTitle: "0 %")
+		doc.checkTrailingLabel(expectedTitle: "0%")
 		doc.checkProgress(expectedValue: 0)
+
+		doc.newItem(in: 0)
 	}
 
 	func test_createNestedList() {
@@ -55,7 +57,7 @@ extension PlanUITests {
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 3)
 		doc.checkLeadingLabel(expectedTitle: "1 task")
-		doc.checkTrailingLabel(expectedTitle: "0 %")
+		doc.checkTrailingLabel(expectedTitle: "0%")
 		doc.checkProgress(expectedValue: 0)
 	}
 
@@ -73,7 +75,7 @@ extension PlanUITests {
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 1)
 		doc.checkLeadingLabel(expectedTitle: "1 task")
-		doc.checkTrailingLabel(expectedTitle: "0 %")
+		doc.checkTrailingLabel(expectedTitle: "0%")
 		doc.checkProgress(expectedValue: 0)
 	}
 
@@ -143,6 +145,10 @@ extension PlanUITests {
 			XCTAssertTrue($0.isEnabled)
 			XCTAssertEqual($0.title, "Delete")
 		}
+		doc.menuItem(for: "priority_menu_item") {
+			XCTAssertTrue($0.isEnabled)
+			XCTAssertEqual($0.title, "Priority")
+		}
 	}
 
 	func test_clickNewMenuItem() {
@@ -180,7 +186,7 @@ extension PlanUITests {
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 1)
 		doc.checkLeadingLabel(expectedTitle: "All tasks completed")
-		doc.checkTrailingLabel(expectedTitle: "100 %")
+		doc.checkTrailingLabel(expectedTitle: "100%")
 		doc.checkProgress(expectedValue: 1)
 	}
 
