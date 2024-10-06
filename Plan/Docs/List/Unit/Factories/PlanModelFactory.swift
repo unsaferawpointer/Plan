@@ -139,7 +139,7 @@ private extension PlanModelFactory {
 			return "star.fill"
 		}
 
-		return item.iconName?.rawValue
+		return item.iconName?.systemName
 	}
 }
 

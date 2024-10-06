@@ -57,7 +57,7 @@ private extension IconCell {
 
 		let color = model.configuration.color?.colorValue ?? .tertiaryLabelColor
 		imageView.isHidden = false
-		imageView.image = NSImage(systemSymbolName: iconName.rawValue)?
+		imageView.image = NSImage(systemSymbolName: iconName.systemName)?
 			.withSymbolConfiguration(.init(hierarchicalColor: color))
 	}
 

@@ -199,10 +199,10 @@ extension MenuBuilder.Item {
 
 					let iconItem = NSMenuItem()
 					iconItem.identifier = .setIconMenuItem
-					iconItem.title = icon.rawValue
+					iconItem.title = icon.systemName
 					iconItem.representedObject = icon
 					iconItem.action = #selector(MenuSupportable.setIcon(_:))
-					iconItem.image = NSImage(systemSymbolName: icon.rawValue, accessibilityDescription: nil)
+					iconItem.image = NSImage(systemSymbolName: icon.systemName, accessibilityDescription: nil)
 
 					item.submenu?.addItem(iconItem)
 				}

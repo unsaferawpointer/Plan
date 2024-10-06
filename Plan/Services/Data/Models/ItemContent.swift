@@ -71,11 +71,7 @@ extension ItemContent: Decodable {
 		let created = try container.decode(Date.self, forKey: .created)
 		let text = try container.decode(String.self, forKey: .text)
 		let status = try container.decode(ItemStatus.self, forKey: .status)
-		let iconName: IconName? = if let name = try container.decodeIfPresent(String.self, forKey: .iconName) {
-			IconName(rawValue: name)
-		} else {
-			nil
-		}
+		let iconName = try? container.decodeIfPresent(IconName.self, forKey: .iconName)
 		let count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
 		let options = try container.decode(EntityOptions.self, forKey: .options)
 		let priority = try container.decodeIfPresent(ItemPriority.self, forKey: .priority) ?? .low
@@ -104,7 +100,7 @@ extension ItemContent: Encodable {
 		try container.encode(created, forKey: .created)
 		try container.encode(text, forKey: .text)
 		try container.encode(status, forKey: .status)
-		try container.encode(iconName?.rawValue, forKey: .iconName)
+		try container.encode(iconName, forKey: .iconName)
 		try container.encode(count, forKey: .count)
 		try container.encode(options, forKey: .options)
 		try container.encode(priority, forKey: .priority)
