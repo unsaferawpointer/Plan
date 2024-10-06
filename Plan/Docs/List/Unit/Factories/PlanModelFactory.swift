@@ -32,7 +32,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			isLeaf: info.isLeaf
 		)
 
-		let content = makeContent(for: item, isLeaf: info.isLeaf)
+		let content = makeContent(for: item, info: info)
 
 		let dateCreated = TextModel(
 			configuration: .init(textColor: .secondary),
@@ -89,11 +89,11 @@ private extension PlanModelFactory {
 		return localization.valueInfo(count: count, number: number)
 	}
 
-	func makeContent(for item: ItemContent, isLeaf: Bool) -> PlanItemModel {
-		let textColor = self.textColor(for: item)
-		let iconColor = self.iconColor(for: item, isLeaf: isLeaf)
-		let isOn = isLeaf ? item.isDone : nil
-		let icon = self.icon(for: item, isLeaf: isLeaf)
+	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> PlanItemModel {
+		let textColor = self.textColor(isDone: info.isDone)
+		let iconColor = self.iconColor(isDone: info.isDone, isFavorite: item.isFavorite)
+		let isOn = info.isLeaf ? info.isDone : nil
+		let icon = self.icon(for: item, isLeaf: info.isLeaf)
 
 		return PlanItemModel(
 			value: .init(isOn: isOn, text: item.text),
@@ -118,8 +118,8 @@ private extension PlanModelFactory {
 		)
 	}
 
-	func iconColor(for item: ItemContent, isLeaf: Bool) -> Color? {
-		switch (item.isDone, item.isFavorite) {
+	func iconColor(isDone: Bool, isFavorite: Bool) -> Color? {
+		switch (isDone, isFavorite) {
 		case (false, true):
 			return .yellow
 		default:
@@ -127,8 +127,8 @@ private extension PlanModelFactory {
 		}
 	}
 
-	func textColor(for item: ItemContent) -> Color {
-		return item.isDone ? .secondary : .primary
+	func textColor(isDone: Bool) -> Color {
+		return isDone ? .secondary : .primary
 	}
 
 	func icon(for item: ItemContent, isLeaf: Bool) -> String? {
