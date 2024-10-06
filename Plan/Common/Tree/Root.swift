@@ -11,11 +11,11 @@ final class Root<Value: NodeValue> {
 
 	typealias ID = Value.ID
 
-	private (set) var nodes: [Node<Value>]
+	private(set) var nodes: [Node<Value>]
 
 	// MARK: - Cache
 
-	private (set) var cache: [ID: Node<Value>] = [:]
+	private(set) var cache: [ID: Node<Value>] = [:]
 
 	// MARK: - Initialization
 

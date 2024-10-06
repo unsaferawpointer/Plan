@@ -29,15 +29,15 @@ extension Selector {
 
 	static var delete = Selector(("delete:"))
 
-	static var toggleToolbarShown = Selector(("toggleToolbarShown:"))
+	static var toggleToolbarShown = #selector(NSWindow.toggleToolbarShown(_:))
 
-	static var runToolbarCustomizationPalette = Selector(("runToolbarCustomizationPalette:"))
+	static var runToolbarCustomizationPalette = #selector(NSWindow.runToolbarCustomizationPalette(_:))
 
-	static var toggleFullScreen = Selector(("toggleFullScreen:"))
+	static var toggleFullScreen = #selector(NSWindow.toggleFullScreen(_:))
 
-	static var performMiniaturize = Selector(("performMiniaturize:"))
+	static var performMiniaturize = #selector(NSWindow.performMiniaturize(_:))
 
-	static var arrangeInFront = Selector(("arrangeInFront:"))
+	static var arrangeInFront = #selector(NSApplication.arrangeInFront(_:))
 
 	static var toggleBookmarked = Selector(("toggleBookmark:"))
 

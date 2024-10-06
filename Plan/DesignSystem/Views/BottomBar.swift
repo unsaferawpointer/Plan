@@ -74,7 +74,6 @@ class BottomBar: NSView {
 
 	lazy var progress: NSProgressIndicator = {
 		let view = NSProgressIndicator(frame: .zero)
-		view.controlTint = .graphiteControlTint
 		view.isIndeterminate = false
 		view.minValue = 0.0
 		view.maxValue = 100.0

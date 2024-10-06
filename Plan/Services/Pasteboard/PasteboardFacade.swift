@@ -37,14 +37,11 @@ extension PasteboardFacade: PasteboardFacadeProtocol {
 	}
 
 	func info(for types: Set<PasteboardInfo.`Type`>) -> PasteboardInfo? {
-
-		print("pasteboardItems.count = \(pasteboard.pasteboardItems?.count ?? 0)")
 		let items = pasteboard.pasteboardItems?.map { item in
 			let tuples = types.compactMap { identifier -> (PasteboardInfo.`Type`, Data)? in
 				guard let data = item.data(forType: identifier.value) else {
 					return nil
 				}
-				print("textdd = \(String(data: data, encoding: .utf8))")
 				return (identifier, data)
 			}
 			let data = Dictionary(uniqueKeysWithValues: tuples)

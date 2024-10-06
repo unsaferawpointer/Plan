@@ -14,6 +14,8 @@ struct Version {
 	let minor: Int
 	let patch: Int
 
+	// MARK: - Initialization block
+
 	init(major: Int, minor: Int = 0, patch: Int = 0) {
 		self.major = major
 		self.minor = minor

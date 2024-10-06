@@ -13,11 +13,11 @@ final class DocumentStorage<State: AnyObject> {
 
 	private var observations = [(State) -> Bool]()
 
-	private (set) var state: State
+	private(set) var state: State
 
 	// MARK: - Undo Manager
 
-	private (set) var undoManager: UndoManager?
+	private(set) var undoManager: UndoManager?
 
 	// MARK: - Initialization
 

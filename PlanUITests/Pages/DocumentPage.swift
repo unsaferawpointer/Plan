@@ -66,7 +66,9 @@ extension DocumentPage {
 
 	func selectRow(_ index: Int) {
 		let row = row(for: index)
-		row.waitForExistence(timeout: 0.5)
+		guard row.waitForExistence(timeout: 0.5) else {
+			return
+		}
 		row.cells.element(boundBy: 0).click()
 	}
 
