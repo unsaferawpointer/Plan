@@ -128,6 +128,7 @@
 		4CFDFEA22CAF18CE000A6C2B /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */; };
 		4CFDFEA42CB09E28000A6C2B /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA32CB09E28000A6C2B /* Version.swift */; };
 		4CFDFEA72CB14F5D000A6C2B /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA62CB14F5D000A6C2B /* VersionTests.swift */; };
+		4CFDFEA92CB2D000000A6C2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4CFDFEA82CB2D000000A6C2B /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +276,7 @@
 		4CFDFEA12CAF18CE000A6C2B /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
 		4CFDFEA32CB09E28000A6C2B /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		4CFDFEA62CB14F5D000A6C2B /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
+		4CFDFEA82CB2D000000A6C2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				4C85144A2C82300100C7475C /* Plan.xctestplan */,
+				4CFDFEA82CB2D000000A6C2B /* README.md */,
 				4C298E502C5FDC2000474956 /* Plan */,
 				4C298E652C5FDC2100474956 /* PlanTests */,
 				4C298E6F2C5FDC2100474956 /* PlanUITests */,
@@ -948,6 +951,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CFDFEA92CB2D000000A6C2B /* README.md in Resources */,
 				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
 				4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */,
 				4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */,
@@ -1266,6 +1270,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1294,6 +1299,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
