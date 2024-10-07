@@ -130,6 +130,10 @@ extension PlanPresenter: PlanViewOutput {
 		interactor?.setIcon(value, withSelection: selection)
 	}
 
+	func setColor(_ value: Color?) {
+		interactor?.setColor(value, withSelection: selection)
+	}
+
 	func fold() {
 		view?.collapse(selection)
 	}

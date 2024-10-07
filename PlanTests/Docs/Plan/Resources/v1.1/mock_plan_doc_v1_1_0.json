@@ -1,0 +1,57 @@
+{
+	"version" : "1.1.0",
+	"content" : {
+		"hierarchy" : [
+			{
+				"value" : {
+					"count" : 0,
+					"created" : 1723315099,
+					"iconName" : 10,
+					"iconColor": 5,
+					"options" : 0,
+					"status" : {
+						"open" : { }
+					},
+					"priority": 1,
+					"text" : "Item 0",
+					"uuid" : "056549A7-13F4-4D5C-A9CF-9A43606C4432"
+				},
+				"children" : []
+			},
+			{
+				"value" : {
+					"count" : 3,
+					"created" : 1723315099,
+					"iconName" : 10,
+					"iconColor": 6,
+					"options" : 1,
+					"status" : {
+						"done" : {
+							"completed": 1723316999,
+						}
+					},
+					"priority": 2,
+					"text" : "Item 1",
+					"uuid" : "6462805F-DD7E-4925-8FF1-7952A679C04C"
+				},
+				"children" : [
+					{
+						"children" : [],
+						"value" : {
+							"created" : 1723315099,
+							"options" : 0,
+							"status" : {
+								"open" : {
+
+								}
+							},
+							"text" : "Item 1_0",
+							"uuid" : "974BBB9E-FA03-4C34-9535-9E2E1C5DBF83"
+						}
+					}
+				]
+			}
+		],
+		"uuid" : "2B98EBCD-039A-489C-AE10-FD7AEA6B94AB"
+	}
+}

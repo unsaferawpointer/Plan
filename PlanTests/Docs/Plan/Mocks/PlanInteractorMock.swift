@@ -57,7 +57,11 @@ extension PlanInteractorMock: PlanInteractorProtocol {
 	func setIcon(_ value: IconName?, withSelection selection: [UUID]) {
 		invocations.append(.setIcon(value, selection: selection))
 	}
-	
+
+	func setColor(_ value: Plan.Color?, withSelection selection: [UUID]) {
+		invocations.append(.setColor(value, selection: selection))
+	}
+
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
 		invocations.append(.move(ids: ids, destination: destination))
 	}
@@ -127,6 +131,7 @@ extension PlanInteractorMock {
 		case setBookmark(_ flag: Bool, selection: [UUID])
 		case setEstimation(_ value: Int, selection: [UUID])
 		case setIcon(_ value: IconName?, selection: [UUID])
+		case setColor(_ value: Color?, selection: [UUID])
 		case move(ids: [UUID], destination: HierarchyDestination<UUID>)
 		case validateMoving(ids: [UUID], destination: HierarchyDestination<UUID>)
 		case insertNodes(_ nodes: [any TreeNode<ItemContent>], destination: HierarchyDestination<UUID>)

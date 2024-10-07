@@ -75,6 +75,8 @@ extension MenuBuilder {
 
 		case setIcon
 
+		case iconColor
+
 		case separator
 	}
 }
@@ -535,6 +537,39 @@ extension MenuBuilder.Item {
 					]
 			)
 			return item
+		case .iconColor:
+			let main = NSMenuItem(
+				title: String(localized: "icon_color_item", table: "Menu"),
+				action: nil,
+				keyEquivalent: ""
+			)
+			main.identifier = .iconColorMenuItem
+			main.submenu = NSMenu()
+
+			let none = NSMenuItem(
+				title: "None",
+				action: #selector(MenuSupportable.setColor(_:)),
+				keyEquivalent: ""
+			)
+			none.identifier = .setIconColorMenuItem
+			none.tag = -1
+			main.submenu?.addItem(none)
+
+			main.submenu?.addItem(.separator())
+
+			for color in Color.allCases {
+				let item = NSMenuItem(
+					title: color.displayName,
+					action: #selector(MenuSupportable.setColor(_:)),
+					keyEquivalent: ""
+				)
+				item.identifier = .setEstimationMenuItem
+				item.tag = color.rawValue
+				item.image = NSImage(systemSymbolName: "circle.fill")?
+					.withSymbolConfiguration(.init(paletteColors: [color.colorValue]))
+				main.submenu?.addItem(item)
+			}
+			return main
 		}
 	}
 }

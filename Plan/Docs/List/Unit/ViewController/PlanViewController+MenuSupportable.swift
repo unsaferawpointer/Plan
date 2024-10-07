@@ -51,6 +51,12 @@ extension PlanViewController: MenuSupportable {
 	}
 
 	@IBAction
+	func setColor(_ sender: NSMenuItem) {
+		let color = Color(rawValue: sender.tag)
+		output?.setColor(color)
+	}
+
+	@IBAction
 	func undo(_ sender: NSMenuItem) {
 		output?.undo()
 	}

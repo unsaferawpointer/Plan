@@ -23,7 +23,7 @@ extension PlanViewController: NSMenuItemValidation {
 			return output?.canRedo() ?? false
 		case .undo:
 			return output?.canUndo() ?? false
-		case .cut, .copy, .fold, .unfold, .delete:
+		case .cut, .copy, .fold, .unfold, .delete, .setColor:
 			return !table.effectiveSelection().isEmpty
 		case .paste:
 			return output?.canPaste() ?? false

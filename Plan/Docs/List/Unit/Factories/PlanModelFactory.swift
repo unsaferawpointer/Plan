@@ -91,7 +91,7 @@ private extension PlanModelFactory {
 
 	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> PlanItemModel {
 		let textColor = self.textColor(isDone: info.isDone)
-		let iconColor = self.iconColor(isDone: info.isDone, isFavorite: item.isFavorite)
+		let iconColor = self.iconColor(isDone: info.isDone, isFavorite: item.isFavorite, baseColor: item.iconColor)
 		let isOn = info.isLeaf ? info.isDone : nil
 		let icon = self.icon(for: item, isLeaf: info.isLeaf)
 
@@ -118,12 +118,12 @@ private extension PlanModelFactory {
 		)
 	}
 
-	func iconColor(isDone: Bool, isFavorite: Bool) -> Color? {
+	func iconColor(isDone: Bool, isFavorite: Bool, baseColor: Color?) -> Color? {
 		switch (isDone, isFavorite) {
 		case (false, true):
 			return .yellow
 		default:
-			return .tertiary
+			return baseColor ?? .tertiary
 		}
 	}
 
