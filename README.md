@@ -15,9 +15,9 @@ Introducing the structural nested list editor for macOS
 * Drag&Drop support.
 * Hotkeys support.
 
-## History
+## Releases
 
-- v1.3 - Initial release
+- [v1.3](https://github.com/unsaferawpointer/Plan/releases/tag/v1.3.0)
 
 ## Roadmap
 
