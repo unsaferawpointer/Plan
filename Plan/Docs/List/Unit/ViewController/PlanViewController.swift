@@ -206,6 +206,7 @@ private extension PlanViewController {
 					.separator,
 					.priority,
 					.setEstimation,
+					.separator,
 					.setIcon,
 					.iconColor,
 					.separator,

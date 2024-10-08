@@ -246,13 +246,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Icon Color"
+            "value" : "Color"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Цвет иконки"
+            "state" : "translated",
+            "value" : "Цвет"
           }
         }
       }
