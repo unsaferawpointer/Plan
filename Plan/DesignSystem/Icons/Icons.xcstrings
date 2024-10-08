@@ -81,6 +81,22 @@
         }
       }
     },
+    "shapes_category" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shapes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Фигуры"
+          }
+        }
+      }
+    },
     "sport_category" : {
       "localizations" : {
         "en" : {

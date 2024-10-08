@@ -80,6 +80,18 @@ enum IconName: Int {
 	case building2 = 501
 	case building = 502
 	case buildingColumns = 503
+
+	// MARK: - Shapes [600 - 650]
+	case circle = 600
+	case square	= 601
+	case triangle = 602
+	case diamond = 603
+	case hexagon = 604
+	case pentagon = 605
+	case rhombus = 606
+	case shield = 607
+	case seal = 608
+
 }
 
 // MARK: - Codable
@@ -153,11 +165,22 @@ extension IconName {
 		case .gymBag: "gym.bag.fill"
 		case .suitcase: "suitcase.fill"
 
-			// MARK: - Building
+		// MARK: - Building
 		case .house: "house.fill"
 		case .building2: "building.2.fill"
 		case .building: "building.fill"
 		case .buildingColumns: "building.columns.fill"
+
+		// MARK: - Shapes
+		case .circle: "circle.fill"
+		case .square: "square.fill"
+		case .triangle: "triangle.fill"
+		case .diamond: "diamond.fill"
+		case .hexagon: "hexagon.fill"
+		case .pentagon: "pentagon.fill"
+		case .rhombus: "rhombus.fill"
+		case .shield: "shield.fill"
+		case .seal: "seal.fill"
 		}
 	}
 }
