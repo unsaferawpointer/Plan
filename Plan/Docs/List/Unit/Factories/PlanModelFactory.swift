@@ -54,7 +54,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 		)
 
 		let priority: IconModel = if let color = item.priority.color, info.isLeaf {
-			IconModel(value: .init(icon: .flag), configuration: .init(color: color))
+			IconModel(value: .init(icon: .flag), configuration: .init(color: info.isDone ? .tertiary : color))
 		} else {
 			IconModel(value: .init(icon: nil), configuration: .init())
 		}
