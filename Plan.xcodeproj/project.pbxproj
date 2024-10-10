@@ -124,6 +124,7 @@
 		4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */; };
 		4CCFE6282CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CCFE6272CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json */; };
 		4CCFE62B2CB4768800AF29F1 /* Color.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CCFE62A2CB4768800AF29F1 /* Color.xcstrings */; };
+		4CCFE6342CB84AB100AF29F1 /* BasicFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFE6332CB84AB100AF29F1 /* BasicFormatterTests.swift */; };
 		4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69F252C98C121009D06AD /* Menu.xcstrings */; };
 		4CFDFE9D2CAEFBFB000A6C2B /* ItemPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */; };
 		4CFDFEA02CAF1836000A6C2B /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */; };
@@ -274,6 +275,7 @@
 		4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
 		4CCFE6272CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_1_0.json; sourceTree = "<group>"; };
 		4CCFE62A2CB4768800AF29F1 /* Color.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Color.xcstrings; sourceTree = "<group>"; };
+		4CCFE6332CB84AB100AF29F1 /* BasicFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatterTests.swift; sourceTree = "<group>"; };
 		4CE69F252C98C121009D06AD /* Menu.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Menu.xcstrings; sourceTree = "<group>"; };
 		4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPriority.swift; sourceTree = "<group>"; };
 		4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 		4C8C6CD52C68F41C00E09697 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4CCFE6322CB84A9400AF29F1 /* BasicFormatter */,
 				4C8C6CD62C68F42200E09697 /* TextParser */,
 			);
 			path = Services;
@@ -849,6 +852,14 @@
 				4CCFE62A2CB4768800AF29F1 /* Color.xcstrings */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		4CCFE6322CB84A9400AF29F1 /* BasicFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				4CCFE6332CB84AB100AF29F1 /* BasicFormatterTests.swift */,
+			);
+			path = BasicFormatter;
 			sourceTree = "<group>";
 		};
 		4CFDFE9E2CAF181A000A6C2B /* IconCell */ = {
@@ -1118,6 +1129,7 @@
 				4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */,
 				4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */,
 				4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */,
+				4CCFE6342CB84AB100AF29F1 /* BasicFormatterTests.swift in Sources */,
 				4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */,
 				4C8514562C832ED300C7475C /* PlanColumnsFactoryMock.swift in Sources */,
 				4C02590E2CA354360045B3CF /* PasteboardFacadeMock.swift in Sources */,
