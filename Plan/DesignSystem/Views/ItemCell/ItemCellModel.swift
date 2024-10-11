@@ -1,5 +1,5 @@
 //
-//  PlanItemModel.swift
+//  ItemCellModel.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 27.08.2024.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct PlanItemModel: CellModel {
+struct ItemCellModel: CellModel {
 
 	var value: Value
 
 	var configuration: Configuration
 }
 
-extension PlanItemModel {
+extension ItemCellModel {
 
 	var checkboxIsHidden: Bool {
 		return value.isOn == nil
@@ -25,7 +25,7 @@ extension PlanItemModel {
 	}
 }
 
-extension PlanItemModel {
+extension ItemCellModel {
 
 	struct Value {
 		var isOn: Bool?

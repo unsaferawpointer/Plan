@@ -11,7 +11,7 @@ struct HierarchyModel {
 
 	var uuid: UUID
 
-	var content: PlanItemModel
+	var content: ItemCellModel
 
 	var createdAt: TextCell.Model
 
@@ -27,7 +27,7 @@ struct HierarchyModel {
 
 	init(
 		uuid: UUID = UUID(),
-		content: PlanItemModel,
+		content: ItemCellModel,
 		createdAt: TextCell.Model,
 		completedAt: TextCell.Model,
 		value: TextCell.Model,

@@ -9,8 +9,8 @@ import Cocoa
 
 class PlanDocument: NSDocument {
 
-	lazy var storage: DocumentStorage<HierarchyContent> = {
-		return DocumentStorage<HierarchyContent>(
+	lazy var storage: DocumentStorage<PlanContent> = {
+		return DocumentStorage<PlanContent>(
 			initialState: .empty,
 			provider: DataProvider(), 
 			undoManager: undoManager
@@ -31,7 +31,7 @@ class PlanDocument: NSDocument {
 		let windowController = storyboard.instantiateController(
 			withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")
 		) as! NSWindowController
-		windowController.window?.contentViewController = PlanAssembly.build(storage: storage)
+		windowController.window?.contentViewController = HierarchyAssembly.build(storage: storage)
 		self.addWindowController(windowController)
 	}
 

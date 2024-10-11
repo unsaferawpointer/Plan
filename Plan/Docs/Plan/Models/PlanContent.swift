@@ -1,5 +1,5 @@
 //
-//  HierarchyContent.swift
+//  PlanContent.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 27.09.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HierarchyContent {
+final class PlanContent {
 
 	private(set) var uuid: UUID
 
@@ -22,7 +22,7 @@ final class HierarchyContent {
 }
 
 // MARK: - Codable
-extension HierarchyContent: Codable {
+extension PlanContent: Codable {
 
 	enum CodingKeys: CodingKey {
 		case uuid
@@ -44,15 +44,15 @@ extension HierarchyContent: Codable {
 }
 
 // MARK: - Equatable
-extension HierarchyContent: Equatable {
+extension PlanContent: Equatable {
 
-	static func == (lhs: HierarchyContent, rhs: HierarchyContent) -> Bool {
+	static func == (lhs: PlanContent, rhs: PlanContent) -> Bool {
 		return lhs.uuid == rhs.uuid && lhs.hierarchy == rhs.hierarchy
 	}
 }
 
 // MARK: - Configure properties
-extension HierarchyContent {
+extension PlanContent {
 
 	func perform(_ modification: some Modification<ItemContent>, for ids: [UUID], downstream: Bool = false) {
 		hierarchy.setProperty(
@@ -85,7 +85,7 @@ extension HierarchyContent {
 
 }
 
-extension HierarchyContent {
+extension PlanContent {
 
 	func insertItems(with contents: [ItemContent], to destination: HierarchyDestination<UUID>) {
 		hierarchy.insertItems(with: contents, to: destination)
@@ -109,9 +109,9 @@ extension HierarchyContent {
 }
 
 // MARK: Values by-default
-extension HierarchyContent {
+extension PlanContent {
 
-	static var empty: HierarchyContent {
-		return HierarchyContent(uuid: .init())
+	static var empty: PlanContent {
+		return PlanContent(uuid: .init())
 	}
 }

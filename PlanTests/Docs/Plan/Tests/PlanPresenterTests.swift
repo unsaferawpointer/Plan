@@ -10,7 +10,7 @@ import XCTest
 
 final class PlanPresenterTests: XCTestCase {
 
-	var sut: PlanPresenter!
+	var sut: HierarchyPresenter!
 
 	var statusFactory: PlanStatusFactoryMock!
 
@@ -44,7 +44,7 @@ final class PlanPresenterTests: XCTestCase {
 
 		generalPasteboard = PasteboardFacadeMock()
 
-		sut = PlanPresenter(
+		sut = HierarchyPresenter(
 			statusFactory: statusFactory,
 			modelFactory: modelFactory,
 			columnsFactory: columnsFactory,

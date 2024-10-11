@@ -13,8 +13,8 @@ final class PlanInteractorMock {
 	var stubs = Stubs()
 }
 
-// MARK: - PlanInteractorProtocol
-extension PlanInteractorMock: PlanInteractorProtocol {
+// MARK: - HierarchyInteractorProtocol
+extension PlanInteractorMock: HierarchyInteractorProtocol {
 
 	func fetchData() {
 		invocations.append(.fetchData)

@@ -1,5 +1,5 @@
 //
-//  PlanLocalization.swift
+//  HierarchyLocalization.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 04.08.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PlanLocalizationProtocol {
+protocol HierarchyLocalizationProtocol {
 	var allTaskCompleted: String { get }
 	var emptyList: String { get }
 	var newItemTitle: String { get }
@@ -26,25 +26,25 @@ protocol PlanLocalizationProtocol {
 	func valueInfo(count: Int, number: Int) -> String
 }
 
-final class PlanLocalization { }
+final class HierarchyLocalization { }
 
-// MARK: - PlanLocalizationProtocol
-extension PlanLocalization: PlanLocalizationProtocol {
+// MARK: - HierarchyLocalizationProtocol
+extension HierarchyLocalization: HierarchyLocalizationProtocol {
 
 	var allTaskCompleted: String {
-		return String(localized: "all_tasks_completed", table: "PlanLocalizable")
+		return String(localized: "all_tasks_completed", table: "HierarchyLocalizable")
 	}
 
 	var emptyList: String {
-		return String(localized: "empty_list", table: "PlanLocalizable")
+		return String(localized: "empty_list", table: "HierarchyLocalizable")
 	}
 
 	var newItemTitle: String {
-		return String(localized: "new_item_title", table: "PlanLocalizable")
+		return String(localized: "new_item_title", table: "HierarchyLocalizable")
 	}
 
 	func statusMessage(for count: Int) -> String {
-		return String(localized: "\(count) tasks", table: "PlanLocalizable")
+		return String(localized: "\(count) tasks", table: "HierarchyLocalizable")
 	}
 
 	func progressText(for progress: Double) -> String {
@@ -55,23 +55,23 @@ extension PlanLocalization: PlanLocalizationProtocol {
 	}
 
 	var createdDateColumnTitle: String {
-		return String(localized: "created_date_table_column", table: "PlanLocalizable")
+		return String(localized: "created_date_table_column", table: "HierarchyLocalizable")
 	}
 
 	var completedDateColumnTitle: String {
-		return String(localized: "completed_date_table_column", table: "PlanLocalizable")
+		return String(localized: "completed_date_table_column", table: "HierarchyLocalizable")
 	}
 
 	var descriptionColumnTitle: String {
-		return String(localized: "description_table_column", table: "PlanLocalizable")
+		return String(localized: "description_table_column", table: "HierarchyLocalizable")
 	}
 
 	var numberColumnTitle: String {
-		return String(localized: "number_table_column", table: "PlanLocalizable")
+		return String(localized: "number_table_column", table: "HierarchyLocalizable")
 	}
 
 	var priorityColumnTitle: String {
-		return String(localized: "priority_table_column", table: "PlanLocalizable")
+		return String(localized: "priority_table_column", table: "HierarchyLocalizable")
 	}
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String {
@@ -89,7 +89,7 @@ extension PlanLocalization: PlanLocalizationProtocol {
 	}
 
 	func valueInfo(count: Int) -> String {
-		return String(localized: "\(count) items", table: "PlanLocalizable")
+		return String(localized: "\(count) items", table: "HierarchyLocalizable")
 	}
 
 	func valueInfo(number: Int) -> String {
@@ -97,7 +97,7 @@ extension PlanLocalization: PlanLocalizationProtocol {
 	}
 
 	func valueInfo(count: Int, number: Int) -> String {
-		let prefix = String(localized: "\(count) items", table: "PlanLocalizable")
+		let prefix = String(localized: "\(count) items", table: "HierarchyLocalizable")
 		return prefix + " - \(number)"
 	}
 }

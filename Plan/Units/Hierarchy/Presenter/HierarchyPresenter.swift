@@ -1,19 +1,19 @@
 //
-//  PlanPresenter.swift
-//  Hierarchy
+//  HierarchyPresenter.swift
+//  Plan
 //
 //  Created by Anton Cherkasov on 02.10.2023.
 //
 
 import Foundation
 
-protocol ListPresenterProtocol: AnyObject {
-	func present(_ content: HierarchyContent)
+protocol HierarchyPresenterProtocol: AnyObject {
+	func present(_ content: PlanContent)
 }
 
-final class PlanPresenter {
+final class HierarchyPresenter {
 
-	var interactor: PlanInteractorProtocol?
+	var interactor: HierarchyInteractorProtocol?
 
 	weak var view: PlanView?
 
@@ -23,7 +23,7 @@ final class PlanPresenter {
 
 	private var columnsFactory: PlanColumnsFactoryProtocol
 
-	private var localization: PlanLocalizationProtocol
+	private var localization: HierarchyLocalizationProtocol
 
 	var pasteboard: PlanPasteboardProtocol
 
@@ -35,7 +35,7 @@ final class PlanPresenter {
 		statusFactory: PlanStatusFactoryProtocol = PlanStatusFactory(),
 		modelFactory: PlanModelFactoryProtocol = PlanModelFactory(),
 		columnsFactory: PlanColumnsFactoryProtocol = PlanColumnsFactory(),
-		localization: PlanLocalizationProtocol = PlanLocalization(),
+		localization: HierarchyLocalizationProtocol = HierarchyLocalization(),
 		pasteboard: PlanPasteboardProtocol = PlanPasteboard(),
 		generalPasteboard: PasteboardFacadeProtocol = PasteboardFacade(pasteboard: .general)
 	) {
@@ -49,7 +49,7 @@ final class PlanPresenter {
 }
 
 // MARK: - Computed properties
-extension PlanPresenter {
+extension HierarchyPresenter {
 
 	var selection: [UUID] {
 		return view?.selection ?? []
@@ -64,17 +64,17 @@ extension PlanPresenter {
 	}
 }
 
-// MARK: - ListPresenterProtocol
-extension PlanPresenter: ListPresenterProtocol {
+// MARK: - HierarchyPresenterProtocol
+extension HierarchyPresenter: HierarchyPresenterProtocol {
 
-	func present(_ content: HierarchyContent) {
+	func present(_ content: PlanContent) {
 		let model = makeModel(root: content.hierarchy)
 		self.view?.display(model)
 	}
 }
 
-// MARK: - ListPresenterProtocol
-extension PlanPresenter: PlanViewOutput {
+// MARK: - PlanViewOutput
+extension HierarchyPresenter: PlanViewOutput {
 
 	func viewDidLoad() {
 
@@ -144,7 +144,7 @@ extension PlanPresenter: PlanViewOutput {
 }
 
 // MARK: - UndoManagerSupportable
-extension PlanPresenter: UndoManagerSupportable {
+extension HierarchyPresenter: UndoManagerSupportable {
 
 	func canUndo() -> Bool {
 		interactor?.canUndo() ?? false
@@ -164,7 +164,7 @@ extension PlanPresenter: UndoManagerSupportable {
 }
 
 // MARK: - PasteboardSupportable
-extension PlanPresenter: PasteboardSupportable {
+extension HierarchyPresenter: PasteboardSupportable {
 
 	func cut() {
 		guard let nodes = interactor?.nodes(selection) else {
@@ -210,7 +210,7 @@ extension PlanPresenter: PasteboardSupportable {
 }
 
 // MARK: - PlanColumnsFactoryDelegate
-extension PlanPresenter: PlanColumnsFactoryDelegate {
+extension HierarchyPresenter: PlanColumnsFactoryDelegate {
 
 	func modificate(id: UUID, newText: String, newStatus: Bool?) {
 		let trimmed = newText.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -231,14 +231,14 @@ extension PlanPresenter: PlanColumnsFactoryDelegate {
 }
 
 // MARK: - Helpers
-private extension PlanPresenter {
+private extension HierarchyPresenter {
 
-	func makeModel(root: Root<ItemContent>) -> PlanModel {
+	func makeModel(root: Root<ItemContent>) -> HierarchyUnitModel {
 
 		let snapshot = makeSnapshot(root)
 		let status = statusFactory.makeModel(for: root)
 
-		return PlanModel(bottomBar: status, snapshot: snapshot)
+		return HierarchyUnitModel(bottomBar: status, snapshot: snapshot)
 	}
 
 	func makeSnapshot(_ root: Root<ItemContent>) -> HierarchySnapshot {

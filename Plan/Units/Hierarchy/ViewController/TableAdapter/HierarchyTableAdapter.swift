@@ -182,7 +182,7 @@ extension HierarchyTableAdapter {
 		guard let item = cache[id], let row = table?.row(forItem: item), row != -1 else {
 			return
 		}
-		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? PlanItemCell
+		let view = table?.view(atColumn: 0, row: row, makeIfNecessary: false) as? ItemCell
 		_ = view?.becomeFirstResponder()
 	}
 }

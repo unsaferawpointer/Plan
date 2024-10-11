@@ -18,11 +18,11 @@ protocol PlanColumnsFactoryProtocol {
 
 final class PlanColumnsFactory {
 
-	var localization: PlanLocalizationProtocol
+	var localization: HierarchyLocalizationProtocol
 
 	// MARK: - Localization
 
-	init(localization: PlanLocalizationProtocol = PlanLocalization()) {
+	init(localization: HierarchyLocalizationProtocol = HierarchyLocalization()) {
 		self.localization = localization
 	}
 }
@@ -46,7 +46,7 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			options: .init(minWidth: 200, maxWidth: 240, isRequired: false, isHidden: true)
 		)
 
-		let main = AnyColumn<HierarchyModel, PlanItemCell>(
+		let main = AnyColumn<HierarchyModel, ItemCell>(
 			identifier: "description_table_column",
 			title: localization.descriptionColumnTitle,
 			keyPath: \.content,

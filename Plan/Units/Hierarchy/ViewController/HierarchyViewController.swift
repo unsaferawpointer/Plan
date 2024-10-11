@@ -1,6 +1,6 @@
 //
-//  PlanViewController.swift
-//  Hierarchy
+//  HierarchyViewController.swift
+//  Plan
 //
 //  Created by Anton Cherkasov on 29.09.2023.
 //
@@ -34,14 +34,14 @@ protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
 
 protocol PlanView: AnyObject, OutlineSupportable {
 
-	func display(_ model: PlanModel)
+	func display(_ model: HierarchyUnitModel)
 
 	func setConfiguration(_ configuration: DropConfiguration)
 
 	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>])
 }
 
-class PlanViewController: NSViewController {
+class HierarchyViewController: NSViewController {
 
 	// MARK: - DI
 
@@ -59,7 +59,7 @@ class PlanViewController: NSViewController {
 
 	// MARK: - Initialization
 
-	init(configure: (PlanViewController) -> Void) {
+	init(configure: (HierarchyViewController) -> Void) {
 		super.init(nibName: nil, bundle: nil)
 		configure(self)
 		self.adapter = HierarchyTableAdapter(table: table)
@@ -91,9 +91,9 @@ class PlanViewController: NSViewController {
 }
 
 // MARK: - PlanView
-extension PlanViewController: PlanView {
+extension HierarchyViewController: PlanView {
 
-	func display(_ model: PlanModel) {
+	func display(_ model: HierarchyUnitModel) {
 		adapter?.apply(model.snapshot)
 		bottomBar.model = model.bottomBar
 	}
@@ -150,7 +150,7 @@ extension PlanViewController: PlanView {
 }
 
 // MARK: - Helpers
-private extension PlanViewController {
+private extension HierarchyViewController {
 
 	func configureUserInterface() {
 

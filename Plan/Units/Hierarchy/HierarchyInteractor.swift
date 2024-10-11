@@ -1,5 +1,5 @@
 //
-//  PlanInteractor.swift
+//  HierarchyInteractor.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 10.08.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PlanInteractorProtocol: UndoManagerSupportable {
+protocol HierarchyInteractorProtocol: UndoManagerSupportable {
 
 	func fetchData()
 	func node(_ id: UUID) -> any TreeNode<ItemContent>
@@ -31,20 +31,20 @@ protocol PlanInteractorProtocol: UndoManagerSupportable {
 	func modificate(_ id: UUID, newText: String)
 }
 
-final class PlanInteractor {
+final class HierarchyInteractor {
 
-	private let storage: DocumentStorage<HierarchyContent>
+	private let storage: DocumentStorage<PlanContent>
 
 	private let pasteboard: PasteboardFacadeProtocol
 
-	weak var presenter: ListPresenterProtocol?
+	weak var presenter: HierarchyPresenterProtocol?
 
 	var parser: TextParserProtocol
 
 	// MARK: - Initialization
 
 	init(
-		storage: DocumentStorage<HierarchyContent>,
+		storage: DocumentStorage<PlanContent>,
 		pasteboard: PasteboardFacadeProtocol = PasteboardFacade(),
 		parser: TextParserProtocol = TextParser(configuration: .default)
 	) {
@@ -60,8 +60,8 @@ final class PlanInteractor {
 	}
 }
 
-// MARK: - PlanInteractorProtocol
-extension PlanInteractor: PlanInteractorProtocol {
+// MARK: - HierarchyInteractorProtocol
+extension HierarchyInteractor: HierarchyInteractorProtocol {
 
 	func fetchData() {
 		presenter?.present(storage.state)
@@ -160,7 +160,7 @@ extension PlanInteractor: PlanInteractorProtocol {
 }
 
 // MARK: - UndoManagerSupportable
-extension PlanInteractor: UndoManagerSupportable {
+extension HierarchyInteractor: UndoManagerSupportable {
 
 	func canUndo() -> Bool {
 		storage.canUndo()
@@ -180,7 +180,7 @@ extension PlanInteractor: UndoManagerSupportable {
 }
 
 // MARK: - Helpers
-private extension PlanInteractor {
+private extension HierarchyInteractor {
 
 	func modificate<T>(ids: [UUID], keyPath: WritableKeyPath<ItemContent, T>, value: T, downstream: Bool = false) {
 		let modification = AnyModification(keyPath: keyPath, value: value)

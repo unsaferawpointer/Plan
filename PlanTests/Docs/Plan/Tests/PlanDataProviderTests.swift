@@ -10,7 +10,7 @@ import XCTest
 
 final class PlanDataProviderTests: XCTestCase {
 
-	var sut: DataProvider<HierarchyContent>!
+	var sut: DataProvider<PlanContent>!
 
 	let type: DocumentType = .plan
 
@@ -29,7 +29,7 @@ extension PlanDataProviderTests {
 	func test_readFromDataOfType_whenV1_0_0() throws {
 		// Arrange
 
-		let expectedContent = HierarchyContent(
+		let expectedContent = PlanContent(
 			uuid: .uuid0,
 			hierarchy: [
 				Node<ItemContent>(
@@ -128,7 +128,7 @@ extension PlanDataProviderTests {
 	func test_readFromDataOfType_whenV1_1_0() throws {
 		// Arrange
 
-		let expectedContent = HierarchyContent(
+		let expectedContent = PlanContent(
 			uuid: .uuid0,
 			hierarchy: [
 				Node<ItemContent>(

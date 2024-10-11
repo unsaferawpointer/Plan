@@ -1,5 +1,5 @@
 //
-//  PlanItemCell.swift
+//  ItemCell.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 01.10.2023.
@@ -7,9 +7,9 @@
 
 import Cocoa
 
-final class PlanItemCell: NSView, TableCell {
+final class ItemCell: NSView, TableCell {
 
-	typealias Model = PlanItemModel
+	typealias Model = ItemCellModel
 
 	static var reuseIdentifier: String = "item_cell"
 
@@ -19,7 +19,7 @@ final class PlanItemCell: NSView, TableCell {
 		}
 	}
 
-	var action: ((PlanItemModel.Value) -> Void)?
+	var action: ((ItemCellModel.Value) -> Void)?
 
 	// MARK: - UI-Properties
 
@@ -90,7 +90,7 @@ final class PlanItemCell: NSView, TableCell {
 }
 
 // MARK: - Helpers
-private extension PlanItemCell {
+private extension ItemCell {
 
 	func updateUserInterface() {
 
@@ -130,7 +130,7 @@ private extension PlanItemCell {
 }
 
 // MARK: - Actions
-extension PlanItemCell {
+extension ItemCell {
 
 	@objc
 	func textfieldDidChange(_ sender: NSTextField) {

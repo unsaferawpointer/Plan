@@ -1,5 +1,5 @@
 //
-//  PlanViewController+MenuSupportable.swift
+//  HierarchyViewController+MenuSupportable.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 26.08.2024.
@@ -8,7 +8,7 @@
 import Cocoa
 
 // MARK: - MenuSupportable
-extension PlanViewController: MenuSupportable {
+extension HierarchyViewController: MenuSupportable {
 
 	@IBAction
 	func createNew(_ sender: NSMenuItem) {

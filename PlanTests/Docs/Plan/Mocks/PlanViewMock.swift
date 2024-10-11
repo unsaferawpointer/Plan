@@ -16,7 +16,7 @@ final class PlanViewMock {
 // MARK: - PlanView
 extension PlanViewMock: PlanView {
 
-	func display(_ model: PlanModel) {
+	func display(_ model: HierarchyUnitModel) {
 		invocations.append(.display(model))
 	}
 	
@@ -67,7 +67,7 @@ extension PlanViewMock: PlanView {
 extension PlanViewMock {
 
 	enum Action {
-		case display(_ model: PlanModel)
+		case display(_ model: HierarchyUnitModel)
 		case setDropConfiguration(_ configuration: DropConfiguration)
 		case setColumnsConfiguration(_ columns: [any TableColumn<HierarchyModel>])
 		case scroll(id: UUID)

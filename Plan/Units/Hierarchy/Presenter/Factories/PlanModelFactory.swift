@@ -13,11 +13,11 @@ protocol PlanModelFactoryProtocol {
 
 final class PlanModelFactory { 
 	
-	var localization: PlanLocalizationProtocol
+	var localization: HierarchyLocalizationProtocol
 
 	// MARK: - Initialization
 
-	init(localization: PlanLocalizationProtocol = PlanLocalization()) {
+	init(localization: HierarchyLocalizationProtocol = HierarchyLocalization()) {
 		self.localization = localization
 	}
 }
@@ -89,13 +89,13 @@ private extension PlanModelFactory {
 		return localization.valueInfo(count: count, number: number)
 	}
 
-	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> PlanItemModel {
+	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> ItemCellModel {
 		let textColor = self.textColor(isDone: info.isDone)
 		let iconColor = self.iconColor(isDone: info.isDone, isFavorite: item.isFavorite, baseColor: item.iconColor)
 		let isOn = info.isLeaf ? info.isDone : nil
 		let icon = self.icon(for: item, isLeaf: info.isLeaf)
 
-		return PlanItemModel(
+		return ItemCellModel(
 			value: .init(isOn: isOn, text: item.text),
 			configuration: .init(textColor: textColor, icon: icon, iconColor: iconColor)
 		)

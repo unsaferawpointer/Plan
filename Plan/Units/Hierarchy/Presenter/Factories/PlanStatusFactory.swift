@@ -13,11 +13,11 @@ protocol PlanStatusFactoryProtocol {
 
 final class PlanStatusFactory {
 
-	var localization: PlanLocalizationProtocol
+	var localization: HierarchyLocalizationProtocol
 
 	// MARK: - Initialization
 
-	init(localization: PlanLocalizationProtocol = PlanLocalization()) {
+	init(localization: HierarchyLocalizationProtocol = HierarchyLocalization()) {
 		self.localization = localization
 	}
 }

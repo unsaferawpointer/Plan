@@ -13,8 +13,8 @@ final class PlanLocalizationMock {
 	var stubs = Stubs()
 }
 
-// MARK: - PlanLocalizationProtocol
-extension PlanLocalizationMock: PlanLocalizationProtocol {
+// MARK: - HierarchyLocalizationProtocol
+extension PlanLocalizationMock: HierarchyLocalizationProtocol {
 
 	var priorityColumnTitle: String {
 		stubs.priorityColumnTitle

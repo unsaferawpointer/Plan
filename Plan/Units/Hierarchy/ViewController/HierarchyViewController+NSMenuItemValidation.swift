@@ -1,5 +1,5 @@
 //
-//  PlanViewController+NSMenuItemValidation.swift
+//  HierarchyViewController+NSMenuItemValidation.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 26.08.2024.
@@ -8,7 +8,7 @@
 import Cocoa
 
 // MARK: - NSMenuItemValidation
-extension PlanViewController: NSMenuItemValidation {
+extension HierarchyViewController: NSMenuItemValidation {
 
 	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
 

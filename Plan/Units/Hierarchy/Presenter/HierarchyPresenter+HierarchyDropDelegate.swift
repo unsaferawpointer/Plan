@@ -1,5 +1,5 @@
 //
-//  PlanPresenter+HierarchyDropDelegate.swift
+//  HierarchyPresenter+HierarchyDropDelegate.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 12.08.2024.
@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - HierarchyDropDelegate
-extension PlanPresenter: HierarchyDropDelegate {
+extension HierarchyPresenter: HierarchyDropDelegate {
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
 		interactor?.move(ids: ids, to: destination)
@@ -40,7 +40,7 @@ extension PlanPresenter: HierarchyDropDelegate {
 }
 
 // MARK: - Helpers
-extension PlanPresenter {
+extension HierarchyPresenter {
 
 	func insertNodes(_ nodes: [TransferNode], to destination: HierarchyDestination<UUID>) {
 		interactor?.insert(nodes, to: destination)
