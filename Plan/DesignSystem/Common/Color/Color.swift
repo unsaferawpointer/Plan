@@ -22,9 +22,13 @@ enum Color: Int {
 	case orange
 	case yellow
 	case green
+	case mint
+	case teal
 	case cyan
 	case blue
+	case indigo
 	case purple
+	case pink
 
 }
 
@@ -57,12 +61,20 @@ extension Color {
 			return .systemOrange
 		case .green:
 			return .systemGreen
+		case .mint:
+			return .systemMint
+		case .teal:
+			return .systemTeal
 		case .cyan:
 			return .systemCyan
 		case .blue:
 			return .systemBlue
+		case .indigo:
+			return .systemIndigo
 		case .purple:
 			return .systemPurple
+		case .pink:
+			return .systemPink
 		}
 	}
 
@@ -86,12 +98,20 @@ extension Color {
 			return String(localized: "orange", table: "Color")
 		case .green:
 			return String(localized: "green", table: "Color")
+		case .mint:
+			return String(localized: "mint", table: "Color")
+		case .teal:
+			return String(localized: "teal", table: "Color")
 		case .cyan:
 			return String(localized: "cyan", table: "Color")
 		case .blue:
 			return String(localized: "blue", table: "Color")
+		case .indigo:
+			return String(localized: "indigo", table: "Color")
 		case .purple:
 			return String(localized: "purple", table: "Color")
+		case .pink:
+			return String(localized: "pink", table: "Color")
 		}
 	}
 }

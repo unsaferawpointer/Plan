@@ -836,7 +836,6 @@
 		4CCFE6352CB9BBE200AF29F1 /* Units */ = {
 			isa = PBXGroup;
 			children = (
-				4CCFE6372CB9BCDF00AF29F1 /* List */,
 				4CCFE6362CB9BBF000AF29F1 /* Hierarchy */,
 			);
 			path = Units;
@@ -853,13 +852,6 @@
 				4C8C6CCE2C67DC2F00E09697 /* Localization */,
 			);
 			path = Hierarchy;
-			sourceTree = "<group>";
-		};
-		4CCFE6372CB9BCDF00AF29F1 /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
 			sourceTree = "<group>";
 		};
 		4CCFE63A2CB9BEFB00AF29F1 /* Presenter */ = {

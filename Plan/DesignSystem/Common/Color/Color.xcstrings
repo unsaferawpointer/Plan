@@ -65,6 +65,38 @@
         }
       }
     },
+    "indigo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indigo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Индиго"
+          }
+        }
+      }
+    },
+    "mint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mint"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Мятный"
+          }
+        }
+      }
+    },
     "orange" : {
       "localizations" : {
         "en" : {
@@ -77,6 +109,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Оранжевый"
+          }
+        }
+      }
+    },
+    "pink" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pink"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Розовый"
           }
         }
       }
@@ -157,6 +205,22 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Вторичный"
+          }
+        }
+      }
+    },
+    "teal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бирюзовый"
           }
         }
       }
