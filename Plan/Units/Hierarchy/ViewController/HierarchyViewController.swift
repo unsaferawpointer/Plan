@@ -76,6 +76,7 @@ class HierarchyViewController: NSViewController {
 		self.view = NSView()
 		configureUserInterface()
 		configureConstraints()
+		configureObservers()
 	}
 
 	override func viewDidLoad() {
@@ -151,6 +152,16 @@ extension HierarchyViewController: PlanView {
 
 // MARK: - Helpers
 private extension HierarchyViewController {
+
+	func configureObservers() {
+		NotificationCenter.default.addObserver(
+			forName: .newItem,
+			object: nil,
+			queue: .main
+		) { [weak self] notification in
+			self?.output?.createNew()
+		}
+	}
 
 	func configureUserInterface() {
 

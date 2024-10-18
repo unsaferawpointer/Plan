@@ -68,7 +68,6 @@
 		4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA12C5FDDF800474956 /* DropConfiguration.swift */; };
 		4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */; };
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
-		4C298EE82C5FE17100474956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C298EE72C5FE15700474956 /* Main.storyboard */; };
 		4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C802C87990900C7DF6E /* ValueFormatter.swift */; };
 		4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C822C8A22A200C7DF6E /* CellModel.swift */; };
 		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
@@ -112,6 +111,9 @@
 		4C9FFEF32C920C31005FC397 /* TextConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9FFEF22C920C31005FC397 /* TextConfiguration.swift */; };
 		4C9FFEF52C920C5A005FC397 /* TextValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9FFEF42C920C5A005FC397 /* TextValidation.swift */; };
 		4C9FFEF72C920CBD005FC397 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9FFEF62C920CBD005FC397 /* TextModel.swift */; };
+		4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */; };
+		4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */; };
+		4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */; };
 		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */; };
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
 		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
@@ -216,7 +218,6 @@
 		4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extension.swift"; sourceTree = "<group>"; };
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
-		4C298EE72C5FE15700474956 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C365C802C87990900C7DF6E /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		4C365C822C8A22A200C7DF6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
@@ -261,6 +262,9 @@
 		4C9FFEF22C920C31005FC397 /* TextConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConfiguration.swift; sourceTree = "<group>"; };
 		4C9FFEF42C920C5A005FC397 /* TextValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidation.swift; sourceTree = "<group>"; };
 		4C9FFEF62C920CBD005FC397 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
+		4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentWindowController.swift; sourceTree = "<group>"; };
+		4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
+		4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppLocalizable.xcstrings; sourceTree = "<group>"; };
 		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_0_0.json; sourceTree = "<group>"; };
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 			isa = PBXGroup;
 			children = (
 				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
+				4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */,
+				4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -414,7 +420,6 @@
 		4C298E7F2C5FDC5700474956 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EE72C5FE15700474956 /* Main.storyboard */,
 				4C298E572C5FDC2100474956 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -582,6 +587,7 @@
 				4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */,
 				4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */,
 				4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */,
+				4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -986,9 +992,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */,
 				4CCFE62B2CB4768800AF29F1 /* Color.xcstrings in Resources */,
 				4CFDFEA92CB2D000000A6C2B /* README.md in Resources */,
-				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
 				4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */,
 				4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */,
 				4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */,
@@ -1029,6 +1035,7 @@
 				4CCCFA6F2C7CF173002DDD95 /* HierarchyViewController+NSMenuItemValidation.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
+				4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
 				4C298EC62C5FDEA500474956 /* Sequence+Extension.swift in Sources */,
 				4C0259202CA9EF5B0045B3CF /* main.swift in Sources */,
@@ -1063,6 +1070,7 @@
 				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4C02592A2CAC77830045B3CF /* PasteboardSupportable.swift in Sources */,
+				4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
