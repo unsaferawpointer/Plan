@@ -114,6 +114,7 @@
 		4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */; };
 		4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */; };
 		4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */; };
+		4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */; };
 		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */; };
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
 		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
@@ -265,6 +266,7 @@
 		4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentWindowController.swift; sourceTree = "<group>"; };
 		4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppLocalizable.xcstrings; sourceTree = "<group>"; };
+		4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarPage.swift; sourceTree = "<group>"; };
 		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_0_0.json; sourceTree = "<group>"; };
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 			children = (
 				4C8C6CF52C78FFB800E09697 /* AppPage.swift */,
 				4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */,
+				4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 				4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */,
 				4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */,
 				4C298E732C5FDC2100474956 /* PlanUITestsLaunchTests.swift in Sources */,
+				4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

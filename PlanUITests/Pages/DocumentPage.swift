@@ -13,10 +13,13 @@ final class DocumentPage {
 
 	let outline: XCUIElement
 
+	let bottomBar: BottomBarPage
+
 	init(window: XCUIElement) {
 		precondition(window.elementType == .window, "It is not window")
 		self.window = window
 		self.outline = window.outlines.firstMatch
+		self.bottomBar = BottomBarPage(element: window.groups["bottom-bar"])
 	}
 }
 
@@ -43,21 +46,6 @@ extension DocumentPage {
 		for _ in 0..<count {
 			button.click()
 		}
-	}
-
-	func checkLeadingLabel(expectedTitle title: String) {
-		let value = bottomBar().staticTexts["leading-label"].value
-		XCTAssertEqual(title, value as? String)
-	}
-
-	func checkTrailingLabel(expectedTitle title: String) {
-		let value = bottomBar().staticTexts["trailing-label"].value
-		XCTAssertEqual(title, value as? String)
-	}
-
-	func checkProgress(expectedValue progress: Double) {
-		let value = bottomBar().progressIndicators["progress"].value
-		XCTAssertEqual(progress, value as? Double)
 	}
 
 	var rowsCount: Int {
@@ -132,9 +120,5 @@ private extension DocumentPage {
 		return outline
 			.children(matching: .outlineRow)
 			.element(boundBy: index)
-	}
-
-	func bottomBar() -> XCUIElement {
-		return window.groups["bottom-bar"]
 	}
 }
