@@ -80,6 +80,34 @@ enum IconName: Int {
 	case building2 = 501
 	case building = 502
 	case buildingColumns = 503
+
+	// MARK: - Shapes [600 - 649]
+	case circle = 600
+	case square	= 601
+	case triangle = 602
+	case diamond = 603
+	case hexagon = 604
+	case pentagon = 605
+	case rhombus = 606
+	case shield = 607
+	case seal = 608
+
+	// MARK: - Wheather [650 - 700]
+	case sunMax = 650
+	case moon = 651
+	case moonStars = 652
+	case cloudSun = 653
+	case cloud = 654
+	case cloudHeavyRain = 655
+	case cloudSnow = 656
+	case cloudBolt = 657
+	case smoke = 658
+	case tornado = 659
+	case rainbow = 660
+	case flame = 661
+	case bolt = 662
+	case mountain2 = 663
+
 }
 
 // MARK: - Codable
@@ -153,11 +181,38 @@ extension IconName {
 		case .gymBag: "gym.bag.fill"
 		case .suitcase: "suitcase.fill"
 
-			// MARK: - Building
+		// MARK: - Building
 		case .house: "house.fill"
 		case .building2: "building.2.fill"
 		case .building: "building.fill"
 		case .buildingColumns: "building.columns.fill"
+
+		// MARK: - Shapes
+		case .circle: "circle.fill"
+		case .square: "square.fill"
+		case .triangle: "triangle.fill"
+		case .diamond: "diamond.fill"
+		case .hexagon: "hexagon.fill"
+		case .pentagon: "pentagon.fill"
+		case .rhombus: "rhombus.fill"
+		case .shield: "shield.fill"
+		case .seal: "seal.fill"
+
+		// MARK: - Weather
+		case .sunMax: "sun.max.fill"
+		case .moon: "moon.fill"
+		case .moonStars: "moon.stars.fill"
+		case .cloud: "cloud.fill"
+		case .cloudHeavyRain: "cloud.heavyrain.fill"
+		case .cloudSnow: "cloud.snow.fill"
+		case .cloudBolt: "cloud.bolt.fill"
+		case .smoke: "smoke.fill"
+		case .tornado: "tornado"
+		case .rainbow: "rainbow"
+		case .flame: "flame.fill"
+		case .bolt: "bolt.fill"
+		case .mountain2: "mountain.2.fill"
+		case .cloudSun: "cloud.sun.fill"
 		}
 	}
 }

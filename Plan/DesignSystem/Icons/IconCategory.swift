@@ -14,6 +14,8 @@ enum IconCategory: String{
 	case health
 	case lifestyle
 	case building
+	case shapes
+	case weather
 }
 
 // MARK: - Computed properties
@@ -33,6 +35,10 @@ extension IconCategory {
 			return String(localized: "life_category", table: "Icons")
 		case .building:
 			return String(localized: "building_category", table: "Icons")
+		case .shapes:
+			return String(localized: "shapes_category", table: "Icons")
+		case .weather:
+			return String(localized: "weather_category", table: "Icons")
 		}
 	}
 
@@ -112,6 +118,35 @@ extension IconCategory {
 				.building2,
 				.buildingColumns,
 			]
+		case .shapes:
+			[
+				.circle,
+				.square,
+				.triangle,
+				.diamond,
+				.hexagon,
+				.pentagon,
+				.rhombus,
+				.shield,
+				.seal
+			]
+		case .weather:
+			[
+				.sunMax,
+				.moon,
+				.moonStars,
+				.cloud,
+				.cloudHeavyRain,
+				.cloudSnow,
+				.cloudBolt,
+				.smoke,
+				.tornado,
+				.rainbow,
+				.flame,
+				.bolt,
+				.mountain2,
+				.cloudSun
+			]
 		}
 	}
 }
@@ -120,6 +155,6 @@ extension IconCategory {
 extension IconCategory: CaseIterable {
 
 	static var allCases: [IconCategory] {
-		return [.objects, .sport, .devices, .health, .lifestyle, .building]
+		return [.objects, .sport, .devices, .health, .lifestyle, .building, .shapes, .weather]
 	}
 }

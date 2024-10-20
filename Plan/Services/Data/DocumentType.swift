@@ -17,7 +17,7 @@ extension DocumentType {
 	var lastVersion: Version {
 		switch self {
 		case .plan:
-			return .init(major: 1)
+			return .init(major: 1, minor: 1)
 		}
 	}
 }

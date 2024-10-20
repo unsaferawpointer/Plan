@@ -54,14 +54,13 @@
 		4C298ED52C5FDEAC00474956 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E852C5FDD7700474956 /* Root.swift */; };
 		4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */; };
 		4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E992C5FDDE200474956 /* PlanDocument.swift */; };
-		4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAA2C5FDE1A00474956 /* ItemDataProvider.swift */; };
-		4C298ED92C5FDEBC00474956 /* PlanAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */; };
-		4C298EDA2C5FDEBC00474956 /* PlanItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */; };
+		4C298ED92C5FDEBC00474956 /* HierarchyAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA72C5FDE0A00474956 /* HierarchyAssembly.swift */; };
+		4C298EDA2C5FDEBC00474956 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA42C5FDE0A00474956 /* ItemCell.swift */; };
 		4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA92C5FDE1A00474956 /* TransferNode.swift */; };
 		4C298EDC2C5FDEBC00474956 /* HierarchyDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */; };
-		4C298EDD2C5FDEBC00474956 /* PlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */; };
-		4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA62C5FDE0A00474956 /* PlanViewController.swift */; };
-		4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E982C5FDDE200474956 /* HierarchyContent.swift */; };
+		4C298EDD2C5FDEBC00474956 /* HierarchyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA52C5FDE0A00474956 /* HierarchyPresenter.swift */; };
+		4C298EDE2C5FDEBC00474956 /* HierarchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA62C5FDE0A00474956 /* HierarchyViewController.swift */; };
+		4C298EDF2C5FDEBC00474956 /* PlanContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E982C5FDDE200474956 /* PlanContent.swift */; };
 		4C298EE02C5FDEBC00474956 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9A2C5FDDE200474956 /* DataProvider.swift */; };
 		4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */; };
 		4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */; };
@@ -69,16 +68,15 @@
 		4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA12C5FDDF800474956 /* DropConfiguration.swift */; };
 		4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */; };
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
-		4C298EE82C5FE17100474956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C298EE72C5FE15700474956 /* Main.storyboard */; };
 		4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C802C87990900C7DF6E /* ValueFormatter.swift */; };
 		4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C822C8A22A200C7DF6E /* CellModel.swift */; };
 		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
-		4C81FB612C5FF9D7006300E6 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* PlanModel.swift */; };
+		4C81FB612C5FF9D7006300E6 /* HierarchyUnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */; };
 		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
-		4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* PlanLocalization.swift */; };
-		4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */; };
+		4C81FB652C601810006300E6 /* HierarchyLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* HierarchyLocalization.swift */; };
+		4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */; };
 		4C85143F2C7E486100C7475C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85143E2C7E486100C7475C /* TableCell.swift */; };
-		4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514422C7E4D3500C7475C /* PlanItemModel.swift */; };
+		4C8514432C7E4D3500C7475C /* ItemCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514422C7E4D3500C7475C /* ItemCellModel.swift */; };
 		4C8514462C7E4D9D00C7475C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514452C7E4D9D00C7475C /* Color.swift */; };
 		4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514472C80DCCA00C7475C /* AnyColumn.swift */; };
 		4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85144B2C8235C700C7475C /* PlanPresenterTests.swift */; };
@@ -93,35 +91,41 @@
 		4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */; };
 		4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */; };
 		4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */; };
-		4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */; };
+		4C8C6CC92C67ACA300E09697 /* HierarchyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CC82C67ACA300E09697 /* HierarchyInteractor.swift */; };
 		4C8C6CD12C67E94400E09697 /* ItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD02C67E94400E09697 /* ItemStatus.swift */; };
 		4C8C6CD42C68D28700E09697 /* TextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD32C68D28700E09697 /* TextParser.swift */; };
 		4C8C6CD82C68F44000E09697 /* TextParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD72C68F44000E09697 /* TextParserTests.swift */; };
 		4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */; };
 		4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */; };
 		4C8C6CE02C6A689900E09697 /* PasteboardFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */; };
-		4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */; };
+		4C8C6CE42C6A745A00E09697 /* HierarchyPresenter+HierarchyDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE32C6A745A00E09697 /* HierarchyPresenter+HierarchyDropDelegate.swift */; };
 		4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */; };
 		4C8C6CED2C72695B00E09697 /* PasteboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEC2C72695B00E09697 /* PasteboardInfo.swift */; };
 		4C8C6CEF2C72708800E09697 /* HierarchyTableDropLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */; };
 		4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */; };
 		4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CF52C78FFB800E09697 /* AppPage.swift */; };
-		4C8C6CFB2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1.json */; };
+		4C8C6CFB2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json */; };
 		4C8C6CFE2C7A582700E09697 /* PlanDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CFD2C7A582700E09697 /* PlanDataProviderTests.swift */; };
 		4C8C6D002C7A604A00E09697 /* UUID+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C6CFF2C7A604A00E09697 /* UUID+Extension.swift */; };
-		4C8C6D032C7A803D00E09697 /* mock_plan_doc_unexpected_format_v1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1.json */; };
+		4C8C6D032C7A803D00E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json */; };
 		4C9FFEF32C920C31005FC397 /* TextConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9FFEF22C920C31005FC397 /* TextConfiguration.swift */; };
 		4C9FFEF52C920C5A005FC397 /* TextValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9FFEF42C920C5A005FC397 /* TextValidation.swift */; };
 		4C9FFEF72C920CBD005FC397 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9FFEF62C920CBD005FC397 /* TextModel.swift */; };
-		4CBAC42B2C7A832D00534CC3 /* PlanVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAC42A2C7A832D00534CC3 /* PlanVersion.swift */; };
-		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */; };
+		4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */; };
+		4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */; };
+		4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */; };
+		4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */; };
+		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */; };
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
 		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
 		4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA612C7BB611002DDD95 /* TextCell.swift */; };
 		4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */; };
 		4CCCFA6A2C7CF04F002DDD95 /* NSTableColumn+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */; };
-		4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */; };
-		4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */; };
+		4CCCFA6D2C7CF10B002DDD95 /* HierarchyViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6C2C7CF10B002DDD95 /* HierarchyViewController+MenuSupportable.swift */; };
+		4CCCFA6F2C7CF173002DDD95 /* HierarchyViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA6E2C7CF173002DDD95 /* HierarchyViewController+NSMenuItemValidation.swift */; };
+		4CCFE6282CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CCFE6272CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json */; };
+		4CCFE62B2CB4768800AF29F1 /* Color.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CCFE62A2CB4768800AF29F1 /* Color.xcstrings */; };
+		4CCFE6342CB84AB100AF29F1 /* BasicFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFE6332CB84AB100AF29F1 /* BasicFormatterTests.swift */; };
 		4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69F252C98C121009D06AD /* Menu.xcstrings */; };
 		4CFDFE9D2CAEFBFB000A6C2B /* ItemPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */; };
 		4CFDFEA02CAF1836000A6C2B /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */; };
@@ -188,7 +192,7 @@
 		4C298E942C5FDDB500474956 /* ContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
 		4C298E962C5FDDCB00474956 /* EntityOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityOptions.swift; sourceTree = "<group>"; };
 		4C298E972C5FDDCB00474956 /* ItemContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContent.swift; sourceTree = "<group>"; };
-		4C298E982C5FDDE200474956 /* HierarchyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyContent.swift; sourceTree = "<group>"; };
+		4C298E982C5FDDE200474956 /* PlanContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanContent.swift; sourceTree = "<group>"; };
 		4C298E992C5FDDE200474956 /* PlanDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDocument.swift; sourceTree = "<group>"; };
 		4C298E9A2C5FDDE200474956 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyStringPresenter.swift; sourceTree = "<group>"; };
@@ -198,12 +202,11 @@
 		4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableAnimator.swift; sourceTree = "<group>"; };
 		4C298EA12C5FDDF800474956 /* DropConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConfiguration.swift; sourceTree = "<group>"; };
 		4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchySnapshot.swift; sourceTree = "<group>"; };
-		4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItemCell.swift; sourceTree = "<group>"; };
-		4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPresenter.swift; sourceTree = "<group>"; };
-		4C298EA62C5FDE0A00474956 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
-		4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAssembly.swift; sourceTree = "<group>"; };
+		4C298EA42C5FDE0A00474956 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		4C298EA52C5FDE0A00474956 /* HierarchyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyPresenter.swift; sourceTree = "<group>"; };
+		4C298EA62C5FDE0A00474956 /* HierarchyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyViewController.swift; sourceTree = "<group>"; };
+		4C298EA72C5FDE0A00474956 /* HierarchyAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyAssembly.swift; sourceTree = "<group>"; };
 		4C298EA92C5FDE1A00474956 /* TransferNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferNode.swift; sourceTree = "<group>"; };
-		4C298EAA2C5FDE1A00474956 /* ItemDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataProvider.swift; sourceTree = "<group>"; };
 		4C298EAC2C5FDE2D00474956 /* IconCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCategory.swift; sourceTree = "<group>"; };
 		4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		4C298EB02C5FDE4600474956 /* MenuBuilder+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuBuilder+Item.swift"; sourceTree = "<group>"; };
@@ -216,16 +219,15 @@
 		4C298EB82C5FDE6700474956 /* NSImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extension.swift"; sourceTree = "<group>"; };
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
-		4C298EE72C5FE15700474956 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C365C802C87990900C7DF6E /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		4C365C822C8A22A200C7DF6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
-		4C81FB602C5FF9D7006300E6 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyUnitModel.swift; sourceTree = "<group>"; };
 		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
-		4C81FB642C601810006300E6 /* PlanLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLocalization.swift; sourceTree = "<group>"; };
-		4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = PlanLocalizable.xcstrings; sourceTree = "<group>"; };
+		4C81FB642C601810006300E6 /* HierarchyLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyLocalization.swift; sourceTree = "<group>"; };
+		4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = HierarchyLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C85143E2C7E486100C7475C /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
-		4C8514422C7E4D3500C7475C /* PlanItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItemModel.swift; sourceTree = "<group>"; };
+		4C8514422C7E4D3500C7475C /* ItemCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellModel.swift; sourceTree = "<group>"; };
 		4C8514452C7E4D9D00C7475C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4C8514472C80DCCA00C7475C /* AnyColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyColumn.swift; sourceTree = "<group>"; };
 		4C85144A2C82300100C7475C /* Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Plan.xctestplan; sourceTree = "<group>"; };
@@ -241,35 +243,41 @@
 		4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractorMock.swift; sourceTree = "<group>"; };
 		4C8C6CC02C62A37400E09697 /* HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDropDelegate.swift; sourceTree = "<group>"; };
 		4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactory.swift; sourceTree = "<group>"; };
-		4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
+		4C8C6CC82C67ACA300E09697 /* HierarchyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyInteractor.swift; sourceTree = "<group>"; };
 		4C8C6CD02C67E94400E09697 /* ItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatus.swift; sourceTree = "<group>"; };
 		4C8C6CD32C68D28700E09697 /* TextParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextParser.swift; sourceTree = "<group>"; };
 		4C8C6CD72C68F44000E09697 /* TextParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextParserTests.swift; sourceTree = "<group>"; };
 		4C8C6CD92C68FB1900E09697 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		4C8C6CDB2C692B8C00E09697 /* ParserConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserConfiguration.swift; sourceTree = "<group>"; };
 		4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardFacade.swift; sourceTree = "<group>"; };
-		4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
+		4C8C6CE32C6A745A00E09697 /* HierarchyPresenter+HierarchyDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HierarchyPresenter+HierarchyDropDelegate.swift"; sourceTree = "<group>"; };
 		4C8C6CE82C6BD65A00E09697 /* BasicFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatter.swift; sourceTree = "<group>"; };
 		4C8C6CEC2C72695B00E09697 /* PasteboardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardInfo.swift; sourceTree = "<group>"; };
 		4C8C6CEE2C72708800E09697 /* HierarchyTableDropLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableDropLogic.swift; sourceTree = "<group>"; };
 		4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPage.swift; sourceTree = "<group>"; };
 		4C8C6CF52C78FFB800E09697 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
-		4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_unknown_version_v1.json; sourceTree = "<group>"; };
+		4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_unknown_version_v1_0_0.json; sourceTree = "<group>"; };
 		4C8C6CFD2C7A582700E09697 /* PlanDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDataProviderTests.swift; sourceTree = "<group>"; };
 		4C8C6CFF2C7A604A00E09697 /* UUID+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extension.swift"; sourceTree = "<group>"; };
-		4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_unexpected_format_v1.json; sourceTree = "<group>"; };
+		4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_unexpected_format_v1_0_0.json; sourceTree = "<group>"; };
 		4C9FFEF22C920C31005FC397 /* TextConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConfiguration.swift; sourceTree = "<group>"; };
 		4C9FFEF42C920C5A005FC397 /* TextValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidation.swift; sourceTree = "<group>"; };
 		4C9FFEF62C920CBD005FC397 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
-		4CBAC42A2C7A832D00534CC3 /* PlanVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanVersion.swift; sourceTree = "<group>"; };
-		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1.json; sourceTree = "<group>"; };
+		4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentWindowController.swift; sourceTree = "<group>"; };
+		4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
+		4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppLocalizable.xcstrings; sourceTree = "<group>"; };
+		4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarPage.swift; sourceTree = "<group>"; };
+		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_0_0.json; sourceTree = "<group>"; };
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
 		4CCCFA612C7BB611002DDD95 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumn.swift; sourceTree = "<group>"; };
 		4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableColumn+Extension.swift"; sourceTree = "<group>"; };
-		4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
-		4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
+		4CCCFA6C2C7CF10B002DDD95 /* HierarchyViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HierarchyViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
+		4CCCFA6E2C7CF173002DDD95 /* HierarchyViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HierarchyViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
+		4CCFE6272CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_1_0.json; sourceTree = "<group>"; };
+		4CCFE62A2CB4768800AF29F1 /* Color.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Color.xcstrings; sourceTree = "<group>"; };
+		4CCFE6332CB84AB100AF29F1 /* BasicFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatterTests.swift; sourceTree = "<group>"; };
 		4CE69F252C98C121009D06AD /* Menu.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Menu.xcstrings; sourceTree = "<group>"; };
 		4CFDFE9C2CAEFBFB000A6C2B /* ItemPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPriority.swift; sourceTree = "<group>"; };
 		4CFDFE9F2CAF1836000A6C2B /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -325,6 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				4C298E512C5FDC2000474956 /* AppDelegate.swift */,
+				4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */,
+				4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -383,6 +393,7 @@
 				4C298E8A2C5FDD8800474956 /* Services */,
 				4C298E822C5FDD5A00474956 /* Common */,
 				4C298EAB2C5FDE2100474956 /* DesignSystem */,
+				4CCFE6352CB9BBE200AF29F1 /* Units */,
 				4C298E802C5FDD2C00474956 /* Docs */,
 			);
 			path = Plan;
@@ -411,7 +422,6 @@
 		4C298E7F2C5FDC5700474956 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EE72C5FE15700474956 /* Main.storyboard */,
 				4C298E572C5FDC2100474956 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -420,23 +430,20 @@
 		4C298E802C5FDD2C00474956 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
-				4C298E812C5FDD3600474956 /* List */,
+				4C298E812C5FDD3600474956 /* Plan */,
 			);
 			path = Docs;
 			sourceTree = "<group>";
 		};
-		4C298E812C5FDD3600474956 /* List */ = {
+		4C298E812C5FDD3600474956 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
 				4C298E992C5FDDE200474956 /* PlanDocument.swift */,
 				4C298E9A2C5FDDE200474956 /* DataProvider.swift */,
 				4C02590A2CA044700045B3CF /* Helpers */,
-				4C8C6CCD2C67DC1400E09697 /* Views */,
 				4C298EA82C5FDE1300474956 /* Models */,
-				4C298EA32C5FDE0200474956 /* Unit */,
-				4C298E9D2C5FDDEC00474956 /* TableAdapter */,
 			);
-			path = List;
+			path = Plan;
 			sourceTree = "<group>";
 		};
 		4C298E822C5FDD5A00474956 /* Common */ = {
@@ -524,27 +531,11 @@
 			path = TableAdapter;
 			sourceTree = "<group>";
 		};
-		4C298EA32C5FDE0200474956 /* Unit */ = {
-			isa = PBXGroup;
-			children = (
-				4C85144F2C824E0700C7475C /* Factories */,
-				4C8C6CCE2C67DC2F00E09697 /* Localization */,
-				4C298EA72C5FDE0A00474956 /* PlanAssembly.swift */,
-				4C8C6CC82C67ACA300E09697 /* PlanInteractor.swift */,
-				4C8C6CE22C6A742700E09697 /* Presenter */,
-				4CCCFA6B2C7CF0F0002DDD95 /* ViewController */,
-				4C81FB602C5FF9D7006300E6 /* PlanModel.swift */,
-			);
-			path = Unit;
-			sourceTree = "<group>";
-		};
 		4C298EA82C5FDE1300474956 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4C298E982C5FDDE200474956 /* HierarchyContent.swift */,
-				4C298EAA2C5FDE1A00474956 /* ItemDataProvider.swift */,
+				4C298E982C5FDDE200474956 /* PlanContent.swift */,
 				4C298EA92C5FDE1A00474956 /* TransferNode.swift */,
-				4CBAC42A2C7A832D00534CC3 /* PlanVersion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -566,6 +557,7 @@
 		4C298EAD2C5FDE3300474956 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C6CCD2C67DC1400E09697 /* ItemCell */,
 				4CFDFE9E2CAF181A000A6C2B /* IconCell */,
 				4C9FFEF12C920C1B005FC397 /* TextCell */,
 				4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */,
@@ -597,6 +589,7 @@
 				4C298EB92C5FDE6700474956 /* NSTableView+Extension.swift */,
 				4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */,
 				4CCCFA692C7CF04F002DDD95 /* NSTableColumn+Extension.swift */,
+				4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -626,7 +619,7 @@
 		4C8514442C7E4D9000C7475C /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4C8514452C7E4D9D00C7475C /* Color.swift */,
+				4CCFE6292CB4767500AF29F1 /* Color */,
 				4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */,
 				4C02592B2CAC787B0045B3CF /* TableSupportable.swift */,
 				4C365C802C87990900C7DF6E /* ValueFormatter.swift */,
@@ -659,20 +652,20 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		4C8C6CCD2C67DC1400E09697 /* Views */ = {
+		4C8C6CCD2C67DC1400E09697 /* ItemCell */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EA42C5FDE0A00474956 /* PlanItemCell.swift */,
-				4C8514422C7E4D3500C7475C /* PlanItemModel.swift */,
+				4C298EA42C5FDE0A00474956 /* ItemCell.swift */,
+				4C8514422C7E4D3500C7475C /* ItemCellModel.swift */,
 			);
-			path = Views;
+			path = ItemCell;
 			sourceTree = "<group>";
 		};
 		4C8C6CCE2C67DC2F00E09697 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4C81FB662C60BB2D006300E6 /* PlanLocalizable.xcstrings */,
-				4C81FB642C601810006300E6 /* PlanLocalization.swift */,
+				4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */,
+				4C81FB642C601810006300E6 /* HierarchyLocalization.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -697,6 +690,7 @@
 		4C8C6CD52C68F41C00E09697 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4CCFE6322CB84A9400AF29F1 /* BasicFormatter */,
 				4C8C6CD62C68F42200E09697 /* TextParser */,
 			);
 			path = Services;
@@ -716,15 +710,6 @@
 				4C8C6CDF2C6A689900E09697 /* PasteboardFacade.swift */,
 			);
 			path = Pasteboard;
-			sourceTree = "<group>";
-		};
-		4C8C6CE22C6A742700E09697 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				4C298EA52C5FDE0A00474956 /* PlanPresenter.swift */,
-				4C8C6CE32C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift */,
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		4C8C6CE72C6BD63D00E09697 /* BasicFormatter */ = {
@@ -749,6 +734,7 @@
 			children = (
 				4C8C6CF52C78FFB800E09697 /* AppPage.swift */,
 				4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */,
+				4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -775,6 +761,7 @@
 		4C8C6CF92C7A556900E09697 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CCFE6242CB4708100AF29F1 /* v1.1 */,
 				4CBAC4292C7A829600534CC3 /* v1 */,
 			);
 			path = Resources;
@@ -812,9 +799,9 @@
 		4CBAC4292C7A829600534CC3 /* v1 */ = {
 			isa = PBXGroup;
 			children = (
-				4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1.json */,
-				4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1.json */,
-				4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1.json */,
+				4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json */,
+				4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json */,
+				4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */,
 			);
 			path = v1;
 			sourceTree = "<group>";
@@ -822,11 +809,68 @@
 		4CCCFA6B2C7CF0F0002DDD95 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4C298EA62C5FDE0A00474956 /* PlanViewController.swift */,
-				4CCCFA6C2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift */,
-				4CCCFA6E2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift */,
+				4C298E9D2C5FDDEC00474956 /* TableAdapter */,
+				4C298EA62C5FDE0A00474956 /* HierarchyViewController.swift */,
+				4CCCFA6C2C7CF10B002DDD95 /* HierarchyViewController+MenuSupportable.swift */,
+				4CCCFA6E2C7CF173002DDD95 /* HierarchyViewController+NSMenuItemValidation.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4CCFE6242CB4708100AF29F1 /* v1.1 */ = {
+			isa = PBXGroup;
+			children = (
+				4CCFE6272CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json */,
+			);
+			path = v1.1;
+			sourceTree = "<group>";
+		};
+		4CCFE6292CB4767500AF29F1 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				4C8514452C7E4D9D00C7475C /* Color.swift */,
+				4CCFE62A2CB4768800AF29F1 /* Color.xcstrings */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		4CCFE6322CB84A9400AF29F1 /* BasicFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				4CCFE6332CB84AB100AF29F1 /* BasicFormatterTests.swift */,
+			);
+			path = BasicFormatter;
+			sourceTree = "<group>";
+		};
+		4CCFE6352CB9BBE200AF29F1 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				4CCFE6362CB9BBF000AF29F1 /* Hierarchy */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
+		4CCFE6362CB9BBF000AF29F1 /* Hierarchy */ = {
+			isa = PBXGroup;
+			children = (
+				4C298EA72C5FDE0A00474956 /* HierarchyAssembly.swift */,
+				4C8C6CC82C67ACA300E09697 /* HierarchyInteractor.swift */,
+				4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */,
+				4CCCFA6B2C7CF0F0002DDD95 /* ViewController */,
+				4CCFE63A2CB9BEFB00AF29F1 /* Presenter */,
+				4C8C6CCE2C67DC2F00E09697 /* Localization */,
+			);
+			path = Hierarchy;
+			sourceTree = "<group>";
+		};
+		4CCFE63A2CB9BEFB00AF29F1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4C85144F2C824E0700C7475C /* Factories */,
+				4C298EA52C5FDE0A00474956 /* HierarchyPresenter.swift */,
+				4C8C6CE32C6A745A00E09697 /* HierarchyPresenter+HierarchyDropDelegate.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		4CFDFE9E2CAF181A000A6C2B /* IconCell */ = {
@@ -951,9 +995,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */,
+				4CCFE62B2CB4768800AF29F1 /* Color.xcstrings in Resources */,
 				4CFDFEA92CB2D000000A6C2B /* README.md in Resources */,
-				4C298EE82C5FE17100474956 /* Main.storyboard in Resources */,
-				4C81FB672C60BB2D006300E6 /* PlanLocalizable.xcstrings in Resources */,
+				4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */,
 				4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */,
 				4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */,
 				4C298E582C5FDC2100474956 /* Assets.xcassets in Resources */,
@@ -964,9 +1009,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1.json in Resources */,
-				4C8C6CFB2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1.json in Resources */,
-				4C8C6D032C7A803D00E09697 /* mock_plan_doc_unexpected_format_v1.json in Resources */,
+				4CCFE6282CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json in Resources */,
+				4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */,
+				4C8C6CFB2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json in Resources */,
+				4C8C6D032C7A803D00E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,14 +1030,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C81FB612C5FF9D7006300E6 /* PlanModel.swift in Sources */,
+				4C81FB612C5FF9D7006300E6 /* HierarchyUnitModel.swift in Sources */,
 				4C8C6CDA2C68FB1900E09697 /* Collection+Extension.swift in Sources */,
 				4C8514462C7E4D9D00C7475C /* Color.swift in Sources */,
 				4C298EBF2C5FDE6700474956 /* NSTextField+Extension.swift in Sources */,
-				4C81FB652C601810006300E6 /* PlanLocalization.swift in Sources */,
-				4CCCFA6F2C7CF173002DDD95 /* PlanViewController+NSMenuItemValidation.swift in Sources */,
+				4C81FB652C601810006300E6 /* HierarchyLocalization.swift in Sources */,
+				4CCCFA6F2C7CF173002DDD95 /* HierarchyViewController+NSMenuItemValidation.swift in Sources */,
 				4C298E522C5FDC2000474956 /* AppDelegate.swift in Sources */,
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
+				4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
 				4C298EC62C5FDEA500474956 /* Sequence+Extension.swift in Sources */,
 				4C0259202CA9EF5B0045B3CF /* main.swift in Sources */,
@@ -1003,9 +1050,9 @@
 				4C298EC82C5FDEA500474956 /* ItemContent.swift in Sources */,
 				4C0259282CAB2FA60045B3CF /* WorkspaceFacade.swift in Sources */,
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
-				4C8C6CE42C6A745A00E09697 /* PlanPresenter+HierarchyDropDelegate.swift in Sources */,
+				4C8C6CE42C6A745A00E09697 /* HierarchyPresenter+HierarchyDropDelegate.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
-				4C8C6CC92C67ACA300E09697 /* PlanInteractor.swift in Sources */,
+				4C8C6CC92C67ACA300E09697 /* HierarchyInteractor.swift in Sources */,
 				4C298ECB2C5FDEA500474956 /* Dictionary+Extension.swift in Sources */,
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
 				4C298ECD2C5FDEA500474956 /* DocumentFile.swift in Sources */,
@@ -1025,8 +1072,8 @@
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
 				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
-				4CBAC42B2C7A832D00534CC3 /* PlanVersion.swift in Sources */,
 				4C02592A2CAC77830045B3CF /* PasteboardSupportable.swift in Sources */,
+				4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
@@ -1045,29 +1092,28 @@
 				4C298ED62C5FDEBC00474956 /* HierarchyStringPresenter.swift in Sources */,
 				4CFDFEA22CAF18CE000A6C2B /* IconModel.swift in Sources */,
 				4C298ED72C5FDEBC00474956 /* PlanDocument.swift in Sources */,
-				4C298ED82C5FDEBC00474956 /* ItemDataProvider.swift in Sources */,
 				4C8C6CC52C6765F500E09697 /* PlanModelFactory.swift in Sources */,
-				4CCCFA6D2C7CF10B002DDD95 /* PlanViewController+MenuSupportable.swift in Sources */,
+				4CCCFA6D2C7CF10B002DDD95 /* HierarchyViewController+MenuSupportable.swift in Sources */,
 				4C0259222CAB1DCB0045B3CF /* OpenRecentMenu.swift in Sources */,
-				4C298ED92C5FDEBC00474956 /* PlanAssembly.swift in Sources */,
-				4C298EDA2C5FDEBC00474956 /* PlanItemCell.swift in Sources */,
+				4C298ED92C5FDEBC00474956 /* HierarchyAssembly.swift in Sources */,
+				4C298EDA2C5FDEBC00474956 /* ItemCell.swift in Sources */,
 				4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */,
 				4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */,
 				4C9FFEF52C920C5A005FC397 /* TextValidation.swift in Sources */,
 				4C298EDC2C5FDEBC00474956 /* HierarchyDestination.swift in Sources */,
-				4C298EDD2C5FDEBC00474956 /* PlanPresenter.swift in Sources */,
+				4C298EDD2C5FDEBC00474956 /* HierarchyPresenter.swift in Sources */,
 				4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */,
 				4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */,
 				4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */,
 				4C02592E2CAC7A180045B3CF /* OutlineSupportable.swift in Sources */,
-				4C8514432C7E4D3500C7475C /* PlanItemModel.swift in Sources */,
+				4C8514432C7E4D3500C7475C /* ItemCellModel.swift in Sources */,
 				4C8C6CD42C68D28700E09697 /* TextParser.swift in Sources */,
 				4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */,
 				4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */,
-				4C298EDE2C5FDEBC00474956 /* PlanViewController.swift in Sources */,
+				4C298EDE2C5FDEBC00474956 /* HierarchyViewController.swift in Sources */,
 				4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */,
 				4C9FFEF72C920CBD005FC397 /* TextModel.swift in Sources */,
-				4C298EDF2C5FDEBC00474956 /* HierarchyContent.swift in Sources */,
+				4C298EDF2C5FDEBC00474956 /* PlanContent.swift in Sources */,
 				4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */,
 				4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */,
 				4C0259262CAB2CBD0045B3CF /* DocumentControllerFacade.swift in Sources */,
@@ -1094,6 +1140,7 @@
 				4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */,
 				4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */,
 				4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */,
+				4CCFE6342CB84AB100AF29F1 /* BasicFormatterTests.swift in Sources */,
 				4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */,
 				4C8514562C832ED300C7475C /* PlanColumnsFactoryMock.swift in Sources */,
 				4C02590E2CA354360045B3CF /* PasteboardFacadeMock.swift in Sources */,
@@ -1111,6 +1158,7 @@
 				4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */,
 				4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */,
 				4C298E732C5FDC2100474956 /* PlanUITestsLaunchTests.swift in Sources */,
+				4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1253,12 +1301,12 @@
 		4C298E772C5FDC2100474956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-alpha";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1271,7 +1319,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1287,7 +1335,7 @@
 				CODE_SIGN_ENTITLEMENTS = Plan/Plan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48KV35Y6PN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1300,7 +1348,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zeroindex.Plan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

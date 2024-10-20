@@ -29,6 +29,8 @@ extension Selector {
 
 	static var delete = Selector(("delete:"))
 
+	static var setColor = #selector(MenuSupportable.setColor(_:))
+
 	static var toggleToolbarShown = #selector(NSWindow.toggleToolbarShown(_:))
 
 	static var runToolbarCustomizationPalette = #selector(NSWindow.runToolbarCustomizationPalette(_:))
