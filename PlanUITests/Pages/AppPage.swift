@@ -33,6 +33,10 @@ extension AppPage {
 		return app.windows.firstMatch
 	}
 
+	func windows() -> XCUIElementQuery {
+		return app.windows
+	}
+
 	func closeAll() {
 		for window in app.windows.allElementsBoundByIndex.reversed() {
 			DocumentPage(window: window).close()

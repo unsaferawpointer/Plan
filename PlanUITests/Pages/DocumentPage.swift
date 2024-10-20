@@ -26,6 +26,10 @@ final class DocumentPage {
 // MARK: - Public interface
 extension DocumentPage {
 
+	func checkTitle(_ title: String) -> Bool {
+		return window.staticTexts[title].exists
+	}
+
 	func newItem(in targetRow: Int?) {
 		if let row = targetRow {
 			selectRow(row)
@@ -89,6 +93,16 @@ extension DocumentPage {
 			let deleteButton = savePanel.buttons["DontSaveButton"]
 			deleteButton.click()
 		}
+	}
+
+	func savePanelExists() -> Bool {
+		return window.sheets.firstMatch.exists
+	}
+
+	func clickSavePanelCancleButton() {
+		let savePanel = window.sheets.firstMatch
+		let cancelButton = savePanel.buttons["CancelButton"]
+		cancelButton.firstMatch.click()
 	}
 }
 
