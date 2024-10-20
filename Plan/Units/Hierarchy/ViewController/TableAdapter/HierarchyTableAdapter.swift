@@ -99,7 +99,7 @@ extension HierarchyTableAdapter {
 				table?.removeItems(
 					at: rows,
 					inParent: item,
-					withAnimation: [.effectFade, .slideLeft]
+					withAnimation: [.effectFade, .effectGap]
 				)
 			case .insert(let offset, let parent):
 				let destination = cache[optional: parent]
@@ -107,7 +107,7 @@ extension HierarchyTableAdapter {
 				table?.insertItems(
 					at: rows,
 					inParent: destination,
-					withAnimation: [.effectFade, .slideRight]
+					withAnimation: [.effectFade, .effectGap]
 				)
 			case .reload(let id):
 				guard let item = cache[optional: id] else {
