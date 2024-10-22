@@ -24,7 +24,7 @@ extension PlanViewMock: PlanView {
 		invocations.append(.setDropConfiguration(configuration))
 	}
 	
-	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>]) {
+	func setConfiguration(_ columns: [any TableColumn<ItemViewModel>]) {
 		invocations.append(.setColumnsConfiguration(columns))
 	}
 	
@@ -69,7 +69,7 @@ extension PlanViewMock {
 	enum Action {
 		case display(_ model: HierarchyUnitModel)
 		case setDropConfiguration(_ configuration: DropConfiguration)
-		case setColumnsConfiguration(_ columns: [any TableColumn<HierarchyModel>])
+		case setColumnsConfiguration(_ columns: [any TableColumn<ItemViewModel>])
 		case scroll(id: UUID)
 		case select(_ id: UUID)
 		case expand(_ ids: [UUID])

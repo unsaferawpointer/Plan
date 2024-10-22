@@ -9,6 +9,18 @@ import Cocoa
 
 extension NSTableView {
 
+	static var insetTable: NSTableView {
+		let view = NSTableView()
+		view.style = .inset
+		view.rowSizeStyle = .default
+		view.floatsGroupRows = false
+		view.allowsMultipleSelection = true
+		view.allowsColumnResizing = false
+		view.usesAlternatingRowBackgroundColors = true
+		view.usesAutomaticRowHeights = false
+		return view
+	}
+
 	func effectiveSelection() -> IndexSet {
 		if clickedRow != -1 {
 			if selectedRowIndexes.contains(clickedRow) {

@@ -11,7 +11,7 @@ struct HierarchySnapshot {
 
 	typealias ID = Model.ID
 
-	typealias Model = HierarchyModel
+	typealias Model = ItemViewModel
 
 	// MARK: - Hierarchy
 

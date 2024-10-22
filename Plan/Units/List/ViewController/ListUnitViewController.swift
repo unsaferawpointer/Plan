@@ -1,13 +1,13 @@
 //
-//  HierarchyViewController.swift
+//  ListUnitViewController.swift
 //  Plan
 //
-//  Created by Anton Cherkasov on 29.09.2023.
+//  Created by Anton Cherkasov on 21.10.2024.
 //
 
 import Cocoa
 
-protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
+protocol ListUnitViewOutput: UndoManagerSupportable {
 
 	func viewDidLoad()
 
@@ -26,50 +26,44 @@ protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
 	func setIcon(_ value: IconName?)
 
 	func setColor(_ value: Color?)
-
-	func fold()
-
-	func unfold()
 }
 
-protocol PlanView: AnyObject, OutlineSupportable {
+protocol ListView: AnyObject, TableSupportable {
 
-	func display(_ model: HierarchyUnitModel)
+	func display(_ model: ListUnitViewModel)
 
-	func setConfiguration(_ configuration: DropConfiguration)
-
-	func setConfiguration(_ columns: [any TableColumn<ItemViewModel>])
+	func setConfiguration(_ columns: [any TableColumn<ListItemViewModel>])
 }
 
-class HierarchyViewController: NSViewController {
+final class ListUnitViewController: NSViewController {
 
 	// MARK: - DI
 
-	private(set) var adapter: HierarchyTableAdapter?
+	private(set) var adapter: ListTableAdapter?
 
-	var output: (PlanViewOutput & HierarchyDropDelegate)?
+	var output: ListUnitViewOutput?
 
 	// MARK: - UI-Properties
 
 	lazy var scrollview = NSScrollView.plain
 
-	lazy var table = NSOutlineView.inset
+	lazy var table = NSTableView.insetTable
 
 	lazy var bottomBar = BottomBar(frame: .zero)
 
 	// MARK: - Initialization
 
-	init(configure: (HierarchyViewController) -> Void) {
+	init(configure: (ListUnitViewController) -> Void) {
 		super.init(nibName: nil, bundle: nil)
 		configure(self)
-		self.adapter = HierarchyTableAdapter(table: table)
+		self.adapter = ListTableAdapter(table: table)
 	}
-	
+
 	@available(*, unavailable, message: "Use init(storage:)")
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	// MARK: - View life-cycle
 
 	override func loadView() {
@@ -87,19 +81,17 @@ class HierarchyViewController: NSViewController {
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		table.sizeLastColumnToFit()
-		adapter?.expand([])
 	}
 }
 
 // MARK: - PlanView
-extension HierarchyViewController: PlanView {
+extension ListUnitViewController: ListView {
 
-	func display(_ model: HierarchyUnitModel) {
+	func display(_ model: ListUnitViewModel) {
 		adapter?.apply(model.snapshot)
-		bottomBar.model = model.bottomBar
 	}
 
-	func setConfiguration(_ columns: [any TableColumn<ItemViewModel>]) {
+	func setConfiguration(_ columns: [any TableColumn<ListItemViewModel>]) {
 		for model in columns {
 			let column = NSTableColumn(identifier: .init(rawValue: model.identifier))
 			column.title = model.title
@@ -116,11 +108,6 @@ extension HierarchyViewController: PlanView {
 		adapter?.configure(columns: columns)
 	}
 
-	func setConfiguration(_ configuration: DropConfiguration) {
-		adapter?.dropConfiguration = configuration
-		adapter?.delegate = output
-	}
-
 	func scroll(to id: UUID) {
 		adapter?.scroll(to: id)
 	}
@@ -129,29 +116,17 @@ extension HierarchyViewController: PlanView {
 		adapter?.select(id)
 	}
 
-	func expand(_ ids: [UUID]) {
-		adapter?.expand(ids)
-	}
-
-	func expandAll() {
-		adapter?.expand(nil)
-	}
-
-	func collapse(_ ids: [UUID]) {
-		adapter?.collapse(ids)
-	}
-
 	func focus(on id: UUID) {
 		adapter?.focus(on: id)
 	}
 
 	var selection: [UUID] {
-		return table.selectedIdentifiers()
+		return []
 	}
 }
 
 // MARK: - Helpers
-private extension HierarchyViewController {
+private extension ListUnitViewController {
 
 	func configureObservers() {
 		NotificationCenter.default.addObserver(
@@ -165,7 +140,6 @@ private extension HierarchyViewController {
 
 	func configureUserInterface() {
 
-		table.autoresizesOutlineColumn = false
 		table.allowsMultipleSelection = true
 		table.frame = scrollview.bounds
 
@@ -203,8 +177,8 @@ private extension HierarchyViewController {
 
 	func makeContextMenu() -> NSMenu {
 		return MenuBuilder.makeMenu(
-			withTitle: "Context", 
-			for: 
+			withTitle: "Context",
+			for:
 				[
 					.newItem,
 					.separator,
@@ -225,8 +199,4 @@ private extension HierarchyViewController {
 				]
 		)
 	}
-}
-
-extension String {
-	static let dateCreatedColumn = "date_created_column"
 }

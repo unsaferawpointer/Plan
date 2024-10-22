@@ -14,7 +14,7 @@ final class PlanColumnsFactoryMock {
 // MARK: - PlanColumnsFactoryProtocol
 extension PlanColumnsFactoryMock: PlanColumnsFactoryProtocol {
 
-	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<HierarchyModel>] {
+	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<ItemViewModel>] {
 		stubs.columns
 	}
 }
@@ -22,6 +22,6 @@ extension PlanColumnsFactoryMock: PlanColumnsFactoryProtocol {
 extension PlanColumnsFactoryMock {
 
 	struct Stubs {
-		var columns: [any TableColumn<HierarchyModel>] = []
+		var columns: [any TableColumn<ItemViewModel>] = []
 	}
 }

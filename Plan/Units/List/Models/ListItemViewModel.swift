@@ -1,17 +1,19 @@
 //
-//  HierarchyModel.swift
-//  Hierarchy
+//  ListItemViewModel.swift
+//  Plan
 //
-//  Created by Anton Cherkasov on 29.09.2023.
+//  Created by Anton Cherkasov on 22.10.2024.
 //
 
-import AppKit
+import Foundation
 
-struct HierarchyModel {
+struct ListItemViewModel {
 
 	var uuid: UUID
 
-	var content: ItemCellModel
+	var status: CheckboxCell.Model
+
+	var description: TextCell.Model
 
 	var createdAt: TextCell.Model
 
@@ -27,7 +29,8 @@ struct HierarchyModel {
 
 	init(
 		uuid: UUID = UUID(),
-		content: ItemCellModel,
+		status: CheckboxCell.Model,
+		description: TextCell.Model,
 		createdAt: TextCell.Model,
 		completedAt: TextCell.Model,
 		value: TextCell.Model,
@@ -35,7 +38,8 @@ struct HierarchyModel {
 		menu: MenuItem
 	) {
 		self.uuid = uuid
-		self.content = content
+		self.status = status
+		self.description = description
 		self.createdAt = createdAt
 		self.completedAt = completedAt
 		self.value = value
@@ -45,7 +49,7 @@ struct HierarchyModel {
 }
 
 // MARK: - Identifiable
-extension HierarchyModel: Identifiable {
+extension ListItemViewModel: Identifiable {
 
 	var id: UUID {
 		return uuid
@@ -53,9 +57,9 @@ extension HierarchyModel: Identifiable {
 }
 
 // MARK: - Hashable
-extension HierarchyModel: Hashable {
+extension ListItemViewModel: Hashable {
 
-	static func == (lhs: HierarchyModel, rhs: HierarchyModel) -> Bool {
+	static func == (lhs: ListItemViewModel, rhs: ListItemViewModel) -> Bool {
 		return lhs.uuid == rhs.uuid
 	}
 

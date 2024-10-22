@@ -29,7 +29,7 @@ final class HierarchyTableAdapter: NSObject {
 		}
 	}
 
-	var columns: [any TableColumn<HierarchyModel>]?
+	var columns: [any TableColumn<ItemViewModel>]?
 
 	// MARK: - UI-State
 
@@ -59,7 +59,7 @@ final class HierarchyTableAdapter: NSObject {
 // MARK: - Public interface
 extension HierarchyTableAdapter {
 
-	func configure(columns: [any TableColumn<HierarchyModel>]) {
+	func configure(columns: [any TableColumn<ItemViewModel>]) {
 		self.columns = columns
 	}
 
@@ -434,7 +434,7 @@ private extension HierarchyTableAdapter {
 		}
 	}
 
-	func configureRow(with model: HierarchyModel, at row: Int) {
+	func configureRow(with model: ItemViewModel, at row: Int) {
 		guard let table else {
 			return
 		}

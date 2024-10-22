@@ -13,7 +13,7 @@ protocol PlanColumnsFactoryDelegate: AnyObject {
 }
 
 protocol PlanColumnsFactoryProtocol {
-	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<HierarchyModel>]
+	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<ItemViewModel>]
 }
 
 final class PlanColumnsFactory {
@@ -30,23 +30,23 @@ final class PlanColumnsFactory {
 // MARK: - PlanColumnsFactoryProtocol
 extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 
-	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<HierarchyModel>] {
+	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<ItemViewModel>] {
 
-		let dateCreated = AnyColumn<HierarchyModel, TextCell>(
+		let dateCreated = AnyColumn<ItemViewModel, TextCell>(
 			identifier: "created_date_table_column",
 			title: localization.createdDateColumnTitle,
 			keyPath: \.createdAt,
 			options: .init(minWidth: 200, maxWidth: 240, isRequired: false, isHidden: true)
 		)
 
-		let dateCompleted = AnyColumn<HierarchyModel, TextCell>(
+		let dateCompleted = AnyColumn<ItemViewModel, TextCell>(
 			identifier: "completed_date_table_column",
 			title: localization.completedDateColumnTitle,
 			keyPath: \.completedAt,
 			options: .init(minWidth: 200, maxWidth: 240, isRequired: false, isHidden: true)
 		)
 
-		let main = AnyColumn<HierarchyModel, ItemCell>(
+		let main = AnyColumn<ItemViewModel, ItemCell>(
 			identifier: "description_table_column",
 			title: localization.descriptionColumnTitle,
 			keyPath: \.content,
@@ -54,7 +54,7 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 				delegate?.modificate(id: id, newText: value.text, newStatus: value.isOn)
 			}
 
-		let value = AnyColumn<HierarchyModel, TextCell>(
+		let value = AnyColumn<ItemViewModel, TextCell>(
 			identifier: "value_table_column",
 			title: localization.numberColumnTitle,
 			keyPath: \.value,
@@ -63,7 +63,7 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			delegate?.modificate(id: id, value: Int(value) ?? 0)
 		}
 
-		let priority = AnyColumn<HierarchyModel, IconCell>(
+		let priority = AnyColumn<ItemViewModel, IconCell>(
 			identifier: "priority_table_column",
 			title: localization.priorityColumnTitle,
 			keyPath: \.priority,

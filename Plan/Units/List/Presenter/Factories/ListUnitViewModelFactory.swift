@@ -1,18 +1,18 @@
 //
-//  PlanModelFactory.swift
+//  ListUnitViewModelFactory.swift
 //  Plan
 //
-//  Created by Anton Cherkasov on 10.08.2024.
+//  Created by Anton Cherkasov on 22.10.2024.
 //
 
 import Foundation
 
-protocol PlanModelFactoryProtocol {
-	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> ItemViewModel
+protocol ListUnitViewModelFactoryProtocol {
+	func makeModel(item: ItemContent) -> ListItemViewModel
 }
 
-final class PlanModelFactory { 
-	
+final class ListUnitViewModelFactory {
+
 	var localization: HierarchyLocalizationProtocol
 
 	// MARK: - Initialization
@@ -23,16 +23,19 @@ final class PlanModelFactory {
 }
 
 // MARK: - ListModelFactoryProtocol
-extension PlanModelFactory: PlanModelFactoryProtocol {
+extension ListUnitViewModelFactory: ListUnitViewModelFactoryProtocol {
 
-	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> ItemViewModel {
+	func makeModel(item: ItemContent) -> ListItemViewModel {
 		let menu = makeMenu(
-			isDone: info.isDone,
+			isDone: item.isDone,
 			isFavorite: item.isFavorite,
-			isLeaf: info.isLeaf
+			isLeaf: true
 		)
 
-		let content = makeContent(for: item, info: info)
+		let info = HierarchySnapshot.Info(isDone: item.isDone, number: item.count, isLeaf: true, count: 0)
+
+		let status = makeStatus(for: item, info: info)
+		let description = makeDescription(for: item, info: info)
 
 		let dateCreated = TextModel(
 			configuration: .init(textColor: .secondary),
@@ -59,11 +62,12 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			IconModel(value: .init(icon: nil), configuration: .init())
 		}
 
-		return ItemViewModel(
+		return ListItemViewModel(
 			uuid: item.uuid,
-			content: content,
+			status: status,
+			description: description,
 			createdAt: dateCreated,
-			completedAt: dateCompleted, 
+			completedAt: dateCompleted,
 			value: value,
 			priority: priority,
 			menu: menu
@@ -72,7 +76,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 }
 
 // MARK: - Helpers
-private extension PlanModelFactory {
+private extension ListUnitViewModelFactory {
 
 	func valueInfo(number: Int, count: Int) -> String {
 
@@ -89,16 +93,20 @@ private extension PlanModelFactory {
 		return localization.valueInfo(count: count, number: number)
 	}
 
-	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> ItemCellModel {
+	func makeDescription(for item: ItemContent, info: HierarchySnapshot.Info) -> TextModel {
 		let textColor = self.textColor(isDone: info.isDone)
-		let iconColor = self.iconColor(isDone: info.isDone, isFavorite: item.isFavorite, baseColor: item.iconColor)
-		let isOn = info.isLeaf ? info.isDone : nil
-		let icon = self.icon(for: item, isLeaf: info.isLeaf)
-
-		return ItemCellModel(
-			value: .init(isOn: isOn, text: item.text),
-			configuration: .init(textColor: textColor, icon: icon, iconColor: iconColor)
+		return TextModel(
+			configuration: .init(
+				textColor: textColor,
+				isEditable: true,
+				validation: nil
+			),
+			value: .init(item.text)
 		)
+	}
+
+	func makeStatus(for item: ItemContent, info: HierarchySnapshot.Info) -> CheckboxCellModel {
+		return CheckboxCellModel(value: .init(isOn: item.isDone), configuration: .init())
 	}
 
 	func makeMenu(isDone: Bool, isFavorite: Bool, isLeaf: Bool) -> MenuItem {
@@ -140,19 +148,5 @@ private extension PlanModelFactory {
 		}
 
 		return item.iconName?.systemName
-	}
-}
-
-extension ItemPriority {
-
-	var color: Color? {
-		switch self {
-		case .medium:
-			return .yellow
-		case .high:
-			return .red
-		default:
-			return nil
-		}
 	}
 }

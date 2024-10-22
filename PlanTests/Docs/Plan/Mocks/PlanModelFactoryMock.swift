@@ -14,7 +14,7 @@ final class PlanModelFactoryMock {
 // MARK: - PlanModelFactoryProtocol
 extension PlanModelFactoryMock: PlanModelFactoryProtocol {
 
-	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> HierarchyModel {
+	func makeModel(item: ItemContent, info: HierarchySnapshot.Info) -> ItemViewModel {
 		guard let stub = stubs.model else {
 			fatalError()
 		}
@@ -25,6 +25,6 @@ extension PlanModelFactoryMock: PlanModelFactoryProtocol {
 extension PlanModelFactoryMock {
 
 	struct Stubs {
-		var model: HierarchyModel?
+		var model: ItemViewModel?
 	}
 }

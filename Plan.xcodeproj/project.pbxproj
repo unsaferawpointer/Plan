@@ -64,7 +64,7 @@
 		4C298EE02C5FDEBC00474956 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9A2C5FDDE200474956 /* DataProvider.swift */; };
 		4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */; };
 		4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */; };
-		4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */; };
+		4C298EE32C5FDEDF00474956 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298E9E2C5FDDF800474956 /* ItemViewModel.swift */; };
 		4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA12C5FDDF800474956 /* DropConfiguration.swift */; };
 		4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */; };
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
@@ -115,6 +115,20 @@
 		4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */; };
 		4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */; };
 		4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */; };
+		4CA3AFAB2CC6CC1500F4C323 /* ListUnitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFAA2CC6CC1500F4C323 /* ListUnitInteractor.swift */; };
+		4CA3AFAD2CC6D74500F4C323 /* ListUnitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFAC2CC6D74500F4C323 /* ListUnitPresenter.swift */; };
+		4CA3AFAF2CC6DAB200F4C323 /* ListUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFAE2CC6DAB200F4C323 /* ListUnitViewController.swift */; };
+		4CA3AFB12CC6E43200F4C323 /* ListUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFB02CC6E43200F4C323 /* ListUnitViewModel.swift */; };
+		4CA3AFB32CC6E81000F4C323 /* ListTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFB22CC6E81000F4C323 /* ListTableAdapter.swift */; };
+		4CA3AFB52CC7BC5900F4C323 /* ListUnitAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFB42CC7BC5900F4C323 /* ListUnitAssembly.swift */; };
+		4CA3AFB72CC7D00900F4C323 /* ListUnitViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFB62CC7D00900F4C323 /* ListUnitViewModelFactory.swift */; };
+		4CA3AFB92CC7D09500F4C323 /* ListSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFB82CC7D09500F4C323 /* ListSnapshot.swift */; };
+		4CA3AFC02CC80D4100F4C323 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFBF2CC80D4100F4C323 /* CheckboxCell.swift */; };
+		4CA3AFC22CC80D9500F4C323 /* CheckboxCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFC12CC80D9500F4C323 /* CheckboxCellModel.swift */; };
+		4CA3AFC42CC80E8A00F4C323 /* ListUnitColumnsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFC32CC80E8A00F4C323 /* ListUnitColumnsFactory.swift */; };
+		4CA3AFC62CC80FC400F4C323 /* ListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFC52CC80FC400F4C323 /* ListItemViewModel.swift */; };
+		4CA3AFCA2CC8173700F4C323 /* ListUnitLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFC92CC8173700F4C323 /* ListUnitLocalization.swift */; };
+		4CA3AFCC2CC8175300F4C323 /* ListUnitLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3AFCB2CC8175300F4C323 /* ListUnitLocalizable.xcstrings */; };
 		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */; };
 		4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */; };
 		4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA5F2C7B747D002DDD95 /* IconName.swift */; };
@@ -197,7 +211,7 @@
 		4C298E9A2C5FDDE200474956 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C298E9B2C5FDDE200474956 /* HierarchyStringPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyStringPresenter.swift; sourceTree = "<group>"; };
 		4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyDestination.swift; sourceTree = "<group>"; };
-		4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyModel.swift; sourceTree = "<group>"; };
+		4C298E9E2C5FDDF800474956 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableAdapter.swift; sourceTree = "<group>"; };
 		4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyTableAnimator.swift; sourceTree = "<group>"; };
 		4C298EA12C5FDDF800474956 /* DropConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConfiguration.swift; sourceTree = "<group>"; };
@@ -267,6 +281,20 @@
 		4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppLocalizable.xcstrings; sourceTree = "<group>"; };
 		4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarPage.swift; sourceTree = "<group>"; };
+		4CA3AFAA2CC6CC1500F4C323 /* ListUnitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitInteractor.swift; sourceTree = "<group>"; };
+		4CA3AFAC2CC6D74500F4C323 /* ListUnitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitPresenter.swift; sourceTree = "<group>"; };
+		4CA3AFAE2CC6DAB200F4C323 /* ListUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitViewController.swift; sourceTree = "<group>"; };
+		4CA3AFB02CC6E43200F4C323 /* ListUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitViewModel.swift; sourceTree = "<group>"; };
+		4CA3AFB22CC6E81000F4C323 /* ListTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableAdapter.swift; sourceTree = "<group>"; };
+		4CA3AFB42CC7BC5900F4C323 /* ListUnitAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitAssembly.swift; sourceTree = "<group>"; };
+		4CA3AFB62CC7D00900F4C323 /* ListUnitViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitViewModelFactory.swift; sourceTree = "<group>"; };
+		4CA3AFB82CC7D09500F4C323 /* ListSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSnapshot.swift; sourceTree = "<group>"; };
+		4CA3AFBF2CC80D4100F4C323 /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
+		4CA3AFC12CC80D9500F4C323 /* CheckboxCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCellModel.swift; sourceTree = "<group>"; };
+		4CA3AFC32CC80E8A00F4C323 /* ListUnitColumnsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitColumnsFactory.swift; sourceTree = "<group>"; };
+		4CA3AFC52CC80FC400F4C323 /* ListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewModel.swift; sourceTree = "<group>"; };
+		4CA3AFC92CC8173700F4C323 /* ListUnitLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUnitLocalization.swift; sourceTree = "<group>"; };
+		4CA3AFCB2CC8175300F4C323 /* ListUnitLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ListUnitLocalizable.xcstrings; sourceTree = "<group>"; };
 		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_0_0.json; sourceTree = "<group>"; };
 		4CCCFA5D2C7B7278002DDD95 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		4CCCFA5F2C7B747D002DDD95 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
@@ -521,7 +549,7 @@
 			children = (
 				4C8C6CEB2C72693A00E09697 /* DragAndDrop */,
 				4C298E9C2C5FDDE200474956 /* HierarchyDestination.swift */,
-				4C298E9E2C5FDDF800474956 /* HierarchyModel.swift */,
+				4C298E9E2C5FDDF800474956 /* ItemViewModel.swift */,
 				4C298EA22C5FDDF800474956 /* HierarchySnapshot.swift */,
 				4C298E9F2C5FDDF800474956 /* HierarchyTableAdapter.swift */,
 				4C298EA02C5FDDF800474956 /* HierarchyTableAnimator.swift */,
@@ -543,9 +571,9 @@
 		4C298EAB2C5FDE2100474956 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				4C394C9F2CC833290058FEC8 /* Table */,
 				4C0259012C9A24F80045B3CF /* Icons */,
 				4C8514442C7E4D9000C7475C /* Common */,
-				4C85143B2C7E457700C7475C /* TableColumns */,
 				4C8C6CCF2C67DCC700E09697 /* DragAndDrop */,
 				4C298EB52C5FDE5200474956 /* Extensions */,
 				4C298EAF2C5FDE3F00474956 /* Menu */,
@@ -557,6 +585,7 @@
 		4C298EAD2C5FDE3300474956 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4CA3AFBE2CC80D2100F4C323 /* CheckboxCell */,
 				4C8C6CCD2C67DC1400E09697 /* ItemCell */,
 				4CFDFE9E2CAF181A000A6C2B /* IconCell */,
 				4C9FFEF12C920C1B005FC397 /* TextCell */,
@@ -603,6 +632,14 @@
 				4C02591C2CA9B1D80045B3CF /* Selector+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C394C9F2CC833290058FEC8 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				4C85143B2C7E457700C7475C /* TableColumns */,
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 		4C85143B2C7E457700C7475C /* TableColumns */ = {
@@ -796,6 +833,82 @@
 			path = TextCell;
 			sourceTree = "<group>";
 		};
+		4CA3AFA72CC6981100F4C323 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFB42CC7BC5900F4C323 /* ListUnitAssembly.swift */,
+				4CA3AFAA2CC6CC1500F4C323 /* ListUnitInteractor.swift */,
+				4CA3AFB02CC6E43200F4C323 /* ListUnitViewModel.swift */,
+				4CA3AFC82CC8171D00F4C323 /* Localization */,
+				4CA3AFC72CC80FCA00F4C323 /* Models */,
+				4CA3AFBB2CC7FB2C00F4C323 /* Presenter */,
+				4CA3AFBA2CC7FB1C00F4C323 /* ViewController */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		4CA3AFBA2CC7FB1C00F4C323 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFAE2CC6DAB200F4C323 /* ListUnitViewController.swift */,
+				4CA3AFBC2CC7FB4100F4C323 /* TableAdapter */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4CA3AFBB2CC7FB2C00F4C323 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFBD2CC7FB5200F4C323 /* Factories */,
+				4CA3AFAC2CC6D74500F4C323 /* ListUnitPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4CA3AFBC2CC7FB4100F4C323 /* TableAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFB22CC6E81000F4C323 /* ListTableAdapter.swift */,
+				4CA3AFB82CC7D09500F4C323 /* ListSnapshot.swift */,
+			);
+			path = TableAdapter;
+			sourceTree = "<group>";
+		};
+		4CA3AFBD2CC7FB5200F4C323 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFB62CC7D00900F4C323 /* ListUnitViewModelFactory.swift */,
+				4CA3AFC32CC80E8A00F4C323 /* ListUnitColumnsFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		4CA3AFBE2CC80D2100F4C323 /* CheckboxCell */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFBF2CC80D4100F4C323 /* CheckboxCell.swift */,
+				4CA3AFC12CC80D9500F4C323 /* CheckboxCellModel.swift */,
+			);
+			path = CheckboxCell;
+			sourceTree = "<group>";
+		};
+		4CA3AFC72CC80FCA00F4C323 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFC52CC80FC400F4C323 /* ListItemViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4CA3AFC82CC8171D00F4C323 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4CA3AFC92CC8173700F4C323 /* ListUnitLocalization.swift */,
+				4CA3AFCB2CC8175300F4C323 /* ListUnitLocalizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		4CBAC4292C7A829600534CC3 /* v1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +958,7 @@
 		4CCFE6352CB9BBE200AF29F1 /* Units */ = {
 			isa = PBXGroup;
 			children = (
+				4CA3AFA72CC6981100F4C323 /* List */,
 				4CCFE6362CB9BBF000AF29F1 /* Hierarchy */,
 			);
 			path = Units;
@@ -997,6 +1111,7 @@
 			files = (
 				4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */,
 				4CCFE62B2CB4768800AF29F1 /* Color.xcstrings in Resources */,
+				4CA3AFCC2CC8175300F4C323 /* ListUnitLocalizable.xcstrings in Resources */,
 				4CFDFEA92CB2D000000A6C2B /* README.md in Resources */,
 				4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */,
 				4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */,
@@ -1040,7 +1155,9 @@
 				4C298EE52C5FDEE700474956 /* HierarchyTableAnimator.swift in Sources */,
 				4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */,
 				4C298EBE2C5FDE6700474956 /* NSTableView+Extension.swift in Sources */,
+				4CA3AFAB2CC6CC1500F4C323 /* ListUnitInteractor.swift in Sources */,
 				4C298EC62C5FDEA500474956 /* Sequence+Extension.swift in Sources */,
+				4CA3AFC02CC80D4100F4C323 /* CheckboxCell.swift in Sources */,
 				4C0259202CA9EF5B0045B3CF /* main.swift in Sources */,
 				4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */,
 				4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */,
@@ -1052,6 +1169,7 @@
 				4C298EC92C5FDEA500474956 /* ContentProvider.swift in Sources */,
 				4C8C6CE42C6A745A00E09697 /* HierarchyPresenter+HierarchyDropDelegate.swift in Sources */,
 				4C298ECA2C5FDEA500474956 /* EntityOptions.swift in Sources */,
+				4CA3AFC42CC80E8A00F4C323 /* ListUnitColumnsFactory.swift in Sources */,
 				4C8C6CC92C67ACA300E09697 /* HierarchyInteractor.swift in Sources */,
 				4C298ECB2C5FDEA500474956 /* Dictionary+Extension.swift in Sources */,
 				4C298ECC2C5FDEA500474956 /* DocumentStorage.swift in Sources */,
@@ -1059,6 +1177,7 @@
 				4C298ECE2C5FDEA500474956 /* DocumentDataRepresentation.swift in Sources */,
 				4C02591D2CA9B1D80045B3CF /* Selector+Extension.swift in Sources */,
 				4C298ECF2C5FDEA500474956 /* VersionedFile.swift in Sources */,
+				4CA3AFB52CC7BC5900F4C323 /* ListUnitAssembly.swift in Sources */,
 				4C02592C2CAC787B0045B3CF /* TableSupportable.swift in Sources */,
 				4C9FFEF32C920C31005FC397 /* TextConfiguration.swift in Sources */,
 				4C298ED02C5FDEA500474956 /* DocumentDataPublisher.swift in Sources */,
@@ -1073,11 +1192,15 @@
 				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4C02592A2CAC77830045B3CF /* PasteboardSupportable.swift in Sources */,
+				4CA3AFB72CC7D00900F4C323 /* ListUnitViewModelFactory.swift in Sources */,
 				4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */,
+				4CA3AFB32CC6E81000F4C323 /* ListTableAdapter.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
+				4CA3AFCA2CC8173700F4C323 /* ListUnitLocalization.swift in Sources */,
+				4CA3AFB12CC6E43200F4C323 /* ListUnitViewModel.swift in Sources */,
 				4C0259302CAC7D0B0045B3CF /* Modification.swift in Sources */,
 				4C0259322CAC7E2B0045B3CF /* AnyModification.swift in Sources */,
 				4C85144E2C8248A200C7475C /* PlanColumnsFactory.swift in Sources */,
@@ -1096,6 +1219,7 @@
 				4CCCFA6D2C7CF10B002DDD95 /* HierarchyViewController+MenuSupportable.swift in Sources */,
 				4C0259222CAB1DCB0045B3CF /* OpenRecentMenu.swift in Sources */,
 				4C298ED92C5FDEBC00474956 /* HierarchyAssembly.swift in Sources */,
+				4CA3AFC22CC80D9500F4C323 /* CheckboxCellModel.swift in Sources */,
 				4C298EDA2C5FDEBC00474956 /* ItemCell.swift in Sources */,
 				4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */,
 				4C298EDB2C5FDEBC00474956 /* TransferNode.swift in Sources */,
@@ -1104,18 +1228,22 @@
 				4C298EDD2C5FDEBC00474956 /* HierarchyPresenter.swift in Sources */,
 				4C298EE12C5FDEDF00474956 /* HierarchyTableAdapter.swift in Sources */,
 				4C298EE22C5FDEDF00474956 /* HierarchySnapshot.swift in Sources */,
+				4CA3AFAD2CC6D74500F4C323 /* ListUnitPresenter.swift in Sources */,
+				4CA3AFC62CC80FC400F4C323 /* ListItemViewModel.swift in Sources */,
 				4C8C6CDC2C692B8C00E09697 /* ParserConfiguration.swift in Sources */,
 				4C02592E2CAC7A180045B3CF /* OutlineSupportable.swift in Sources */,
 				4C8514432C7E4D3500C7475C /* ItemCellModel.swift in Sources */,
 				4C8C6CD42C68D28700E09697 /* TextParser.swift in Sources */,
-				4C298EE32C5FDEDF00474956 /* HierarchyModel.swift in Sources */,
+				4C298EE32C5FDEDF00474956 /* ItemViewModel.swift in Sources */,
 				4C298EE42C5FDEDF00474956 /* DropConfiguration.swift in Sources */,
 				4C298EDE2C5FDEBC00474956 /* HierarchyViewController.swift in Sources */,
 				4C8C6CE92C6BD65A00E09697 /* BasicFormatter.swift in Sources */,
+				4CA3AFB92CC7D09500F4C323 /* ListSnapshot.swift in Sources */,
 				4C9FFEF72C920CBD005FC397 /* TextModel.swift in Sources */,
 				4C298EDF2C5FDEBC00474956 /* PlanContent.swift in Sources */,
 				4C02590C2CA044CF0045B3CF /* PlanPasteboard.swift in Sources */,
 				4CCCFA602C7B747D002DDD95 /* IconName.swift in Sources */,
+				4CA3AFAF2CC6DAB200F4C323 /* ListUnitViewController.swift in Sources */,
 				4C0259262CAB2CBD0045B3CF /* DocumentControllerFacade.swift in Sources */,
 				4C298EE02C5FDEBC00474956 /* DataProvider.swift in Sources */,
 				4C0259092C9F051F0045B3CF /* UndoManagerSupportable.swift in Sources */,
