@@ -65,11 +65,11 @@ extension ListUnitPresenter: ListUnitViewOutput {
 	}
 	
 	func setState(_ flag: Bool) {
-		fatalError()
+		interactor?.setState(flag, withSelection: selection)
 	}
 	
 	func setBookmark(_ flag: Bool) {
-		fatalError()
+		interactor?.setBookmark(flag, withSelection: selection)
 	}
 	
 	func setEstimation(_ value: Int) {

@@ -63,35 +63,47 @@ extension ListUnitInteractor: ListUnitInteractorProtocol {
 	}
 	
 	func createNew(with text: String, in target: UUID?) -> UUID {
-		fatalError()
+		let identifier = UUID()
+		let itemContent = ItemContent(uuid: identifier, text: text)
+		let destination: HierarchyDestination = if let target {
+			.onItem(with: target)
+		} else {
+			.toRoot
+		}
+		storage.modificate { content in
+			content.insertItems(with: [itemContent], to: destination)
+		}
+		return identifier
 	}
 	
 	func deleteItems(_ ids: [UUID]) {
-		fatalError()
+		storage.modificate { content in
+			content.deleteItems(ids)
+		}
 	}
 	
 	func setState(_ flag: Bool, withSelection selection: [UUID]) {
-		fatalError()
+		modificate(ids: selection, keyPath: \.isDone, value: flag)
 	}
 	
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID]) {
-		fatalError()
+		modificate(ids: selection, keyPath: \.isFavorite, value: flag)
 	}
 	
 	func setPriority(_ value: ItemPriority, withSelection selection: [UUID]) {
-		fatalError()
+		modificate(ids: selection, keyPath: \.priority, value: value)
 	}
 	
 	func setNumber(_ value: Int, withSelection selection: [UUID]) {
-		fatalError()
+		modificate(ids: selection, keyPath: \.count, value: value)
 	}
 	
 	func setIcon(_ value: IconName?, withSelection selection: [UUID]) {
-		fatalError()
+		modificate(ids: selection, keyPath: \.iconName, value: value)
 	}
 	
 	func setColor(_ value: Color?, withSelection selection: [UUID]) {
-		fatalError()
+		modificate(ids: selection, keyPath: \.iconColor, value: value)
 	}
 	
 	func modificate(_ id: UUID, newStatus: Bool) {
@@ -99,7 +111,7 @@ extension ListUnitInteractor: ListUnitInteractorProtocol {
 	}
 	
 	func modificate(_ id: UUID, newText: String) {
-		fatalError()
+		modificate(ids: [id], keyPath: \.text, value: newText)
 	}
 	
 	func canUndo() -> Bool {

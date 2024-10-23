@@ -70,6 +70,8 @@
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C802C87990900C7DF6E /* ValueFormatter.swift */; };
 		4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C822C8A22A200C7DF6E /* CellModel.swift */; };
+		4C394CA42CC98A4C0058FEC8 /* ListUnitViewController+NSMenuItemValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C394CA32CC98A4C0058FEC8 /* ListUnitViewController+NSMenuItemValidation.swift */; };
+		4C394CA62CC98B920058FEC8 /* ListUnitViewController+MenuSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C394CA52CC98B920058FEC8 /* ListUnitViewController+MenuSupportable.swift */; };
 		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
 		4C81FB612C5FF9D7006300E6 /* HierarchyUnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */; };
 		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
@@ -235,6 +237,8 @@
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C365C802C87990900C7DF6E /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		4C365C822C8A22A200C7DF6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		4C394CA32CC98A4C0058FEC8 /* ListUnitViewController+NSMenuItemValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListUnitViewController+NSMenuItemValidation.swift"; sourceTree = "<group>"; };
+		4C394CA52CC98B920058FEC8 /* ListUnitViewController+MenuSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListUnitViewController+MenuSupportable.swift"; sourceTree = "<group>"; };
 		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyUnitModel.swift; sourceTree = "<group>"; };
 		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
@@ -851,6 +855,8 @@
 			isa = PBXGroup;
 			children = (
 				4CA3AFAE2CC6DAB200F4C323 /* ListUnitViewController.swift */,
+				4C394CA32CC98A4C0058FEC8 /* ListUnitViewController+NSMenuItemValidation.swift */,
+				4C394CA52CC98B920058FEC8 /* ListUnitViewController+MenuSupportable.swift */,
 				4CA3AFBC2CC7FB4100F4C323 /* TableAdapter */,
 			);
 			path = ViewController;
@@ -1195,8 +1201,10 @@
 				4CA3AFB72CC7D00900F4C323 /* ListUnitViewModelFactory.swift in Sources */,
 				4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */,
 				4CA3AFB32CC6E81000F4C323 /* ListTableAdapter.swift in Sources */,
+				4C394CA42CC98A4C0058FEC8 /* ListUnitViewController+NSMenuItemValidation.swift in Sources */,
 				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
+				4C394CA62CC98B920058FEC8 /* ListUnitViewController+MenuSupportable.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C298ED22C5FDEAC00474956 /* TreeNode.swift in Sources */,
 				4CA3AFCA2CC8173700F4C323 /* ListUnitLocalization.swift in Sources */,

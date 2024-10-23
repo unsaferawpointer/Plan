@@ -121,7 +121,7 @@ extension ListUnitViewController: ListView {
 	}
 
 	var selection: [UUID] {
-		return []
+		return adapter?.effectiveSelection ?? []
 	}
 }
 
@@ -187,7 +187,6 @@ private extension ListUnitViewController {
 					.separator,
 					.cut,
 					.copy,
-					.paste,
 					.separator,
 					.priority,
 					.setEstimation,

@@ -17,6 +17,15 @@ final class ListTableAdapter: NSObject {
 
 	private(set) var selection = Set<UUID>()
 
+	var effectiveSelection: [UUID] {
+		guard let table else {
+			return []
+		}
+		return table.effectiveSelection().map {
+			snapshot.items[$0].id
+		}
+	}
+
 	// MARK: - Data
 
 	var snapshot: ListSnapshot<ListItemViewModel> = .init(items: [])
@@ -94,6 +103,53 @@ extension ListTableAdapter: NSTableViewDelegate {
 			return nil
 		}
 		return columns[index].makeCellIfNeeded(from: model, in: tableView)
+	}
+
+	func tableView(_ tableView: NSTableView, userCanChangeVisibilityOf column: NSTableColumn) -> Bool {
+		let optionalColumns = columns?.filter {
+			!$0.options.isRequired
+		}.map(\.identifier)
+
+		return optionalColumns?.contains(column.identifier.rawValue) ?? false
+	}
+}
+
+// MARK: - Menu support
+extension ListTableAdapter {
+
+	func validateMenuItem(_ itemIdentifier: String) -> Bool {
+
+		for index in table?.effectiveSelection() ?? [] {
+			let model = snapshot.items[index]
+			if model.menu.isValid(itemIdentifier) {
+				return true
+			}
+		}
+
+		return false
+	}
+
+	func menuItemState(for itemIdentifier: String) -> NSControl.StateValue {
+
+		var hasEnabled = false
+		var hasDisabled = false
+
+		for index in table?.effectiveSelection() ?? [] {
+			let model = snapshot.items[index]
+			let state = model.menu.stateFor(itemIdentifier)
+			switch state {
+			case .off:	hasDisabled = true
+			case .on:	hasEnabled = true
+			}
+		}
+
+		if hasEnabled && hasDisabled {
+			return .mixed
+		} else if hasEnabled {
+			return .on
+		} else {
+			return .off
+		}
 	}
 }
 
