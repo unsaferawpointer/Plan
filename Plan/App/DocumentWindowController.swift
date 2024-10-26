@@ -64,8 +64,8 @@ extension DocumentWindowController: NSToolbarDelegate {
 			let button = NSButton(
 				title: "",
 				image: NSImage(systemSymbolName: "plus")!,
-				target: self,
-				action: #selector(newItem(_:))
+				target: nil,
+				action: #selector(MenuSupportable.createNew(_:))
 			)
 			button.setAccessibilityIdentifier("new-toolbar-item")
 			button.identifier = NSUserInterfaceItemIdentifier("new-toolbar-item")
@@ -79,25 +79,10 @@ extension DocumentWindowController: NSToolbarDelegate {
 	}
 }
 
-// MARK: - Actions
-extension DocumentWindowController {
-
-	@objc
-	func newItem(_ sender: Any?) {
-		NotificationCenter.default.post(name: .newItem, object: nil)
-	}
-
-}
-
 extension NSToolbarItem.Identifier {
 
 	static var newItem: Self {
 		return .init("newItem")
 	}
 
-}
-
-extension NSNotification.Name {
-
-	static let newItem: NSNotification.Name = .init("newItem")
 }
