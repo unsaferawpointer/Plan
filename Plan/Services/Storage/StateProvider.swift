@@ -1,5 +1,5 @@
 //
-//  DocumentDataPublisher.swift
+//  StateProvider.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 27.09.2023.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DocumentDataPublisher<State> {
+protocol StateProvider<State> {
 
-	associatedtype State: AnyObject
+	associatedtype State
 
-	func modificate(_ block: (State) -> Void)
+	func modificate(_ block: (inout State) -> Void)
 
 	func addObservation<O: AnyObject>(
 		for object: O,

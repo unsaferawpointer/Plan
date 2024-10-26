@@ -34,10 +34,10 @@ final class DocumentStorage<State: AnyObject> {
 	}
 }
 
-// MARK: - DocumentDataPublisher
-extension DocumentStorage: DocumentDataPublisher {
+// MARK: - StateProvider
+extension DocumentStorage: StateProvider {
 
-	func modificate(_ block: (State) -> Void) {
+	func modificate(_ block: (inout State) -> Void) {
 		performOperation(block)
 	}
 
@@ -112,9 +112,9 @@ private extension DocumentStorage {
 		observations = observations.filter { $0(state) }
 	}
 
-	func performOperation(_ block: (State) -> Void) {
+	func performOperation(_ block: (inout State) -> Void) {
 		let oldData = try? provider.data(of: state)
-		block(state)
+		block(&state)
 		let newData = try? provider.data(of: state)
 		guard let oldData, let newData else {
 			return

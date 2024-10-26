@@ -1,5 +1,5 @@
 //
-//  DataProvider.swift
+//  PlanDataProvider.swift
 //  Hierarchy
 //
 //  Created by Anton Cherkasov on 27.09.2023.
@@ -8,10 +8,10 @@
 import Foundation
 
 /// Data provider of board document
-final class DataProvider<Content: Codable> { }
+final class PlanDataProvider<Content: Codable> { }
 
 // MARK: - ContentProvider
-extension DataProvider: ContentProvider {
+extension PlanDataProvider: ContentProvider {
 
 	func data(ofType typeName: String, content: Content) throws -> Data {
 
@@ -57,7 +57,7 @@ extension DataProvider: ContentProvider {
 }
 
 // MARK: - Helpers
-private extension DataProvider {
+private extension PlanDataProvider {
 
 	func migrate(_ data: Data, type: DocumentType) throws -> Content {
 
