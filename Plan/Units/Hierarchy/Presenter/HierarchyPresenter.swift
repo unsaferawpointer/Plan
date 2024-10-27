@@ -248,7 +248,7 @@ private extension HierarchyPresenter {
 		}
 
 		let snapshot = makeSnapshot(nodes)
-		let status = statusFactory.makeModel(for: hierarchy)
+		let status = statusFactory.makeModel(for: nodes)
 
 		return HierarchyUnitModel(bottomBar: status, snapshot: snapshot)
 	}

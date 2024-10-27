@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PlanStatusFactoryProtocol {
-	func makeModel(for root: Root<ItemContent>) -> BottomBar.Model
+	func makeModel(for nodes: [Node<ItemContent>]) -> BottomBar.Model
 }
 
 final class PlanStatusFactory {
@@ -25,9 +25,9 @@ final class PlanStatusFactory {
 // MARK: - PlanStatusFactoryProtocol
 extension PlanStatusFactory: PlanStatusFactoryProtocol {
 
-	func makeModel(for root: Root<ItemContent>) -> BottomBar.Model {
-		let isEmpty = root.nodes.isEmpty
-		let isCompleted = root.allSatisfy(\.isDone, equalsTo: true)
+	func makeModel(for nodes: [Node<ItemContent>]) -> BottomBar.Model {
+		let isEmpty = nodes.isEmpty
+		let isCompleted = nodes.allSatisfy { $0.allSatisfy(\.isDone, equalsTo: true)}
 		if isCompleted && !isEmpty {
 			return .init(
 				leadingText: localization.allTaskCompleted,
@@ -44,11 +44,18 @@ extension PlanStatusFactory: PlanStatusFactoryProtocol {
 			)
 		}
 
-		let completeCount = root.count(where: \.isDone, equalsTo: true)
-		let progress = Double(completeCount) / Double(root.count) * 100
+		let completeCount = nodes.reduce(0) { partialResult, node in
+			return partialResult + node.count(where: \.isDone, equalsTo: true)
+		}
+
+		let totalCount = nodes.reduce(0) { partialResult, node in
+			return node.count + partialResult
+		}
+
+		let progress = Double(completeCount) / Double(totalCount) * 100
 
 		return .init(
-			leadingText: localization.statusMessage(for: root.count),
+			leadingText: localization.statusMessage(for: totalCount),
 			trailingText: localization.progressText(for: progress / 100),
 			progress: progress
 		)
