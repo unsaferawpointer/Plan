@@ -46,11 +46,11 @@ private extension DocumentWindowController {
 extension DocumentWindowController: NSToolbarDelegate {
 
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.flexibleSpace, .newItem]
+		return [.sidebar, .flexibleSpace, .newItem]
 	}
 
 	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.flexibleSpace, .newItem]
+		return [.sidebar, .flexibleSpace, .newItem]
 	}
 
 	func toolbar(_ toolbar: NSToolbar,
@@ -73,6 +73,24 @@ extension DocumentWindowController: NSToolbarDelegate {
 
 			item.view = button
 			return item
+		case .sidebar:
+			let item = NSToolbarItem(itemIdentifier: .sidebar)
+			item.isNavigational = true
+
+			item.label = String(localized: "sidebar_item_toolbar_item", table: "AppLocalizable")
+
+			let button = NSButton(
+				title: "",
+				image: NSImage(systemSymbolName: "sidebar.leading")!,
+				target: nil,
+				action: #selector(NSSplitViewController.toggleSidebar(_:))
+			)
+			button.setAccessibilityIdentifier("sidebar-toolbar-item")
+			button.identifier = NSUserInterfaceItemIdentifier("sidebar-toolbar-item")
+			button.bezelStyle = .texturedRounded
+
+			item.view = button
+			return item
 		default:
 			return nil
 		}
@@ -83,6 +101,10 @@ extension NSToolbarItem.Identifier {
 
 	static var newItem: Self {
 		return .init("newItem")
+	}
+
+	static var sidebar: Self {
+		return .init("leadingSidebar")
 	}
 
 }
