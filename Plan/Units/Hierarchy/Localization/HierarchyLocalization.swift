@@ -86,7 +86,7 @@ extension HierarchyLocalization: HierarchyLocalizationProtocol {
 		}
 
 		let formatter = DateFormatter()
-		formatter.dateStyle = .medium
+		formatter.dateStyle = .short
 		formatter.timeStyle = .short
 		formatter.doesRelativeDateFormatting = true
 
