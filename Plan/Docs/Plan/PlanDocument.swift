@@ -27,7 +27,7 @@ class PlanDocument: NSDocument {
 
 	override func makeWindowControllers() {
 		// Returns the Storyboard that contains your Document window.
-		let window = NSWindow.main
+		let window = NSWindow.makeMain()
 		let windowController = DocumentWindowController(window: window)
 		windowController.window?.contentViewController = HierarchyAssembly.build(storage: storage)
 		self.addWindowController(windowController)
