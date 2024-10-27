@@ -24,7 +24,7 @@ extension NSWindow {
 		window.center()
 		window.titleVisibility = .visible
 		window.titlebarAppearsTransparent = false
-		window.tabbingMode = .preferred
+		window.tabbingMode = .automatic
 		window.titlebarSeparatorStyle = .automatic
 		window.toolbarStyle = .unified
 		return window

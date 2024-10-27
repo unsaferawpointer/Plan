@@ -88,7 +88,11 @@ extension DocumentPage {
 	}
 
 	func close() {
-		window.buttons[XCUIIdentifierCloseWindow].click()
+		let button = window.buttons[XCUIIdentifierCloseWindow]
+		guard button.waitForExistence(timeout: 0.2), button.isHittable else {
+			return
+		}
+		button.click()
 		if needToSave {
 			let savePanel = window.sheets.firstMatch
 			let deleteButton = savePanel.buttons["DontSaveButton"]

@@ -219,6 +219,21 @@ extension PlanUITests {
 // MARK: - Common cases
 extension PlanUITests {
 
+	func test_createNewAnyTimes() {
+		// Arrange
+		let app = AppPage(app: XCUIApplication())
+		app.launch()
+		app.closeAll()
+
+		// Act
+		for _ in 0..<3 {
+			app.press("n", modifierFlags: .command)
+		}
+
+		// Assert
+		XCTAssertEqual(app.windows().count, 3)
+	}
+
 	func test_createNew() {
 		// Arrange
 		let app = AppPage(app: XCUIApplication())
@@ -243,8 +258,6 @@ extension PlanUITests {
 
 		// Act
 		app.press("o", modifierFlags: .command)
-
-		let window = app.firstWindow()
 
 		// Assert
 		XCTAssertTrue(app.windows()["open-panel"].exists)
