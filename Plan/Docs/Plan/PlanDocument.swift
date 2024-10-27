@@ -34,10 +34,7 @@ class PlanDocument: NSDocument {
 		// Returns the Storyboard that contains your Document window.
 		let window = NSWindow.makeMain()
 		let windowController = DocumentWindowController(window: window)
-		windowController.window?.contentViewController = HierarchyAssembly.build(
-			storage: storage,
-			provider: stateProvider
-		)
+		windowController.window?.contentViewController = makeContentViewController()
 
 		self.addWindowController(windowController)
 	}
