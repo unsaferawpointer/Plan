@@ -33,11 +33,11 @@ extension PlanInteractorMock: HierarchyInteractorProtocol {
 		return stubs.nodes
 	}
 
-	func createNew(with text: String, in target: UUID?) -> UUID {
-		invocations.append(.createNew(text: text, target: target))
+	func createNew(with text: String, destination: HierarchyDestination<UUID>) -> UUID {
+		invocations.append(.createNew(text: text, destination: destination))
 		return stubs.createNew
 	}
-	
+
 	func deleteItems(_ ids: [UUID]) {
 		invocations.append(.deleteItems(ids))
 	}
@@ -125,7 +125,7 @@ extension PlanInteractorMock {
 		case fetchData
 		case node(_ id: UUID)
 		case nodes(_ ids: [UUID])
-		case createNew(text: String, target: UUID?)
+		case createNew(text: String, destination: HierarchyDestination<UUID>)
 		case deleteItems(_ ids: [UUID])
 		case setState(_ flag: Bool, selection: [UUID])
 		case setBookmark(_ flag: Bool, selection: [UUID])

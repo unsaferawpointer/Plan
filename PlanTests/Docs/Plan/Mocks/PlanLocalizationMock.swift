@@ -16,6 +16,10 @@ final class PlanLocalizationMock {
 // MARK: - HierarchyLocalizationProtocol
 extension PlanLocalizationMock: HierarchyLocalizationProtocol {
 
+	var bookmarkColumnTitle: String {
+		stubs.bookmarkColumnTitle
+	}
+
 	var priorityColumnTitle: String {
 		stubs.priorityColumnTitle
 	}
@@ -91,5 +95,6 @@ extension PlanLocalizationMock {
 		var valueInfoForNumber: String = .random
 		var valueInfoForCountAndNumber: String = .random
 		var priorityColumnTitle: String = .random
+		var bookmarkColumnTitle: String = .random
 	}
 }

@@ -41,6 +41,7 @@ extension DocumentPage {
 	}
 
 	func newItems(count: Int, in targetRow: Int?) {
+		outline.click()
 		if let row = targetRow {
 			selectRow(row)
 		}
