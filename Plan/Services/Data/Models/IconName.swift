@@ -12,6 +12,7 @@ enum IconName: Int {
 	// MARK: - Common
 
 	case flag = 0
+	case star = 1
 
 	// MARK: - Objects
 	case folder = 10
@@ -119,6 +120,7 @@ extension IconName {
 	var systemName: String {
 		switch self {
 		case .flag: "flag.fill"
+		case .star: "star.fill"
 			// MARK: - Objects
 		case .folder: "folder.fill"
 		case .archivebox: "archivebox.fill"

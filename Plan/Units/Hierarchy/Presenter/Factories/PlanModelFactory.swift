@@ -59,6 +59,12 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			IconModel(value: .init(icon: nil), configuration: .init())
 		}
 
+		let bookmark: IconModel = if item.isFavorite {
+			IconModel(value: .init(icon: .star), configuration: .init(color: .yellow))
+		} else {
+			IconModel(value: .init(icon: nil), configuration: .init())
+		}
+
 		return HierarchyModel(
 			uuid: item.uuid,
 			content: content,
@@ -66,6 +72,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			completedAt: dateCompleted, 
 			value: value,
 			priority: priority,
+			bookmark: bookmark,
 			menu: menu
 		)
 	}
@@ -91,7 +98,7 @@ private extension PlanModelFactory {
 
 	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> ItemCellModel {
 		let textColor = self.textColor(isDone: info.isDone)
-		let iconColor = self.iconColor(isDone: info.isDone, isFavorite: item.isFavorite, baseColor: item.iconColor)
+		let iconColor = self.iconColor(isDone: info.isDone, baseColor: item.iconColor)
 		let isOn = info.isLeaf ? info.isDone : nil
 		let icon = self.icon(for: item, isLeaf: info.isLeaf)
 
@@ -118,13 +125,11 @@ private extension PlanModelFactory {
 		)
 	}
 
-	func iconColor(isDone: Bool, isFavorite: Bool, baseColor: Color?) -> Color? {
-		switch (isDone, isFavorite) {
-		case (false, true):
-			return .yellow
-		default:
-			return baseColor ?? .tertiary
+	func iconColor(isDone: Bool, baseColor: Color?) -> Color? {
+		guard !isDone else {
+			return .tertiary
 		}
+		return baseColor
 	}
 
 	func textColor(isDone: Bool) -> Color {
@@ -132,13 +137,9 @@ private extension PlanModelFactory {
 	}
 
 	func icon(for item: ItemContent, isLeaf: Bool) -> String? {
-
-		if isLeaf && !item.isFavorite {
+		guard !isLeaf else {
 			return nil
-		} else if item.isFavorite {
-			return "star.fill"
 		}
-
 		return item.iconName?.systemName
 	}
 }

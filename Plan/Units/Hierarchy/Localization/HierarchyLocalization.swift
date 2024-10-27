@@ -19,6 +19,7 @@ protocol HierarchyLocalizationProtocol {
 	var descriptionColumnTitle: String { get }
 	var numberColumnTitle: String { get }
 	var priorityColumnTitle: String { get }
+	var bookmarkColumnTitle: String { get }
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String
 	func valueInfo(count: Int) -> String
@@ -72,6 +73,10 @@ extension HierarchyLocalization: HierarchyLocalizationProtocol {
 
 	var priorityColumnTitle: String {
 		return String(localized: "priority_table_column", table: "HierarchyLocalizable")
+	}
+
+	var bookmarkColumnTitle: String {
+		return String(localized: "bookmark_table_column", table: "HierarchyLocalizable")
 	}
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String {

@@ -70,6 +70,13 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			options: .init(minWidth: 56, maxWidth: 56, isRequired: false, isHidden: false)
 		)
 
-		return [main, value, priority, dateCreated, dateCompleted]
+		let bookmark = AnyColumn<HierarchyModel, IconCell>(
+			identifier: "bookmark_table_column",
+			title: localization.bookmarkColumnTitle,
+			keyPath: \.bookmark,
+			options: .init(minWidth: 56, maxWidth: 56, isRequired: false, isHidden: false)
+		)
+
+		return [main, value, priority, bookmark, dateCreated, dateCompleted]
 	}
 }
