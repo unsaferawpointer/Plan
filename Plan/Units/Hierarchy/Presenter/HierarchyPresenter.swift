@@ -65,11 +65,8 @@ extension HierarchyPresenter {
 	}
 
 	var destination: HierarchyDestination<UUID> {
-		return if let first = selection.first {
-			.onItem(with: first)
-		} else {
-			.toRoot
-		}
+		return .init(target: selection.first)
+			.relative(to: rootIdentifier())
 	}
 }
 
@@ -107,7 +104,7 @@ extension HierarchyPresenter: PlanViewOutput {
 		}
 
 		let first = selection.first
-		let id = interactor.createNew(with: localization.newItemTitle, in: first)
+		let id = interactor.createNew(with: localization.newItemTitle, destination: destination)
 
 		view?.scroll(to: id)
 		if let first {
@@ -261,6 +258,9 @@ private extension HierarchyPresenter {
 			return modelFactory.makeModel(item: item, info: info)
 		}
 	}
+}
+
+extension HierarchyPresenter {
 
 	func rootIdentifier() -> UUID? {
 		switch provider.state.selection {
