@@ -69,10 +69,6 @@ private extension PlanDocument {
 			)
 		)
 
-		stateProvider.addObservation(for: self) { _, state in
-			Swift.print("state = \(state)")
-		}
-
 		viewController.addSplitViewItem(sidebarItem)
 		viewController.addSplitViewItem(contentItem)
 
