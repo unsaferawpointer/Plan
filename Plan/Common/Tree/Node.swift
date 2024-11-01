@@ -62,55 +62,12 @@ extension Node {
 		parent?.enumerateBackwards(block)
 	}
 
-	func enumerate(_ block: (Node) -> Void) {
-		block(self)
-		for node in children {
-			node.enumerate(block)
-		}
-	}
-
-	var count: Int {
-		guard !children.isEmpty else {
-			return 1
-		}
-		return children.reduce(0) { partialResult, node in
-			return partialResult + node.count
-		}
-	}
-
-	func reduce(_ keyPath: KeyPath<Value, Bool>) -> Bool {
-		guard !children.isEmpty else {
-			return value[keyPath: keyPath]
-		}
-		return children.allSatisfy { entity in
-			return entity.reduce(keyPath)
-		}
-	}
-
-	func reduce(_ keyPath: KeyPath<Value, Int>) -> Int {
-		guard !children.isEmpty else {
-			return value[keyPath: keyPath]
-		}
-		return children.reduce(0) { partialResult, node in
-			return partialResult + node.reduce(keyPath)
-		}
-	}
-
 	func count<T: Equatable>(where keyPath: KeyPath<Value, T>, equalsTo value: T) -> Int {
 		guard !children.isEmpty else {
 			return self.value[keyPath: keyPath] == value ? 1 : 0
 		}
 		return children.reduce(0) { partialResult, node in
 			return partialResult + node.count(where: keyPath, equalsTo: value)
-		}
-	}
-
-	func allSatisfy<T: Equatable>(_ keyPath: KeyPath<Value, T>, equalsTo value: T) -> Bool {
-		guard !children.isEmpty else {
-			return self.value[keyPath: keyPath] == value
-		}
-		return children.allSatisfy {
-			$0.allSatisfy(keyPath, equalsTo: value)
 		}
 	}
 
