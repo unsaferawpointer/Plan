@@ -152,7 +152,7 @@ extension MenuBuilder.Item {
 			let none = NSMenuItem(
 				title: "None",
 				action: #selector(MenuSupportable.setEstimation(_:)),
-				keyEquivalent: "0"
+				keyEquivalent: ""
 			)
 			none.identifier = .setEstimationMenuItem
 			none.tag = 0
