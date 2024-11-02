@@ -21,6 +21,9 @@
 		4C02592E2CAC7A180045B3CF /* OutlineSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */; };
 		4C0259302CAC7D0B0045B3CF /* Modification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02592F2CAC7D0B0045B3CF /* Modification.swift */; };
 		4C0259322CAC7E2B0045B3CF /* AnyModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0259312CAC7E2B0045B3CF /* AnyModification.swift */; };
+		4C0693532CD549590067068E /* SidebarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0693522CD549590067068E /* SidebarPage.swift */; };
+		4C0693562CD54F730067068E /* SidebarPageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0693552CD54F730067068E /* SidebarPageRow.swift */; };
+		4C0693582CD60DA60067068E /* SidebarPageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0693572CD60DA60067068E /* SidebarPageSection.swift */; };
 		4C0899462CCD6DE0001091BF /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0899452CCD6DE0001091BF /* SidebarView.swift */; };
 		4C0899482CCD6FBF001091BF /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0899472CCD6FBF001091BF /* SidebarItem.swift */; };
 		4C08994B2CCD7145001091BF /* AnyStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08994A2CCD7145001091BF /* AnyStateProvider.swift */; };
@@ -172,6 +175,9 @@
 		4C02592D2CAC7A180045B3CF /* OutlineSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineSupportable.swift; sourceTree = "<group>"; };
 		4C02592F2CAC7D0B0045B3CF /* Modification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modification.swift; sourceTree = "<group>"; };
 		4C0259312CAC7E2B0045B3CF /* AnyModification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyModification.swift; sourceTree = "<group>"; };
+		4C0693522CD549590067068E /* SidebarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPage.swift; sourceTree = "<group>"; };
+		4C0693552CD54F730067068E /* SidebarPageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPageRow.swift; sourceTree = "<group>"; };
+		4C0693572CD60DA60067068E /* SidebarPageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPageSection.swift; sourceTree = "<group>"; };
 		4C0899452CCD6DE0001091BF /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		4C0899472CCD6FBF001091BF /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		4C08994A2CCD7145001091BF /* AnyStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStateProvider.swift; sourceTree = "<group>"; };
@@ -368,6 +374,16 @@
 				4C0259312CAC7E2B0045B3CF /* AnyModification.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4C0693542CD54F5F0067068E /* SidebarPage */ = {
+			isa = PBXGroup;
+			children = (
+				4C0693522CD549590067068E /* SidebarPage.swift */,
+				4C0693552CD54F730067068E /* SidebarPageRow.swift */,
+				4C0693572CD60DA60067068E /* SidebarPageSection.swift */,
+			);
+			path = SidebarPage;
 			sourceTree = "<group>";
 		};
 		4C0899442CCD6DC4001091BF /* Sidebar */ = {
@@ -762,6 +778,7 @@
 		4C8C6CF02C78C9A200E09697 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				4C0693542CD54F5F0067068E /* SidebarPage */,
 				4C8C6CF52C78FFB800E09697 /* AppPage.swift */,
 				4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */,
 				4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */,
@@ -1191,10 +1208,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C298E712C5FDC2100474956 /* PlanUITests.swift in Sources */,
+				4C0693532CD549590067068E /* SidebarPage.swift in Sources */,
 				4C8C6CF42C78CBD300E09697 /* DocumentPage.swift in Sources */,
 				4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */,
 				4C298E732C5FDC2100474956 /* PlanUITestsLaunchTests.swift in Sources */,
+				4C0693562CD54F730067068E /* SidebarPageRow.swift in Sources */,
 				4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */,
+				4C0693582CD60DA60067068E /* SidebarPageSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

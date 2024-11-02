@@ -19,17 +19,28 @@ struct SidebarView: View {
 		List(selection: $viewModel.selectedItem) {
 			Label("Document", systemImage: "doc.text")
 				.listItemTint(.preferred(.accentColor))
+				.accessibilityIdentifier("sidebar_label")
 				.tag(SidebarItem.Identifier.doc)
 
-			Section("Bookmarks") {
+			Section {
 				ForEach(viewModel.bookmarks) { bookmark in
 					Label(bookmark.title, systemImage: bookmark.icon)
-						.listItemTint(.preferred(.init(nsColor: bookmark.color?.colorValue ?? .controlAccentColor)))
+						.listItemTint(
+							.preferred(
+								.init(nsColor: bookmark.color?.colorValue ?? .controlAccentColor)
+							)
+						)
+						.accessibilityIdentifier("sidebar_label")
 						.tag(bookmark.id)
 				}
+			} header: {
+				Text("Bookmarks")
+					.accessibilityIdentifier("sidebar_section")
 			}
+
 		}
 		.listStyle(.sidebar)
+		.accessibilityIdentifier("sidebar")
 	}
 }
 

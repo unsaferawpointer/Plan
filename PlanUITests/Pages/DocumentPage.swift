@@ -13,12 +13,16 @@ final class DocumentPage {
 
 	let outline: XCUIElement
 
+	let splitGroup: XCUIElement
+
 	let bottomBar: BottomBarPage
 
 	init(window: XCUIElement) {
+		_ = window.waitForExistence(timeout: 0.5)
 		precondition(window.elementType == .window, "It is not window")
 		self.window = window
 		self.outline = window.outlines.firstMatch
+		self.splitGroup = window.splitGroups.firstMatch
 		self.bottomBar = BottomBarPage(element: window.groups["bottom-bar"])
 	}
 }
@@ -108,6 +112,20 @@ extension DocumentPage {
 		let savePanel = window.sheets.firstMatch
 		let cancelButton = savePanel.buttons["CancelButton"]
 		cancelButton.firstMatch.click()
+	}
+}
+
+// MARK: - Sidebar support
+extension DocumentPage {
+
+	var sidebar: SidebarPage {
+		return SidebarPage(outline: window.outlines["sidebar"])
+	}
+
+	func toggleSidebar() {
+		let toolbar =  window.toolbars.firstMatch
+		let button = toolbar.buttons["sidebar-toolbar-item"]
+		button.click()
 	}
 }
 
