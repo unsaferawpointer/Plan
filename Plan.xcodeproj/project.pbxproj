@@ -24,6 +24,8 @@
 		4C0693532CD549590067068E /* SidebarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0693522CD549590067068E /* SidebarPage.swift */; };
 		4C0693562CD54F730067068E /* SidebarPageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0693552CD54F730067068E /* SidebarPageRow.swift */; };
 		4C0693582CD60DA60067068E /* SidebarPageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0693572CD60DA60067068E /* SidebarPageSection.swift */; };
+		4C06935B2CD61ABC0067068E /* SidebarLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C06935A2CD61ABC0067068E /* SidebarLocalizable.xcstrings */; };
+		4C06935D2CD61AD50067068E /* SidebarLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06935C2CD61AD50067068E /* SidebarLocalization.swift */; };
 		4C0899462CCD6DE0001091BF /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0899452CCD6DE0001091BF /* SidebarView.swift */; };
 		4C0899482CCD6FBF001091BF /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0899472CCD6FBF001091BF /* SidebarItem.swift */; };
 		4C08994B2CCD7145001091BF /* AnyStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08994A2CCD7145001091BF /* AnyStateProvider.swift */; };
@@ -178,6 +180,8 @@
 		4C0693522CD549590067068E /* SidebarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPage.swift; sourceTree = "<group>"; };
 		4C0693552CD54F730067068E /* SidebarPageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPageRow.swift; sourceTree = "<group>"; };
 		4C0693572CD60DA60067068E /* SidebarPageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPageSection.swift; sourceTree = "<group>"; };
+		4C06935A2CD61ABC0067068E /* SidebarLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = SidebarLocalizable.xcstrings; sourceTree = "<group>"; };
+		4C06935C2CD61AD50067068E /* SidebarLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarLocalization.swift; sourceTree = "<group>"; };
 		4C0899452CCD6DE0001091BF /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		4C0899472CCD6FBF001091BF /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		4C08994A2CCD7145001091BF /* AnyStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStateProvider.swift; sourceTree = "<group>"; };
@@ -386,12 +390,22 @@
 			path = SidebarPage;
 			sourceTree = "<group>";
 		};
+		4C0693592CD61A7D0067068E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4C06935A2CD61ABC0067068E /* SidebarLocalizable.xcstrings */,
+				4C06935C2CD61AD50067068E /* SidebarLocalization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		4C0899442CCD6DC4001091BF /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
 				4C0899452CCD6DE0001091BF /* SidebarView.swift */,
 				4C0899472CCD6FBF001091BF /* SidebarItem.swift */,
 				4C08994C2CCD7355001091BF /* SidebarViewModel.swift */,
+				4C0693592CD61A7D0067068E /* Localization */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -1046,6 +1060,7 @@
 				4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */,
 				4CCFE62B2CB4768800AF29F1 /* Color.xcstrings in Resources */,
 				4CFDFEA92CB2D000000A6C2B /* README.md in Resources */,
+				4C06935B2CD61ABC0067068E /* SidebarLocalizable.xcstrings in Resources */,
 				4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */,
 				4C0259032C9A25140045B3CF /* Icons.xcstrings in Resources */,
 				4CE69F262C98C121009D06AD /* Menu.xcstrings in Resources */,
@@ -1119,6 +1134,7 @@
 				4C298EBC2C5FDE6700474956 /* NSOutlineView+Extension.swift in Sources */,
 				4C8C6CC12C62A37400E09697 /* HierarchyDropDelegate.swift in Sources */,
 				4CCCFA5E2C7B7278002DDD95 /* DocumentType.swift in Sources */,
+				4C06935D2CD61AD50067068E /* SidebarLocalization.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
 				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
 				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,

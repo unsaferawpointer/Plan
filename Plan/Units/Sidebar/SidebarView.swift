@@ -17,7 +17,7 @@ struct SidebarView: View {
 
 	var body: some View {
 		List(selection: $viewModel.selectedItem) {
-			Label("Document", systemImage: "doc.text")
+			Label(viewModel.documentLabel, systemImage: "doc.text")
 				.listItemTint(.preferred(.accentColor))
 				.accessibilityIdentifier("sidebar_label")
 				.tag(SidebarItem.Identifier.doc)
@@ -34,7 +34,7 @@ struct SidebarView: View {
 						.tag(bookmark.id)
 				}
 			} header: {
-				Text("Bookmarks")
+				Text(viewModel.boorkmarksLabel)
 					.accessibilityIdentifier("sidebar_section")
 			}
 
@@ -52,7 +52,8 @@ struct SidebarView: View {
 				initialState: .empty,
 				provider: PlanDataProvider(),
 				undoManager: nil
-			)
+			),
+			localization: SidebarLocalization()
 		)
 	)
 }

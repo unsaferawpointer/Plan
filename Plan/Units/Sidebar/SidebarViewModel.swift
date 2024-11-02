@@ -21,9 +21,16 @@ final class SidebarViewModel: ObservableObject {
 
 	private(set) var storage: DocumentStorage<PlanContent>
 
-	init(provider: AnyStateProvider<PlanDocumentState>, storage: DocumentStorage<PlanContent>) {
+	private(set) var localization: SidebarLocalizationProtocol
+
+	init(
+		provider: AnyStateProvider<PlanDocumentState>,
+		storage: DocumentStorage<PlanContent>,
+		localization: SidebarLocalizationProtocol = SidebarLocalization()
+	) {
 		self.provider = provider
 		self.storage = storage
+		self.localization = localization
 		self.selectedItem = provider.state.selection
 		$selectedItem.sink { identifier in
 			provider.modificate { state in
@@ -52,5 +59,17 @@ final class SidebarViewModel: ObservableObject {
 				self.bookmarks = items
 			}
 		}
+	}
+}
+
+// MARK: - Computed properties
+extension SidebarViewModel {
+
+	var documentLabel: String {
+		localization.documentLabel
+	}
+
+	var boorkmarksLabel: String {
+		localization.bookmarksSectionLabel
 	}
 }
