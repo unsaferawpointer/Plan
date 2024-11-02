@@ -61,6 +61,20 @@ extension HierarchyTableAdapter {
 
 	func configure(columns: [any TableColumn<HierarchyModel>]) {
 		self.columns = columns
+		for model in columns {
+			let column = NSTableColumn(identifier: .init(rawValue: model.identifier))
+			column.title = model.title
+			column.resizingMask = model.options.isRequired ? [.autoresizingMask, .userResizingMask] : .userResizingMask
+			column.isHidden = model.options.isHidden
+			if let minWidth = model.options.minWidth {
+				column.minWidth = minWidth
+			}
+			if let maxWidth = model.options.maxWidth {
+				column.maxWidth = maxWidth
+			}
+			table?.addTableColumn(column)
+		}
+		table?.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 	}
 
 	func apply(_ new: HierarchySnapshot) {
@@ -286,7 +300,6 @@ extension HierarchyTableAdapter: NSOutlineViewDelegate {
 
 		return optionalColumns?.contains(column.identifier.rawValue) ?? false
 	}
-
 }
 
 // MARK: - Support selection
