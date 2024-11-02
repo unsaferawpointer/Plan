@@ -17,6 +17,8 @@ final class HierarchyPresenter {
 
 	weak var view: PlanView?
 
+	private var provider: AnyStateProvider<PlanDocumentState>
+
 	private var statusFactory: PlanStatusFactoryProtocol
 
 	private var modelFactory: PlanModelFactoryProtocol
@@ -32,6 +34,7 @@ final class HierarchyPresenter {
 	// MARK: - Initialization
 
 	init(
+		provider: AnyStateProvider<PlanDocumentState>,
 		statusFactory: PlanStatusFactoryProtocol = PlanStatusFactory(),
 		modelFactory: PlanModelFactoryProtocol = PlanModelFactory(),
 		columnsFactory: PlanColumnsFactoryProtocol = PlanColumnsFactory(),
@@ -39,12 +42,18 @@ final class HierarchyPresenter {
 		pasteboard: PlanPasteboardProtocol = PlanPasteboard(),
 		generalPasteboard: PasteboardFacadeProtocol = PasteboardFacade(pasteboard: .general)
 	) {
+		self.provider = provider
 		self.statusFactory = statusFactory
 		self.modelFactory = modelFactory
 		self.columnsFactory = columnsFactory
 		self.localization = localization
 		self.pasteboard = pasteboard
 		self.generalPasteboard = generalPasteboard
+
+		provider.addObservation(for: self) { [weak self] _, state in
+			self?.interactor?.fetchData()
+			self?.view?.expandAll()
+		}
 	}
 }
 
@@ -56,11 +65,8 @@ extension HierarchyPresenter {
 	}
 
 	var destination: HierarchyDestination<UUID> {
-		return if let first = selection.first {
-			.onItem(with: first)
-		} else {
-			.toRoot
-		}
+		return .init(target: selection.first)
+			.relative(to: rootIdentifier())
 	}
 }
 
@@ -68,7 +74,7 @@ extension HierarchyPresenter {
 extension HierarchyPresenter: HierarchyPresenterProtocol {
 
 	func present(_ content: PlanContent) {
-		let model = makeModel(root: content.hierarchy)
+		let model = makeModel(hierarchy: content.hierarchy)
 		self.view?.display(model)
 	}
 }
@@ -98,7 +104,7 @@ extension HierarchyPresenter: PlanViewOutput {
 		}
 
 		let first = selection.first
-		let id = interactor.createNew(with: localization.newItemTitle, in: first)
+		let id = interactor.createNew(with: localization.newItemTitle, destination: destination)
 
 		view?.scroll(to: id)
 		if let first {
@@ -233,18 +239,35 @@ extension HierarchyPresenter: PlanColumnsFactoryDelegate {
 // MARK: - Helpers
 private extension HierarchyPresenter {
 
-	func makeModel(root: Root<ItemContent>) -> HierarchyUnitModel {
+	func makeModel(hierarchy: Root<ItemContent>) -> HierarchyUnitModel {
 
-		let snapshot = makeSnapshot(root)
-		let status = statusFactory.makeModel(for: root)
+		let nodes = if let root = rootIdentifier(), let node = hierarchy.node(with: root) {
+			node.children
+		} else {
+			hierarchy.nodes
+		}
+
+		let snapshot = makeSnapshot(nodes)
+		let status = statusFactory.makeModel(for: nodes)
 
 		return HierarchyUnitModel(bottomBar: status, snapshot: snapshot)
 	}
 
-	func makeSnapshot(_ root: Root<ItemContent>) -> HierarchySnapshot {
-		let items = root.nodes
-		return HierarchySnapshot(items) { item, info in
+	func makeSnapshot(_ nodes: [Node<ItemContent>]) -> HierarchySnapshot {
+		return HierarchySnapshot(nodes) { item, info in
 			return modelFactory.makeModel(item: item, info: info)
+		}
+	}
+}
+
+extension HierarchyPresenter {
+
+	func rootIdentifier() -> UUID? {
+		switch provider.state.selection {
+		case .doc:
+			return nil
+		case let .bookmark(id):
+			return id
 		}
 	}
 }

@@ -133,6 +133,22 @@
         }
       }
     },
+    "bookmark_table_column" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закладки"
+          }
+        }
+      }
+    },
     "completed_date_table_column" : {
       "localizations" : {
         "en" : {

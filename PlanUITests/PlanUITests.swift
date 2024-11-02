@@ -18,6 +18,50 @@ final class PlanUITests: XCTestCase {
 	}
 }
 
+extension PlanUITests {
+
+	func test_sidebar_selection_while_launching() {
+		// Arrange
+		let app = prepareApp()
+		let window = app.firstWindow()
+		let doc = DocumentPage(window: window)
+
+		// Assert
+
+		let row = doc.sidebar.row(for: 0)
+		XCTAssertEqual(row.title, "Document")
+		XCTAssertTrue(row.isSelected)
+	}
+
+	func test_hideSidebar() {
+		// Arrange
+		let app = prepareApp()
+		let window = app.firstWindow()
+		let doc = DocumentPage(window: window)
+
+		// Act
+		doc.toggleSidebar()
+
+		// Assert
+		XCTAssertTrue(doc.sidebar.outline.waitForNonExistence(timeout: 0.5))
+	}
+
+	func test_showSidebar() {
+		// Arrange
+		let app = prepareApp()
+		let window = app.firstWindow()
+		let doc = DocumentPage(window: window)
+		doc.toggleSidebar()
+		_ = doc.sidebar.outline.waitForExistence(timeout: 0.5)
+
+		// Act
+		doc.toggleSidebar()
+
+		// Assert
+		XCTAssertTrue(doc.sidebar.outline.waitForExistence(timeout: 0.5))
+	}
+}
+
 // MARK: - Creation
 extension PlanUITests {
 
@@ -214,10 +258,40 @@ extension PlanUITests {
 		XCTAssertEqual(doc.rowsCount, 0)
 	}
 
+	func test_clickBookmarkMenuItem() {
+		let app = prepareApp()
+		
+		let window = app.firstWindow()
+		
+		let doc = DocumentPage(window: window)
+		doc.newItems(count: 1, in: nil)
+		
+		doc.selectRow(0)
+		doc.invokeContextMenu(for: 0, andClick: .bookmarkMenuItem)
+
+		XCTAssertEqual(doc.sidebar.row(for: 2).title, "New item")
+		XCTAssertEqual(doc.sidebar.section(for: 1).title, "Bookmarks")
+	}
+
 }
 
 // MARK: - Common cases
 extension PlanUITests {
+
+	func test_createNewAnyTimes() {
+		// Arrange
+		let app = AppPage(app: XCUIApplication())
+		app.launch()
+		app.closeAll()
+
+		// Act
+		for _ in 0..<3 {
+			app.press("n", modifierFlags: .command)
+		}
+
+		// Assert
+		XCTAssertEqual(app.windows().count, 3)
+	}
 
 	func test_createNew() {
 		// Arrange
@@ -243,8 +317,6 @@ extension PlanUITests {
 
 		// Act
 		app.press("o", modifierFlags: .command)
-
-		let window = app.firstWindow()
 
 		// Assert
 		XCTAssertTrue(app.windows()["open-panel"].exists)
@@ -307,4 +379,5 @@ private extension String {
 	static var deleteMenuItem = "delete_menu_item"
 	static var newMenuItem = "new_menu_item"
 	static var statusMenuItem = "set_status_menu_item"
+	static var bookmarkMenuItem = "bookmark_menu_item"
 }

@@ -37,6 +37,16 @@ extension Root {
 
 extension Root {
 
+	func enumerate(_ block: (Node<Value>) -> Void) {
+		nodes.forEach {
+			$0.enumerate(block)
+		}
+	}
+
+	func node(with id: ID) -> Node<Value>? {
+		return cache[id]
+	}
+
 	func nodes(with ids: [ID]) -> [Node<Value>] {
 		return ids.compactMap {
 			cache[$0]

@@ -13,7 +13,7 @@ protocol HierarchyInteractorProtocol: UndoManagerSupportable {
 	func node(_ id: UUID) -> any TreeNode<ItemContent>
 	func nodes(_ ids: [UUID]) -> [any TreeNode<ItemContent>]
 
-	func createNew(with text: String, in target: UUID?) -> UUID
+	func createNew(with text: String, destination: HierarchyDestination<UUID>) -> UUID
 	func deleteItems(_ ids: [UUID])
 	func setState(_ flag: Bool, withSelection selection: [UUID])
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID])
@@ -75,14 +75,9 @@ extension HierarchyInteractor: HierarchyInteractorProtocol {
 		storage.state.hierarchy.nodes(with: ids)
 	}
 
-	func createNew(with text: String, in target: UUID?) -> UUID {
+	func createNew(with text: String, destination: HierarchyDestination<UUID>) -> UUID {
 		let identifier = UUID()
 		let itemContent = ItemContent(uuid: identifier, text: text)
-		let destination: HierarchyDestination = if let target {
-			.onItem(with: target)
-		} else {
-			.toRoot
-		}
 		storage.modificate { content in
 			content.insertItems(with: [itemContent], to: destination)
 		}

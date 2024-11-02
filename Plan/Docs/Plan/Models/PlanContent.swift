@@ -62,27 +62,6 @@ extension PlanContent {
 			downstream: downstream
 		)
 	}
-
-//	func setText(_ value: String, for id: UUID) {
-//		hierarchy.setProperty(\.text, to: value, for: [id], downstream: false)
-//	}
-//
-//	func setStatus(_ value: Bool, for ids: [UUID]) {
-//		hierarchy.setProperty(\.isDone, to: value, for: ids, downstream: true)
-//	}
-//
-//	func setFavoriteFlag(_ flag: Bool, for ids: [UUID]) {
-//		hierarchy.setProperty(\.isFavorite, to: flag, for: ids, downstream: false)
-//	}
-//
-//	func setEstimation(_ value: Int, for ids: [UUID]) {
-//		hierarchy.setProperty(\.count, to: value, for: ids, downstream: false)
-//	}
-//
-//	func setIcon(_ value: IconName?, for ids: [UUID]) {
-//		hierarchy.setProperty(\.iconName, to: value, for: ids, downstream: false)
-//	}
-
 }
 
 extension PlanContent {

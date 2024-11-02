@@ -9,8 +9,8 @@ import Cocoa
 
 final class HierarchyAssembly {
 
-	static func build(storage: DocumentStorage<PlanContent>) -> NSViewController {
-		let presenter = HierarchyPresenter()
+	static func build(storage: DocumentStorage<PlanContent>, provider: AnyStateProvider<PlanDocumentState>) -> NSViewController {
+		let presenter = HierarchyPresenter(provider: provider)
 		let interactor = HierarchyInteractor(storage: storage)
 		return HierarchyViewController { viewController in
 			viewController.output = presenter

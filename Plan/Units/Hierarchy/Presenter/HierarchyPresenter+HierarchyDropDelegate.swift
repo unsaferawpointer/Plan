@@ -11,11 +11,13 @@ import Foundation
 extension HierarchyPresenter: HierarchyDropDelegate {
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>) {
-		interactor?.move(ids: ids, to: destination)
+		let globalDestination = destination.relative(to: rootIdentifier())
+		interactor?.move(ids: ids, to: globalDestination)
 	}
 
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool {
-		return interactor?.validateMoving(ids: ids, to: destination) ?? false
+		let globalDestination = destination.relative(to: rootIdentifier())
+		return interactor?.validateMoving(ids: ids, to: globalDestination) ?? false
 	}
 
 	func write(ids: [UUID], to pasteboard: PasteboardFacadeProtocol) {
@@ -25,17 +27,17 @@ extension HierarchyPresenter: HierarchyDropDelegate {
 
 	func insert(from pasteboard: PasteboardFacadeProtocol, to destination: HierarchyDestination<UUID>) {
 
-		
+		let globalDestination = destination.relative(to: rootIdentifier())
 
 		let nodes = self.pasteboard.readNodes(from: pasteboard)
 
 		guard !nodes.isEmpty else {
 
 			let texts = self.pasteboard.readTexts(from: pasteboard)
-			interactor?.insert(texts: texts, to: destination)
+			interactor?.insert(texts: texts, to: globalDestination)
 			return
 		}
-		interactor?.insert(nodes, to: destination)
+		interactor?.insert(nodes, to: globalDestination)
 	}
 }
 
@@ -52,4 +54,5 @@ extension HierarchyPresenter {
 		}
 		interactor?.insert(texts: texts, to: destination)
 	}
+
 }

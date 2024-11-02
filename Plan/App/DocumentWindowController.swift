@@ -46,11 +46,11 @@ private extension DocumentWindowController {
 extension DocumentWindowController: NSToolbarDelegate {
 
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.flexibleSpace, .newItem]
+		return [.sidebar, .flexibleSpace, .newItem]
 	}
 
 	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		return [.flexibleSpace, .newItem]
+		return [.sidebar, .flexibleSpace, .newItem]
 	}
 
 	func toolbar(_ toolbar: NSToolbar,
@@ -64,11 +64,29 @@ extension DocumentWindowController: NSToolbarDelegate {
 			let button = NSButton(
 				title: "",
 				image: NSImage(systemSymbolName: "plus")!,
-				target: nil,
-				action: #selector(MenuSupportable.createNew(_:))
+				target: self,
+				action: #selector(newItem(_:))
 			)
 			button.setAccessibilityIdentifier("new-toolbar-item")
 			button.identifier = NSUserInterfaceItemIdentifier("new-toolbar-item")
+			button.bezelStyle = .texturedRounded
+
+			item.view = button
+			return item
+		case .sidebar:
+			let item = NSToolbarItem(itemIdentifier: .sidebar)
+			item.isNavigational = true
+
+			item.label = String(localized: "sidebar_item_toolbar_item", table: "AppLocalizable")
+
+			let button = NSButton(
+				title: "",
+				image: NSImage(systemSymbolName: "sidebar.leading")!,
+				target: nil,
+				action: #selector(NSSplitViewController.toggleSidebar(_:))
+			)
+			button.setAccessibilityIdentifier("sidebar-toolbar-item")
+			button.identifier = NSUserInterfaceItemIdentifier("sidebar-toolbar-item")
 			button.bezelStyle = .texturedRounded
 
 			item.view = button
@@ -79,10 +97,30 @@ extension DocumentWindowController: NSToolbarDelegate {
 	}
 }
 
+// MARK: - Actions
+extension DocumentWindowController {
+
+	@objc
+	func newItem(_ sender: NSMenuItem) {
+		NotificationCenter.default.post(name: .newItem, object: window, userInfo: nil)
+	}
+}
+
+extension NSNotification.Name {
+
+	static var newItem: Self {
+		return .init("newItem")
+	}
+}
+
 extension NSToolbarItem.Identifier {
 
 	static var newItem: Self {
 		return .init("newItem")
+	}
+
+	static var sidebar: Self {
+		return .init("leadingSidebar")
 	}
 
 }

@@ -45,6 +45,7 @@ final class PlanPresenterTests: XCTestCase {
 		generalPasteboard = PasteboardFacadeMock()
 
 		sut = HierarchyPresenter(
+			provider: AnyStateProvider(initialState: .init()),
 			statusFactory: statusFactory,
 			modelFactory: modelFactory,
 			columnsFactory: columnsFactory,

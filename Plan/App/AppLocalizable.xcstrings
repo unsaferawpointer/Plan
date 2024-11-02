@@ -16,6 +16,22 @@
           }
         }
       }
+    },
+    "sidebar_item_toolbar_item" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigation"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Навигация"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -38,8 +38,10 @@ extension AppPage {
 	}
 
 	func closeAll() {
-		for window in app.windows.allElementsBoundByIndex.reversed() {
-			DocumentPage(window: window).close()
+		while !app.windows.allElementsBoundByIndex.isEmpty {
+			for window in app.windows.allElementsBoundByIndex.reversed() {
+				DocumentPage(window: window).close()
+			}
 		}
 	}
 

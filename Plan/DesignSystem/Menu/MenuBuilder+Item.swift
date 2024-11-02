@@ -133,7 +133,7 @@ extension MenuBuilder.Item {
 				let item = NSMenuItem(
 					title: priority.title,
 					action: #selector(MenuSupportable.setPriority(_:)),
-					keyEquivalent: ""
+					keyEquivalent: "\(priority.rawValue + 1)"
 				)
 				item.identifier = .setPriorityMenuItem
 				item.tag = priority.rawValue
@@ -152,7 +152,7 @@ extension MenuBuilder.Item {
 			let none = NSMenuItem(
 				title: "None",
 				action: #selector(MenuSupportable.setEstimation(_:)),
-				keyEquivalent: "0"
+				keyEquivalent: ""
 			)
 			none.identifier = .setEstimationMenuItem
 			none.tag = 0
@@ -164,7 +164,7 @@ extension MenuBuilder.Item {
 				let item = NSMenuItem(
 					title: "\(number)",
 					action: #selector(MenuSupportable.setEstimation(_:)),
-					keyEquivalent: "\(index + 1)"
+					keyEquivalent: ""
 				)
 				item.identifier = .setEstimationMenuItem
 				item.tag = number
@@ -477,6 +477,8 @@ extension MenuBuilder.Item {
 						.separator,
 						.fold,
 						.unfold,
+						.separator,
+						.priority,
 						.separator,
 						.favorite,
 						.completed,

@@ -21,6 +21,8 @@ struct HierarchyModel {
 
 	var priority: IconCell.Model
 
+	var bookmark: IconModel
+
 	var menu: MenuItem
 
 	// MARK: - Initialization
@@ -32,6 +34,7 @@ struct HierarchyModel {
 		completedAt: TextCell.Model,
 		value: TextCell.Model,
 		priority: IconCell.Model,
+		bookmark: IconModel,
 		menu: MenuItem
 	) {
 		self.uuid = uuid
@@ -40,6 +43,7 @@ struct HierarchyModel {
 		self.completedAt = completedAt
 		self.value = value
 		self.priority = priority
+		self.bookmark = bookmark
 		self.menu = menu
 	}
 }

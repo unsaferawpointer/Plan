@@ -6,15 +6,20 @@
 //
 
 import Cocoa
+import SwiftUI
 
 class PlanDocument: NSDocument {
 
 	lazy var storage: DocumentStorage<PlanContent> = {
 		return DocumentStorage<PlanContent>(
 			initialState: .empty,
-			provider: DataProvider(), 
+			provider: PlanDataProvider(), 
 			undoManager: undoManager
 		)
+	}()
+
+	lazy var stateProvider: AnyStateProvider<PlanDocumentState> = {
+		return .init(initialState: PlanDocumentState())
 	}()
 
 	override init() {
@@ -29,7 +34,8 @@ class PlanDocument: NSDocument {
 		// Returns the Storyboard that contains your Document window.
 		let window = NSWindow.makeMain()
 		let windowController = DocumentWindowController(window: window)
-		windowController.window?.contentViewController = HierarchyAssembly.build(storage: storage)
+		windowController.window?.contentViewController = makeContentViewController()
+
 		self.addWindowController(windowController)
 	}
 
@@ -41,4 +47,31 @@ class PlanDocument: NSDocument {
 		try storage.read(from: data, ofType: typeName)
 	}
 
+}
+
+// MARK: - Helpers
+private extension PlanDocument {
+
+	func makeContentViewController() -> NSViewController {
+
+		let viewController = NSSplitViewController()
+		let sidebarViewController = NSHostingController(
+			rootView: SidebarView(
+				viewModel: SidebarViewModel(provider: stateProvider, storage: storage)
+			)
+		)
+
+		let sidebarItem = NSSplitViewItem(sidebarWithViewController: sidebarViewController)
+		let contentItem = NSSplitViewItem(
+			viewController: HierarchyAssembly.build(
+				storage: storage,
+				provider: stateProvider
+			)
+		)
+
+		viewController.addSplitViewItem(sidebarItem)
+		viewController.addSplitViewItem(contentItem)
+
+		return viewController
+	}
 }

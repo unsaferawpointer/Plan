@@ -76,6 +76,7 @@ class HierarchyViewController: NSViewController {
 		self.view = NSView()
 		configureUserInterface()
 		configureConstraints()
+		configureNotifications()
 	}
 
 	override func viewDidLoad() {
@@ -99,19 +100,6 @@ extension HierarchyViewController: PlanView {
 	}
 
 	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>]) {
-		for model in columns {
-			let column = NSTableColumn(identifier: .init(rawValue: model.identifier))
-			column.title = model.title
-			column.resizingMask = model.options.isRequired ? .autoresizingMask : .userResizingMask
-			column.isHidden = model.options.isHidden
-			if let minWidth = model.options.minWidth {
-				column.minWidth = minWidth
-			}
-			if let maxWidth = model.options.maxWidth {
-				column.maxWidth = maxWidth
-			}
-			table.addTableColumn(column)
-		}
 		adapter?.configure(columns: columns)
 	}
 
@@ -152,9 +140,18 @@ extension HierarchyViewController: PlanView {
 // MARK: - Helpers
 private extension HierarchyViewController {
 
+	func configureNotifications() {
+		NotificationCenter.default.addObserver(forName: .newItem, object: nil, queue: .main) { [weak self] notification in
+			guard let window = notification.object as? NSWindow, self?.view.window === window else {
+				return
+			}
+			self?.output?.createNew()
+		}
+	}
+
 	func configureUserInterface() {
 
-		table.autoresizesOutlineColumn = false
+		table.autoresizesOutlineColumn = true
 		table.allowsMultipleSelection = true
 		table.frame = scrollview.bounds
 
@@ -165,7 +162,6 @@ private extension HierarchyViewController {
 		table.headerView?.setAccessibilityRole(.unknown)
 
 		table.allowsColumnResizing = true
-		table.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 
 		table.menu = makeContextMenu()
 	}

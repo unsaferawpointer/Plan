@@ -10,12 +10,12 @@ import XCTest
 
 final class PlanDataProviderTests: XCTestCase {
 
-	var sut: DataProvider<PlanContent>!
+	var sut: PlanDataProvider<PlanContent>!
 
 	let type: DocumentType = .plan
 
 	override func setUpWithError() throws {
-		sut = DataProvider()
+		sut = PlanDataProvider()
 	}
 
 	override func tearDownWithError() throws {

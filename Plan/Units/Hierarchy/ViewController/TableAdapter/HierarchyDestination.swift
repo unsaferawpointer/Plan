@@ -35,4 +35,32 @@ enum HierarchyDestination<ID> {
 			return index
 		}
 	}
+
+	// MARK: - Initialization block
+
+	init(target: ID?) {
+		if let target {
+			self = .onItem(with: target)
+		} else {
+			self = .toRoot
+		}
+	}
+}
+
+extension HierarchyDestination {
+
+	func relative(to root: ID?) -> HierarchyDestination<ID> {
+		guard let root else {
+			return self
+		}
+
+		switch self {
+		case .toRoot:
+			return .onItem(with: root)
+		case .inRoot(let index):
+			return .inItem(with: root, atIndex: index)
+		default:
+			return self
+		}
+	}
 }

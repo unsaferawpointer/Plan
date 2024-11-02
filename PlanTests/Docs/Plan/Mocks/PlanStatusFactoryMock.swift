@@ -15,7 +15,7 @@ final class PlanStatusFactoryMock {
 // MARK: - PlanStatusFactoryProtocol
 extension PlanStatusFactoryMock: PlanStatusFactoryProtocol {
 
-	func makeModel(for root: Root<ItemContent>) -> BottomBar.Model {
+	func makeModel(for nodes: [Node<ItemContent>]) -> BottomBar.Model {
 		stubs.model
 	}
 }
