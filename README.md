@@ -1,12 +1,20 @@
 
-![Main](./Documents/Screenshots/mac_roadmap_screenshot.png)
+<a href="#"><img width="256" height="256" src="./Documents/app_icon_release-256.png" align="left" /></a>
+
+<br />
+
+### Introducing the structural nested list editor for macOS
+
+Create and edit nested lists with ease..
 
 ![Platform](https://img.shields.io/badge/platforms-macOS-blue.svg)
 ![Commits](https://badgen.net/github/commits/unsaferawpointer/plan/)
 
-## About
+<br /><br /><br />
 
-Introducing the structural nested list editor for macOS
+## Screenshots
+
+![Main](./Documents/Screenshots/mac_roadmap_screenshot.png)
 
 ## Features
 
@@ -15,16 +23,20 @@ Introducing the structural nested list editor for macOS
 * Drag&Drop support.
 * Hotkeys support.
 
+## Mac App Store
+
+- [v1.5.0](https://apps.apple.com/ru/app/plan-nested-list-outliner/id6661028774)
+
 ## Releases
 
-- [v1.3](https://github.com/unsaferawpointer/Plan/releases/tag/v1.3.0)
+- [v1.3.0](https://github.com/unsaferawpointer/Plan/releases/tag/v1.3.0)
 
 ## Roadmap
 
 - Item customization
-	* Icon color customization
+	* ~~Icon color customization~~
 - Add flat tasks list with sorting
-- Add document sidebar
+- ~~Add document sidebar~~
 - Add application settings
 - Localization
 	* Ukrainian
