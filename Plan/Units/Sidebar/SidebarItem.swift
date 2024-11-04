@@ -16,6 +16,8 @@ struct SidebarItem {
 	var color: Color?
 
 	var title: String
+
+	var count: Int
 }
 
 // MARK: - Identifiable

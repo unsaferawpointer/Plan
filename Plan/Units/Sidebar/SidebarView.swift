@@ -19,6 +19,7 @@ struct SidebarView: View {
 		List(selection: $viewModel.selectedItem) {
 			Label(viewModel.documentLabel, systemImage: "doc.text")
 				.listItemTint(.preferred(.accentColor))
+				.badge(viewModel.totalCount)
 				.accessibilityIdentifier("sidebar_label")
 				.tag(SidebarItem.Identifier.doc)
 
@@ -30,6 +31,7 @@ struct SidebarView: View {
 								.init(nsColor: bookmark.color?.colorValue ?? .controlAccentColor)
 							)
 						)
+						.badge(bookmark.count)
 						.accessibilityIdentifier("sidebar_label")
 						.tag(bookmark.id)
 				}

@@ -15,6 +15,8 @@ final class SidebarViewModel: ObservableObject {
 
 	@Published var bookmarks: [SidebarItem] = []
 
+	@Published var totalCount: Int = 0
+
 	private(set) var cancellables: Set<AnyCancellable> = []
 
 	private(set) var provider: AnyStateProvider<PlanDocumentState>
@@ -43,6 +45,7 @@ final class SidebarViewModel: ObservableObject {
 
 			var items: [SidebarItem] = []
 
+			self.totalCount = content.hierarchy.count
 			content.hierarchy.enumerate { node in
 				if node.value.isFavorite {
 					items.append(
@@ -50,7 +53,8 @@ final class SidebarViewModel: ObservableObject {
 							id: .bookmark(id: node.value.id),
 							icon: node.value.iconName?.systemName ?? "star.fill",
 							color: node.value.iconColor,
-							title: node.value.text
+							title: node.value.text,
+							count: node.count
 						)
 					)
 				}
