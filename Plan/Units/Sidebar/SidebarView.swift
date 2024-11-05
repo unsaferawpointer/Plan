@@ -26,12 +26,12 @@ struct SidebarView: View {
 			Section {
 				ForEach(viewModel.bookmarks) { bookmark in
 					Label(bookmark.title, systemImage: bookmark.icon)
+						.badge(bookmark.count)
 						.listItemTint(
 							.preferred(
 								.init(nsColor: bookmark.color?.colorValue ?? .controlAccentColor)
 							)
 						)
-						.badge(bookmark.count)
 						.accessibilityIdentifier("sidebar_label")
 						.tag(bookmark.id)
 				}
