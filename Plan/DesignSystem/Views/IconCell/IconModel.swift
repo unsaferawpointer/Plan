@@ -17,7 +17,7 @@ struct IconModel: CellModel {
 extension IconModel {
 
 	struct Configuration {
-		var color: Color?
+		var color: ColorModel?
 	}
 
 	struct Value {

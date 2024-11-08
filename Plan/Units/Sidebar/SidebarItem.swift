@@ -13,7 +13,7 @@ struct SidebarItem {
 
 	var icon: String
 
-	var color: Color?
+	var color: ColorModel?
 
 	var title: String
 

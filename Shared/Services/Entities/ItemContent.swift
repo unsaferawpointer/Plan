@@ -25,7 +25,7 @@ struct ItemContent {
 
 	var priority: ItemPriority
 
-	var iconColor: Color?
+	var iconColor: ColorModel?
 
 	// MARK: - Initialization
 
@@ -38,7 +38,7 @@ struct ItemContent {
 		count: Int = 0,
 		options: EntityOptions = [],
 		priority: ItemPriority = .low,
-		iconColor: Color? = nil
+		iconColor: ColorModel? = nil
 	) {
 		self.uuid = uuid
 		self.created = created
@@ -77,7 +77,7 @@ extension ItemContent: Decodable {
 		let text = try container.decode(String.self, forKey: .text)
 		let status = try container.decode(ItemStatus.self, forKey: .status)
 		let iconName = try? container.decodeIfPresent(IconName.self, forKey: .iconName)
-		let iconColor = try? container.decodeIfPresent(Color.self, forKey: .iconColor)
+		let iconColor = try? container.decodeIfPresent(ColorModel.self, forKey: .iconColor)
 		let count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
 		let options = try container.decode(EntityOptions.self, forKey: .options)
 		let priority = try container.decodeIfPresent(ItemPriority.self, forKey: .priority) ?? .low

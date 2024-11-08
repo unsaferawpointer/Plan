@@ -25,7 +25,7 @@ protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
 
 	func setIcon(_ value: IconName?)
 
-	func setColor(_ value: Color?)
+	func setColor(_ value: ColorModel?)
 
 	func fold()
 

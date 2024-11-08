@@ -52,7 +52,7 @@ extension HierarchyViewController: MenuSupportable {
 
 	@IBAction
 	func setColor(_ sender: NSMenuItem) {
-		let color = Color(rawValue: sender.tag)
+		let color = ColorModel(rawValue: sender.tag)
 		output?.setColor(color)
 	}
 

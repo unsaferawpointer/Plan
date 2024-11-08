@@ -9,14 +9,14 @@ import Foundation
 
 struct TextConfiguration {
 
-	let textColor: Color
+	let textColor: ColorModel
 	let isEditable: Bool
 	let validation: TextValidation?
 
 	// MARK: - Initialization
 
 	init(
-		textColor: Color = .primary,
+		textColor: ColorModel = .primary,
 		isEditable: Bool = false,
 		validation: TextValidation? = nil
 	) {

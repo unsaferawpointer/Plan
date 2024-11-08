@@ -1,13 +1,11 @@
 //
-//  Color.swift
+//  ColorModel.swift
 //  Plan
 //
 //  Created by Anton Cherkasov on 27.08.2024.
 //
 
-import Cocoa
-
-enum Color: Int {
+enum ColorModel: Int {
 
 	// MARK: - Basic
 	case accent
@@ -33,13 +31,16 @@ enum Color: Int {
 }
 
 // MARK: - Codable
-extension Color: Codable { }
+extension ColorModel: Codable { }
 
 // MARK: - CaseIterable
-extension Color: CaseIterable { }
+extension ColorModel: CaseIterable { }
 
-// MARK: - Computed properties
-extension Color {
+#if canImport(Cocoa)
+
+import Cocoa
+
+extension ColorModel {
 
 	var colorValue: NSColor {
 		switch self {
@@ -77,6 +78,11 @@ extension Color {
 			return .systemPink
 		}
 	}
+}
+#endif
+
+// MARK: - Computed properties
+extension ColorModel {
 
 	var displayName: String {
 		switch self {

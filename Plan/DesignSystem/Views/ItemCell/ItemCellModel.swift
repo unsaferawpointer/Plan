@@ -33,8 +33,8 @@ extension ItemCellModel {
 	}
 
 	struct Configuration {
-		var textColor: Color
+		var textColor: ColorModel
 		var icon: String?
-		var iconColor: Color?
+		var iconColor: ColorModel?
 	}
 }

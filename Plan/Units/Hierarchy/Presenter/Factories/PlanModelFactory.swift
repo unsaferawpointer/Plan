@@ -125,14 +125,14 @@ private extension PlanModelFactory {
 		)
 	}
 
-	func iconColor(isDone: Bool, baseColor: Color?) -> Color? {
+	func iconColor(isDone: Bool, baseColor: ColorModel?) -> ColorModel? {
 		guard !isDone else {
 			return .tertiary
 		}
 		return baseColor
 	}
 
-	func textColor(isDone: Bool) -> Color {
+	func textColor(isDone: Bool) -> ColorModel {
 		return isDone ? .secondary : .primary
 	}
 
@@ -146,7 +146,7 @@ private extension PlanModelFactory {
 
 extension ItemPriority {
 
-	var color: Color? {
+	var color: ColorModel? {
 		switch self {
 		case .medium:
 			return .yellow

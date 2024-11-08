@@ -559,7 +559,7 @@ extension MenuBuilder.Item {
 
 			main.submenu?.addItem(.separator())
 
-			for color in Color.allCases {
+			for color in ColorModel.allCases {
 				let item = NSMenuItem(
 					title: color.displayName,
 					action: #selector(MenuSupportable.setColor(_:)),

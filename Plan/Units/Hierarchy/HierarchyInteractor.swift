@@ -20,7 +20,7 @@ protocol HierarchyInteractorProtocol: UndoManagerSupportable {
 	func setPriority(_ value: ItemPriority, withSelection selection: [UUID])
 	func setNumber(_ value: Int, withSelection selection: [UUID])
 	func setIcon(_ value: IconName?, withSelection selection: [UUID])
-	func setColor(_ value: Color?, withSelection selection: [UUID])
+	func setColor(_ value: ColorModel?, withSelection selection: [UUID])
 
 	func move(ids: [UUID], to destination: HierarchyDestination<UUID>)
 	func validateMoving(ids: [UUID], to destination: HierarchyDestination<UUID>) -> Bool
@@ -110,7 +110,7 @@ extension HierarchyInteractor: HierarchyInteractorProtocol {
 		modificate(ids: selection, keyPath: \.iconName, value: value)
 	}
 
-	func setColor(_ value: Color?, withSelection selection: [UUID]) {
+	func setColor(_ value: ColorModel?, withSelection selection: [UUID]) {
 		modificate(ids: selection, keyPath: \.iconColor, value: value)
 	}
 

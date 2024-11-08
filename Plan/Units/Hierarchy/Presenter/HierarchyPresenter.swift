@@ -136,7 +136,7 @@ extension HierarchyPresenter: PlanViewOutput {
 		interactor?.setIcon(value, withSelection: selection)
 	}
 
-	func setColor(_ value: Color?) {
+	func setColor(_ value: ColorModel?) {
 		interactor?.setColor(value, withSelection: selection)
 	}
 
