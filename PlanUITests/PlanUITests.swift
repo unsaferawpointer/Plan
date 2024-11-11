@@ -29,7 +29,7 @@ extension PlanUITests {
 		// Assert
 
 		let row = doc.sidebar.row(for: 0)
-		XCTAssertEqual(row.title, "Document")
+		XCTAssertEqual(row.value, "Document")
 		XCTAssertTrue(row.isSelected)
 	}
 
@@ -269,7 +269,7 @@ extension PlanUITests {
 		doc.selectRow(0)
 		doc.invokeContextMenu(for: 0, andClick: .bookmarkMenuItem)
 
-		XCTAssertEqual(doc.sidebar.row(for: 2).title, "New item")
+		XCTAssertEqual(doc.sidebar.row(for: 2).value, "New item")
 		XCTAssertEqual(doc.sidebar.section(for: 1).title, "Bookmarks")
 	}
 

@@ -13,7 +13,7 @@ class PlanDocument: NSDocument {
 	lazy var storage: DocumentStorage<PlanContent> = {
 		return DocumentStorage<PlanContent>(
 			initialState: .empty,
-			provider: PlanDataProvider(), 
+			provider: DataProvider(), 
 			undoManager: undoManager
 		)
 	}()

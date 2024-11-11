@@ -52,7 +52,7 @@ struct SidebarView: View {
 			provider: .init(initialState: .init()),
 			storage: .init(
 				initialState: .empty,
-				provider: PlanDataProvider(),
+				provider: DataProvider(),
 				undoManager: nil
 			),
 			localization: SidebarLocalization()

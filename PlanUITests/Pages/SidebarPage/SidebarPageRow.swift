@@ -19,8 +19,12 @@ final class SidebarPageRow {
 
 extension SidebarPageRow {
 
-	var title: String? {
-		return cell.staticTexts.firstMatch.value as? String
+	var value: String? {
+		return cell.staticTexts["sidebar_label"].value as? String
+	}
+
+	var label: String? {
+		return cell.staticTexts["sidebar_label"].label 
 	}
 
 	var cell: XCUIElement {

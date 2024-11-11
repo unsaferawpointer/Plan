@@ -32,6 +32,15 @@ extension TreeNode {
 		}
 	}
 
+	var descedantsCount: Int {
+		guard !children.isEmpty else {
+			return 0
+		}
+		return children.reduce(0) { partialResult, node in
+			return partialResult + node.count
+		}
+	}
+
 	var count: Int {
 		guard !children.isEmpty else {
 			return 1

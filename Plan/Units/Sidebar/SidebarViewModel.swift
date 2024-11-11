@@ -54,7 +54,7 @@ final class SidebarViewModel: ObservableObject {
 							icon: node.value.iconName?.systemName ?? "star.fill",
 							color: node.value.iconColor,
 							title: node.value.text,
-							count: node.count
+							count: node.descedantsCount
 						)
 					)
 				}
