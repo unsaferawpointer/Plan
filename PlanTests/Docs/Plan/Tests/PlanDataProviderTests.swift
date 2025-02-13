@@ -39,7 +39,6 @@ extension PlanDataProviderTests {
 						text: "Item 0",
 						status: .open,
 						iconName: .folder,
-						count: 0,
 						options: []
 					)
 				),
@@ -50,7 +49,6 @@ extension PlanDataProviderTests {
 						text: "Item 1",
 						status: .done(completed: Date(timeIntervalSince1970: 1723316999)),
 						iconName: .folder,
-						count: 3,
 						options: .favorite
 					),
 					children: [
@@ -135,7 +133,6 @@ extension PlanDataProviderTests {
 						text: "Item 0",
 						status: .open,
 						iconName: .folder,
-						count: 0,
 						options: [],
 						iconColor: .red
 					)
@@ -147,7 +144,6 @@ extension PlanDataProviderTests {
 						text: "Item 1",
 						status: .done(completed: Date(timeIntervalSince1970: 1723316999)),
 						iconName: .folder,
-						count: 3,
 						options: .favorite,
 						iconColor: .orange
 					),

@@ -45,7 +45,7 @@ extension HierarchyViewController: NSMenuItemValidation {
 
 		switch identifier {
 		case
-			 .setEstimationMenuItem,
+			 .iconColorMenuItem,
 			 .setIconMenuItem,
 			 .iconsGroupMenuItem:
 			return !table.effectiveSelection().isEmpty

@@ -337,22 +337,6 @@
         }
       }
     },
-    "number_item" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Number"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Число"
-          }
-        }
-      }
-    },
     "Open Recent" : {
       "localizations" : {
         "en" : {

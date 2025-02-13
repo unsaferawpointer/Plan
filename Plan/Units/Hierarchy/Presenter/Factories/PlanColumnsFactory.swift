@@ -9,7 +9,6 @@ import Foundation
 
 protocol PlanColumnsFactoryDelegate: AnyObject {
 	func modificate(id: UUID, newText: String, newStatus: Bool?)
-	func modificate(id: UUID, value: Int)
 }
 
 protocol PlanColumnsFactoryProtocol {
@@ -54,15 +53,6 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 				delegate?.modificate(id: id, newText: value.text, newStatus: value.isOn)
 			}
 
-		let value = AnyColumn<HierarchyModel, TextCell>(
-			identifier: "value_table_column",
-			title: localization.numberColumnTitle,
-			keyPath: \.value,
-			options: .init(minWidth: 72, maxWidth: 180, isRequired: false, isHidden: false)
-		) { [weak delegate] id, value in
-			delegate?.modificate(id: id, value: Int(value) ?? 0)
-		}
-
 		let bookmark = AnyColumn<HierarchyModel, IconCell>(
 			identifier: "bookmark_table_column",
 			title: localization.bookmarkColumnTitle,
@@ -70,6 +60,6 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			options: .init(minWidth: 72, maxWidth: 72, isRequired: false, isHidden: false)
 		)
 
-		return [main, value, bookmark, dateCreated, dateCompleted]
+		return [main, bookmark, dateCreated, dateCompleted]
 	}
 }

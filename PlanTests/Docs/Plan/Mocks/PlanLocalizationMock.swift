@@ -51,10 +51,6 @@ extension PlanLocalizationMock: HierarchyLocalizationProtocol {
 	var descriptionColumnTitle: String {
 		stubs.descriptionColumnTitle
 	}
-	
-	var numberColumnTitle: String {
-		stubs.estimationColumnTitle
-	}
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String {
 		stubs.formattedDate
@@ -62,14 +58,6 @@ extension PlanLocalizationMock: HierarchyLocalizationProtocol {
 
 	func valueInfo(count: Int) -> String {
 		stubs.valueInfoForCount
-	}
-
-	func valueInfo(number: Int) -> String {
-		stubs.valueInfoForNumber
-	}
-
-	func valueInfo(count: Int, number: Int) -> String {
-		stubs.valueInfoForCountAndNumber
 	}
 }
 
@@ -85,11 +73,8 @@ extension PlanLocalizationMock {
 		var createdDateColumnTitle: String = .random
 		var completedDateColumnTitle: String = .random
 		var descriptionColumnTitle: String = .random
-		var estimationColumnTitle: String = .random
 		var formattedDate: String = .random
 		var valueInfoForCount: String = .random
-		var valueInfoForNumber: String = .random
-		var valueInfoForCountAndNumber: String = .random
 		var bookmarkColumnTitle: String = .random
 	}
 }

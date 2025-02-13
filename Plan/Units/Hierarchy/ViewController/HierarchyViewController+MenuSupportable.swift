@@ -33,12 +33,6 @@ extension HierarchyViewController: MenuSupportable {
 	}
 
 	@IBAction
-	func setEstimation(_ sender: NSMenuItem) {
-		let number = sender.tag
-		output?.setEstimation(number)
-	}
-
-	@IBAction
 	func setIcon(_ sender: NSMenuItem) {
 		let iconName = sender.representedObject as? IconName
 		output?.setIcon(iconName)

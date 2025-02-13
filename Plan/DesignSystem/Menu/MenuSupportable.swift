@@ -23,9 +23,6 @@ protocol MenuSupportable {
 	optional func toggleBookmark(_ sender: NSMenuItem)
 
 	@objc
-	optional func setEstimation(_ sender: NSMenuItem)
-
-	@objc
 	optional func setColor(_ sender: NSMenuItem)
 
 	@objc

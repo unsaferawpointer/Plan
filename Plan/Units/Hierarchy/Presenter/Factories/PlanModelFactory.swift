@@ -50,7 +50,7 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 				isEditable: info.isLeaf,
 				validation: .integer
 			),
-			value: valueInfo(number: info.number, count: info.count)
+			value: valueInfo(count: info.count)
 		)
 
 		let bookmark: IconModel = if item.isFavorite {
@@ -74,19 +74,15 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 // MARK: - Helpers
 private extension PlanModelFactory {
 
-	func valueInfo(number: Int, count: Int) -> String {
+	func valueInfo(count: Int) -> String {
 
 		let isLeaf = count == 0
 
 		guard !isLeaf else {
-			return number > 0 ? localization.valueInfo(number: number) : ""
+			return ""
 		}
 
-		guard number > 0 else {
-			return localization.valueInfo(count: count)
-		}
-
-		return localization.valueInfo(count: count, number: number)
+		return localization.valueInfo(count: count)
 	}
 
 	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> ItemCellModel {
@@ -112,8 +108,7 @@ private extension PlanModelFactory {
 				[
 					"set_status_menu_item" : true,
 					"bookmark_menu_item": true,
-					"delete_menu_item": true,
-					"set_estimation_menu_item": isLeaf
+					"delete_menu_item": true
 				]
 		)
 	}

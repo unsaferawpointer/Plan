@@ -19,8 +19,6 @@ protocol PlanViewOutput: UndoManagerSupportable, PasteboardSupportable {
 
 	func setBookmark(_ flag: Bool)
 
-	func setEstimation(_ value: Int)
-
 	func setIcon(_ value: IconName?)
 
 	func setColor(_ value: ColorModel?)
@@ -198,7 +196,6 @@ private extension HierarchyViewController {
 					.copy,
 					.paste,
 					.separator,
-					.setEstimation,
 					.separator,
 					.setIcon,
 					.iconColor,

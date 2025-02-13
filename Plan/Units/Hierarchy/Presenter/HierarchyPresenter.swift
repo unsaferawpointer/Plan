@@ -121,10 +121,6 @@ extension HierarchyPresenter: PlanViewOutput {
 		interactor?.setBookmark(flag, withSelection: selection)
 	}
 
-	func setEstimation(_ value: Int) {
-		interactor?.setNumber(value, withSelection: selection)
-	}
-
 	func setIcon(_ value: IconName?) {
 		interactor?.setIcon(value, withSelection: selection)
 	}
@@ -222,10 +218,6 @@ extension HierarchyPresenter: PlanColumnsFactoryDelegate {
 		} else {
 			interactor?.modificate(id, newText: trimmed)
 		}
-	}
-
-	func modificate(id: UUID, value: Int) {
-		interactor?.setNumber(value, withSelection: selection)
 	}
 }
 

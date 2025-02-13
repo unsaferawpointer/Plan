@@ -181,10 +181,6 @@ extension PlanUITests {
 			XCTAssertTrue($0.isEnabled)
 			XCTAssertEqual($0.title, "Paste")
 		}
-		doc.menuItem(for: "number_menu_item") {
-			XCTAssertTrue($0.isEnabled)
-			XCTAssertEqual($0.title, "Number")
-		}
 		doc.menuItem(for: "icon_menu_item") {
 			XCTAssertTrue($0.isEnabled)
 			XCTAssertEqual($0.title, "Icon")

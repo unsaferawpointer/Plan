@@ -19,11 +19,7 @@ extension NSUserInterfaceItemIdentifier {
 
 	static let unfoldMenuItem = NSUserInterfaceItemIdentifier("unfold_menu_item")
 
-	static let setEstimationMenuItem = NSUserInterfaceItemIdentifier("set_estimation_menu_item")
-
 	static let setIconColorMenuItem = NSUserInterfaceItemIdentifier("set_icon_color_menu_item")
-
-	static let numberMenuItem = NSUserInterfaceItemIdentifier("number_menu_item")
 
 	static let iconColorMenuItem = NSUserInterfaceItemIdentifier("icon_color_menu_item")
 

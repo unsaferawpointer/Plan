@@ -17,13 +17,10 @@ protocol HierarchyLocalizationProtocol {
 	var createdDateColumnTitle: String { get }
 	var completedDateColumnTitle: String { get }
 	var descriptionColumnTitle: String { get }
-	var numberColumnTitle: String { get }
 	var bookmarkColumnTitle: String { get }
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String
 	func valueInfo(count: Int) -> String
-	func valueInfo(number: Int) -> String
-	func valueInfo(count: Int, number: Int) -> String
 }
 
 final class HierarchyLocalization { }
@@ -66,10 +63,6 @@ extension HierarchyLocalization: HierarchyLocalizationProtocol {
 		return String(localized: "description_table_column", table: "HierarchyLocalizable")
 	}
 
-	var numberColumnTitle: String {
-		return String(localized: "number_table_column", table: "HierarchyLocalizable")
-	}
-
 	var bookmarkColumnTitle: String {
 		return String(localized: "bookmark_table_column", table: "HierarchyLocalizable")
 	}
@@ -90,14 +83,5 @@ extension HierarchyLocalization: HierarchyLocalizationProtocol {
 
 	func valueInfo(count: Int) -> String {
 		return String(localized: "\(count) items", table: "HierarchyLocalizable")
-	}
-
-	func valueInfo(number: Int) -> String {
-		return "\(number)"
-	}
-
-	func valueInfo(count: Int, number: Int) -> String {
-		let prefix = String(localized: "\(count) items", table: "HierarchyLocalizable")
-		return prefix + " - \(number)"
 	}
 }

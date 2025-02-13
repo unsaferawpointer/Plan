@@ -228,22 +228,6 @@
           }
         }
       }
-    },
-    "number_table_column" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Number"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Число"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

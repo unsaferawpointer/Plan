@@ -19,8 +19,6 @@ struct ItemContent {
 
 	var iconName: IconName?
 
-	var count: Int
-
 	var options: EntityOptions
 
 	var iconColor: ColorModel?
@@ -33,7 +31,6 @@ struct ItemContent {
 		text: String,
 		status: ItemStatus = .open,
 		iconName: IconName? = nil,
-		count: Int = 0,
 		options: EntityOptions = [],
 		iconColor: ColorModel? = nil
 	) {
@@ -42,7 +39,6 @@ struct ItemContent {
 		self.text = text
 		self.status = status
 		self.iconName = iconName
-		self.count = count
 		self.options = options
 		self.iconColor = iconColor
 	}
@@ -81,7 +77,6 @@ extension ItemContent: Decodable {
 			text: text,
 			status: status,
 			iconName: iconName,
-			count: count,
 			options: options,
 			iconColor: iconColor
 		)
@@ -101,7 +96,6 @@ extension ItemContent: Encodable {
 		try container.encode(text, forKey: .text)
 		try container.encode(status, forKey: .status)
 		try container.encode(iconName, forKey: .iconName)
-		try container.encode(count, forKey: .count)
 		try container.encode(options, forKey: .options)
 		try container.encode(iconColor, forKey: .iconColor)
 	}

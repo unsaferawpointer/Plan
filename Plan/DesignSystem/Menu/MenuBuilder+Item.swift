@@ -70,8 +70,6 @@ extension MenuBuilder {
 
 		// MARK: - Other
 
-		case setEstimation
-
 		case setIcon
 
 		case iconColor
@@ -119,37 +117,6 @@ extension MenuBuilder.Item {
 			)
 			item.identifier = .setStatusMenuItem
 			return item
-		case .setEstimation:
-			let main = NSMenuItem(
-				title: String(localized: "number_item", table: "Menu"),
-				action: nil,
-				keyEquivalent: ""
-			)
-			main.identifier = .numberMenuItem
-			main.submenu = NSMenu()
-
-			let none = NSMenuItem(
-				title: "None",
-				action: #selector(MenuSupportable.setEstimation(_:)),
-				keyEquivalent: ""
-			)
-			none.identifier = .setEstimationMenuItem
-			none.tag = 0
-			main.submenu?.addItem(none)
-
-			main.submenu?.addItem(.separator())
-
-			for (index, number) in [1, 2, 3, 4, 5, 6, 7, 8, 9].enumerated() {
-				let item = NSMenuItem(
-					title: "\(number)",
-					action: #selector(MenuSupportable.setEstimation(_:)),
-					keyEquivalent: ""
-				)
-				item.identifier = .setEstimationMenuItem
-				item.tag = number
-				main.submenu?.addItem(item)
-			}
-			return main
 		case .setIcon:
 			let main = NSMenuItem(
 				title: String(localized: "icon_item", table: "Menu"),
@@ -543,7 +510,7 @@ extension MenuBuilder.Item {
 					action: #selector(MenuSupportable.setColor(_:)),
 					keyEquivalent: ""
 				)
-				item.identifier = .setEstimationMenuItem
+				item.identifier = .iconColorMenuItem
 				item.tag = color.rawValue
 				item.image = NSImage(systemSymbolName: "circle.fill")?
 					.withSymbolConfiguration(.init(paletteColors: [color.colorValue]))

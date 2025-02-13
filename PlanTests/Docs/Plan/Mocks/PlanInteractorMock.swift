@@ -49,11 +49,7 @@ extension PlanInteractorMock: HierarchyInteractorProtocol {
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID]) {
 		invocations.append(.setBookmark(flag, selection: selection))
 	}
-	
-	func setNumber(_ value: Int, withSelection selection: [UUID]) {
-		invocations.append(.setEstimation(value, selection: selection))
-	}
-	
+
 	func setIcon(_ value: IconName?, withSelection selection: [UUID]) {
 		invocations.append(.setIcon(value, selection: selection))
 	}
@@ -125,7 +121,6 @@ extension PlanInteractorMock {
 		case deleteItems(_ ids: [UUID])
 		case setState(_ flag: Bool, selection: [UUID])
 		case setBookmark(_ flag: Bool, selection: [UUID])
-		case setEstimation(_ value: Int, selection: [UUID])
 		case setIcon(_ value: IconName?, selection: [UUID])
 		case setColor(_ value: ColorModel?, selection: [UUID])
 		case move(ids: [UUID], destination: HierarchyDestination<UUID>)

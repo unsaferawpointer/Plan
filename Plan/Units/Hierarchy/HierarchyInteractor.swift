@@ -17,7 +17,6 @@ protocol HierarchyInteractorProtocol: UndoManagerSupportable {
 	func deleteItems(_ ids: [UUID])
 	func setState(_ flag: Bool, withSelection selection: [UUID])
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID])
-	func setNumber(_ value: Int, withSelection selection: [UUID])
 	func setIcon(_ value: IconName?, withSelection selection: [UUID])
 	func setColor(_ value: ColorModel?, withSelection selection: [UUID])
 
@@ -95,10 +94,6 @@ extension HierarchyInteractor: HierarchyInteractorProtocol {
 
 	func setBookmark(_ flag: Bool, withSelection selection: [UUID]) {
 		modificate(ids: selection, keyPath: \.isFavorite, value: flag)
-	}
-
-	func setNumber(_ value: Int, withSelection selection: [UUID]) {
-		modificate(ids: selection, keyPath: \.count, value: value)
 	}
 
 	func setIcon(_ value: IconName?, withSelection selection: [UUID]) {
