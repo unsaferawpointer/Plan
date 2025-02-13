@@ -149,38 +149,6 @@
         }
       }
     },
-    "completed_date_table_column" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date Completed"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Дата завершения"
-          }
-        }
-      }
-    },
-    "created_date_table_column" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date Created"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Дата создания"
-          }
-        }
-      }
-    },
     "description_table_column" : {
       "localizations" : {
         "en" : {

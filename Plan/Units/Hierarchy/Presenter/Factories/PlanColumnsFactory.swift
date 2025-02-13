@@ -31,20 +31,6 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 
 	func makeColumns(delegate: PlanColumnsFactoryDelegate) -> [any TableColumn<HierarchyModel>] {
 
-		let dateCreated = AnyColumn<HierarchyModel, TextCell>(
-			identifier: "created_date_table_column",
-			title: localization.createdDateColumnTitle,
-			keyPath: \.createdAt,
-			options: .init(minWidth: 72, maxWidth: nil, isRequired: false, isHidden: true)
-		)
-
-		let dateCompleted = AnyColumn<HierarchyModel, TextCell>(
-			identifier: "completed_date_table_column",
-			title: localization.completedDateColumnTitle,
-			keyPath: \.completedAt,
-			options: .init(minWidth: 72, maxWidth: nil, isRequired: false, isHidden: true)
-		)
-
 		let main = AnyColumn<HierarchyModel, ItemCell>(
 			identifier: "description_table_column",
 			title: localization.descriptionColumnTitle,
@@ -60,6 +46,6 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			options: .init(minWidth: 72, maxWidth: 72, isRequired: false, isHidden: false)
 		)
 
-		return [main, bookmark, dateCreated, dateCompleted]
+		return [main, bookmark]
 	}
 }
