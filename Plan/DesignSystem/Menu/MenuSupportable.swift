@@ -29,9 +29,6 @@ protocol MenuSupportable {
 	optional func setColor(_ sender: NSMenuItem)
 
 	@objc
-	optional func setPriority(_ sender: NSMenuItem)
-
-	@objc
 	optional func setIcon(_ sender: NSMenuItem)
 
 	@objc

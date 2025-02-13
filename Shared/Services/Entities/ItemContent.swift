@@ -23,8 +23,6 @@ struct ItemContent {
 
 	var options: EntityOptions
 
-	var priority: ItemPriority
-
 	var iconColor: ColorModel?
 
 	// MARK: - Initialization
@@ -37,7 +35,6 @@ struct ItemContent {
 		iconName: IconName? = nil,
 		count: Int = 0,
 		options: EntityOptions = [],
-		priority: ItemPriority = .low,
 		iconColor: ColorModel? = nil
 	) {
 		self.uuid = uuid
@@ -47,7 +44,6 @@ struct ItemContent {
 		self.iconName = iconName
 		self.count = count
 		self.options = options
-		self.priority = priority
 		self.iconColor = iconColor
 	}
 }
@@ -66,7 +62,6 @@ extension ItemContent: Decodable {
 		case iconName
 		case count
 		case options
-		case priority
 		case iconColor
 	}
 
@@ -80,7 +75,6 @@ extension ItemContent: Decodable {
 		let iconColor = try? container.decodeIfPresent(ColorModel.self, forKey: .iconColor)
 		let count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
 		let options = try container.decode(EntityOptions.self, forKey: .options)
-		let priority = try container.decodeIfPresent(ItemPriority.self, forKey: .priority) ?? .low
 		self.init(
 			uuid: uuid,
 			created: created,
@@ -89,7 +83,6 @@ extension ItemContent: Decodable {
 			iconName: iconName,
 			count: count,
 			options: options,
-			priority: priority,
 			iconColor: iconColor
 		)
 	}
@@ -110,7 +103,6 @@ extension ItemContent: Encodable {
 		try container.encode(iconName, forKey: .iconName)
 		try container.encode(count, forKey: .count)
 		try container.encode(options, forKey: .options)
-		try container.encode(priority, forKey: .priority)
 		try container.encode(iconColor, forKey: .iconColor)
 	}
 }

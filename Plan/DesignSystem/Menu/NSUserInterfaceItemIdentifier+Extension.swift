@@ -23,10 +23,6 @@ extension NSUserInterfaceItemIdentifier {
 
 	static let setIconColorMenuItem = NSUserInterfaceItemIdentifier("set_icon_color_menu_item")
 
-	static let setPriorityMenuItem = NSUserInterfaceItemIdentifier("set_priority_menu_item")
-
-	static let priorityMenuItem = NSUserInterfaceItemIdentifier("priority_menu_item")
-
 	static let numberMenuItem = NSUserInterfaceItemIdentifier("number_menu_item")
 
 	static let iconColorMenuItem = NSUserInterfaceItemIdentifier("icon_color_menu_item")

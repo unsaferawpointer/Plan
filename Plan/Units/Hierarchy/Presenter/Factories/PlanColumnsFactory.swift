@@ -63,13 +63,6 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			delegate?.modificate(id: id, value: Int(value) ?? 0)
 		}
 
-		let priority = AnyColumn<HierarchyModel, IconCell>(
-			identifier: "priority_table_column",
-			title: localization.priorityColumnTitle,
-			keyPath: \.priority,
-			options: .init(minWidth: 72, maxWidth: 72, isRequired: false, isHidden: false)
-		)
-
 		let bookmark = AnyColumn<HierarchyModel, IconCell>(
 			identifier: "bookmark_table_column",
 			title: localization.bookmarkColumnTitle,
@@ -77,6 +70,6 @@ extension PlanColumnsFactory: PlanColumnsFactoryProtocol {
 			options: .init(minWidth: 72, maxWidth: 72, isRequired: false, isHidden: false)
 		)
 
-		return [main, value, priority, bookmark, dateCreated, dateCompleted]
+		return [main, value, bookmark, dateCreated, dateCompleted]
 	}
 }

@@ -53,12 +53,6 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			value: valueInfo(number: info.number, count: info.count)
 		)
 
-		let priority: IconModel = if let color = item.priority.color, info.isLeaf {
-			IconModel(value: .init(icon: .flag), configuration: .init(color: info.isDone ? .tertiary : color))
-		} else {
-			IconModel(value: .init(icon: nil), configuration: .init())
-		}
-
 		let bookmark: IconModel = if item.isFavorite {
 			IconModel(value: .init(icon: .star), configuration: .init(color: .yellow))
 		} else {
@@ -71,7 +65,6 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			createdAt: dateCreated,
 			completedAt: dateCompleted, 
 			value: value,
-			priority: priority,
 			bookmark: bookmark,
 			menu: menu
 		)
@@ -141,19 +134,5 @@ private extension PlanModelFactory {
 			return nil
 		}
 		return item.iconName?.systemName
-	}
-}
-
-extension ItemPriority {
-
-	var color: ColorModel? {
-		switch self {
-		case .medium:
-			return .yellow
-		case .high:
-			return .red
-		default:
-			return nil
-		}
 	}
 }

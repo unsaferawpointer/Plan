@@ -40,8 +40,7 @@ extension PlanDataProviderTests {
 						status: .open,
 						iconName: .folder,
 						count: 0,
-						options: [],
-						priority: .medium
+						options: []
 					)
 				),
 				Node<ItemContent>(
@@ -52,8 +51,7 @@ extension PlanDataProviderTests {
 						status: .done(completed: Date(timeIntervalSince1970: 1723316999)),
 						iconName: .folder,
 						count: 3,
-						options: .favorite,
-						priority: .high
+						options: .favorite
 					),
 					children: [
 						Node<ItemContent>(
@@ -62,8 +60,7 @@ extension PlanDataProviderTests {
 								created: Date(timeIntervalSince1970: 1723315099),
 								text: "Item 1_0",
 								status: .open,
-								options: [],
-								priority: .low
+								options: []
 							)
 						)
 					]
@@ -140,7 +137,6 @@ extension PlanDataProviderTests {
 						iconName: .folder,
 						count: 0,
 						options: [],
-						priority: .medium,
 						iconColor: .red
 					)
 				),
@@ -153,7 +149,6 @@ extension PlanDataProviderTests {
 						iconName: .folder,
 						count: 3,
 						options: .favorite,
-						priority: .high,
 						iconColor: .orange
 					),
 					children: [
@@ -164,7 +159,6 @@ extension PlanDataProviderTests {
 								text: "Item 1_0",
 								status: .open,
 								options: [],
-								priority: .low,
 								iconColor: nil
 							)
 						)

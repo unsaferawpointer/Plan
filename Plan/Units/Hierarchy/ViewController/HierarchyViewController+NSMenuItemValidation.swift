@@ -47,8 +47,7 @@ extension HierarchyViewController: NSMenuItemValidation {
 		case
 			 .setEstimationMenuItem,
 			 .setIconMenuItem,
-			 .iconsGroupMenuItem,
-			 .setPriorityMenuItem:
+			 .iconsGroupMenuItem:
 			return !table.effectiveSelection().isEmpty
 		default:
 			break

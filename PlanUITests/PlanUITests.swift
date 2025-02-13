@@ -193,10 +193,6 @@ extension PlanUITests {
 			XCTAssertTrue($0.isEnabled)
 			XCTAssertEqual($0.title, "Delete")
 		}
-		doc.menuItem(for: "priority_menu_item") {
-			XCTAssertTrue($0.isEnabled)
-			XCTAssertEqual($0.title, "Priority")
-		}
 	}
 
 	func test_clickNewMenuItem() {

@@ -33,12 +33,6 @@ extension HierarchyViewController: MenuSupportable {
 	}
 
 	@IBAction
-	func setPriority(_ sender: NSMenuItem) {
-		let rawValue = sender.tag
-		output?.setPriority(rawValue)
-	}
-
-	@IBAction
 	func setEstimation(_ sender: NSMenuItem) {
 		let number = sender.tag
 		output?.setEstimation(number)

@@ -55,7 +55,6 @@ extension MenuBuilder {
 		case delete
 
 		case favorite
-		case priority
 		case completed
 
 		// MARK: - View
@@ -120,26 +119,6 @@ extension MenuBuilder.Item {
 			)
 			item.identifier = .setStatusMenuItem
 			return item
-		case .priority:
-			let main = NSMenuItem(
-				title: String(localized: "priority_item", table: "Menu"),
-				action: nil,
-				keyEquivalent: ""
-			)
-			main.identifier = .priorityMenuItem
-			main.submenu = NSMenu()
-
-			for priority in ItemPriority.allCases {
-				let item = NSMenuItem(
-					title: priority.title,
-					action: #selector(MenuSupportable.setPriority(_:)),
-					keyEquivalent: "\(priority.rawValue + 1)"
-				)
-				item.identifier = .setPriorityMenuItem
-				item.tag = priority.rawValue
-				main.submenu?.addItem(item)
-			}
-			return main
 		case .setEstimation:
 			let main = NSMenuItem(
 				title: String(localized: "number_item", table: "Menu"),
@@ -478,7 +457,6 @@ extension MenuBuilder.Item {
 						.fold,
 						.unfold,
 						.separator,
-						.priority,
 						.separator,
 						.favorite,
 						.completed,
@@ -572,20 +550,6 @@ extension MenuBuilder.Item {
 				main.submenu?.addItem(item)
 			}
 			return main
-		}
-	}
-}
-
-extension ItemPriority {
-
-	var title: String {
-		switch self {
-		case .low:
-			return String(localized: "low", table: "Menu")
-		case .medium:
-			return String(localized: "medium", table: "Menu")
-		case .high:
-			return String(localized: "high", table: "Menu")
 		}
 	}
 }
