@@ -19,8 +19,6 @@ final class HierarchyPresenter {
 
 	private var provider: AnyStateProvider<PlanDocumentState>
 
-	private var statusFactory: PlanStatusFactoryProtocol
-
 	private var modelFactory: PlanModelFactoryProtocol
 
 	private var columnsFactory: PlanColumnsFactoryProtocol
@@ -35,7 +33,6 @@ final class HierarchyPresenter {
 
 	init(
 		provider: AnyStateProvider<PlanDocumentState>,
-		statusFactory: PlanStatusFactoryProtocol = PlanStatusFactory(),
 		modelFactory: PlanModelFactoryProtocol = PlanModelFactory(),
 		columnsFactory: PlanColumnsFactoryProtocol = PlanColumnsFactory(),
 		localization: HierarchyLocalizationProtocol = HierarchyLocalization(),
@@ -43,7 +40,6 @@ final class HierarchyPresenter {
 		generalPasteboard: PasteboardFacadeProtocol = PasteboardFacade(pasteboard: .general)
 	) {
 		self.provider = provider
-		self.statusFactory = statusFactory
 		self.modelFactory = modelFactory
 		self.columnsFactory = columnsFactory
 		self.localization = localization
@@ -233,9 +229,8 @@ private extension HierarchyPresenter {
 		}
 
 		let snapshot = makeSnapshot(nodes)
-		let status = statusFactory.makeModel(for: nodes)
 
-		return HierarchyUnitModel(bottomBar: status, snapshot: snapshot)
+		return HierarchyUnitModel(snapshot: snapshot)
 	}
 
 	func makeSnapshot(_ nodes: [Node<ItemContent>]) -> HierarchySnapshot {

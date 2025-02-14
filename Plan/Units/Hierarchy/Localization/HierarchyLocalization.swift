@@ -8,17 +8,13 @@
 import Foundation
 
 protocol HierarchyLocalizationProtocol {
-	var allTaskCompleted: String { get }
 	var emptyList: String { get }
 	var newItemTitle: String { get }
-	func statusMessage(for count: Int) -> String
-	func progressText(for progress: Double) -> String
 
 	var descriptionColumnTitle: String { get }
 	var bookmarkColumnTitle: String { get }
 
 	func formattedDate(for date: Date?, placeholder: String?) -> String
-	func valueInfo(count: Int) -> String
 }
 
 final class HierarchyLocalization { }
@@ -26,9 +22,6 @@ final class HierarchyLocalization { }
 // MARK: - HierarchyLocalizationProtocol
 extension HierarchyLocalization: HierarchyLocalizationProtocol {
 
-	var allTaskCompleted: String {
-		return String(localized: "all_tasks_completed", table: "HierarchyLocalizable")
-	}
 
 	var emptyList: String {
 		return String(localized: "empty_list", table: "HierarchyLocalizable")
@@ -36,17 +29,6 @@ extension HierarchyLocalization: HierarchyLocalizationProtocol {
 
 	var newItemTitle: String {
 		return String(localized: "new_item_title", table: "HierarchyLocalizable")
-	}
-
-	func statusMessage(for count: Int) -> String {
-		return String(localized: "\(count) tasks", table: "HierarchyLocalizable")
-	}
-
-	func progressText(for progress: Double) -> String {
-		let formatter = NumberFormatter()
-		formatter.numberStyle = .percent
-		formatter.maximumFractionDigits = 0
-		return formatter.string(from: NSNumber(value: progress)) ?? ""
 	}
 
 	var descriptionColumnTitle: String {
@@ -69,9 +51,5 @@ extension HierarchyLocalization: HierarchyLocalizationProtocol {
 		formatter.doesRelativeDateFormatting = true
 
 		return formatter.string(from: date)
-	}
-
-	func valueInfo(count: Int) -> String {
-		return String(localized: "\(count) items", table: "HierarchyLocalizable")
 	}
 }

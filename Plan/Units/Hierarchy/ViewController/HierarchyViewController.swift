@@ -51,8 +51,6 @@ class HierarchyViewController: NSViewController {
 
 	lazy var table = NSOutlineView.inset
 
-	lazy var bottomBar = BottomBar(frame: .zero)
-
 	// MARK: - Initialization
 
 	init(configure: (HierarchyViewController) -> Void) {
@@ -92,7 +90,6 @@ extension HierarchyViewController: PlanView {
 
 	func display(_ model: HierarchyUnitModel) {
 		adapter?.apply(model.snapshot)
-		bottomBar.model = model.bottomBar
 	}
 
 	func setConfiguration(_ columns: [any TableColumn<HierarchyModel>]) {
@@ -152,10 +149,11 @@ private extension HierarchyViewController {
 		table.frame = scrollview.bounds
 
 		scrollview.documentView = table
+		scrollview.additionalSafeAreaInsets = .init(top: 0, left: 32, bottom: 0, right: 32)
 		scrollview.hasVerticalScroller = false
 		scrollview.automaticallyAdjustsContentInsets = true
 
-		table.headerView?.setAccessibilityRole(.unknown)
+		table.headerView = nil
 
 		table.allowsColumnResizing = true
 
@@ -163,7 +161,7 @@ private extension HierarchyViewController {
 	}
 
 	func configureConstraints() {
-		[scrollview, bottomBar].forEach {
+		[scrollview].forEach {
 			view.addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
@@ -173,11 +171,7 @@ private extension HierarchyViewController {
 				scrollview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 				scrollview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 				scrollview.topAnchor.constraint(equalTo: view.topAnchor),
-				scrollview.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
-
-				bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				bottomBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-				bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				scrollview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 			]
 		)
 	}

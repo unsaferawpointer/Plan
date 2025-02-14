@@ -15,15 +15,12 @@ final class DocumentPage {
 
 	let splitGroup: XCUIElement
 
-	let bottomBar: BottomBarPage
-
 	init(window: XCUIElement) {
 		_ = window.waitForExistence(timeout: 0.5)
 		precondition(window.elementType == .window, "It is not window")
 		self.window = window
 		self.outline = window.outlines.firstMatch
 		self.splitGroup = window.splitGroups.firstMatch
-		self.bottomBar = BottomBarPage(element: window.groups["bottom-bar"])
 	}
 }
 

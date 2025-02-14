@@ -12,8 +12,6 @@ final class PlanPresenterTests: XCTestCase {
 
 	var sut: HierarchyPresenter!
 
-	var statusFactory: PlanStatusFactoryMock!
-
 	var columnsFactory: PlanColumnsFactoryMock!
 
 	var modelFactory: PlanModelFactoryMock!
@@ -30,8 +28,6 @@ final class PlanPresenterTests: XCTestCase {
 
 	override func setUpWithError() throws {
 
-		statusFactory = PlanStatusFactoryMock()
-
 		columnsFactory = PlanColumnsFactoryMock()
 
 		modelFactory = PlanModelFactoryMock()
@@ -46,7 +42,6 @@ final class PlanPresenterTests: XCTestCase {
 
 		sut = HierarchyPresenter(
 			provider: AnyStateProvider(initialState: .init()),
-			statusFactory: statusFactory,
 			modelFactory: modelFactory,
 			columnsFactory: columnsFactory,
 			localization: localization,
@@ -58,7 +53,6 @@ final class PlanPresenterTests: XCTestCase {
 
 	override func tearDownWithError() throws {
 		sut = nil
-		statusFactory = nil
 		columnsFactory = nil
 		modelFactory = nil
 		localization = nil

@@ -8,6 +8,5 @@
 import Foundation
 
 struct HierarchyUnitModel {
-	let bottomBar: BottomBar.Model
 	let snapshot: HierarchySnapshot
 }

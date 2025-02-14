@@ -62,9 +62,7 @@
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C802C87990900C7DF6E /* ValueFormatter.swift */; };
 		4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C822C8A22A200C7DF6E /* CellModel.swift */; };
-		4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */; };
 		4C81FB612C5FF9D7006300E6 /* HierarchyUnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */; };
-		4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */; };
 		4C81FB652C601810006300E6 /* HierarchyLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* HierarchyLocalization.swift */; };
 		4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */; };
 		4C85143F2C7E486100C7475C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85143E2C7E486100C7475C /* TableCell.swift */; };
@@ -76,7 +74,6 @@
 		4C8514542C832DFB00C7475C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514532C832DFB00C7475C /* String+Extension.swift */; };
 		4C8514562C832ED300C7475C /* PlanColumnsFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514552C832ED300C7475C /* PlanColumnsFactoryMock.swift */; };
 		4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514572C832F7400C7475C /* PlanModelFactoryMock.swift */; };
-		4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8514592C83302E00C7475C /* PlanStatusFactoryMock.swift */; };
 		4C85145C2C83314600C7475C /* BasicFormatterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145B2C83314600C7475C /* BasicFormatterMock.swift */; };
 		4C85145E2C8332B600C7475C /* PlanViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145D2C8332B600C7475C /* PlanViewMock.swift */; };
 		4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */; };
@@ -100,7 +97,6 @@
 		4CA3AF942CBEFD8900F4C323 /* DocumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */; };
 		4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */; };
 		4CA3AF9F2CC29CDC00F4C323 /* AppLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */; };
-		4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */; };
 		4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */; };
 		4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA612C7BB611002DDD95 /* TextCell.swift */; };
 		4CCCFA682C7CE9F8002DDD95 /* TableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */; };
@@ -211,9 +207,7 @@
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C365C802C87990900C7DF6E /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		4C365C822C8A22A200C7DF6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
-		4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyUnitModel.swift; sourceTree = "<group>"; };
-		4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactory.swift; sourceTree = "<group>"; };
 		4C81FB642C601810006300E6 /* HierarchyLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyLocalization.swift; sourceTree = "<group>"; };
 		4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = HierarchyLocalizable.xcstrings; sourceTree = "<group>"; };
 		4C85143E2C7E486100C7475C /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
@@ -226,7 +220,6 @@
 		4C8514532C832DFB00C7475C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		4C8514552C832ED300C7475C /* PlanColumnsFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnsFactoryMock.swift; sourceTree = "<group>"; };
 		4C8514572C832F7400C7475C /* PlanModelFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModelFactoryMock.swift; sourceTree = "<group>"; };
-		4C8514592C83302E00C7475C /* PlanStatusFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStatusFactoryMock.swift; sourceTree = "<group>"; };
 		4C85145B2C83314600C7475C /* BasicFormatterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFormatterMock.swift; sourceTree = "<group>"; };
 		4C85145D2C8332B600C7475C /* PlanViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewMock.swift; sourceTree = "<group>"; };
 		4C85145F2C83374B00C7475C /* PlanInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractorMock.swift; sourceTree = "<group>"; };
@@ -250,7 +243,6 @@
 		4CA3AF932CBEFD8900F4C323 /* DocumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentWindowController.swift; sourceTree = "<group>"; };
 		4CA3AF952CBEFEF300F4C323 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		4CA3AF9E2CC29CDC00F4C323 /* AppLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppLocalizable.xcstrings; sourceTree = "<group>"; };
-		4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarPage.swift; sourceTree = "<group>"; };
 		4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v1_0_0.json; sourceTree = "<group>"; };
 		4CCCFA612C7BB611002DDD95 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		4CCCFA672C7CE9F8002DDD95 /* TableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumn.swift; sourceTree = "<group>"; };
@@ -586,7 +578,6 @@
 				4CFDFE9E2CAF181A000A6C2B /* IconCell */,
 				4C9FFEF12C920C1B005FC397 /* TextCell */,
 				4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */,
-				4C81FB5E2C5FE92E006300E6 /* BottomBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -643,7 +634,6 @@
 		4C85144F2C824E0700C7475C /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				4C81FB622C600D88006300E6 /* PlanStatusFactory.swift */,
 				4C85144D2C8248A200C7475C /* PlanColumnsFactory.swift */,
 				4C8C6CC42C6765F500E09697 /* PlanModelFactory.swift */,
 			);
@@ -653,7 +643,6 @@
 		4C8514502C832D3300C7475C /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				4C8514592C83302E00C7475C /* PlanStatusFactoryMock.swift */,
 				4C8514512C832D4300C7475C /* PlanLocalizationMock.swift */,
 				4C8514552C832ED300C7475C /* PlanColumnsFactoryMock.swift */,
 				4C8514572C832F7400C7475C /* PlanModelFactoryMock.swift */,
@@ -731,7 +720,6 @@
 				4C0693542CD54F5F0067068E /* SidebarPage */,
 				4C8C6CF52C78FFB800E09697 /* AppPage.swift */,
 				4C8C6CF32C78CBD300E09697 /* DocumentPage.swift */,
-				4CA3AFA02CC3D03B00F4C323 /* BottomBarPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1178,10 +1166,8 @@
 				4C06935D2CD61AD50067068E /* SidebarLocalization.swift in Sources */,
 				4C298EBB2C5FDE6700474956 /* NSScrollView+Extension.swift in Sources */,
 				4CCCFA622C7BB611002DDD95 /* TextCell.swift in Sources */,
-				4C81FB5F2C5FE92E006300E6 /* BottomBar.swift in Sources */,
 				4C02592A2CAC77830045B3CF /* PasteboardSupportable.swift in Sources */,
 				4CA3AF962CBEFEF300F4C323 /* NSWindow+Extension.swift in Sources */,
-				4C81FB632C600D88006300E6 /* PlanStatusFactory.swift in Sources */,
 				4C8514482C80DCCA00C7475C /* AnyColumn.swift in Sources */,
 				4C298EC02C5FDE8900474956 /* MenuSupportable.swift in Sources */,
 				4C85144E2C8248A200C7475C /* PlanColumnsFactory.swift in Sources */,
@@ -1233,7 +1219,6 @@
 				4C8C6CD82C68F44000E09697 /* TextParserTests.swift in Sources */,
 				4CFDFEA72CB14F5D000A6C2B /* VersionTests.swift in Sources */,
 				4C85144C2C8235C700C7475C /* PlanPresenterTests.swift in Sources */,
-				4C85145A2C83302E00C7475C /* PlanStatusFactoryMock.swift in Sources */,
 				4C8514582C832F7400C7475C /* PlanModelFactoryMock.swift in Sources */,
 				4CCFE6342CB84AB100AF29F1 /* BasicFormatterTests.swift in Sources */,
 				4C8514602C83374B00C7475C /* PlanInteractorMock.swift in Sources */,
@@ -1255,7 +1240,6 @@
 				4C8C6CF62C78FFB800E09697 /* AppPage.swift in Sources */,
 				4C298E732C5FDC2100474956 /* PlanUITestsLaunchTests.swift in Sources */,
 				4C0693562CD54F730067068E /* SidebarPageRow.swift in Sources */,
-				4CA3AFA12CC3D03B00F4C323 /* BottomBarPage.swift in Sources */,
 				4C0693582CD60DA60067068E /* SidebarPageSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

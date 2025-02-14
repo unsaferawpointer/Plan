@@ -44,15 +44,6 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			value: localization.formattedDate(for: item.status.completionDate, placeholder: "--")
 		)
 
-		let value = TextModel(
-			configuration: .init(
-				textColor: info.isLeaf ? .secondary : .tertiary,
-				isEditable: info.isLeaf,
-				validation: .integer
-			),
-			value: valueInfo(count: info.count)
-		)
-
 		let bookmark: IconModel = if item.isFavorite {
 			IconModel(value: .init(icon: .star), configuration: .init(color: .yellow))
 		} else {
@@ -64,7 +55,6 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 			content: content,
 			createdAt: dateCreated,
 			completedAt: dateCompleted, 
-			value: value,
 			bookmark: bookmark,
 			menu: menu
 		)
@@ -73,17 +63,6 @@ extension PlanModelFactory: PlanModelFactoryProtocol {
 
 // MARK: - Helpers
 private extension PlanModelFactory {
-
-	func valueInfo(count: Int) -> String {
-
-		let isLeaf = count == 0
-
-		guard !isLeaf else {
-			return ""
-		}
-
-		return localization.valueInfo(count: count)
-	}
 
 	func makeContent(for item: ItemContent, info: HierarchySnapshot.Info) -> ItemCellModel {
 		let textColor = self.textColor(isDone: info.isDone)

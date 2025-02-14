@@ -17,8 +17,6 @@ struct HierarchyModel {
 
 	var completedAt: TextCell.Model
 
-	var value: TextCell.Model
-
 	var bookmark: IconModel
 
 	var menu: MenuItem
@@ -30,7 +28,6 @@ struct HierarchyModel {
 		content: ItemCellModel,
 		createdAt: TextCell.Model,
 		completedAt: TextCell.Model,
-		value: TextCell.Model,
 		bookmark: IconModel,
 		menu: MenuItem
 	) {
@@ -38,7 +35,6 @@ struct HierarchyModel {
 		self.content = content
 		self.createdAt = createdAt
 		self.completedAt = completedAt
-		self.value = value
 		self.bookmark = bookmark
 		self.menu = menu
 	}

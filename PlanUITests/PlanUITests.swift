@@ -78,9 +78,6 @@ extension PlanUITests {
 
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 3)
-		doc.bottomBar.checkLeadingLabel(expectedTitle: "3 tasks")
-		doc.bottomBar.checkTrailingLabel(expectedTitle: "0%")
-		doc.bottomBar.checkProgress(expectedValue: 0)
 
 		doc.newItem(in: 0)
 	}
@@ -100,9 +97,6 @@ extension PlanUITests {
 
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 3)
-		doc.bottomBar.checkLeadingLabel(expectedTitle: "1 task")
-		doc.bottomBar.checkTrailingLabel(expectedTitle: "0%")
-		doc.bottomBar.checkProgress(expectedValue: 0)
 	}
 
 	func test_createNewItem() {
@@ -118,9 +112,6 @@ extension PlanUITests {
 
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 1)
-		doc.bottomBar.checkLeadingLabel(expectedTitle: "1 task")
-		doc.bottomBar.checkTrailingLabel(expectedTitle: "0%")
-		doc.bottomBar.checkProgress(expectedValue: 0)
 	}
 
 	func test_createNewItem_whenPressShortcut() {
@@ -225,9 +216,6 @@ extension PlanUITests {
 
 		// Assert
 		XCTAssertEqual(doc.rowsCount, 1)
-		doc.bottomBar.checkLeadingLabel(expectedTitle: "All tasks completed")
-		doc.bottomBar.checkTrailingLabel(expectedTitle: "100%")
-		doc.bottomBar.checkProgress(expectedValue: 1)
 	}
 
 	func test_clickDeleteMenuItem() {

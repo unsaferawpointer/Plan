@@ -16,7 +16,7 @@ extension NSOutlineView {
 		view.floatsGroupRows = false
 		view.allowsMultipleSelection = true
 		view.allowsColumnResizing = false
-		view.usesAlternatingRowBackgroundColors = true
+		view.usesAlternatingRowBackgroundColors = false
 		view.usesAutomaticRowHeights = false
 		view.indentationPerLevel = 24
 		return view
