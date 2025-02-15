@@ -53,25 +53,9 @@ class PlanDocument: NSDocument {
 private extension PlanDocument {
 
 	func makeContentViewController() -> NSViewController {
-
-		let viewController = NSSplitViewController()
-		let sidebarViewController = NSHostingController(
-			rootView: SidebarView(
-				viewModel: SidebarViewModel(provider: stateProvider, storage: storage)
-			)
+		return HierarchyAssembly.build(
+			storage: storage,
+			provider: stateProvider
 		)
-
-		let sidebarItem = NSSplitViewItem(sidebarWithViewController: sidebarViewController)
-		let contentItem = NSSplitViewItem(
-			viewController: HierarchyAssembly.build(
-				storage: storage,
-				provider: stateProvider
-			)
-		)
-
-		viewController.addSplitViewItem(sidebarItem)
-		viewController.addSplitViewItem(contentItem)
-
-		return viewController
 	}
 }

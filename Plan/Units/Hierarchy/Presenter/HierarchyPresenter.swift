@@ -243,11 +243,6 @@ private extension HierarchyPresenter {
 extension HierarchyPresenter {
 
 	func rootIdentifier() -> UUID? {
-		switch provider.state.selection {
-		case .doc:
-			return nil
-		case let .bookmark(id):
-			return id
-		}
+		return nil
 	}
 }

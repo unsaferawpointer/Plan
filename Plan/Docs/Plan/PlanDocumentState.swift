@@ -7,7 +7,4 @@
 
 import Foundation
 
-struct PlanDocumentState {
-
-	var selection: SidebarItem.Identifier = .doc
-}
+struct PlanDocumentState { }

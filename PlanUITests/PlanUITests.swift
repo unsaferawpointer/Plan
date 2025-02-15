@@ -18,50 +18,6 @@ final class PlanUITests: XCTestCase {
 	}
 }
 
-extension PlanUITests {
-
-	func test_sidebar_selection_while_launching() {
-		// Arrange
-		let app = prepareApp()
-		let window = app.firstWindow()
-		let doc = DocumentPage(window: window)
-
-		// Assert
-
-		let row = doc.sidebar.row(for: 0)
-		XCTAssertEqual(row.value, "Document")
-		XCTAssertTrue(row.isSelected)
-	}
-
-	func test_hideSidebar() {
-		// Arrange
-		let app = prepareApp()
-		let window = app.firstWindow()
-		let doc = DocumentPage(window: window)
-
-		// Act
-		doc.toggleSidebar()
-
-		// Assert
-		XCTAssertTrue(doc.sidebar.outline.waitForNonExistence(timeout: 0.5))
-	}
-
-	func test_showSidebar() {
-		// Arrange
-		let app = prepareApp()
-		let window = app.firstWindow()
-		let doc = DocumentPage(window: window)
-		doc.toggleSidebar()
-		_ = doc.sidebar.outline.waitForExistence(timeout: 0.5)
-
-		// Act
-		doc.toggleSidebar()
-
-		// Assert
-		XCTAssertTrue(doc.sidebar.outline.waitForExistence(timeout: 0.5))
-	}
-}
-
 // MARK: - Creation
 extension PlanUITests {
 
@@ -145,6 +101,7 @@ extension PlanUITests {
 		doc.newItems(count: 1, in: nil)
 
 		// Perform Copy
+		doc.selectRow(0)
 		app.press("c", modifierFlags: [.command])
 
 		// Act
@@ -248,9 +205,6 @@ extension PlanUITests {
 		
 		doc.selectRow(0)
 		doc.invokeContextMenu(for: 0, andClick: .bookmarkMenuItem)
-
-		XCTAssertEqual(doc.sidebar.row(for: 2).value, "New item")
-		XCTAssertEqual(doc.sidebar.section(for: 1).title, "Bookmarks")
 	}
 
 }

@@ -36,7 +36,6 @@ Create and edit nested lists with ease..
 - Item customization
 	* ~~Icon color customization~~
 - Add flat tasks list with sorting
-- ~~Add document sidebar~~
 - Add application settings
 - Localization
 	* Ukrainian
