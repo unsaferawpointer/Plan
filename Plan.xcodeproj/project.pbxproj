@@ -54,6 +54,7 @@
 		4C298EE62C5FDEFA00474956 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C298EAE2C5FDE3A00474956 /* PlaceholderView.swift */; };
 		4C365C812C87990900C7DF6E /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C802C87990900C7DF6E /* ValueFormatter.swift */; };
 		4C365C832C8A22A200C7DF6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C365C822C8A22A200C7DF6E /* CellModel.swift */; };
+		4C6B2A722D60B6CC006FE722 /* mock_plan_doc_v2_0_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B2A712D60B6CC006FE722 /* mock_plan_doc_v2_0_0.json */; };
 		4C81FB612C5FF9D7006300E6 /* HierarchyUnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */; };
 		4C81FB652C601810006300E6 /* HierarchyLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81FB642C601810006300E6 /* HierarchyLocalization.swift */; };
 		4C81FB672C60BB2D006300E6 /* HierarchyLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */; };
@@ -191,6 +192,7 @@
 		4C298EBA2C5FDE6700474956 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C365C802C87990900C7DF6E /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		4C365C822C8A22A200C7DF6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		4C6B2A712D60B6CC006FE722 /* mock_plan_doc_v2_0_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_plan_doc_v2_0_0.json; sourceTree = "<group>"; };
 		4C81FB602C5FF9D7006300E6 /* HierarchyUnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyUnitModel.swift; sourceTree = "<group>"; };
 		4C81FB642C601810006300E6 /* HierarchyLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchyLocalization.swift; sourceTree = "<group>"; };
 		4C81FB662C60BB2D006300E6 /* HierarchyLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = HierarchyLocalizable.xcstrings; sourceTree = "<group>"; };
@@ -564,6 +566,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4C6B2A732D60B6D4006FE722 /* v2.0.0 */ = {
+			isa = PBXGroup;
+			children = (
+				4C6B2A712D60B6CC006FE722 /* mock_plan_doc_v2_0_0.json */,
+			);
+			path = v2.0.0;
+			sourceTree = "<group>";
+		};
 		4C85143B2C7E457700C7475C /* TableColumns */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,8 +709,9 @@
 		4C8C6CF92C7A556900E09697 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4CCFE6242CB4708100AF29F1 /* v1.1 */,
-				4CBAC4292C7A829600534CC3 /* v1 */,
+				4C6B2A732D60B6D4006FE722 /* v2.0.0 */,
+				4CCFE6242CB4708100AF29F1 /* v1.1.0 */,
+				4CBAC4292C7A829600534CC3 /* v1.0.0 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -734,14 +745,14 @@
 			path = TextCell;
 			sourceTree = "<group>";
 		};
-		4CBAC4292C7A829600534CC3 /* v1 */ = {
+		4CBAC4292C7A829600534CC3 /* v1.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				4C8C6D022C7A7FB300E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json */,
 				4C8C6CFA2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json */,
 				4CBAC42C2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json */,
 			);
-			path = v1;
+			path = v1.0.0;
 			sourceTree = "<group>";
 		};
 		4CCCFA6B2C7CF0F0002DDD95 /* ViewController */ = {
@@ -755,12 +766,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		4CCFE6242CB4708100AF29F1 /* v1.1 */ = {
+		4CCFE6242CB4708100AF29F1 /* v1.1.0 */ = {
 			isa = PBXGroup;
 			children = (
 				4CCFE6272CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json */,
 			);
-			path = v1.1;
+			path = v1.1.0;
 			sourceTree = "<group>";
 		};
 		4CCFE6322CB84A9400AF29F1 /* BasicFormatter */ = {
@@ -1045,6 +1056,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CCFE6282CB470A300AF29F1 /* mock_plan_doc_v1_1_0.json in Resources */,
+				4C6B2A722D60B6CC006FE722 /* mock_plan_doc_v2_0_0.json in Resources */,
 				4CBAC42D2C7B2AB000534CC3 /* mock_plan_doc_v1_0_0.json in Resources */,
 				4C8C6CFB2C7A55AC00E09697 /* mock_plan_doc_unknown_version_v1_0_0.json in Resources */,
 				4C8C6D032C7A803D00E09697 /* mock_plan_doc_unexpected_format_v1_0_0.json in Resources */,

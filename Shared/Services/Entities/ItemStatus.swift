@@ -9,6 +9,8 @@ import Foundation
 
 enum ItemStatus {
 	case open
+	case todo
+	case inProgress(start: Date)
 	case done(completed: Date)
 }
 
@@ -17,10 +19,10 @@ extension ItemStatus {
 
 	var completionDate: Date? {
 		switch self {
-		case .open:
-			return nil
 		case .done(let completed):
 			return completed
+		default:
+			return nil
 		}
 	}
 }

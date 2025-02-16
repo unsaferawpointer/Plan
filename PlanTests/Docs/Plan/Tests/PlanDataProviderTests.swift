@@ -118,6 +118,7 @@ extension PlanDataProviderTests {
 	}
 }
 
+// MARK: - ContentProvider interface testing (v1.1.0)
 extension PlanDataProviderTests {
 
 	func test_readFromDataOfType_whenV1_1_0() throws {
@@ -164,6 +165,64 @@ extension PlanDataProviderTests {
 		)
 
 		let version = "1_1_0"
+
+		let data = try loadFile("mock_plan_doc_v\(version)")
+
+		// Act
+		let content = try sut.read(from: XCTUnwrap(data), ofType: type.rawValue)
+
+		// Assert
+		XCTAssertEqual(content, expectedContent)
+	}
+}
+
+// MARK: - ContentProvider interface testing (v2.0.0)
+extension PlanDataProviderTests {
+
+	func test_readFromDataOfType_whenV2_0_0() throws {
+		// Arrange
+
+		let expectedContent = PlanContent(
+			uuid: .uuid0,
+			hierarchy: [
+				Node<ItemContent>(
+					value: .init(
+						uuid: .uuid1,
+						created: Date(timeIntervalSince1970: 1723315099),
+						text: "Item 0",
+						status: .open,
+						iconName: .folder,
+						options: [],
+						iconColor: .red
+					)
+				),
+				Node<ItemContent>(
+					value: .init(
+						uuid: .uuid2,
+						created: Date(timeIntervalSince1970: 1723315099),
+						text: "Item 1",
+						status: .done(completed: Date(timeIntervalSince1970: 1723316999)),
+						iconName: .folder,
+						options: .favorite,
+						iconColor: .orange
+					),
+					children: [
+						Node<ItemContent>(
+							value: .init(
+								uuid: .uuid3,
+								created: Date(timeIntervalSince1970: 1723315099),
+								text: "Item 1_0",
+								status: .inProgress(start: Date(timeIntervalSince1970: 1723316999)),
+								options: [],
+								iconColor: nil
+							)
+						)
+					]
+				)
+			]
+		)
+
+		let version = "2_0_0"
 
 		let data = try loadFile("mock_plan_doc_v\(version)")
 

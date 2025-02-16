@@ -69,7 +69,6 @@ extension ItemContent: Decodable {
 		let status = try container.decode(ItemStatus.self, forKey: .status)
 		let iconName = try? container.decodeIfPresent(IconName.self, forKey: .iconName)
 		let iconColor = try? container.decodeIfPresent(ColorModel.self, forKey: .iconColor)
-		let count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
 		let options = try container.decode(EntityOptions.self, forKey: .options)
 		self.init(
 			uuid: uuid,
@@ -132,8 +131,8 @@ extension ItemContent {
 	var isDone: Bool {
 		get {
 			switch status {
-			case .open: false
 			case .done: true
+			default: false
 			}
 		}
 		set {
